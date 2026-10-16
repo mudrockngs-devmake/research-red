@@ -22,7 +22,8 @@
 #include "util.h"
 #include "constants/songs.h"
 
-#define INTRO_SPECIES SPECIES_NIDORAN_F
+// Research Red: Slowpoke replaces Nidoran F in the intro call
+#define INTRO_SPECIES SPECIES_SLOWPOKE
 
 enum
 {
@@ -77,17 +78,14 @@ static void Task_OakSpeech_HandleGenderInput(u8);
 static void Task_OakSpeech_ClearGenderWindows(u8);
 static void Task_OakSpeech_LoadPlayerPic(u8);
 static void Task_OakSpeech_YourNameWhatIsIt(u8);
-static void Task_OakSpeech_FadeOutForPlayerNamingScreen(u8);
+static void Task_OakSpeech_MoveRivalDisplayNameOptions(u8);
 static void Task_OakSpeech_HandleRivalNameInput(u8);
 static void Task_OakSpeech_DoNamingScreen(u8);
 static void Task_OakSpeech_ConfirmName(u8);
 static void Task_OakSpeech_HandleConfirmNameInput(u8);
-static void Task_OakSpeech_FadeOutPlayerPic(u8);
-static void Task_OakSpeech_FadeOutRivalPic(u8);
-static void Task_OakSpeech_FadeInRivalPic(u8);
-static void Task_OakSpeech_AskRivalsName(u8);
 static void Task_OakSpeech_ReshowPlayersPic(u8);
 static void Task_OakSpeech_LetsGo(u8);
+static void Task_OakSpeech_RunCallLines(u8);
 static void Task_OakSpeech_FadeOutBGM(u8);
 static void Task_OakSpeech_SetUpExitAnimation(u8);
 static void Task_OakSpeech_SetUpShrinkPlayerPic(u8);
@@ -110,11 +108,134 @@ static void CreateFadeInTask(u8, u8);
 static void CreateFadeOutTask(u8, u8);
 static void PrintNameChoiceOptions(u8, u8);
 static void GetDefaultName(u8, u8);
+static void SetRivalNameToElm(void);
 
-static const u8 sText_Controls[] = _("CONTROLS");
-static const u8 sText_ABUTTONNext_BBUTTONBack[] = _("{A_BUTTON}NEXT {B_BUTTON}BACK");
-static const u8 sText_Boy[] = _("BOY");
-static const u8 sText_Girl[] = _("GIRL");
+static const u8 sText_Controls[] = _("Controls");
+static const u8 sText_ABUTTONNext_BBUTTONBack[] = _("{A_BUTTON}Next {B_BUTTON}Back");
+static const u8 sText_Boy[] = _("Male");
+static const u8 sText_Girl[] = _("Female");
+static const u8 sText_NewName[] = _("New name");
+
+// ---------------------------------------------------------------
+// Research Red: intro video call script
+// ---------------------------------------------------------------
+static const u8 sText_Call_Hello[] = _(
+    "Oak: Hello? Hello!\n"
+    "Is this thing on?\p"
+    "Ah, there you are! Welcome to\n"
+    "Kanto, a world full of Pokémon!\p");
+
+static const u8 sText_Call_People[] = _(
+    "Oak: People and Pokémon live,\n"
+    "work, and play together here.\p");
+
+static const u8 sText_Call_ThisIsSlowpoke[] = _(
+    "Oak: This is Slowpoke!\n"
+    "Say hello!\p");
+
+static const u8 sText_Call_JustSlowpoke[] = _(
+    "Slowpoke: …\p"
+    "???: Is the call frozen?\p"
+    "Oak: No, that's just Slowpoke.\p"
+    "Studying Pokémon is my life's\n"
+    "work. Well, ours now.\p");
+
+static const u8 sText_Call_ElmTooClose[] = _(
+    "Elm: Professor! Is that them?\n"
+    "Let me see!\p"
+    "Oak: Elm, you're too close to\n"
+    "the camera.\p"
+    "Elm: Sorry! Sorry. Hi!!\p"
+    "Oak: Now then… the signal's\n"
+    "fuzzy.\p");
+
+static const u8 sText_Call_WhichStudent[] = _(
+    "Oak: Remind me… which of my\n"
+    "students are you?");
+
+static const u8 sText_Call_OldStudent[] = _(
+    "Oak: Ah, of course! My old\n"
+    "student! And your name was…?");
+
+static const u8 sText_Call_NameWasIt[] = _(
+    "Oak: {PLAYER}, was it?");
+
+static const u8 sText_Call_IKnewThat[] = _(
+    "Oak: {PLAYER}! Right.\n"
+    "I knew that.\p"
+    "Elm: He did not know that.\p"
+    "Jenny: Elm. Sit down.\p");
+
+static const u8 sText_Call_IvyAtSea[] = _(
+    "Oak: Is Ivy with you?\p"
+    "Ivy: Hello, Professor!\n"
+    "We're stuck at sea.\p"
+    "A Tentacool is sitting on the\n"
+    "anchor line.\p"
+    "{PLAYER}: It's been two hours.\n"
+    "We've named it Gerald.\p");
+
+static const u8 sText_Call_RoomReady[] = _(
+    "Oak: Ho ho! Well, Delia has your\n"
+    "room ready.\p"
+    "Come by the lab tomorrow. I have\n"
+    "something special planned.\p");
+
+static const u8 sText_Call_HomeField[] = _(
+    "Elm: And I'm already in Pallet!\n"
+    "Home field advantage!\p"
+    "{PLAYER}: You're staying in Daisy's\n"
+    "guest room, Elm.\p"
+    "Elm: …Home-ish field advantage!\p"
+    "…It's good you're here,\n"
+    "{PLAYER}. Really.\p");
+
+static const u8 sText_Call_Allergies[] = _(
+    "{PLAYER}: Aw, Elm.\n"
+    "Are you crying?\p"
+    "Elm: It's allergies!\n"
+    "Daisy has a Persian!\p"
+    "Jenny: She has a Rattata, dear.\p");
+
+static const u8 sText_Call_Begin[] = _(
+    "Oak: Your very own research\n"
+    "legend is about to-\p"
+    "Elm: -begin!! Sorry. I've always\n"
+    "wanted to say that.\p"
+    "Oak: …\p"
+    "Jenny: I'm taking his tablet away.\p");
+
+static const u8 sText_Call_Bye[] = _(
+    "{PLAYER}: Gerald just left!\n"
+    "We're moving! Bye!\p");
+
+static const u8 sText_Call_Slow[] = _(
+    "Slowpoke: …Slow?\p");
+
+static const u8 *const sCallLines_AfterName[] =
+{
+    sText_Call_IKnewThat,
+    sText_Call_IvyAtSea,
+    sText_Call_RoomReady,
+    sText_Call_HomeField,
+    sText_Call_Allergies,
+    sText_Call_Begin,
+    sText_Call_Bye,
+    sText_Call_Slow,
+};
+
+static const u8 sText_RivalName_Elm[] = _("Elm");
+static const u8 sNameChoice_Maple[] = _("Maple");
+static const u8 sNameChoice_Cedar[] = _("Cedar");
+static const u8 sNameChoice_Sumac[] = _("Sumac");
+
+static const u8 *const sPresetNameChoices[] =
+{
+    sNameChoice_Maple,
+    sNameChoice_Cedar,
+    sNameChoice_Sumac,
+};
+// ---------------------------------------------------------------
 
 extern const struct OamData gOamData_AffineOff_ObjBlend_32x32;
 extern const struct OamData gOamData_AffineOff_ObjNormal_32x32;
@@ -590,80 +711,6 @@ static const u8 *const sControlsGuide_Pages2And3_Strings[CONTROLS_GUIDE_STRINGS_
     gControlsGuide_Text_LRButtons
 };
 
-static const u8 *const sMaleNameChoices[] =
-{
-#if defined(FIRERED)
-    gNameChoice_Red,
-    gNameChoice_Fire,
-    gNameChoice_Ash,
-    gNameChoice_Kene,
-    gNameChoice_Geki,
-#elif defined(LEAFGREEN)
-    gNameChoice_Green,
-    gNameChoice_Leaf,
-    gNameChoice_Gary,
-    gNameChoice_Kaz,
-    gNameChoice_Toru,
-#endif
-    gNameChoice_Jak,
-    gNameChoice_Janne,
-    gNameChoice_Jonn,
-    gNameChoice_Kamon,
-    gNameChoice_Karl,
-    gNameChoice_Taylor,
-    gNameChoice_Oscar,
-    gNameChoice_Hiro,
-    gNameChoice_Max,
-    gNameChoice_Jon,
-    gNameChoice_Ralph,
-    gNameChoice_Kay,
-    gNameChoice_Tosh,
-    gNameChoice_Roak
-};
-
-static const u8 *const sFemaleNameChoices[] =
-{
-#if defined(FIRERED)
-    gNameChoice_Red,
-    gNameChoice_Fire,
-#elif defined(LEAFGREEN)
-    gNameChoice_Green,
-    gNameChoice_Leaf,
-#endif
-    gNameChoice_Omi,
-    gNameChoice_Jodi,
-    gNameChoice_Amanda,
-    gNameChoice_Hillary,
-    gNameChoice_Makey,
-    gNameChoice_Michi,
-    gNameChoice_Paula,
-    gNameChoice_June,
-    gNameChoice_Cassie,
-    gNameChoice_Rey,
-    gNameChoice_Seda,
-    gNameChoice_Kiko,
-    gNameChoice_Mina,
-    gNameChoice_Norie,
-    gNameChoice_Sai,
-    gNameChoice_Momo,
-    gNameChoice_Suzi
-};
-
-static const u8 *const sRivalNameChoices[] =
-{
-#if defined(FIRERED)
-    gNameChoice_Green,
-    gNameChoice_Gary,
-    gNameChoice_Kaz,
-    gNameChoice_Toru
-#elif defined(LEAFGREEN)
-    gNameChoice_Red,
-    gNameChoice_Ash,
-    gNameChoice_Kene,
-    gNameChoice_Geki
-#endif
-};
-
 enum
 {
     MALE_PLAYER_PIC,
@@ -706,6 +753,7 @@ void StartNewGameScene(void)
 #define tPikachuPlatformSpriteId(i) data[7 + i] // Pikachu and the platform are built of three sprites,
                                  // data[8]     // so these are used to hold their sprite IDs
                                  // data[9]     //
+#define tLineIndex                  data[10]    // Research Red: current page of the call script
 #define tMenuWindowId               data[13]
 #define tTextboxWindowId            data[14]
 #define tDelta                      data[15]
@@ -1141,20 +1189,6 @@ static inline void OakSpeechPrintMessage(const u8 *str, u8 speed, bool32 isStrin
     CopyWindowToVram(WIN_INTRO_TEXTBOX, COPYWIN_FULL);
 }
 
-// #define OakSpeechPrintMessage(str, speed) ({                                                                                                                 \
-//     DrawDialogueFrame(WIN_INTRO_TEXTBOX, FALSE);                                                                                                             \
-//     if (str != gStringVar4)                                                                                                                                  \
-//     {                                                                                                                                                        \
-//         StringExpandPlaceholders(gStringVar4, str);                                                                                                          \
-//         AddTextPrinterParameterized2(WIN_INTRO_TEXTBOX, FONT_MALE, gStringVar4, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY); \
-//     }                                                                                                                                                        \
-//     else                                                                                                                                                     \
-//     {                                                                                                                                                        \
-//         AddTextPrinterParameterized2(WIN_INTRO_TEXTBOX, FONT_MALE, str, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);         \
-//     }                                                                                                                                                        \
-//     CopyWindowToVram(WIN_INTRO_TEXTBOX, COPYWIN_FULL);                                                                                                       \
-// })
-
 static void Task_OakSpeech_WelcomeToTheWorld(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
@@ -1166,7 +1200,7 @@ static void Task_OakSpeech_WelcomeToTheWorld(u8 taskId)
         }
         else
         {
-            OakSpeechPrintMessage(gOakSpeech_Text_WelcomeToTheWorld, sOakSpeechResources->textSpeed, FALSE);
+            OakSpeechPrintMessage(sText_Call_Hello, sOakSpeechResources->textSpeed, FALSE);
             gTasks[taskId].func = Task_OakSpeech_ThisWorld;
         }
     }
@@ -1176,7 +1210,7 @@ static void Task_OakSpeech_ThisWorld(u8 taskId)
 {
     if (!IsTextPrinterActiveOnWindow(WIN_INTRO_TEXTBOX))
     {
-        OakSpeechPrintMessage(gOakSpeech_Text_ThisWorld, sOakSpeechResources->textSpeed, FALSE);
+        OakSpeechPrintMessage(sText_Call_People, sOakSpeechResources->textSpeed, FALSE);
         gTasks[taskId].tTimer = 30;
         gTasks[taskId].func = Task_OakSpeech_ReleaseNidoranFFromPokeBall;
     }
@@ -1212,7 +1246,7 @@ static void Task_OakSpeech_IsInhabitedFarAndWide(u8 taskId)
         gTasks[taskId].tTimer++;
         if (gTasks[taskId].tTimer == 32)
         {
-            OakSpeechPrintMessage(gOakSpeech_Text_IsInhabitedFarAndWide, sOakSpeechResources->textSpeed, FALSE);
+            OakSpeechPrintMessage(sText_Call_ThisIsSlowpoke, sOakSpeechResources->textSpeed, FALSE);
             PlayCry_Normal(INTRO_SPECIES, 0);
         }
     }
@@ -1222,7 +1256,7 @@ static void Task_OakSpeech_IStudyPokemon(u8 taskId)
 {
     if (!IsTextPrinterActiveOnWindow(WIN_INTRO_TEXTBOX))
     {
-        OakSpeechPrintMessage(gOakSpeech_Text_IStudyPokemon, sOakSpeechResources->textSpeed, FALSE);
+        OakSpeechPrintMessage(sText_Call_JustSlowpoke, sOakSpeechResources->textSpeed, FALSE);
         gTasks[taskId].func = Task_OakSpeech_ReturnNidoranFToPokeBall;
     }
 }
@@ -1265,7 +1299,7 @@ static void Task_OakSpeech_TellMeALittleAboutYourself(u8 taskId)
         }
         else
         {
-            OakSpeechPrintMessage(gOakSpeech_Text_TellMeALittleAboutYourself, sOakSpeechResources->textSpeed, FALSE);
+            OakSpeechPrintMessage(sText_Call_ElmTooClose, sOakSpeechResources->textSpeed, FALSE);
             gTasks[taskId].func = Task_OakSpeech_FadeOutOak;
         }
     }
@@ -1298,7 +1332,7 @@ static void Task_OakSpeech_AskPlayerGender(u8 taskId)
         {
             tTrainerPicPosX = -60;
             ClearTrainerPic();
-            OakSpeechPrintMessage(gOakSpeech_Text_AskPlayerGender, sOakSpeechResources->textSpeed, FALSE);
+            OakSpeechPrintMessage(sText_Call_WhichStudent, sOakSpeechResources->textSpeed, FALSE);
             gTasks[taskId].func = Task_OakSpeech_ShowGenderOptions;
         }
     }
@@ -1331,10 +1365,10 @@ static void Task_OakSpeech_HandleGenderInput(u8 taskId)
     s8 input = Menu_ProcessInputNoWrap();
     switch (input)
     {
-    case 0: // BOY
+    case 0: // MALE
         gSaveBlock2Ptr->playerGender = MALE;
         break;
-    case 1: // GIRL
+    case 1: // FEMALE
         gSaveBlock2Ptr->playerGender = FEMALE;
         break;
     case MENU_B_PRESSED:
@@ -1368,6 +1402,8 @@ static void Task_OakSpeech_LoadPlayerPic(u8 taskId)
     gTasks[taskId].func = Task_OakSpeech_YourNameWhatIsIt;
 }
 
+// Research Red: Oak asks the name, then the preset list slides in
+// (New name / Maple / Cedar / Sumac)
 static void Task_OakSpeech_YourNameWhatIsIt(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
@@ -1381,19 +1417,10 @@ static void Task_OakSpeech_YourNameWhatIsIt(u8 taskId)
         else
         {
             tTrainerPicPosX = 0;
-            OakSpeechPrintMessage(gOakSpeech_Text_YourNameWhatIsIt, sOakSpeechResources->textSpeed, FALSE);
-            gTasks[taskId].func = Task_OakSpeech_FadeOutForPlayerNamingScreen;
+            sOakSpeechResources->hasPlayerBeenNamed = FALSE;
+            OakSpeechPrintMessage(sText_Call_OldStudent, sOakSpeechResources->textSpeed, FALSE);
+            gTasks[taskId].func = Task_OakSpeech_MoveRivalDisplayNameOptions;
         }
-    }
-}
-
-static void Task_OakSpeech_FadeOutForPlayerNamingScreen(u8 taskId)
-{
-    if (!IsTextPrinterActiveOnWindow(WIN_INTRO_TEXTBOX))
-    {
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-        sOakSpeechResources->hasPlayerBeenNamed = FALSE;
-        gTasks[taskId].func = Task_OakSpeech_DoNamingScreen;
     }
 }
 
@@ -1421,10 +1448,7 @@ static void Task_OakSpeech_MoveRivalDisplayNameOptions(u8 taskId)
 static void Task_OakSpeech_RepeatNameQuestion(u8 taskId)
 {
     PrintNameChoiceOptions(taskId, sOakSpeechResources->hasPlayerBeenNamed);
-    if (sOakSpeechResources->hasPlayerBeenNamed == FALSE)
-        OakSpeechPrintMessage(gOakSpeech_Text_YourNameWhatIsIt, 0, FALSE);
-    else
-        OakSpeechPrintMessage(gOakSpeech_Text_YourRivalsNameWhatWasIt, 0, FALSE);
+    OakSpeechPrintMessage(sText_Call_OldStudent, 0, FALSE);
     gTasks[taskId].func = Task_OakSpeech_HandleRivalNameInput;
 }
 
@@ -1441,10 +1465,9 @@ static void Task_OakSpeech_HandleRivalNameInput(u8 taskId)
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_OakSpeech_DoNamingScreen;
         break;
-    case 1: // Default name options
-    case 2: //
-    case 3: //
-    case 4: //
+    case 1: // Maple
+    case 2: // Cedar
+    case 3: // Sumac
         PlaySE(SE_SELECT);
         ClearStdWindowAndFrameToTransparent(tMenuWindowId, TRUE);
         RemoveWindow(tMenuWindowId);
@@ -1462,16 +1485,9 @@ static void Task_OakSpeech_DoNamingScreen(u8 taskId)
     if (!gPaletteFade.active)
     {
         GetDefaultName(sOakSpeechResources->hasPlayerBeenNamed, 0);
-        if (sOakSpeechResources->hasPlayerBeenNamed == FALSE)
-        {
-            DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnFromNamingScreen);
-        }
-        else
-        {
-            ClearStdWindowAndFrameToTransparent(gTasks[taskId].tMenuWindowId, TRUE);
-            RemoveWindow(gTasks[taskId].tMenuWindowId);
-            DoNamingScreen(NAMING_SCREEN_RIVAL, gSaveBlock1Ptr->rivalName, 0, 0, 0, CB2_ReturnFromNamingScreen);
-        }
+        ClearStdWindowAndFrameToTransparent(gTasks[taskId].tMenuWindowId, TRUE);
+        RemoveWindow(gTasks[taskId].tMenuWindowId);
+        DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnFromNamingScreen);
         DestroyPikachuOrPlatformSprites(taskId, SPRITE_TYPE_PLATFORM);
         FreeAllWindowBuffers();
     }
@@ -1484,10 +1500,7 @@ static void Task_OakSpeech_ConfirmName(u8 taskId)
     {
         if (tNameNotConfirmed == TRUE)
         {
-            if (sOakSpeechResources->hasPlayerBeenNamed == FALSE)
-                StringExpandPlaceholders(gStringVar4, gOakSpeech_Text_SoYourNameIsPlayer);
-            else
-                StringExpandPlaceholders(gStringVar4, gOakSpeech_Text_ConfirmRivalName);
+            StringExpandPlaceholders(gStringVar4, sText_Call_NameWasIt);
             OakSpeechPrintMessage(gStringVar4, sOakSpeechResources->textSpeed, TRUE);
             tNameNotConfirmed = FALSE;
             tTimer = 25;
@@ -1515,73 +1528,16 @@ static void Task_OakSpeech_HandleConfirmNameInput(u8 taskId)
     case 0: // YES
         PlaySE(SE_SELECT);
         gTasks[taskId].tTimer = 40;
-        if (sOakSpeechResources->hasPlayerBeenNamed == FALSE)
-        {
-            ClearDialogWindowAndFrame(WIN_INTRO_TEXTBOX, TRUE);
-            CreateFadeInTask(taskId, 2);
-            gTasks[taskId].func = Task_OakSpeech_FadeOutPlayerPic;
-        }
-        else
-        {
-            StringExpandPlaceholders(gStringVar4, gOakSpeech_Text_RememberRivalsName);
-            OakSpeechPrintMessage(gStringVar4, sOakSpeechResources->textSpeed, TRUE);
-            gTasks[taskId].func = Task_OakSpeech_FadeOutRivalPic;
-        }
+        SetRivalNameToElm(); // Research Red: the rival is always Elm
+        ClearDialogWindowAndFrame(WIN_INTRO_TEXTBOX, TRUE);
+        CreateFadeInTask(taskId, 2);
+        gTasks[taskId].func = Task_OakSpeech_ReshowPlayersPic;
         break;
     case 1: // NO
     case MENU_B_PRESSED:
         PlaySE(SE_SELECT);
-        if (sOakSpeechResources->hasPlayerBeenNamed == FALSE)
-            gTasks[taskId].func = Task_OakSpeech_FadeOutForPlayerNamingScreen;
-        else
-            gTasks[taskId].func = Task_OakSpeech_RepeatNameQuestion;
+        gTasks[taskId].func = Task_OakSpeech_RepeatNameQuestion;
         break;
-    }
-}
-
-static void Task_OakSpeech_FadeOutPlayerPic(u8 taskId)
-{
-    s16 *data = gTasks[taskId].data;
-
-    if (tTrainerPicFadeState != 0)
-    {
-        ClearTrainerPic();
-        if (tTimer != 0)
-            tTimer--;
-        else
-            gTasks[taskId].func = Task_OakSpeech_FadeInRivalPic;
-    }
-}
-
-static void Task_OakSpeech_FadeOutRivalPic(u8 taskId)
-{
-    if (!IsTextPrinterActiveOnWindow(WIN_INTRO_TEXTBOX))
-    {
-        ClearDialogWindowAndFrame(WIN_INTRO_TEXTBOX, TRUE);
-        CreateFadeInTask(taskId, 2);
-        gTasks[taskId].func = Task_OakSpeech_ReshowPlayersPic;
-    }
-}
-
-static void Task_OakSpeech_FadeInRivalPic(u8 taskId)
-{
-    ChangeBgX(2, 0, BG_COORD_SET);
-    gTasks[taskId].tTrainerPicPosX = 0;
-    gSpriteCoordOffsetX = 0;
-    LoadTrainerPic(RIVAL_PIC, 0);
-    CreateFadeOutTask(taskId, 2);
-    gTasks[taskId].func = Task_OakSpeech_AskRivalsName;
-}
-
-static void Task_OakSpeech_AskRivalsName(u8 taskId)
-{
-    s16 *data = gTasks[taskId].data;
-
-    if (tTrainerPicFadeState != 0)
-    {
-        OakSpeechPrintMessage(gOakSpeech_Text_WhatWasHisName, sOakSpeechResources->textSpeed, FALSE);
-        sOakSpeechResources->hasPlayerBeenNamed = TRUE;
-        gTasks[taskId].func = Task_OakSpeech_MoveRivalDisplayNameOptions;
     }
 }
 
@@ -1615,10 +1571,28 @@ static void Task_OakSpeech_LetsGo(u8 taskId)
 {
     if (gTasks[taskId].tTrainerPicFadeState != 0)
     {
-        StringExpandPlaceholders(gStringVar4, gOakSpeech_Text_LetsGo);
-        OakSpeechPrintMessage(gStringVar4, sOakSpeechResources->textSpeed, TRUE);
-        gTasks[taskId].tTimer = 30;
-        gTasks[taskId].func = Task_OakSpeech_FadeOutBGM;
+        gTasks[taskId].tLineIndex = 0;
+        gTasks[taskId].func = Task_OakSpeech_RunCallLines;
+    }
+}
+
+// Research Red: plays the rest of the video call, one page set at a time
+static void Task_OakSpeech_RunCallLines(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    if (!IsTextPrinterActiveOnWindow(WIN_INTRO_TEXTBOX))
+    {
+        if (tLineIndex < (s16)ARRAY_COUNT(sCallLines_AfterName))
+        {
+            OakSpeechPrintMessage(sCallLines_AfterName[tLineIndex], sOakSpeechResources->textSpeed, FALSE);
+            tLineIndex++;
+        }
+        else
+        {
+            tTimer = 30;
+            gTasks[taskId].func = Task_OakSpeech_FadeOutBGM;
+        }
     }
 }
 
@@ -2134,24 +2108,20 @@ static void CreateFadeOutTask(u8 taskId, u8 delay)
         gTasks[taskId2].tPikachuPlatformSpriteId(i) = gTasks[taskId].tPikachuPlatformSpriteId(i);
 }
 
+// Research Red: the name list is New name + Maple / Cedar / Sumac
 static void PrintNameChoiceOptions(u8 taskId, u8 hasPlayerBeenNamed)
 {
     s16 *data = gTasks[taskId].data;
-    const u8 *const *textPtrs;
     u8 i;
 
     tMenuWindowId = AddWindow(&sIntro_WindowTemplates[WIN_INTRO_NAMES]);
     PutWindowTilemap(tMenuWindowId);
     DrawStdFrameWithCustomTileAndPalette(tMenuWindowId, 1, GetStandardFrameBaseTileNum(), 14);
     FillWindowPixelBuffer(gTasks[taskId].tMenuWindowId, PIXEL_FILL(1));
-    AddTextPrinterParameterized(tMenuWindowId, FONT_NORMAL, gOtherText_NewName, 8, 1, 0, NULL);
-    if (hasPlayerBeenNamed == FALSE)
-        textPtrs = gSaveBlock2Ptr->playerGender == MALE ? sMaleNameChoices : sFemaleNameChoices;
-    else
-        textPtrs = sRivalNameChoices;
-    for (i = 0; i < ARRAY_COUNT(sRivalNameChoices); i++)
-        AddTextPrinterParameterized(tMenuWindowId, FONT_NORMAL, textPtrs[i], 8, 16 * (i + 1) + 1, 0, NULL);
-    InitMenuNormal(tMenuWindowId, FONT_NORMAL, 0, 1, 16, 5, 0);
+    AddTextPrinterParameterized(tMenuWindowId, FONT_NORMAL, sText_NewName, 8, 1, 0, NULL);
+    for (i = 0; i < ARRAY_COUNT(sPresetNameChoices); i++)
+        AddTextPrinterParameterized(tMenuWindowId, FONT_NORMAL, sPresetNameChoices[i], 8, 16 * (i + 1) + 1, 0, NULL);
+    InitMenuNormal(tMenuWindowId, FONT_NORMAL, 0, 1, 16, ARRAY_COUNT(sPresetNameChoices) + 1, 0);
     CopyWindowToVram(tMenuWindowId, COPYWIN_FULL);
 }
 
@@ -2160,23 +2130,28 @@ static void GetDefaultName(u8 hasPlayerBeenNamed, u8 nameChoice)
     const u8 *src;
     u8 *dest;
     u8 i;
+
+    if (nameChoice >= ARRAY_COUNT(sPresetNameChoices))
+        nameChoice = 0;
+    src = sPresetNameChoices[nameChoice];
     if (hasPlayerBeenNamed == FALSE)
-    {
-        if (gSaveBlock2Ptr->playerGender == MALE)
-            src = sMaleNameChoices[Random() % ARRAY_COUNT(sMaleNameChoices)];
-        else
-            src = sFemaleNameChoices[Random() % ARRAY_COUNT(sFemaleNameChoices)];
         dest = gSaveBlock2Ptr->playerName;
-    }
     else
-    {
-        src = sRivalNameChoices[nameChoice];
         dest = gSaveBlock1Ptr->rivalName;
-    }
     for (i = 0; i < PLAYER_NAME_LENGTH && src[i] != EOS; i++)
         dest[i] = src[i];
     for (; i < PLAYER_NAME_LENGTH + 1; i++)
         dest[i] = EOS;
+}
+
+static void SetRivalNameToElm(void)
+{
+    u8 i;
+
+    for (i = 0; i < PLAYER_NAME_LENGTH && sText_RivalName_Elm[i] != EOS; i++)
+        gSaveBlock1Ptr->rivalName[i] = sText_RivalName_Elm[i];
+    for (; i < PLAYER_NAME_LENGTH + 1; i++)
+        gSaveBlock1Ptr->rivalName[i] = EOS;
 }
 
 #undef tSpriteTimer
@@ -2186,6 +2161,7 @@ static void GetDefaultName(u8 hasPlayerBeenNamed, u8 nameChoice)
 #undef tNidoranFSpriteId
 #undef tTextCursorSpriteId
 #undef tPokeBallSpriteId
+#undef tLineIndex
 #undef tMenuWindowId
 #undef tTextboxWindowId
 #undef tDelta
