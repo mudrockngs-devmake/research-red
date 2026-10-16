@@ -1,25 +1,37 @@
 PalletTown_PlayersHouse_1F_Text_AllBoysLeaveOakLookingForYou::
-    .string "MOM: …Right.\n"
-    .string "All boys leave home someday.\l"
-    .string "It said so on TV.\p"
-    .string "Oh, yes. PROF. OAK, next door, was\n"
-    .string "looking for you.$"
+    .string "Delia: Good morning, you two!\n"
+    .string "I made pancakes!\p"
+    .string "Ivy: Mimey is still holding\n"
+    .string "the spatula.\p"
+    .string "Delia: …I supervised.\p"
+    .string "{PLAYER}: A Pokémon that makes\n"
+    .string "pancakes. I should be writing\l"
+    .string "this down.\p"
+    .string "Ivy: Eat first. Publish later.\p"
+    .string "Delia: Oh! Professor Oak came by.\n"
+    .string "He's expecting you both.$"
 
 PalletTown_PlayersHouse_1F_Text_AllGirlsLeaveOakLookingForYou::
-    .string "MOM: …Right.\n"
-    .string "All girls dream of traveling.\l"
-    .string "It said so on TV.\p"
-    .string "Oh, yes. PROF. OAK, next door, was\n"
-    .string "looking for you.$"
+    .string "Delia: Good morning, you two!\n"
+    .string "I made pancakes!\p"
+    .string "Ivy: Mimey is still holding\n"
+    .string "the spatula.\p"
+    .string "Delia: …I supervised.\p"
+    .string "{PLAYER}: A Pokémon that makes\n"
+    .string "pancakes. I should be writing\l"
+    .string "this down.\p"
+    .string "Ivy: Eat first. Publish later.\p"
+    .string "Delia: Oh! Professor Oak came by.\n"
+    .string "He's expecting you both.$"
 
 PalletTown_PlayersHouse_1F_Text_YouShouldTakeQuickRest::
-    .string "MOM: {PLAYER}!\n"
-    .string "You should take a quick rest.$"
+    .string "Delia: {PLAYER}! You both look\n"
+    .string "worn out. Sit, have some tea.$"
 
 PalletTown_PlayersHouse_1F_Text_LookingGreatTakeCare::
-    .string "MOM: Oh, good! You and your\n"
-    .string "POKéMON are looking great.\l"
-    .string "Take care now!$"
+    .string "Delia: There! All rested up.\n"
+    .string "Mimey even fluffed your pillows.\l"
+    .string "Take a muffin for the road!$"
 
 PalletTown_PlayersHouse_1F_Text_MovieOnTVFourBoysOnRailroad::
     .string "There's a movie on TV.\n"
@@ -35,4 +47,3 @@ PalletTown_PlayersHouse_1F_Text_MovieOnTVGirlOnBrickRoad::
 
 PalletTown_PlayersHouse_1F_Text_OopsWrongSide::
     .string "Oops, wrong side…$"
-
