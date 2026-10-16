@@ -113,11 +113,8 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	waitmovement 0
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_DoorOpen, MSGBOX_DEFAULT
 	closemessage
-	@ Ivy heads out first (she reappears behind you outside)
-	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_IvyExit
-	waitmovement 0
-	playse SE_EXIT
-	removeobject LOCALID_PALLET_HOUSE_IVY
+	@ Ivy stays at the table and follows you out when you leave;
+	@ she reappears behind you outside (see PalletTown grass hook)
 	applymovement LOCALID_MOM, PalletTown_PlayersHouse_1F_Movement_FaceLeft
 	waitmovement 0
 	setvar VAR_0x40FE, 1
