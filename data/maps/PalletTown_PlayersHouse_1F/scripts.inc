@@ -75,7 +75,7 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	closemessage
 	@ Mimey sweeps past
 	applymovement LOCALID_PALLET_HOUSE_MIMEY, PalletTown_PlayersHouse_1F_Movement_MimeySweep
-	delay 20
+	delay 60
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceDown
 	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceDown
 	waitmovement LOCALID_PALLET_HOUSE_MIMEY
@@ -207,12 +207,19 @@ PalletTown_PlayersHouse_1F_Movement_FaceRight:
 	step_end
 
 PalletTown_PlayersHouse_1F_Movement_MimeySweep:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	face_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	face_left
 	step_end
 
 PalletTown_PlayersHouse_1F_Movement_IvyElbow:
@@ -223,7 +230,7 @@ PalletTown_PlayersHouse_1F_Movement_IvyElbow:
 PalletTown_PlayersHouse_1F_Movement_MimeyBow:
 	face_down
 	delay_16
-	face_right
+	face_left
 	step_end
 
 PalletTown_PlayersHouse_1F_Movement_IvyExit:
