@@ -1,49 +1,84 @@
-PalletTown_PlayersHouse_1F_Text_AllBoysLeaveOakLookingForYou::
-    .string "Delia: Good morning, you two!\n"
-    .string "I made pancakes!\p"
-    .string "Ivy: Mimey is still holding\n"
-    .string "the spatula.\p"
-    .string "Delia: …I supervised.\p"
-    .string "{PLAYER}: A Pokémon that makes\n"
-    .string "pancakes. I should be writing\l"
-    .string "this down.\p"
-    .string "Ivy: Eat first. Publish later.\p"
-    .string "Delia: Oh! Professor Oak came by.\n"
-    .string "He's expecting you both.$"
+@ ---------------------------------------------------------------
+@ Research Red: breakfast cutscene
+@ ---------------------------------------------------------------
+PalletTown_PlayersHouse_1F_Text_Delia_GoodMorning::
+    .string "DELIA: Good morning! You two got\n"
+    .string "in so late last night.$"
 
-PalletTown_PlayersHouse_1F_Text_AllGirlsLeaveOakLookingForYou::
-    .string "Delia: Good morning, you two!\n"
-    .string "I made pancakes!\p"
-    .string "Ivy: Mimey is still holding\n"
-    .string "the spatula.\p"
-    .string "Delia: …I supervised.\p"
-    .string "{PLAYER}: A Pokémon that makes\n"
-    .string "pancakes. I should be writing\l"
-    .string "this down.\p"
-    .string "Ivy: Eat first. Publish later.\p"
-    .string "Delia: Oh! Professor Oak came by.\n"
-    .string "He's expecting you both.$"
+PalletTown_PlayersHouse_1F_Text_P_Ferry::
+    .string "{PLAYER}: The ferry from Cinnabar\n"
+    .string "was “delayed.”$"
 
-PalletTown_PlayersHouse_1F_Text_YouShouldTakeQuickRest::
-    .string "Delia: {PLAYER}! You both look\n"
-    .string "worn out. Sit, have some tea.$"
+PalletTown_PlayersHouse_1F_Text_Ivy_Gerald::
+    .string "IVY: Gerald sat on the anchor\n"
+    .string "line. For two hours.$"
 
-PalletTown_PlayersHouse_1F_Text_LookingGreatTakeCare::
-    .string "Delia: There! All rested up.\n"
-    .string "Mimey even fluffed your pillows.\l"
-    .string "Take a muffin for the road!$"
+PalletTown_PlayersHouse_1F_Text_P_Respect::
+    .string "{PLAYER}: Honestly? Respect.$"
 
-PalletTown_PlayersHouse_1F_Text_MovieOnTVFourBoysOnRailroad::
-    .string "There's a movie on TV.\n"
-    .string "Four boys are walking on railroad\l"
-    .string "tracks.\p"
-    .string "…I better go, too.$"
+PalletTown_PlayersHouse_1F_Text_Ivy_ThrewUp::
+    .string "IVY: You threw up off the side\n"
+    .string "twice.$"
 
-PalletTown_PlayersHouse_1F_Text_MovieOnTVGirlOnBrickRoad::
-    .string "There's a movie on TV.\n"
-    .string "A girl with her hair in pigtails is\l"
-    .string "walking up a brick road.\p"
-    .string "…I better go, too.$"
+PalletTown_PlayersHouse_1F_Text_P_Sacrifice::
+    .string "{PLAYER}: Once. The second time\n"
+    .string "was a sacrifice to the sea.$"
 
-PalletTown_PlayersHouse_1F_Text_OopsWrongSide::
-    .string "Oops, wrong side…$"
+PalletTown_PlayersHouse_1F_Text_Delia_Pancakes::
+    .string "DELIA: Well, I made pancakes.\n"
+    .string "Sit, sit!$"
+
+PalletTown_PlayersHouse_1F_Text_Ivy_Dangerous::
+    .string "IVY: I've already had three.\n"
+    .string "They're dangerous, dear.$"
+
+PalletTown_PlayersHouse_1F_Text_P_Authorities::
+    .string "{PLAYER}: Three? I'll notify the\n"
+    .string "authorities.$"
+
+PalletTown_PlayersHouse_1F_Text_Delia_OakCalled::
+    .string "DELIA: Prof. Oak called earlier.\n"
+    .string "He's so excited you're here.\p"
+    .string "He still says you were his\n"
+    .string "quietest student…\p"
+    .string "…and his most reliable.$"
+
+PalletTown_PlayersHouse_1F_Text_Ivy_CertainSomeone::
+    .string "IVY: Unlike a certain someone\n"
+    .string "who's staying next door?$"
+
+PalletTown_PlayersHouse_1F_Text_P_LoudPassion::
+    .string "{PLAYER}: I've always respected\n"
+    .string "Elm's passion.\p"
+    .string "A very loud passion, nonetheless.$"
+
+PalletTown_PlayersHouse_1F_Text_Delia_SixAM::
+    .string "DELIA: Oh, I heard him at 6 AM.\p"
+    .string "Something about “bragging rights.”$"
+
+PalletTown_PlayersHouse_1F_Text_Ivy_Competition::
+    .string "IVY: He's already started the\n"
+    .string "competition, hasn't he?$"
+
+PalletTown_PlayersHouse_1F_Text_P_PeakBeforeLunch::
+    .string "{PLAYER}: He'll peak before lunch.\n"
+    .string "Let him have his morning.$"
+
+PalletTown_PlayersHouse_1F_Text_Delia_EatUp::
+    .string "DELIA: Eat up first! Nobody wins\n"
+    .string "on an empty stomach.\p"
+    .string "Ash used to forget breakfast\n"
+    .string "every time. Every. Time.$"
+
+PalletTown_PlayersHouse_1F_Text_P_PayingRent::
+    .string "{PLAYER}: …Is he paying rent?$"
+
+PalletTown_PlayersHouse_1F_Text_Delia_Family::
+    .string "DELIA: Mimey does the dishes,\n"
+    .string "so he's family!$"
+
+PalletTown_PlayersHouse_1F_Text_Ivy_BeNice::
+    .string "IVY: Be nice. He made the\n"
+    .string "pancakes.$"
+
+PalletTown_PlayersHouse_1F_Tex
