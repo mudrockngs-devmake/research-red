@@ -588,7 +588,8 @@ PalletTown_EventScript_GrassHook::
 	closedoor 16, 13
 	waitdooranim
 	setvar VAR_0x40FE, 2
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1
+	@ Research Red: 10 = our lab scene (started by a floor trigger in the lab map)
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 10
 	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
 	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1
 	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
@@ -900,26 +901,20 @@ PalletTown_RR_Movement_JennyIntoLab:
 
 @ ===================================================================
 @ Research Red: Oak's lab scene
-@ Runs from PalletTown_ProfessorOaksLab_OnFrame when
-@ VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB == 1 (set by the grass hook).
-@ Kept in this file so the large FireRed lab script only needs one line changed.
+@ Started by floor triggers just inside the lab door when
+@ VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB == 10 (set by the grass hook).
+@ Kept in this file so the large FireRed lab script stays untouched.
 @ Replaces: starter choice, rival battle, Oak's Parcel errand, Pokedex scene.
 @ ===================================================================
 RR_Lab_EventScript_Scene::
 	lockall
 	textcolor NPC_TEXT_COLOR_MALE
-	setobjectxy LOCALID_OAKS_LAB_RIVAL, 7, 12
-	applymovement LOCALID_OAKS_LAB_PROF_OAK, RR_Lab_Movement_Up6
-	waitmovement 0
-	removeobject LOCALID_OAKS_LAB_PROF_OAK
-	setobjectxyperm LOCALID_OAKS_LAB_PROF_OAK, 6, 3
-	setobjectmovementtype LOCALID_OAKS_LAB_PROF_OAK, MOVEMENT_TYPE_FACE_DOWN
-	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
-	addobject LOCALID_OAKS_LAB_PROF_OAK
 	applymovement LOCALID_LAB_IVY, RR_Lab_Movement_Up8
 	applymovement LOCALID_OAKS_LAB_RIVAL, RR_Lab_Movement_Up8
 	applymovement LOCALID_LAB_JENNY, RR_Lab_Movement_Up6
-	applymovement LOCALID_PLAYER, RR_Lab_Movement_Up8
+	applymovement LOCALID_PLAYER, RR_Lab_Movement_Up7
+	waitmovement 0
+	applymovement LOCALID_OAKS_LAB_PROF_OAK, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	clearflag FLAG_DONT_TRANSITION_MUSIC
 	savebgm MUS_DUMMY
@@ -1288,6 +1283,16 @@ RR_Lab_EventScript_GiveGrant::
 	return
 
 RR_Lab_Movement_Up6:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+RR_Lab_Movement_Up7:
+	walk_up
 	walk_up
 	walk_up
 	walk_up
