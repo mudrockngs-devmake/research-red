@@ -21,28 +21,56 @@ Route22_EventScript_EarlyRivalTriggerBottom::
 	goto Route22_EventScript_EarlyRival
 	end
 
+@ Research Red: Elm and Jenny's first road battle. Elm uses the rival object;
+@ Jenny walks in beside him. Team is FireRed's placeholder until the trainer
+@ data update. Winning (or losing) wakes Viridian's old man.
 Route22_EventScript_EarlyRival::
 	textcolor NPC_TEXT_COLOR_MALE
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	addobject LOCALID_ROUTE22_RIVAL
+	addobject LOCALID_ROUTE22_JENNY
+	applymovement LOCALID_ROUTE22_JENNY, Route22_Movement_RivalApproach
 	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_EarlyRivalApproach
 	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_EarlyRivalApproach
 	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_EarlyRivalApproachBottom
+	waitmovement LOCALID_ROUTE22_JENNY
 	delay 6
-	msgbox Route22_Text_EarlyRivalIntro
+	msgbox RR_Route22_Text_Elm_FoundYou, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route22_Text_P_Sights, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Route22_Text_Jenny_Desserts, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Route22_Text_Elm_Rematch, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Route22_Text_Ivy_Ready, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route22_Text_P_Always, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
 	call_if_eq VAR_STARTER_MON, 2, Route22_EventScript_EarlyRivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, Route22_EventScript_EarlyRivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, Route22_EventScript_EarlyRivalCharmander
-	msgbox Route22_Text_EarlyRivalPostBattle
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Route22_Text_Elm_Forever, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Route22_Text_Jenny_GoodGame, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Ivy_NextTown, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Jenny_NextTown, MSGBOX_DEFAULT
 	closemessage
 	delay 10
 	playbgm MUS_RIVAL_EXIT, 0
+	applymovement LOCALID_ROUTE22_JENNY, Route22_Movement_EarlyRivalExit
 	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_EarlyRivalExit
 	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_EarlyRivalExit
 	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_EarlyRivalExitBottom
+	waitmovement LOCALID_ROUTE22_JENNY
 	fadedefaultbgm
 	removeobject LOCALID_ROUTE22_RIVAL
+	removeobject LOCALID_ROUTE22_JENNY
 	setvar VAR_MAP_SCENE_ROUTE22, 2
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route22_Text_OldManAwake, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -58,15 +86,15 @@ Route22_EventScript_EarlyRivalApproachBottom::
 	return
 
 Route22_EventScript_EarlyRivalSquirtle::
-	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_SQUIRTLE, 0, Route22_Text_EarlyRivalDefeat, Text_RivalVictory
+	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_SQUIRTLE, 0, RR_Route22_Text_Elm_Defeat, Text_RivalVictory
 	return
 
 Route22_EventScript_EarlyRivalBulbasaur::
-	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_BULBASAUR, 0, Route22_Text_EarlyRivalDefeat, Text_RivalVictory
+	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_BULBASAUR, 0, RR_Route22_Text_Elm_Defeat, Text_RivalVictory
 	return
 
 Route22_EventScript_EarlyRivalCharmander::
-	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_CHARMANDER, 0, Route22_Text_EarlyRivalDefeat, Text_RivalVictory
+	trainerbattle_earlyrival TRAINER_RIVAL_ROUTE22_EARLY_CHARMANDER, 0, RR_Route22_Text_Elm_Defeat, Text_RivalVictory
 	return
 
 Route22_EventScript_EarlyRivalExit::
@@ -232,3 +260,50 @@ Route22_Movement_LateRivalExit::
 Route22_EventScript_LeagueGateSign::
 	msgbox Route22_Text_LeagueGateSign, MSGBOX_SIGN
 	end
+
+@ ===================================================================
+@ Research Red: Route 22 text
+@ ===================================================================
+RR_Route22_Text_Elm_FoundYou::
+    .string "Elm: {PLAYER}! Ivy!\n"
+    .string "You followed us! Spying, are we?$"
+
+RR_Route22_Text_P_Sights::
+    .string "{PLAYER}: We came for the sights.\n"
+    .string "You're one of them.$"
+
+RR_Route22_Text_Jenny_Desserts::
+    .string "Jenny: He caught a new partner.\n"
+    .string "He named it after a dessert.$"
+
+RR_Route22_Text_Elm_Rematch::
+    .string "Elm: Rematch! Right here!\n"
+    .string "This time I read a book!$"
+
+RR_Route22_Text_Ivy_Ready::
+    .string "Ivy: Ready, sweetie?$"
+
+RR_Route22_Text_P_Always::
+    .string "{PLAYER}: Always. Mostly.\n"
+    .string "Let's say yes.$"
+
+RR_Route22_Text_Elm_Defeat::
+    .string "Elm: Okay! Okay.\n"
+    .string "That was the warm-up.$"
+
+RR_Route22_Text_Elm_Forever::
+    .string "Elm: I demand a rematch.\n"
+    .string "At every Gym. Forever.$"
+
+RR_Route22_Text_Jenny_GoodGame::
+    .string "Jenny: He means “good game.”$"
+
+RR_Route22_Text_Ivy_NextTown::
+    .string "Ivy: Same time next town, Jenny?$"
+
+RR_Route22_Text_Jenny_NextTown::
+    .string "Jenny: Same time next town.$"
+
+RR_Route22_Text_OldManAwake::
+    .string "Somewhere in Viridian, an old man\n"
+    .string "finally wakes up from his nap.$"
