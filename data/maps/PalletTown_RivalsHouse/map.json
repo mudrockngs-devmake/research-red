@@ -44,6 +44,36 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PalletTown_RivalsHouse_EventScript_TownMap",
       "flag": "FLAG_HIDE_TOWN_MAP"
+    },
+    {
+      "local_id": "LOCALID_RIVALS_HOUSE_ELM",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST",
+      "x": 8,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0",
+      "flag": "FLAG_HIDE_TOWN_MAP"
+    },
+    {
+      "local_id": "LOCALID_RIVALS_HOUSE_JENNY",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "x": 8,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0",
+      "flag": "FLAG_HIDE_TOWN_MAP"
     }
   ],
   "warp_events": [
