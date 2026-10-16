@@ -1,0 +1,60 @@
+name: Build Research Red BPS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out Research Red
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential binutils-arm-none-eabi gcc-arm-none-eabi \
+            libnewlib-arm-none-eabi libpng-dev python3 git
+
+      - name: Build Research Red ROM
+        run: |
+          make firered -j"$(nproc)" -O
+          test -f pokefirered.gba
+          sha1sum pokefirered.gba
+
+      - name: Build clean FireRed Rev 1 reference
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/pret/pokefirered.git "$RUNNER_TEMP/pokefirered"
+          git clone --depth 1 https://github.com/pret/agbcc.git "$RUNNER_TEMP/agbcc"
+          cd "$RUNNER_TEMP/agbcc"
+          ./build.sh
+          ./install.sh ../pokefirered
+          make -C "$RUNNER_TEMP/pokefirered" firered_rev1 -j"$(nproc)"
+
+      - name: Verify Rev 1 matches your ROM
+        run: |
+          cd "$RUNNER_TEMP/pokefirered"
+          echo "dd5945db9b930750cb39d00c84da8571feebf417  pokefirered_rev1.gba" | sha1sum --check -
+
+      - name: Create BPS patch
+        run: |
+          python3 tools/create_bps.py \
+            "$RUNNER_TEMP/pokefirered/pokefirered_rev1.gba" \
+            pokefirered.gba \
+            ResearchRed-FireRed-Rev1.bps
+
+      - name: Upload BPS only
+        uses: actions/upload-artifact@v4
+        with:
+          name: ResearchRed-FireRed-Rev1
+          path: ResearchRed-FireRed-Rev1.bps
+          if-no-files-found: error
+          retention-days: 14
