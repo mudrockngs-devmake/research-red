@@ -90,7 +90,6 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	@ Ivy elbows you
 	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_IvyElbow
 	waitmovement 0
-	playse SE_BUMP
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_BeNice, MSGBOX_DEFAULT
 	closemessage
 	delay 30
