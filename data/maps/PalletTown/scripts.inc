@@ -7,6 +7,7 @@ PalletTown_MapScripts::
 
 PalletTown_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
+	call PalletTown_EventScript_SetupGrassHookActors
 	call_if_set FLAG_PALLET_LADY_NOT_BLOCKING_SIGN, PalletTown_EventScript_TryReadySignLady
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 0, PalletTown_EventScript_SetSignLadyPos
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1, PalletTown_EventScript_SetSignLadyDone
@@ -35,6 +36,7 @@ PalletTown_EventScript_MoveSignLadyToRouteEntrance::
 	return
 
 PalletTown_OnFrame::
+	map_script_2 VAR_0x40FE, 1, PalletTown_EventScript_GrassHook
 	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_OAK, 2, PalletTown_EventScript_OakRatingScene
 	.2byte 0
 
@@ -447,3 +449,425 @@ PalletTown_EventScript_SignLadyStartShowSign::
 	call PalletTown_EventScript_SignLadyShowSign
 	release
 	end
+
+@ ---------------------------------------------------------------
+@ Research Red: grass hook cutscene (VAR_0x40FE 1 -> 2)
+@ ---------------------------------------------------------------
+PalletTown_EventScript_SetupGrassHookActors::
+	setflag FLAG_TEMP_4
+	call_if_ne VAR_0x40FE, 1, PalletTown_EventScript_HideElmJenny
+	return
+
+PalletTown_EventScript_HideElmJenny::
+	setflag FLAG_TEMP_3
+	return
+
+PalletTown_EventScript_GrassHook::
+	lockall
+	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_StepDown
+	waitmovement 0
+	opendoor 6, 7
+	waitdooranim
+	addobject LOCALID_PALLET_IVY
+	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_StepDown
+	waitmovement 0
+	closedoor 6, 7
+	waitdooranim
+	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_FaceUp
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox PalletTown_Text_RR_Ivy_StopByDaisys, MSGBOX_DEFAULT
+	closemessage
+	delay 20
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_RR_Elm_RouteOne, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+	applymovement LOCALID_PALLET_IVY, Common_Movement_ExclamationMark
+	waitmovement 0
+	@ Camera pans north to the tall grass
+	special SpawnCameraObject
+	applymovement LOCALID_CAMERA, PalletTown_RR_Movement_CameraToGrass
+	waitmovement 0
+	delay 30
+	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmSwitchLegs
+	waitmovement 0
+	delay 20
+	applymovement LOCALID_CAMERA, PalletTown_RR_Movement_CameraBack
+	waitmovement 0
+	special RemoveCameraObject
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox PalletTown_Text_RR_P_FollowTheYelling, MSGBOX_DEFAULT
+	closemessage
+	@ Walk up to Elm and Jenny, Ivy one step behind
+	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_IvyToGrass
+	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_PlayerToGrass
+	waitmovement 0
+	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_FaceRight
+	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_FaceDown
+	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_FaceLeft
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_RR_Elm_JustInTime, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox PalletTown_Text_RR_Jenny_Stretching, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_RR_Elm_ReturnFavor, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox PalletTown_Text_RR_Ivy_StraightRoad, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_RR_Elm_Curves, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox PalletTown_Text_RR_Jenny_Support, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox PalletTown_Text_RR_P_WhichPokemon, MSGBOX_DEFAULT
+	closemessage
+	@ Elm pats his pockets
+	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmPatPockets
+	waitmovement 0
+	delay 30
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_RR_Elm_Transferred, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox PalletTown_Text_RR_P_FightTheGrass, MSGBOX_DEFAULT
+	closemessage
+	@ Elm steps toward the grass
+	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmStepToGrass
+	waitmovement 0
+	delay 15
+	playbgm MUS_OAK, 0
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_OakDontGoOut, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_PALLET_ELM, Common_Movement_ExclamationMark
+	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_FaceDown
+	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_FaceDown
+	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_FaceDown
+	waitmovement 0
+	@ Oak hurries over
+	addobject LOCALID_PALLET_PROF_OAK
+	applymovement LOCALID_PALLET_PROF_OAK, PalletTown_RR_Movement_OakArrive
+	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmBackDown
+	waitmovement LOCALID_PALLET_PROF_OAK
+	delay 15
+	msgbox PalletTown_Text_RR_Oak_WildMons, MSGBOX_DEFAULT
+	msgbox PalletTown_Text_RR_Elm_Observing, MSGBOX_DEFAULT
+	msgbox PalletTown_Text_RR_Oak_OfficerJenny, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox PalletTown_Text_RR_Jenny_WeAllGetThat, MSGBOX_DEFAULT
+	closemessage
+	delay 20
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_RR_Oak_Haiku, MSGBOX_DEFAULT
+	closemessage
+	delay 20
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox PalletTown_Text_RR_Ivy_Poems, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox PalletTown_Text_RR_Oak_ComeToLab, MSGBOX_DEFAULT
+	closemessage
+	@ Everyone heads to the lab. Jenny trails Elm.
+	applymovement LOCALID_PALLET_PROF_OAK, PalletTown_RR_Movement_OakToLab
+	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_IvyToLab
+	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_PlayerToLab
+	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmToLab
+	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_JennyToLab
+	waitmovement LOCALID_PALLET_JENNY
+	opendoor 16, 13
+	waitdooranim
+	applymovement LOCALID_PALLET_PROF_OAK, PalletTown_RR_Movement_OakIntoLab
+	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_IvyIntoLab
+	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_PlayerIntoLab
+	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmIntoLab
+	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_JennyIntoLab
+	waitmovement LOCALID_PALLET_JENNY
+	closedoor 16, 13
+	waitdooranim
+	setvar VAR_0x40FE, 2
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1
+	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1
+	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
+	setflag FLAG_DONT_TRANSITION_MUSIC
+	warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, 12
+	waitstate
+	releaseall
+	end
+
+@ ---------------------------------------------------------------
+@ Research Red: grass hook movements
+@ ---------------------------------------------------------------
+PalletTown_RR_Movement_StepDown:
+	walk_down
+	step_end
+
+PalletTown_RR_Movement_FaceUp:
+	face_up
+	step_end
+
+PalletTown_RR_Movement_FaceDown:
+	face_down
+	step_end
+
+PalletTown_RR_Movement_FaceLeft:
+	face_left
+	step_end
+
+PalletTown_RR_Movement_FaceRight:
+	face_right
+	step_end
+
+PalletTown_RR_Movement_CameraToGrass:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+PalletTown_RR_Movement_CameraBack:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+PalletTown_RR_Movement_ElmSwitchLegs:
+	face_left
+	delay_16
+	face_right
+	delay_16
+	face_left
+	delay_16
+	face_up
+	step_end
+
+PalletTown_RR_Movement_PlayerToGrass:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_up
+	step_end
+
+PalletTown_RR_Movement_IvyToGrass:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+PalletTown_RR_Movement_ElmPatPockets:
+	face_left
+	delay_8
+	face_right
+	delay_8
+	face_left
+	delay_8
+	face_right
+	delay_16
+	face_down
+	step_end
+
+PalletTown_RR_Movement_ElmStepToGrass:
+	face_up
+	delay_8
+	walk_up
+	step_end
+
+PalletTown_RR_Movement_ElmBackDown:
+	delay_16
+	delay_16
+	walk_down
+	face_down
+	step_end
+
+PalletTown_RR_Movement_OakArrive:
+	walk_up
+	walk_up
+	walk_right
+	walk_up
+	walk_up
+	face_up
+	step_end
+
+PalletTown_RR_Movement_OakToLab:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+PalletTown_RR_Movement_IvyToLab:
+	delay_16
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+PalletTown_RR_Movement_PlayerToLab:
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+PalletTown_RR_Movement_ElmToLab:
+	delay_16
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+PalletTown_RR_Movement_JennyToLab:
+	delay_16
+	delay_16
+	walk_left
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	step_end
+
+PalletTown_RR_Movement_OakIntoLab:
+	walk_up
+	set_invisible
+	step_end
+
+PalletTown_RR_Movement_IvyIntoLab:
+	delay_16
+	walk_right
+	walk_up
+	set_invisible
+	step_end
+
+PalletTown_RR_Movement_PlayerIntoLab:
+	delay_16
+	delay_16
+	walk_right
+	walk_right
+	walk_up
+	set_invisible
+	step_end
+
+PalletTown_RR_Movement_ElmIntoLab:
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	set_invisible
+	step_end
+
+PalletTown_RR_Movement_JennyIntoLab:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	set_invisible
+	step_end
+
