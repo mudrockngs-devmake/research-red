@@ -551,6 +551,8 @@ PalletTown_EventScript_GrassHook::
 	applymovement LOCALID_PALLET_PROF_OAK, PalletTown_RR_Movement_OakArrive
 	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmBackDown
 	waitmovement LOCALID_PALLET_PROF_OAK
+	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_FaceRight
+	waitmovement 0
 	delay 15
 	msgbox PalletTown_Text_RR_Oak_WildMons, MSGBOX_DEFAULT
 	msgbox PalletTown_Text_RR_Elm_Observing, MSGBOX_DEFAULT
@@ -725,10 +727,18 @@ PalletTown_RR_Movement_OakArrive:
 	walk_right
 	walk_up
 	walk_up
-	face_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	face_left
 	step_end
 
 PalletTown_RR_Movement_OakToLab:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
 	walk_down
 	walk_down
 	walk_down
@@ -749,6 +759,10 @@ PalletTown_RR_Movement_OakToLab:
 
 PalletTown_RR_Movement_IvyToLab:
 	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	walk_down
 	walk_down
 	walk_down
@@ -767,6 +781,10 @@ PalletTown_RR_Movement_IvyToLab:
 	step_end
 
 PalletTown_RR_Movement_PlayerToLab:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	walk_down
 	walk_left
 	walk_down
@@ -787,6 +805,10 @@ PalletTown_RR_Movement_PlayerToLab:
 
 PalletTown_RR_Movement_ElmToLab:
 	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	walk_down
 	walk_down
 	walk_left
@@ -806,6 +828,10 @@ PalletTown_RR_Movement_ElmToLab:
 	step_end
 
 PalletTown_RR_Movement_JennyToLab:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	delay_16
 	delay_16
 	walk_left
@@ -871,3 +897,433 @@ PalletTown_RR_Movement_JennyIntoLab:
 	set_invisible
 	step_end
 
+
+@ ===================================================================
+@ Research Red: Oak's lab scene
+@ Runs from PalletTown_ProfessorOaksLab_OnFrame when
+@ VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB == 1 (set by the grass hook).
+@ Kept in this file so the large FireRed lab script only needs one line changed.
+@ Replaces: starter choice, rival battle, Oak's Parcel errand, Pokedex scene.
+@ ===================================================================
+RR_Lab_EventScript_Scene::
+	lockall
+	textcolor NPC_TEXT_COLOR_MALE
+	setobjectxy LOCALID_OAKS_LAB_RIVAL, 7, 12
+	applymovement LOCALID_OAKS_LAB_PROF_OAK, RR_Lab_Movement_Up6
+	waitmovement 0
+	removeobject LOCALID_OAKS_LAB_PROF_OAK
+	setobjectxyperm LOCALID_OAKS_LAB_PROF_OAK, 6, 3
+	setobjectmovementtype LOCALID_OAKS_LAB_PROF_OAK, MOVEMENT_TYPE_FACE_DOWN
+	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+	addobject LOCALID_OAKS_LAB_PROF_OAK
+	applymovement LOCALID_LAB_IVY, RR_Lab_Movement_Up8
+	applymovement LOCALID_OAKS_LAB_RIVAL, RR_Lab_Movement_Up8
+	applymovement LOCALID_LAB_JENNY, RR_Lab_Movement_Up6
+	applymovement LOCALID_PLAYER, RR_Lab_Movement_Up8
+	waitmovement 0
+	clearflag FLAG_DONT_TRANSITION_MUSIC
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	@ --- why everyone is here ---
+	msgbox RR_Lab_Text_Oak_Welcome, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_WhyHere, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Elm_Mailed, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Jenny_Proofread, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Oak_StudyForms, MSGBOX_DEFAULT
+	applymovement LOCALID_LAB_IVY, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Ivy_InStarters, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Oak_OrangeIslands, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_P_Snacks, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Ivy_StickyNotes, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_P_Delicious, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_LAB_IVY, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Oak_OtherLands, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Elm_OldTimey, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Jenny_Scroll, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Oak_MidBattle, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_ChooseFirst, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Elm_Reliable, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Ivy_Reliable, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Elm_Bunsen, MSGBOX_DEFAULT
+	closemessage
+	@ --- choose a starter (works for all three) ---
+RR_Lab_EventScript_ChooseLoop::
+	textcolor NPC_TEXT_COLOR_MALE
+	showmonpic SPECIES_BULBASAUR, 10, 3
+	msgbox RR_Lab_Text_StudyBulbasaur, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_PickBulbasaur
+	showmonpic SPECIES_SQUIRTLE, 10, 3
+	msgbox RR_Lab_Text_StudySquirtle, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_PickSquirtle
+	showmonpic SPECIES_CHARMANDER, 10, 3
+	msgbox RR_Lab_Text_StudyCharmander, MSGBOX_YESNO
+	hidemonpic
+	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_PickCharmander
+	goto RR_Lab_EventScript_ChooseLoop
+
+RR_Lab_EventScript_PickBulbasaur::
+	setvar VAR_STARTER_MON, 0
+	removeobject LOCALID_BULBASAUR_BALL
+	givemon SPECIES_BULBASAUR, 5
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	goto RR_Lab_EventScript_Received
+
+RR_Lab_EventScript_PickSquirtle::
+	setvar VAR_STARTER_MON, 1
+	removeobject LOCALID_SQUIRTLE_BALL
+	givemon SPECIES_SQUIRTLE, 5
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	goto RR_Lab_EventScript_Received
+
+RR_Lab_EventScript_PickCharmander::
+	setvar VAR_STARTER_MON, 2
+	removeobject LOCALID_CHARMANDER_BALL
+	givemon SPECIES_CHARMANDER, 5
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	goto RR_Lab_EventScript_Received
+
+RR_Lab_EventScript_Received::
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_PALLET_LADY_NOT_BLOCKING_SIGN
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	playfanfare MUS_OBTAIN_KEY_ITEM
+	message RR_Lab_Text_ReceivedStarter
+	waitmessage
+	waitfanfare
+	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_ChainPicks
+	setvar VAR_0x8004, 0
+	call EventScript_ChangePokemonNickname
+RR_Lab_EventScript_ChainPicks::
+	closemessage
+	@ Ivy takes the Kanto counter, Elm the Johto counter, Jenny counters Elm
+	goto_if_eq VAR_STARTER_MON, 0, RR_Lab_EventScript_ChainBulbasaur
+	goto_if_eq VAR_STARTER_MON, 1, RR_Lab_EventScript_ChainSquirtle
+	goto RR_Lab_EventScript_ChainCharmander
+
+RR_Lab_EventScript_ChainBulbasaur::
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	call RR_Lab_EventScript_IvyLine
+	removeobject LOCALID_CHARMANDER_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
+	call RR_Lab_EventScript_ElmLine
+	removeobject LOCALID_LAB_CYNDAQUIL_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	call RR_Lab_EventScript_JennyLine
+	removeobject LOCALID_LAB_TOTODILE_BALL
+	goto RR_Lab_EventScript_AfterPicks
+
+RR_Lab_EventScript_ChainSquirtle::
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	call RR_Lab_EventScript_IvyLine
+	removeobject LOCALID_BULBASAUR_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	call RR_Lab_EventScript_ElmLine
+	removeobject LOCALID_LAB_CHIKORITA_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
+	call RR_Lab_EventScript_JennyLine
+	removeobject LOCALID_LAB_CYNDAQUIL_BALL
+	goto RR_Lab_EventScript_AfterPicks
+
+RR_Lab_EventScript_ChainCharmander::
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	call RR_Lab_EventScript_IvyLine
+	removeobject LOCALID_SQUIRTLE_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	call RR_Lab_EventScript_ElmLine
+	removeobject LOCALID_LAB_TOTODILE_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	call RR_Lab_EventScript_JennyLine
+	removeobject LOCALID_LAB_CHIKORITA_BALL
+	goto RR_Lab_EventScript_AfterPicks
+
+RR_Lab_EventScript_IvyLine::
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Ivy_Picks, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_P_MarriedToIt, MSGBOX_DEFAULT
+	closemessage
+	return
+
+RR_Lab_EventScript_ElmLine::
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Elm_Picks, MSGBOX_DEFAULT
+	closemessage
+	return
+
+RR_Lab_EventScript_JennyLine::
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Jenny_Picks, MSGBOX_DEFAULT
+	closemessage
+	return
+
+RR_Lab_EventScript_AfterPicks::
+	@ --- Ash, Gary, and Elm's big idea ---
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Oak_Overslept, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Elm_Ash, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_Gary, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Ivy_OutThere, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Oak_Postcards, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_OAKS_LAB_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_OAKS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox RR_Lab_Text_Elm_PushIt, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_P_HereItComes, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Elm_GymChallenge, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_Quietly, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Jenny_NotASetting, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Elm_Scared, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_P_Paperwork, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	msgbox RR_Lab_Text_P_AskIvy, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Ivy_Yes, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Elm_AskJenny, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Jenny_Yes, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Ivy_SideBet, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Jenny_Absolutely, MSGBOX_DEFAULT
+	closemessage
+	@ --- first battle: Elm (team is FireRed's placeholder for now) ---
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_MALE
+	playbgm MUS_ENCOUNTER_RIVAL, 0
+	msgbox RR_Lab_Text_Elm_TestNow, MSGBOX_DEFAULT
+	closemessage
+	goto_if_eq VAR_STARTER_MON, 0, RR_Lab_EventScript_BattleCharmander
+	goto_if_eq VAR_STARTER_MON, 1, RR_Lab_EventScript_BattleBulbasaur
+	goto RR_Lab_EventScript_BattleSquirtle
+
+RR_Lab_EventScript_BattleCharmander::
+	trainerbattle_earlyrival TRAINER_RIVAL_OAKS_LAB_CHARMANDER, RIVAL_BATTLE_TUTORIAL, RR_Lab_Text_Elm_Defeat, RR_Lab_Text_Elm_Victory
+	goto RR_Lab_EventScript_AfterBattle
+
+RR_Lab_EventScript_BattleBulbasaur::
+	trainerbattle_earlyrival TRAINER_RIVAL_OAKS_LAB_BULBASAUR, RIVAL_BATTLE_TUTORIAL, RR_Lab_Text_Elm_Defeat, RR_Lab_Text_Elm_Victory
+	goto RR_Lab_EventScript_AfterBattle
+
+RR_Lab_EventScript_BattleSquirtle::
+	trainerbattle_earlyrival TRAINER_RIVAL_OAKS_LAB_SQUIRTLE, RIVAL_BATTLE_TUTORIAL, RR_Lab_Text_Elm_Defeat, RR_Lab_Text_Elm_Victory
+	goto RR_Lab_EventScript_AfterBattle
+
+RR_Lab_EventScript_AfterBattle::
+	special HealPlayerParty
+	fadedefaultbgm
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Elm_BestOfFive, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Jenny_BestOfZero, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Oak_Properly, MSGBOX_DEFAULT
+	@ --- research grant ---
+	msgbox RR_Lab_Text_Oak_Grant, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	call RR_Lab_EventScript_GiveGrant
+	playfanfare MUS_OBTAIN_KEY_ITEM
+	message RR_Lab_Text_ReceivedGrant
+	waitmessage
+	waitfanfare
+	msgbox RR_Lab_Text_GrantContents, MSGBOX_DEFAULT
+	removeobject LOCALID_POKEDEX_1
+	removeobject LOCALID_POKEDEX_2
+	playfanfare MUS_OBTAIN_KEY_ITEM
+	message RR_Lab_Text_ReceivedPokedex
+	waitmessage
+	waitfanfare
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_P_LotOfBalls, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Ivy_NotAStore, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Jenny_Receipts, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox RR_Lab_Text_Elm_SecondGrant, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_SameGrant, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_GoSeeDaisy, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Elm_MeetAtDaisys, MSGBOX_DEFAULT
+	closemessage
+	@ --- everyone heads out ---
+	applymovement LOCALID_OAKS_LAB_RIVAL, RR_Lab_Movement_Down8
+	applymovement LOCALID_LAB_JENNY, RR_Lab_Movement_Down7
+	waitmovement 0
+	removeobject LOCALID_OAKS_LAB_RIVAL
+	removeobject LOCALID_LAB_JENNY
+	playse SE_EXIT
+	textcolor NPC_TEXT_COLOR_FEMALE
+	msgbox RR_Lab_Text_Ivy_WaitOutside, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_LAB_IVY, RR_Lab_Movement_Down8
+	waitmovement 0
+	removeobject LOCALID_LAB_IVY
+	playse SE_EXIT
+	@ --- story flags: the parcel errand is skipped ---
+	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 2
+	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1
+	setvar VAR_MAP_SCENE_ROUTE22, 1
+	setvar VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 1
+	@ Viridian's old man stays asleep until you battle Elm on Route 22
+	setvar VAR_0x40FE, 3
+	releaseall
+	end
+
+@ The grant: 100 of each of 13 Poke Balls (FireRed's ball pocket holds 13 kinds),
+@ medicine, repels, TM Case and TM01-TM50.
+RR_Lab_EventScript_GiveGrant::
+	additem ITEM_POKE_BALL, 100
+	additem ITEM_GREAT_BALL, 100
+	additem ITEM_ULTRA_BALL, 100
+	additem ITEM_PREMIER_BALL, 100
+	additem ITEM_HEAL_BALL, 100
+	additem ITEM_NET_BALL, 100
+	additem ITEM_NEST_BALL, 100
+	additem ITEM_DIVE_BALL, 100
+	additem ITEM_DUSK_BALL, 100
+	additem ITEM_TIMER_BALL, 100
+	additem ITEM_QUICK_BALL, 100
+	additem ITEM_REPEAT_BALL, 100
+	additem ITEM_LUXURY_BALL, 100
+	additem ITEM_SUPER_POTION, 30
+	additem ITEM_HYPER_POTION, 20
+	additem ITEM_FULL_RESTORE, 10
+	additem ITEM_REVIVE, 15
+	additem ITEM_MAX_REVIVE, 5
+	additem ITEM_FULL_HEAL, 20
+	additem ITEM_ETHER, 10
+	additem ITEM_MAX_ETHER, 5
+	additem ITEM_MAX_REPEL, 30
+	additem ITEM_ESCAPE_ROPE, 10
+	additem ITEM_TM_CASE, 1
+	additem ITEM_TM01, 1
+	additem ITEM_TM02, 1
+	additem ITEM_TM03, 1
+	additem ITEM_TM04, 1
+	additem ITEM_TM05, 1
+	additem ITEM_TM06, 1
+	additem ITEM_TM07, 1
+	additem ITEM_TM08, 1
+	additem ITEM_TM09, 1
+	additem ITEM_TM10, 1
+	additem ITEM_TM11, 1
+	additem ITEM_TM12, 1
+	additem ITEM_TM13, 1
+	additem ITEM_TM14, 1
+	additem ITEM_TM15, 1
+	additem ITEM_TM16, 1
+	additem ITEM_TM17, 1
+	additem ITEM_TM18, 1
+	additem ITEM_TM19, 1
+	additem ITEM_TM20, 1
+	additem ITEM_TM21, 1
+	additem ITEM_TM22, 1
+	additem ITEM_TM23, 1
+	additem ITEM_TM24, 1
+	additem ITEM_TM25, 1
+	additem ITEM_TM26, 1
+	additem ITEM_TM27, 1
+	additem ITEM_TM28, 1
+	additem ITEM_TM29, 1
+	additem ITEM_TM30, 1
+	additem ITEM_TM31, 1
+	additem ITEM_TM32, 1
+	additem ITEM_TM33, 1
+	additem ITEM_TM34, 1
+	additem ITEM_TM35, 1
+	additem ITEM_TM36, 1
+	additem ITEM_TM37, 1
+	additem ITEM_TM38, 1
+	additem ITEM_TM39, 1
+	additem ITEM_TM40, 1
+	additem ITEM_TM41, 1
+	additem ITEM_TM42, 1
+	additem ITEM_TM43, 1
+	additem ITEM_TM44, 1
+	additem ITEM_TM45, 1
+	additem ITEM_TM46, 1
+	additem ITEM_TM47, 1
+	additem ITEM_TM48, 1
+	additem ITEM_TM49, 1
+	additem ITEM_TM50, 1
+	return
+
+RR_Lab_Movement_Up6:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+RR_Lab_Movement_Up8:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+RR_Lab_Movement_Down7:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+RR_Lab_Movement_Down8:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
