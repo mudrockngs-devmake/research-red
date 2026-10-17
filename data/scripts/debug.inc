@@ -143,25 +143,103 @@ Debug_EventScript_Text_OffensiveIVs:
 Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
+@ ===================================================================
+@ Research Red: debug skip-ahead scripts (Debug menu > Scripts)
+@ Script 1: Skip to the lab        (standing inside the lab door)
+@ Script 2: Skip to Daisy's        (lab done, Squirtle, full grant)
+@ Script 3: Skip to Route 1        (Daisy done, at Pallet's north exit)
+@ Script 4: Skip to Route 22       (Route 1 done, test team, near Elm)
+@ Script 5: Give test team         (Spearow, Rattata, Mankey, Nidoran M)
+@ Remove or empty these before a public release.
+@ ===================================================================
 Debug_EventScript_Script_1::
+	call RR_Debug_StateGrassDone
+	warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, 12
+	waitstate
 	release
 	end
 
 Debug_EventScript_Script_2::
+	call RR_Debug_StateGrassDone
+	call RR_Debug_StateLabDone
+	warp MAP_PALLET_TOWN, 15, 8
+	waitstate
 	release
 	end
 
 Debug_EventScript_Script_3::
+	call RR_Debug_StateGrassDone
+	call RR_Debug_StateLabDone
+	call RR_Debug_StateDaisyDone
+	warp MAP_PALLET_TOWN, 12, 3
+	waitstate
 	release
 	end
 
 Debug_EventScript_Script_4::
+	call RR_Debug_StateGrassDone
+	call RR_Debug_StateLabDone
+	call RR_Debug_StateDaisyDone
+	setvar VAR_0x40FE, 5
+	call RR_Debug_GiveTeam
+	warp MAP_ROUTE22, 34, 5
+	waitstate
 	release
 	end
 
 Debug_EventScript_Script_5::
+	call RR_Debug_GiveTeam
+	msgbox RR_Debug_Text_TeamGiven, MSGBOX_DEFAULT
 	release
 	end
+
+RR_Debug_StateGrassDone::
+	setvar VAR_0x40FE, 2
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 10
+	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1
+	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
+	return
+
+RR_Debug_StateLabDone::
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_PALLET_LADY_NOT_BLOCKING_SIGN
+	setflag FLAG_OPENED_START_MENU
+	setvar VAR_STARTER_MON, 1
+	givemon SPECIES_SQUIRTLE, 5, ITEM_NONE
+	setflag FLAG_HIDE_SQUIRTLE_BALL
+	setflag FLAG_HIDE_BULBASAUR_BALL
+	setflag FLAG_HIDE_RIVAL_IN_LAB
+	setflag FLAG_HIDE_POKEDEX
+	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	call RR_Lab_EventScript_GiveGrant
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 2
+	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1
+	setvar VAR_MAP_SCENE_ROUTE22, 1
+	setvar VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 1
+	setvar VAR_0x40FE, 3
+	return
+
+RR_Debug_StateDaisyDone::
+	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2
+	setflag FLAG_HIDE_TOWN_MAP
+	additem ITEM_TOWN_MAP, 1
+	setvar VAR_0x40FE, 4
+	return
+
+RR_Debug_GiveTeam::
+	givemon SPECIES_SPEAROW, 6, ITEM_NONE
+	givemon SPECIES_RATTATA, 6, ITEM_NONE
+	givemon SPECIES_MANKEY, 6, ITEM_NONE
+	givemon SPECIES_NIDORAN_M, 6, ITEM_NONE
+	return
+
+RR_Debug_Text_TeamGiven:
+	.string "Test team added: Spearow, Rattata,\n"
+	.string "Mankey and Nidoran♂.$"
 
 Debug_EventScript_Script_6::
 	release
@@ -736,18 +814,6 @@ Debug_PrintFontTest::
 Debug_EventScript_FontTest::
 	lockall
 	goto Debug_PrintFontTest
-@	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
-@	dynmultipush Debug_EventScript_InflictStatus1_Text_Single, 0
-@	dynmultipush Debug_EventScript_InflictStatus1_Text_PartyWide, 1
-@	dynmultipush Debug_EventScript_InflictStatus1_Text_Close, 2
-@	dynmultistack 0, 0, FALSE, 3 FALSE, 0, NULL
-@	switch VAR_RESULT
-@	case 0, Debug_EventScript_InflictStatus1_Single
-@	case 1, Debug_EventScript_InflictStatus1_Party
-@	case 2, Debug_EventScript_InflictStatus1_Close
-@Debug_EventScript_InflictStatus1_Close:
-@	releaseall
-@	end
 
 Debug_EventScript_TellTheTime::
 	callnative DebugMenu_CalculateTime
