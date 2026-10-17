@@ -43,7 +43,7 @@ PalletTown_OnFrame::
 @ Oak approaches player after exiting their house post Elite Four to check if they should receieve the National Dex
 PalletTown_EventScript_OakRatingScene::
 	lockall
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	setobjectxyperm LOCALID_PALLET_PROF_OAK, 14, 14
 	setobjectmovementtype LOCALID_PALLET_PROF_OAK, MOVEMENT_TYPE_FACE_LEFT
 	addobject LOCALID_PALLET_PROF_OAK
@@ -182,7 +182,7 @@ PalletTown_EventScript_OakTriggerRight::
 
 PalletTown_EventScript_OakTrigger::
 	famechecker FAMECHECKER_OAK, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	delay 30
 	playbgm MUS_OAK, 0
 	message PalletTown_Text_OakDontGoOut
@@ -428,7 +428,7 @@ PalletTown_EventScript_SignLadyTrigger::
 	end
 
 PalletTown_EventScript_SignLadyShowSign::
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_LookCopiedTrainerTipsSign
 	closemessage
 	delay 20
@@ -475,11 +475,11 @@ PalletTown_EventScript_GrassHook::
 	waitdooranim
 	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_FaceUp
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Ivy_StopByDaisys, MSGBOX_DEFAULT
 	closemessage
 	delay 20
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Elm_RouteOne, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
@@ -508,17 +508,17 @@ PalletTown_EventScript_GrassHook::
 	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_FaceDown
 	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_FaceLeft
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Elm_JustInTime, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Jenny_Stretching, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Elm_ReturnFavor, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Ivy_StraightRoad, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Elm_Curves, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Jenny_Support, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_P_WhichPokemon, MSGBOX_DEFAULT
@@ -527,7 +527,7 @@ PalletTown_EventScript_GrassHook::
 	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmPatPockets
 	waitmovement 0
 	delay 30
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Elm_Transferred, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_P_FightTheGrass, MSGBOX_DEFAULT
@@ -537,7 +537,7 @@ PalletTown_EventScript_GrassHook::
 	waitmovement 0
 	delay 15
 	playbgm MUS_OAK, 0
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_OakDontGoOut, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
@@ -557,17 +557,17 @@ PalletTown_EventScript_GrassHook::
 	msgbox PalletTown_Text_RR_Oak_WildMons, MSGBOX_DEFAULT
 	msgbox PalletTown_Text_RR_Elm_Observing, MSGBOX_DEFAULT
 	msgbox PalletTown_Text_RR_Oak_OfficerJenny, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Jenny_WeAllGetThat, MSGBOX_DEFAULT
 	closemessage
 	delay 20
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Oak_Haiku, MSGBOX_DEFAULT
 	closemessage
 	delay 20
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Ivy_Poems, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Oak_ComeToLab, MSGBOX_DEFAULT
 	closemessage
 	@ Everyone heads to the lab. Jenny trails Elm.
@@ -908,7 +908,7 @@ PalletTown_RR_Movement_JennyIntoLab:
 @ ===================================================================
 RR_Lab_EventScript_Scene::
 	lockall
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	applymovement LOCALID_LAB_IVY, RR_Lab_Movement_Up8
 	applymovement LOCALID_OAKS_LAB_RIVAL, RR_Lab_Movement_Up8
 	applymovement LOCALID_LAB_JENNY, RR_Lab_Movement_Up6
@@ -923,21 +923,21 @@ RR_Lab_EventScript_Scene::
 	msgbox RR_Lab_Text_Oak_Welcome, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_WhyHere, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_Mailed, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Proofread, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_StudyForms, MSGBOX_DEFAULT
 	applymovement LOCALID_LAB_IVY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_InStarters, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_OrangeIslands, MSGBOX_DEFAULT
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_Snacks, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_StickyNotes, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_Delicious, MSGBOX_DEFAULT
@@ -945,23 +945,23 @@ RR_Lab_EventScript_Scene::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	applymovement LOCALID_LAB_IVY, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_OtherLands, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_OldTimey, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Scroll, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_MidBattle, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_ChooseFirst, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_Reliable, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_Reliable, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Bunsen, MSGBOX_DEFAULT
 	closemessage
 	@ --- choose a starter (works for all three) ---
 RR_Lab_EventScript_ChooseLoop::
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	showmonpic SPECIES_BULBASAUR, 10, 3
 	msgbox RR_Lab_Text_StudyBulbasaur, MSGBOX_YESNO
 	hidemonpic
@@ -1020,6 +1020,8 @@ RR_Lab_EventScript_ChainBulbasaur::
 	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_CHARMANDER_BALL
+	givemon SPECIES_CHARMANDER, 5
+	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
 	call RR_Lab_EventScript_ElmLine
 	removeobject LOCALID_LAB_CYNDAQUIL_BALL
@@ -1032,6 +1034,8 @@ RR_Lab_EventScript_ChainSquirtle::
 	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_BULBASAUR_BALL
+	givemon SPECIES_BULBASAUR, 5
+	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
 	call RR_Lab_EventScript_ElmLine
 	removeobject LOCALID_LAB_CHIKORITA_BALL
@@ -1044,6 +1048,8 @@ RR_Lab_EventScript_ChainCharmander::
 	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_SQUIRTLE_BALL
+	givemon SPECIES_SQUIRTLE, 5
+	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
 	call RR_Lab_EventScript_ElmLine
 	removeobject LOCALID_LAB_TOTODILE_BALL
@@ -1053,34 +1059,44 @@ RR_Lab_EventScript_ChainCharmander::
 	goto RR_Lab_EventScript_AfterPicks
 
 RR_Lab_EventScript_IvyLine::
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_Picks, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_MarriedToIt, MSGBOX_DEFAULT
 	closemessage
 	return
 
+@ Ivy's partner travels in the player's party (you battle as a team)
+RR_Lab_EventScript_IvyMonJoins::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	playfanfare MUS_LEVEL_UP
+	message RR_Lab_Text_IvyMonJoins
+	waitmessage
+	waitfanfare
+	closemessage
+	return
+
 RR_Lab_EventScript_ElmLine::
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Picks, MSGBOX_DEFAULT
 	closemessage
 	return
 
 RR_Lab_EventScript_JennyLine::
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Picks, MSGBOX_DEFAULT
 	closemessage
 	return
 
 RR_Lab_EventScript_AfterPicks::
 	@ --- Ash, Gary, and Elm's big idea ---
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Overslept, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_Ash, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_Gary, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_OutThere, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Postcards, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
@@ -1092,12 +1108,12 @@ RR_Lab_EventScript_AfterPicks::
 	msgbox RR_Lab_Text_Elm_PushIt, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_HereItComes, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_GymChallenge, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_Quietly, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_NotASetting, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Scared, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_Paperwork, MSGBOX_DEFAULT
@@ -1105,11 +1121,11 @@ RR_Lab_EventScript_AfterPicks::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox RR_Lab_Text_P_AskIvy, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_Yes, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_AskJenny, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Yes, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Ivy_SideBet, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Jenny_Absolutely, MSGBOX_DEFAULT
@@ -1117,7 +1133,7 @@ RR_Lab_EventScript_AfterPicks::
 	@ --- first battle: Elm (team is FireRed's placeholder for now) ---
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	msgbox RR_Lab_Text_Elm_TestNow, MSGBOX_DEFAULT
 	closemessage
@@ -1140,14 +1156,14 @@ RR_Lab_EventScript_BattleSquirtle::
 RR_Lab_EventScript_AfterBattle::
 	special HealPlayerParty
 	fadedefaultbgm
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_BestOfFive, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_BestOfZero, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Properly, MSGBOX_DEFAULT
 	@ --- research grant ---
 	msgbox RR_Lab_Text_Oak_Grant, MSGBOX_DEFAULT
@@ -1168,10 +1184,10 @@ RR_Lab_EventScript_AfterBattle::
 	special SetUnlockedPokedexFlags
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_LotOfBalls, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_NotAStore, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Jenny_Receipts, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_SecondGrant, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_SameGrant, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_GoSeeDaisy, MSGBOX_DEFAULT
@@ -1184,7 +1200,7 @@ RR_Lab_EventScript_AfterBattle::
 	removeobject LOCALID_OAKS_LAB_RIVAL
 	removeobject LOCALID_LAB_JENNY
 	playse SE_EXIT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_WaitOutside, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_LAB_IVY, RR_Lab_Movement_Down8

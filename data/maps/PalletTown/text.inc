@@ -425,3 +425,7 @@ RR_Lab_Text_Elm_MeetAtDaisys::
 RR_Lab_Text_Ivy_WaitOutside::
     .string "Ivy: I'll wait outside, sweetie.\n"
     .string "Don't let Oak keep you forever.$"
+
+RR_Lab_Text_IvyMonJoins::
+    .string "Ivy's {STR_VAR_1} joined the team!\n"
+    .string "You and Ivy battle together.$"
