@@ -181,31 +181,32 @@ PalletTown_RivalsHouse_EventScript_Picture::
 RR_Daisy_EventScript_Scene::
 	lockall
 	applymovement LOCALID_PLAYER, RR_Daisy_Movement_Up2
+	applymovement LOCALID_RIVALS_HOUSE_IVY, RR_Daisy_Movement_Up2
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_ElmOnChair, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_Help, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_MuffinSits, MSGBOX_DEFAULT
 	applymovement LOCALID_DAISY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Daisy_Muffin, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_PersianEyes, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Jenny_ComeDown, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_DAISY, Common_Movement_FacePlayer
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_P_Maps, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Daisy_TwoMaps, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_Strategy, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Jenny_Toothbrush, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_DAISY, Common_Movement_WalkInPlaceFasterRight
@@ -221,13 +222,13 @@ RR_Daisy_EventScript_Scene::
 	message RR_Daisy_Text_ReceivedMap
 	waitmessage
 	waitfanfare
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Daisy_TwoMoreProfessors, MSGBOX_DEFAULT
 	msgbox RR_Daisy_Text_Ivy_KukuiBurnett, MSGBOX_DEFAULT
 	msgbox RR_Daisy_Text_Ivy_Vulpix, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_P_MidVulpix, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Ivy_Professional, MSGBOX_DEFAULT
 	closemessage
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -236,21 +237,21 @@ RR_Daisy_EventScript_Scene::
 	playse SE_PIN
 	applymovement LOCALID_RIVALS_HOUSE_ELM, Common_Movement_ExclamationMark
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_Choo, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Daisy_Rattata, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_Fluffy, MSGBOX_DEFAULT
 	msgbox RR_Daisy_Text_Elm_Terms, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Jenny_SmallStakes, MSGBOX_DEFAULT
 	msgbox RR_Daisy_Text_Ivy_Dishes, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_P_Mimey, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Ivy_MimeysDishes, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_Deal, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_LEVEL_UP
@@ -258,9 +259,9 @@ RR_Daisy_EventScript_Scene::
 	waitmessage
 	waitfanfare
 	msgbox RR_Daisy_Text_BetIsOn, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Daisy_Excited, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_SoExcited, MSGBOX_DEFAULT
 	msgbox RR_Daisy_Text_Elm_SeeYou, MSGBOX_DEFAULT
 	closemessage
@@ -272,6 +273,7 @@ RR_Daisy_EventScript_Scene::
 	waitmovement 0
 	removeobject LOCALID_RIVALS_HOUSE_JENNY
 	playse SE_EXIT
+	removeobject LOCALID_RIVALS_HOUSE_IVY
 	setvar VAR_0x40FE, 4
 	releaseall
 	end
