@@ -146,7 +146,7 @@ Debug_EventScript_Text_DefensiveIVs:
 @ ===================================================================
 @ Research Red: debug skip-ahead scripts (Debug menu > Scripts)
 @ Script 1: Skip to the lab        (standing inside the lab door)
-@ Script 2: Skip to Daisy's        (lab done, Squirtle, full grant)
+@ Script 2: Skip to Daisy's        (lab done, Squirtle + Ivy's Bulbasaur, grant)
 @ Script 3: Skip to Route 1        (Daisy done, at Pallet's north exit)
 @ Script 4: Skip to Route 22       (Route 1 done, test team, near Elm)
 @ Script 5: Give test team         (Spearow, Rattata, Mankey, Nidoran M)
@@ -197,6 +197,16 @@ RR_Debug_StateGrassDone::
 	setvar VAR_0x40FE, 2
 	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 10
 	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+	@ put the lab back the way it was before the scene (works on a used save)
+	clearflag FLAG_HIDE_RIVAL_IN_LAB
+	clearflag FLAG_HIDE_BULBASAUR_BALL
+	clearflag FLAG_HIDE_SQUIRTLE_BALL
+	clearflag FLAG_HIDE_CHARMANDER_BALL
+	clearflag FLAG_HIDE_POKEDEX
+	clearflag FLAG_HIDE_TOWN_MAP
+	clearflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
+	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 0
+	setvar VAR_MAP_SCENE_ROUTE22, 0
 	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1
 	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
 	return
@@ -210,6 +220,7 @@ RR_Debug_StateLabDone::
 	setflag FLAG_HIDE_SQUIRTLE_BALL
 	setflag FLAG_HIDE_BULBASAUR_BALL
 	setflag FLAG_HIDE_RIVAL_IN_LAB
+	givemon SPECIES_BULBASAUR, 5, ITEM_NONE
 	setflag FLAG_HIDE_POKEDEX
 	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
 	setflag FLAG_SYS_POKEDEX_GET
