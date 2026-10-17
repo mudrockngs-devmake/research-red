@@ -104,8 +104,107 @@
   "coord_events": [
     {
       "type": "trigger",
+      "x": 0,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
       "x": 11,
-      "y": 33,
+      "y": 4,
       "elevation": 0,
       "var": "VAR_0x40FE",
       "var_value": "4",
@@ -114,7 +213,7 @@
     {
       "type": "trigger",
       "x": 12,
-      "y": 33,
+      "y": 4,
       "elevation": 0,
       "var": "VAR_0x40FE",
       "var_value": "4",
@@ -123,7 +222,7 @@
     {
       "type": "trigger",
       "x": 13,
-      "y": 33,
+      "y": 4,
       "elevation": 0,
       "var": "VAR_0x40FE",
       "var_value": "4",
@@ -132,7 +231,88 @@
     {
       "type": "trigger",
       "x": 14,
-      "y": 33,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_0x40FE",
+      "var_value": "4",
+      "script": "RR_Route1_EventScript_Walk"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 4,
       "elevation": 0,
       "var": "VAR_0x40FE",
       "var_value": "4",
