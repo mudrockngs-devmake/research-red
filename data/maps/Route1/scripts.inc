@@ -56,21 +56,21 @@ RR_Route1_EventScript_Walk::
 	addobject LOCALID_ROUTE1_JENNY
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Elm_WeMeetAgain, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_RightHere, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Humming, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Ivy_OffKey, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_P_OwnKey, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Ivy_Married, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Elm_Banter, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_Singing, MSGBOX_DEFAULT
 	closemessage
 	@ --- something pink streaks across the sky ---
@@ -84,21 +84,21 @@ RR_Route1_EventScript_Walk::
 	applymovement LOCALID_CAMERA, RR_Route1_Movement_CameraDown
 	waitmovement 0
 	special RemoveCameraObject
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Elm_SawIt, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_P_Believe, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_Believe, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Elm_Tail, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_P_Seventy, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Ivy_Sixty, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Elm_Race, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_Protocol, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
@@ -107,7 +107,7 @@ RR_Route1_EventScript_Walk::
 	fadescreen FADE_FROM_BLACK
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_DashedAhead, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Ivy_Quiet, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_P_Wonderful, MSGBOX_DEFAULT
