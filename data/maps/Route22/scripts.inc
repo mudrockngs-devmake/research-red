@@ -25,7 +25,7 @@ Route22_EventScript_EarlyRivalTriggerBottom::
 @ Jenny walks in beside him. Team is FireRed's placeholder until the trainer
 @ data update. Winning (or losing) wakes Viridian's old man.
 Route22_EventScript_EarlyRival::
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	addobject LOCALID_ROUTE22_RIVAL
 	addobject LOCALID_ROUTE22_JENNY
@@ -38,21 +38,21 @@ Route22_EventScript_EarlyRival::
 	msgbox RR_Route22_Text_Elm_FoundYou, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route22_Text_P_Sights, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route22_Text_Jenny_Desserts, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route22_Text_Elm_Rematch, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route22_Text_Ivy_Ready, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route22_Text_P_Always, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	call_if_eq VAR_STARTER_MON, 2, Route22_EventScript_EarlyRivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, Route22_EventScript_EarlyRivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, Route22_EventScript_EarlyRivalCharmander
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route22_Text_Elm_Forever, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route22_Text_Jenny_GoodGame, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Ivy_NextTown, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Jenny_NextTown, MSGBOX_DEFAULT
@@ -201,7 +201,7 @@ Route22_EventScript_LateRivalTriggerBottom::
 	end
 
 Route22_EventScript_LateRival::
-	textcolor NPC_TEXT_COLOR_MALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	addobject LOCALID_ROUTE22_RIVAL
 	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_LateRivalApproach
