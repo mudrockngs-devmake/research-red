@@ -26,7 +26,7 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	applymovement LOCALID_MOM, PalletTown_PlayersHouse_1F_Movement_FaceDown
 	waitmovement 0
 	delay 15
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_GoodMorning, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceLeft
@@ -34,18 +34,18 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_Ferry, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_Gerald, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_Respect, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_ThrewUp, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_Sacrifice, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_Pancakes, MSGBOX_DEFAULT
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_Dangerous, MSGBOX_DEFAULT
 	closemessage
@@ -57,7 +57,7 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
 	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceUp
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_OakCalled, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceRight
@@ -65,12 +65,12 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_CertainSomeone, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_LoudPassion, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_SixAM, MSGBOX_DEFAULT
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_Competition, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_PeakBeforeLunch, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_EatUp, MSGBOX_DEFAULT
 	closemessage
 	@ Mimey sweeps past
@@ -84,7 +84,7 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
 	waitmovement 0
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_Family, MSGBOX_DEFAULT
 	closemessage
 	@ Ivy elbows you
@@ -106,7 +106,7 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_WritingThisDown, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_PublishLater, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
