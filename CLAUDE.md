@@ -16,7 +16,8 @@ FireRed hack on pokefirered-expansion. Repo: mudrockngs-devmake/research-red. Ow
 - Debug menu stays ON for test builds (Start > Debug > Scripts 1-5 = skips). Turn OFF before any public release.
 
 ## Where things are
-- Story scripts: `RR_*` labels. Lab scene lives in `data/maps/PalletTown/scripts.inc` (started by lab floor triggers at (5-7,11) when the lab scene var == 10).
+- Story scenes: one file each in `data/scripts/research_red/rr_*.inc`; FireRed maps keep only their hooks. Lab scene: `rr_lab.inc` (started by lab floor triggers at (5-7,11) when the lab scene var == 10). Layout and conventions: `docs/DEV_GUIDE.md`.
+- Before committing: `python3 tools/research_red/rr_check.py` (34-char lines, no caps names, registry).
 - Ivy is an NPC follower (FNPC). Cutscenes: `rr_ivy_to_scene LOCALID_X_IVY` at the start, `rr_ivy_follow LOCALID_X_IVY` at the end (scene Ivy objects need a hide flag). Helpers: `asm/macros/event.inc` (Research Red section), `src/research_red.c`, `data/scripts/rr_ivy.inc`.
 - Story progress var `VAR_0x40FE`: 0 none, 1 breakfast, 2 grass hook, 3 lab, 4 Daisy, 5 Route 1.
 - Intro video call: `src/oak_speech.c`. Debug skips: `data/scripts/debug.inc`. Art: `graphics/research_red/`.

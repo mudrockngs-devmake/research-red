@@ -887,7 +887,14 @@
 	.include "data/scripts/trainer_tower.inc"
 	.include "data/scripts/trainers.inc"
 	.include "data/scripts/white_out.inc"
-	.include "data/scripts/rr_ivy.inc"
+@ Research Red scenes (one file per scene; see docs/DEV_GUIDE.md)
+	.include "data/scripts/research_red/rr_ivy.inc"
+	.include "data/scripts/research_red/rr_breakfast.inc"
+	.include "data/scripts/research_red/rr_grass_hook.inc"
+	.include "data/scripts/research_red/rr_lab.inc"
+	.include "data/scripts/research_red/rr_daisy.inc"
+	.include "data/scripts/research_red/rr_route1.inc"
+	.include "data/scripts/research_red/rr_route22.inc"
 
 	.include "data/text/aide.inc"
 	.include "data/text/apprentice.inc"
