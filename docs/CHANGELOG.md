@@ -11,6 +11,8 @@ Test builds are v0.0.x. Each entry lists what changed for players/testers.
 - Evolution items like Razor Claw can be used from the Bag.
 - HGSS-style Pokédex.
 - Map name popups no longer repeat inside the same area.
+- Choose from all six starters (Kanto and Johto) in a list that shows each Pokémon's picture. The Johto starters sit on a second table row under the Kanto ones.
+- The starter chain works for every pick: Ivy counters you from your region, Elm counters you from the other region, Jenny counters Elm.
 - Save layout changed (bigger Items pocket): start a new game.
 
 ## v0.0.9

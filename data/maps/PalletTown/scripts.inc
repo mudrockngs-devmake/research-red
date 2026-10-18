@@ -961,40 +961,80 @@ RR_Lab_EventScript_Scene::
 	closemessage
 	@ --- choose a starter (works for all three) ---
 RR_Lab_EventScript_ChooseLoop::
+	@ Six starters: Kanto table (top row) and Johto table (bottom row).
+	@ The list shows each Pokemon's picture as you scroll.
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	showmonpic SPECIES_BULBASAUR, 10, 3
-	msgbox RR_Lab_Text_StudyBulbasaur, MSGBOX_YESNO
-	hidemonpic
-	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_PickBulbasaur
-	showmonpic SPECIES_SQUIRTLE, 10, 3
-	msgbox RR_Lab_Text_StudySquirtle, MSGBOX_YESNO
-	hidemonpic
-	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_PickSquirtle
-	showmonpic SPECIES_CHARMANDER, 10, 3
-	msgbox RR_Lab_Text_StudyCharmander, MSGBOX_YESNO
-	hidemonpic
-	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_PickCharmander
+	message RR_Lab_Text_ChooseStarter
+	waitmessage
+	dynmultichoice 1, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_RR_STARTER, RR_Lab_Text_Name_Bulbasaur, RR_Lab_Text_Name_Charmander, RR_Lab_Text_Name_Squirtle, RR_Lab_Text_Name_Chikorita, RR_Lab_Text_Name_Cyndaquil, RR_Lab_Text_Name_Totodile
+	closemessage
+	switch VAR_RESULT
+	case 0, RR_Lab_EventScript_PickBulbasaur
+	case 1, RR_Lab_EventScript_PickCharmander
+	case 2, RR_Lab_EventScript_PickSquirtle
+	case 3, RR_Lab_EventScript_PickChikorita
+	case 4, RR_Lab_EventScript_PickCyndaquil
+	case 5, RR_Lab_EventScript_PickTotodile
 	goto RR_Lab_EventScript_ChooseLoop
 
 RR_Lab_EventScript_PickBulbasaur::
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	msgbox RR_Lab_Text_StudyConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_ChooseLoop
+	setvar VAR_RR_STARTER, 0
 	setvar VAR_STARTER_MON, 0
 	removeobject LOCALID_BULBASAUR_BALL
 	givemon SPECIES_BULBASAUR, 5
-	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
-	goto RR_Lab_EventScript_Received
-
-RR_Lab_EventScript_PickSquirtle::
-	setvar VAR_STARTER_MON, 1
-	removeobject LOCALID_SQUIRTLE_BALL
-	givemon SPECIES_SQUIRTLE, 5
-	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
 	goto RR_Lab_EventScript_Received
 
 RR_Lab_EventScript_PickCharmander::
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	msgbox RR_Lab_Text_StudyConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_ChooseLoop
+	setvar VAR_RR_STARTER, 1
 	setvar VAR_STARTER_MON, 2
 	removeobject LOCALID_CHARMANDER_BALL
 	givemon SPECIES_CHARMANDER, 5
-	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	goto RR_Lab_EventScript_Received
+
+RR_Lab_EventScript_PickSquirtle::
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	msgbox RR_Lab_Text_StudyConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_ChooseLoop
+	setvar VAR_RR_STARTER, 2
+	setvar VAR_STARTER_MON, 1
+	removeobject LOCALID_SQUIRTLE_BALL
+	givemon SPECIES_SQUIRTLE, 5
+	goto RR_Lab_EventScript_Received
+
+RR_Lab_EventScript_PickChikorita::
+	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	msgbox RR_Lab_Text_StudyConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_ChooseLoop
+	setvar VAR_RR_STARTER, 3
+	setvar VAR_STARTER_MON, 0
+	removeobject LOCALID_LAB_CHIKORITA_BALL
+	givemon SPECIES_CHIKORITA, 5
+	goto RR_Lab_EventScript_Received
+
+RR_Lab_EventScript_PickCyndaquil::
+	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
+	msgbox RR_Lab_Text_StudyConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_ChooseLoop
+	setvar VAR_RR_STARTER, 4
+	setvar VAR_STARTER_MON, 2
+	removeobject LOCALID_LAB_CYNDAQUIL_BALL
+	givemon SPECIES_CYNDAQUIL, 5
+	goto RR_Lab_EventScript_Received
+
+RR_Lab_EventScript_PickTotodile::
+	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	msgbox RR_Lab_Text_StudyConfirm, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_ChooseLoop
+	setvar VAR_RR_STARTER, 5
+	setvar VAR_STARTER_MON, 1
+	removeobject LOCALID_LAB_TOTODILE_BALL
+	givemon SPECIES_TOTODILE, 5
 	goto RR_Lab_EventScript_Received
 
 RR_Lab_EventScript_Received::
@@ -1011,11 +1051,18 @@ RR_Lab_EventScript_Received::
 	call EventScript_ChangePokemonNickname
 RR_Lab_EventScript_ChainPicks::
 	closemessage
-	@ Ivy takes the Kanto counter, Elm the Johto counter, Jenny counters Elm
-	goto_if_eq VAR_STARTER_MON, 0, RR_Lab_EventScript_ChainBulbasaur
-	goto_if_eq VAR_STARTER_MON, 1, RR_Lab_EventScript_ChainSquirtle
-	goto RR_Lab_EventScript_ChainCharmander
+	@ Ivy: counter to yours from your region (joins your party).
+	@ Elm: counter to yours from the other region.
+	@ Jenny: counter to Elm's from his region. Oak keeps the last two.
+	switch VAR_RR_STARTER
+	case 0, RR_Lab_EventScript_ChainBulbasaur
+	case 1, RR_Lab_EventScript_ChainCharmander
+	case 2, RR_Lab_EventScript_ChainSquirtle
+	case 3, RR_Lab_EventScript_ChainChikorita
+	case 4, RR_Lab_EventScript_ChainCyndaquil
+	case 5, RR_Lab_EventScript_ChainTotodile
 
+@ Bulbasaur: Ivy Charmander, Elm Cyndaquil, Jenny Totodile (Oak: Squirtle, Chikorita)
 RR_Lab_EventScript_ChainBulbasaur::
 	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
 	call RR_Lab_EventScript_IvyLine
@@ -1030,6 +1077,22 @@ RR_Lab_EventScript_ChainBulbasaur::
 	removeobject LOCALID_LAB_TOTODILE_BALL
 	goto RR_Lab_EventScript_AfterPicks
 
+@ Charmander: Ivy Squirtle, Elm Totodile, Jenny Chikorita (Oak: Bulbasaur, Cyndaquil)
+RR_Lab_EventScript_ChainCharmander::
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	call RR_Lab_EventScript_IvyLine
+	removeobject LOCALID_SQUIRTLE_BALL
+	givemon SPECIES_SQUIRTLE, 5
+	call RR_Lab_EventScript_IvyMonJoins
+	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	call RR_Lab_EventScript_ElmLine
+	removeobject LOCALID_LAB_TOTODILE_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	call RR_Lab_EventScript_JennyLine
+	removeobject LOCALID_LAB_CHIKORITA_BALL
+	goto RR_Lab_EventScript_AfterPicks
+
+@ Squirtle: Ivy Bulbasaur, Elm Chikorita, Jenny Cyndaquil (Oak: Charmander, Totodile)
 RR_Lab_EventScript_ChainSquirtle::
 	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
 	call RR_Lab_EventScript_IvyLine
@@ -1044,18 +1107,49 @@ RR_Lab_EventScript_ChainSquirtle::
 	removeobject LOCALID_LAB_CYNDAQUIL_BALL
 	goto RR_Lab_EventScript_AfterPicks
 
-RR_Lab_EventScript_ChainCharmander::
-	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+@ Chikorita: Ivy Cyndaquil, Elm Charmander, Jenny Squirtle (Oak: Totodile, Bulbasaur)
+RR_Lab_EventScript_ChainChikorita::
+	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
 	call RR_Lab_EventScript_IvyLine
-	removeobject LOCALID_SQUIRTLE_BALL
-	givemon SPECIES_SQUIRTLE, 5
+	removeobject LOCALID_LAB_CYNDAQUIL_BALL
+	givemon SPECIES_CYNDAQUIL, 5
 	call RR_Lab_EventScript_IvyMonJoins
-	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
 	call RR_Lab_EventScript_ElmLine
-	removeobject LOCALID_LAB_TOTODILE_BALL
-	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	removeobject LOCALID_CHARMANDER_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
 	call RR_Lab_EventScript_JennyLine
+	removeobject LOCALID_SQUIRTLE_BALL
+	goto RR_Lab_EventScript_AfterPicks
+
+@ Cyndaquil: Ivy Totodile, Elm Squirtle, Jenny Bulbasaur (Oak: Chikorita, Charmander)
+RR_Lab_EventScript_ChainCyndaquil::
+	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	call RR_Lab_EventScript_IvyLine
+	removeobject LOCALID_LAB_TOTODILE_BALL
+	givemon SPECIES_TOTODILE, 5
+	call RR_Lab_EventScript_IvyMonJoins
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	call RR_Lab_EventScript_ElmLine
+	removeobject LOCALID_SQUIRTLE_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	call RR_Lab_EventScript_JennyLine
+	removeobject LOCALID_BULBASAUR_BALL
+	goto RR_Lab_EventScript_AfterPicks
+
+@ Totodile: Ivy Chikorita, Elm Bulbasaur, Jenny Charmander (Oak: Cyndaquil, Squirtle)
+RR_Lab_EventScript_ChainTotodile::
+	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_LAB_CHIKORITA_BALL
+	givemon SPECIES_CHIKORITA, 5
+	call RR_Lab_EventScript_IvyMonJoins
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	call RR_Lab_EventScript_ElmLine
+	removeobject LOCALID_BULBASAUR_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	call RR_Lab_EventScript_JennyLine
+	removeobject LOCALID_CHARMANDER_BALL
 	goto RR_Lab_EventScript_AfterPicks
 
 RR_Lab_EventScript_IvyLine::
@@ -1139,24 +1233,43 @@ RR_Lab_EventScript_AfterPicks::
 	closemessage
 	@ A loss continues the scene (Elm gloats) instead of whiting out
 	setflag FLAG_RR_NO_WHITEOUT
-	@ Elm and Jenny use their Johto picks from the starter chain
-	goto_if_eq VAR_STARTER_MON, 0, RR_Lab_EventScript_BattleCyndaquilTotodile
-	goto_if_eq VAR_STARTER_MON, 1, RR_Lab_EventScript_BattleChikoritaCyndaquil
-	goto RR_Lab_EventScript_BattleTotodileChikorita
+	@ Elm and Jenny use their picks from the starter chain
+	switch VAR_RR_STARTER
+	case 0, RR_Lab_EventScript_BattleAfterBulbasaur
+	case 1, RR_Lab_EventScript_BattleAfterCharmander
+	case 2, RR_Lab_EventScript_BattleAfterSquirtle
+	case 3, RR_Lab_EventScript_BattleAfterChikorita
+	case 4, RR_Lab_EventScript_BattleAfterCyndaquil
+	case 5, RR_Lab_EventScript_BattleAfterTotodile
 
 @ Player picked Bulbasaur: Elm Cyndaquil, Jenny Totodile
-RR_Lab_EventScript_BattleCyndaquilTotodile::
+RR_Lab_EventScript_BattleAfterBulbasaur::
 	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_CYNDAQUIL, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_TOTODILE, RR_Lab_Text_Jenny_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
+@ Player picked Charmander: Elm Totodile, Jenny Chikorita
+RR_Lab_EventScript_BattleAfterCharmander::
+	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_TOTODILE, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CHIKORITA, RR_Lab_Text_Jenny_Defeat
+	goto RR_Lab_EventScript_BattleResult
+
 @ Player picked Squirtle: Elm Chikorita, Jenny Cyndaquil
-RR_Lab_EventScript_BattleChikoritaCyndaquil::
+RR_Lab_EventScript_BattleAfterSquirtle::
 	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_CHIKORITA, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CYNDAQUIL, RR_Lab_Text_Jenny_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
-@ Player picked Charmander: Elm Totodile, Jenny Chikorita
-RR_Lab_EventScript_BattleTotodileChikorita::
-	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_TOTODILE, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CHIKORITA, RR_Lab_Text_Jenny_Defeat
+@ Player picked Chikorita: Elm Charmander, Jenny Squirtle
+RR_Lab_EventScript_BattleAfterChikorita::
+	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_CHARMANDER, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_SQUIRTLE, RR_Lab_Text_Jenny_Defeat
+	goto RR_Lab_EventScript_BattleResult
+
+@ Player picked Cyndaquil: Elm Squirtle, Jenny Bulbasaur
+RR_Lab_EventScript_BattleAfterCyndaquil::
+	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_SQUIRTLE, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_BULBASAUR, RR_Lab_Text_Jenny_Defeat
+	goto RR_Lab_EventScript_BattleResult
+
+@ Player picked Totodile: Elm Bulbasaur, Jenny Charmander
+RR_Lab_EventScript_BattleAfterTotodile::
+	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_BULBASAUR, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CHARMANDER, RR_Lab_Text_Jenny_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
 RR_Lab_EventScript_BattleResult::

@@ -5,7 +5,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 ## v0.1 — Pallet Town complete
 - [x] National Dex unlocked from the start (v0.0.9)
 - [x] Grant QoL: reusable TMs, Running Shoes from the start, all key items, Master Balls (placeholder dialogue) (v0.0.10)
-- [ ] Six-starter picker: scrollable menu with pictures; Johto balls on a duplicate table under the Kanto one. Chain: Ivy = counter from your region, Elm = counter from the other region, Jenny = counter to Elm from his region; Oak gets the 2 leftovers
+- [x] Six-starter picker (v0.0.10; Johto row stacked under the Kanto table): scrollable menu with pictures; Johto balls on a duplicate table under the Kanto one. Chain: Ivy = counter from your region, Elm = counter from the other region, Jenny = counter to Elm from his region; Oak gets the 2 leftovers
 - [ ] Battle sprites (64x64) scaled from the full-body ref art: Elm, casual Jenny, Ivy, player M/F (portraits stay for dialogue/calls)
 - [ ] Temporary overworld sprites for player, Ivy, Jenny from existing sheets
 - [x] Fix lab battle freeze (no tutorial battle mode; player has 2 Pokemon) (v0.0.8)

@@ -6,6 +6,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 
 | Var | Purpose | Values |
 |---|---|---|
+| `VAR_RR_STARTER` (0x40FD) | Lab pick: 0 Bulbasaur, 1 Charmander, 2 Squirtle, 3 Chikorita, 4 Cyndaquil, 5 Totodile. `VAR_STARTER_MON` is also set by type (grass 0, water 1, fire 2) so FireRed rival scripts still work | 0-5 |
 | `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1 |
 
 ## Repurposed vanilla scene vars
@@ -28,5 +29,5 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 
 | Trainer | Use |
 |---|---|
-| `TRAINER_RR_ELM_LAB_{CHIKORITA,CYNDAQUIL,TOTODILE}` | Lab 2v2, Elm's Johto pick |
-| `TRAINER_RR_JENNY_LAB_{CHIKORITA,CYNDAQUIL,TOTODILE}` | Lab 2v2, Jenny's Johto pick |
+| `TRAINER_RR_ELM_LAB_<STARTER>` (all six) | Lab 2v2, Elm's pick from the chain |
+| `TRAINER_RR_JENNY_LAB_<STARTER>` (all six) | Lab 2v2, Jenny's pick from the chain |

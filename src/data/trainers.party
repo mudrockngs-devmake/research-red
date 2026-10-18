@@ -14385,7 +14385,46 @@ Beldum
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-/* Research Red: Elm and Jenny (lab 2v2, one entry per Johto pick) */
+/* Research Red: Elm and Jenny (lab 2v2, one entry per possible starter) */
+
+=== TRAINER_RR_ELM_LAB_BULBASAUR ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bulbasaur
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_ELM_LAB_CHARMANDER ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Charmander
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_ELM_LAB_SQUIRTLE ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Squirtle
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RR_ELM_LAB_CHIKORITA ===
 Name: Elm
@@ -14423,6 +14462,45 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Totodile
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_JENNY_LAB_BULBASAUR ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bulbasaur
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_JENNY_LAB_CHARMANDER ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Charmander
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_JENNY_LAB_SQUIRTLE ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Squirtle
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 

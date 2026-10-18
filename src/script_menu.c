@@ -62,6 +62,9 @@ static void MultichoiceDynamicEventDebug_OnSelectionChanged(struct DynamicListMe
 static void MultichoiceDynamicEventShowItem_OnDestroy(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventShowItem_OnInit(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventShowItem_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs);
+static void MultichoiceDynamicEventRRStarter_OnInit(struct DynamicListMenuEventArgs *eventArgs);
+static void MultichoiceDynamicEventRRStarter_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs);
+static void MultichoiceDynamicEventRRStarter_OnDestroy(struct DynamicListMenuEventArgs *eventArgs);
 static void Task_HandleMultichoiceGridInput(u8 taskId);
 static void Task_HandleMultichoiceInput(u8 taskId);
 static void Task_HandleMultichoiceInput(u8 taskId);
@@ -111,6 +114,12 @@ static const struct DynamicListMenuEventCollection sDynamicListMenuEventCollecti
         .OnInit = MultichoiceDynamicEventShowItem_OnInit,
         .OnSelectionChanged = MultichoiceDynamicEventShowItem_OnSelectionChanged,
         .OnDestroy = MultichoiceDynamicEventShowItem_OnDestroy
+    },
+    [DYN_MULTICHOICE_CB_RR_STARTER] =
+    {
+        .OnInit = MultichoiceDynamicEventRRStarter_OnInit,
+        .OnSelectionChanged = MultichoiceDynamicEventRRStarter_OnSelectionChanged,
+        .OnDestroy = MultichoiceDynamicEventRRStarter_OnDestroy
     }
 };
 
@@ -932,6 +941,64 @@ static void MultichoiceDynamicEventShowItem_OnDestroy(struct DynamicListMenuEven
 #undef sAuxWindowId
 #undef sItemSpriteId
 #undef TAG_CB_ITEM_ICON
+
+// ---------------------------------------------------------------
+// Research Red: lab starter picker. The list order matches
+// VAR_RR_STARTER (Kanto grass/fire/water, then Johto grass/fire/water);
+// a picture box next to the list shows the highlighted Pokemon.
+// ---------------------------------------------------------------
+static const u16 sRRStarterSpecies[] =
+{
+    SPECIES_BULBASAUR, SPECIES_CHARMANDER, SPECIES_SQUIRTLE,
+    SPECIES_CHIKORITA, SPECIES_CYNDAQUIL, SPECIES_TOTODILE,
+};
+
+#define sAuxWindowId sDynamicMenuEventScratchPad[0]
+#define sMonSpriteId sDynamicMenuEventScratchPad[1]
+#define sPicLeft     sDynamicMenuEventScratchPad[2]
+#define sPicTop      sDynamicMenuEventScratchPad[3]
+
+static void MultichoiceDynamicEventRRStarter_OnInit(struct DynamicListMenuEventArgs *eventArgs)
+{
+    struct WindowTemplate *template = &gWindows[eventArgs->windowId].window;
+    u32 baseBlock = template->baseBlock + template->width * template->height;
+    struct WindowTemplate auxTemplate;
+
+    sPicLeft = template->tilemapLeft + template->width + 2;
+    sPicTop = template->tilemapTop;
+    auxTemplate = CreateWindowTemplate(0, sPicLeft, sPicTop, 8, 8, 15, baseBlock);
+    sAuxWindowId = AddWindow(&auxTemplate);
+    SetStandardWindowBorderStyle(sAuxWindowId, FALSE);
+    FillWindowPixelBuffer(sAuxWindowId, PIXEL_FILL(1));
+    CopyWindowToVram(sAuxWindowId, COPYWIN_FULL);
+    sMonSpriteId = MAX_SPRITES;
+    // The menu does not send a selection change for the first row, so draw it now
+    MultichoiceDynamicEventRRStarter_OnSelectionChanged(eventArgs);
+}
+
+static void MultichoiceDynamicEventRRStarter_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs)
+{
+    u16 species = sRRStarterSpecies[eventArgs->selectedItem % ARRAY_COUNT(sRRStarterSpecies)];
+
+    if (sMonSpriteId != MAX_SPRITES)
+        FreeResourcesAndDestroySprite(&gSprites[sMonSpriteId], sMonSpriteId);
+    sMonSpriteId = CreateMonSprite_PicBox(species, sPicLeft * 8 + 32, sPicTop * 8 + 32, FALSE);
+    gSprites[sMonSpriteId].callback = SpriteCallbackDummy;
+    gSprites[sMonSpriteId].oam.priority = 0;
+}
+
+static void MultichoiceDynamicEventRRStarter_OnDestroy(struct DynamicListMenuEventArgs *eventArgs)
+{
+    if (sMonSpriteId != MAX_SPRITES)
+        FreeResourcesAndDestroySprite(&gSprites[sMonSpriteId], sMonSpriteId);
+    ClearStdWindowAndFrame(sAuxWindowId, TRUE);
+    RemoveWindow(sAuxWindowId);
+}
+
+#undef sAuxWindowId
+#undef sMonSpriteId
+#undef sPicLeft
+#undef sPicTop
 
 static void FreeListMenuItems(struct ListMenuItem *items, u32 count)
 {

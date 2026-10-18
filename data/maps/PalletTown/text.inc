@@ -239,17 +239,31 @@ RR_Lab_Text_Ivy_Reliable::
 RR_Lab_Text_Elm_Bunsen::
     .string "Elm: That was one Bunsen burner!$"
 
-RR_Lab_Text_StudyBulbasaur::
-    .string "Oak: Bulbasaur, the Grass type.\n"
+RR_Lab_Text_ChooseStarter::
+    .string "Oak: Kanto on top, Johto below.\n"
+    .string "Which one will you study?$"
+
+RR_Lab_Text_StudyConfirm::
+    .string "Oak: {STR_VAR_1}!\n"
     .string "Will you study this one?$"
 
-RR_Lab_Text_StudySquirtle::
-    .string "Oak: Squirtle, the Water type.\n"
-    .string "Will you study this one?$"
+RR_Lab_Text_Name_Bulbasaur::
+    .string "Bulbasaur$"
 
-RR_Lab_Text_StudyCharmander::
-    .string "Oak: Charmander, the Fire type.\n"
-    .string "Will you study this one?$"
+RR_Lab_Text_Name_Charmander::
+    .string "Charmander$"
+
+RR_Lab_Text_Name_Squirtle::
+    .string "Squirtle$"
+
+RR_Lab_Text_Name_Chikorita::
+    .string "Chikorita$"
+
+RR_Lab_Text_Name_Cyndaquil::
+    .string "Cyndaquil$"
+
+RR_Lab_Text_Name_Totodile::
+    .string "Totodile$"
 
 RR_Lab_Text_ReceivedStarter::
     .string "{PLAYER} received the {STR_VAR_1}\n"
@@ -266,7 +280,7 @@ RR_Lab_Text_P_MarriedToIt::
     .string "to that fact for years.$"
 
 RR_Lab_Text_Elm_Picks::
-    .string "Elm: And Johto answers with\n"
+    .string "Elm: Then I'll answer with\n"
     .string "{STR_VAR_1}! History repeats!$"
 
 RR_Lab_Text_Jenny_Picks::
