@@ -12,7 +12,7 @@ ROM="$REPO/pokefirered.gba"
 
 [ -f "$ROM" ] || { echo "No $ROM; run make firered -j6 first" >&2; exit 1; }
 
-VERSION="$(grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' "$REPO/src/oak_speech.c" | head -1)"
+VERSION="$(grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' "$REPO/src/rr_intro_call.c" | head -1)"
 SHA="$(git -C "$REPO" rev-parse --short HEAD)"
 git -C "$REPO" diff --quiet HEAD -- . ':!*.gba' || SHA="$SHA-dirty"
 NAME="ResearchRed_${VERSION}_${SHA}"
