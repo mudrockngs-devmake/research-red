@@ -20,6 +20,7 @@ FireRed hack on pokefirered-expansion. Repo: mudrockngs-devmake/research-red. Ow
 - Ivy is an NPC follower (FNPC). Cutscenes: `rr_ivy_to_scene LOCALID_X_IVY` at the start, `rr_ivy_follow LOCALID_X_IVY` at the end (scene Ivy objects need a hide flag). Helpers: `asm/macros/event.inc` (Research Red section), `src/research_red.c`, `data/scripts/rr_ivy.inc`.
 - Story progress var `VAR_0x40FE`: 0 none, 1 breakfast, 2 grass hook, 3 lab, 4 Daisy, 5 Route 1.
 - Intro video call: `src/oak_speech.c`. Debug skips: `data/scripts/debug.inc`. Art: `graphics/research_red/`.
+- Cast art: `tools/research_red/build_cast_art.py` builds `graphics/research_red/cast/`; hand-drawn files in `cast_handmade/` win (docs/ARTIST_GUIDE.md). Sync a copy to `E:\Workspace\romhacks\research-red\art\generated\cast\` for the owner to view.
 - Plans: `docs/CHECKLIST.md`. Story: `docs/STORY_BIBLE.md`. Assets: `docs/ASSETS.md`. Sources/credits rules: `docs/RESOURCES.md`. Chat-to-code workflow: `docs/CHAT_TO_CODE.md`.
 
 ## Known bugs (v0.0.7)

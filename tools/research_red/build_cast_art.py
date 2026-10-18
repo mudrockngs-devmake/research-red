@@ -13,6 +13,7 @@ Default REF_DIR: /mnt/e/Workspace/romhacks/research-red/art/ref/ResearchRed_ref_
 The reference art itself stays outside the repo.
 """
 import os
+import shutil
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -21,8 +22,19 @@ import rrpng  # noqa: E402
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 REF_DIR = "/mnt/e/Workspace/romhacks/research-red/art/ref/ResearchRed_ref_art"
 OUT_DIR = os.path.join(REPO, "graphics/research_red/cast")
+# Hand-drawn art always wins: cast_handmade/<name>/<kind>.png is copied over
+# the generated file of the same kind (see docs/ARTIST_GUIDE.md).
+HANDMADE_DIR = os.path.join(REPO, "graphics/research_red/cast_handmade")
 GREEN = (0, 255, 0)
 ALPHA_CUT = 200
+
+# Battle sprite tuning: figure height, head box (fractions of figure height),
+# how much bigger the head is drawn, and how dark detail must be to survive.
+BATTLE_HEIGHT = 58
+HEAD_FRAC_H = 0.16
+HEAD_FRAC_W = 0.20
+HEAD_BOOST = 1.35
+KEEP_DARK = 0.30
 
 # Poses where an arm sits above or beside the head fool the automatic head
 # finder; give (head centre x, top of head y) in reference-image pixels.
@@ -78,8 +90,10 @@ def figure_box(w, h, rows):
     return x0, y0, x1, y1, head_x, head_top
 
 
-def downscale(rows, w, h, cx0, cy0, cw, ch, ow, oh):
-    """Area-average the crop (cx0, cy0, cw x ch) to ow x oh; None = transparent."""
+def downscale(rows, w, h, cx0, cy0, cw, ch, ow, oh, keep_dark=None):
+    """Area-average the crop (cx0, cy0, cw x ch) to ow x oh; None = transparent.
+    keep_dark: if set (0-1), a block whose dark pixels (eyes, line art) cover at
+    least that fraction becomes the dark color instead of the blurred average."""
     sx, sy = cw / ow, ch / oh
     out = [[None] * ow for _ in range(oh)]
     for oy in range(oh):
@@ -89,6 +103,7 @@ def downscale(rows, w, h, cx0, cy0, cw, ch, ow, oh):
             b0 = cx0 + int(ox * sx)
             b1 = cx0 + max(int(ox * sx) + 1, int((ox + 1) * sx))
             tot = n = r = g = b = 0
+            dn = dr = dg = db = 0
             for yy in range(max(a0, 0), min(a1, h)):
                 row = rows[yy]
                 for xx in range(max(b0, 0), min(b1, w)):
@@ -99,8 +114,16 @@ def downscale(rows, w, h, cx0, cy0, cw, ch, ow, oh):
                         r += p[0]
                         g += p[1]
                         b += p[2]
+                        if keep_dark is not None and p[0] * 3 + p[1] * 6 + p[2] < 900:
+                            dn += 1
+                            dr += p[0]
+                            dg += p[1]
+                            db += p[2]
             if tot and n * 2 >= tot:
-                out[oy][ox] = (r // n, g // n, b // n)
+                if dn and dn >= n * keep_dark:
+                    out[oy][ox] = (dr // dn, dg // dn, db // dn)
+                else:
+                    out[oy][ox] = (r // n, g // n, b // n)
     return out
 
 
@@ -173,11 +196,31 @@ def build(ref_path, out_dir, name=""):
     os.makedirs(out_dir, exist_ok=True)
     res = {}
 
-    # battle: whole figure, 60 px tall, bottom-aligned in 64x64
-    bh = 60
-    bw = min(64, max(1, round((x1 - x0) * bh / fh)))
-    img = outline(downscale(rows, w, h, x0, y0, x1 - x0, fh, bw, bh), True)
-    res["battle"] = save_indexed(os.path.join(out_dir, "battle.png"), img, 64, 64, (64 - bw) // 2, 64 - bh - 1)
+    # battle: whole figure, bottom-aligned in 64x64. At this size a true-scale
+    # head is ~9 px and the eyes vanish, so (like official GBA trainer art) the
+    # head is redrawn HEAD_BOOST times larger with dark details kept.
+    bh = BATTLE_HEIGHT
+    k = bh / fh
+    bw = min(64, max(1, round((x1 - x0) * k)))
+    canvas = [[None] * 64 for _ in range(64)]
+    body = downscale(rows, w, h, x0, y0, x1 - x0, fh, bw, bh)
+    bx0, by0 = (64 - bw) // 2, 64 - bh - 1
+    for y in range(bh):
+        for x in range(bw):
+            canvas[by0 + y][bx0 + x] = body[y][x]
+    hh_src, hw_src = int(fh * HEAD_FRAC_H), int(fh * HEAD_FRAC_W)
+    hw, hh = round(hw_src * k * HEAD_BOOST), round(hh_src * k * HEAD_BOOST)
+    head = downscale(rows, w, h, head_x - hw_src // 2, head_top, hw_src, hh_src, hw, hh, keep_dark=KEEP_DARK)
+    chin_y = by0 + round((head_top + hh_src - y0) * k)
+    centre_x = bx0 + round((head_x - x0) * k)
+    hx0, hy0 = centre_x - hw // 2, max(0, chin_y - hh)
+    for y in range(hh):
+        for x in range(hw):
+            c = head[y][x]
+            if c is not None and 0 <= hy0 + y < 64 and 0 <= hx0 + x < 64:
+                canvas[hy0 + y][hx0 + x] = c
+    img = outline(canvas, True)
+    res["battle"] = save_indexed(os.path.join(out_dir, "battle.png"), img, 64, 64, 0, 0)
 
     # portrait: square crop from just above the head down ~40% of the figure
     side = int(fh * 0.40)
@@ -203,7 +246,15 @@ def main():
         if not os.path.exists(path):
             print("missing", path)
             continue
-        sheet.append((name, build(path, os.path.join(OUT_DIR, name), name)))
+        res = build(path, os.path.join(OUT_DIR, name), name)
+        for kind in ("battle", "portrait", "call"):
+            hand = os.path.join(HANDMADE_DIR, name, kind + ".png")
+            if os.path.exists(hand):
+                shutil.copyfile(hand, os.path.join(OUT_DIR, name, kind + ".png"))
+                hw, hh, hrows = rrpng.read_png(hand)
+                res[kind] = [[p[:3] for p in r] for r in hrows]
+                print("  hand-made", name, kind)
+        sheet.append((name, res))
         print("built", name)
 
     # contact sheet: one column per character (battle, portrait, call), 2x scale, 8 per row
