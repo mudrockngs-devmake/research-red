@@ -2,6 +2,9 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players/testers.
 
+## v0.0.9
+- The National Pokedex is unlocked from the start of a new game.
+
 ## v0.0.8
 - Lab battle is now a double battle: you and Ivy vs Elm and Jenny with their Johto starters. Fixes the lab freeze.
 - Elm and Jenny have their own battle pictures (from their portraits) and Jenny is an Officer.

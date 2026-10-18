@@ -146,6 +146,7 @@ void NewGameInitData(void)
     InitHeracrossSizeRecord();
     InitMagikarpSizeRecord();
     EnableNationalPokedex_RSE();
+    EnableNationalPokedex(); // Research Red: National Dex from the start (Johto starters, regional forms)
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
     ResetPokemonStorageSystem();
