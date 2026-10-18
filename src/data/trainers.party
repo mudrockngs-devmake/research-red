@@ -14384,3 +14384,83 @@ AI: Basic Trainer
 Beldum
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+/* Research Red: Elm and Jenny (lab 2v2, one entry per Johto pick) */
+
+=== TRAINER_RR_ELM_LAB_CHIKORITA ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Chikorita
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_ELM_LAB_CYNDAQUIL ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Cyndaquil
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_ELM_LAB_TOTODILE ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Totodile
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_JENNY_LAB_CHIKORITA ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Chikorita
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_JENNY_LAB_CYNDAQUIL ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Cyndaquil
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RR_JENNY_LAB_TOTODILE ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Totodile
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe

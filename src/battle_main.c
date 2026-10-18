@@ -378,7 +378,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_TAMER]               = { _("TAMER"), 10 },
     [TRAINER_CLASS_BIRD_KEEPER]         = { _("BIRD KEEPER"), 6 },
     [TRAINER_CLASS_BLACK_BELT]          = { _("BLACK BELT"), 6, BALL_ULTRA },
-    [TRAINER_CLASS_RIVAL_EARLY]         = { _("RIVAL"), 4 },
+    [TRAINER_CLASS_RIVAL_EARLY]         = { _("Rival"), 4 }, // Research Red: proper case (Elm)
     [TRAINER_CLASS_SCIENTIST]           = { _("SCIENTIST"), 12 },
     [TRAINER_CLASS_BOSS]                = { _("BOSS"), 25 },
     [TRAINER_CLASS_LEADER]              = { _("LEADER"), 25 },
@@ -413,6 +413,8 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_FACTORY_HEAD]        = { _("FACTORY HEAD") },
     [TRAINER_CLASS_PIKE_QUEEN]          = { _("PIKE QUEEN") },
     [TRAINER_CLASS_PYRAMID_KING]        = { _("PYRAMID KING") },
+    // Research Red
+    [TRAINER_CLASS_RR_OFFICER]          = { _("Officer"), 4 },
 };
 
 static void (*const sTurnActionsFuncsTable[])(void) =

@@ -3,9 +3,9 @@
 Tick items as they ship. Each milestone ends with an owner playtest.
 
 ## v0.1 — Pallet Town complete
-- [ ] Fix lab battle freeze (no tutorial battle mode; player has 2 Pokemon)
-- [ ] Lab 2v2: player + Ivy (partner, `multi_2_vs_2`) vs Elm + Jenny with their Johto picks from the starter chain
-- [ ] Elm and Jenny trainer entries in `trainers.party`; Elm's battle pic from `graphics/research_red/portrait_elm.png` (no Gary)
+- [x] Fix lab battle freeze (no tutorial battle mode; player has 2 Pokemon) (v0.0.8)
+- [x] Lab 2v2: player + Ivy vs Elm + Jenny with their Johto picks from the starter chain (v0.0.8; owner chose: player commands both, Ivy's mon stays in the party, so it is a normal two-trainer double)
+- [x] Elm and Jenny trainer entries in `trainers.party`; Elm's battle pic from `graphics/research_red/portrait_elm.png` (no Gary) (v0.0.8; Jenny's pic from her portrait too)
 - [ ] Optional Oak double battle (his 2 remaining Kanto starters); loss branch: haiku "A student falls down... / Old man forgot to hold back... / The grant still goes through." then Elm offers his own funding
 - [ ] Full research grant: larger Bag pockets; every Poke Ball x100; all TMs and HMs; held and battle items; medicine
 - [ ] HMs usable as battle moves and forgettable; field moves work with no HM or badge

@@ -1130,28 +1130,42 @@ RR_Lab_EventScript_AfterPicks::
 	msgbox RR_Lab_Text_Ivy_SideBet, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Jenny_Absolutely, MSGBOX_DEFAULT
 	closemessage
-	@ --- first battle: Elm (team is FireRed's placeholder for now) ---
+	@ --- first battle: you + Ivy (both in your party) vs Elm + Jenny, a double ---
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	msgbox RR_Lab_Text_Elm_TestNow, MSGBOX_DEFAULT
 	closemessage
-	goto_if_eq VAR_STARTER_MON, 0, RR_Lab_EventScript_BattleCharmander
-	goto_if_eq VAR_STARTER_MON, 1, RR_Lab_EventScript_BattleBulbasaur
-	goto RR_Lab_EventScript_BattleSquirtle
+	@ A loss continues the scene (Elm gloats) instead of whiting out
+	setflag FLAG_RR_NO_WHITEOUT
+	@ Elm and Jenny use their Johto picks from the starter chain
+	goto_if_eq VAR_STARTER_MON, 0, RR_Lab_EventScript_BattleCyndaquilTotodile
+	goto_if_eq VAR_STARTER_MON, 1, RR_Lab_EventScript_BattleChikoritaCyndaquil
+	goto RR_Lab_EventScript_BattleTotodileChikorita
 
-RR_Lab_EventScript_BattleCharmander::
-	trainerbattle_earlyrival TRAINER_RIVAL_OAKS_LAB_CHARMANDER, RIVAL_BATTLE_TUTORIAL, RR_Lab_Text_Elm_Defeat, RR_Lab_Text_Elm_Victory
-	goto RR_Lab_EventScript_AfterBattle
+@ Player picked Bulbasaur: Elm Cyndaquil, Jenny Totodile
+RR_Lab_EventScript_BattleCyndaquilTotodile::
+	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_CYNDAQUIL, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_TOTODILE, RR_Lab_Text_Jenny_Defeat
+	goto RR_Lab_EventScript_BattleResult
 
-RR_Lab_EventScript_BattleBulbasaur::
-	trainerbattle_earlyrival TRAINER_RIVAL_OAKS_LAB_BULBASAUR, RIVAL_BATTLE_TUTORIAL, RR_Lab_Text_Elm_Defeat, RR_Lab_Text_Elm_Victory
-	goto RR_Lab_EventScript_AfterBattle
+@ Player picked Squirtle: Elm Chikorita, Jenny Cyndaquil
+RR_Lab_EventScript_BattleChikoritaCyndaquil::
+	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_CHIKORITA, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CYNDAQUIL, RR_Lab_Text_Jenny_Defeat
+	goto RR_Lab_EventScript_BattleResult
 
-RR_Lab_EventScript_BattleSquirtle::
-	trainerbattle_earlyrival TRAINER_RIVAL_OAKS_LAB_SQUIRTLE, RIVAL_BATTLE_TUTORIAL, RR_Lab_Text_Elm_Defeat, RR_Lab_Text_Elm_Victory
-	goto RR_Lab_EventScript_AfterBattle
+@ Player picked Charmander: Elm Totodile, Jenny Chikorita
+RR_Lab_EventScript_BattleTotodileChikorita::
+	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_TOTODILE, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CHIKORITA, RR_Lab_Text_Jenny_Defeat
+	goto RR_Lab_EventScript_BattleResult
+
+RR_Lab_EventScript_BattleResult::
+	clearflag FLAG_RR_NO_WHITEOUT
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_AfterBattle
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_Victory, MSGBOX_DEFAULT
+	closemessage
 
 RR_Lab_EventScript_AfterBattle::
 	special HealPlayerParty

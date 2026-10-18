@@ -355,6 +355,10 @@ RR_Lab_Text_Elm_Defeat::
     .string "Elm: That was the warm-up!\n"
     .string "…It was not the warm-up.$"
 
+RR_Lab_Text_Jenny_Defeat::
+    .string "Jenny: Noted.\n"
+    .string "For the report.$"
+
 RR_Lab_Text_Elm_Victory::
     .string "Elm: Ha! History!\n"
     .string "Write that down, Jenny!$"

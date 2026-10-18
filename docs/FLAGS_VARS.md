@@ -19,4 +19,13 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 
 ## Custom flags
 
-_None registered yet._
+| Flag | Purpose |
+|---|---|
+| `FLAG_RR_NO_WHITEOUT` (0x020, was `FLAG_0x020`) | `B_FLAG_NO_WHITEOUT`: set around story battles so a loss continues the script. Cleared after each battle |
+
+## Custom trainers
+
+| Trainer | Use |
+|---|---|
+| `TRAINER_RR_ELM_LAB_{CHIKORITA,CYNDAQUIL,TOTODILE}` | Lab 2v2, Elm's Johto pick |
+| `TRAINER_RR_JENNY_LAB_{CHIKORITA,CYNDAQUIL,TOTODILE}` | Lab 2v2, Jenny's Johto pick |

@@ -480,6 +480,12 @@ static const u16 gTrainerPalette_PikeQueenLucy[] = INCBIN_U16("graphics/trainers
 static const u32 gTrainerFrontPic_PyramidKingBrandon[] = INCBIN_U32("graphics/trainers/front_pics/pyramid_king_brandon.4bpp.smol");
 static const u16 gTrainerPalette_PyramidKingBrandon[] = INCBIN_U16("graphics/trainers/front_pics/pyramid_king_brandon.gbapal");
 
+// Research Red: placeholder battle pics made from graphics/research_red/portrait_*.png
+static const u32 gTrainerFrontPic_RR_Elm[] = INCBIN_U32("graphics/trainers/front_pics/rr_elm_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_RR_Elm[] = INCBIN_U16("graphics/trainers/front_pics/rr_elm_front_pic.gbapal");
+static const u32 gTrainerFrontPic_RR_Jenny[] = INCBIN_U32("graphics/trainers/front_pics/rr_jenny_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_RR_Jenny[] = INCBIN_U16("graphics/trainers/front_pics/rr_jenny_front_pic.gbapal");
+
 
 static const union AnimCmd sAnimCmd_Kanto[] = {
     ANIMCMD_FRAME(1, 20),
@@ -1217,5 +1223,14 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PYRAMID_KING_BRANDON] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PyramidKingBrandon, gTrainerPalette_PyramidKingBrandon, TRAINER_PIC_SIZE),
+    },
+    // Research Red
+    [TRAINER_PIC_RR_ELM] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_Elm, gTrainerPalette_RR_Elm, TRAINER_PIC_SIZE),
+    },
+    [TRAINER_PIC_RR_JENNY] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_Jenny, gTrainerPalette_RR_Jenny, TRAINER_PIC_SIZE),
     },
 };

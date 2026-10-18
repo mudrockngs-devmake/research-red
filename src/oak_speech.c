@@ -121,7 +121,7 @@ static const u8 sText_NewName[] = _("New name");
 // ---------------------------------------------------------------
 static const u8 sText_Call_Hello[] = _(
     "Research Red\n"
-    "v0.0.7 test build\p"
+    "v0.0.8 test build\p"
     "Oak: Hello? Hello!\n"
     "Is this thing on?\p"
     "Ah, there you are! Welcome to\n"

@@ -671,6 +671,13 @@ enum TrainerID
     TRAINER_NOLAND,
     TRAINER_LUCY,
     TRAINER_BRANDON,
+    // Research Red: lab 2v2 (one entry per Johto pick from the starter chain)
+    TRAINER_RR_ELM_LAB_CHIKORITA,
+    TRAINER_RR_ELM_LAB_CYNDAQUIL,
+    TRAINER_RR_ELM_LAB_TOTODILE,
+    TRAINER_RR_JENNY_LAB_CHIKORITA,
+    TRAINER_RR_JENNY_LAB_CYNDAQUIL,
+    TRAINER_RR_JENNY_LAB_TOTODILE,
     TRAINERS_COUNT,
 
     // Special Trainer Ids.
