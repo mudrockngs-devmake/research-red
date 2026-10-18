@@ -378,6 +378,8 @@ RR_Lab_EventScript_BattleResult::
 	clearflag FLAG_RR_NO_WHITEOUT
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_AfterBattle
+	@ Lost: Elm and Jenny earned the right to face Oak (VAR_TEMP_5 = 1)
+	setvar VAR_TEMP_5, 1
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Victory, MSGBOX_DEFAULT
 	closemessage
@@ -394,6 +396,7 @@ RR_Lab_EventScript_AfterBattle::
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Properly, MSGBOX_DEFAULT
+	goto_if_eq VAR_TEMP_5, 1, RR_Lab_EventScript_OakVsElm
 	@ --- optional double battle vs Oak (his two leftover starters) ---
 	switch VAR_RR_STARTER
 	case 0, RR_Lab_EventScript_OakPair0
@@ -486,9 +489,12 @@ RR_Lab_EventScript_OakResult::
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_OakBeaten
 	@ Loss: Oak's haiku, then Elm offers his own funding
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Oak_Haiku, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_CantFund, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Funding, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_SweetThought, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_Haiku, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_Grant
 
 RR_Lab_EventScript_OakBeaten::
@@ -500,7 +506,11 @@ RR_Lab_EventScript_OakDeclined::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_AfterPaperwork, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Oak_Wise, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_MissedHaiku, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_StillFunding, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_HaveItCovered, MSGBOX_DEFAULT
 RR_Lab_EventScript_Grant::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	@ --- research grant ---
@@ -1027,9 +1037,9 @@ RR_Lab_Text_Oak_Haiku::
     .string "The grant still goes through.$"
 
 RR_Lab_Text_Elm_Funding::
-    .string "Elm: And if it didn't, I'd fund\n"
-    .string "you myself! Out of my own grant!\p"
-    .string "…Which is the same grant.$"
+    .string "Elm: Then I'll fund it! Out of\n"
+    .string "my own pocket! …Jenny, how much\l"
+    .string "is in my pocket?$"
 
 RR_Lab_Text_P_AfterPaperwork::
     .string "{PLAYER}: After the paperwork,\n"
@@ -1093,6 +1103,112 @@ RR_Lab_Text_IvyMonJoins::
     .string "Ivy's {STR_VAR_1} joined the team!\n"
     .string "You and Ivy battle together.$"
 
+@ ---------------------------------------------------------------
+@ Elm and Jenny won, so they face Oak; the player watches (AI vs AI).
+@ Placeholder dialogue until the owner's scene spec.
+@ ---------------------------------------------------------------
+RR_Lab_EventScript_OakVsElm::
+	msgbox RR_Lab_Text_Oak_ElmJennyYouWon, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_HoldMyNotebook, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Jenny_Accept, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Ivy_Popcorn, MSGBOX_DEFAULT
+	closemessage
+	switch VAR_RR_STARTER
+	case 0, RR_Lab_EventScript_ElmTeam0
+	case 1, RR_Lab_EventScript_ElmTeam1
+	case 2, RR_Lab_EventScript_ElmTeam2
+	case 3, RR_Lab_EventScript_ElmTeam3
+	case 4, RR_Lab_EventScript_ElmTeam4
+	case 5, RR_Lab_EventScript_ElmTeam5
+
+RR_Lab_EventScript_OakVsElmBattle::
+	callnative RR_ScriptBorrowRivalTeam
+	setflag FLAG_RR_AI_VS_AI
+	setflag FLAG_RR_NO_WHITEOUT
+	switch VAR_RR_STARTER
+	case 0, RR_Lab_EventScript_OakBattleWatch0
+	case 1, RR_Lab_EventScript_OakBattleWatch1
+	case 2, RR_Lab_EventScript_OakBattleWatch2
+	case 3, RR_Lab_EventScript_OakBattleWatch3
+	case 4, RR_Lab_EventScript_OakBattleWatch4
+	case 5, RR_Lab_EventScript_OakBattleWatch5
+
+RR_Lab_EventScript_ElmTeam0::
+	setvar VAR_0x8004, SPECIES_CYNDAQUIL
+	setvar VAR_0x8005, SPECIES_TOTODILE
+	goto RR_Lab_EventScript_OakVsElmBattle
+
+RR_Lab_EventScript_OakBattleWatch0::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_SQUIRTLE_CHIKORITA, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakVsElmResult
+
+RR_Lab_EventScript_ElmTeam1::
+	setvar VAR_0x8004, SPECIES_TOTODILE
+	setvar VAR_0x8005, SPECIES_CHIKORITA
+	goto RR_Lab_EventScript_OakVsElmBattle
+
+RR_Lab_EventScript_OakBattleWatch1::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_BULBASAUR_CYNDAQUIL, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakVsElmResult
+
+RR_Lab_EventScript_ElmTeam2::
+	setvar VAR_0x8004, SPECIES_CHIKORITA
+	setvar VAR_0x8005, SPECIES_CYNDAQUIL
+	goto RR_Lab_EventScript_OakVsElmBattle
+
+RR_Lab_EventScript_OakBattleWatch2::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHARMANDER_TOTODILE, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakVsElmResult
+
+RR_Lab_EventScript_ElmTeam3::
+	setvar VAR_0x8004, SPECIES_CHARMANDER
+	setvar VAR_0x8005, SPECIES_SQUIRTLE
+	goto RR_Lab_EventScript_OakVsElmBattle
+
+RR_Lab_EventScript_OakBattleWatch3::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_TOTODILE_BULBASAUR, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakVsElmResult
+
+RR_Lab_EventScript_ElmTeam4::
+	setvar VAR_0x8004, SPECIES_SQUIRTLE
+	setvar VAR_0x8005, SPECIES_BULBASAUR
+	goto RR_Lab_EventScript_OakVsElmBattle
+
+RR_Lab_EventScript_OakBattleWatch4::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHIKORITA_CHARMANDER, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakVsElmResult
+
+RR_Lab_EventScript_ElmTeam5::
+	setvar VAR_0x8004, SPECIES_BULBASAUR
+	setvar VAR_0x8005, SPECIES_CHARMANDER
+	goto RR_Lab_EventScript_OakVsElmBattle
+
+RR_Lab_EventScript_OakBattleWatch5::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakVsElmResult
+
+RR_Lab_EventScript_OakVsElmResult::
+	specialvar VAR_RESULT, GetBattleOutcome
+	clearflag FLAG_RR_AI_VS_AI
+	clearflag FLAG_RR_NO_WHITEOUT
+	callnative RR_ScriptReturnPlayerTeam
+	special HealPlayerParty
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_OakLostToElm
+	msgbox RR_Lab_Text_Oak_BeatElm, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_Rematch, MSGBOX_DEFAULT
+	goto RR_Lab_EventScript_Grant
+
+RR_Lab_EventScript_OakLostToElm::
+	msgbox RR_Lab_Text_Oak_ElmWon, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_Science, MSGBOX_DEFAULT
+	goto RR_Lab_EventScript_Grant
+
 @ The lab's Slowpoke (the one from the intro call, still on the line)
 RR_Lab_EventScript_Slowpoke::
 	lock
@@ -1108,3 +1224,58 @@ RR_Lab_Text_Slowpoke::
     .string "Slowpoke: …Slooow?\p"
     .string "It's still holding the phone from\n"
     .string "this morning's call.$"
+
+@ --- Oak scene variants (placeholder dialogue) ---
+RR_Lab_Text_Oak_ElmJennyYouWon::
+    .string "Oak: Elm. Jenny. You won, so you\n"
+    .string "face me. Two on two.$"
+
+RR_Lab_Text_Elm_HoldMyNotebook::
+    .string "Elm: Us? Against you?\n"
+    .string "Jenny, hold my notebook.$"
+
+RR_Lab_Text_Jenny_Accept::
+    .string "Jenny: Professionally speaking,\n"
+    .string "I accept.$"
+
+RR_Lab_Text_Ivy_Popcorn::
+    .string "Ivy: Sweetie, we get front row\n"
+    .string "seats. Somebody find popcorn.$"
+
+RR_Lab_Text_Oak_BeatElm::
+    .string "Oak: Ho ho! Not bad. Not bad at\n"
+    .string "all. Still mine, though.$"
+
+RR_Lab_Text_Elm_Rematch::
+    .string "Elm: That was the warm-up!\n"
+    .string "…It was not the warm-up.$"
+
+RR_Lab_Text_Oak_ElmWon::
+    .string "Oak: Well! Beaten in my own lab.\n"
+    .string "Gary will never let me hear it.$"
+
+RR_Lab_Text_Elm_Science::
+    .string "Elm: For science! And for\n"
+    .string "bragging rights! Mostly that.$"
+
+RR_Lab_Text_Oak_CantFund::
+    .string "Oak: Well. I suppose we can't\n"
+    .string "really fund it now. Not after a\l"
+    .string "showing like that.$"
+
+RR_Lab_Text_Oak_SweetThought::
+    .string "Oak: Ho ho! A sweet thought, Elm.\n"
+    .string "But it was funded all along.$"
+
+RR_Lab_Text_Oak_MissedHaiku::
+    .string "Oak: A battle declined…\n"
+    .string "The chance drifts off like a leaf…\p"
+    .string "We carry on still.$"
+
+RR_Lab_Text_Elm_StillFunding::
+    .string "Elm: But… we still get funding\n"
+    .string "for all this, right? Right?$"
+
+RR_Lab_Text_Oak_HaveItCovered::
+    .string "Oak: Don't worry, Elm.\n"
+    .string "I have it covered.$"

@@ -47,7 +47,7 @@
 #define FLAG_RR_EXP_SHARE        0x021 // Research Red: I_EXP_SHARE_FLAG (Exp. Share key item on/off)
 #define FLAG_RR_FORCE_DOUBLES    0x022 // Research Red: every trainer battle is a double (2v1 if they have one Pokemon); on by default
 #define FLAG_RR_FORCE_DOUBLE_WILD 0x023 // Research Red: B_FLAG_FORCE_DOUBLE_WILD (wild doubles); off by default
-#define FLAG_0x024               0x024
+#define FLAG_RR_AI_VS_AI         0x024 // Research Red: B_FLAG_AI_VS_AI_BATTLE (the AI plays the player's side; lab Oak vs Elm/Jenny)
 #define FLAG_0x025               0x025
 #define FLAG_0x026               0x026
 #define FLAG_0x027               0x027
