@@ -117,19 +117,15 @@ RR_Route1_EventScript_Walk::
 	releaseall
 	end
 
+@ Only 3 tiles: the scene triggers at y=4, and panning past the top of
+@ Route 1 into the Viridian connection left the camera offset.
 RR_Route1_Movement_CameraUp:
-	walk_up
-	walk_up
-	walk_up
 	walk_up
 	walk_up
 	walk_up
 	step_end
 
 RR_Route1_Movement_CameraDown:
-	walk_down
-	walk_down
-	walk_down
 	walk_down
 	walk_down
 	walk_down

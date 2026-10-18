@@ -17,7 +17,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] HMs usable as battle moves and forgettable; field moves work with no HM or badge (v0.0.10)
 - [ ] Cell Phone key item: registered numbers (Elm, Jenny, Oak, Delia); calling Elm opens the Research Rules menu (see v0.2)
 - [ ] Ivy as NPC follower from the end of breakfast (`include/config/follower_npc.h`); remove duplicate scene Ivys (including the lab)
-- [ ] Route 1 first walk: group walks together (scripted segment or cutscenes), pink streak near Viridian, fix camera bug
+- [ ] Route 1 first walk: group walks together (scripted segment or cutscenes), pink streak near Viridian (camera bug fixed v0.0.10)
 - [ ] Route 1 catch reactions: Elm/Jenny comment per species, duplicate fallback, rising jealousy; Elm runs to Route 22
 - [ ] Mimey uses the Mr. Mime overworld sprite (verify), Johto balls behind the Kanto table (verify)
 
