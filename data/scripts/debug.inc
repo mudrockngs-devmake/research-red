@@ -150,6 +150,8 @@ Debug_EventScript_Text_DefensiveIVs:
 @ Script 3: Skip to Route 1        (Daisy done, at Pallet's north exit)
 @ Script 4: Skip to Route 22       (Route 1 done, test team, near Elm)
 @ Script 5: Give test team         (Spearow, Rattata, Mankey, Nidoran M)
+@ Script 6: Skip to Viridian lunch (Route 22 done, just west of the trigger)
+@ Script 7: Preview Pokédex banter (Tentacool, Slowpoke, Quilava)
 @ Remove or empty these before a public release.
 @ ===================================================================
 Debug_EventScript_Script_1::
@@ -252,6 +254,10 @@ RR_Debug_GiveTeam::
 	givemon SPECIES_RATTATA, 6, ITEM_NONE
 	givemon SPECIES_MANKEY, 6, ITEM_NONE
 	givemon SPECIES_NIDORAN_M, 6, ITEM_NONE
+	@ everyone (starters too) to Lv 12, about where you'd be by Route 22
+	setvar VAR_0x8004, 12
+	callnative RR_ScriptDebugSetPartyLevel
+	special HealPlayerParty
 	return
 
 RR_Debug_Text_TeamGiven:
@@ -259,10 +265,25 @@ RR_Debug_Text_TeamGiven:
 	.string "Mankey and Nidoran♂.$"
 
 Debug_EventScript_Script_6::
+	call RR_Debug_StateGrassDone
+	call RR_Debug_StateLabDone
+	call RR_Debug_StateDaisyDone
+	call RR_Debug_GiveTeam
+	setvar VAR_MAP_SCENE_ROUTE22, 2
+	setvar VAR_0x40FE, 6
+	rr_ivy_create_follower
+	warp MAP_VIRIDIAN_CITY, 16, 17
+	waitstate
 	release
 	end
 
 Debug_EventScript_Script_7::
+	setvar VAR_0x8004, SPECIES_TENTACOOL
+	callnative RR_ScriptDebugQueueDexBanter
+	setvar VAR_0x8004, SPECIES_SLOWPOKE
+	callnative RR_ScriptDebugQueueDexBanter
+	setvar VAR_0x8004, SPECIES_QUILAVA
+	callnative RR_ScriptDebugQueueDexBanter
 	release
 	end
 

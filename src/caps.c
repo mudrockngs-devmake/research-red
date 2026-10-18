@@ -22,6 +22,10 @@ u32 GetCurrentLevelCap(void)
 
     u32 i;
 
+    // Research Red: the Research Rules menu can turn caps off
+    if (FlagGet(FLAG_RR_LEVEL_CAPS_OFF))
+        return MAX_LEVEL;
+
     if (B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST)
     {
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
@@ -64,7 +68,7 @@ u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
             return expValue;
         }
     }
-    else if (B_EXP_CAP_TYPE == EXP_CAP_HARD)
+    else if (B_EXP_CAP_TYPE == EXP_CAP_HARD || FlagGet(FLAG_RR_HARD_LEVEL_CAPS)) // Research Red: hard caps from the Research Rules
     {
         return 0;
     }

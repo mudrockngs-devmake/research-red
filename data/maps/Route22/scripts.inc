@@ -21,57 +21,10 @@ Route22_EventScript_EarlyRivalTriggerBottom::
 	goto Route22_EventScript_EarlyRival
 	end
 
-@ Research Red: Elm and Jenny's first road battle. Elm uses the rival object;
-@ Jenny walks in beside him. Team is FireRed's placeholder until the trainer
-@ data update. Winning (or losing) wakes Viridian's old man.
+@ Research Red: Elm and Jenny's road battle lives in
+@ data/scripts/research_red/rr_route22.inc
 Route22_EventScript_EarlyRival::
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	playbgm MUS_ENCOUNTER_RIVAL, 0
-	addobject LOCALID_ROUTE22_RIVAL
-	addobject LOCALID_ROUTE22_JENNY
-	applymovement LOCALID_ROUTE22_JENNY, Route22_Movement_RivalApproach
-	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_EarlyRivalApproach
-	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_EarlyRivalApproach
-	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_EarlyRivalApproachBottom
-	waitmovement LOCALID_ROUTE22_JENNY
-	delay 6
-	msgbox RR_Route22_Text_Elm_FoundYou, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route22_Text_P_Sights, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route22_Text_Jenny_Desserts, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route22_Text_Elm_Rematch, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route22_Text_Ivy_Ready, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route22_Text_P_Always, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	call_if_eq VAR_STARTER_MON, 2, Route22_EventScript_EarlyRivalSquirtle
-	call_if_eq VAR_STARTER_MON, 1, Route22_EventScript_EarlyRivalBulbasaur
-	call_if_eq VAR_STARTER_MON, 0, Route22_EventScript_EarlyRivalCharmander
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route22_Text_Elm_Forever, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route22_Text_Jenny_GoodGame, MSGBOX_DEFAULT
-	msgbox RR_Route22_Text_Ivy_NextTown, MSGBOX_DEFAULT
-	msgbox RR_Route22_Text_Jenny_NextTown, MSGBOX_DEFAULT
-	closemessage
-	delay 10
-	playbgm MUS_RIVAL_EXIT, 0
-	applymovement LOCALID_ROUTE22_JENNY, Route22_Movement_EarlyRivalExit
-	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_EarlyRivalExit
-	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_EarlyRivalExit
-	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_EarlyRivalExitBottom
-	waitmovement LOCALID_ROUTE22_JENNY
-	fadedefaultbgm
-	removeobject LOCALID_ROUTE22_RIVAL
-	removeobject LOCALID_ROUTE22_JENNY
-	setvar VAR_MAP_SCENE_ROUTE22, 2
-	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route22_Text_OldManAwake, MSGBOX_DEFAULT
-	releaseall
+	goto RR_Route22_EventScript_ElmJenny
 	end
 
 Route22_EventScript_EarlyRivalApproach::

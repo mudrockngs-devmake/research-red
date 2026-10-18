@@ -1,0 +1,195 @@
+// Research Red: Elm's Research Rules (animatic 07, the lunch in Viridian).
+//
+// A small settings window: Up/Down picks a rule, Left/Right/A changes it,
+// B (or "Done") closes. First shown at lunch, then from Start > Rules.
+//   Level caps     on / off            FLAG_RR_LEVEL_CAPS_OFF (src/caps.c)
+//   Cap style      soft / hard         FLAG_RR_HARD_LEVEL_CAPS
+//   Trainers       doubles / singles   FLAG_RR_FORCE_DOUBLES
+//   Wild Pokémon   singles / doubles   FLAG_RR_FORCE_DOUBLE_WILD
+//   Battle style   shift / set         the Options setting
+#include "global.h"
+#include "event_data.h"
+#include "main.h"
+#include "rr_portrait.h"
+#include "menu.h"
+#include "rr_rules.h"
+#include "script.h"
+#include "sound.h"
+#include "string_util.h"
+#include "task.h"
+#include "text.h"
+#include "window.h"
+#include "constants/songs.h"
+
+enum
+{
+    RULE_LEVEL_CAPS,
+    RULE_CAP_STYLE,
+    RULE_TRAINERS,
+    RULE_WILD,
+    RULE_BATTLE_STYLE,
+    RULE_DONE,
+    NUM_RULES,
+};
+
+static const u8 *const sRuleNames[NUM_RULES] =
+{
+    [RULE_LEVEL_CAPS] = COMPOUND_STRING("Level caps"),
+    [RULE_CAP_STYLE] = COMPOUND_STRING("Cap style"),
+    [RULE_TRAINERS] = COMPOUND_STRING("Trainer battles"),
+    [RULE_WILD] = COMPOUND_STRING("Wild battles"),
+    [RULE_BATTLE_STYLE] = COMPOUND_STRING("Battle style"),
+    [RULE_DONE] = COMPOUND_STRING("Done"),
+};
+
+static const u8 *const sRuleHelp[NUM_RULES] =
+{
+    [RULE_LEVEL_CAPS] = COMPOUND_STRING("A level cap before each Gym."),
+    [RULE_CAP_STYLE] = COMPOUND_STRING("Soft: little EXP over the cap.\nHard: none."),
+    [RULE_TRAINERS] = COMPOUND_STRING("Trainer battles as doubles\n(you and Ivy) or singles."),
+    [RULE_WILD] = COMPOUND_STRING("Wild Pokémon one or two at a time."),
+    [RULE_BATTLE_STYLE] = COMPOUND_STRING("Shift: switch after a faint.\nSet: no free switch."),
+    [RULE_DONE] = COMPOUND_STRING("Change these anytime:\nStart > Rules."),
+};
+
+static const u8 sText_Title[] = _("Elm's Research Rules");
+static const u8 sText_On[] = _("On");
+static const u8 sText_Off[] = _("Off");
+static const u8 sText_Soft[] = _("Soft");
+static const u8 sText_Hard[] = _("Hard");
+static const u8 sText_Doubles[] = _("Doubles");
+static const u8 sText_Singles[] = _("Singles");
+static const u8 sText_Shift[] = _("Shift");
+static const u8 sText_Set[] = _("Set");
+static const u8 sText_Arrows[] = _("{LEFT_ARROW} {STR_VAR_1} {RIGHT_ARROW}");
+
+static const struct WindowTemplate sRulesWindow =
+{
+    .bg = 0,
+    .tilemapLeft = 2,
+    .tilemapTop = 1,
+    .width = 26,
+    .height = 18,
+    .paletteNum = 15,
+    .baseBlock = 0x008,
+};
+
+static const u8 sColors_Normal[3] = {TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY};
+static const u8 sColors_Title[3] = {TEXT_COLOR_WHITE, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_BLUE};
+static const u8 sColors_Value[3] = {TEXT_COLOR_WHITE, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_RED};
+
+#define tWindowId data[0]
+#define tCursor   data[1]
+
+static const u8 *GetRuleValue(u32 rule)
+{
+    switch (rule)
+    {
+    case RULE_LEVEL_CAPS:
+        return FlagGet(FLAG_RR_LEVEL_CAPS_OFF) ? sText_Off : sText_On;
+    case RULE_CAP_STYLE:
+        return FlagGet(FLAG_RR_HARD_LEVEL_CAPS) ? sText_Hard : sText_Soft;
+    case RULE_TRAINERS:
+        return FlagGet(FLAG_RR_FORCE_DOUBLES) ? sText_Doubles : sText_Singles;
+    case RULE_WILD:
+        return FlagGet(FLAG_RR_FORCE_DOUBLE_WILD) ? sText_Doubles : sText_Singles;
+    case RULE_BATTLE_STYLE:
+        return gSaveBlock2Ptr->optionsBattleStyle == OPTIONS_BATTLE_STYLE_SET ? sText_Set : sText_Shift;
+    }
+    return NULL;
+}
+
+static void ToggleFlag(u32 flag)
+{
+    if (FlagGet(flag))
+        FlagClear(flag);
+    else
+        FlagSet(flag);
+}
+
+static void ChangeRule(u32 rule)
+{
+    switch (rule)
+    {
+    case RULE_LEVEL_CAPS:
+        ToggleFlag(FLAG_RR_LEVEL_CAPS_OFF);
+        break;
+    case RULE_CAP_STYLE:
+        ToggleFlag(FLAG_RR_HARD_LEVEL_CAPS);
+        break;
+    case RULE_TRAINERS:
+        ToggleFlag(FLAG_RR_FORCE_DOUBLES);
+        break;
+    case RULE_WILD:
+        ToggleFlag(FLAG_RR_FORCE_DOUBLE_WILD);
+        break;
+    case RULE_BATTLE_STYLE:
+        gSaveBlock2Ptr->optionsBattleStyle ^= 1;
+        break;
+    }
+}
+
+static void PrintRules(u32 windowId, u32 cursor)
+{
+    u32 i, y, width;
+
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
+    AddTextPrinterParameterized3(windowId, FONT_NORMAL, 4, 1, sColors_Title, TEXT_SKIP_DRAW, sText_Title);
+    for (i = 0; i < NUM_RULES; i++)
+    {
+        y = 20 + i * 15;
+        if (i == cursor)
+            FillWindowPixelRect(windowId, PIXEL_FILL(3), 2, y - 1, 204, 15);
+        AddTextPrinterParameterized3(windowId, FONT_NORMAL, 10, y, sColors_Normal, TEXT_SKIP_DRAW, sRuleNames[i]);
+        if (i != RULE_DONE)
+        {
+            StringCopy(gStringVar1, GetRuleValue(i));
+            StringExpandPlaceholders(gStringVar4, sText_Arrows);
+            width = GetStringWidth(FONT_NORMAL, gStringVar4, 0);
+            AddTextPrinterParameterized3(windowId, FONT_NORMAL, 202 - width, y, i == cursor ? sColors_Value : sColors_Normal, TEXT_SKIP_DRAW, gStringVar4);
+        }
+    }
+    AddTextPrinterParameterized3(windowId, FONT_NORMAL, 4, 112, sColors_Normal, TEXT_SKIP_DRAW, sRuleHelp[cursor]);
+    CopyWindowToVram(windowId, COPYWIN_GFX);
+}
+
+static void Task_Rules(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    if (JOY_NEW(B_BUTTON) || (JOY_NEW(A_BUTTON) && tCursor == RULE_DONE))
+    {
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrameToTransparent(tWindowId, TRUE);
+        RemoveWindow(tWindowId);
+        ScriptContext_Enable();
+        DestroyTask(taskId);
+        return;
+    }
+    if (JOY_NEW(DPAD_UP))
+        tCursor = (tCursor + NUM_RULES - 1) % NUM_RULES;
+    else if (JOY_NEW(DPAD_DOWN))
+        tCursor = (tCursor + 1) % NUM_RULES;
+    else if (JOY_NEW(A_BUTTON | DPAD_LEFT | DPAD_RIGHT) && tCursor != RULE_DONE)
+        ChangeRule(tCursor);
+    else
+        return;
+    PlaySE(SE_SELECT);
+    PrintRules(tWindowId, tCursor);
+}
+
+// callnative from a script (followed by waitstate)
+void RR_ScriptResearchRules(struct ScriptContext *ctx)
+{
+    u8 taskId = CreateTask(Task_Rules, 80);
+    s16 *data = gTasks[taskId].data;
+
+    RR_PortraitHide(); // a full-size window: no speaker portrait on top
+
+    tWindowId = AddWindow(&sRulesWindow);
+    tCursor = 0;
+    DrawStdFrameWithCustomTileAndPalette(tWindowId, FALSE, GetStandardFrameBaseTileNum(), 14);
+    PutWindowTilemap(tWindowId);
+    PrintRules(tWindowId, tCursor);
+    CopyWindowToVram(tWindowId, COPYWIN_FULL);
+}

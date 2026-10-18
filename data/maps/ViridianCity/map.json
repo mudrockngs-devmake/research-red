@@ -160,6 +160,48 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ViridianCity_EventScript_ItemPotion",
       "flag": "FLAG_HIDE_VIRIDIAN_CITY_POTION"
+    },
+    {
+      "local_id": "LOCALID_VIRIDIAN_ELM",
+      "graphics_id": "OBJ_EVENT_GFX_RR_ELM",
+      "x": 24,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "local_id": "LOCALID_VIRIDIAN_JENNY",
+      "graphics_id": "OBJ_EVENT_GFX_RR_JENNY",
+      "x": 25,
+      "y": 18,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0",
+      "flag": "FLAG_TEMP_14"
+    },
+    {
+      "local_id": "LOCALID_VIRIDIAN_OFFICER_JENNY",
+      "graphics_id": "OBJ_EVENT_GFX_RR_JENNY",
+      "x": 20,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0",
+      "flag": "FLAG_TEMP_15"
     }
   ],
   "warp_events": [
@@ -235,6 +277,42 @@
       "var": "VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN",
       "var_value": "1",
       "script": "ViridianCity_EventScript_TutorialTriggerRight"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 16,
+      "elevation": 3,
+      "var": "VAR_0x40FE",
+      "var_value": "6",
+      "script": "RR_Lunch_EventScript_Start"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 17,
+      "elevation": 3,
+      "var": "VAR_0x40FE",
+      "var_value": "6",
+      "script": "RR_Lunch_EventScript_Start"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 18,
+      "elevation": 3,
+      "var": "VAR_0x40FE",
+      "var_value": "6",
+      "script": "RR_Lunch_EventScript_Start"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 19,
+      "elevation": 3,
+      "var": "VAR_0x40FE",
+      "var_value": "6",
+      "script": "RR_Lunch_EventScript_Start"
     }
   ],
   "bg_events": [

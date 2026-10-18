@@ -5,7 +5,7 @@
 @ Research Red: first walk up Route 1 (VAR_0x40FE == 4, after Daisy's house)
 @ Elm and Jenny wait at the north end; walking up to them starts the scene.
 @ They react to what you caught on the way (src/research_red.c records
-@ Route 1 catches), something pink streaks across the sky, then they dash
+@ Route 1 catches), something streaks across the sky (Mewtwo, blurred), then they dash
 @ ahead. Sets VAR_0x40FE to 5.
 @ ===================================================================
 @ Elm and Jenny only stand here while the scene is pending
@@ -49,14 +49,18 @@ RR_Route1_EventScript_Walk::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_Singing, MSGBOX_DEFAULT
 	closemessage
-	@ --- something pink streaks across the sky ---
+	@ --- something streaks across the sky (Mewtwo, blurred) ---
 	playse SE_PIN
 	applymovement LOCALID_ROUTE1_ELM, Common_Movement_ExclamationMark
 	waitmovement 0
 	special SpawnCameraObject
 	applymovement LOCALID_CAMERA, RR_Route1_Movement_CameraUp
 	waitmovement 0
-	delay 40
+	delay 10
+	@ Mewtwo streaks across the sky, a blur (src/rr_flyby.c)
+	callnative RR_ScriptMewtwoFlyby
+	waitstate
+	delay 30
 	applymovement LOCALID_CAMERA, RR_Route1_Movement_CameraDown
 	waitmovement 0
 	special RemoveCameraObject
@@ -145,7 +149,7 @@ RR_Route1_Text_Jenny_Singing::
 
 RR_Route1_Text_Elm_SawIt::
     .string "Elm: Did you see that?!\n"
-    .string "Something pink! Flying!\p"
+    .string "Something purple! Flying!\p"
     .string "It looked right at me!$"
 
 RR_Route1_Text_P_Believe::

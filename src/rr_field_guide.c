@@ -8,6 +8,7 @@
 #include "global.h"
 #include "event_data.h"
 #include "main.h"
+#include "rr_portrait.h"
 #include "menu.h"
 #include "pokedex.h"
 #include "region_map.h"
@@ -265,6 +266,8 @@ void RR_ScriptFieldGuide(struct ScriptContext *ctx)
     u8 taskId = CreateTask(Task_FieldGuide, 80);
     s16 *data = gTasks[taskId].data;
     u32 page;
+
+    RR_PortraitHide(); // a full-size window: no speaker portrait on top
 
     tWindowId = AddWindow(&sGuideWindow);
     for (page = 0; page < NUM_PAGES && !PageExists(page); page++)

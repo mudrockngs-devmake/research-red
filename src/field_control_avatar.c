@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_dex_banter.h"
 #include "bike.h"
 #include "coord_event_weather.h"
 #include "daycare.h"
@@ -229,6 +230,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         return TRUE;
 
     if (TryRunOnFrameMapScript() == TRUE)
+        return TRUE;
+
+    if (RR_TryStartDexBanter()) // Research Red: Pokédex banter after a new species
         return TRUE;
 
     if (input->tookStep)

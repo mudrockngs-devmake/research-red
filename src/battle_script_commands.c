@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_dex_banter.h"
 #include "battle.h"
 #include "battle_hold_effects.h"
 #include "battle_message.h"
@@ -11200,6 +11201,7 @@ static void Cmd_trysetcaughtmondexflags(void)
     else
     {
         HandleSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_CAUGHT, personality);
+        RR_DexBanterQueue(species); // Research Red: new species, banter back on the map
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
@@ -14483,7 +14485,9 @@ void BS_TryTrainerSlideMsgFirstOff(void)
     NATIVE_ARGS(u8 battler);
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
     u32 shouldDoTrainerSlide = 0;
-    if ((shouldDoTrainerSlide = ShouldDoTrainerSlide(battler, TRAINER_SLIDE_PLAYER_LANDS_FIRST_DOWN)))
+    if ((shouldDoTrainerSlide = ShouldDoTrainerSlide(battler, TRAINER_SLIDE_PLAYER_LANDS_FIRST_DOWN))
+     || (shouldDoTrainerSlide = ShouldDoTrainerSlide(battler, TRAINER_SLIDE_RR_TWO_DOWN))   // Research Red
+     || (shouldDoTrainerSlide = ShouldDoTrainerSlide(battler, TRAINER_SLIDE_RR_FOUR_DOWN)))
     {
         gBattleScripting.battler = battler;
         BattleScriptPush(cmd->nextInstr);

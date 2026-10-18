@@ -66,11 +66,22 @@ def check_registry(problems):
             problems.append(f"docs/FLAGS_VARS.md: {name} is defined but not registered")
 
 
+def check_generated(problems):
+    """Data files whose game version is generated: the generated copy must be current."""
+    import subprocess
+    for tool in ("build_encounters.py", "build_dex_banter.py"):
+        r = subprocess.run([sys.executable, os.path.join(REPO, "tools/research_red", tool), "--check"],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            problems.append((r.stderr or r.stdout).strip())
+
+
 def main():
     problems = []
     for path in sorted(glob.glob(os.path.join(REPO, "data/scripts/research_red/*.inc"))):
         check_text(os.path.relpath(path, REPO), problems)
     check_registry(problems)
+    check_generated(problems)
     for p in problems:
         print(p)
     print(f"rr_check: {len(problems)} problem(s)")

@@ -1,0 +1,727 @@
+# Research Red: Pokédex banter (placeholder lines to review and rewrite).
+#
+# When you register a new species (a catch, or an evolution into something
+# new), you and Ivy chat about it once you're back on the map.
+#
+# One block per species:
+#   [Species name]
+#   Ivy: a line
+#   P: a line          (P = the player; their name is filled in)
+# Lines wrap on their own (34 characters a row); keep each to about two rows.
+#
+# Special blocks:
+#   [ELM FAMILY]    added when the species shares a family with Elm's lab
+#   [JENNY FAMILY]  ...or Jenny's lab starter. {STARTER} = that starter's name
+#   [DEFAULT]       species with no block of their own; pairs of lines, one
+#                   pair picked at random. {SPECIES} = the species' name
+#
+# After editing: python3 tools/research_red/build_dex_banter.py, then rebuild.
+
+[DEFAULT]
+Ivy: A {SPECIES}! First one for the notebook, sweetie.
+P: First page. I'll do the sketch. You do the science.
+Ivy: Look at that {SPECIES}. It's already judging your handwriting.
+P: Everyone judges my handwriting. It's part of the method.
+P: {SPECIES}, registered. That's research, right there.
+Ivy: That's a Poké Ball and a lot of luck, sweetie. But yes.
+Ivy: We should compare it with the regional records later.
+P: Later. First, a snack. Then science. Then a second snack.
+
+[ELM FAMILY]
+Ivy: Same family as Elm's {STARTER}. Don't tell him.
+P: Too late. He'll know. He always knows. He'll call.
+
+[JENNY FAMILY]
+P: That's a cousin of Jenny's {STARTER}.
+Ivy: Everything's a cousin with that family, sweetie.
+
+# --- Kanto ---------------------------------------------------------------
+[Bulbasaur]
+Ivy: The seed on its back has been there since the day it hatched.
+P: So it's a Pokémon and a gardening project.
+Ivy: Two hobbies for the price of one, sweetie.
+
+[Ivysaur]
+P: Ivysaur. It has your name in it.
+Ivy: It also has a flower that weighs as much as you. Stretch first.
+
+[Venusaur]
+Ivy: Its flower gives off a scent that calms everyone nearby.
+P: We should keep one at the lab. For Elm.
+
+[Charmander]
+P: The flame on its tail shows how it's feeling.
+Ivy: Like your ears when you're embarrassed. They're doing it now.
+
+[Charmeleon]
+Ivy: Charmeleon gets fiery when it's riled up. Very fiery.
+P: Teenager phase. We'll get through it together.
+
+[Charizard]
+P: Charizard won't pick fights with weaker Pokémon.
+Ivy: Noble. Unlike you at board game night.
+
+[Squirtle]
+Ivy: Its shell is rounded so water slides right off when it swims.
+P: Aerodynamic. Hydrodynamic. Very dynamic.
+
+[Wartortle]
+P: Wartortle's fluffy tail is a sign of a long life.
+Ivy: Then we'd better brush it. Every day, sweetie.
+
+[Blastoise]
+Ivy: The cannons on its shell can hit a can from over a hundred feet.
+P: I can't hit a can from three feet.
+
+[Caterpie]
+P: Caterpie's red antennae give off a smell that scares off birds.
+Ivy: You give off a smell when you skip laundry. Same idea.
+
+[Metapod]
+Ivy: Metapod's shell is hard, but the inside is soft and gooey.
+P: Relatable.
+
+[Butterfree]
+P: Butterfree's wings are covered in powder that repels water.
+Ivy: It's going to be a beautiful flier. Look at it go!
+
+[Weedle]
+Ivy: Mind the stinger on its head. It's poisonous.
+P: Minding. Minding very hard.
+
+[Kakuna]
+P: Kakuna barely moves while it gets ready to evolve.
+Ivy: You on Sunday mornings.
+
+[Beedrill]
+Ivy: Beedrill are very territorial. Don't go near their nests.
+P: Noted. Writing that in bold. Underlined. Twice.
+
+[Pidgey]
+P: Everyone's first Pidgey. A classic.
+Ivy: Pidgey kick up sand to hide. You do that with paperwork.
+
+[Pidgeotto]
+Ivy: Pidgeotto patrols a huge territory. It's always watching.
+P: Like Jenny at a picnic.
+
+[Pidgeot]
+P: Pidgeot can fly faster than the speed of sound.
+Ivy: And yet you still can't get us to the ferry on time.
+
+[Rattata]
+Ivy: Rattata will make its nest anywhere. Even attics.
+P: Daisy's Muffin definitely made a nest in Elm's shoes.
+Ivy: In Alola the Rattata are black, with chubby cheeks. They only come out at night.
+
+[Raticate]
+P: Raticate's whiskers help it keep its balance.
+Ivy: Alolan Raticate are gourmets. They only eat the finest food.
+P: So we're both Alolan Raticate.
+
+[Spearow]
+Ivy: Spearow flap their short wings very fast to fly.
+P: Spearow peck first and ask questions never.
+
+[Fearow]
+P: Fearow can fly all day without landing.
+Ivy: Its beak is long enough to snatch prey from water. Or fries.
+
+[Ekans]
+Ivy: Ekans can unhinge its jaw to swallow eggs whole.
+P: That's how I eat breakfast, apparently.
+
+[Arbok]
+P: The pattern on Arbok's belly is different by region.
+Ivy: A regional difference you can see! I love that, sweetie.
+
+[Pikachu]
+Ivy: Pikachu store electricity in their cheeks.
+P: Ash's mom says Ash's Pikachu refuses to ride in a Poké Ball.
+Ivy: Smart Pikachu.
+
+[Raichu]
+P: Raichu can knock out an elephant with one shock.
+Ivy: In Alola, Raichu surf on their own tails. Psychic power!
+P: I'd like to see that. From a safe distance.
+
+[Sandshrew]
+Ivy: Sandshrew curls into a ball when it's scared.
+P: Same.
+Ivy: The Alolan ones live on snowy mountains. They have ice for skin.
+
+[Sandslash]
+P: Sandslash's spines grow back when they break off.
+Ivy: The Alolan ones have icicles for spines. Very cold to the touch.
+
+[Nidoran F]
+Ivy: Small but the poison in its horn is powerful.
+P: Just like you.
+Ivy: Sweetie.
+
+[Nidorina]
+P: Nidorina's spines fold down when it's with friends.
+Ivy: It trusts us! Look, they're all flat.
+
+[Nidoqueen]
+Ivy: Nidoqueen is fiercest when it's protecting its young.
+P: Remember when the ferry staff tried to take your snacks?
+
+[Nidoran M]
+P: Nidoran's big ears can hear the faintest sounds.
+Ivy: So it heard you call it "a small purple problem."
+
+[Nidorino]
+Ivy: Nidorino from the anime fought a Gengar on TV!
+P: I watched that episode six times. Don't tell Elm.
+
+[Nidoking]
+P: One swing of Nidoking's tail can snap a telephone pole.
+Ivy: So it stays outside.
+
+[Clefairy]
+Ivy: Clefairy dance under the full moon on Mt. Moon.
+P: We'll stay up and watch. I'll bring cocoa.
+
+[Clefable]
+P: Clefable can hear a pin drop half a mile away.
+Ivy: So whispering won't help you, sweetie.
+
+[Vulpix]
+Ivy: Burnett showed me an Alolan Vulpix once. White, and cold to the touch.
+P: Same species, different home. That's the moment you married me.
+
+[Ninetales]
+P: Legend says Ninetales lives for a thousand years.
+Ivy: Alolan Ninetales are called deities of the snowy mountains.
+
+[Jigglypuff]
+Ivy: When Jigglypuff sings, everyone falls asleep.
+P: Then it draws on their faces. With a marker.
+
+[Wigglytuff]
+P: Wigglytuff's fur is so soft people buy pillows of it.
+Ivy: Don't you dare.
+
+[Zubat]
+Ivy: Zubat has no eyes. It sees with sound.
+P: And it found us anyway.
+
+[Golbat]
+P: Golbat can drink a lot in one go.
+Ivy: That's how you drink coffee. All of it. At once.
+
+[Oddish]
+Ivy: Oddish plants itself in the ground and walks around at night.
+P: A plant that goes for night walks. I love it.
+
+[Gloom]
+P: Gloom's smell is... strong.
+Ivy: One in a thousand people love it. Breathe through your mouth, sweetie.
+
+[Vileplume]
+Ivy: Vileplume's petals are the biggest of any flower Pokémon.
+P: Its pollen is the reason I'm sneezing.
+
+[Paras]
+P: The mushrooms on Paras's back are called tochukaso.
+Ivy: The mushroom is the one in charge. Don't tell Paras.
+
+[Parasect]
+Ivy: Parasect is basically all mushroom now.
+P: The Paras is just along for the ride.
+
+[Venonat]
+P: Venonat's big eyes are actually radar.
+Ivy: It saw your snack from across the forest.
+
+[Venomoth]
+Ivy: The powder on Venomoth's wings changes color with its mood.
+P: Mine changes color in the sun. I'm a Venomoth.
+
+[Diglett]
+P: Nobody knows what's under Diglett.
+Ivy: The Alolan ones have three golden hairs. That's a fact.
+P: That's a mystery wrapped in a fact.
+
+[Dugtrio]
+Ivy: Dugtrio can dig through sixty miles of earth.
+P: Alolan Dugtrio have golden hair. Very luxurious hair.
+
+[Meowth]
+P: Meowth loves shiny things. Coins especially.
+Ivy: Galarian Meowth are tough little miners. Alolan ones are very proud.
+
+[Persian]
+Ivy: This is the Persian Elm keeps sneezing about!
+P: Daisy's Muffin is a Rattata, Elm.
+Ivy: Alolan Persian have round faces. They're a symbol of luxury there.
+
+[Psyduck]
+P: Psyduck always has a headache.
+Ivy: When it gets bad, it unleashes psychic power. Like you before coffee.
+
+[Golduck]
+Ivy: Golduck swims faster than any Olympic swimmer.
+P: Its forehead glows when it uses its power.
+
+[Mankey]
+P: Mankey get angry when they're hungry.
+Ivy: So do you, sweetie.
+P: I resent that. Accurately.
+
+[Primeape]
+Ivy: Primeape stays angry even when nobody's chasing it.
+P: It's angry at the concept of chasing.
+
+[Growlithe]
+P: Growlithe is famous for its loyalty.
+Ivy: The Hisuian ones guarded castles long ago, with rocky manes.
+
+[Arcanine]
+Ivy: Old stories call Arcanine the legendary Pokémon.
+P: Hisuian Arcanine had stone in their fur. Very old-timey.
+
+[Poliwag]
+P: The spiral on Poliwag's belly is its insides showing through.
+Ivy: Stop staring at it, sweetie. You'll get dizzy.
+
+[Poliwhirl]
+Ivy: Poliwhirl sweats a slippery oil.
+P: It would be a great wrestler. Nobody could hold it.
+
+[Poliwrath]
+P: Poliwrath can swim across an ocean.
+Ivy: Without the seasickness. Unlike you.
+
+[Abra]
+Ivy: Abra sleeps eighteen hours a day.
+P: My hero.
+Ivy: It teleports away if it's startled, so be quiet.
+
+[Kadabra]
+P: Kadabra's spoon gets stronger the more psychic it is.
+Ivy: Do not let it near the cutlery drawer.
+
+[Alakazam]
+Ivy: Alakazam's brain never stops growing.
+P: My brain stopped at "Alakazam."
+
+[Machop]
+P: Machop trains all day, every day.
+Ivy: Maybe it could teach you to lift your suitcase.
+
+[Machoke]
+Ivy: Machoke wears a belt to hold back its strength.
+P: I wear a belt for normal reasons.
+
+[Machamp]
+P: Machamp can throw five hundred punches a second.
+Ivy: Four arms, sweetie. Imagine the hugs.
+
+[Bellsprout]
+Ivy: Bellsprout's body is so thin it can bend any way.
+P: Like me at yoga.
+Ivy: You've never been to yoga.
+
+[Weepinbell]
+P: Weepinbell sprays acid to catch prey.
+Ivy: Keep it away from the picnic blanket.
+
+[Victreebel]
+Ivy: Victreebel lures prey with a sweet scent.
+P: That's how Delia gets me home for dinner.
+
+[Tentacool]
+P: Is this Gerald?!
+Ivy: It's not Gerald, sweetie. Gerald is at sea.
+P: Gerald's cousin, then. Hello, Gerald's cousin.
+
+[Tentacruel]
+Ivy: Tentacruel has eighty tentacles. They grow back.
+P: Gerald's dad?
+
+[Geodude]
+P: Geodude lives in mountain trails. Mind your step.
+Ivy: The Alolan ones are magnetic. Their hair is full of iron sand.
+
+[Graveler]
+Ivy: Graveler rolls down mountains to get around.
+P: That's how I got down the stairs this morning.
+Ivy: Alolan Graveler eat dravite. Sparkly rocks.
+
+[Golem]
+P: Golem shed their skin once a year.
+Ivy: Alolan Golem fire rocks from their backs. Electric rocks!
+
+[Ponyta]
+Ivy: Ponyta's flames don't burn people it trusts.
+P: It trusts us! Feel that. Warm. Not burning.
+Ivy: Galarian Ponyta are unicorns with pastel manes. Very magical.
+
+[Rapidash]
+P: Rapidash can gallop at a hundred and fifty miles an hour.
+Ivy: The Galarian ones are psychic and fairy. Sweetie, they're so pretty.
+
+[Slowpoke]
+Ivy: Slowpoke takes five seconds to notice pain.
+P: It's the one from the call! Well, a cousin.
+Ivy: The Galarian ones have yellow heads from eating spices.
+
+[Slowbro]
+P: The Shellder on Slowbro's tail never lets go.
+Ivy: Galarian Slowbro fire Shellder from their arms like a cannon.
+
+[Magnemite]
+Ivy: Magnemite floats using magnetism.
+P: Keep it away from the Pokédex.
+
+[Magneton]
+P: Three Magnemite stuck together.
+Ivy: A very committed friendship.
+
+[Farfetch'd]
+Ivy: Farfetch'd always carries its leek.
+P: The Galarian ones carry an even bigger leek.
+Ivy: Leek fashion is regional too, sweetie.
+
+[Doduo]
+P: Doduo's two heads never sleep at the same time.
+Ivy: Someone's always on watch. Like us on the ferry.
+
+[Dodrio]
+Ivy: A Dodrio was in the first episode of the anime!
+P: Three heads, three opinions. Like a lab meeting.
+
+[Seel]
+P: Seel loves the cold. It swims under ice.
+Ivy: Its nose horn breaks the ice so it can breathe.
+
+[Dewgong]
+Ivy: Sailors used to mistake Dewgong for mermaids.
+P: Sailors were very tired, I think.
+
+[Grimer]
+P: Grimer is made of sludge.
+Ivy: The Alolan ones are colorful. The crystals are its toxins, sweetie.
+
+[Muk]
+Ivy: Plants won't grow where Muk has been.
+P: Alolan Muk eats trash and keeps the islands clean. A hero.
+
+[Shellder]
+P: Shellder sticks its tongue out to tease people.
+Ivy: You do that too.
+
+[Cloyster]
+Ivy: Cloyster's shell is harder than diamond.
+P: I'm keeping one as a bodyguard.
+
+[Gastly]
+P: Gastly is ninety-five percent gas.
+Ivy: The other five percent is mischief.
+
+[Haunter]
+Ivy: Haunter likes to lick people from the shadows.
+P: I felt something cold earlier! I thought it was the breeze!
+
+[Gengar]
+P: The Gengar from the anime's first episode! The TV battle!
+Ivy: Gengar hides in your shadow to steal your warmth.
+P: That's why I'm always cold.
+
+[Onix]
+Ivy: Onix tunnels through the ground at fifty miles an hour.
+P: Brock's partner. We'll see it in Pewter.
+
+[Drowzee]
+P: Drowzee eats dreams.
+Ivy: It would starve on yours, sweetie. You dream about sandwiches.
+
+[Hypno]
+Ivy: Never look straight at Hypno's pendulum.
+P: What pendulum? I like your necklace, Hypno.
+
+[Krabby]
+P: The Krabby incident! Orange Islands! Remember?
+Ivy: Jenny wrote a four-page report.
+
+[Kingler]
+Ivy: Kingler's big claw is very powerful but hard to aim.
+P: My aim is also bad. We're kindred spirits.
+
+[Voltorb]
+P: Voltorb looks just like a Poké Ball.
+Ivy: Hisuian Voltorb look like the old wooden ones. Living history.
+
+[Electrode]
+Ivy: Electrode can explode at the slightest touch.
+P: Gently. Gently put it down.
+
+[Exeggcute]
+P: Exeggcute are six seeds that talk to each other telepathically.
+Ivy: A group chat. With no phones.
+
+[Exeggutor]
+Ivy: In Alola, Exeggutor grow incredibly tall. Like palm trees!
+P: Alolan Exeggutor. I need a photo.
+
+[Cubone]
+P: Cubone wears a skull helmet.
+Ivy: Alolan Marowak dance with flaming bones. We'll go one day.
+
+[Marowak]
+Ivy: Marowak throws its bone like a boomerang.
+P: The Alolan ones are Ghost-type. Their bones are on fire.
+
+[Hitmonlee]
+P: Hitmonlee's legs stretch to kick from far away.
+Ivy: Very useful for reaching the top shelf.
+
+[Hitmonchan]
+Ivy: Hitmonchan punches faster than a bullet train.
+P: That's not a fair fight. For the train.
+
+[Lickitung]
+P: Lickitung's tongue is twice as long as its body.
+Ivy: Do not let it near your sandwich.
+
+[Koffing]
+Ivy: Koffing is full of toxic gas.
+P: Galarian Weezing clean the air instead! With top hats!
+
+[Weezing]
+P: Weezing is two Koffing that became one.
+Ivy: The Galarian ones purify polluted air. Science and elegance.
+
+[Rhyhorn]
+Ivy: Rhyhorn charges in a straight line and forgets why.
+P: Me in the grocery store.
+
+[Rhydon]
+P: Rhydon can stand in lava.
+Ivy: Please don't test that.
+
+[Chansey]
+Ivy: Chansey shares its eggs with injured Pokémon.
+P: The nicest Pokémon in Kanto.
+
+[Tangela]
+P: Tangela's vines keep growing back.
+Ivy: Nobody's ever seen what's inside. Research opportunity!
+
+[Kangaskhan]
+Ivy: Kangaskhan raises its baby in its pouch.
+P: Very protective. Very safe. Don't make eye contact.
+
+[Horsea]
+P: Horsea balances on its tail and fires ink.
+Ivy: It's adorable. Look at it.
+
+[Seadra]
+Ivy: Seadra's spines are poisonous.
+P: Very adorable from far away.
+
+[Goldeen]
+P: Goldeen is called the water queen.
+Ivy: It swims upstream every spring. Very determined.
+
+[Seaking]
+Ivy: Seaking digs nests in riverbeds with its horn.
+P: A fish with a construction business.
+
+[Staryu]
+P: Staryu's core glows at night.
+Ivy: Misty in Cerulean has one. We'll compare.
+
+[Starmie]
+Ivy: Starmie's core sends radio signals into space.
+P: Maybe it's calling Elm.
+
+[Mr. Mime]
+P: It's Mimey! Well. A Mimey.
+Ivy: Galarian Mr. Mime tap-dance on ice. Very elegant.
+P: Ours makes pancakes. Very elegant.
+
+[Scyther]
+Ivy: Scyther moves so fast it looks like it's cloning itself.
+P: Hisuian ones evolved into Kleavor using black rocks. Ancient stuff.
+
+[Jynx]
+P: Jynx dances to communicate.
+Ivy: Its dance is very complicated. Like yours at our wedding.
+
+[Electabuzz]
+Ivy: Electabuzz loves power plants. It eats the electricity.
+P: Our electric bill just got scared.
+
+[Magmar]
+P: Magmar lives in volcanoes.
+Ivy: Its body is hot enough to melt rock. No hugs.
+
+[Pinsir]
+Ivy: Pinsir's horns can lift twice its body weight.
+P: Very strong. Very grumpy.
+
+[Tauros]
+P: Tauros whip themselves with their tails to get going.
+Ivy: In Paldea there are three breeds of Tauros. Fire, water, fighting!
+
+[Magikarp]
+Ivy: The first episode had Magikarp in the river!
+P: Splash. Very brave. Mostly splash.
+
+[Gyarados]
+P: Gyarados chased Ash in the first episode!
+Ivy: Magikarp evolves into this. Patience pays off, sweetie.
+
+[Lapras]
+Ivy: Lapras carries people across the sea.
+P: Gerald would never.
+
+[Ditto]
+P: Ditto can transform into anything.
+Ivy: It can't get the face right, though. Look.
+
+[Eevee]
+Ivy: Eevee's genes are so unstable it can evolve eight ways!
+P: Eight futures. Like a choose-your-own-adventure.
+
+[Vaporeon]
+P: Vaporeon's cells are like water. It can melt into a lake.
+Ivy: Please don't let it go swimming without a leash.
+
+[Jolteon]
+Ivy: Jolteon's fur stands up like needles when it's angry.
+P: No petting. Noted.
+
+[Flareon]
+P: Flareon's fur gets fluffy to cool down.
+Ivy: Best Pokémon to cuddle in winter.
+
+[Porygon]
+Ivy: Porygon is made of computer code.
+P: It's from Silph Co. Does it have a warranty?
+
+[Omanyte]
+P: An ancient Pokémon! Brought back from a fossil!
+Ivy: A form from another time instead of another place.
+
+[Omastar]
+Ivy: Omastar's shell got too heavy and it couldn't move.
+P: Me after Delia's pancakes.
+
+[Kabuto]
+P: Kabuto hasn't changed in three hundred million years.
+Ivy: Neither has your sense of humor.
+
+[Kabutops]
+Ivy: Kabutops hunted with its scythes in ancient seas.
+P: Fossils are the best kind of time travel.
+
+[Aerodactyl]
+P: Aerodactyl ruled the ancient skies.
+Ivy: Brought back from amber. It looks so happy to be here.
+
+[Snorlax]
+Ivy: Snorlax eats nine hundred pounds of food a day.
+P: Jenny packs lunch for it. I'm sure of it.
+
+[Dratini]
+P: Dratini was thought to be a myth for years.
+Ivy: Then someone fished one up. The best research story.
+
+[Dragonair]
+Ivy: Dragonair can change the weather.
+P: Can it fix the ferry schedule?
+
+[Dragonite]
+P: Dragonite can circle the world in sixteen hours.
+Ivy: It helps lost ships find their way home. Like you with me.
+
+# --- Johto (lab starters and the Pokémon that live along our route) ---------
+[Chikorita]
+Ivy: The leaf on its head gives off a sweet smell.
+P: Elm swears it smells like his mom's cookies.
+
+[Bayleef]
+P: Bayleef's leaves smell like spice.
+Ivy: Like tea. Calming tea, sweetie.
+
+[Meganium]
+Ivy: Meganium's breath can bring dead plants back to life.
+P: I need one for the lab windowsill.
+
+[Cyndaquil]
+P: Cyndaquil's back flares up when it's scared.
+Ivy: It's shy. Like you at parties.
+Ivy: The old scrolls say the Hisuian Typhlosion had ghostly flames.
+
+[Quilava]
+Ivy: Quilava's fire is hot enough to make you sweat from far away.
+P: Turn it down, Quilava. I'm already sweating.
+
+[Typhlosion]
+P: Typhlosion's heat can cause explosions.
+Ivy: In Hisui it burned with ghostly purple fire. That's Oak's old scrolls!
+
+[Totodile]
+Ivy: Totodile bites everything. Lovingly.
+P: Lovingly? It's biting my sleeve.
+Ivy: Lovingly.
+
+[Croconaw]
+P: Croconaw's teeth grow back when they fall out.
+Ivy: Like your bad jokes.
+
+[Feraligatr]
+Ivy: Feraligatr opens its huge jaws to scare its foes.
+P: It's scaring me and I'm on its side.
+
+[Hoothoot]
+P: Hoothoot always stands on one foot.
+Ivy: It switches feet so fast you can't see it.
+
+[Noctowl]
+Ivy: Noctowl's eyes can see in the dark.
+P: It saw me eat the last cookie.
+
+[Sentret]
+P: Sentret stands on its tail to keep watch.
+Ivy: A lookout. We need one of those.
+
+[Ledyba]
+Ivy: Ledyba are shy and huddle together in groups.
+P: Like the lab at a party.
+
+[Spinarak]
+P: Spinarak's web is strong enough to hold a stone.
+Ivy: It waits for days without moving.
+
+[Ariados]
+Ivy: Ariados spins thread from both ends.
+P: Two spools at once. Efficient.
+
+[Murkrow]
+P: Murkrow is said to be bad luck.
+Ivy: It's just misunderstood. Like Elm.
+
+[Houndour]
+Ivy: Houndour talk to their pack with barks.
+P: Teach me. I want to bark at Elm.
+
+[Wooper]
+P: Wooper! Look at its face!
+Ivy: The Paldean ones live on land and are poisonous. Different home, new look.
+
+[Pichu]
+Ivy: Pichu can't store electricity well yet. It zaps itself.
+P: Same, buddy. Same.
+
+[Cleffa]
+P: Cleffa is said to come from shooting stars.
+Ivy: Then this one's a wish come true.
+
+[Igglybuff]
+Ivy: Igglybuff's body is so bouncy it never stops.
+P: Bouncy. That's my new research term.

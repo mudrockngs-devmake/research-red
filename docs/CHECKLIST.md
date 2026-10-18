@@ -18,29 +18,29 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] HMs usable as battle moves and forgettable; field moves work with no HM or badge (v0.0.10)
 - [ ] Cell Phone key item: registered numbers (Elm, Jenny, Oak, Delia); calling Elm opens the Research Rules menu (see v0.2)
 - [x] Ivy as NPC follower from the end of breakfast (v0.0.11; cutscenes hand off with `rr_ivy_to_scene` / `rr_ivy_follow`, data/scripts/rr_ivy.inc) (`include/config/follower_npc.h`); remove duplicate scene Ivys (including the lab)
-- [ ] Route 1 first walk: Elm and Jenny wait at the north end (v0.0.12); pink streak as a Mew blur sprite still to do (camera bug fixed v0.0.10)
+- [x] Route 1 first walk: Elm and Jenny wait at the north end (v0.0.12); pink streak as a Mew blur sprite still to do (camera bug fixed v0.0.10) (Mewtwo blur fly-by v0.0.13)
 - [x] Route 1 catch reactions: Elm/Jenny comment per species, duplicate fallback, rising jealousy; Elm runs to Route 22 (v0.0.12; reactions play when you reach them, for your first four catches)
 - [ ] Mimey uses the Mr. Mime overworld sprite (verify), Johto balls behind the Kanto table (verify)
 
 ## v0.2 — Viridian, Route 22, the picnic
-- [ ] Route 22: Elm + Jenny 6v6 double; trainer lines every two faints and before their last pair
-- [ ] Old man stays asleep until the Route 22 battle (already scripted, verify)
+- [x] Route 22: Elm + Jenny 6v6 double; trainer lines every two faints and before their last pair (v0.0.13; lines in src/data/research_red/trainer_slides.h)
+- [x] Old man stays asleep until the Route 22 battle (already scripted, verify) (v0.0.13: now wakes after the Viridian lunch)
 - [ ] Viridian Gym roof hole as map art (Porymap) to match the "hole from the inside" text
-- [ ] Picnic lunch outside the Pokemon Center (dialogue in the animatic `lunch()`)
-- [ ] Research Rules menu: level caps on/off, hard/soft cap, difficulty (Relaxed/Standard/Challenge), battle style (Shift/Set); saved; changeable by calling Elm
-- [ ] Level cap system tied to badges
-- [ ] Encounter tables for Route 1 and Route 22 (below) (Route 1 done v0.0.12; FRLG slot rates are fixed, so: Pidgey 20, Rattata 20, Spearow 11, Mankey 10, Nidoran M 10, Oddish 10, Nidoran F 8, Bellsprout 5, Meowth 5, Eevee 1)
+- [x] Picnic lunch outside the Pokemon Center (dialogue in the animatic `lunch()`) (v0.0.13, plus Officer Jenny cousin gag)
+- [x] Research Rules menu: level caps on/off, hard/soft cap, difficulty (Relaxed/Standard/Challenge), battle style (Shift/Set); saved; changeable by calling Elm (v0.0.13: level caps, cap style, trainer/wild doubles, battle style; Start > Rules. Difficulty still to do)
+- [x] Level cap system tied to badges (v0.0.13, src/caps.c)
+- [x] Encounter tables for Route 1 and Route 22 (below) (Route 1 done v0.0.12; FRLG slot rates are fixed, so: Pidgey 20, Rattata 20, Spearow 11, Mankey 10, Nidoran M 10, Oddish 10, Nidoran F 8, Bellsprout 5, Meowth 5, Eevee 1) (v0.0.13: data/research_red/encounters/, day and night)
 
 ## v0.3 — Route 2 and Viridian Forest
 - [ ] Route 2 NPC, Abra encounter, trade-house Mimey gag text
-- [ ] Viridian Forest: Bug Catchers Rick, Doug, Anthony, Charlie, Sammy as double battles (teams in animatic `forest()`), each with one short you-and-Ivy exchange afterward
-- [ ] Encounter tables for Route 2 and Viridian Forest (below)
-- [ ] Field Guide: per-area encounter info screen (start with the Pokedex area view plus an Ivy note; custom UI later)
+- [x] Viridian Forest: Bug Catchers Rick, Doug, Anthony, Charlie, Sammy as double battles (teams in animatic `forest()`), each with one short you-and-Ivy exchange afterward (v0.0.13 teams and opening lines; you-and-Ivy exchanges still to do)
+- [x] Encounter tables for Route 2 and Viridian Forest (below) (v0.0.13)
+- [x] Field Guide: per-area encounter info screen (start with the Pokedex area view plus an Ivy note; custom UI later) (v0.0.13: Start > Guide)
 
 ## v0.4 -> v1.0 — Pewter and Brock
 - [ ] Pewter NPCs: Gym Guide, Museum curator (forms talk with Ivy), Jigglypuff fan, Mart clerk
-- [ ] Pewter Gym: Camper Liam (Geodude, Sandshrew, Diglett); Brock double (Geodude, Sandshrew, Kabuto, Onix, Lv 12-14); stew, puns, Boulder Badge, TM39
-- [ ] Post-Brock Elm + Jenny 6v6 double outside the Gym (animatic `finale()`)
+- [ ] Pewter Gym: Camper Liam (Geodude, Sandshrew, Diglett); Brock double (teams and mid-battle lines done v0.0.13: Brock has six); stew, puns, Boulder Badge, TM39
+- [ ] Post-Brock Elm + Jenny 6v6 double outside the Gym (animatic `finale()`) (teams and lines ready v0.0.13; scene to build)
 - [ ] Demo end card; first badge group call (if the call UI is ready)
 
 ## Encounter tables (grass %)
@@ -67,21 +67,28 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [ ] Visual overhaul research: community battle UI branches (healthboxes, backgrounds, stat displays) in the style of Radical Red / HGSS hacks; credit authors
 - [ ] Battle UI configs: show types, move effectiveness, physical/special icons, fast HP/EXP bars, trainer slide messages (check expansion configs first)
 - [x] Portraits above the text box for key characters (Oak, Elm, Ivy, Jenny, Delia, Daisy, player M/F) from `graphics/research_red/cast/` (v0.0.12; automatic from the "Name:" prefix; Ivy swimsuit / Jenny police via flags)
-- [ ] Video call UI: call frame, signal bars, pop-in call circles; reusable script commands (start call, add/drop caller, signal strength)
+- [x] Video call UI: call frame, signal bars, pop-in call circles; reusable script commands (start call, add/drop caller, signal strength) (v0.0.13 intro; reusable script commands still to do)
 - [ ] Intro player pictures from `intro_player_m/f.png` (resize/pad to the size the intro expects)
 - [ ] Title screen (Research Red logo; Slowpoke art from owner or in-game sprite) and boot credits/disclaimer screen
 - [x] Test archive: `rr_install_rom.sh` (versioned builds) and `rr_archive_test.sh` (per-round folders with NOTES.md)
-- [ ] Testing toolkit: mGBA Lua debug overlay (map, X/Y, story vars), bug-report hotkey to `/mnt/e/Workspace/romhacks/_emu/bug-reports/`, scripted scene playthroughs with screenshots, checkpoint save states, `make check`
+- [ ] Testing toolkit (headless mGBA runner with scripted inputs + screenshots used in v0.0.13; not yet in the repo): mGBA Lua debug overlay (map, X/Y, story vars), bug-report hotkey to `/mnt/e/Workspace/romhacks/_emu/bug-reports/`, scripted scene playthroughs with screenshots, checkpoint save states, `make check`
 - [ ] Proper-case sweep across all game text
 - [ ] `docs/FLAGS_VARS.md` registry and `CREDITS.md`
 - [ ] Release checklist: debug OFF, version stamp, patch only (never a ROM)
 
 ## Gameplay upgrades (owner request, schedule as bundles)
 - [ ] Expand TMs beyond the vanilla 50 (expansion supports up to 100 + HMs) with modern moves
-- [ ] Area variety: more species per area (all gens where it fits the story)
-- [ ] Field Guide card per area (animatic)
+- [x] Area variety: more species per area (all gens where it fits the story) (v0.0.13 for Pallet to Viridian Forest)
+- [x] Field Guide card per area (animatic) (v0.0.13: Start > Guide)
 
 ## After the demo (design first in chat)
 - Badge video calls after every Gym; Elm/Jenny battles in each city
 - Endgame forms arc: Mega Evolution (incl. Kalos Megas for Kanto starters), Dynamax/Gigantamax, regional and Hisuian starter forms, custom item area
 - Mew (Bill arc), Mewtwo, Prof. Mudrock postgame
+
+## Requested v0.0.13 follow-ups
+- [ ] Re-reading a Pokédex entry replays its banter (the after-catch banter is done)
+- [ ] Pokédex banter shown over the dex page itself instead of back on the map
+- [ ] Pokémon dialogue portraits for more of the 151 + regional forms (add a line to graphics/research_red/portraits.txt)
+- [ ] Battle intros/back sprites showing the player and Ivy
+- [ ] Mega, Z-Moves, Dynamax, Tera: decide when the story unlocks them

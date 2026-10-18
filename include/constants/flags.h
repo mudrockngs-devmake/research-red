@@ -50,7 +50,7 @@
 #define FLAG_RR_AI_VS_AI         0x024 // Research Red: B_FLAG_AI_VS_AI_BATTLE (the AI plays the player's side; lab Oak vs Elm/Jenny)
 #define FLAG_RR_IVY_SWIMSUIT     0x025 // Research Red: Ivy's swimsuit portrait (beach scenes)
 #define FLAG_RR_JENNY_UNIFORM    0x026 // Research Red: Jenny's police portrait (Team Rocket scenes); casual by default
-#define FLAG_0x027               0x027
+#define FLAG_RR_LEVEL_CAPS_OFF   0x027 // Research Red: Research Rules: level caps off (caps are on by default)
 
 // Hide/show flags
 #define FLAG_HIDE_BULBASAUR_BALL                           0x028
@@ -132,7 +132,7 @@
 #define FLAG_HIDE_TWO_ISLAND_GAME_CORNER_BIKER             0x074
 #define FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE          0x075
 #define FLAG_HIDE_LOSTELLE_IN_HER_HOME                     0x076
-#define FLAG_0x077                                         0x077
+#define FLAG_RR_HARD_LEVEL_CAPS                            0x077 // Research Red: Research Rules: hard caps (no EXP at the cap) instead of soft
 #define FLAG_0x078                                         0x078
 #define FLAG_HIDE_THREE_ISLAND_BIKERS                      0x079
 #define FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST                 0x07A

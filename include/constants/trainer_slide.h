@@ -27,6 +27,8 @@ enum TrainerSlideType
     TRAINER_SLIDE_MEGA_EVOLUTION,
     TRAINER_SLIDE_Z_MOVE,
     TRAINER_SLIDE_DYNAMAX,
+    TRAINER_SLIDE_RR_TWO_DOWN,  // Research Red: 2 of the opposing side's Pokemon have fainted
+    TRAINER_SLIDE_RR_FOUR_DOWN, // Research Red: 4 have fainted
     TRAINER_SLIDE_COUNT,
 };
 

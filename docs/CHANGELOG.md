@@ -2,6 +2,20 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players/testers.
 
+## v0.0.13
+- New intro: a Discord-style video call like the animatic (live dot, signal bars, people joining as round avatars, gold ring on whoever is talking; Slowpoke never hangs up). The controls tutorial is gone.
+- Dialogue portraits stay up for the whole scene, bob gently, and have a name plate. Pokémon can talk too: Mimey, Muffin and the lab Slowpoke have portraits from their sprites.
+- The player walks as Professor Birch (male) or the Reporter (female), with red hair; biking, surfing and fishing use FireRed's own sprites again. This fixes the glitchy player sprite.
+- Route 1: something purple streaks across the sky (a blurred Mewtwo).
+- Wild Pokémon: new day and night tables for Pallet Town's water, Route 1, Viridian City, Route 22, Route 2 and Viridian Forest. Route 1 has every non-legendary from the anime's first episode.
+- Start > Guide: which wild Pokémon live where you are, how often they appear, and which you've caught.
+- Route 22: Elm and Jenny's 6v6 double (their lab starters plus dessert-named catches), with mid-battle banter every two faints and on their last Pokémon. Win or lose, the story goes on.
+- Lunch in Viridian City on the way back from Route 22: Jenny runs into her cousin Officer Jenny, a picnic, and Elm's Research Rules (level caps, soft/hard, doubles, wild doubles, battle style; change later in Start > Rules). The old man wakes up and the road north opens.
+- Viridian Forest Bug Catchers, Camper Liam and Brock (now six Pokémon) have full teams and opening lines.
+- Pokédex banter: register a new species (catch or evolution) and you and Ivy trade a joke or fact about it, with regional-form notes and lines for Elm's and Jenny's starter families.
+- Level caps (on by default, soft): Brock's cap is Lv 14.
+- Debug: Script 6 skips to the Viridian lunch, Script 7 previews the Pokédex banter; skips give a Lv 12 team.
+
 ## v0.0.12
 - Fixed: the battle intro called Jenny "Officer Elm".
 - Fixed: Oak describes the starters as Kanto on top, Johto below.

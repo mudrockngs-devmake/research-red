@@ -5,3 +5,11 @@ RR_EventScript_FieldGuide::
 	waitstate
 	releaseall
 	end
+
+@ Research Red: Start menu > Rules (src/rr_rules.c)
+RR_EventScript_ResearchRules::
+	lockall
+	callnative RR_ScriptResearchRules
+	waitstate
+	releaseall
+	end

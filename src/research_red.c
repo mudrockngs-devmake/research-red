@@ -127,3 +127,20 @@ void RR_ScriptRoute1Reaction(struct ScriptContext *ctx)
     default:                 gSpecialVar_Result = RR_REACT_DEFAULT;    break;
     }
 }
+
+// Debug skips: raise every party Pokemon below VAR_0x8004's level to it, so
+// skipping ahead gives a team that fits the story point.
+void RR_ScriptDebugSetPartyLevel(struct ScriptContext *ctx)
+{
+    u32 i, level = gSpecialVar_0x8004;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        struct Pokemon *mon = &gPlayerParty[i];
+        u32 species = GetMonData(mon, MON_DATA_SPECIES);
+        if (species == SPECIES_NONE || GetMonData(mon, MON_DATA_LEVEL) >= level)
+            continue;
+        SetMonData(mon, MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][level]);
+        CalculateMonStats(mon);
+    }
+}

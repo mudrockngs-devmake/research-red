@@ -30,3 +30,7 @@ Shared folder synced to `E:\Workspace\romhacks\research-red\art\incoming\`, or a
 
 ## Credit
 Every contribution gets a line in `CREDITS.md` with your name or handle.
+
+## Pokémon portraits
+
+Pokémon that talk in dialogue (Mimey, Muffin, Slowpoke so far) get a portrait cut from their front sprite with a white outline. To replace one, put a 64x64, 16-color PNG at `graphics/research_red/pokemon_handmade/<species>.png` (for example `mr_mime.png`) and run `python3 tools/research_red/build_portraits.py`. To make a new character or Pokémon talk, add a line to `graphics/research_red/portraits.txt`.

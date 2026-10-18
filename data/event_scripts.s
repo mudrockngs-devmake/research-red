@@ -896,6 +896,8 @@
 	.include "data/scripts/research_red/rr_route1.inc"
 	.include "data/scripts/research_red/rr_route22.inc"
 	.include "data/scripts/research_red/rr_field_guide.inc"
+	.include "data/scripts/research_red/rr_lunch.inc"
+	.include "data/scripts/research_red/rr_dex_banter.inc"
 
 	.include "data/text/aide.inc"
 	.include "data/text/apprentice.inc"

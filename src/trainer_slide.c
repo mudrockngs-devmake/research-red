@@ -54,10 +54,12 @@ static void SetTrainerSlideParameters(enum BattlerId battler, u32* firstId, u32*
 static bool32 IsSlideInitalizedOrPlayed(enum BattlerId battler, enum TrainerSlideType slideId);
 
 // Partner trainers must be added as TRAINER_PARTNER(PARTNER_XXXX)
+// Research Red: Elm and Jenny's mid-battle banter (src/data/research_red/trainer_slides.h)
 static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_COUNT)][TRAINER_SLIDE_COUNT] =
 {
     [DIFFICULTY_NORMAL] =
     {
+#include "data/research_red/trainer_slides.h"
     },
 };
 
@@ -227,6 +229,12 @@ static bool32 ShouldRunTrainerSlideEnemyMonUnaffected(u32 firstId, u32 lastId, e
     return (GetPartyMonCount(firstId, lastId, side, TRUE) == GetPartyMonCount(firstId, lastId, side, FALSE));
 }
 
+// Research Red: fainted Pokemon across the whole opposing side (both trainers)
+static u32 CountFaintedOpponents(void)
+{
+    return GetPartyMonCount(0, PARTY_SIZE, B_SIDE_OPPONENT, FALSE) - GetPartyMonCount(0, PARTY_SIZE, B_SIDE_OPPONENT, TRUE);
+}
+
 static bool32 ShouldRunTrainerSlideLastSwitchIn(enum BattlerId battler)
 {
     return !CanBattlerSwitch(battler);
@@ -343,6 +351,12 @@ enum TrainerSlideTargets ShouldDoTrainerSlide(enum BattlerId battler, enum Train
     case TRAINER_SLIDE_LAST_LOW_HP:
         shouldRun = ShouldRunTrainerSlideLastLowHp(firstId, lastId, side, battler);
         break;
+    case TRAINER_SLIDE_RR_TWO_DOWN: // Research Red
+        shouldRun = !IsOnPlayerSide(battler) && CountFaintedOpponents() == 2;
+        break;
+    case TRAINER_SLIDE_RR_FOUR_DOWN: // Research Red
+        shouldRun = !IsOnPlayerSide(battler) && CountFaintedOpponents() == 4;
+        break;
     case TRAINER_SLIDE_BEFORE_FIRST_TURN:
     case TRAINER_SLIDE_MEGA_EVOLUTION:
     case TRAINER_SLIDE_Z_MOVE:
@@ -365,6 +379,9 @@ enum TrainerSlideTargets ShouldDoTrainerSlide(enum BattlerId battler, enum Train
     }
 
     MarkTrainerSlideAsPlayed(battler, slideId);
+    // Research Red: the "N down" banter is for the whole side, so it plays once
+    if (slideId == TRAINER_SLIDE_RR_TWO_DOWN || slideId == TRAINER_SLIDE_RR_FOUR_DOWN)
+        MarkTrainerSlideAsPlayed(BATTLE_PARTNER(battler), slideId);
     SetTrainerSlideMessage(difficulty,trainerId,slideId);
     return retValue;
 }

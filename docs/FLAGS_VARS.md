@@ -9,7 +9,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `VAR_RR_STARTER` (0x40FD) | Lab pick: 0 Bulbasaur, 1 Charmander, 2 Squirtle, 3 Chikorita, 4 Cyndaquil, 5 Totodile. `VAR_STARTER_MON` is also set by type (grass 0, water 1, fire 2) so FireRed rival scripts still work | 0-5 |
 | `VAR_RR_ROUTE1_CATCHES` (0x40F2) | Wild Pokemon caught on Route 1 before the group scene (VAR_0x40FE == 4) | count |
 | `VAR_RR_ROUTE1_CATCH_0`, `VAR_RR_ROUTE1_CATCH_1`, `VAR_RR_ROUTE1_CATCH_2`, `VAR_RR_ROUTE1_CATCH_3` (0x40F3-0x40F6) | Species of the first four of those catches, for Elm and Jenny's reactions | species |
-| `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1 |
+| `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 battle done (lunch pending), 7 lunch done (Start > Rules appears) |
 
 ## Repurposed vanilla scene vars
 
@@ -17,8 +17,8 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 |---|---|
 | `VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB` | Lab scene state. At 10, the floor triggers at (5-7, 11) start `RR_Lab` |
 | `VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE` | Daisy scene state |
-| `VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN` | The tipsy old man blocks the way north until the Route 22 Elm battle |
-| `VAR_MAP_SCENE_ROUTE22` | Route 22 Elm battle state |
+| `VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN` | The old man blocks the way north (0) until the Viridian lunch sets it to 2 (path open; FireRed's catching tutorial is skipped) |
+| `VAR_MAP_SCENE_ROUTE22` | Route 22 Elm & Jenny battle: 1 waiting (set by the lab), 2 done |
 
 ## Custom flags
 
@@ -30,7 +30,16 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `FLAG_RR_IVY_SWIMSUIT` (0x025, was `FLAG_0x025`) | Ivy's swimsuit portrait in dialogue |
 | `FLAG_RR_JENNY_UNIFORM` (0x026, was `FLAG_0x026`) | Jenny's police-uniform portrait (casual is the default) |
 | `FLAG_RR_EXP_SHARE` (0x021, was `FLAG_0x021`) | `I_EXP_SHARE_FLAG`: Exp. Share key item on/off. Set by the research grant |
+| `FLAG_RR_LEVEL_CAPS_OFF` (0x027, was `FLAG_0x027`) | Research Rules: level caps off (on by default; caps in `src/caps.c`) |
+| `FLAG_RR_HARD_LEVEL_CAPS` (0x077, was `FLAG_0x077`) | Research Rules: hard caps (no EXP at the cap) instead of soft |
 | `FLAG_RR_NO_WHITEOUT` (0x020, was `FLAG_0x020`) | `B_FLAG_NO_WHITEOUT`: set around story battles so a loss continues the script. Cleared after each battle |
+
+## Temp flags used by scenes
+
+| Flag | Map | Use |
+|---|---|---|
+| `FLAG_TEMP_11`, `FLAG_TEMP_12` | Route 1 | Elm and Jenny at the north end (hidden unless the scene is pending) |
+| `FLAG_TEMP_13`-`FLAG_TEMP_15` | Viridian City | Lunch scene Elm, Jenny and Officer Jenny (shown by `addobject` during the scene) |
 
 ## Custom trainers
 
@@ -39,3 +48,9 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `TRAINER_RR_ELM_LAB_<STARTER>` (all six) | Lab 2v2, Elm's pick from the chain |
 | `TRAINER_RR_JENNY_LAB_<STARTER>` (all six) | Lab 2v2, Jenny's pick from the chain |
 | `TRAINER_RR_OAK_LAB_<A>_<B>` (six pairs) | Optional Oak double, the two leftover starters |
+| `TRAINER_RR_ELM_R22_<STARTER>`, `TRAINER_RR_JENNY_R22_<STARTER>` (all six each) | Route 22 6v6 double: starter + two dessert-named catches each |
+| `TRAINER_RR_ELM_PEWTER_<STARTER>`, `TRAINER_RR_JENNY_PEWTER_<STARTER>` | Pewter finale double (data ready, scene not built yet) |
+
+## Trainer slides (mid-battle lines)
+
+`src/data/research_red/trainer_slides.h`. Research Red adds two slide types to `include/constants/trainer_slide.h`: `TRAINER_SLIDE_RR_TWO_DOWN` and `TRAINER_SLIDE_RR_FOUR_DOWN` (2 / 4 of the opposing side fainted, played once per battle).

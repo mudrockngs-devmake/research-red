@@ -261,8 +261,9 @@ Ekans
 Level: 17
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
+/* Research Red: Viridian Forest teams from the animatic (every trainer has 2+ for doubles) */
 === TRAINER_BUG_CATCHER_RICK ===
-Name: RICK
+Name: Rick
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -272,14 +273,15 @@ AI: Check Bad Move
 
 Weedle
 Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Caterpie
 Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
+/* Research Red: Viridian Forest teams from the animatic (every trainer has 2+ for doubles) */
 === TRAINER_BUG_CATCHER_DOUG ===
-Name: DOUG
+Name: Doug
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -288,19 +290,20 @@ Double Battle: No
 AI: Check Bad Move
 
 Weedle
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 6
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Kakuna
 Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Weedle
 Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
+/* Research Red: Viridian Forest teams from the animatic (every trainer has 2+ for doubles) */
 === TRAINER_BUG_CATCHER_SAMMY ===
-Name: SAMMY
+Name: Sammy
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -310,7 +313,11 @@ AI: Check Bad Move
 
 Weedle
 Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Pikachu
+Level: 8
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_BUG_CATCHER_COLTON ===
 Name: COLTON
@@ -993,8 +1000,9 @@ Pikachu
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+/* Research Red: Pewter Gym trainer (animatic) */
 === TRAINER_CAMPER_LIAM ===
-Name: LIAM
+Name: Liam
 Class: Camper
 Pic: Camper
 Gender: Male
@@ -1004,15 +1012,20 @@ AI: Check Bad Move
 
 Geodude
 Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
 - Defense Curl
 
 Sandshrew
 Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Scratch
 - Defense Curl
+
+Diglett
+Level: 10
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Scratch
 - Sand Attack
 
 === TRAINER_CAMPER_SHANE ===
@@ -7284,27 +7297,59 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Outrage
 - Wing Attack
 
+/* Research Red: Brock, a full team of six (animatic's four plus Omanyte and Rhyhorn) */
 === TRAINER_LEADER_BROCK ===
-Name: BROCK
+Name: Brock
 Class: Leader
 Pic: Leader Brock
 Gender: Male
 Music: Male
+Items: Super Potion / Super Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Geodude
 Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
 - Defense Curl
+- Rock Throw
+
+Sandshrew
+Level: 12
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Scratch
+- Sand Attack
+- Rollout
+
+Kabuto
+Level: 13
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Scratch
+- Harden
+- Absorb
+
+Omanyte
+Level: 13
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Constrict
+- Withdraw
+- Water Gun
+
+Rhyhorn
+Level: 13
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Horn Attack
+- Tail Whip
+- Rock Throw
 
 Onix
 Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Tackle
 - Bind
 - Rock Tomb
+- Harden
 
 === TRAINER_LEADER_MISTY ===
 Name: MISTY
@@ -9745,8 +9790,9 @@ Ekans
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+/* Research Red: Viridian Forest teams from the animatic (every trainer has 2+ for doubles); his twins are named Cater and Pie */
 === TRAINER_BUG_CATCHER_ANTHONY ===
-Name: ANTHONY
+Name: Anthony
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -9754,16 +9800,17 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Caterpie
+Cater (Caterpie)
 Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Caterpie
+Pie (Caterpie)
 Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
+/* Research Red: Viridian Forest teams from the animatic (every trainer has 2+ for doubles) */
 === TRAINER_BUG_CATCHER_CHARLIE ===
-Name: CHARLIE
+Name: Charlie
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -9773,15 +9820,15 @@ AI: Check Bad Move
 
 Metapod
 Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Caterpie
 Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Metapod
 Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_TWINS_ELI_ANNE_2 ===
 Name: ELI & ANNE
@@ -14646,3 +14693,514 @@ IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 Squirtle
 Level: 6
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+/* Research Red: Route 22 (Elm & Jenny, 6v6 double). One version per
+   starter Elm/Jenny can have from the lab chain; Elm names his catches after
+   desserts (Jenny lets him). */
+
+=== TRAINER_RR_ELM_R22_BULBASAUR ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bulbasaur
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgey)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_R22_CHARMANDER ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Charmander
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgey)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_R22_SQUIRTLE ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Squirtle
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgey)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_R22_CHIKORITA ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Chikorita
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgey)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_R22_CYNDAQUIL ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Cyndaquil
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgey)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_R22_TOTODILE ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Totodile
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgey)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_R22_BULBASAUR ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bulbasaur
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidoran F)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_R22_CHARMANDER ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Charmander
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidoran F)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_R22_SQUIRTLE ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Squirtle
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidoran F)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_R22_CHIKORITA ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Chikorita
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidoran F)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_R22_CYNDAQUIL ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Cyndaquil
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidoran F)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_R22_TOTODILE ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Totodile
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidoran F)
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+
+/* Research Red: Pewter City, outside the Gym (after Brock) */
+
+=== TRAINER_RR_ELM_PEWTER_BULBASAUR ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bulbasaur
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgeotto)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_PEWTER_CHARMANDER ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Charmander
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgeotto)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_PEWTER_SQUIRTLE ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Squirtle
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgeotto)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_PEWTER_CHIKORITA ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Chikorita
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgeotto)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_PEWTER_CYNDAQUIL ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Cyndaquil
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgeotto)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_ELM_PEWTER_TOTODILE ===
+Name: Elm
+Class: Rival Early
+Pic: RR Elm
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Totodile
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pudding (Pidgeotto)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Churro (Sandshrew)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_PEWTER_BULBASAUR ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bulbasaur
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidorina)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_PEWTER_CHARMANDER ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Charmander
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidorina)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_PEWTER_SQUIRTLE ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Squirtle
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidorina)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_PEWTER_CHIKORITA ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Chikorita
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidorina)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_PEWTER_CYNDAQUIL ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Cyndaquil
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidorina)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+=== TRAINER_RR_JENNY_PEWTER_TOTODILE ===
+Name: Jenny
+Class: RR Officer
+Pic: RR Jenny
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Totodile
+Level: 15
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Licorice (Ekans)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Macaron (Nidorina)
+Level: 14
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
