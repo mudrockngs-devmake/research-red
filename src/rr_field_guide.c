@@ -12,6 +12,7 @@
 #include "menu.h"
 #include "pokedex.h"
 #include "region_map.h"
+#include "rtc.h"
 #include "rr_field_guide.h"
 #include "script.h"
 #include "sound.h"
@@ -59,10 +60,10 @@ static const u8 *const sTimeNames[TIMES_OF_DAY_COUNT] =
 };
 
 static const u8 sText_NothingHere[] = _("No wild Pokémon live here.");
-static const u8 sText_Controls[] = _("{DPAD_LEFTRIGHT} Page  {B_BUTTON} Close");
+static const u8 sText_Controls[] = _("Name, levels, chance.   {DPAD_LEFTRIGHT} Page   {B_BUTTON} Close");
 static const u8 sText_Percent[] = _("{STR_VAR_1}%");
-static const u8 sText_Levels[] = _("Lv{STR_VAR_1}-{STR_VAR_2}");
-static const u8 sText_Level[] = _("Lv{STR_VAR_1}");
+static const u8 sText_Levels[] = _("{STR_VAR_1}-{STR_VAR_2}");
+static const u8 sText_Level[] = _("{STR_VAR_1}");
 static const u8 sText_Caught[] = _("{PKMN}");
 
 static const struct WindowTemplate sGuideWindow =
@@ -94,8 +95,9 @@ struct GuideRow
 static const struct WildPokemonInfo *GetPageInfo(u32 page, u32 *firstSlot, u32 *slotCount, const u8 **rates)
 {
     u32 headerId = GetCurrentMapWildMonHeaderId();
-    enum Season season;
-    enum TimeOfDay time;
+    // the encounter code expects the current season/time going in
+    enum Season season = gLoadedSeason;
+    enum TimeOfDay time = GetTimeOfDay();
     const struct WildPokemonInfo *info = NULL;
 
     if (headerId == HEADER_NONE)
@@ -185,16 +187,12 @@ static void PrintPage(u32 windowId, u32 page)
     struct GuideRow rows[MAX_ROWS];
     u32 n = BuildRows(page, rows);
     u32 i, x, y, width;
-    enum Season season;
-    enum TimeOfDay time = TIME_DAY;
-    u32 headerId = GetCurrentMapWildMonHeaderId();
+    enum TimeOfDay time = GetTimeOfDay(); // the clock's time (tables without a night list use the day one)
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
 
     // "Route 1 - Grass (Night)"
     GetMapName(gStringVar1, gMapHeader.regionMapSectionId, 0);
-    if (headerId != HEADER_NONE)
-        GetSeasonAndTimeOfDayForEncounters(headerId, WILD_AREA_LAND, &season, &time);
     StringCopy(gStringVar4, gStringVar1);
     StringAppend(gStringVar4, COMPOUND_STRING(" - "));
     StringAppend(gStringVar4, sPageNames[page]);
@@ -213,15 +211,15 @@ static void PrintPage(u32 windowId, u32 page)
         // a Poké Ball mark on species already caught
         if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(rows[i].species), FLAG_GET_CAUGHT))
             AddTextPrinterParameterized3(windowId, FONT_SMALL, x, y + 2, sColors_Normal, TEXT_SKIP_DRAW, sText_Caught);
-        AddTextPrinterParameterized3(windowId, FONT_NORMAL, x + 10, y, sColors_Normal, TEXT_SKIP_DRAW, GetSpeciesName(rows[i].species));
+        AddTextPrinterParameterized3(windowId, FONT_NORMAL, x + 8, y, sColors_Normal, TEXT_SKIP_DRAW, GetSpeciesName(rows[i].species));
         ConvertIntToDecimalStringN(gStringVar1, rows[i].minLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
         ConvertIntToDecimalStringN(gStringVar2, rows[i].maxLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
         StringExpandPlaceholders(gStringVar4, rows[i].minLevel == rows[i].maxLevel ? sText_Level : sText_Levels);
-        AddTextPrinterParameterized3(windowId, FONT_SMALL, x + 62, y + 2, sColors_Normal, TEXT_SKIP_DRAW, gStringVar4);
+        AddTextPrinterParameterized3(windowId, FONT_SMALL, x + 64, y + 3, sColors_Normal, TEXT_SKIP_DRAW, gStringVar4);
         ConvertIntToDecimalStringN(gStringVar1, rows[i].percent, STR_CONV_MODE_LEFT_ALIGN, 3);
         StringExpandPlaceholders(gStringVar4, sText_Percent);
         width = GetStringWidth(FONT_NORMAL, gStringVar4, 0);
-        AddTextPrinterParameterized3(windowId, FONT_NORMAL, x + 106 - width, y, sColors_Normal, TEXT_SKIP_DRAW, gStringVar4);
+        AddTextPrinterParameterized3(windowId, FONT_NORMAL, x + 108 - width, y, sColors_Normal, TEXT_SKIP_DRAW, gStringVar4);
     }
     AddTextPrinterParameterized3(windowId, FONT_SMALL, 4, 130, sColors_Normal, TEXT_SKIP_DRAW, sText_Controls);
     CopyWindowToVram(windowId, COPYWIN_GFX);

@@ -714,7 +714,9 @@ static void StartMenu_FadeScreenIfLeavingOverworld(void)
      && gMenuCallback != StartMenuExitCallback
      && gMenuCallback != StartMenuDebugCallback
      && gMenuCallback != StartMenuSafariZoneRetireCallback
-     && gMenuCallback != StartMenuBattlePyramidRetireCallback)
+     && gMenuCallback != StartMenuBattlePyramidRetireCallback
+     && gMenuCallback != StartMenuFieldGuideCallback // Research Red: these stay on the map
+     && gMenuCallback != StartMenuRulesCallback)
     {
         StopPokemonLeagueLightingEffectTask();
         FadeScreen(FADE_TO_BLACK, 0);
