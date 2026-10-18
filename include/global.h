@@ -286,7 +286,11 @@ struct SaveBlock3
     struct LinkBattleRecords linkBattleRecords;
 #endif //FREE_LINK_BATTLE_RECORDS
 
+#if FNPC_ENABLE_NPC_FOLLOWERS
+    u8 unused[812 - sizeof(struct NPCFollower)]; // Research Red: padding shrinks so SaveBlock3 stays the same size
+#else
     u8 unused[812];
+#endif
 };
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;

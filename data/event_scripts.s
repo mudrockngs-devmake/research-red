@@ -21,6 +21,7 @@
 #include "constants/easy_chat.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
+#include "constants/follower_npc.h"
 #include "constants/fame_checker.h"
 #include "constants/field_effects.h"
 #include "constants/field_move.h"
@@ -886,6 +887,7 @@
 	.include "data/scripts/trainer_tower.inc"
 	.include "data/scripts/trainers.inc"
 	.include "data/scripts/white_out.inc"
+	.include "data/scripts/rr_ivy.inc"
 
 	.include "data/text/aide.inc"
 	.include "data/text/apprentice.inc"

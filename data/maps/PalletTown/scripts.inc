@@ -464,6 +464,8 @@ PalletTown_EventScript_HideElmJenny::
 
 PalletTown_EventScript_GrassHook::
 	lockall
+	@ The scene's own Ivy walks out of the door, so drop the follower
+	destroyfollowernpc
 	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_StepDown
 	waitmovement 0
 	opendoor 6, 7
@@ -1439,10 +1441,7 @@ RR_Lab_EventScript_Grant::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_WaitOutside, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_LAB_IVY, RR_Lab_Movement_Down8
-	waitmovement 0
-	removeobject LOCALID_LAB_IVY
-	playse SE_EXIT
+	rr_ivy_follow LOCALID_LAB_IVY
 	@ --- story flags: the parcel errand is skipped ---
 	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
 	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6

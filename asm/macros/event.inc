@@ -2491,3 +2491,27 @@
 	callnative ScrCmd_istmrelearneractive, requests_effects=1
 	.4byte \destination
 	.endm
+
+@ ===================================================================
+@ Research Red: Ivy as the player's follower (see data/scripts/rr_ivy.inc)
+@ ===================================================================
+
+	@ Cutscene start: Ivy stops following and becomes the scene object localId.
+	@ If the follower was visible, the scene object is placed on her tile and
+	@ facing (VAR_RESULT = TRUE); otherwise the scene object is left as the map
+	@ authored it (VAR_RESULT = FALSE). Either way the follower is removed.
+	.macro rr_ivy_to_scene localId:req
+	callnative RR_ScriptIvyFollowerToObject
+	.byte \localId
+	.endm
+
+	@ Cutscene end: the scene object localId becomes the follower again.
+	@ The object needs a hide flag (it is set so she does not reappear).
+	.macro rr_ivy_follow localId:req
+	setfollowernpc \localId, RR_IVY_FOLLOWER_FLAGS, RR_EventScript_IvyTalk
+	.endm
+
+	@ Debug/skips: make Ivy follow without a map object.
+	.macro rr_ivy_create_follower
+	createfollowernpc OBJ_EVENT_GFX_RR_IVY, RR_IVY_FOLLOWER_FLAGS, RR_EventScript_IvyTalk
+	.endm

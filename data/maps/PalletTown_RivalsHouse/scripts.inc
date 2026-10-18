@@ -180,6 +180,7 @@ PalletTown_RivalsHouse_EventScript_Picture::
 @ ===================================================================
 RR_Daisy_EventScript_Scene::
 	lockall
+	rr_ivy_to_scene LOCALID_RIVALS_HOUSE_IVY
 	applymovement LOCALID_PLAYER, RR_Daisy_Movement_Up2
 	applymovement LOCALID_RIVALS_HOUSE_IVY, RR_Daisy_Movement_Up2
 	waitmovement 0
@@ -273,7 +274,7 @@ RR_Daisy_EventScript_Scene::
 	waitmovement 0
 	removeobject LOCALID_RIVALS_HOUSE_JENNY
 	playse SE_EXIT
-	removeobject LOCALID_RIVALS_HOUSE_IVY
+	rr_ivy_follow LOCALID_RIVALS_HOUSE_IVY
 	setvar VAR_0x40FE, 4
 	releaseall
 	end

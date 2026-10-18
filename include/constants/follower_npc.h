@@ -25,4 +25,7 @@
 #define FNPC_ALL_WATER                        FOLLOWER_NPC_FLAG_ALL_WATER
 #define FNPC_ALL                              FOLLOWER_NPC_FLAG_ALL
 
+// Research Red: Ivy goes everywhere with you (bike, surf, Fly) and stays after a white out
+#define RR_IVY_FOLLOWER_FLAGS                 (FNPC_ALL_LAND | FNPC_ALL_WATER)
+
 #endif // GUARD_CONSTANTS_FOLLOWER_NPC_H

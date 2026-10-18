@@ -477,8 +477,8 @@ RR_Lab_Text_Elm_MeetAtDaisys::
     .string "We'll make the bet official!$"
 
 RR_Lab_Text_Ivy_WaitOutside::
-    .string "Ivy: I'll wait outside, sweetie.\n"
-    .string "Don't let Oak keep you forever.$"
+    .string "Ivy: Daisy's house next, sweetie.\n"
+    .string "Lead the way.$"
 
 RR_Lab_Text_IvyMonJoins::
     .string "Ivy's {STR_VAR_1} joined the team!\n"

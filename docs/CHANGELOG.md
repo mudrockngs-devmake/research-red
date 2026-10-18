@@ -2,6 +2,11 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players/testers.
 
+## v0.0.11
+- Ivy now follows you from the end of breakfast. Talk to her for a few placeholder lines.
+- In cutscenes she steps in from where she is and falls back in behind you afterward (lab, Daisy's house, Route 1).
+- Debug skips 2-4 start with Ivy following.
+
 ## v0.0.10
 - Research grant now includes Master Balls, every Poké Ball type x100, all TMs and HMs, held items, battle items, more medicine, berries, and key items (Bicycle, rods, Itemfinder, VS Seeker, Exp. Share, Berry Pouch).
 - TMs are reusable. HMs can be forgotten. Field moves need no badge.

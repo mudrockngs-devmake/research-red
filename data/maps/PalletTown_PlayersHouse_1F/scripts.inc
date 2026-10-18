@@ -113,10 +113,10 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	waitmovement 0
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_DoorOpen, MSGBOX_DEFAULT
 	closemessage
-	@ Ivy stays at the table and follows you out when you leave;
-	@ she reappears behind you outside (see PalletTown grass hook)
 	applymovement LOCALID_MOM, PalletTown_PlayersHouse_1F_Movement_FaceLeft
 	waitmovement 0
+	@ From here on Ivy follows the player (data/scripts/rr_ivy.inc)
+	rr_ivy_follow LOCALID_PALLET_HOUSE_IVY
 	setvar VAR_0x40FE, 1
 	releaseall
 	end

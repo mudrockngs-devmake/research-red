@@ -46,12 +46,13 @@ RR_Route1_EventScript_Walk::
 	getplayerxy VAR_0x8004, VAR_0x8005
 	copyvar VAR_0x8006, VAR_0x8005
 	addvar VAR_0x8006, 1
-	setobjectxyperm LOCALID_ROUTE1_IVY, VAR_0x8004, VAR_0x8006
+	@ Ivy is already following; she becomes the scene's Ivy on her own tile
+	rr_ivy_to_scene LOCALID_ROUTE1_IVY
+	call_if_eq VAR_RESULT, FALSE, RR_Route1_EventScript_PlaceIvy
 	addvar VAR_0x8006, 1
 	setobjectxyperm LOCALID_ROUTE1_ELM, VAR_0x8004, VAR_0x8006
 	addvar VAR_0x8006, 1
 	setobjectxyperm LOCALID_ROUTE1_JENNY, VAR_0x8004, VAR_0x8006
-	addobject LOCALID_ROUTE1_IVY
 	addobject LOCALID_ROUTE1_ELM
 	addobject LOCALID_ROUTE1_JENNY
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
@@ -112,10 +113,16 @@ RR_Route1_EventScript_Walk::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_P_Wonderful, MSGBOX_DEFAULT
 	closemessage
-	removeobject LOCALID_ROUTE1_IVY
+	rr_ivy_follow LOCALID_ROUTE1_IVY
 	setvar VAR_0x40FE, 5
 	releaseall
 	end
+
+@ No follower (e.g. an old save): put Ivy behind the player
+RR_Route1_EventScript_PlaceIvy::
+	setobjectxyperm LOCALID_ROUTE1_IVY, VAR_0x8004, VAR_0x8006
+	addobject LOCALID_ROUTE1_IVY
+	return
 
 @ Only 3 tiles: the scene triggers at y=4, and panning past the top of
 @ Route 1 into the Viridian connection left the camera offset.

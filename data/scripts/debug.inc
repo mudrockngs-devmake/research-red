@@ -154,6 +154,7 @@ Debug_EventScript_Text_DefensiveIVs:
 @ ===================================================================
 Debug_EventScript_Script_1::
 	call RR_Debug_StateGrassDone
+	destroyfollowernpc
 	warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, 12
 	waitstate
 	release
@@ -162,6 +163,7 @@ Debug_EventScript_Script_1::
 Debug_EventScript_Script_2::
 	call RR_Debug_StateGrassDone
 	call RR_Debug_StateLabDone
+	rr_ivy_create_follower
 	warp MAP_PALLET_TOWN, 15, 8
 	waitstate
 	release
@@ -171,6 +173,7 @@ Debug_EventScript_Script_3::
 	call RR_Debug_StateGrassDone
 	call RR_Debug_StateLabDone
 	call RR_Debug_StateDaisyDone
+	rr_ivy_create_follower
 	warp MAP_PALLET_TOWN, 12, 3
 	waitstate
 	release
@@ -182,6 +185,7 @@ Debug_EventScript_Script_4::
 	call RR_Debug_StateDaisyDone
 	setvar VAR_0x40FE, 5
 	call RR_Debug_GiveTeam
+	rr_ivy_create_follower
 	warp MAP_ROUTE22, 34, 5
 	waitstate
 	release
@@ -216,6 +220,7 @@ RR_Debug_StateLabDone::
 	setflag FLAG_PALLET_LADY_NOT_BLOCKING_SIGN
 	setflag FLAG_OPENED_START_MENU
 	setvar VAR_STARTER_MON, 1
+	setvar VAR_RR_STARTER, 2
 	givemon SPECIES_SQUIRTLE, 5, ITEM_NONE
 	setflag FLAG_HIDE_SQUIRTLE_BALL
 	setflag FLAG_HIDE_BULBASAUR_BALL
