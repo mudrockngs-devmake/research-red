@@ -1,0 +1,28 @@
+# Research Red dialogue portraits.
+#
+# A field message that starts with "<Speaker>:" shows that speaker's portrait
+# above the text box, with their name on a plate between the two.
+#
+# One line per speaker:
+#   Speaker | portrait folder | name color | [alt folder | alt flag]
+#
+#   portrait folder  graphics/research_red/<folder>/portrait.png (64x64, 16 colors)
+#                    cast/<name>     people, built by build_cast_art.py
+#                    pokemon/<name>  Pokemon, cut from graphics/pokemon/<name>
+#                                    by build_portraits.py (hand-drawn
+#                                    replacement: pokemon_handmade/<name>.png)
+#   name color       orange, green, blue, brown, pink, purple, teal, red, gray
+#   alt folder/flag  shown instead while that flag is set (outfits)
+#
+# The player's portrait (player_m / player_f) and name are handled in code.
+# After editing: python3 tools/research_red/build_portraits.py
+Elm           | cast/elm          | orange
+Ivy           | cast/ivy          | green  | cast/ivy_swimsuit | FLAG_RR_IVY_SWIMSUIT
+Officer Jenny | cast/jenny_police | blue
+Jenny         | cast/jenny        | blue   | cast/jenny_police | FLAG_RR_JENNY_UNIFORM
+Oak           | cast/oak          | brown
+Delia         | cast/delia        | pink
+Daisy         | cast/daisy        | pink
+Mimey         | pokemon/mr_mime   | pink
+Muffin        | pokemon/rattata   | purple
+Slowpoke      | pokemon/slowpoke  | pink

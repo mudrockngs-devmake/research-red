@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_field_guide.h"
 #include "battle_pike.h"
 #include "battle_pyramid_bag.h"
 #include "battle_pyramid.h"
@@ -64,6 +65,7 @@ enum StartMenuOption
     MENU_ACTION_PYRAMID_BAG,
     MENU_ACTION_DEBUG,
     MENU_ACTION_DEXNAV,
+    MENU_ACTION_RR_GUIDE, // Research Red: Field Guide
     MAX_STARTMENU_ITEMS
 };
 
@@ -114,6 +116,7 @@ static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
 static bool8 StartMenuDebugCallback(void);
 static bool8 StartMenuDexNavCallback(void);
+static bool8 StartMenuFieldGuideCallback(void); // Research Red
 
 static bool8 BattlePyramidRetireStartCallback(void);
 static bool8 BattlePyramidRetireReturnCallback(void);
@@ -157,6 +160,7 @@ static const u8 sStartMenuDesc_Option[] = _("Adjust various game settings such a
 static const u8 sStartMenuDesc_Exit[] = _("Close this MENU window.");
 static const u8 sStartMenuDesc_Retire[] = _("Retire from the SAFARI GAME and return to\nthe registration counter.");
 static const u8 sStartMenuDesc_Debug[] = _("Debug Menu.");
+static const u8 sStartMenuDesc_Guide[] = _("Wild Pokémon that live here, and how\noften they appear."); // Research Red
 static const u8 sText_SaveError_PleaseExchangeBackupMemory[] = _("Save error.\pPlease exchange the\nbackup memory.");
 static const u8 sText_MenuSafariStats[] = _("{STR_VAR_1}/{STR_VAR_2}\nBALLS  {STR_VAR_3}");
 static const u8 sText_MenuTime[] = _("Time: {STR_VAR_1}:{STR_VAR_2}");
@@ -179,6 +183,7 @@ static const struct MenuAction sStartMenuActionTable[] = {
     [MENU_ACTION_PYRAMID_BAG]       = {gText_Bag,                  {.u8_void = StartMenuBattlePyramidBagCallback}},
     [MENU_ACTION_DEBUG]             = {COMPOUND_STRING("DEBUG"),   {.u8_void = StartMenuDebugCallback}},
     [MENU_ACTION_DEXNAV]            = {COMPOUND_STRING("DEXNAV"),  {.u8_void = StartMenuDexNavCallback}},
+    [MENU_ACTION_RR_GUIDE]          = {COMPOUND_STRING("Guide"),   {.u8_void = StartMenuFieldGuideCallback}}, // Research Red
 };
 
 static const struct WindowTemplate sTimeWindowTemplate = {
@@ -233,17 +238,23 @@ static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .baseBlock = 0x8
 };
 
-static const u8 *const sStartMenuDescPointers[] = {
-    sStartMenuDesc_Pokedex,
-    sStartMenuDesc_Pokemon,
-    sStartMenuDesc_Bag,
-    sStartMenuDesc_Player,
-    sStartMenuDesc_Save,
-    sStartMenuDesc_Option,
-    sStartMenuDesc_Exit,
-    sStartMenuDesc_Retire,
-    sStartMenuDesc_Player,
-    sStartMenuDesc_Debug,
+// Research Red: indexed by action (Debug and DexNav used to read past the end)
+static const u8 *const sStartMenuDescPointers[MAX_STARTMENU_ITEMS] = {
+    [MENU_ACTION_POKEDEX]         = sStartMenuDesc_Pokedex,
+    [MENU_ACTION_POKEMON]         = sStartMenuDesc_Pokemon,
+    [MENU_ACTION_BAG]             = sStartMenuDesc_Bag,
+    [MENU_ACTION_PLAYER]          = sStartMenuDesc_Player,
+    [MENU_ACTION_SAVE]            = sStartMenuDesc_Save,
+    [MENU_ACTION_OPTION]          = sStartMenuDesc_Option,
+    [MENU_ACTION_EXIT]            = sStartMenuDesc_Exit,
+    [MENU_ACTION_RETIRE_SAFARI]   = sStartMenuDesc_Retire,
+    [MENU_ACTION_PLAYER_LINK]     = sStartMenuDesc_Player,
+    [MENU_ACTION_REST_FRONTIER]   = sStartMenuDesc_Save,
+    [MENU_ACTION_RETIRE_FRONTIER] = sStartMenuDesc_Retire,
+    [MENU_ACTION_PYRAMID_BAG]     = sStartMenuDesc_Bag,
+    [MENU_ACTION_DEBUG]           = sStartMenuDesc_Debug,
+    [MENU_ACTION_DEXNAV]          = sStartMenuDesc_Pokedex,
+    [MENU_ACTION_RR_GUIDE]        = sStartMenuDesc_Guide,
 };
 
 static const struct BgTemplate sBGTemplates_AfterLinkSaveMessage[] = {
@@ -318,6 +329,7 @@ static void BuildDebugStartMenu(void)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
+    AddStartMenuAction(MENU_ACTION_RR_GUIDE); // Research Red
     AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
@@ -333,6 +345,7 @@ static void BuildNormalStartMenu(void)
         AddStartMenuAction(MENU_ACTION_DEXNAV);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
+    AddStartMenuAction(MENU_ACTION_RR_GUIDE); // Research Red
     AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
@@ -1434,6 +1447,15 @@ void AppendToList(u8 *list, u8 *cursor, u8 newEntry)
 {
     list[*cursor] = newEntry;
     (*cursor)++;
+}
+
+// Research Red: Field Guide (src/rr_field_guide.c)
+static bool8 StartMenuFieldGuideCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenuDebug(); // hide the menu, keep the player still
+    ScriptContext_SetupScript(RR_EventScript_FieldGuide);
+    return TRUE;
 }
 
 static bool8 StartMenuDexNavCallback(void)

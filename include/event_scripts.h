@@ -986,4 +986,7 @@ extern const u8 BattlePyramid_WarpToNextFloor[];
 extern const u8 BattlePyramid_TrainerBattle[];
 extern const u8 BattlePyramid_FindItemBall[];
 
+// Research Red
+extern const u8 RR_EventScript_FieldGuide[];
+
 #endif //GUARD_EVENT_SCRIPTS_H

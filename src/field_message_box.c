@@ -109,7 +109,6 @@ static void StartDrawFieldMessage(void)
 
 void HideFieldMessageBox(void)
 {
-    RR_PortraitHide(); // Research Red
     DestroyTask_DrawFieldMessageBox();
     ClearDialogWindowAndFrame(0, TRUE);
     sMessageBoxType = FIELD_MESSAGE_BOX_HIDDEN;

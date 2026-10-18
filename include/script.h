@@ -41,6 +41,7 @@ void UnlockPlayerFieldControls(void);
 bool8 ArePlayerFieldControlsLocked(void);
 void ScriptContext_Init(void);
 bool8 ScriptContext_IsEnabled(void);
+bool8 RR_IsScriptActive(void); // Research Red
 bool8 ScriptContext_RunScript(void);
 void ScriptContext_SetupScript(const u8 *ptr);
 void ScriptContext_ContinueScript(struct ScriptContext *ctx);

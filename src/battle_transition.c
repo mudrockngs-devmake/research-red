@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_portrait.h"
 #include "battle_setup.h"
 #include "battle_transition_frontier.h"
 #include "battle_transition.h"
@@ -1028,12 +1029,14 @@ static void UNUSED TestBattleTransition(u8 transitionId)
 
 void BattleTransition_StartOnField(enum BattleTransition transitionId)
 {
+    RR_PortraitHide(); // Research Red: no dialogue portrait during the transition
     gMain.callback2 = CB2_OverworldBasic;
     LaunchBattleTransitionTask(transitionId);
 }
 
 void BattleTransition_Start(enum BattleTransition transitionId)
 {
+    RR_PortraitHide(); // Research Red
     LaunchBattleTransitionTask(transitionId);
 }
 

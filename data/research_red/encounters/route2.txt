@@ -1,0 +1,30 @@
+# Route 2: Viridian City to Viridian Forest
+map: MAP_ROUTE2
+
+[grass]
+Pidgey      3-5  20
+Caterpie    3-5  20
+Weedle      3-5  10
+Rattata     3-5  10
+Nidoran♀    3-5  10
+Nidoran♂    3-5  10
+Jigglypuff  3-5   5
+Abra        3-5   5
+Paras       3-5   4
+Sentret     3-5   4
+Ledyba      3-5   1
+Pidgeotto   8-9   1
+
+[grass night]
+Rattata     3-5  20
+Venonat     3-5  20
+Weedle      3-5  10
+Oddish      3-5  10
+Hoothoot    3-5  10
+Paras       3-5  10
+Abra        3-5   5
+Jigglypuff  3-5   5
+Spinarak    3-5   4
+Clefairy    3-5   4
+Gastly      3-5   1
+Noctowl     8-9   1

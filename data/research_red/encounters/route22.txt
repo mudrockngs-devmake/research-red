@@ -1,0 +1,53 @@
+# Route 22: west of Viridian, toward the League gate
+map: MAP_ROUTE22
+
+[grass]
+Rattata     3-5  20
+Spearow     3-5  20
+Mankey      3-5  10
+Nidoran♂    3-5  10
+Nidoran♀    3-5  10
+Ekans       3-5  10
+Sandshrew   3-5   5
+Doduo       3-5   5
+Growlithe   4-5   4
+Ponyta      4-5   4
+Fearow      7-8   1
+Primeape    7-8   1
+
+[grass night]
+Rattata     3-5  20
+Ekans       3-5  20
+Meowth      3-5  10
+Zubat       3-5  10
+Nidoran♂    3-5  10
+Nidoran♀    3-5  10
+Murkrow     4-5   5
+Spinarak    3-5   5
+Hoothoot    3-5   4
+Mankey      3-5   4
+Raticate    7-8   1
+Houndour    4-5   1
+
+[surf]
+Poliwag     5-15 60
+Psyduck     5-15 30
+Goldeen     5-15  5
+Seaking    15-20  4
+Poliwhirl  15-20  1
+
+[old rod]
+Magikarp    5     70
+Poliwag     5     30
+
+[good rod]
+Poliwag    10-15  60
+Goldeen    10-15  20
+Magikarp   10-15  20
+
+[super rod]
+Poliwag    15-20  40
+Goldeen    15-20  40
+Psyduck    15-20  15
+Krabby     15-20   4
+Gyarados   15-20   1

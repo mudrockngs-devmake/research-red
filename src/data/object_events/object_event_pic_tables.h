@@ -1,3 +1,4 @@
+// Research Red: one 20-frame sheet (walk + run), see tools/research_red/build_player_ow.py
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {
     overworld_frame(gObjectEventPic_RedNormal, 2, 4, 0),
     overworld_frame(gObjectEventPic_RedNormal, 2, 4, 1),
@@ -8,17 +9,17 @@ static const struct SpriteFrameImage sPicTable_RedNormal[] = {
     overworld_frame(gObjectEventPic_RedNormal, 2, 4, 6),
     overworld_frame(gObjectEventPic_RedNormal, 2, 4, 7),
     overworld_frame(gObjectEventPic_RedNormal, 2, 4, 8),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 3),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 4),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 5),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 6),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 7),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 8),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 9),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 10),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 11),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 12),
-    overworld_frame(gObjectEventPic_RedSurfRun, 2, 4, 13),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 9),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 10),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 11),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 12),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 13),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 14),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 15),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 16),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 17),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 18),
+    overworld_frame(gObjectEventPic_RedNormal, 2, 4, 19),
 };
 
 static const struct SpriteFrameImage sPicTable_RedBike[] = {
@@ -45,6 +46,7 @@ static const struct SpriteFrameImage sPicTable_RedWatering[] = {
     overworld_frame(gObjectEventPic_RedWatering, 4, 4, 5),
 };
 
+// Research Red: one 20-frame sheet (walk + run), see tools/research_red/build_player_ow.py
 static const struct SpriteFrameImage sPicTable_GreenNormal[] = {
     overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 0),
     overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 1),
@@ -55,17 +57,17 @@ static const struct SpriteFrameImage sPicTable_GreenNormal[] = {
     overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 6),
     overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 7),
     overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 8),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 3),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 4),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 5),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 6),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 7),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 8),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 9),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 10),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 11),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 12),
-    overworld_frame(gObjectEventPic_GreenSurfRun, 2, 4, 13),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 9),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 10),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 11),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 12),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 13),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 14),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 15),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 16),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 17),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 18),
+    overworld_frame(gObjectEventPic_GreenNormal, 2, 4, 19),
 };
 
 static const struct SpriteFrameImage sPicTable_GreenBike[] = {

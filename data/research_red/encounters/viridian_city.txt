@@ -1,0 +1,25 @@
+# Viridian City's pond
+map: MAP_VIRIDIAN_CITY
+
+[surf]
+Psyduck     5-10 60
+Poliwag     5-10 30
+Slowpoke    5-10  5
+Wooper      5-10  4
+Golduck    15-20  1
+
+[old rod]
+Magikarp    5     70
+Poliwag     5     30
+
+[good rod]
+Poliwag    10-15  60
+Goldeen    10-15  20
+Magikarp   10-15  20
+
+[super rod]
+Poliwag    15-20  40
+Goldeen    15-20  40
+Poliwhirl  15-20  15
+Slowpoke   15-20   4
+Gyarados   15-20   1

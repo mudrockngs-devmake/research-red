@@ -331,6 +331,13 @@ bool8 ScriptContext_IsEnabled(void)
         return FALSE;
 }
 
+// Research Red: TRUE while a script is running or waiting (not finished).
+// Dialogue portraits stay up for the whole scene with this.
+bool8 RR_IsScriptActive(void)
+{
+    return sGlobalScriptContextStatus != CONTEXT_SHUTDOWN;
+}
+
 // Re-initializes the global script context to zero.
 void ScriptContext_Init(void)
 {

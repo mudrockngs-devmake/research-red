@@ -1,0 +1,32 @@
+# Route 1: every non-legendary Pokemon from the anime's first episode
+# (Pidgey, Spearow, Rattata, Pikachu, Nidorino, Dodrio, Gengar; Magikarp and
+# Gyarados are in Pallet Town's water) plus the Route 1 regulars.
+map: MAP_ROUTE1
+
+[grass]
+Pidgey      2-4  20
+Spearow     2-4  20
+Rattata     2-4  10
+Mankey      3-4  10
+Nidoran♂    3-4  10
+Nidoran♀    3-4  10
+Bellsprout  3-4   5
+Meowth      3-4   5
+Pikachu     3-5   4
+Dodrio      5-6   4
+Nidorino    5-6   1
+Eevee       4-5   1
+
+[grass night]
+Rattata     2-4  20
+Oddish      2-4  20
+Meowth      3-4  10
+Spearow     3-4  10
+Nidoran♂    3-4  10
+Nidoran♀    3-4  10
+Hoothoot    3-4   5
+Pidgey      3-4   5
+Pikachu     3-5   4
+Gastly      3-5   4
+Gengar      6-7   1
+Nidorino    5-6   1

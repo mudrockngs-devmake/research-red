@@ -13,6 +13,7 @@
 #include "palette.h"
 #include "pokeball.h"
 #include "random.h"
+#include "rr_intro_call.h"
 #include "scanline_effect.h"
 #include "sound.h"
 #include "string_util.h"
@@ -739,6 +740,12 @@ static void CB2_NewGameScene(void)
 
 void StartNewGameScene(void)
 {
+    // Research Red: the intro is the Discord-style video call in
+    // src/rr_intro_call.c; the controls guide, Pikachu intro and Oak speech
+    // below are no longer used.
+    RR_StartIntroCall();
+    return;
+
     gPlttBufferUnfaded[0] = RGB_BLACK;
     gPlttBufferFaded[0]   = RGB_BLACK;
     CreateTask(Task_NewGameScene, 0);

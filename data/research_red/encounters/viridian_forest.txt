@@ -1,0 +1,30 @@
+# Viridian Forest
+map: MAP_VIRIDIAN_FOREST
+
+[grass]
+Caterpie    3-5  20
+Weedle      3-5  20
+Metapod     4-6  10
+Kakuna      4-6  10
+Pikachu     3-5  10
+Pidgey      4-6  10
+Paras       4-6   5
+Bellsprout  4-6   5
+Butterfree  7-8   4
+Beedrill    7-8   4
+Scyther     6-7   1
+Pinsir      6-7   1
+
+[grass night]
+Venonat     3-5  20
+Weedle      3-5  20
+Kakuna      4-6  10
+Metapod     4-6  10
+Oddish      4-6  10
+Paras       4-6  10
+Hoothoot    4-6   5
+Spinarak    4-6   5
+Pikachu     3-5   4
+Gastly      4-6   4
+Venomoth    8-9   1
+Ariados     8-9   1
