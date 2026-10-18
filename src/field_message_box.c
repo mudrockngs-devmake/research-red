@@ -5,6 +5,7 @@
 #include "script.h"
 #include "string_util.h"
 #include "text_window.h"
+#include "rr_portrait.h"
 
 static EWRAM_DATA u8 sMessageBoxType = 0;
 
@@ -94,18 +95,21 @@ bool8 ShowFieldMessageFromBuffer(void)
 static void ExpandStringAndStartDrawFieldMessageBox(const u8 *str)
 {
     StringExpandPlaceholders(gStringVar4, str);
+    RR_PortraitOnMessage(gStringVar4); // Research Red: speaker portrait
     AddTextPrinterForMessage(TRUE);
     CreateTask_DrawFieldMessageBox();
 }
 
 static void StartDrawFieldMessage(void)
 {
+    RR_PortraitOnMessage(gStringVar4); // Research Red: speaker portrait
     AddTextPrinterForMessage(TRUE);
     CreateTask_DrawFieldMessageBox();
 }
 
 void HideFieldMessageBox(void)
 {
+    RR_PortraitHide(); // Research Red
     DestroyTask_DrawFieldMessageBox();
     ClearDialogWindowAndFrame(0, TRUE);
     sMessageBoxType = FIELD_MESSAGE_BOX_HIDDEN;

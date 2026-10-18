@@ -11,6 +11,7 @@ Test builds are v0.0.x. Each entry lists what changed for players/testers.
 - A Slowpoke wanders Oak's lab.
 - Every trainer battle is now a double battle (two against one if they only have one Pokémon).
 - Route 1 has the new Kanto-only encounter table (Pidgey, Rattata, Spearow, Mankey, both Nidoran, Oddish, Bellsprout, Meowth, rare Eevee).
+- Character portraits appear above the text box whenever Elm, Ivy, Jenny, Oak, Delia, Daisy or you speak.
 - Lab: if Elm and Jenny beat you, they take on Prof. Oak while you watch. Declining Oak or losing to him now has its own dialogue.
 - Route 1: Elm and Jenny wait at the north end instead of popping in, and react to the first four Pokémon you caught on the way (with Elm getting more jealous each time).
 - Behind the scenes: scenes moved into their own files; story data export for writing.

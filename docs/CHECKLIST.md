@@ -66,7 +66,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 ## Cross-cutting (any milestone, owner decides when)
 - [ ] Visual overhaul research: community battle UI branches (healthboxes, backgrounds, stat displays) in the style of Radical Red / HGSS hacks; credit authors
 - [ ] Battle UI configs: show types, move effectiveness, physical/special icons, fast HP/EXP bars, trainer slide messages (check expansion configs first)
-- [ ] Portraits above the text box for key characters (Oak, Elm, Ivy, Jenny, Delia, Daisy, player M/F) from `graphics/research_red/`
+- [x] Portraits above the text box for key characters (Oak, Elm, Ivy, Jenny, Delia, Daisy, player M/F) from `graphics/research_red/cast/` (v0.0.12; automatic from the "Name:" prefix; Ivy swimsuit / Jenny police via flags)
 - [ ] Video call UI: call frame, signal bars, pop-in call circles; reusable script commands (start call, add/drop caller, signal strength)
 - [ ] Intro player pictures from `intro_player_m/f.png` (resize/pad to the size the intro expects)
 - [ ] Title screen (Research Red logo; Slowpoke art from owner or in-game sprite) and boot credits/disclaimer screen

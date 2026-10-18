@@ -9,6 +9,7 @@ How the project is laid out and how work moves through it.
 | Story scenes (one file each) | `data/scripts/research_red/rr_*.inc` (included at the end of `data/event_scripts.s`) |
 | Map hooks | Each FireRed map keeps only its `map_script` / trigger lines pointing at the `RR_*` scene label |
 | Ivy follower | `data/scripts/research_red/rr_ivy.inc`; macros in `asm/macros/event.inc` (Research Red section); C in `src/research_red.c` |
+| Dialogue portraits | `src/rr_portrait.c`: a line starting "Elm:", "Ivy:", "Jenny:", "Oak:", "Delia:", "Daisy:" or "<player>:" shows that portrait above the box automatically. Add a character: add their cast portrait + a prefix row. Outfits: `FLAG_RR_IVY_SWIMSUIT`, `FLAG_RR_JENNY_UNIFORM` |
 | Custom C | `src/research_red.c` (new natives); small tagged edits elsewhere (`grep -rn "Research Red" src include`) |
 | Trainers | `src/data/trainers.party` (Research Red block at the end); IDs in `include/constants/opponents.h` |
 | Flags / vars | `include/constants/flags.h`, `vars.h` (`FLAG_RR_*`, `VAR_RR_*`), registered in `docs/FLAGS_VARS.md` |

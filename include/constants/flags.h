@@ -48,8 +48,8 @@
 #define FLAG_RR_FORCE_DOUBLES    0x022 // Research Red: every trainer battle is a double (2v1 if they have one Pokemon); on by default
 #define FLAG_RR_FORCE_DOUBLE_WILD 0x023 // Research Red: B_FLAG_FORCE_DOUBLE_WILD (wild doubles); off by default
 #define FLAG_RR_AI_VS_AI         0x024 // Research Red: B_FLAG_AI_VS_AI_BATTLE (the AI plays the player's side; lab Oak vs Elm/Jenny)
-#define FLAG_0x025               0x025
-#define FLAG_0x026               0x026
+#define FLAG_RR_IVY_SWIMSUIT     0x025 // Research Red: Ivy's swimsuit portrait (beach scenes)
+#define FLAG_RR_JENNY_UNIFORM    0x026 // Research Red: Jenny's police portrait (Team Rocket scenes); casual by default
 #define FLAG_0x027               0x027
 
 // Hide/show flags
