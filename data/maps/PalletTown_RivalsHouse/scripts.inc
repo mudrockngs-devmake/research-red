@@ -8,6 +8,7 @@ PalletTown_RivalsHouse_MapScripts::
 PalletTown_RivalsHouse_OnTransition::
 	call_if_lt VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2, PalletTown_RivalsHouse_EventScript_MoveDaisyToTable
 	call_if_ge VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2, PalletTown_RivalsHouse_EventScript_AlreadyReceivedTownMap
+	call_if_eq VAR_0x40FE, 3, RR_Daisy_EventScript_SetupScene
 	end
 
 @ Research Red: the Daisy scene plays once, right after the lab (VAR_0x40FE == 3)

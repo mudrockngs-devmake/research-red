@@ -485,6 +485,14 @@ Script `PalletTown_ProfessorOaksLab_EventScript_LastPokeBall`
 
 > That's PROF. OAK's last POKéMON.
 
+### Lab Slowpoke (Species(Slowpoke)) at 10,11
+Script `RR_Lab_EventScript_Slowpoke`
+
+> Slowpoke: …Slooow?
+>
+> It's still holding the phone from
+> this morning's call.
+
 ## Signs
 
 - at 2,1: There's an e-mail message here.  …  Finally! The ultimate TRAINERS of the POKéMON LEAGUE are ready to take on all comers!  Bring your best POKéMON and see how you rate as a TRAINER!  POKéMON LEAGUE HQ INDIGO PLATEAU  PROF. OAK, please visit us! …

@@ -147,6 +147,7 @@ void NewGameInitData(void)
     InitMagikarpSizeRecord();
     EnableNationalPokedex_RSE();
     FlagSet(FLAG_SYS_B_DASH); // Research Red: Running Shoes from the start
+    FlagSet(FLAG_RR_FORCE_DOUBLES); // Research Red: all trainer battles are doubles (toggle later in Elm's Research Rules)
     EnableNationalPokedex(); // Research Red: National Dex from the start (Johto starters, regional forms)
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();

@@ -30,11 +30,11 @@ ALPHA_CUT = 200
 
 # Battle sprite tuning: figure height, head box (fractions of figure height),
 # how much bigger the head is drawn, and how dark detail must be to survive.
-BATTLE_HEIGHT = 58
+BATTLE_HEIGHT = 60
 HEAD_FRAC_H = 0.16
 HEAD_FRAC_W = 0.20
-HEAD_BOOST = 1.35
-KEEP_DARK = 0.30
+HEAD_BOOST = 1.0
+KEEP_DARK = 0.42
 
 # Poses where an arm sits above or beside the head fool the automatic head
 # finder; give (head centre x, top of head y) in reference-image pixels.
@@ -196,9 +196,9 @@ def build(ref_path, out_dir, name=""):
     os.makedirs(out_dir, exist_ok=True)
     res = {}
 
-    # battle: whole figure, bottom-aligned in 64x64. At this size a true-scale
-    # head is ~9 px and the eyes vanish, so (like official GBA trainer art) the
-    # head is redrawn HEAD_BOOST times larger with dark details kept.
+    # battle: whole figure, bottom-aligned in 64x64. At this size the head is
+    # ~9 px and plain averaging loses the eyes, so the head is redrawn with dark
+    # details (eyes, line art) kept. HEAD_BOOST > 1 enlarges it (owner prefers 1.0).
     bh = BATTLE_HEIGHT
     k = bh / fh
     bw = min(64, max(1, round((x1 - x0) * k)))

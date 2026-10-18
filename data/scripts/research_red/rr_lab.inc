@@ -771,8 +771,8 @@ RR_Lab_Text_Oak_Welcome::
 RR_Lab_Text_Oak_WhyHere::
     .string "Oak: Now. Why I asked the four of\n"
     .string "you to Pallet Town.\p"
-    .string "Three Kanto starters on the right.\n"
-    .string "Three from Johto on the left,\l"
+    .string "Three Kanto starters on top.\n"
+    .string "Three from Johto below them,\l"
     .string "courtesy of Elm.$"
 
 RR_Lab_Text_Elm_Mailed::
@@ -1092,3 +1092,19 @@ RR_Lab_Text_Ivy_WaitOutside::
 RR_Lab_Text_IvyMonJoins::
     .string "Ivy's {STR_VAR_1} joined the team!\n"
     .string "You and Ivy battle together.$"
+
+@ The lab's Slowpoke (the one from the intro call, still on the line)
+RR_Lab_EventScript_Slowpoke::
+	lock
+	faceplayer
+	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Slowpoke, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_Lab_Text_Slowpoke::
+    .string "Slowpoke: …Slooow?\p"
+    .string "It's still holding the phone from\n"
+    .string "this morning's call.$"

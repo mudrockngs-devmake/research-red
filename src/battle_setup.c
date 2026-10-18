@@ -1135,6 +1135,12 @@ void BattleSetup_StartTrainerBattle(void)
     {
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
     }
+    // Research Red: forced doubles (you and Ivy fight together). A trainer with one
+    // Pokemon fights 2-vs-1. Needs two usable Pokemon on the player's side.
+    else if (FlagGet(FLAG_RR_FORCE_DOUBLES) && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS)
+    {
+        gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    }
 
     sNoOfPossibleTrainerRetScripts = gNoOfApproachingTrainers;
     gNoOfApproachingTrainers = 0;

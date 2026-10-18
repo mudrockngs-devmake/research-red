@@ -2,6 +2,17 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players/testers.
 
+## v0.0.12
+- Fixed: the battle intro called Jenny "Officer Elm".
+- Fixed: Oak describes the starters as Kanto on top, Johto below.
+- Battle sprites are plain-shrunk again (no big heads), with eyes kept visible.
+- Temporary player sprites: red hair and a white lab coat (male), red hair, coat and jeans (female).
+- Muffin the Rattata lives in Daisy's house; Daisy faces the door when you arrive for the scene.
+- A Slowpoke wanders Oak's lab.
+- Every trainer battle is now a double battle (two against one if they only have one Pokémon).
+- Route 1 has the new Kanto-only encounter table (Pidgey, Rattata, Spearow, Mankey, both Nidoran, Oddish, Bellsprout, Meowth, rare Eevee).
+- Behind the scenes: scenes moved into their own files; story data export for writing.
+
 ## v0.0.11
 - Ivy now follows you from the end of breakfast. Talk to her for a few placeholder lines.
 - In cutscenes she steps in from where she is and falls back in behind you afterward (lab, Daisy's house, Route 1).

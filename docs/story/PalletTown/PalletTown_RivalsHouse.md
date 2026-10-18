@@ -121,6 +121,14 @@ Script `PalletTown_RivalsHouse_EventScript_TownMap`
 *hidden by `FLAG_HIDE_TOWN_MAP`*
 (no talk script; used in cutscenes)
 
+### Rivals House Muffin (Species(Rattata)) at 7,6
+Script `RR_Daisy_EventScript_Muffin`
+
+> Muffin: Rat! Tat tat!
+>
+> She looks extremely pleased with
+> herself.
+
 ## Signs
 
 - at 12,1: The shelves are crammed full of books on POKéMON.

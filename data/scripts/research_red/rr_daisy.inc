@@ -261,3 +261,24 @@ RR_Daisy_Text_Elm_SoExcited::
 RR_Daisy_Text_Elm_SeeYou::
     .string "Elm: See you on Route 1!\n"
     .string "Last one to Viridian buys lunch!$"
+
+@ Daisy waits at the table facing the door when you arrive for the scene
+RR_Daisy_EventScript_SetupScene::
+	setobjectmovementtype LOCALID_DAISY, MOVEMENT_TYPE_FACE_DOWN
+	return
+
+@ Muffin, Daisy's Rattata (Elm insists she is a Persian)
+RR_Daisy_EventScript_Muffin::
+	lock
+	faceplayer
+	playmoncry SPECIES_RATTATA, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_Muffin, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_Daisy_Text_Muffin::
+    .string "Muffin: Rat! Tat tat!\p"
+    .string "She looks extremely pleased with\n"
+    .string "herself.$"

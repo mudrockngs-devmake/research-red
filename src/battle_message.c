@@ -3034,7 +3034,8 @@ static const u8 *BattleStringGetOpponentNameByTrainerId(u16 trainerId, u8 *text,
     }
     else
     {
-        enum TrainerClassID trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+        // Research Red: was opponentA, so a rival's partner (Jenny) was named after the rival
+        enum TrainerClassID trainerClass = GetTrainerClassFromId(trainerId);
 
         if (trainerClass == TRAINER_CLASS_RIVAL_EARLY
             || trainerClass == TRAINER_CLASS_RIVAL_LATE

@@ -29,7 +29,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [ ] Picnic lunch outside the Pokemon Center (dialogue in the animatic `lunch()`)
 - [ ] Research Rules menu: level caps on/off, hard/soft cap, difficulty (Relaxed/Standard/Challenge), battle style (Shift/Set); saved; changeable by calling Elm
 - [ ] Level cap system tied to badges
-- [ ] Encounter tables for Route 1 and Route 22 (below)
+- [ ] Encounter tables for Route 1 and Route 22 (below) (Route 1 done v0.0.12; FRLG slot rates are fixed, so: Pidgey 20, Rattata 20, Spearow 11, Mankey 10, Nidoran M 10, Oddish 10, Nidoran F 8, Bellsprout 5, Meowth 5, Eevee 1)
 
 ## v0.3 — Route 2 and Viridian Forest
 - [ ] Route 2 NPC, Abra encounter, trade-house Mimey gag text
@@ -50,6 +50,17 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 | Route 22 | Rattata 15, Spearow 15, Mankey 15, Nidoran F 12, Nidoran M 12, Ekans 10, Sandshrew 10, Doduo 8, Ponyta 3 |
 | Route 2 | Pidgey 15, Rattata 15, Caterpie 12, Weedle 12, Venonat 10, Paras 8, Nidoran F 8, Nidoran M 8, Abra 6, Jigglypuff 6 |
 | Viridian Forest | Caterpie 18, Weedle 18, Paras 10, Metapod 8, Kakuna 8, Venonat 8, Oddish 8, Bellsprout 8, Pikachu 6, Pidgey 4, Scyther 2, Pinsir 2 |
+
+## v0.0.12 round (owner playtest of v0.0.11)
+- [x] Fix "Rival Elm and Officer Elm" (rival name was applied to the partner)
+- [x] Oak's table line (Kanto on top, Johto below)
+- [x] Battle sprites back to plain shrink, with eye detail kept
+- [x] Temporary player overworld: recolored Red (red hair, white coat) and Leaf (red hair, coat, jeans)
+- [x] Muffin (Rattata) in Daisy's house; Daisy faces the door for the scene
+- [x] Slowpoke wandering in Oak's lab
+- [x] Forced double battles for trainers (`FLAG_RR_FORCE_DOUBLES`, on); wild doubles flag (off)
+- [x] Cleanup: scenes moved to data/scripts/research_red/, rr_check.py, docs/DEV_GUIDE.md
+- [x] Story data export (docs/story/, synced to E:)
 
 ## Cross-cutting (any milestone, owner decides when)
 - [ ] Visual overhaul research: community battle UI branches (healthboxes, backgrounds, stat displays) in the style of Radical Red / HGSS hacks; credit authors

@@ -22,6 +22,8 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 
 | Flag | Purpose |
 |---|---|
+| `FLAG_RR_FORCE_DOUBLES` (0x022, was `FLAG_0x022`) | Every trainer battle is a double (2v1 vs one Pokemon). Set at new game; toggle later in Elm's Research Rules |
+| `FLAG_RR_FORCE_DOUBLE_WILD` (0x023, was `FLAG_0x023`) | `B_FLAG_FORCE_DOUBLE_WILD`: wild doubles. Off by default |
 | `FLAG_RR_EXP_SHARE` (0x021, was `FLAG_0x021`) | `I_EXP_SHARE_FLAG`: Exp. Share key item on/off. Set by the research grant |
 | `FLAG_RR_NO_WHITEOUT` (0x020, was `FLAG_0x020`) | `B_FLAG_NO_WHITEOUT`: set around story battles so a loss continues the script. Cleared after each battle |
 

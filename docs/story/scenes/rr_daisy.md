@@ -114,3 +114,12 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 *[rr_ivy_follow LOCALID_RIVALS_HOUSE_IVY]*
 
 *[setvar VAR_0x40FE ]*
+
+### RR_Daisy_EventScript_SetupScene
+
+### RR_Daisy_EventScript_Muffin
+
+> Muffin: Rat! Tat tat!
+>
+> She looks extremely pleased with
+> herself.

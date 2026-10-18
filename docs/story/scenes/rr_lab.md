@@ -12,8 +12,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Now. Why I asked the four of
 > you to Pallet Town.
 >
-> Three Kanto starters on the right.
-> Three from Johto on the left,
+> Three Kanto starters on top.
+> Three from Johto below them,
 > courtesy of Elm.
 
 > Elm: Hand-delivered! Well. Mailed.
@@ -703,3 +703,10 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 *[additem ITEM_TM49]*
 
 *[additem ITEM_TM50]*
+
+### RR_Lab_EventScript_Slowpoke
+
+> Slowpoke: …Slooow?
+>
+> It's still holding the phone from
+> this morning's call.

@@ -45,8 +45,8 @@
 
 #define FLAG_RR_NO_WHITEOUT      0x020 // Research Red: B_FLAG_NO_WHITEOUT (story battles continue on a loss)
 #define FLAG_RR_EXP_SHARE        0x021 // Research Red: I_EXP_SHARE_FLAG (Exp. Share key item on/off)
-#define FLAG_0x022               0x022
-#define FLAG_0x023               0x023
+#define FLAG_RR_FORCE_DOUBLES    0x022 // Research Red: every trainer battle is a double (2v1 if they have one Pokemon); on by default
+#define FLAG_RR_FORCE_DOUBLE_WILD 0x023 // Research Red: B_FLAG_FORCE_DOUBLE_WILD (wild doubles); off by default
 #define FLAG_0x024               0x024
 #define FLAG_0x025               0x025
 #define FLAG_0x026               0x026
