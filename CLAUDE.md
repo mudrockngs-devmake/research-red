@@ -5,7 +5,9 @@ FireRed hack on pokefirered-expansion. Repo: mudrockngs-devmake/research-red. Ow
 ## Working rules
 - Ask one question at a time. Label each task Light / Medium / Heavy before starting.
 - Commit straight to master; the "Build Research Red BPS" GitHub Action makes BPS patches. Ignore the "CI" workflow.
-- Build locally first: `make firered -j6`. Test ROM goes to `/mnt/e/Workspace/romhacks/research-red/ResearchRed_local.gba`. Never commit ROMs.
+- Build locally first: `make firered -j6`, then `tools/research_red/rr_install_rom.sh` (installs `ResearchRed_local.gba` and keeps a versioned copy in the workspace `builds/`). Never commit ROMs.
+- After each owner playtest round: `tools/research_red/rr_archive_test.sh <test-name>` (moves screenshots, copies saves/states and the tested ROM into the workspace `test-archive/`), then fill in its `NOTES.md` from the owner's notes. mGBA screenshots (F12) land in `/mnt/e/Workspace/romhacks/_emu/screenshots/`; read them there.
+- Add each build's changes to `docs/CHANGELOG.md` (used for GitHub release notes).
 - Versioning: v0.0.x per test build; milestones v0.1 (Pallet), v0.2 (Viridian/Route 22/lunch), v0.3 (Route 2/Forest), v0.4 -> v1.0 (Pewter/Brock/finale). Stamp: `sText_Call_Hello` in `src/oak_speech.c`.
 - Text: proper case everywhere (no ALL-CAPS names), max 34 characters per line, story dialogue uses `NPC_TEXT_COLOR_NEUTRAL`.
 - Code: clear comments, `RR_` prefix for custom labels/files, keep custom work easy to find for upstream merges.
