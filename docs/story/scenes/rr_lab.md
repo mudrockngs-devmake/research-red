@@ -338,15 +338,21 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 ### RR_Lab_EventScript_OakResult
 
+> Oak: Well. I suppose we can't
+> really fund it now. Not after a
+> showing like that.
+
+> Elm: Then I'll fund it! Out of
+> my own pocket! …Jenny, how much
+> is in my pocket?
+
+> Oak: Ho ho! A sweet thought, Elm.
+> But it was funded all along.
+
 > Oak: A student falls down…
 > Old man forgot to hold back…
 >
 > The grant still goes through.
-
-> Elm: And if it didn't, I'd fund
-> you myself! Out of my own grant!
->
-> …Which is the same grant.
 
 ### RR_Lab_EventScript_OakBeaten
 
@@ -359,7 +365,16 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > {PLAYER}: After the paperwork,
 > Professor. Maybe.
 
-> Oak: Wise. Paperwork first.
+> Oak: A battle declined…
+> The chance drifts off like a leaf…
+>
+> We carry on still.
+
+> Elm: But… we still get funding
+> for all this, right? Right?
+
+> Oak: Don't worry, Elm.
+> I have it covered.
 
 ### RR_Lab_EventScript_Grant
 
@@ -703,6 +718,74 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 *[additem ITEM_TM49]*
 
 *[additem ITEM_TM50]*
+
+### RR_Lab_EventScript_OakVsElm
+
+> Oak: Elm. Jenny. You won, so you
+> face me. Two on two.
+
+> Elm: Us? Against you?
+> Jenny, hold my notebook.
+
+> Jenny: Professionally speaking,
+> I accept.
+
+> Ivy: Sweetie, we get front row
+> seats. Somebody find popcorn.
+
+### RR_Lab_EventScript_OakVsElmBattle
+
+### RR_Lab_EventScript_ElmTeam0
+
+### RR_Lab_EventScript_OakBattleWatch0
+
+*[trainerbattle_no_intro Pkmn Prof Oak (Squirtle, Chikorita)]*
+
+### RR_Lab_EventScript_ElmTeam1
+
+### RR_Lab_EventScript_OakBattleWatch1
+
+*[trainerbattle_no_intro Pkmn Prof Oak (Bulbasaur, Cyndaquil)]*
+
+### RR_Lab_EventScript_ElmTeam2
+
+### RR_Lab_EventScript_OakBattleWatch2
+
+*[trainerbattle_no_intro Pkmn Prof Oak (Charmander, Totodile)]*
+
+### RR_Lab_EventScript_ElmTeam3
+
+### RR_Lab_EventScript_OakBattleWatch3
+
+*[trainerbattle_no_intro Pkmn Prof Oak (Totodile, Bulbasaur)]*
+
+### RR_Lab_EventScript_ElmTeam4
+
+### RR_Lab_EventScript_OakBattleWatch4
+
+*[trainerbattle_no_intro Pkmn Prof Oak (Chikorita, Charmander)]*
+
+### RR_Lab_EventScript_ElmTeam5
+
+### RR_Lab_EventScript_OakBattleWatch5
+
+*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle)]*
+
+### RR_Lab_EventScript_OakVsElmResult
+
+> Oak: Ho ho! Not bad. Not bad at
+> all. Still mine, though.
+
+> Elm: That was the warm-up!
+> …It was not the warm-up.
+
+### RR_Lab_EventScript_OakLostToElm
+
+> Oak: Well! Beaten in my own lab.
+> Gary will never let me hear it.
+
+> Elm: For science! And for
+> bragging rights! Mostly that.
 
 ### RR_Lab_EventScript_Slowpoke
 

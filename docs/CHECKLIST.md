@@ -18,8 +18,8 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] HMs usable as battle moves and forgettable; field moves work with no HM or badge (v0.0.10)
 - [ ] Cell Phone key item: registered numbers (Elm, Jenny, Oak, Delia); calling Elm opens the Research Rules menu (see v0.2)
 - [x] Ivy as NPC follower from the end of breakfast (v0.0.11; cutscenes hand off with `rr_ivy_to_scene` / `rr_ivy_follow`, data/scripts/rr_ivy.inc) (`include/config/follower_npc.h`); remove duplicate scene Ivys (including the lab)
-- [ ] Route 1 first walk: group walks together (scripted segment or cutscenes), pink streak near Viridian (camera bug fixed v0.0.10)
-- [ ] Route 1 catch reactions: Elm/Jenny comment per species, duplicate fallback, rising jealousy; Elm runs to Route 22
+- [ ] Route 1 first walk: Elm and Jenny wait at the north end (v0.0.12); pink streak as a Mew blur sprite still to do (camera bug fixed v0.0.10)
+- [x] Route 1 catch reactions: Elm/Jenny comment per species, duplicate fallback, rising jealousy; Elm runs to Route 22 (v0.0.12; reactions play when you reach them, for your first four catches)
 - [ ] Mimey uses the Mr. Mime overworld sprite (verify), Johto balls behind the Kanto table (verify)
 
 ## v0.2 — Viridian, Route 22, the picnic
@@ -61,6 +61,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] Forced double battles for trainers (`FLAG_RR_FORCE_DOUBLES`, on); wild doubles flag (off)
 - [x] Cleanup: scenes moved to data/scripts/research_red/, rr_check.py, docs/DEV_GUIDE.md
 - [x] Story data export (docs/story/, synced to E:)
+- [x] Lab: losing to Elm and Jenny means they fight Oak while you watch; new decline/loss dialogue (placeholder)
 
 ## Cross-cutting (any milestone, owner decides when)
 - [ ] Visual overhaul research: community battle UI branches (healthboxes, backgrounds, stat displays) in the style of Radical Red / HGSS hacks; credit authors

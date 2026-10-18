@@ -48,12 +48,12 @@ Script `Route1_EventScript_Boy`
 *hidden by `FLAG_HIDE_OAK_IN_PALLET_TOWN`*
 (no talk script; used in cutscenes)
 
-### Route1 Elm (Rr Elm) at 12,35
-*hidden by `FLAG_HIDE_OAK_IN_PALLET_TOWN`*
+### Route1 Elm (Rr Elm) at 11,2
+*hidden by `FLAG_TEMP_11`*
 (no talk script; used in cutscenes)
 
-### Route1 Jenny (Rr Jenny) at 12,36
-*hidden by `FLAG_HIDE_OAK_IN_PALLET_TOWN`*
+### Route1 Jenny (Rr Jenny) at 12,2
+*hidden by `FLAG_TEMP_12`*
 (no talk script; used in cutscenes)
 
 ## Signs

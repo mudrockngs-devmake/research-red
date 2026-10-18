@@ -64,6 +64,7 @@ static void DoSafariBattle(void);
 static void DoGhostBattle(void);
 static void DoStandardWildBattle(bool32 isDouble);
 static void CB2_EndWildBattle(void);
+void RR_OnWildBattleEnd(void); // Research Red (src/research_red.c)
 static void CB2_EndScriptedWildBattle(void);
 static void CB2_EndMarowakBattle(void);
 static void CB2_EndTrainerBattle(void);
@@ -515,6 +516,7 @@ static void CB2_EndWildBattle(void)
 {
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
+    RR_OnWildBattleEnd(); // Research Red: Route 1 catch reactions
 
     if (IsNPCFollowerWildBattle())
     {

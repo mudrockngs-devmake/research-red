@@ -103,6 +103,7 @@ RR_Daisy_EventScript_Scene::
 	removeobject LOCALID_RIVALS_HOUSE_JENNY
 	playse SE_EXIT
 	rr_ivy_follow LOCALID_RIVALS_HOUSE_IVY
+	setvar VAR_RR_ROUTE1_CATCHES, 0
 	setvar VAR_0x40FE, 4
 	releaseall
 	end

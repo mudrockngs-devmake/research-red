@@ -1,4 +1,5 @@
 Route1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, RR_Route1_OnTransition
 	.byte 0
 
 Route1_EventScript_MartClerk::

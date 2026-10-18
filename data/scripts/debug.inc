@@ -243,6 +243,7 @@ RR_Debug_StateDaisyDone::
 	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2
 	setflag FLAG_HIDE_TOWN_MAP
 	additem ITEM_TOWN_MAP, 1
+	setvar VAR_RR_ROUTE1_CATCHES, 0
 	setvar VAR_0x40FE, 4
 	return
 

@@ -292,11 +292,11 @@
 #define VAR_0x40EF                 0x40EF
 #define VAR_0x40F0                 0x40F0
 #define VAR_DAILY_BP               0x40F1
-#define VAR_0x40F2                 0x40F2
-#define VAR_0x40F3                 0x40F3
-#define VAR_0x40F4                 0x40F4
-#define VAR_0x40F5                 0x40F5
-#define VAR_0x40F6                 0x40F6
+#define VAR_RR_ROUTE1_CATCHES            0x40F2 // Research Red: Route 1 catches before the group scene
+#define VAR_RR_ROUTE1_CATCH_0            0x40F3 // Research Red: Route 1 catches before the group scene
+#define VAR_RR_ROUTE1_CATCH_1            0x40F4 // Research Red: Route 1 catches before the group scene
+#define VAR_RR_ROUTE1_CATCH_2            0x40F5 // Research Red: Route 1 catches before the group scene
+#define VAR_RR_ROUTE1_CATCH_3            0x40F6 // Research Red: Route 1 catches before the group scene
 #define VAR_0x40F7                 0x40F7
 #define VAR_0x40F8                 0x40F8
 #define VAR_0x40F9                 0x40F9

@@ -5,6 +5,10 @@
 #include "follower_npc.h"
 #include "load_save.h"
 #include "pokemon.h"
+#include "battle.h"
+#include "constants/battle.h"
+#include "constants/maps.h"
+#include "constants/species.h"
 #include "script.h"
 #include "constants/event_objects.h"
 
@@ -63,4 +67,63 @@ void RR_ScriptReturnPlayerTeam(struct ScriptContext *ctx)
 {
     LoadPlayerParty();
     CalculatePlayerPartyCount();
+}
+
+// Route 1 catch reactions: remember the first four catches made on Route 1
+// while the group scene is pending (VAR_0x40FE == 4). Called when a wild
+// battle ends (battle_setup.c, CB2_EndWildBattle).
+void RR_OnWildBattleEnd(void)
+{
+    u32 count;
+
+    if (gBattleOutcome != B_OUTCOME_CAUGHT || VarGet(VAR_0x40FE) != 4)
+        return;
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_ROUTE1)
+     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_ROUTE1))
+        return;
+
+    count = VarGet(VAR_RR_ROUTE1_CATCHES);
+    if (count < 4)
+        VarSet(VAR_RR_ROUTE1_CATCH_0 + count, gBattleResults.caughtMonSpecies);
+    VarSet(VAR_RR_ROUTE1_CATCHES, count + 1);
+}
+
+// Reaction for Route 1 catch number VAR_0x8004: VAR_0x8005 = species,
+// VAR_RESULT = which reaction (matches the case list in rr_route1.inc).
+enum
+{
+    RR_REACT_DEFAULT, RR_REACT_SPEAROW, RR_REACT_RATTATA, RR_REACT_MANKEY, RR_REACT_NIDORAN_M,
+    RR_REACT_PIDGEY, RR_REACT_NIDORAN_F, RR_REACT_ODDISH, RR_REACT_BELLSPROUT, RR_REACT_DUPLICATE,
+    RR_REACT_MEOWTH, RR_REACT_EEVEE,
+};
+
+void RR_ScriptRoute1Reaction(struct ScriptContext *ctx)
+{
+    u32 index = VarGet(VAR_0x8004);
+    u16 species = VarGet(VAR_RR_ROUTE1_CATCH_0 + index);
+    u32 i;
+
+    gSpecialVar_0x8005 = species;
+    for (i = 0; i < index; i++)
+    {
+        if (VarGet(VAR_RR_ROUTE1_CATCH_0 + i) == species)
+        {
+            gSpecialVar_Result = RR_REACT_DUPLICATE;
+            return;
+        }
+    }
+    switch (species)
+    {
+    case SPECIES_SPEAROW:    gSpecialVar_Result = RR_REACT_SPEAROW;    break;
+    case SPECIES_RATTATA:    gSpecialVar_Result = RR_REACT_RATTATA;    break;
+    case SPECIES_MANKEY:     gSpecialVar_Result = RR_REACT_MANKEY;     break;
+    case SPECIES_NIDORAN_M:  gSpecialVar_Result = RR_REACT_NIDORAN_M;  break;
+    case SPECIES_PIDGEY:     gSpecialVar_Result = RR_REACT_PIDGEY;     break;
+    case SPECIES_NIDORAN_F:  gSpecialVar_Result = RR_REACT_NIDORAN_F;  break;
+    case SPECIES_ODDISH:     gSpecialVar_Result = RR_REACT_ODDISH;     break;
+    case SPECIES_BELLSPROUT: gSpecialVar_Result = RR_REACT_BELLSPROUT; break;
+    case SPECIES_MEOWTH:     gSpecialVar_Result = RR_REACT_MEOWTH;     break;
+    case SPECIES_EEVEE:      gSpecialVar_Result = RR_REACT_EEVEE;      break;
+    default:                 gSpecialVar_Result = RR_REACT_DEFAULT;    break;
+    }
 }
