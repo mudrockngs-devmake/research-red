@@ -1,0 +1,61 @@
+# Research Red — Demo Checklist (through Brock)
+
+Tick items as they ship. Each milestone ends with an owner playtest.
+
+## v0.1 — Pallet Town complete
+- [ ] Fix lab battle freeze (no tutorial battle mode; player has 2 Pokemon)
+- [ ] Lab 2v2: player + Ivy (partner, `multi_2_vs_2`) vs Elm + Jenny with their Johto picks from the starter chain
+- [ ] Elm and Jenny trainer entries in `trainers.party`; Elm's battle pic from `graphics/research_red/portrait_elm.png` (no Gary)
+- [ ] Optional Oak double battle (his 2 remaining Kanto starters); loss branch: haiku "A student falls down... / Old man forgot to hold back... / The grant still goes through." then Elm offers his own funding
+- [ ] Full research grant: larger Bag pockets; every Poke Ball x100; all TMs and HMs; held and battle items; medicine
+- [ ] HMs usable as battle moves and forgettable; field moves work with no HM or badge
+- [ ] Cell Phone key item: registered numbers (Elm, Jenny, Oak, Delia); calling Elm opens the Research Rules menu (see v0.2)
+- [ ] Ivy as NPC follower from the end of breakfast (`include/config/follower_npc.h`); remove duplicate scene Ivys
+- [ ] Route 1 first walk: group walks together (scripted segment or cutscenes), pink streak near Viridian, fix camera bug
+- [ ] Route 1 catch reactions: Elm/Jenny comment per species, duplicate fallback, rising jealousy; Elm runs to Route 22
+- [ ] Mimey uses the Mr. Mime overworld sprite (verify), Johto balls behind the Kanto table (verify)
+
+## v0.2 — Viridian, Route 22, the picnic
+- [ ] Route 22: Elm + Jenny 6v6 double; trainer lines every two faints and before their last pair
+- [ ] Old man stays asleep until the Route 22 battle (already scripted, verify)
+- [ ] Viridian Gym roof hole as map art (Porymap) to match the "hole from the inside" text
+- [ ] Picnic lunch outside the Pokemon Center (dialogue in the animatic `lunch()`)
+- [ ] Research Rules menu: level caps on/off, hard/soft cap, difficulty (Relaxed/Standard/Challenge), battle style (Shift/Set); saved; changeable by calling Elm
+- [ ] Level cap system tied to badges
+- [ ] Encounter tables for Route 1 and Route 22 (below)
+
+## v0.3 — Route 2 and Viridian Forest
+- [ ] Route 2 NPC, Abra encounter, trade-house Mimey gag text
+- [ ] Viridian Forest: Bug Catchers Rick, Doug, Anthony, Charlie, Sammy as double battles (teams in animatic `forest()`), each with one short you-and-Ivy exchange afterward
+- [ ] Encounter tables for Route 2 and Viridian Forest (below)
+- [ ] Field Guide: per-area encounter info screen (start with the Pokedex area view plus an Ivy note; custom UI later)
+
+## v0.4 -> v1.0 — Pewter and Brock
+- [ ] Pewter NPCs: Gym Guide, Museum curator (forms talk with Ivy), Jigglypuff fan, Mart clerk
+- [ ] Pewter Gym: Camper Liam (Geodude, Sandshrew, Diglett); Brock double (Geodude, Sandshrew, Kabuto, Onix, Lv 12-14); stew, puns, Boulder Badge, TM39
+- [ ] Post-Brock Elm + Jenny 6v6 double outside the Gym (animatic `finale()`)
+- [ ] Demo end card; first badge group call (if the call UI is ready)
+
+## Encounter tables (grass %)
+| Area | Table |
+| --- | --- |
+| Route 1 | Pidgey 20, Rattata 20, Spearow 12, Mankey 10, Nidoran F 8, Nidoran M 8, Oddish 8, Bellsprout 6, Meowth 6, Eevee 2 |
+| Route 22 | Rattata 15, Spearow 15, Mankey 15, Nidoran F 12, Nidoran M 12, Ekans 10, Sandshrew 10, Doduo 8, Ponyta 3 |
+| Route 2 | Pidgey 15, Rattata 15, Caterpie 12, Weedle 12, Venonat 10, Paras 8, Nidoran F 8, Nidoran M 8, Abra 6, Jigglypuff 6 |
+| Viridian Forest | Caterpie 18, Weedle 18, Paras 10, Metapod 8, Kakuna 8, Venonat 8, Oddish 8, Bellsprout 8, Pikachu 6, Pidgey 4, Scyther 2, Pinsir 2 |
+
+## Cross-cutting (any milestone, owner decides when)
+- [ ] Battle UI configs: show types, move effectiveness, physical/special icons, fast HP/EXP bars, trainer slide messages (check expansion configs first)
+- [ ] Portraits above the text box for key characters (Oak, Elm, Ivy, Jenny, Delia, Daisy, player M/F) from `graphics/research_red/`
+- [ ] Video call UI: call frame, signal bars, pop-in call circles; reusable script commands (start call, add/drop caller, signal strength)
+- [ ] Intro player pictures from `intro_player_m/f.png` (resize/pad to the size the intro expects)
+- [ ] Title screen (Research Red logo; Slowpoke art from owner or in-game sprite) and boot credits/disclaimer screen
+- [ ] Testing toolkit: mGBA Lua debug overlay (map, X/Y, story vars), bug-report hotkey to `/mnt/e/Workspace/romhacks/_emu/bug-reports/`, scripted scene playthroughs with screenshots, checkpoint save states, `make check`
+- [ ] Proper-case sweep across all game text
+- [ ] `docs/FLAGS_VARS.md` registry and `CREDITS.md`
+- [ ] Release checklist: debug OFF, version stamp, patch only (never a ROM)
+
+## After the demo (design first in chat)
+- Badge video calls after every Gym; Elm/Jenny battles in each city
+- Endgame forms arc: Mega Evolution (incl. Kalos Megas for Kanto starters), Dynamax/Gigantamax, regional and Hisuian starter forms, custom item area
+- Mew (Bill arc), Mewtwo, Prof. Mudrock postgame
