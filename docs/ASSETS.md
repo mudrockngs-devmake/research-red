@@ -14,7 +14,7 @@ Owner-made art lives in `graphics/research_red/`. Large reference art (full-body
 | Title screen / logo | Per title screen code | `graphics/title_screen/` | Needed |
 
 ## Converting art to GBA format
-- Research Red tools (no extra installs): `tools/research_red/ref_to_trainer_pic.py` (full-body ref art -> 64x64 16-color trainer pic), `png8_to_png4.py` (8-bit indexed -> 4-bit), `render_map.py` (map layout -> PNG).
+- Research Red tools (no extra installs): `tools/research_red/build_cast_art.py` (all ref art -> `graphics/research_red/cast/<name>/{battle,portrait,call}.png` plus a contact sheet; `HEAD_OVERRIDES` fixes odd poses), `png8_to_png4.py` (8-bit indexed -> 4-bit), `render_map.py` (map layout -> PNG).
 - Claude Code can convert any PNG with Python + Pillow inside WSL: resize with nearest-neighbor, reduce to <= 16 colors, put the transparent color at palette index 0, save as indexed PNG.
 - For hand editing: LibreSprite (free) or Aseprite. Always keep the original full-color file in `art\` and export the GBA version.
 - Rule: never draw over another artist's sprite without permission; credit every community sprite in `CREDITS.md`.

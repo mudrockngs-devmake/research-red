@@ -24,6 +24,14 @@ OUT_DIR = os.path.join(REPO, "graphics/research_red/cast")
 GREEN = (0, 255, 0)
 ALPHA_CUT = 200
 
+# Poses where an arm sits above or beside the head fool the automatic head
+# finder; give (head centre x, top of head y) in reference-image pixels.
+HEAD_OVERRIDES = {
+    "james": (500, 125),     # raised arm above the head
+    "giovanni": (530, 30),   # raised hand beside the head
+    "blaine": (540, 70),     # outstretched arm with a Poke Ball
+}
+
 # ref file -> cast name. Defaults: Ivy = lab coat, Jenny = casual; alternates get a suffix.
 CAST = {
     "01_erika": "erika", "02_agatha": "agatha", "03_player_m": "player_m", "04_player_f": "player_f",
@@ -66,7 +74,8 @@ def figure_box(w, h, rows):
     # head centre: mean x of opaque pixels in the top 12% of the figure
     hx = [x for y in range(y0, y0 + (y1 - y0) * 12 // 100, 4) for x in range(x0, x1, 2) if rows[y][x][3] >= ALPHA_CUT]
     head_x = sum(hx) // len(hx) if hx else (x0 + x1) // 2
-    return x0, y0, x1, y1, head_x
+    head_top = y0
+    return x0, y0, x1, y1, head_x, head_top
 
 
 def downscale(rows, w, h, cx0, cy0, cw, ch, ow, oh):
@@ -155,9 +164,11 @@ def save_indexed(path, img, size_w, size_h, ox0, oy0):
     return [[palette[i] for i in r] for r in idx]
 
 
-def build(ref_path, out_dir):
+def build(ref_path, out_dir, name=""):
     w, h, rows = load_ref(ref_path)
-    x0, y0, x1, y1, head_x = figure_box(w, h, rows)
+    x0, y0, x1, y1, head_x, head_top = figure_box(w, h, rows)
+    if name in HEAD_OVERRIDES:
+        head_x, head_top = HEAD_OVERRIDES[name]
     fh = y1 - y0
     os.makedirs(out_dir, exist_ok=True)
     res = {}
@@ -170,14 +181,14 @@ def build(ref_path, out_dir):
 
     # portrait: square crop from just above the head down ~40% of the figure
     side = int(fh * 0.40)
-    cy0 = y0 - side // 20
+    cy0 = head_top - side // 20
     cx0 = head_x - side // 2
     img = outline(downscale(rows, w, h, cx0, cy0, side, side, 64, 64), False)
     res["portrait"] = save_indexed(os.path.join(out_dir, "portrait.png"), img, 64, 64, 0, 0)
 
     # call: face close-up, square crop of the head (~20% of the figure)
     side = int(fh * 0.20)
-    cy0 = y0 - side // 20
+    cy0 = head_top - side // 8  # extra headroom so tall hair is not clipped
     cx0 = head_x - side // 2
     img = outline(downscale(rows, w, h, cx0, cy0, side, side, 32, 32), False)
     res["call"] = save_indexed(os.path.join(out_dir, "call.png"), img, 32, 32, 0, 0)
@@ -192,7 +203,7 @@ def main():
         if not os.path.exists(path):
             print("missing", path)
             continue
-        sheet.append((name, build(path, os.path.join(OUT_DIR, name))))
+        sheet.append((name, build(path, os.path.join(OUT_DIR, name), name)))
         print("built", name)
 
     # contact sheet: one column per character (battle, portrait, call), 2x scale, 8 per row

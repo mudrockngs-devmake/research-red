@@ -8,6 +8,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] Six-starter picker (v0.0.10; Johto row stacked under the Kanto table): scrollable menu with pictures; Johto balls on a duplicate table under the Kanto one. Chain: Ivy = counter from your region, Elm = counter from the other region, Jenny = counter to Elm from his region; Oak gets the 2 leftovers
 - [x] Battle sprites (64x64) scaled from the full-body ref art: Elm, casual Jenny in use; Ivy, player M/F saved in `graphics/research_red/trainer_*.png` (portraits stay for dialogue/calls). Hand cleanup welcome (v0.0.10)
 - [x] Temporary overworld sprites for Ivy (Cooltrainer F) and Jenny (Sabrina) via `OBJ_EVENT_GFX_RR_*` aliases (v0.0.10). Player stays Red/Leaf until custom sprites: a player swap needs every sheet (walk/run/bike/surf/fish/item)
+- [x] Cast art set from all 32 refs: battle 64x64, portrait 64x64, call 32x32 in `graphics/research_red/cast/` (Ivy swimsuit and Jenny police as alternates; Jenny casual is default)
 - [ ] Custom overworld sprites (player M/F, Ivy, Elm, Jenny casual) hand-pixeled from the ref art
 - [x] Fix lab battle freeze (no tutorial battle mode; player has 2 Pokemon) (v0.0.8)
 - [x] Lab 2v2: player + Ivy vs Elm + Jenny with their Johto picks from the starter chain (v0.0.8; owner chose: player commands both, Ivy's mon stays in the party, so it is a normal two-trainer double)
