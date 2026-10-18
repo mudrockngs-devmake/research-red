@@ -228,6 +228,12 @@ enum ObjectEventGfx
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
 // More info about them in include/constants/vars.h
 #define OBJ_EVENT_GFX_VARS   (NUM_OBJ_EVENT_GFX + 1)
+
+// Research Red: story cast. Temporary stand-ins until custom sprites exist;
+// change these lines (not the maps) when the real sprites are added.
+#define OBJ_EVENT_GFX_RR_IVY    OBJ_EVENT_GFX_COOLTRAINER_F
+#define OBJ_EVENT_GFX_RR_JENNY  OBJ_EVENT_GFX_SABRINA
+#define OBJ_EVENT_GFX_RR_ELM    OBJ_EVENT_GFX_SCIENTIST
 #define OBJ_EVENT_GFX_VAR_0  (OBJ_EVENT_GFX_VARS + 0x0) // 240
 #define OBJ_EVENT_GFX_VAR_1  (OBJ_EVENT_GFX_VARS + 0x1)
 #define OBJ_EVENT_GFX_VAR_2  (OBJ_EVENT_GFX_VARS + 0x2)

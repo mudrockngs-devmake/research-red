@@ -7,7 +7,8 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] Grant QoL: reusable TMs, Running Shoes from the start, all key items, Master Balls (placeholder dialogue) (v0.0.10)
 - [x] Six-starter picker (v0.0.10; Johto row stacked under the Kanto table): scrollable menu with pictures; Johto balls on a duplicate table under the Kanto one. Chain: Ivy = counter from your region, Elm = counter from the other region, Jenny = counter to Elm from his region; Oak gets the 2 leftovers
 - [ ] Battle sprites (64x64) scaled from the full-body ref art: Elm, casual Jenny, Ivy, player M/F (portraits stay for dialogue/calls)
-- [ ] Temporary overworld sprites for player, Ivy, Jenny from existing sheets
+- [x] Temporary overworld sprites for Ivy (Cooltrainer F) and Jenny (Sabrina) via `OBJ_EVENT_GFX_RR_*` aliases (v0.0.10). Player stays Red/Leaf until custom sprites: a player swap needs every sheet (walk/run/bike/surf/fish/item)
+- [ ] Custom overworld sprites (player M/F, Ivy, Elm, Jenny casual) hand-pixeled from the ref art
 - [x] Fix lab battle freeze (no tutorial battle mode; player has 2 Pokemon) (v0.0.8)
 - [x] Lab 2v2: player + Ivy vs Elm + Jenny with their Johto picks from the starter chain (v0.0.8; owner chose: player commands both, Ivy's mon stays in the party, so it is a normal two-trainer double)
 - [x] Elm and Jenny trainer entries in `trainers.party`; Elm's battle pic from `graphics/research_red/portrait_elm.png` (no Gary) (v0.0.8; Jenny's pic from her portrait too)

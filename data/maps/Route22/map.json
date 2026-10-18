@@ -44,7 +44,7 @@
     {
       "local_id": "LOCALID_ROUTE22_JENNY",
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "graphics_id": "OBJ_EVENT_GFX_RR_JENNY",
       "x": 24,
       "y": 4,
       "elevation": 3,

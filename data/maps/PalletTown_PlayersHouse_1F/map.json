@@ -33,7 +33,7 @@
     {
       "local_id": "LOCALID_PALLET_HOUSE_IVY",
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_RR_IVY",
       "x": 6,
       "y": 6,
       "elevation": 3,

@@ -48,7 +48,7 @@
     {
       "local_id": "LOCALID_RIVALS_HOUSE_ELM",
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST",
+      "graphics_id": "OBJ_EVENT_GFX_RR_ELM",
       "x": 8,
       "y": 5,
       "elevation": 3,
@@ -63,7 +63,7 @@
     {
       "local_id": "LOCALID_RIVALS_HOUSE_JENNY",
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "graphics_id": "OBJ_EVENT_GFX_RR_JENNY",
       "x": 8,
       "y": 6,
       "elevation": 3,
@@ -78,7 +78,7 @@
     {
       "local_id": "LOCALID_RIVALS_HOUSE_IVY",
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_RR_IVY",
       "x": 5,
       "y": 8,
       "elevation": 3,

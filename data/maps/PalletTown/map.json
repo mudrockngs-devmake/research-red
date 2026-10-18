@@ -74,7 +74,7 @@
     {
       "local_id": "LOCALID_PALLET_IVY",
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_RR_IVY",
       "x": 6,
       "y": 7,
       "elevation": 3,
@@ -89,7 +89,7 @@
     {
       "local_id": "LOCALID_PALLET_ELM",
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST",
+      "graphics_id": "OBJ_EVENT_GFX_RR_ELM",
       "x": 12,
       "y": 1,
       "elevation": 3,
@@ -104,7 +104,7 @@
     {
       "local_id": "LOCALID_PALLET_JENNY",
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "graphics_id": "OBJ_EVENT_GFX_RR_JENNY",
       "x": 13,
       "y": 1,
       "elevation": 3,
