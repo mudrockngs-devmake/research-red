@@ -480,7 +480,7 @@ static const u16 gTrainerPalette_PikeQueenLucy[] = INCBIN_U16("graphics/trainers
 static const u32 gTrainerFrontPic_PyramidKingBrandon[] = INCBIN_U32("graphics/trainers/front_pics/pyramid_king_brandon.4bpp.smol");
 static const u16 gTrainerPalette_PyramidKingBrandon[] = INCBIN_U16("graphics/trainers/front_pics/pyramid_king_brandon.gbapal");
 
-// Research Red: placeholder battle pics made from graphics/research_red/portrait_*.png
+// Research Red: battle pics made from the owner's full-body ref art (tools/research_red/ref_to_trainer_pic.py)
 static const u32 gTrainerFrontPic_RR_Elm[] = INCBIN_U32("graphics/trainers/front_pics/rr_elm_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_RR_Elm[] = INCBIN_U16("graphics/trainers/front_pics/rr_elm_front_pic.gbapal");
 static const u32 gTrainerFrontPic_RR_Jenny[] = INCBIN_U32("graphics/trainers/front_pics/rr_jenny_front_pic.4bpp.smol");

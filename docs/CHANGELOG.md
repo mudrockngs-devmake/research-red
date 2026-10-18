@@ -15,6 +15,7 @@ Test builds are v0.0.x. Each entry lists what changed for players/testers.
 - The starter chain works for every pick: Ivy counters you from your region, Elm counters you from the other region, Jenny counters Elm.
 - Optional double battle against Prof. Oak and the two leftover starters. Losing plays his haiku and Elm offers his own funding.
 - Fixed: the Route 1 camera no longer stays offset after the "something pink" moment.
+- Elm and Jenny's battle pictures are now full-body sprites made from the reference art (Jenny in casual clothes).
 - Ivy and Jenny use closer stand-in overworld sprites (purple-haired Cooltrainer for Ivy, long-haired Sabrina for Jenny).
 - Save layout changed (bigger Items pocket): start a new game.
 
