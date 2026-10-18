@@ -390,9 +390,9 @@ RR_Lab_Text_ReceivedGrant::
     .string "Research Grant supplies!$"
 
 RR_Lab_Text_GrantContents::
-    .string "100 of each Poké Ball, medicine,\n"
-    .string "Max Repels, the TM Case and\l"
-    .string "fifty TMs went into the Bag!$"
+    .string "Every Poké Ball, Master Balls too,\n"
+    .string "medicine, held items, key items,\l"
+    .string "and every TM and HM went in!$"
 
 RR_Lab_Text_ReceivedPokedex::
     .string "{PLAYER} received a Pokédex\n"

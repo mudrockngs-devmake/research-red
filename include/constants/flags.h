@@ -44,7 +44,7 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
 #define FLAG_RR_NO_WHITEOUT      0x020 // Research Red: B_FLAG_NO_WHITEOUT (story battles continue on a loss)
-#define FLAG_0x021               0x021
+#define FLAG_RR_EXP_SHARE        0x021 // Research Red: I_EXP_SHARE_FLAG (Exp. Share key item on/off)
 #define FLAG_0x022               0x022
 #define FLAG_0x023               0x023
 #define FLAG_0x024               0x024

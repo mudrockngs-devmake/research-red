@@ -204,6 +204,7 @@ bool32 FieldMove_IsUnlocked(enum FieldMove fieldMove)
 {
     if (fieldMove >= FIELD_MOVE_COUNT)
         return FALSE;
+    return TRUE; // Research Red: field moves never need a badge
     if (gFieldMovesInfo[fieldMove].isUnlockedFunc == NULL)
         return TRUE;
 

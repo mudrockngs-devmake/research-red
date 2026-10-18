@@ -78,8 +78,8 @@ enum Language
 
 // capacities of various saveblock objects
 #define DAYCARE_MON_COUNT   2
-#define PC_ITEMS_COUNT      30
-#define BAG_ITEMS_COUNT     42
+#define PC_ITEMS_COUNT      10 // Research Red: was 30; frees save space for the Items pocket
+#define BAG_ITEMS_COUNT     60 // Research Red: was 42 (research grant)
 #define BAG_KEYITEMS_COUNT  30
 #define BAG_POKEBALLS_COUNT 27
 #define BAG_TMHM_COUNT      108

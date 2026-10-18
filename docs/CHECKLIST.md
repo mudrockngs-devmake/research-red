@@ -4,7 +4,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 
 ## v0.1 — Pallet Town complete
 - [x] National Dex unlocked from the start (v0.0.9)
-- [ ] Grant QoL: reusable TMs, Running Shoes from the start, all key items, Master Balls (placeholder dialogue)
+- [x] Grant QoL: reusable TMs, Running Shoes from the start, all key items, Master Balls (placeholder dialogue) (v0.0.10)
 - [ ] Six-starter picker: scrollable menu with pictures; Johto balls on a duplicate table under the Kanto one. Chain: Ivy = counter from your region, Elm = counter from the other region, Jenny = counter to Elm from his region; Oak gets the 2 leftovers
 - [ ] Battle sprites (64x64) scaled from the full-body ref art: Elm, casual Jenny, Ivy, player M/F (portraits stay for dialogue/calls)
 - [ ] Temporary overworld sprites for player, Ivy, Jenny from existing sheets
@@ -12,8 +12,8 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] Lab 2v2: player + Ivy vs Elm + Jenny with their Johto picks from the starter chain (v0.0.8; owner chose: player commands both, Ivy's mon stays in the party, so it is a normal two-trainer double)
 - [x] Elm and Jenny trainer entries in `trainers.party`; Elm's battle pic from `graphics/research_red/portrait_elm.png` (no Gary) (v0.0.8; Jenny's pic from her portrait too)
 - [ ] Optional Oak double battle (his 2 remaining Kanto starters); loss branch: haiku "A student falls down... / Old man forgot to hold back... / The grant still goes through." then Elm offers his own funding
-- [ ] Full research grant: larger Bag pockets; every Poke Ball x100; all TMs and HMs; held and battle items; medicine
-- [ ] HMs usable as battle moves and forgettable; field moves work with no HM or badge
+- [x] Full research grant: larger Bag pockets; every Poke Ball x100; all TMs and HMs; held and battle items; medicine (v0.0.10; Items pocket 42 -> 60, PC item storage 30 -> 10)
+- [x] HMs usable as battle moves and forgettable; field moves work with no HM or badge (v0.0.10)
 - [ ] Cell Phone key item: registered numbers (Elm, Jenny, Oak, Delia); calling Elm opens the Research Rules menu (see v0.2)
 - [ ] Ivy as NPC follower from the end of breakfast (`include/config/follower_npc.h`); remove duplicate scene Ivys (including the lab)
 - [ ] Route 1 first walk: group walks together (scripted segment or cutscenes), pink streak near Viridian, fix camera bug
@@ -61,6 +61,11 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [ ] Proper-case sweep across all game text
 - [ ] `docs/FLAGS_VARS.md` registry and `CREDITS.md`
 - [ ] Release checklist: debug OFF, version stamp, patch only (never a ROM)
+
+## Gameplay upgrades (owner request, schedule as bundles)
+- [ ] Expand TMs beyond the vanilla 50 (expansion supports up to 100 + HMs) with modern moves
+- [ ] Area variety: more species per area (all gens where it fits the story)
+- [ ] Field Guide card per area (animatic)
 
 ## After the demo (design first in chat)
 - Badge video calls after every Gym; Elm/Jenny battles in each city

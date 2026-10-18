@@ -1249,6 +1249,17 @@ RR_Lab_EventScript_GiveGrant::
 	additem ITEM_QUICK_BALL, 100
 	additem ITEM_REPEAT_BALL, 100
 	additem ITEM_LUXURY_BALL, 100
+	additem ITEM_MASTER_BALL, 100
+	additem ITEM_FAST_BALL, 100
+	additem ITEM_LEVEL_BALL, 100
+	additem ITEM_LURE_BALL, 100
+	additem ITEM_HEAVY_BALL, 100
+	additem ITEM_LOVE_BALL, 100
+	additem ITEM_FRIEND_BALL, 100
+	additem ITEM_MOON_BALL, 100
+	additem ITEM_SPORT_BALL, 100
+	additem ITEM_DREAM_BALL, 100
+	additem ITEM_BEAST_BALL, 100
 	additem ITEM_SUPER_POTION, 30
 	additem ITEM_HYPER_POTION, 20
 	additem ITEM_FULL_RESTORE, 10
@@ -1259,6 +1270,74 @@ RR_Lab_EventScript_GiveGrant::
 	additem ITEM_MAX_ETHER, 5
 	additem ITEM_MAX_REPEL, 30
 	additem ITEM_ESCAPE_ROPE, 10
+	@ Research Red: medicine and battle items
+	additem ITEM_MAX_POTION, 10
+	additem ITEM_ELIXIR, 10
+	additem ITEM_MAX_ELIXIR, 5
+	additem ITEM_PP_UP, 10
+	additem ITEM_X_ATTACK, 10
+	additem ITEM_X_DEFENSE, 10
+	additem ITEM_X_SP_ATK, 10
+	additem ITEM_X_SP_DEF, 10
+	additem ITEM_X_SPEED, 10
+	additem ITEM_X_ACCURACY, 10
+	additem ITEM_DIRE_HIT, 10
+	additem ITEM_GUARD_SPEC, 10
+	@ held items (one each; Items pocket is 60 slots)
+	additem ITEM_LEFTOVERS, 1
+	additem ITEM_LIFE_ORB, 1
+	additem ITEM_CHOICE_BAND, 1
+	additem ITEM_CHOICE_SPECS, 1
+	additem ITEM_CHOICE_SCARF, 1
+	additem ITEM_FOCUS_SASH, 1
+	additem ITEM_ASSAULT_VEST, 1
+	additem ITEM_ROCKY_HELMET, 1
+	additem ITEM_EVIOLITE, 1
+	additem ITEM_EXPERT_BELT, 1
+	additem ITEM_LIGHT_CLAY, 1
+	additem ITEM_WEAKNESS_POLICY, 1
+	additem ITEM_AIR_BALLOON, 1
+	additem ITEM_HEAVY_DUTY_BOOTS, 1
+	additem ITEM_AMULET_COIN, 1
+	additem ITEM_LUCKY_EGG, 1
+	additem ITEM_SOOTHE_BELL, 1
+	additem ITEM_QUICK_CLAW, 1
+	additem ITEM_SCOPE_LENS, 1
+	additem ITEM_KINGS_ROCK, 1
+	additem ITEM_BLACK_SLUDGE, 1
+	additem ITEM_FLAME_ORB, 1
+	additem ITEM_TOXIC_ORB, 1
+	additem ITEM_SHELL_BELL, 1
+	additem ITEM_WIDE_LENS, 1
+	additem ITEM_MUSCLE_BAND, 1
+	additem ITEM_WISE_GLASSES, 1
+	additem ITEM_FOCUS_BAND, 1
+	additem ITEM_RED_CARD, 1
+	additem ITEM_EJECT_BUTTON, 1
+	@ key items (story items like the Town Map stay in their scenes)
+	additem ITEM_EXP_SHARE, 1
+	additem ITEM_BICYCLE, 1
+	additem ITEM_OLD_ROD, 1
+	additem ITEM_GOOD_ROD, 1
+	additem ITEM_SUPER_ROD, 1
+	additem ITEM_ITEMFINDER, 1
+	additem ITEM_VS_SEEKER, 1
+	additem ITEM_BERRY_POUCH, 1
+	setflag FLAG_RR_EXP_SHARE
+	@ berries (Berry Pouch above)
+	additem ITEM_ORAN_BERRY, 20
+	additem ITEM_SITRUS_BERRY, 20
+	additem ITEM_LUM_BERRY, 10
+	additem ITEM_CHESTO_BERRY, 10
+	@ HMs (reusable; field moves need no badge)
+	additem ITEM_HM01, 1
+	additem ITEM_HM02, 1
+	additem ITEM_HM03, 1
+	additem ITEM_HM04, 1
+	additem ITEM_HM05, 1
+	additem ITEM_HM06, 1
+	additem ITEM_HM07, 1
+	additem ITEM_HM08, 1
 	additem ITEM_TM_CASE, 1
 	additem ITEM_TM01, 1
 	additem ITEM_TM02, 1

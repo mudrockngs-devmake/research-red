@@ -2,6 +2,17 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players/testers.
 
+## v0.0.10
+- Research grant now includes Master Balls, every Poké Ball type x100, all TMs and HMs, held items, battle items, more medicine, berries, and key items (Bicycle, rods, Itemfinder, VS Seeker, Exp. Share, Berry Pouch).
+- TMs are reusable. HMs can be forgotten. Field moves need no badge.
+- Running Shoes from the start. Exp. Share is a key item that turns on for the whole party.
+- Battles show types and move effectiveness at all times.
+- Move relearner from the party menu and summary screen (includes pre-evolution and TM moves).
+- Evolution items like Razor Claw can be used from the Bag.
+- HGSS-style Pokédex.
+- Map name popups no longer repeat inside the same area.
+- Save layout changed (bigger Items pocket): start a new game.
+
 ## v0.0.9
 - The National Pokedex is unlocked from the start of a new game.
 

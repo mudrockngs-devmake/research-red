@@ -146,6 +146,7 @@ void NewGameInitData(void)
     InitHeracrossSizeRecord();
     InitMagikarpSizeRecord();
     EnableNationalPokedex_RSE();
+    FlagSet(FLAG_SYS_B_DASH); // Research Red: Running Shoes from the start
     EnableNationalPokedex(); // Research Red: National Dex from the start (Johto starters, regional forms)
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
