@@ -31,3 +31,4 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 |---|---|
 | `TRAINER_RR_ELM_LAB_<STARTER>` (all six) | Lab 2v2, Elm's pick from the chain |
 | `TRAINER_RR_JENNY_LAB_<STARTER>` (all six) | Lab 2v2, Jenny's pick from the chain |
+| `TRAINER_RR_OAK_LAB_<A>_<B>` (six pairs) | Optional Oak double, the two leftover starters |

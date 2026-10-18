@@ -14542,3 +14542,107 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Totodile
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+/* Research Red: Prof. Oak (optional lab double, the two leftover starters) */
+
+=== TRAINER_RR_OAK_LAB_SQUIRTLE_CHIKORITA ===
+Name: Oak
+Class: Pkmn Prof
+Pic: Professor Oak
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Squirtle
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+Chikorita
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+=== TRAINER_RR_OAK_LAB_BULBASAUR_CYNDAQUIL ===
+Name: Oak
+Class: Pkmn Prof
+Pic: Professor Oak
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Bulbasaur
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+Cyndaquil
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+=== TRAINER_RR_OAK_LAB_CHARMANDER_TOTODILE ===
+Name: Oak
+Class: Pkmn Prof
+Pic: Professor Oak
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Charmander
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+Totodile
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+=== TRAINER_RR_OAK_LAB_TOTODILE_BULBASAUR ===
+Name: Oak
+Class: Pkmn Prof
+Pic: Professor Oak
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Totodile
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+Bulbasaur
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+=== TRAINER_RR_OAK_LAB_CHIKORITA_CHARMANDER ===
+Name: Oak
+Class: Pkmn Prof
+Pic: Professor Oak
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Chikorita
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+Charmander
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+=== TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE ===
+Name: Oak
+Class: Pkmn Prof
+Pic: Professor Oak
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Cyndaquil
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+Squirtle
+Level: 6
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe

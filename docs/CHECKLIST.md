@@ -11,7 +11,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] Fix lab battle freeze (no tutorial battle mode; player has 2 Pokemon) (v0.0.8)
 - [x] Lab 2v2: player + Ivy vs Elm + Jenny with their Johto picks from the starter chain (v0.0.8; owner chose: player commands both, Ivy's mon stays in the party, so it is a normal two-trainer double)
 - [x] Elm and Jenny trainer entries in `trainers.party`; Elm's battle pic from `graphics/research_red/portrait_elm.png` (no Gary) (v0.0.8; Jenny's pic from her portrait too)
-- [ ] Optional Oak double battle (his 2 remaining Kanto starters); loss branch: haiku "A student falls down... / Old man forgot to hold back... / The grant still goes through." then Elm offers his own funding
+- [x] Optional Oak double battle (v0.0.10; yes/no prompt, Lv 6) (his 2 remaining Kanto starters); loss branch: haiku "A student falls down... / Old man forgot to hold back... / The grant still goes through." then Elm offers his own funding
 - [x] Full research grant: larger Bag pockets; every Poke Ball x100; all TMs and HMs; held and battle items; medicine (v0.0.10; Items pocket 42 -> 60, PC item storage 30 -> 10)
 - [x] HMs usable as battle moves and forgettable; field moves work with no HM or badge (v0.0.10)
 - [ ] Cell Phone key item: registered numbers (Elm, Jenny, Oak, Delia); calling Elm opens the Research Rules menu (see v0.2)

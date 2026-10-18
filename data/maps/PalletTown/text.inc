@@ -388,10 +388,46 @@ RR_Lab_Text_Jenny_BestOfZero::
 RR_Lab_Text_Oak_Properly::
     .string "Oak: Hmm. If you're going to do\n"
     .string "this unorthodox thing, do it\l"
-    .string "properly.\p"
-    .string "Someday, the two of you against\n"
-    .string "me. Two on two.\p"
-    .string "Not today. Charmander is napping.$"
+    .string "properly.$"
+
+RR_Lab_Text_Oak_Challenge::
+    .string "Oak: {PLAYER}. Ivy. The two of\n"
+    .string "you, against me. Two on two.\p"
+    .string "{STR_VAR_1} and {STR_VAR_2} have\n"
+    .string "been restless anyway.$"
+
+RR_Lab_Text_OakBattleAsk::
+    .string "Battle Prof. Oak?$"
+
+RR_Lab_Text_Ivy_LikeThis::
+    .string "Ivy: Oh, I like this.$"
+
+RR_Lab_Text_Oak_Defeat::
+    .string "Oak: I may have over-prepared\n"
+    .string "the speech and under-prepared\l"
+    .string "the Pokémon.$"
+
+RR_Lab_Text_Oak_MoreInYou::
+    .string "Oak: Well, well. Perhaps you\n"
+    .string "have more in you than my notes\l"
+    .string "say.$"
+
+RR_Lab_Text_Oak_Haiku::
+    .string "Oak: A student falls down…\n"
+    .string "Old man forgot to hold back…\p"
+    .string "The grant still goes through.$"
+
+RR_Lab_Text_Elm_Funding::
+    .string "Elm: And if it didn't, I'd fund\n"
+    .string "you myself! Out of my own grant!\p"
+    .string "…Which is the same grant.$"
+
+RR_Lab_Text_P_AfterPaperwork::
+    .string "{PLAYER}: After the paperwork,\n"
+    .string "Professor. Maybe.$"
+
+RR_Lab_Text_Oak_Wise::
+    .string "Oak: Wise. Paperwork first.$"
 
 RR_Lab_Text_Oak_Grant::
     .string "Oak: Now, the boring part.\n"

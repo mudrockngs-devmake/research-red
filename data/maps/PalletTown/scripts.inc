@@ -1292,6 +1292,115 @@ RR_Lab_EventScript_AfterBattle::
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Properly, MSGBOX_DEFAULT
+	@ --- optional double battle vs Oak (his two leftover starters) ---
+	switch VAR_RR_STARTER
+	case 0, RR_Lab_EventScript_OakPair0
+	case 1, RR_Lab_EventScript_OakPair1
+	case 2, RR_Lab_EventScript_OakPair2
+	case 3, RR_Lab_EventScript_OakPair3
+	case 4, RR_Lab_EventScript_OakPair4
+	case 5, RR_Lab_EventScript_OakPair5
+
+RR_Lab_EventScript_OakAsk::
+	msgbox RR_Lab_Text_Oak_Challenge, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_OakBattleAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_OakDeclined
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Ivy_LikeThis, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_RR_NO_WHITEOUT
+	switch VAR_RR_STARTER
+	case 0, RR_Lab_EventScript_OakBattle0
+	case 1, RR_Lab_EventScript_OakBattle1
+	case 2, RR_Lab_EventScript_OakBattle2
+	case 3, RR_Lab_EventScript_OakBattle3
+	case 4, RR_Lab_EventScript_OakBattle4
+	case 5, RR_Lab_EventScript_OakBattle5
+
+@ Leftovers when the player picked Bulbasaur
+RR_Lab_EventScript_OakPair0::
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	bufferspeciesname STR_VAR_2, SPECIES_CHIKORITA
+	goto RR_Lab_EventScript_OakAsk
+
+RR_Lab_EventScript_OakBattle0::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_SQUIRTLE_CHIKORITA, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakResult
+
+@ Leftovers when the player picked Charmander
+RR_Lab_EventScript_OakPair1::
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	bufferspeciesname STR_VAR_2, SPECIES_CYNDAQUIL
+	goto RR_Lab_EventScript_OakAsk
+
+RR_Lab_EventScript_OakBattle1::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_BULBASAUR_CYNDAQUIL, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakResult
+
+@ Leftovers when the player picked Squirtle
+RR_Lab_EventScript_OakPair2::
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	bufferspeciesname STR_VAR_2, SPECIES_TOTODILE
+	goto RR_Lab_EventScript_OakAsk
+
+RR_Lab_EventScript_OakBattle2::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHARMANDER_TOTODILE, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakResult
+
+@ Leftovers when the player picked Chikorita
+RR_Lab_EventScript_OakPair3::
+	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	bufferspeciesname STR_VAR_2, SPECIES_BULBASAUR
+	goto RR_Lab_EventScript_OakAsk
+
+RR_Lab_EventScript_OakBattle3::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_TOTODILE_BULBASAUR, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakResult
+
+@ Leftovers when the player picked Cyndaquil
+RR_Lab_EventScript_OakPair4::
+	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	bufferspeciesname STR_VAR_2, SPECIES_CHARMANDER
+	goto RR_Lab_EventScript_OakAsk
+
+RR_Lab_EventScript_OakBattle4::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHIKORITA_CHARMANDER, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakResult
+
+@ Leftovers when the player picked Totodile
+RR_Lab_EventScript_OakPair5::
+	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
+	bufferspeciesname STR_VAR_2, SPECIES_SQUIRTLE
+	goto RR_Lab_EventScript_OakAsk
+
+RR_Lab_EventScript_OakBattle5::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE, RR_Lab_Text_Oak_Defeat
+	goto RR_Lab_EventScript_OakResult
+
+RR_Lab_EventScript_OakResult::
+	clearflag FLAG_RR_NO_WHITEOUT
+	special HealPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_OakBeaten
+	@ Loss: Oak's haiku, then Elm offers his own funding
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_Haiku, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_Funding, MSGBOX_DEFAULT
+	goto RR_Lab_EventScript_Grant
+
+RR_Lab_EventScript_OakBeaten::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_MoreInYou, MSGBOX_DEFAULT
+	goto RR_Lab_EventScript_Grant
+
+RR_Lab_EventScript_OakDeclined::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_P_AfterPaperwork, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_Wise, MSGBOX_DEFAULT
+RR_Lab_EventScript_Grant::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	@ --- research grant ---
 	msgbox RR_Lab_Text_Oak_Grant, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
