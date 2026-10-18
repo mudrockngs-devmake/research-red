@@ -3,6 +3,11 @@
 Tick items as they ship. Each milestone ends with an owner playtest.
 
 ## v0.1 — Pallet Town complete
+- [ ] National Dex unlocked from the start
+- [ ] Grant QoL: reusable TMs, Running Shoes from the start, all key items, Master Balls (placeholder dialogue)
+- [ ] Six-starter picker: scrollable menu with pictures; Johto balls on a duplicate table under the Kanto one. Chain: Ivy = counter from your region, Elm = counter from the other region, Jenny = counter to Elm from his region; Oak gets the 2 leftovers
+- [ ] Battle sprites (64x64) scaled from the full-body ref art: Elm, casual Jenny, Ivy, player M/F (portraits stay for dialogue/calls)
+- [ ] Temporary overworld sprites for player, Ivy, Jenny from existing sheets
 - [x] Fix lab battle freeze (no tutorial battle mode; player has 2 Pokemon) (v0.0.8)
 - [x] Lab 2v2: player + Ivy vs Elm + Jenny with their Johto picks from the starter chain (v0.0.8; owner chose: player commands both, Ivy's mon stays in the party, so it is a normal two-trainer double)
 - [x] Elm and Jenny trainer entries in `trainers.party`; Elm's battle pic from `graphics/research_red/portrait_elm.png` (no Gary) (v0.0.8; Jenny's pic from her portrait too)
@@ -10,7 +15,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [ ] Full research grant: larger Bag pockets; every Poke Ball x100; all TMs and HMs; held and battle items; medicine
 - [ ] HMs usable as battle moves and forgettable; field moves work with no HM or badge
 - [ ] Cell Phone key item: registered numbers (Elm, Jenny, Oak, Delia); calling Elm opens the Research Rules menu (see v0.2)
-- [ ] Ivy as NPC follower from the end of breakfast (`include/config/follower_npc.h`); remove duplicate scene Ivys
+- [ ] Ivy as NPC follower from the end of breakfast (`include/config/follower_npc.h`); remove duplicate scene Ivys (including the lab)
 - [ ] Route 1 first walk: group walks together (scripted segment or cutscenes), pink streak near Viridian, fix camera bug
 - [ ] Route 1 catch reactions: Elm/Jenny comment per species, duplicate fallback, rising jealousy; Elm runs to Route 22
 - [ ] Mimey uses the Mr. Mime overworld sprite (verify), Johto balls behind the Kanto table (verify)
@@ -45,11 +50,13 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 | Viridian Forest | Caterpie 18, Weedle 18, Paras 10, Metapod 8, Kakuna 8, Venonat 8, Oddish 8, Bellsprout 8, Pikachu 6, Pidgey 4, Scyther 2, Pinsir 2 |
 
 ## Cross-cutting (any milestone, owner decides when)
+- [ ] Visual overhaul research: community battle UI branches (healthboxes, backgrounds, stat displays) in the style of Radical Red / HGSS hacks; credit authors
 - [ ] Battle UI configs: show types, move effectiveness, physical/special icons, fast HP/EXP bars, trainer slide messages (check expansion configs first)
 - [ ] Portraits above the text box for key characters (Oak, Elm, Ivy, Jenny, Delia, Daisy, player M/F) from `graphics/research_red/`
 - [ ] Video call UI: call frame, signal bars, pop-in call circles; reusable script commands (start call, add/drop caller, signal strength)
 - [ ] Intro player pictures from `intro_player_m/f.png` (resize/pad to the size the intro expects)
 - [ ] Title screen (Research Red logo; Slowpoke art from owner or in-game sprite) and boot credits/disclaimer screen
+- [x] Test archive: `rr_install_rom.sh` (versioned builds) and `rr_archive_test.sh` (per-round folders with NOTES.md)
 - [ ] Testing toolkit: mGBA Lua debug overlay (map, X/Y, story vars), bug-report hotkey to `/mnt/e/Workspace/romhacks/_emu/bug-reports/`, scripted scene playthroughs with screenshots, checkpoint save states, `make check`
 - [ ] Proper-case sweep across all game text
 - [ ] `docs/FLAGS_VARS.md` registry and `CREDITS.md`
