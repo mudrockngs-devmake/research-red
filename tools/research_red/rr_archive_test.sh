@@ -2,8 +2,9 @@
 # Research Red: archive one playtest round.
 #   test-archive/<date>_<version>_<name>/
 #     rom/          the exact ROM that was tested
-#     screenshots/  moved out of the emulator folder (so it starts empty next round)
-#     saves/ states/ copied (the emulator keeps its own so play can continue)
+#     screenshots/ saves/ states/ cheats/ patches/
+#                   everything in the five _emu folders, moved (not deleted)
+#                   so each round starts with them empty
 #     NOTES.md      build info, commits in this build, then test notes to fill in
 #   test-archive/INDEX.md gets one line per round.
 # Usage: tools/research_red/rr_archive_test.sh <short-test-name>
@@ -25,12 +26,18 @@ ROMFILE="$(grep '^file=' "$INFO" | cut -d= -f2)"
 
 DIR="$ARCHIVE/$(date '+%Y-%m-%d')_${VERSION}_${NAME}"
 [ -e "$DIR" ] && { echo "$DIR already exists" >&2; exit 1; }
-mkdir -p "$DIR/rom" "$DIR/screenshots" "$DIR/saves" "$DIR/states"
+EMU_FOLDERS="screenshots saves states cheats patches"
+mkdir -p "$DIR/rom"
+for f in $EMU_FOLDERS; do mkdir -p "$DIR/$f"; done
 
 cp "$WS/$ROMFILE" "$DIR/rom/"
-find "$EMU/screenshots" -maxdepth 1 -type f -exec mv {} "$DIR/screenshots/" \;
-find "$EMU/saves" -maxdepth 1 -type f -name 'ResearchRed*' -exec cp {} "$DIR/saves/" \;
-find "$EMU/states" -maxdepth 1 -type f -name 'ResearchRed*' -exec cp {} "$DIR/states/" \;
+# Move (never delete) everything out of the emulator folders; mv -n won't overwrite
+for f in $EMU_FOLDERS; do
+    [ -d "$EMU/$f" ] || continue
+    find "$EMU/$f" -mindepth 1 -maxdepth 1 -exec mv -n {} "$DIR/$f/" \;
+    LEFT="$(find "$EMU/$f" -mindepth 1 | wc -l)"
+    [ "$LEFT" -eq 0 ] || echo "warning: $LEFT item(s) left in $EMU/$f (name clash?), check by hand" >&2
+done
 
 # Commits since the previous archived round (or the last 10 on the first round)
 PREV="$(cat "$ARCHIVE/.last_commit" 2>/dev/null || true)"
@@ -50,6 +57,7 @@ cat > "$DIR/NOTES.md" <<EOF
 | ROM | rom/$(basename "$ROMFILE") |
 | Archived | $(date '+%Y-%m-%d %H:%M') |
 | Screenshots | $(ls "$DIR/screenshots" | wc -l) |
+| Saves / states / cheats / patches | $(ls "$DIR/saves" | wc -l) / $(ls "$DIR/states" | wc -l) / $(ls "$DIR/cheats" | wc -l) / $(ls "$DIR/patches" | wc -l) |
 
 ## Commits in this build
 \`\`\`
