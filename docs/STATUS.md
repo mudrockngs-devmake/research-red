@@ -22,6 +22,7 @@ _Last updated: 2026-10-19_
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
 ## Next up (after the playtest)
+- **New from the owner's notes (2026-10-19): issues #19-#34**, plus additions to #5 (banter as a "dex cutscene" over the entry) and #11 (Start menu casing). Top of the list: **#19 Pokédex tabs crash (blue screen)**; quick wins: #26 (fast text, L/R defaults), #22 (portrait position). Decision for the owner: #25 (when to show opponent types).
 - **Tester upgrades (issue #18)**: parts 1-4 done 2026-10-19 (stuck detector, memory checks, wait-until, reusable `tester.py` split from Research Red's `smoke.py`; see [TESTING.md](TESTING.md) and `tools/research_red/test/README.md`). Left: the "later" ideas (before/after screenshot comparison, random-input stress test, AI-vs-AI balance sims, running in the GitHub Action). Tooling only, no version bump.
 1. Fix whatever the playtest finds (issues labeled `playtest`).
 2. Milestone **v0.1 Pallet**: title screen + boot disclaimer (#12), compatibility check (#16).
