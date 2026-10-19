@@ -29,6 +29,6 @@ _Last updated: 2026-10-19_
 - None in progress. (If a session ends mid-task, describe it here: what was being done, which files, what's left.)
 
 ## How to resume in a new session
-1. `cd ~/romhacks/research-red`, start Claude Code (`claude --continue` reopens the last conversation).
+1. Open Ubuntu (or double-click `E:\Workspace\Claude Hub.bat`): the Claude Hub menu appears. Work on a project > research-red > Continue. (By hand: `cd ~/romhacks/research-red && claude --continue`.)
 2. Claude reads `CLAUDE.md` (rules) and this file (state), then checks `git log -5` and open issues (`gh issue list`).
 3. If the test runner is missing (`~/romhacks/_tools/rr_run`), run `tools/research_red/test/setup_mgba.sh`.
