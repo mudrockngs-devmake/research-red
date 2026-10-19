@@ -9,6 +9,8 @@ _Last updated: 2026-10-19_
 - **v0.0.14**: installed as `ResearchRed_local.gba` (copy in `builds/`). Smoke tests: 9/9 passing.
 - Changes since the last playtest: see [CHANGELOG.md](CHANGELOG.md) (v0.0.13 and v0.0.14 entries).
 - Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
+- Releases: [v0.0.13](https://github.com/mudrockngs-devmake/research-red/releases/tag/v0.0.13), [v0.0.14](https://github.com/mudrockngs-devmake/research-red/releases/tag/v0.0.14) (pre-releases with the BPS patch).
+- Latest smoke test: `test-runs/2026-10-19_0014_v0.0.14_*` (9/9).
 
 ## Waiting on the owner
 - [ ] Playtest v0.0.14 (the v0.0.13 features + the fixes). Checklist: [PLAYTESTING.md](PLAYTESTING.md) and issue #2.
@@ -21,6 +23,7 @@ _Last updated: 2026-10-19_
 1. Fix whatever the playtest finds (issues labeled `playtest`).
 2. Milestone **v0.1 Pallet**: title screen + boot disclaimer (#12), compatibility check (#16).
 3. Then the v0.2 / v0.3 issues: lunch picnic art, Research Rules difficulty, Viridian Forest exchanges.
+4. Tooling: smaller BPS patch (#17).
 
 ## Half-finished / open threads
 - None in progress. (If a session ends mid-task, describe it here: what was being done, which files, what's left.)
