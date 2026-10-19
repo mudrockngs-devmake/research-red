@@ -45,7 +45,7 @@ These limits are the hardware's and are kept so the patch works on every emulato
 3. `python3 tools/research_red/test/smoke.py` and look at the contact sheets ([TESTING.md](TESTING.md))
 4. Commit, then `tools/research_red/rr_install_rom.sh` (installs `ResearchRed_local.gba`, keeps a versioned copy in `builds/`)
 5. Push; for a test build also tag it (`git tag -a v0.0.x`, `git push origin v0.0.x`) so the Action publishes a release ([RELEASING.md](RELEASING.md))
-6. After the owner's playtest: issues for what they found, `tools/research_red/rr_archive_test.sh <name>`, fill in its `NOTES.md` (include `/cost`) ([PLAYTESTING.md](PLAYTESTING.md))
+6. After the owner's playtest: issues for what they found, `tools/research_red/rr_archive_test.sh <name>`, fill in its `NOTES.md` (include the cost from `session-cost`) ([PLAYTESTING.md](PLAYTESTING.md))
 7. Update [STATUS.md](STATUS.md)
 
 ## Generated files

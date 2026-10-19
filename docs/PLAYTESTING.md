@@ -11,7 +11,7 @@ How a test round works, from a new build to an archived round.
 6. **File and archive** (Claude):
    - each problem becomes a GitHub issue labeled `playtest` (plus `bug`, `story`, `art`...) on a milestone
    - `tools/research_red/rr_archive_test.sh <short-name>` moves everything out of the five `_emu` folders into `test-archive/<date>_<version>_<name>/`
-   - fill in that round's `NOTES.md`: what was tested, what was found (with issue numbers), follow-ups, and the `/cost` result
+   - fill in that round's `NOTES.md`: what was tested, what was found (with issue numbers), follow-ups, and the session cost (`session-cost --all-days` lists every session since the last round)
 7. **Update [STATUS.md](STATUS.md)** (Claude).
 
 ## Every-round checklist (5 minutes)

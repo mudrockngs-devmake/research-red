@@ -85,7 +85,7 @@ ${LOG:-(none)}
 ## Follow-ups
 
 ## Session usage
-(Claude Code session cost/tokens from /cost, if recorded)
+(Claude Code session costs: run `session-cost --all-days` and copy the sessions since the last round)
 EOF
 
 mkdir -p "$ARCHIVE"

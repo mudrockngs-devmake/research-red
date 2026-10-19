@@ -5,12 +5,12 @@ Documentation index: `docs/README.md`.
 
 ## Start and end of every session
 - **Start:** read `docs/STATUS.md` (current build, what's waiting, what's next, anything half-finished), then `git log -5` and `gh issue list`. If `~/romhacks/_tools/rr_run` is missing, run `tools/research_red/test/setup_mgba.sh`.
-- **End (or before the owner restarts):** update `docs/STATUS.md`, make sure everything is committed and pushed, and remind the owner to run `/cost` if a round ended.
+- **End (or before the owner restarts):** update `docs/STATUS.md`, make sure everything is committed and pushed, and log the session cost (`session-cost`, saved automatically by the status line) in STATUS / the round's NOTES.md.
 
 ## Working rules
 - Ask one question at a time. Label each task Light / Medium / Heavy before starting.
 - Commit straight to master; the "Build Research Red BPS" GitHub Action makes BPS patches (and a GitHub Release when a `v*` tag is pushed). The upstream "CI" workflow is disabled on GitHub (its engine tests failed on every push and showed a red X); leave it off.
-- Every build: `make firered -j6`, `python3 tools/research_red/rr_check.py`, smoke tests `python3 tools/research_red/test/smoke.py` (open the contact sheets, PASS only means no crash), then `tools/research_red/rr_install_rom.sh`. Never commit ROMs. Full flow: `docs/PLAYTESTING.md`, `docs/TESTING.md`.
+- Every build: `make firered -j6`, `python3 tools/research_red/rr_check.py`, smoke tests `python3 tools/research_red/test/smoke.py` (PASS = every scene finished and its memory checks passed; still open the contact sheets to see it looks right), then `tools/research_red/rr_install_rom.sh`. Never commit ROMs. Full flow: `docs/PLAYTESTING.md`, `docs/TESTING.md`.
 - Each test build: bump the stamp (first line of `sCallScript` in `src/rr_intro_call.c`), add a `docs/CHANGELOG.md` section ending in a **Save:** line, tag `v0.0.x` and push the tag (`docs/RELEASING.md`).
 - Saves: bump `RR_SAVE_VERSION` when a change breaks old saves (`docs/SAVES.md`).
 - Bugs and ideas live in GitHub Issues (labels: bug, crash, story, text, art, balance, feature, tooling, decision, playtest; milestones per version). Turn the owner's playtest notes into issues.

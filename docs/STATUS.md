@@ -18,7 +18,7 @@ _Last updated: 2026-10-19_
 - [ ] Decide when Mega / Z-Moves / Dynamax / Tera unlock (issue #1).
 - [ ] Decide whether portraits should hide during camera pans (issue #3).
 - [ ] Log in the next round's NOTES.md: `/cost` for the v0.0.13-14 build + GitHub/hub setup session (2026-10-18/19): $121.56, 2h36m API time, 7,494 lines added.
-- [ ] Log in the next round's NOTES.md: `/cost` for the tester-upgrades session (2026-10-19, issue #18 parts 1-4); paste it in the next conversation.
+- [ ] Log in the next round's NOTES.md: tester-upgrades + notes-to-issues + cost-logging session (2026-10-19, logged automatically, as of the wrap-up): `2026-10-19 03:56  $4.24  0h11m API  1h56m total  +301/-0 lines  Opus 5.5`. From now on `session-cost --all-days` lists every session, so no more /cost.
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
 ## Next up (after the playtest)
