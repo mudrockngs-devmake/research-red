@@ -6,6 +6,7 @@ update it at the end of every session** (and whenever a build goes out).
 _Last updated: 2026-10-19_
 
 ## Current build
+- GitHub front page (2026-10-19): Research Red README with fan-project disclaimer, description, topics, wiki/projects off, upstream CI disabled, release notes carry the disclaimer. Open: whether to add a short AI-assistance note (asked the owner).
 - **v0.0.14**: installed as `ResearchRed_local.gba` (copy in `builds/`). Smoke tests: 9/9 passing.
 - Changes since the last playtest: see [CHANGELOG.md](CHANGELOG.md) (v0.0.13 and v0.0.14 entries).
 - Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.

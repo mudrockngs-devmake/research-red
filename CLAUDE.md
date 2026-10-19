@@ -9,7 +9,7 @@ Documentation index: `docs/README.md`.
 
 ## Working rules
 - Ask one question at a time. Label each task Light / Medium / Heavy before starting.
-- Commit straight to master; the "Build Research Red BPS" GitHub Action makes BPS patches (and a GitHub Release when a `v*` tag is pushed). Ignore the "CI" workflow.
+- Commit straight to master; the "Build Research Red BPS" GitHub Action makes BPS patches (and a GitHub Release when a `v*` tag is pushed). The upstream "CI" workflow is disabled on GitHub (its engine tests failed on every push and showed a red X); leave it off.
 - Every build: `make firered -j6`, `python3 tools/research_red/rr_check.py`, smoke tests `python3 tools/research_red/test/smoke.py` (open the contact sheets, PASS only means no crash), then `tools/research_red/rr_install_rom.sh`. Never commit ROMs. Full flow: `docs/PLAYTESTING.md`, `docs/TESTING.md`.
 - Each test build: bump the stamp (first line of `sCallScript` in `src/rr_intro_call.c`), add a `docs/CHANGELOG.md` section ending in a **Save:** line, tag `v0.0.x` and push the tag (`docs/RELEASING.md`).
 - Saves: bump `RR_SAVE_VERSION` when a change breaks old saves (`docs/SAVES.md`).
