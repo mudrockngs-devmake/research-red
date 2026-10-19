@@ -17,7 +17,7 @@ _Last updated: 2026-10-19_
 - [ ] Playtest v0.0.14 (the v0.0.13 features + the fixes). Testers played v0.0.13: the owner folds their notes in, marked "(tester, .13)"; check those against v0.0.14 before filing (portrait-color/portrait-in-battle notes may already be fixed). Checklist: [PLAYTESTING.md](PLAYTESTING.md) and issue #2.
 - [ ] Decide when Mega / Z-Moves / Dynamax / Tera unlock (issue #1).
 - [ ] Decide whether portraits should hide during camera pans (issue #3).
-- [ ] Run `/cost` and log it in the next round's NOTES.md.
+- [ ] Log in the next round's NOTES.md: `/cost` for the v0.0.13-14 build + GitHub/hub setup session (2026-10-18/19): $121.56, 2h36m API time, 7,494 lines added.
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
 ## Next up (after the playtest)
