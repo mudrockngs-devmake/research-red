@@ -6,7 +6,7 @@ update it at the end of every session** (and whenever a build goes out).
 _Last updated: 2026-10-19_
 
 ## Current build
-- GitHub front page (2026-10-19): Research Red README with fan-project disclaimer, description, topics, wiki/projects off, upstream CI disabled, release notes carry the disclaimer. Open: whether to add a short AI-assistance note (asked the owner).
+- GitHub front page (2026-10-19): Research Red README with fan-project disclaimer, description, topics, wiki/projects off, upstream CI disabled, release notes carry the disclaimer. Credits say "story and character designs: MudrockNGS". No AI note in the README for now (owner's choice).
 - **v0.0.14**: installed as `ResearchRed_local.gba` (copy in `builds/`). Smoke tests: 9/9 passing.
 - Changes since the last playtest: see [CHANGELOG.md](CHANGELOG.md) (v0.0.13 and v0.0.14 entries).
 - Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
@@ -14,7 +14,7 @@ _Last updated: 2026-10-19_
 - Latest smoke test: `test-runs/2026-10-19_0014_v0.0.14_*` (9/9).
 
 ## Waiting on the owner
-- [ ] Playtest v0.0.14 (the v0.0.13 features + the fixes). Checklist: [PLAYTESTING.md](PLAYTESTING.md) and issue #2.
+- [ ] Playtest v0.0.14 (the v0.0.13 features + the fixes). Testers played v0.0.13: the owner folds their notes in, marked "(tester, .13)"; check those against v0.0.14 before filing (portrait-color/portrait-in-battle notes may already be fixed). Checklist: [PLAYTESTING.md](PLAYTESTING.md) and issue #2.
 - [ ] Decide when Mega / Z-Moves / Dynamax / Tera unlock (issue #1).
 - [ ] Decide whether portraits should hide during camera pans (issue #3).
 - [ ] Run `/cost` and log it in the next round's NOTES.md.
@@ -31,6 +31,6 @@ _Last updated: 2026-10-19_
 - None in progress. (If a session ends mid-task, describe it here: what was being done, which files, what's left.)
 
 ## How to resume in a new session
-1. Open Ubuntu (or double-click `E:\Workspace\Claude Hub.bat`): the Claude Hub menu appears. Work on a project > research-red > Continue. (By hand: `cd ~/romhacks/research-red && claude --continue`.)
+1. Open Ubuntu (or double-click `E:\Workspace\Claude Hub.bat`): the Claude Hub menu appears. Work on a project > research-red > Start a fresh conversation (normal; Continue only to resume the same task). (By hand: `cd ~/romhacks/research-red && claude --continue`.)
 2. Claude reads `CLAUDE.md` (rules) and this file (state), then checks `git log -5` and open issues (`gh issue list`).
 3. If the test runner is missing (`~/romhacks/_tools/rr_run`), run `tools/research_red/test/setup_mgba.sh`.
