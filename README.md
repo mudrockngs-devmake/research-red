@@ -37,7 +37,7 @@ for each). This is a personal hobby project, so replies may be slow.
 - Built on [pokefirered-expansion](https://github.com/rh-hideout/pokefirered-expansion)
   (rh-hideout) and [pret's pokefirered](https://github.com/pret/pokefirered) disassembly.
   Their original README: [docs/ENGINE_README.md](docs/ENGINE_README.md).
-- Story, characters and character art: MudrockNGS.
+- Story and character designs: MudrockNGS.
 - Everything else, asset by asset: [CREDITS.md](CREDITS.md).
 
 ## Disclaimer

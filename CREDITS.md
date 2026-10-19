@@ -1,7 +1,7 @@
 # Credits
 
 - **Engine:** pokefirered-expansion (the rh-hideout expansion family), built on pret's pokefirered disassembly.
-- **Research Red:** MudrockNGS (story, characters, reference art, animatic), mudrockngs-devmake.
+- **Research Red:** MudrockNGS (story, character designs, animatic), mudrockngs-devmake.
 - **Pokémon** and everything from the original games: © Nintendo, Creatures, Game Freak. Research Red is a free, unofficial fan project, not affiliated with or endorsed by them, and not for sale.
 
 ## Tools
@@ -14,7 +14,7 @@ One row per asset that isn't the game's own art or the owner's own work, plus th
 
 | Asset | Path | Source / author | Permission |
 |---|---|---|---|
-| Cast art (battle, portrait, call icon) for 32 characters | `graphics/research_red/cast/` | Converted from the owner's full-body reference art | own |
+| Cast art (battle, portrait, call icon) for 32 characters | `graphics/research_red/cast/` | Converted from full-body reference art of the owner's character designs | own |
 | Intro video call frame and avatars | `graphics/research_red/intro_call/` | Drawn by `tools/research_red/build_call_ui.py` from the owner's animatic layout; avatars from the cast art | own |
 | Pokémon dialogue portraits | `graphics/research_red/pokemon/` | Cut from the games' front sprites | game |
 | Player walking sprite (male) | `graphics/research_red/player_ow/src/prof_birch.png` | Professor Birch overworld sprite (Pokémon Emerald, via pret/pokeemerald), recolored | game |
