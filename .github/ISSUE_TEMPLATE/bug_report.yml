@@ -1,0 +1,48 @@
+name: Bug report
+description: Something in the game is wrong, broken or crashes
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Build
+      description: The version shown at the start of the intro call (for example v0.0.13), or the ROM file name
+      placeholder: v0.0.13 (ResearchRed_v0.0.13_006b8fe4d)
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: Map or scene, and roughly where on it
+      placeholder: Route 22, during the battle with Elm and Jenny
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Steps to get there, what you saw, and what you expected instead
+    validations:
+      required: true
+  - type: dropdown
+    id: how_bad
+    attributes:
+      label: How bad is it
+      options:
+        - Crash, freeze or can't continue
+        - Wrong but playable
+        - Looks or reads wrong
+        - Tiny
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Screenshots, save or save state
+      description: Drag files here. A save state from just before the problem is the most useful thing you can attach.
+  - type: input
+    id: emulator
+    attributes:
+      label: Emulator or device
+      placeholder: mGBA 0.10.5 on Windows

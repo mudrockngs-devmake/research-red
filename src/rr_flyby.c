@@ -5,6 +5,7 @@
 #include "global.h"
 #include "gpu_regs.h"
 #include "rr_flyby.h"
+#include "rr_portrait.h"
 #include "script.h"
 #include "sound.h"
 #include "sprite.h"
@@ -86,7 +87,7 @@ void RR_ScriptMewtwoFlyby(struct ScriptContext *ctx)
     u32 i;
 
     LoadSpriteSheet(&sheet);
-    LoadSpritePalette(&palette);
+    RR_LoadInterfaceSpritePalette(&palette);
     for (i = 0; i < NUM_COPIES; i++)
     {
         u8 spriteId = CreateSprite(&sSpriteTemplate_Flyby, -64 - i * COPY_GAP, FLYBY_Y, 2 + i);

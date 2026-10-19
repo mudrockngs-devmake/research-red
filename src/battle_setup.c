@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_portrait.h"
 #include "battle.h"
 #include "load_save.h"
 #include "battle_setup.h"
@@ -163,6 +164,8 @@ static void Task_BattleStart(u8 taskId)
 static void CreateBattleStartTask(enum BattleTransition transition, u16 song)
 {
     u8 taskId = CreateTask(Task_BattleStart, 1);
+
+    RR_PortraitHide(); // Research Red: no dialogue portrait into the battle transition
 
     gTasks[taskId].tTransition = transition;
     PlayMapChosenOrBattleBGM(song);

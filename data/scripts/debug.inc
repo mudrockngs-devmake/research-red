@@ -152,6 +152,8 @@ Debug_EventScript_Text_DefensiveIVs:
 @ Script 5: Give test team         (Spearow, Rattata, Mankey, Nidoran M)
 @ Script 6: Skip to Viridian lunch (Route 22 done, just west of the trigger)
 @ Script 7: Preview Pokédex banter (Tentacool, Slowpoke, Quilava)
+@ Script 8: Route 1 scene (Daisy done, just above Elm and Jenny's trigger)
+@ Script 9: Test mode on/off (the AI fights your battles; team to Lv 30)
 @ Remove or empty these before a public release.
 @ ===================================================================
 Debug_EventScript_Script_1::
@@ -288,8 +290,40 @@ Debug_EventScript_Script_7::
 	end
 
 Debug_EventScript_Script_8::
+	call RR_Debug_StateGrassDone
+	call RR_Debug_StateLabDone
+	call RR_Debug_StateDaisyDone
+	rr_ivy_create_follower
+	@ one step south of here is the scene's trigger row (y 4)
+	warp MAP_ROUTE1, 14, 3
+	waitstate
 	release
 	end
+
+@ Test mode: battles play themselves (FLAG_RR_AI_VS_AI) with a Lv 30 team.
+@ Used by the automated smoke tests; handy for skipping through story fights.
+Debug_EventScript_Script_9::
+	goto_if_set FLAG_RR_AI_VS_AI, RR_Debug_TestModeOff
+	setflag FLAG_RR_AI_VS_AI
+	setvar VAR_0x8004, 30
+	callnative RR_ScriptDebugSetPartyLevel
+	special HealPlayerParty
+	msgbox RR_Debug_Text_TestModeOn, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Debug_TestModeOff::
+	clearflag FLAG_RR_AI_VS_AI
+	msgbox RR_Debug_Text_TestModeOff, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Debug_Text_TestModeOn:
+	.string "Test mode on: the AI fights your\n"
+	.string "battles. Team raised to Lv 30.$"
+
+RR_Debug_Text_TestModeOff:
+	.string "Test mode off.$"
 
 Debug_CheckSaveBlock::
 	callnative CheckSaveBlock1Size

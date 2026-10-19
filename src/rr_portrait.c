@@ -23,6 +23,7 @@
 #include "text.h"
 #include "trig.h"
 #include "window.h"
+#include "event_object_movement.h"
 #include "constants/flags.h"
 
 #define TAG_RR_PORTRAIT   0x5A10
@@ -120,6 +121,25 @@ static EWRAM_DATA u8 sPlateIdPlus1 = 0;
 static EWRAM_DATA u8 sShownSpeaker = 0;   // speaker index + 1
 static EWRAM_DATA bool8 sShownAlt = FALSE;
 
+// Load a palette into slots 12-15. Slots 0-11 belong to overworld people and
+// are rewritten by the overworld code (on maps with reflections, such as the
+// lab, FireRed only reserves 0-7, so a normal load could land in 8-11).
+u8 RR_LoadInterfaceSpritePalette(const struct SpritePalette *palette)
+{
+    u8 oldReserved = gReservedSpritePaletteCount;
+    u8 slot;
+
+    if (gReservedSpritePaletteCount < OBJ_PALSLOT_COUNT)
+        gReservedSpritePaletteCount = OBJ_PALSLOT_COUNT;
+    slot = LoadSpritePalette(palette);
+    gReservedSpritePaletteCount = oldReserved;
+    // Also write the colors to the screen now: the buffered copy can reach it a
+    // couple of frames late, flashing the new picture in the old colors
+    if (slot != 0xFF)
+        CpuCopy16(palette->data, (u16 *)OBJ_PLTT + slot * 16, PLTT_SIZE_4BPP);
+    return slot;
+}
+
 static bool32 IsSpriteOurs(u8 idPlus1, u16 tileTag)
 {
     struct Sprite *sprite;
@@ -152,6 +172,18 @@ static void SpriteCB_Portrait(struct Sprite *sprite)
     {
         RR_PortraitHide();
         return;
+    }
+    // A new portrait stays hidden for its first two frames: the overworld
+    // copies new sprite colors to the screen a frame late, so showing it at
+    // once flashes it in the previous speaker's colors
+    if (sprite->data[1] < 2)
+    {
+        if (++sprite->data[1] == 2)
+        {
+            sprite->invisible = FALSE;
+            if (IsSpriteOurs(sPlateIdPlus1, TAG_RR_NAMEPLATE))
+                gSprites[sPlateIdPlus1 - 1].invisible = FALSE;
+        }
     }
     sprite->data[0] = (sprite->data[0] + 1) % BOB_PERIOD;
     sprite->y2 = (Cos(sprite->data[0] * 256 / BOB_PERIOD, 2) - 2) / 2; // 0 .. -2
@@ -246,7 +278,7 @@ static bool32 LoadNamePlate(const u8 *name, u32 color)
         return FALSE;
     palette.data = pal;
     palette.tag = TAG_RR_NAMEPLATE;
-    if (LoadSpritePalette(&palette) == 0xFF)
+    if (RR_LoadInterfaceSpritePalette(&palette) == 0xFF)
         return FALSE;
     sPlateIdPlus1 = CreateSprite(&sSpriteTemplate_NamePlate, PLATE_X, PLATE_Y, 0) + 1;
     if (sPlateIdPlus1 - 1 == MAX_SPRITES)
@@ -254,6 +286,7 @@ static bool32 LoadNamePlate(const u8 *name, u32 color)
         sPlateIdPlus1 = 0;
         return FALSE;
     }
+    gSprites[sPlateIdPlus1 - 1].invisible = TRUE; // shown with the portrait
     return TRUE;
 }
 
@@ -265,7 +298,7 @@ static bool32 LoadPortrait(const u32 *gfx, const u16 *pal)
     LoadSpriteSheet(&sheet);
     if (GetSpriteTileStartByTag(TAG_RR_PORTRAIT) == TAG_NONE)
         return FALSE;
-    if (LoadSpritePalette(&palette) == 0xFF)
+    if (RR_LoadInterfaceSpritePalette(&palette) == 0xFF)
         return FALSE;
     sPortraitIdPlus1 = CreateSprite(&sSpriteTemplate_Portrait, PORTRAIT_X, PORTRAIT_Y, 0) + 1;
     if (sPortraitIdPlus1 - 1 == MAX_SPRITES)
@@ -273,6 +306,7 @@ static bool32 LoadPortrait(const u32 *gfx, const u16 *pal)
         sPortraitIdPlus1 = 0;
         return FALSE;
     }
+    gSprites[sPortraitIdPlus1 - 1].invisible = TRUE; // see SpriteCB_Portrait
     return TRUE;
 }
 

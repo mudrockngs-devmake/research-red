@@ -1,0 +1,16 @@
+name: Idea or change
+description: A scene, feature, balance change or art request
+labels: ["feature"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What should happen, and where in the story
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why / reference
+      description: The animatic scene, another hack that does it, a sketch...
