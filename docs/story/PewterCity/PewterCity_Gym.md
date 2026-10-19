@@ -7,7 +7,7 @@ Map `MAP_PEWTER_CITY_GYM` · music `MUS_GYM` · weather `WEATHER_NONE`
 ### Brock (Brock) at 6,5
 Script `PewterCity_Gym_EventScript_Brock`
 
-**Battle:** Leader BROCK (single): Geodude Lv12, Onix Lv14
+**Battle:** Leader Brock (single): Geodude Lv12, Sandshrew Lv12, Kabuto Lv13, Omanyte Lv13, Rhyhorn Lv13, Onix Lv14
 
 > So, you're here. I'm BROCK.
 > I'm PEWTER's GYM LEADER.
@@ -89,7 +89,7 @@ Script `PewterCity_Gym_EventScript_Brock`
 *trainer, sight 4*
 Script `PewterCity_Gym_EventScript_Liam`
 
-**Battle:** Camper LIAM (single): Geodude Lv10, Sandshrew Lv11
+**Battle:** Camper Liam (single): Geodude Lv10, Sandshrew Lv11, Diglett Lv10
 
 > Stop right there, kid!
 >

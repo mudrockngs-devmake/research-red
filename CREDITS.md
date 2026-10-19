@@ -1,21 +1,25 @@
 # Credits
 
-- **Base:** pokefirered-expansion (rh-hideout), built on pret/pokefirered.
-- **Research Red:** mudrockngs-devmake.
+- **Engine:** pokefirered-expansion (the rh-hideout expansion family), built on pret's pokefirered disassembly.
+- **Research Red:** MudrockNGS (story, characters, reference art, animatic), mudrockngs-devmake.
+- **Pokémon** and everything from the original games: © Nintendo, Creatures, Game Freak. Research Red is a free, unofficial fan project, not affiliated with or endorsed by them, and not for sale.
 
 ## Tools
-
-- Headless test runs used mGBA (endrift, MPL 2.0) as a library; it is not part of the patch.
+- Automated test runs use mGBA (endrift, MPL 2.0) as a library. It isn't part of the patch.
 
 ## Assets
+One row per asset that isn't the game's own art or the owner's own work, plus the owner's art for the record.
+**Permission** says whether the author has OK'd its use in a public release:
+`own` (the owner's work), `game` (Game Freak art from the original games, used like every fan hack), `granted` (written OK, link it), `asked`, `needed` (must be confirmed or replaced before a public release).
 
-Add one line per borrowed or commissioned asset, giving the source and author.
+| Asset | Path | Source / author | Permission |
+|---|---|---|---|
+| Cast art (battle, portrait, call icon) for 32 characters | `graphics/research_red/cast/` | Converted from the owner's full-body reference art | own |
+| Intro video call frame and avatars | `graphics/research_red/intro_call/` | Drawn by `tools/research_red/build_call_ui.py` from the owner's animatic layout; avatars from the cast art | own |
+| Pokémon dialogue portraits | `graphics/research_red/pokemon/` | Cut from the games' front sprites | game |
+| Player walking sprite (male) | `graphics/research_red/player_ow/src/prof_birch.png` | Professor Birch overworld sprite (Pokémon Emerald, via pret/pokeemerald), recolored | game |
+| Player walking sprite (female) | `graphics/research_red/player_ow/` | FireRed's Reporter overworld sprite, recolored | game |
+| Route 1 fly-by streak | `src/rr_flyby.c` | Mewtwo's front sprite, blurred in game | game |
+| Animatic placeholder art: Slowpoke, Mimey portrait | `docs/animatic/` only (not in the game) | Fan sprites from the Pokémon Snakewood wiki and FusionDex | needed if they ever go in the game |
 
-| Asset | Path | Source / author |
-|---|---|---|
-| Intro video call frame and avatars | `graphics/research_red/intro_call/` | Drawn by `tools/research_red/build_call_ui.py` (layout from the owner's animatic); avatars from the cast art |
-| Pokemon dialogue portraits | `graphics/research_red/pokemon/` | Cut from the game's own front sprites (Game Freak, via pokefirered-expansion) |
-| Player walking sprite (male) | `graphics/research_red/player_ow/src/prof_birch.png` | Professor Birch overworld sprite, Game Freak (Pokémon Emerald), from pret/pokeemerald; recolored |
-| Player walking sprite (female) | `graphics/research_red/player_ow/` | FireRed's Reporter overworld sprite, Game Freak; recolored |
-| Fly-by streak (Route 1) | `src/rr_flyby.c` | Mewtwo's front sprite (Game Freak), blurred in game |
-| Cast art set: battle, portrait, call icon for 32 characters | `graphics/research_red/cast/` | Converted from the owner's full-body reference art |
+Before a public release, every row must be `own`, `game` or `granted` ([docs/RELEASING.md](docs/RELEASING.md)).

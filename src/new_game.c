@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_save_version.h"
 #include "battle_records.h"
 #include "berry_pouch.h"
 #include "berry_powder.h"
@@ -148,6 +149,7 @@ void NewGameInitData(void)
     EnableNationalPokedex_RSE();
     FlagSet(FLAG_SYS_B_DASH); // Research Red: Running Shoes from the start
     FlagSet(FLAG_RR_FORCE_DOUBLES); // Research Red: all trainer battles are doubles (toggle later in Elm's Research Rules)
+    gSaveBlock3Ptr->rrSaveVersion = RR_SAVE_VERSION; // Research Red: see src/rr_save_version.c
     EnableNationalPokedex(); // Research Red: National Dex from the start (Johto starters, regional forms)
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();

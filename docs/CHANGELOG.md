@@ -1,6 +1,14 @@
 # Changelog
 
-Test builds are v0.0.x. Each entry lists what changed for players/testers.
+Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
+
+## v0.0.14
+- Fixed: a portrait could flash for a moment in the previous speaker's colors when the speaker changed (most visible in Oak's lab), and could show up in the colors of a nearby person.
+- Portraits now leave the screen as soon as a battle starts.
+- Continuing a save from an older test build shows a one-time note suggesting a new game if anything looks wrong.
+- Debug skips have names, plus two new ones: 8 (Route 1 scene with Elm and Jenny) and 9 (test mode: the AI fights your battles, team to Lv 30).
+- Behind the scenes: automated playthrough tests, player guides (wild Pokémon, trainers, items), a balance overview, GitHub issues and releases, a writing style guide and a full readable script.
+- **Save:** old saves work (they show the one-time note).
 
 ## v0.0.13
 - New intro: a Discord-style video call like the animatic (live dot, signal bars, people joining as round avatars, gold ring on whoever is talking; Slowpoke never hangs up). The controls tutorial is gone.
@@ -15,6 +23,7 @@ Test builds are v0.0.x. Each entry lists what changed for players/testers.
 - Pokédex banter: register a new species (catch or evolution) and you and Ivy trade a joke or fact about it, with regional-form notes and lines for Elm's and Jenny's starter families.
 - Level caps (on by default, soft): Brock's cap is Lv 14.
 - Debug: Script 6 skips to the Viridian lunch, Script 7 previews the Pokédex banter; skips give a Lv 12 team.
+- **Save:** old saves work.
 
 ## v0.0.12
 - Fixed: the battle intro called Jenny "Officer Elm".

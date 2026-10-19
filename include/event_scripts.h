@@ -990,5 +990,6 @@ extern const u8 BattlePyramid_FindItemBall[];
 extern const u8 RR_EventScript_FieldGuide[];
 extern const u8 RR_EventScript_ResearchRules[];
 extern const u8 RR_EventScript_DexBanter[];
+extern const u8 RR_EventScript_OldSaveWarning[];
 
 #endif //GUARD_EVENT_SCRIPTS_H

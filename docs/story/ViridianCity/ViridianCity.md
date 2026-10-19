@@ -2,6 +2,10 @@
 
 Map `MAP_VIRIDIAN_CITY` · music `MUS_PEWTER` · weather `WEATHER_SUNNY`
 
+## Story scene triggers
+
+- `RR_Lunch_EventScript_Start` when `VAR_0x40FE` = 6 (see scenes/)
+
 ## People and objects
 
 ### Fat Man (Fat Man) at 8,26
@@ -180,6 +184,18 @@ Script `EventScript_CutTree`
 *hidden by `FLAG_HIDE_VIRIDIAN_CITY_POTION`*
 Script `ViridianCity_EventScript_ItemPotion`
 
+### Viridian Elm (Rr Elm) at 24,17
+*hidden by `FLAG_TEMP_13`*
+(no talk script; used in cutscenes)
+
+### Viridian Jenny (Rr Jenny) at 25,18
+*hidden by `FLAG_TEMP_14`*
+(no talk script; used in cutscenes)
+
+### Viridian Officer Jenny (Rr Jenny) at 20,22
+*hidden by `FLAG_TEMP_15`*
+(no talk script; used in cutscenes)
+
 ## Signs
 
 - at 23,1: Trainer Tips  Catch Pokémon and expand your collection.  The more you have, the easier it is to battle.
@@ -190,8 +206,8 @@ Script `ViridianCity_EventScript_ItemPotion`
 
 ## Wild Pokemon
 
-**Surfing:** Psyduck 100% (Lv 20-25/25-30/30-35/35-40)
-**Fishing:** Magikarp 120% (Lv 5/5-15), Poliwag 100% (Lv 15-25/5-15), Poliwhirl 40% (Lv 20-30), Goldeen 20% (Lv 5-15), Gyarados 15% (Lv 15-25), Psyduck 5% (Lv 15-25/25-35)
+**Surfing:** Psyduck 60% (Lv 5-10), Poliwag 30% (Lv 5-10), Slowpoke 5% (Lv 5-10), Wooper 4% (Lv 5-10), Golduck 1% (Lv 15-20)
+**Fishing:** Poliwag 130% (Lv 10-15/15-20/5), Magikarp 90% (Lv 10-15/5), Goldeen 60% (Lv 10-15/15-20), Poliwhirl 15% (Lv 15-20), Slowpoke 4% (Lv 15-20), Gyarados 1% (Lv 15-20)
 
 ## Exits
 

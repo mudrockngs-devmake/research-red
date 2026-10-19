@@ -26,7 +26,7 @@ Script `ViridianForest_EventScript_Boy`
 *trainer, sight 5*
 Script `ViridianForest_EventScript_Rick`
 
-**Battle:** Bug Catcher RICK (single): Weedle Lv6, Caterpie Lv6
+**Battle:** Bug Catcher Rick (single): Weedle Lv6, Caterpie Lv6
 
 > Hey! You have POKéMON!
 > Come on!
@@ -42,7 +42,7 @@ Script `ViridianForest_EventScript_Rick`
 *trainer, sight 4*
 Script `ViridianForest_EventScript_Doug`
 
-**Battle:** Bug Catcher DOUG (single): Weedle Lv7, Kakuna Lv7, Weedle Lv7
+**Battle:** Bug Catcher Doug (single): Weedle Lv6, Kakuna Lv7, Weedle Lv7
 
 > Yo!
 > You can't jam out if you're a
@@ -58,7 +58,7 @@ Script `ViridianForest_EventScript_Doug`
 *trainer, sight 4*
 Script `ViridianForest_EventScript_Sammy`
 
-**Battle:** Bug Catcher SAMMY (single): Weedle Lv9
+**Battle:** Bug Catcher Sammy (single): Weedle Lv9, Pikachu Lv8
 
 > Hey, wait up!
 > What's the hurry? Why the rush?
@@ -88,7 +88,7 @@ Script `ViridianForest_EventScript_ItemPotion`
 *trainer, sight 1*
 Script `ViridianForest_EventScript_Anthony`
 
-**Battle:** Bug Catcher ANTHONY (single): Caterpie Lv7, Caterpie Lv8
+**Battle:** Bug Catcher Anthony (single): Cater Lv7, Pie Lv8
 
 > I might be little, but I won't like
 > it if you go easy on me!
@@ -102,7 +102,7 @@ Script `ViridianForest_EventScript_Anthony`
 *trainer, sight 1*
 Script `ViridianForest_EventScript_Charlie`
 
-**Battle:** Bug Catcher CHARLIE (single): Metapod Lv7, Caterpie Lv7, Metapod Lv7
+**Battle:** Bug Catcher Charlie (single): Metapod Lv7, Caterpie Lv7, Metapod Lv7
 
 > Did you know that POKéMON evolve?
 
@@ -127,7 +127,7 @@ Script `ViridianForest_EventScript_ItemPotion2`
 
 ## Wild Pokemon
 
-**Grass:** Caterpie 40% (Lv 3/4/5), Weedle 40% (Lv 3/4/5), Kakuna 10% (Lv 4/5/6), Metapod 5% (Lv 5), Pikachu 5% (Lv 3/5)
+**Grass:** Venonat 20% (Lv 3-5), Weedle 20% (Lv 3-5), Kakuna 10% (Lv 4-6), Metapod 10% (Lv 4-6), Oddish 10% (Lv 4-6), Paras 10% (Lv 4-6), Hoothoot 5% (Lv 4-6), Spinarak 5% (Lv 4-6), Pikachu 4% (Lv 3-5), Gastly 4% (Lv 4-6), Venomoth 1% (Lv 8-9), Ariados 1% (Lv 8-9)
 
 ## Exits
 

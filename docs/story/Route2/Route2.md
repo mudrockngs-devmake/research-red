@@ -78,7 +78,7 @@ Script `Route2_EventScript_ItemParalyzeHeal`
 
 ## Wild Pokemon
 
-**Grass:** Rattata 45% (Lv 2/3/4/5), Pidgey 45% (Lv 2/3/4/5), Caterpie 5% (Lv 4/5), Weedle 5% (Lv 4/5)
+**Grass:** Rattata 20% (Lv 3-5), Venonat 20% (Lv 3-5), Weedle 10% (Lv 3-5), Oddish 10% (Lv 3-5), Hoothoot 10% (Lv 3-5), Paras 10% (Lv 3-5), Abra 5% (Lv 3-5), Jigglypuff 5% (Lv 3-5), Spinarak 4% (Lv 3-5), Clefairy 4% (Lv 3-5), Gastly 1% (Lv 3-5), Noctowl 1% (Lv 8-9)
 
 ## Exits
 

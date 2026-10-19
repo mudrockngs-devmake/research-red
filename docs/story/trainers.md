@@ -59,3 +59,125 @@
 ## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE`, double)
 - Cyndaquil Lv6
 - Squirtle Lv6
+- starter Elm/Jenny can have from the lab chain; Elm names his catches after Lv?
+- desserts Lv?
+
+## Rival Early Elm (`TRAINER_RR_ELM_R22_BULBASAUR`, single)
+- Bulbasaur Lv9
+- Churro Lv8
+- Pudding Lv8
+
+## Rival Early Elm (`TRAINER_RR_ELM_R22_CHARMANDER`, single)
+- Charmander Lv9
+- Churro Lv8
+- Pudding Lv8
+
+## Rival Early Elm (`TRAINER_RR_ELM_R22_SQUIRTLE`, single)
+- Squirtle Lv9
+- Churro Lv8
+- Pudding Lv8
+
+## Rival Early Elm (`TRAINER_RR_ELM_R22_CHIKORITA`, single)
+- Chikorita Lv9
+- Churro Lv8
+- Pudding Lv8
+
+## Rival Early Elm (`TRAINER_RR_ELM_R22_CYNDAQUIL`, single)
+- Cyndaquil Lv9
+- Churro Lv8
+- Pudding Lv8
+
+## Rival Early Elm (`TRAINER_RR_ELM_R22_TOTODILE`, single)
+- Totodile Lv9
+- Churro Lv8
+- Pudding Lv8
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_R22_BULBASAUR`, single)
+- Bulbasaur Lv9
+- Licorice Lv8
+- Macaron Lv8
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_R22_CHARMANDER`, single)
+- Charmander Lv9
+- Licorice Lv8
+- Macaron Lv8
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_R22_SQUIRTLE`, single)
+- Squirtle Lv9
+- Licorice Lv8
+- Macaron Lv8
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_R22_CHIKORITA`, single)
+- Chikorita Lv9
+- Licorice Lv8
+- Macaron Lv8
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_R22_CYNDAQUIL`, single)
+- Cyndaquil Lv9
+- Licorice Lv8
+- Macaron Lv8
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_R22_TOTODILE`, single)
+- Totodile Lv9
+- Licorice Lv8
+- Macaron Lv8
+
+## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_BULBASAUR`, single)
+- Bulbasaur Lv15
+- Pudding Lv14
+- Churro Lv14
+
+## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_CHARMANDER`, single)
+- Charmander Lv15
+- Pudding Lv14
+- Churro Lv14
+
+## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_SQUIRTLE`, single)
+- Squirtle Lv15
+- Pudding Lv14
+- Churro Lv14
+
+## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_CHIKORITA`, single)
+- Chikorita Lv15
+- Pudding Lv14
+- Churro Lv14
+
+## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_CYNDAQUIL`, single)
+- Cyndaquil Lv15
+- Pudding Lv14
+- Churro Lv14
+
+## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_TOTODILE`, single)
+- Totodile Lv15
+- Pudding Lv14
+- Churro Lv14
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_BULBASAUR`, single)
+- Bulbasaur Lv15
+- Licorice Lv14
+- Macaron Lv14
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CHARMANDER`, single)
+- Charmander Lv15
+- Licorice Lv14
+- Macaron Lv14
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_SQUIRTLE`, single)
+- Squirtle Lv15
+- Licorice Lv14
+- Macaron Lv14
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CHIKORITA`, single)
+- Chikorita Lv15
+- Licorice Lv14
+- Macaron Lv14
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CYNDAQUIL`, single)
+- Cyndaquil Lv15
+- Licorice Lv14
+- Macaron Lv14
+
+## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_TOTODILE`, single)
+- Totodile Lv15
+- Licorice Lv14
+- Macaron Lv14

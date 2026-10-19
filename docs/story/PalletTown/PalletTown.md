@@ -65,8 +65,8 @@ Script `PalletTown_EventScript_FatMan`
 
 ## Wild Pokemon
 
-**Surfing:** Tentacool 100% (Lv 10-20/20-30/30-35/35-40/5-10)
-**Fishing:** Magikarp 120% (Lv 5-10/5-15), Horsea 100% (Lv 15-25/5-15), Shellder 40% (Lv 15-25), Krabby 20% (Lv 5-15), Gyarados 15% (Lv 15-25), Seadra 4% (Lv 25-35), Psyduck 1% (Lv 25-35)
+**Surfing:** Tentacool 60% (Lv 5-15), Magikarp 30% (Lv 5-15), Poliwag 5% (Lv 5-10), Psyduck 4% (Lv 5-10), Gyarados 1% (Lv 15-20)
+**Fishing:** Magikarp 130% (Lv 10-15/5), Poliwag 90% (Lv 10-15/15-20/5), Goldeen 60% (Lv 10-15/15-20), Psyduck 15% (Lv 15-20), Gyarados 4% (Lv 15-20), Dratini 1% (Lv 10-15)
 
 ## Exits
 

@@ -68,7 +68,19 @@ ${LOG:-(none)}
 
 ## What was tested
 
+## Every-round checklist (docs/PLAYTESTING.md)
+- [ ] Intro call to the end, bedroom
+- [ ] Player sprite: walk, run, bike, surf
+- [ ] Breakfast portraits/name plates; Ivy follows
+- [ ] A trainer double ends and the scene continues
+- [ ] Guide opens/closes; Save + Continue
+- [ ] New-species catch plays the banter
+- [ ] No wrong-color flashes on speaker changes
+
 ## Observed (bugs, notes)
+
+## Issues filed
+(GitHub issue numbers for each problem found, labeled `playtest`)
 
 ## Follow-ups
 

@@ -13,3 +13,17 @@ RR_EventScript_ResearchRules::
 	waitstate
 	releaseall
 	end
+
+@ Research Red: shown once when continuing a save from an older layout
+@ (src/rr_save_version.c, docs/SAVES.md)
+RR_EventScript_OldSaveWarning::
+	lockall
+	msgbox RR_Text_OldSaveWarning, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RR_Text_OldSaveWarning::
+	.string "This save is from an older test\n"
+	.string "build of Research Red.\p"
+	.string "It may still work, but if anything\n"
+	.string "looks wrong, start a new game.$"

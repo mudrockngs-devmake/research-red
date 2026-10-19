@@ -286,10 +286,11 @@ struct SaveBlock3
     struct LinkBattleRecords linkBattleRecords;
 #endif //FREE_LINK_BATTLE_RECORDS
 
+    u16 rrSaveVersion; // Research Red: save layout version (src/rr_save_version.c)
 #if FNPC_ENABLE_NPC_FOLLOWERS
-    u8 unused[812 - sizeof(struct NPCFollower)]; // Research Red: padding shrinks so SaveBlock3 stays the same size
+    u8 unused[812 - sizeof(struct NPCFollower) - sizeof(u16)]; // Research Red: padding shrinks so SaveBlock3 stays the same size
 #else
-    u8 unused[812];
+    u8 unused[812 - sizeof(u16)];
 #endif
 };
 

@@ -33,7 +33,7 @@ Research Red: First walk up Route 1 (Route1)
 > me over the singing.
 
 > Elm: Did you see that?!
-> Something pink! Flying!
+> Something purple! Flying!
 >
 > It looked right at me!
 

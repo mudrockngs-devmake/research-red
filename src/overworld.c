@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_save_version.h"
 #include "battle_pyramid.h"
 #include "battle_util.h"
 #include "bg.h"
@@ -1956,6 +1957,7 @@ void CB2_ContinueSavedGame(void)
     PlayTimeCounter_Start();
     ScriptContext_Init();
     UnlockPlayerFieldControls();
+    RR_CheckSaveVersion(); // Research Red: warn once if the save is from an older layout
     gFieldCallback2 = NULL;
     gExitStairsMovementDisabled = TRUE;
     if (UseContinueGameWarp() == TRUE)

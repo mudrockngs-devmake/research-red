@@ -4,9 +4,12 @@ on:
   workflow_dispatch:
   push:
     branches: [master, main]
+    # Research Red: pushing a version tag (v0.0.14, v0.1.0...) also publishes a
+    # GitHub Release with the patch and that version's changelog (docs/RELEASING.md)
+    tags: ['v*']
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -50,6 +53,19 @@ jobs:
             "$RUNNER_TEMP/pokefirered/pokefirered_rev1.gba" \
             pokefirered.gba \
             ResearchRed-FireRed-Rev1.bps
+
+      - name: Name the patch after the version (tags only)
+        if: startsWith(github.ref, 'refs/tags/')
+        run: cp ResearchRed-FireRed-Rev1.bps "ResearchRed-${GITHUB_REF_NAME}-FireRed-Rev1.bps"
+
+      - name: Publish the release (tags only)
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 tools/research_red/release_notes.py "$GITHUB_REF_NAME" > release-notes.md
+          gh release create "$GITHUB_REF_NAME" "ResearchRed-${GITHUB_REF_NAME}-FireRed-Rev1.bps" \
+            --title "Research Red $GITHUB_REF_NAME" --notes-file release-notes.md --prerelease
 
       - name: Upload BPS only
         uses: actions/upload-artifact@v4

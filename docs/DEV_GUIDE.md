@@ -16,7 +16,9 @@ How the project is laid out and how work moves through it.
 | Config switches | `include/config/*.h`, every change tagged `// Research Red` |
 | Cast art | `graphics/research_red/cast/<name>/{battle,portrait,call}.png`; hand-made overrides in `cast_handmade/` |
 | Intro call | `src/rr_intro_call.c` (Discord-style; version stamp at the top of `sCallScript`). FireRed's Oak speech in `src/oak_speech.c` is bypassed |
-| Debug skips | `data/scripts/debug.inc` (Start > Debug > Scripts 1-7) |
+| Debug skips | `data/scripts/debug.inc` (Start > Debug > Scripts, named 1-9; table in [PLAYTESTING.md](PLAYTESTING.md)) |
+| Save version | `include/rr_save_version.h`, `src/rr_save_version.c` ([SAVES.md](SAVES.md)) |
+| Tests | `tools/research_red/test/` ([TESTING.md](TESTING.md)) |
 | Wild Pokemon | `data/research_red/encounters/<area>.txt` -> `tools/research_red/build_encounters.py`; day/night tables (`OW_TIME_OF_DAY_ENCOUNTERS`) |
 | Field Guide / Research Rules | `src/rr_field_guide.c` (Start > Guide), `src/rr_rules.c` (Start > Rules, after lunch) |
 | Pokedex banter | `data/research_red/dex_banter.txt` -> `tools/research_red/build_dex_banter.py`; `src/rr_dex_banter.c` (queued on new species, played back on the map) |
@@ -39,16 +41,20 @@ These limits are the hardware's and are kept so the patch works on every emulato
 
 ## Workflow
 1. `make firered -j6`
-2. `python3 tools/research_red/rr_check.py` (text length, caps, registry)
-3. Commit, then `tools/research_red/rr_install_rom.sh` (installs `ResearchRed_local.gba`, keeps a versioned copy in `builds/`)
-4. Push (the "Build Research Red BPS" Action makes the patch)
-5. After the owner's playtest: `tools/research_red/rr_archive_test.sh <name>`, fill in its `NOTES.md` (include `/cost`)
+2. `python3 tools/research_red/rr_check.py` (text length, caps, registry, stale generated files)
+3. `python3 tools/research_red/test/smoke.py` and look at the contact sheets ([TESTING.md](TESTING.md))
+4. Commit, then `tools/research_red/rr_install_rom.sh` (installs `ResearchRed_local.gba`, keeps a versioned copy in `builds/`)
+5. Push; for a test build also tag it (`git tag -a v0.0.x`, `git push origin v0.0.x`) so the Action publishes a release ([RELEASING.md](RELEASING.md))
+6. After the owner's playtest: issues for what they found, `tools/research_red/rr_archive_test.sh <name>`, fill in its `NOTES.md` (include `/cost`) ([PLAYTESTING.md](PLAYTESTING.md))
+7. Update [STATUS.md](STATUS.md)
 
 ## Generated files
 Edit the source, run the tool, commit both. `rr_check.py` fails if a generated file is stale.
 - `graphics/research_red/portraits.txt` -> `src/data/research_red/portraits.h` (`build_portraits.py`)
 - `data/research_red/encounters/*.txt` -> `src/data/wild_encounters.json` (`build_encounters.py`)
 - `data/research_red/dex_banter.txt` -> `src/data/research_red/dex_banter.h` (`build_dex_banter.py`)
+- trainers, encounters, maps -> `docs/player/*.md`, `docs/BALANCE.md` (`export_player_docs.py`)
+- scenes and text -> `docs/story/` incl. `FULL_SCRIPT.md` (`export_story.py --sync`; not checked by rr_check, rerun when text changes)
 - intro call graphics (`build_call_ui.py`), player walking sheets (`build_player_ow.py`)
 
 ## Other tools

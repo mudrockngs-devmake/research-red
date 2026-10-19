@@ -1,5 +1,6 @@
 #include "global.h"
 #include "rr_dex_banter.h"
+#include "rr_save_version.h"
 #include "bike.h"
 #include "coord_event_weather.h"
 #include "daycare.h"
@@ -232,6 +233,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
 
+    if (RR_TryStartSaveVersionWarning()) // Research Red: old save warning (once)
+        return TRUE;
     if (RR_TryStartDexBanter()) // Research Red: Pokédex banter after a new species
         return TRUE;
 

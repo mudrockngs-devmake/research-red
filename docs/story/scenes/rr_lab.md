@@ -334,7 +334,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 ### RR_Lab_EventScript_OakBattle5
 
-*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle)]*
+*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle, starter Elm/Jenny can have from the lab chain; Elm names his catches after, desserts)]*
 
 ### RR_Lab_EventScript_OakResult
 
@@ -769,7 +769,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 ### RR_Lab_EventScript_OakBattleWatch5
 
-*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle)]*
+*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle, starter Elm/Jenny can have from the lab chain; Elm names his catches after, desserts)]*
 
 ### RR_Lab_EventScript_OakVsElmResult
 

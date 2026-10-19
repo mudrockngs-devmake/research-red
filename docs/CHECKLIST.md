@@ -71,9 +71,10 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [ ] Intro player pictures from `intro_player_m/f.png` (resize/pad to the size the intro expects)
 - [ ] Title screen (Research Red logo; Slowpoke art from owner or in-game sprite) and boot credits/disclaimer screen
 - [x] Test archive: `rr_install_rom.sh` (versioned builds) and `rr_archive_test.sh` (per-round folders with NOTES.md)
-- [ ] Testing toolkit (headless mGBA runner with scripted inputs + screenshots used in v0.0.13; not yet in the repo): mGBA Lua debug overlay (map, X/Y, story vars), bug-report hotkey to `/mnt/e/Workspace/romhacks/_emu/bug-reports/`, scripted scene playthroughs with screenshots, checkpoint save states, `make check`
+- [x] Testing toolkit: scripted scene playthroughs with screenshots and crash checks, checkpoint save states (v0.0.14: tools/research_red/test/, docs/TESTING.md)
+- [ ] Testing extras: mGBA Lua debug overlay for the owner (map, X/Y, story vars), bug-report hotkey to `_emu/bug-reports/`
 - [ ] Proper-case sweep across all game text
-- [ ] `docs/FLAGS_VARS.md` registry and `CREDITS.md`
+- [x] `docs/FLAGS_VARS.md` registry and `CREDITS.md` (CREDITS has a Permission column since v0.0.14)
 - [ ] Release checklist: debug OFF, version stamp, patch only (never a ROM)
 
 ## Gameplay upgrades (owner request, schedule as bundles)
@@ -86,7 +87,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - Endgame forms arc: Mega Evolution (incl. Kalos Megas for Kanto starters), Dynamax/Gigantamax, regional and Hisuian starter forms, custom item area
 - Mew (Bill arc), Mewtwo, Prof. Mudrock postgame
 
-## Requested v0.0.13 follow-ups
+## Requested v0.0.13 follow-ups (now GitHub issues #1-#16; the issues are the source of truth)
 - [ ] Re-reading a Pokédex entry replays its banter (the after-catch banter is done)
 - [ ] Pokédex banter shown over the dex page itself instead of back on the map
 - [ ] Pokémon dialogue portraits for more of the 151 + regional forms (add a line to graphics/research_red/portraits.txt)
