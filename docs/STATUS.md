@@ -21,6 +21,7 @@ _Last updated: 2026-10-19_
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
 ## Next up (after the playtest)
+- **Tester upgrades (issue #18)**, start in a fresh conversation: softlock detector, then memory checks, then wait-until. Tooling only, no version bump.
 1. Fix whatever the playtest finds (issues labeled `playtest`).
 2. Milestone **v0.1 Pallet**: title screen + boot disclaimer (#12), compatibility check (#16).
 3. Then the v0.2 / v0.3 issues: lunch picnic art, Research Rules difficulty, Viridian Forest exchanges.
