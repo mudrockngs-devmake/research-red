@@ -18,6 +18,7 @@ _Last updated: 2026-10-19_
 - [ ] Decide when Mega / Z-Moves / Dynamax / Tera unlock (issue #1).
 - [ ] Decide whether portraits should hide during camera pans (issue #3).
 - [ ] Log in the next round's NOTES.md: `/cost` for the v0.0.13-14 build + GitHub/hub setup session (2026-10-18/19): $121.56, 2h36m API time, 7,494 lines added.
+- [ ] Log in the next round's NOTES.md: `/cost` for the tester-upgrades session (2026-10-19, issue #18 parts 1-4); paste it in the next conversation.
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
 ## Next up (after the playtest)
