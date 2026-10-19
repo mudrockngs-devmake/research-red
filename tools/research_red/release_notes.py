@@ -27,7 +27,11 @@ def main():
 3. Play in mGBA (recommended) or another accurate GBA emulator.
 
 Test build: saves may not carry over between builds before v0.1 (see the Save line above).
-Report problems on the Issues tab (Bug report form).""")
+Report problems on the Issues tab (Bug report form).
+
+Research Red is a free, non-commercial fan project, not affiliated with or endorsed by
+Nintendo, Creatures Inc., Game Freak or The Pokémon Company. This page has patches only:
+no ROMs are provided.""")
 
 
 if __name__ == "__main__":

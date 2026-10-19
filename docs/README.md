@@ -29,3 +29,4 @@ Start here. Everything about how the project works, in one place.
 ## Shipping
 - [RELEASING.md](RELEASING.md): versions, tags, GitHub Releases, the release checklist.
 - [UPSTREAM.md](UPSTREAM.md): which engine version we're on and how to update it.
+- [ENGINE_README.md](ENGINE_README.md): the engine's original README (pokefirered-expansion).
