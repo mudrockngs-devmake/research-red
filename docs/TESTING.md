@@ -46,7 +46,7 @@ tools/research_red/test/setup_mgba.sh
 Downloads CMake and mGBA 0.10.5 into `~/romhacks/_tools/` (outside the repo) and builds `rr_run`. Takes a few minutes. Run it again if `~/romhacks/_tools` is ever deleted.
 
 ## Adding a scenario
-Scenarios are short functions in `smoke.py` that return script lines. Building blocks:
+Scenarios are short functions in `smoke.py` that return script lines. Building blocks (from `tester.py`):
 - `play_until(label, scene_end(step), max_frames, key="A")`: press a key until the scene sets story progress to `step` and hands control back; screenshots every 60 frames
 - `expect(map_name="MAP_ROUTE1", story=5, party=1)`: check where the scene left us
 - `check(label, G.flag_set("FLAG_X"))`: any other fact. `G` (`game_memory.py`) has `var_is`, `flag_set`, `flag_clear`, `on_map`, `party_count`, `field_free`, `textbox_closed`, `in_battle`; join conditions with `" && "`
@@ -64,6 +64,8 @@ After changing `rr_run.c`, rebuild it with `setup_mgba.sh` (it skips the downloa
 |---|---|
 | `tools/research_red/test/rr_run.c` | The runner (C, links libmgba) |
 | `tools/research_red/test/setup_mgba.sh` | Builds the runner |
-| `tools/research_red/test/smoke.py` | Scenarios, checks, report |
+| `tools/research_red/test/smoke.py` | Research Red's scenarios (the only file specific to this hack) |
+| `tools/research_red/test/tester.py` | The reusable engine: building blocks, running, checks, report |
 | `tools/research_red/test/game_memory.py` | Names (story step, flags, maps, team size) -> memory addresses |
+| `tools/research_red/test/README.md` | How the pieces fit, and how to reuse the tester for another hack |
 | `tools/research_red/test/contact_sheet.py` | Reads screenshots, makes the grids |
