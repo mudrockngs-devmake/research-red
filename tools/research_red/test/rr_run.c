@@ -5,6 +5,8 @@
 // Plays ROM with no window, following SCRIPT one command per line, and writes
 // screenshots (and the game's save, OUTDIR/test.sav) into OUTDIR.
 // Built against libmgba by setup_mgba.sh; driven by smoke.py.
+// Knows nothing about any particular game: smoke.py turns names (story step,
+// map, flag) into the raw addresses used below.
 //
 // Script commands (keys: A B SELECT START RIGHT LEFT UP DOWN R L, join with +):
 //   wait N            run N frames with nothing pressed
@@ -13,10 +15,31 @@
 //   mash KEYS N       tap KEYS every 8 frames for N frames (advance text)
 //   shot NAME         save OUTDIR/NAME.png
 //   save PATH         write a save state;  load PATH: load one
+//   check LABEL COND           print "CHECK LABEL pass|fail value"
+//   until LABEL MAX KEYS COND  run until COND is true (tapping KEYS, or - for
+//                              none), at most MAX frames; prints "UNTIL LABEL
+//                              ok|timeout frames" and shoots timeout_LABEL.png
+//   autoshot N [PREFIX]  during "until", save a screenshot every N frames
+//                     (PREFIX0001, PREFIX0002, ...; default prefix s; 0 = off)
+//   peek LABEL ADDR   print "PEEK LABEL value"
+//   stuck N           report "stuck" after N unchanged frames (0 = off;
+//                     default 1200, 20 seconds)
+//   idle COND         the screen may legitimately sit still while COND is
+//                     true (e.g. the player is free on the map); each idle
+//                     line adds one such case. "idle clear" forgets them all.
 //   pal               print the 16 sprite palettes (debugging)
 //   oam               print the first 24 sprites (debugging)
 //   tiles FIRST N     print N sprite tiles from FIRST (debugging)
 //   # ...             comment
+//
+// Addresses: 0x0203A000 reads there; *0x03004F70+0x2F62 reads the pointer at
+// 0x03004F70 and adds the offset. Add :1 :2 or :4 for the size (default 1).
+// COND: ADDR OP VALUE, OP one of == != < > <= >= & (any of these bits set)
+// !& (none set); join several with && (all must hold).
+//
+// Stuck detection: if the screen stays identical for N frames while buttons
+// are being pressed (and no idle case applies), it prints "STUCK line frame
+// lastshot" and saves stuck_LINE.png, once per frozen stretch.
 #include <mgba/core/core.h>
 #include <mgba/core/config.h>
 #include <mgba/core/log.h>
@@ -30,6 +53,37 @@
 static struct mCore *core;
 static color_t *buf;
 static unsigned W, H;
+static const char *sOutDir;
+
+// Stuck detection
+static unsigned long sFrame;         // frames run so far
+static int sLine;                    // current script line
+static char sLastShot[256] = "-";    // last screenshot taken
+static int sStuckLimit = 1200;
+static int sStill;                   // frames the screen hasn't changed
+static int sPressedWhileStill;       // buttons pressed during that stretch
+static int sStuckReported;
+static uint32_t sLastHash;
+static int sAutoShot;                // "until" screenshot interval (0 = off)
+static char sAutoPrefix[64] = "s";
+static int sAutoCount;
+
+#define MAX_TERMS 6
+#define MAX_IDLE 8
+struct Term
+{
+    uint32_t ptr, off; // ptr != 0: read the pointer at ptr, then add off
+    int size;
+    char op[3];
+    uint32_t value;
+};
+struct Cond
+{
+    int n;
+    struct Term t[MAX_TERMS];
+};
+static struct Cond sIdle[MAX_IDLE];
+static int sIdleCount;
 
 static int keymask(const char *s)
 {
@@ -45,11 +99,124 @@ static int keymask(const char *s)
     return m;
 }
 
+static void shot(const char *path);
+
+// --- memory ---------------------------------------------------------------
+// "0x0203A000:2" or "*0x03004F70+0x2F62:2"
+static int parseAddr(const char *s, struct Term *t)
+{
+    char *end;
+    t->ptr = 0;
+    t->size = 1;
+    if (*s == '*')
+    {
+        t->ptr = strtoul(s + 1, &end, 0);
+        t->off = *end == '+' ? strtoul(end + 1, &end, 0) : 0;
+    }
+    else
+        t->off = strtoul(s, &end, 0);
+    if (*end == ':')
+        t->size = atoi(end + 1);
+    return t->size == 1 || t->size == 2 || t->size == 4;
+}
+
+static uint32_t readAddr(const struct Term *t)
+{
+    uint32_t a = t->off;
+    if (t->ptr)
+        a += core->rawRead32(core, t->ptr, -1);
+    if (t->size == 4)
+        return core->rawRead32(core, a, -1);
+    if (t->size == 2)
+        return core->rawRead16(core, a, -1);
+    return core->rawRead8(core, a, -1);
+}
+
+static int termHolds(const struct Term *t)
+{
+    uint32_t v = readAddr(t);
+    if (!strcmp(t->op, "==")) return v == t->value;
+    if (!strcmp(t->op, "!=")) return v != t->value;
+    if (!strcmp(t->op, "<")) return v < t->value;
+    if (!strcmp(t->op, ">")) return v > t->value;
+    if (!strcmp(t->op, "<=")) return v <= t->value;
+    if (!strcmp(t->op, ">=")) return v >= t->value;
+    if (!strcmp(t->op, "&")) return (v & t->value) != 0;
+    if (!strcmp(t->op, "!&")) return (v & t->value) == 0;
+    return 0;
+}
+
+static int condHolds(const struct Cond *c)
+{
+    for (int i = 0; i < c->n; i++)
+        if (!termHolds(&c->t[i]))
+            return 0;
+    return 1;
+}
+
+// tok[0..] = ADDR OP VALUE [&& ADDR OP VALUE ...]
+static int parseCond(char **tok, int ntok, struct Cond *c)
+{
+    c->n = 0;
+    for (int i = 0; i + 2 < ntok && c->n < MAX_TERMS; i += 4)
+    {
+        struct Term *t = &c->t[c->n++];
+        if (!parseAddr(tok[i], t))
+            return 0;
+        strncpy(t->op, tok[i + 1], 2);
+        t->op[2] = 0;
+        t->value = strtoul(tok[i + 2], NULL, 0);
+        if (i + 3 < ntok && strcmp(tok[i + 3], "&&"))
+            return 0;
+    }
+    return c->n > 0;
+}
+
+// --- running frames ---------------------------------------------------------
+static uint32_t screenHash(void)
+{
+    uint32_t h = 2166136261u;
+    for (unsigned i = 0; i < W * H; i++)
+        h = (h ^ (uint32_t)buf[i]) * 16777619u;
+    return h;
+}
+
+static void watchStuck(int keys)
+{
+    uint32_t h = screenHash();
+    if (h != sLastHash)
+    {
+        sLastHash = h;
+        sStill = 0;
+        sPressedWhileStill = 0;
+        sStuckReported = 0;
+        return;
+    }
+    sStill++;
+    if (keys)
+        sPressedWhileStill = 1;
+    if (!sStuckLimit || sStuckReported || sStill < sStuckLimit || !sPressedWhileStill)
+        return;
+    for (int i = 0; i < sIdleCount; i++)
+        if (condHolds(&sIdle[i]))
+            return;
+    char p[1024];
+    snprintf(p, sizeof p, "%s/stuck_%05d.png", sOutDir, sLine);
+    shot(p);
+    printf("STUCK %d %lu %s\n", sLine, sFrame, sLastShot);
+    fflush(stdout);
+    sStuckReported = 1;
+}
+
 static void frames(int keys, int n)
 {
     core->setKeys(core, keys);
     for (int i = 0; i < n; i++)
+    {
         core->runFrame(core);
+        sFrame++;
+        watchStuck(keys);
+    }
 }
 
 static void shot(const char *path)
@@ -109,16 +276,23 @@ int main(int argc, char **argv)
     mCoreLoadSaveFile(core, sav, false);
     core->reset(core);
 
+    sOutDir = argv[3];
     FILE *s = fopen(argv[2], "r");
     if (!s)
         return 4;
-    char line[512];
+    char line[1024];
     while (fgets(line, sizeof line, s))
     {
-        char cmd[32] = {0}, a[256] = {0};
-        int n = 0;
-        if (line[0] == '#' || sscanf(line, "%31s %255s %d", cmd, a, &n) < 1)
+        sLine++;
+        char *tok[32];
+        int ntok = 0;
+        for (char *t = strtok(line, " \t\r\n"); t && ntok < 32; t = strtok(NULL, " \t\r\n"))
+            tok[ntok++] = t;
+        if (!ntok || tok[0][0] == '#')
             continue;
+        const char *cmd = tok[0];
+        const char *a = ntok > 1 ? tok[1] : "";
+        int n = ntok > 2 ? atoi(tok[2]) : 0;
         if (!strcmp(cmd, "wait"))
             frames(0, atoi(a));
         else if (!strcmp(cmd, "press"))
@@ -139,6 +313,7 @@ int main(int argc, char **argv)
             char p[1024];
             snprintf(p, sizeof p, "%s/%s.png", argv[3], a);
             shot(p);
+            snprintf(sLastShot, sizeof sLastShot, "%s", a);
         }
         else if (!strcmp(cmd, "save"))
         {
@@ -157,6 +332,68 @@ int main(int argc, char **argv)
                 mCoreLoadStateNamed(core, vf, SAVESTATE_SAVEDATA | SAVESTATE_RTC);
                 vf->close(vf);
             }
+        }
+        else if (!strcmp(cmd, "check") && ntok >= 5)
+        {
+            struct Cond c;
+            if (!parseCond(tok + 2, ntok - 2, &c))
+                fprintf(stderr, "rr_run: line %d: bad condition\n", sLine);
+            else
+                printf("CHECK %s %s %u\n", a, condHolds(&c) ? "pass" : "fail", readAddr(&c.t[0]));
+        }
+        else if (!strcmp(cmd, "until") && ntok >= 7)
+        {
+            struct Cond c;
+            int max = atoi(tok[2]), keys = strcmp(tok[3], "-") ? keymask(tok[3]) : 0, waited = 0;
+            if (!parseCond(tok + 4, ntok - 4, &c))
+                fprintf(stderr, "rr_run: line %d: bad condition\n", sLine);
+            else
+            {
+                while (!condHolds(&c) && waited < max)
+                {
+                    frames(waited % 8 < 2 ? keys : 0, 1);
+                    waited++;
+                    if (sAutoShot && waited % sAutoShot == 0)
+                    {
+                        char p[1024];
+                        snprintf(sLastShot, sizeof sLastShot, "%s%04d", sAutoPrefix, ++sAutoCount);
+                        snprintf(p, sizeof p, "%s/%s.png", argv[3], sLastShot);
+                        shot(p);
+                    }
+                }
+                if (condHolds(&c))
+                    printf("UNTIL %s ok %d\n", a, waited);
+                else
+                {
+                    char p[1024];
+                    snprintf(p, sizeof p, "%s/timeout_%s.png", argv[3], a);
+                    shot(p);
+                    printf("UNTIL %s timeout %d\n", a, waited);
+                }
+            }
+        }
+        else if (!strcmp(cmd, "peek") && ntok >= 3)
+        {
+            struct Term t;
+            if (parseAddr(tok[2], &t))
+                printf("PEEK %s %u\n", a, readAddr(&t));
+        }
+        else if (!strcmp(cmd, "autoshot"))
+        {
+            sAutoShot = atoi(a);
+            if (ntok > 2)
+                snprintf(sAutoPrefix, sizeof sAutoPrefix, "%s", tok[2]);
+        }
+        else if (!strcmp(cmd, "stuck"))
+            sStuckLimit = atoi(a);
+        else if (!strcmp(cmd, "idle") && !strcmp(a, "clear"))
+            sIdleCount = 0;
+        else if (!strcmp(cmd, "idle") && sIdleCount < MAX_IDLE)
+        {
+            if (parseCond(tok + 1, ntok - 1, &sIdle[sIdleCount]))
+                sIdleCount++;
+            else
+                fprintf(stderr, "rr_run: line %d: bad condition\n", sLine);
         }
         else if (!strcmp(cmd, "pal"))
             for (int pl = 0; pl < 16; pl++)
@@ -183,7 +420,8 @@ int main(int argc, char **argv)
                 printf("\n");
             }
         else
-            fprintf(stderr, "rr_run: unknown command '%s'\n", cmd);
+            fprintf(stderr, "rr_run: line %d: unknown or incomplete command '%s'\n", sLine, cmd);
+        fflush(stdout);
     }
     fclose(s);
     core->deinit(core);

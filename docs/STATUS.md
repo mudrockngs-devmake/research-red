@@ -11,7 +11,7 @@ _Last updated: 2026-10-19_
 - Changes since the last playtest: see [CHANGELOG.md](CHANGELOG.md) (v0.0.13 and v0.0.14 entries).
 - Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
 - Releases: [v0.0.13](https://github.com/mudrockngs-devmake/research-red/releases/tag/v0.0.13), [v0.0.14](https://github.com/mudrockngs-devmake/research-red/releases/tag/v0.0.14) (pre-releases with the BPS patch).
-- Latest smoke test: `test-runs/2026-10-19_0014_v0.0.14_*` (9/9).
+- Latest smoke test: `test-runs/2026-10-19_0223_v0.0.14_*` (8/9: the lab hit the old 20000-frame limit; the limit is now 60000 and `test-runs/2026-10-19_0224_*` passes). First run with the new checks (scene really finished, memory facts, stuck detector).
 
 ## Waiting on the owner
 - [ ] Playtest v0.0.14 (the v0.0.13 features + the fixes). Testers played v0.0.13: the owner folds their notes in, marked "(tester, .13)"; check those against v0.0.14 before filing (portrait-color/portrait-in-battle notes may already be fixed). Checklist: [PLAYTESTING.md](PLAYTESTING.md) and issue #2.
@@ -21,7 +21,7 @@ _Last updated: 2026-10-19_
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
 ## Next up (after the playtest)
-- **Tester upgrades (issue #18)**, start in a fresh conversation: softlock detector, then memory checks, then wait-until. Tooling only, no version bump.
+- **Tester upgrades (issue #18)**: parts 1-3 done 2026-10-19 (stuck detector, memory checks, wait-until; see [TESTING.md](TESTING.md)). Left: part 4 (split the reusable runner from Research Red's scene list) and the "later" ideas. Tooling only, no version bump.
 1. Fix whatever the playtest finds (issues labeled `playtest`).
 2. Milestone **v0.1 Pallet**: title screen + boot disclaimer (#12), compatibility check (#16).
 3. Then the v0.2 / v0.3 issues: lunch picnic art, Research Rules difficulty, Viridian Forest exchanges.

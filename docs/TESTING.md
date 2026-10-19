@@ -1,19 +1,28 @@
 # Automated smoke tests
 
-A headless copy of mGBA plays the game from scripted button presses, takes screenshots, and checks that nothing crashed. It runs on every build before the owner gets it.
+A headless copy of mGBA plays the game from scripted button presses, takes screenshots, and checks the game's memory to see that each scene really finished. It runs on every build before the owner gets it.
 
 ## Run them
 ```
-python3 tools/research_red/test/smoke.py            # all scenarios (about 3 minutes)
+python3 tools/research_red/test/smoke.py            # all scenarios (about 5 minutes)
 python3 tools/research_red/test/smoke.py lunch guide # just these
 python3 tools/research_red/test/smoke.py --list      # what's covered
 ```
 Results go to `E:\Workspace\romhacks\research-red\test-runs\<date>_<version>_<commit>\`:
-- `REPORT.md`: PASS / WARN / FAIL per scenario
+- `REPORT.md`: PASS / WARN / FAIL per scenario, with where each one ended (story step, map, team size)
 - `<scenario>.png`: a contact sheet (a grid of up to 30 screenshots) to skim the scene in seconds
-- `<scenario>\`: every screenshot
+- `<scenario>\`: every screenshot, plus `timeout_*.png` / `stuck_*.png` when something went wrong
 
-**PASS means it didn't crash or end on a black screen.** It doesn't mean the scene is right: open the contact sheets. The first run of these tests found a real bug (a portrait flashing in the previous speaker's colors) that way.
+What the results mean:
+- **FAIL**: the blue error screen, a scene that never reached its end within its time limit (`timeout_<scene>.png` shows where it was), or a fact check that came out wrong (e.g. the lab ended with no Pokémon).
+- **WARN**: the screen froze for 20 seconds while buttons were being pressed (`stuck_<line>.png`; the note names the last screenshot before the freeze), or the scenario ended on a black screen.
+- **PASS**: every scene reached its end and the facts check out. It still doesn't mean the scene *looks* right: open the contact sheets. The first run of these tests found a real bug (a portrait flashing in the previous speaker's colors) that way.
+
+## How the checks work
+- **Wait-until**: a scene presses A (or B) until the game says it's over: story step set and the player free to walk (on the map, no script running, no text box). Longer dialogue just takes longer; a scene that never ends fails at its time limit instead of quietly passing.
+- **Memory checks**: after a scene, `expect(map, story, team)` reads the game's memory and compares.
+- **Stuck detector**: the runner fingerprints every frame. If the picture doesn't change for 1200 frames (20 seconds) while buttons are pressed, it reports "stuck". Standing still on an indoor map is normal, so that case is ignored.
+- `game_memory.py` turns names into addresses: RAM symbols come from `pokefirered.elf`, and struct offsets and constants (`FLAG_*`, `MAP_*`, `VAR_*`) come from compiling a tiny C file against the game's headers, so they stay right when the code changes. Nothing to update by hand.
 
 ## What's covered
 | Scenario | How it gets there |
@@ -38,12 +47,17 @@ Downloads CMake and mGBA 0.10.5 into `~/romhacks/_tools/` (outside the repo) and
 
 ## Adding a scenario
 Scenarios are short functions in `smoke.py` that return script lines. Building blocks:
+- `play_until(label, scene_end(step), max_frames, key="A")`: press a key until the scene sets story progress to `step` and hands control back; screenshots every 60 frames
+- `expect(map_name="MAP_ROUTE1", story=5, party=1)`: check where the scene left us
+- `check(label, G.flag_set("FLAG_X"))`: any other fact. `G` (`game_memory.py`) has `var_is`, `flag_set`, `flag_clear`, `on_map`, `party_count`, `field_free`, `textbox_closed`, `in_battle`; join conditions with `" && "`
 - `debug_script(n)`: Start > DEBUG > Scripts > n
 - `step("UP", 3)`: walk 3 tiles
 - `advance(40, key="B")`: press B through text 40 times, screenshot each time
-- raw commands for `rr_run`: `wait N`, `press KEYS`, `hold KEYS N`, `mash KEYS N`, `shot NAME`, `save PATH` / `load PATH` (see the top of `rr_run.c`)
+- raw commands for `rr_run`: `wait N`, `press KEYS`, `hold KEYS N`, `mash KEYS N`, `shot NAME`, `save PATH` / `load PATH`, `check`, `until`, `peek`, `stuck`, `idle`, `autoshot` (see the top of `rr_run.c`)
 
-Use B to advance text when the player might be facing something (A talks to it). Name screenshots so they sort in order (`s001`, `s002`...).
+Use B to advance text when the player might be facing something (A talks to it). Mashing A also answers YES to "Give a nickname?" and types a name of A's ("Aaaaaaaaaa" in the lab screenshots): that's the test, not a bug.
+
+After changing `rr_run.c`, rebuild it with `setup_mgba.sh` (it skips the downloads and only recompiles). Name screenshots so they sort in order (`s001`, `s002`...).
 
 ## Files
 | File | What |
@@ -51,4 +65,5 @@ Use B to advance text when the player might be facing something (A talks to it).
 | `tools/research_red/test/rr_run.c` | The runner (C, links libmgba) |
 | `tools/research_red/test/setup_mgba.sh` | Builds the runner |
 | `tools/research_red/test/smoke.py` | Scenarios, checks, report |
+| `tools/research_red/test/game_memory.py` | Names (story step, flags, maps, team size) -> memory addresses |
 | `tools/research_red/test/contact_sheet.py` | Reads screenshots, makes the grids |
