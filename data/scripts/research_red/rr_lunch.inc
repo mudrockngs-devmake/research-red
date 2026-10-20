@@ -37,8 +37,10 @@ RR_Lunch_EventScript_Start::
 	waitmovement 0
 	msgbox RR_Lunch_Text_OfficerJenny_Cousin, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Jenny_Cousin, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Elm_WhichOne, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Ivy_Jeans, MSGBOX_DEFAULT
+	@ Elm always knows his Jenny (docs/characters/ELM.md)
+	msgbox RR_Lunch_Text_Elm_PleasedToMeet, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Ivy_HowDidYouKnow, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Elm_Obviously, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_OfficerJenny_Family, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_P_HowMany, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Jenny_Reunion, MSGBOX_DEFAULT
@@ -116,15 +118,20 @@ RR_Lunch_Text_OfficerJenny_Cousin::
 RR_Lunch_Text_Jenny_Cousin::
     .string "Jenny: Cousin!$"
 
-RR_Lunch_Text_Elm_WhichOne::
-    .string "Elm: …Ivy. Which one is my wife?$"
+RR_Lunch_Text_Elm_PleasedToMeet::
+    .string "Elm: Hello! Pleased to meet you,\n"
+    .string "Officer.$"
 
-RR_Lunch_Text_Ivy_Jeans::
-    .string "Ivy: The one in jeans, sweetie.$"
+RR_Lunch_Text_Ivy_HowDidYouKnow::
+    .string "Ivy: Elm, how did you know which\n"
+    .string "one was which?$"
+
+RR_Lunch_Text_Elm_Obviously::
+    .string "Elm: That's my Jenny. Obviously.$"
 
 RR_Lunch_Text_OfficerJenny_Family::
-    .string "Officer Jenny: So this is the\n"
-    .string "famous Elm. The family talks.$"
+    .string "Officer Jenny: So you're Elm! The\n"
+    .string "family says you always know.$"
 
 RR_Lunch_Text_P_HowMany::
     .string "{PLAYER}: How many Jennys\n"
@@ -165,9 +172,9 @@ RR_Lunch_Text_Jenny_Labeled::
     .string "Crusts left, crustless right.$"
 
 RR_Lunch_Text_Elm_Dessert::
-    .string "Elm: I lost the bet, so I bought\n"
-    .string "dessert. Then I ate dessert.\l"
-    .string "On the walk here.$"
+    .string "Elm: I was in charge of dessert.\n"
+    .string "Then I ate dessert. On the walk\l"
+    .string "here.$"
 
 RR_Lunch_Text_Ivy_ForYourself::
     .string "Ivy: So you bought dessert for\n"
