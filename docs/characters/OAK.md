@@ -39,6 +39,7 @@ Warm, theatrical, forgetful (about small things).
 - Hints at "forms in other lands and other eras": Mega Evolution and regional forms after the Elite Four (#1).
 - On the group video call after every badge.
 - **Rematch (#53):** unlocks after the 6v6 with Elm and Jenny on Route 22, then scales with badges. A double with Daisy: Oak's AI runs both sides' Pokémon, Daisy brings her sprite, her lines and Muffin. Gives EXP, not money.
+- **Rematch team:** Oak's side is the Kanto and Johto starters nobody picked, plus the lab's Slowpoke, which at some later badge turns up as a **Galarian Slowking** and nobody can work out how (a research mystery for laughs). Daisy's side is Muffin (with an Eviolite), Clefairy and Vulpix. Details on #53.
 - **Muffin stays a Rattata forever** (a running joke): Daisy loves her as she is and Muffin doesn't want to evolve, so she just keeps getting stronger.
 
 ## He would never

@@ -21,7 +21,7 @@ Calm, kind, unflappable.
 ## Relationships
 | Who | How Daisy sees them |
 |---|---|
-| **Oak** | Looks after him (tea, schedule, finding his glasses); fondly translates his forgetfulness; his rematch partner (#53). |
+| **Oak** | Looks after him (tea, schedule, finding his glasses); fondly translates his forgetfulness; his rematch partner (#53) with Muffin, Clefairy and Vulpix. |
 | **Gary** | Her little brother: proud of him, teases him (he took a Town Map; Ash borrowed the other). |
 | **Ash** | Like a cousin from down the road. Still waiting for that Town Map. |
 | **Elm** | Her houseguest. Endlessly patient with him; coaches him, slowly, into making peace with Muffin ("It's a Rattata, Elm. Her name is Muffin."). |
