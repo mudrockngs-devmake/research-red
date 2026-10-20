@@ -33,7 +33,7 @@ What the results mean:
 | daisy | Debug 2, steps into Daisy's house, the whole scene |
 | route1 | Debug 8, the Route 1 scene and the Mewtwo fly-by |
 | route22 | Debug 4 + test mode, the 6v6 double and its banter |
-| lunch | Debug 6, the lunch, Officer Jenny, Research Rules |
+| lunch | Debug 6, talks to Elm by the Pokémon Center: the lunch and Officer Jenny |
 | banter | Debug 2 + 7, the Pokédex banter preview |
 | pokedex | Debug 2, Start > Pokédex, every page of Bulbasaur both ways (the Evo page crashed before v0.0.15) |
 | demo_end | Debug 10 (after Brock), walks east: the Gym guide turns you back (demo) |

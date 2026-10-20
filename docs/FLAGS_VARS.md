@@ -9,7 +9,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `VAR_RR_STARTER` (0x40FD) | Lab pick: 0 Bulbasaur, 1 Charmander, 2 Squirtle, 3 Chikorita, 4 Cyndaquil, 5 Totodile. `VAR_STARTER_MON` is also set by type (grass 0, water 1, fire 2) so FireRed rival scripts still work | 0-5 |
 | `VAR_RR_ROUTE1_CATCHES` (0x40F2) | Wild Pokemon caught on Route 1 before the group scene (VAR_0x40FE == 4) | count |
 | `VAR_RR_ROUTE1_CATCH_0`, `VAR_RR_ROUTE1_CATCH_1`, `VAR_RR_ROUTE1_CATCH_2`, `VAR_RR_ROUTE1_CATCH_3` (0x40F3-0x40F6) | Species of the first four of those catches, for Elm and Jenny's reactions | species |
-| `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 battle done (lunch pending), 7 lunch done (Start > Rules appears) |
+| `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 battle done (lunch pending), 7 lunch done (Start > Rules appears from 4, after Daisy's house) |
 
 ## Repurposed vanilla scene vars
 

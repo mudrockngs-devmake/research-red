@@ -66,7 +66,7 @@ enum StartMenuOption
     MENU_ACTION_DEBUG,
     MENU_ACTION_DEXNAV,
     MENU_ACTION_RR_GUIDE, // Research Red: Field Guide
-    MENU_ACTION_RR_RULES, // Research Red: Elm's Research Rules (after the Viridian lunch)
+    MENU_ACTION_RR_RULES, // Research Red: Elm's Research Rules (after Daisy's house)
     MAX_STARTMENU_ITEMS
 };
 
@@ -335,7 +335,7 @@ static void BuildDebugStartMenu(void)
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_RR_GUIDE); // Research Red
-    if (VarGet(VAR_0x40FE) >= 7) // Research Red: after the Viridian lunch
+    if (VarGet(VAR_0x40FE) >= 4) // Research Red: after Daisy's house (the rules talk, #44)
         AddStartMenuAction(MENU_ACTION_RR_RULES);
     AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
@@ -353,7 +353,7 @@ static void BuildNormalStartMenu(void)
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_RR_GUIDE); // Research Red
-    if (VarGet(VAR_0x40FE) >= 7) // Research Red: after the Viridian lunch
+    if (VarGet(VAR_0x40FE) >= 4) // Research Red: after Daisy's house (the rules talk, #44)
         AddStartMenuAction(MENU_ACTION_RR_RULES);
     AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);

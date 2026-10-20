@@ -1,30 +1,27 @@
 @ Research Red: lunch in Viridian City (animatic 07)
-@ After the Route 22 battle (story progress 6), walking back into Viridian
-@ from Route 22 (triggers at x 19, y 16-19) starts it: Elm and Jenny catch up,
-@ Jenny runs into her cousin, the Viridian Officer Jenny, then a picnic outside
-@ the Pokemon Center and Elm's Research Rules. Afterwards the old man finishes
-@ his nap and the road north (Route 2, Viridian Forest) is open.
+@ After the Route 22 battle (story progress 6), Elm and Jenny sit to the right
+@ of the Pokemon Center (29-30, 26); talking to either starts it (#43).
+@ Jenny runs into her cousin, the Viridian Officer Jenny, then a picnic.
+@ (Elm's Research Rules moved to Daisy's house, #44.) Afterwards the old man
+@ finishes his nap and the road north (Route 2, Viridian Forest) is open.
 @ Ivy stays a follower for the whole scene.
 
-@ Viridian ON_TRANSITION: the scene's people only appear during the scene
+@ Viridian ON_TRANSITION: Elm and Jenny wait by the Pokemon Center while the
+@ lunch is pending; the cousin only appears during the scene
 RR_Lunch_OnTransition::
+	call_if_ne VAR_0x40FE, 6, RR_Lunch_EventScript_HideElmJenny
+	setflag FLAG_TEMP_15
+	return
+
+RR_Lunch_EventScript_HideElmJenny::
 	setflag FLAG_TEMP_13
 	setflag FLAG_TEMP_14
-	setflag FLAG_TEMP_15
 	return
 
 RR_Lunch_EventScript_Start::
 	lockall
+	faceplayer
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	@ Elm and Jenny jog over from the Pokemon Center
-	addobject LOCALID_VIRIDIAN_ELM
-	addobject LOCALID_VIRIDIAN_JENNY
-	applymovement LOCALID_VIRIDIAN_ELM, RR_Lunch_Movement_ElmArrives
-	applymovement LOCALID_VIRIDIAN_JENNY, RR_Lunch_Movement_JennyArrives
-	waitmovement LOCALID_VIRIDIAN_ELM
-	waitmovement LOCALID_VIRIDIAN_JENNY
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
 	msgbox RR_Lunch_Text_Elm_ThereYouAre, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Jenny_Packed, MSGBOX_DEFAULT
 	closemessage
@@ -32,7 +29,7 @@ RR_Lunch_EventScript_Start::
 	addobject LOCALID_VIRIDIAN_OFFICER_JENNY
 	applymovement LOCALID_VIRIDIAN_OFFICER_JENNY, RR_Lunch_Movement_OfficerArrives
 	waitmovement 0
-	applymovement LOCALID_VIRIDIAN_JENNY, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_VIRIDIAN_JENNY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	playse SE_PIN
 	applymovement LOCALID_VIRIDIAN_JENNY, Common_Movement_ExclamationMark
@@ -67,31 +64,12 @@ RR_Lunch_EventScript_Start::
 	msgbox RR_Lunch_Text_P_Apology, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Ivy_Krabby, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Jenny_Report, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Elm_Rules, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_P_SitDown, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Elm_Sitting, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Elm_Controls, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Jenny_Problem, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Elm_Passion, MSGBOX_DEFAULT
 	closemessage
-	callnative RR_ScriptResearchRules
-	waitstate
-	msgbox RR_Lunch_Text_Elm_CallMe, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Jenny_NotNight, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Elm_Glad, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_P_EveryWeek, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Elm_Quiet, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_P_GladToo, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Ivy_GroupHug, MSGBOX_DEFAULT
-	msgbox RR_Lunch_Text_Jenny_GroupHug, MSGBOX_DEFAULT
-	closemessage
-	@ Elm and Jenny head north first
-	applymovement LOCALID_VIRIDIAN_ELM, RR_Lunch_Movement_Leave
-	applymovement LOCALID_VIRIDIAN_JENNY, RR_Lunch_Movement_Leave
-	waitmovement LOCALID_VIRIDIAN_ELM
-	waitmovement LOCALID_VIRIDIAN_JENNY
+	@ Elm and Jenny head north first (a fade: they'd walk through you otherwise)
+	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_VIRIDIAN_ELM
 	removeobject LOCALID_VIRIDIAN_JENNY
+	fadescreen FADE_FROM_BLACK
 	@ The old man has finished his nap: the road north is open
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
 	setvar VAR_0x40FE, 7
@@ -102,39 +80,18 @@ RR_Lunch_EventScript_Start::
 	end
 
 @ The player stands at x 19; Elm stops beside them, Jenny just behind
-RR_Lunch_Movement_ElmArrives::
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	face_left
-	step_end
-
-RR_Lunch_Movement_JennyArrives::
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	face_left
-	step_end
-
+@ The cousin comes in from the east along the row below the picnic (37,27)
+@ -> (32,27): never through the tiles you can talk to Elm and Jenny from
 RR_Lunch_Movement_OfficerArrives::
-	walk_up
-	walk_up
-	walk_up
-	face_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_left
 	step_end
 
 RR_Lunch_Movement_OfficerLeaves::
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-RR_Lunch_Movement_Leave::
-	walk_right
 	walk_right
 	walk_right
 	walk_right
@@ -230,59 +187,6 @@ RR_Lunch_Text_Ivy_Krabby::
 RR_Lunch_Text_Jenny_Report::
     .string "Jenny: I still have the report.\n"
     .string "Four pages. Two are diagrams.$"
-
-RR_Lunch_Text_Elm_Rules::
-    .string "Elm: So. {PLAYER}. Before the Gyms,\n"
-    .string "I've been thinking about rules.$"
-
-RR_Lunch_Text_P_SitDown::
-    .string "{PLAYER}: You've been thinking?\n"
-    .string "Should we sit down?$"
-
-RR_Lunch_Text_Elm_Sitting::
-    .string "Elm: We are sitting down.$"
-
-RR_Lunch_Text_Elm_Controls::
-    .string "Elm: Real research needs controls!\n"
-    .string "Level caps before each Gym,\l"
-    .string "so nobody overtrains.$"
-
-RR_Lunch_Text_Jenny_Problem::
-    .string "Jenny: He means so he doesn't\n"
-    .string "overtrain. He has a problem.$"
-
-RR_Lunch_Text_Elm_Passion::
-    .string "Elm: I have a passion.$"
-
-RR_Lunch_Text_Elm_CallMe::
-    .string "Elm: Want to change them later?\n"
-    .string "Start menu, “Rules.” Day or night.$"
-
-RR_Lunch_Text_Jenny_NotNight::
-    .string "Jenny: Please not night.$"
-
-RR_Lunch_Text_Elm_Glad::
-    .string "Elm: …Hey. I'm really glad you two\n"
-    .string "came. Johto was quiet without you.$"
-
-RR_Lunch_Text_P_EveryWeek::
-    .string "{PLAYER}: Elm. You called me\n"
-    .string "every week.$"
-
-RR_Lunch_Text_Elm_Quiet::
-    .string "Elm: And it was quiet between\n"
-    .string "the calls!$"
-
-RR_Lunch_Text_P_GladToo::
-    .string "{PLAYER}: …I'm glad we came too.$"
-
-RR_Lunch_Text_Ivy_GroupHug::
-    .string "Ivy: Group hug, or are we too\n"
-    .string "professional?$"
-
-RR_Lunch_Text_Jenny_GroupHug::
-    .string "Jenny: In my professional opinion:\n"
-    .string "group hug.$"
 
 RR_Lunch_Text_OldManAwake::
     .string "Up north, the old man has finally\n"

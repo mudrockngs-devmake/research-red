@@ -96,7 +96,9 @@ def sc_route22():
 
 
 def sc_lunch():
-    return (["load @bedroom"] + debug_script(SCRIPT_LUNCH) + ["shot s000"] + step("RIGHT", 3)
+    # Debug 6 leaves us two steps below Elm (29,26): one step up, talk to him
+    return (["load @bedroom"] + debug_script(SCRIPT_LUNCH) + ["shot s000"] + step("UP", 1)
+            + ["press UP 2", "wait 10", "press A", "wait 30"]
             + play_until("lunch", scene_end(7), 10000, key="B", every=50)
             + expect("MAP_VIRIDIAN_CITY", story=7))
 
@@ -164,7 +166,7 @@ SCENARIOS = {
     "daisy": (sc_daisy, "Daisy's house: Muffin, the Town Map, the bet"),
     "route1": (sc_route1, "Route 1: Elm and Jenny, the Mewtwo fly-by"),
     "route22": (sc_route22, "Route 22: the 6v6 double (test mode)"),
-    "lunch": (sc_lunch, "Viridian lunch, Officer Jenny, Research Rules"),
+    "lunch": (sc_lunch, "Viridian lunch by the Pokémon Center, Officer Jenny"),
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),

@@ -274,7 +274,8 @@ Debug_EventScript_Script_6::
 	setvar VAR_MAP_SCENE_ROUTE22, 2
 	setvar VAR_0x40FE, 6
 	rr_ivy_create_follower
-	warp MAP_VIRIDIAN_CITY, 16, 17
+	@ two steps below Elm, who sits right of the Pokemon Center (talk to start)
+	warp MAP_VIRIDIAN_CITY, 29, 28
 	waitstate
 	release
 	end

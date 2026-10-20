@@ -50,7 +50,7 @@ Start > DEBUG > Scripts:
 | 3 | Route 1 | Daisy done, at Pallet's north exit |
 | 4 | Route 22 | Route 1 done, just east of Elm and Jenny's trigger |
 | 5 | Test team | Adds Spearow, Rattata, Mankey, Nidoran♂ |
-| 6 | Lunch | Route 22 done, just west of the lunch trigger in Viridian |
+| 6 | Lunch | Route 22 done, in Viridian two steps below Elm and Jenny (right of the Pokémon Center): talk to start |
 | 7 | Dex banter | Queues the banter for Tentacool, Slowpoke, Quilava |
 | 8 | Route 1 Elm | Daisy done, one step from Elm and Jenny's Route 1 scene |
 | 9 | Test mode | On/off: the AI fights your battles; team to Lv 30 |

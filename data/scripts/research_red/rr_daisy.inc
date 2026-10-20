@@ -99,6 +99,34 @@ RR_Daisy_EventScript_Scene::
 	msgbox RR_Daisy_Text_Daisy_Excited, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_SoExcited, MSGBOX_DEFAULT
+	@ Things calm down: Muffin goes back to Daisy, Elm climbs onto his chair,
+	@ and the Research Rules talk happens here (moved from the lunch, #44)
+	msgbox RR_Daisy_Text_Daisy_ComeHere, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_RIVALS_HOUSE_MUFFIN, RR_Daisy_Movement_MuffinToDaisy
+	waitmovement LOCALID_RIVALS_HOUSE_MUFFIN
+	applymovement LOCALID_RIVALS_HOUSE_ELM, RR_Daisy_Movement_JumpRight
+	waitmovement LOCALID_RIVALS_HOUSE_ELM
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_ElmCalm, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Elm_Rules, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_P_SitDown, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Elm_Sitting, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Elm_Controls, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Jenny_Problem, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Elm_Passion, MSGBOX_DEFAULT
+	closemessage
+	callnative RR_ScriptResearchRules
+	waitstate
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_Elm_CallMe, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Jenny_NotNight, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Elm_Glad, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_P_EveryWeek, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Elm_Quiet, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_P_GladToo, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Ivy_GroupHug, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Jenny_GroupHug, MSGBOX_DEFAULT
 	msgbox RR_Daisy_Text_Elm_SeeYou, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_RIVALS_HOUSE_ELM, RR_Daisy_Movement_ElmExit
@@ -132,10 +160,19 @@ RR_Daisy_Movement_JumpUp:
 	jump_up
 	step_end
 
-@ Elm hops down from the table (7,5) and both leave over the doormat (4,8)
+@ Muffin hops off the chair and pads over toward Daisy (8,5) -> (6,6)
+RR_Daisy_Movement_MuffinToDaisy:
+	jump_down
+	walk_left
+	walk_left
+	face_up
+	step_end
+
+@ Elm is back on his chair (8,5); both leave over the doormat (4,8)
 RR_Daisy_Movement_ElmExit:
 	walk_down
 	walk_down
+	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -153,6 +190,66 @@ RR_Daisy_Movement_JennyExit:
 	walk_left
 	walk_down
 	step_end
+
+RR_Daisy_Text_Daisy_ComeHere::
+    .string "Daisy: Muffin. Here, sweetheart.$"
+
+RR_Daisy_Text_ElmCalm::
+    .string "Elm climbs down onto his chair.\n"
+    .string "Calmly. Mostly.$"
+
+RR_Daisy_Text_Elm_Rules::
+    .string "Elm: So. {PLAYER}. Before the Gyms,\n"
+    .string "I've been thinking about rules.$"
+
+RR_Daisy_Text_P_SitDown::
+    .string "{PLAYER}: You've been thinking?\n"
+    .string "Should we sit down?$"
+
+RR_Daisy_Text_Elm_Sitting::
+    .string "Elm: We are sitting down.$"
+
+RR_Daisy_Text_Elm_Controls::
+    .string "Elm: Real research needs controls!\n"
+    .string "Level caps before each Gym,\l"
+    .string "so nobody overtrains.$"
+
+RR_Daisy_Text_Jenny_Problem::
+    .string "Jenny: He means so he doesn't\n"
+    .string "overtrain. He has a problem.$"
+
+RR_Daisy_Text_Elm_Passion::
+    .string "Elm: I have a passion.$"
+
+RR_Daisy_Text_Elm_CallMe::
+    .string "Elm: Want to change them later?\n"
+    .string "Start menu, “Rules.” Day or night.$"
+
+RR_Daisy_Text_Jenny_NotNight::
+    .string "Jenny: Please not night.$"
+
+RR_Daisy_Text_Elm_Glad::
+    .string "Elm: …Hey. I'm really glad you two\n"
+    .string "came. Johto was quiet without you.$"
+
+RR_Daisy_Text_P_EveryWeek::
+    .string "{PLAYER}: Elm. You called me\n"
+    .string "every week.$"
+
+RR_Daisy_Text_Elm_Quiet::
+    .string "Elm: And it was quiet between\n"
+    .string "the calls!$"
+
+RR_Daisy_Text_P_GladToo::
+    .string "{PLAYER}: …I'm glad we came too.$"
+
+RR_Daisy_Text_Ivy_GroupHug::
+    .string "Ivy: Group hug, or are we too\n"
+    .string "professional?$"
+
+RR_Daisy_Text_Jenny_GroupHug::
+    .string "Jenny: In my professional opinion:\n"
+    .string "group hug.$"
 
 RR_Daisy_Text_ElmOnChair::
     .string "Elm is standing on a chair.\n"
