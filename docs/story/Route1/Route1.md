@@ -62,7 +62,7 @@ Script `Route1_EventScript_Boy`
 
 ## Wild Pokemon
 
-**Grass:** Rattata 20% (Lv 2-4), Oddish 20% (Lv 2-4), Meowth 10% (Lv 3-4), Spearow 10% (Lv 3-4), Nidoran_M 10% (Lv 3-4), Nidoran_F 10% (Lv 3-4), Hoothoot 5% (Lv 3-4), Pidgey 5% (Lv 3-4), Pikachu 4% (Lv 3-5), Gastly 4% (Lv 3-5), Gengar 1% (Lv 6-7), Nidorino 1% (Lv 5-6)
+**Grass:** Rattata 20% (Lv 2-4), Hoothoot 20% (Lv 2-4), Oddish 10% (Lv 2-4), Meowth 10% (Lv 3-4), Nidoran_M 10% (Lv 3-4), Nidoran_F 10% (Lv 3-4), Spearow 5% (Lv 3-4), Pidgey 5% (Lv 3-4), Pikachu 4% (Lv 3-5), Gastly 4% (Lv 3-5), Eevee 1% (Lv 4-5), Murkrow 1% (Lv 4-5)
 
 ## Exits
 

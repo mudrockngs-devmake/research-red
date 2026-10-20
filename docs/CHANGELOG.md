@@ -5,6 +5,7 @@ Test builds are v0.0.x. Each entry lists what changed for players and testers, a
 ## v0.0.16 (in progress)
 - Changed: Elm and Jenny's Pewter rematch happens just outside the Pokémon Center (Nurse Joy doesn't allow battles indoors).
 - Fixed: level caps follow how many badges you have, so gyms beaten out of order (Surge, Erika, Koga, Sabrina) don't leave the cap too low.
+- Wild Pokémon: more Johto neighbors in every demo area (Sentret, Hoppip, Ledyba, Pineco, Phanpy, Marill, Chinchou and more), Kanto still the majority. Evolved Pokémon only appear at or near the level they evolve (Butterfree and Beedrill at 10, Metapod and Kakuna at 7; no more low-level Dodrio, Gengar, Noctowl and so on). The Pallet sea gets Horsea, Shellder and Krabby (#59).
 - Level caps simplified to what most romhacks do: on or off (no more soft/hard). At the cap your team gets no EXP; Rare Candies stop at the cap too. Pokémon below the cap get bonus EXP to catch up. Start > Rules shows the current cap ("Lv. 21").
 
 ## v0.0.15

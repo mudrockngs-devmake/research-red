@@ -1,32 +1,33 @@
-# Route 1: every non-legendary Pokemon from the anime's first episode
-# (Pidgey, Spearow, Rattata, Pikachu, Nidorino, Dodrio, Gengar; Magikarp and
-# Gyarados are in Pallet Town's water) plus the Route 1 regulars.
+# Route 1: the anime's first episode, family by family (Pidgey, Spearow,
+# Rattata, Pikachu, Nidoran, Doduo, Gastly; Magikarp and Gyarados are in
+# Pallet Town's water) plus the Route 1 regulars and Johto neighbors (#59).
+# Evolved forms only at or near the level they evolve (owner, 2026-10-19).
 map: MAP_ROUTE1
 
 [grass]
 Pidgey      2-4  20
-Spearow     2-4  20
-Rattata     2-4  10
-Mankey      3-4  10
+Rattata     2-4  20
+Sentret     2-4  10
+Spearow     2-4  10
 Nidoran♂    3-4  10
 Nidoran♀    3-4  10
-Bellsprout  3-4   5
+Hoppip      3-4   5
 Meowth      3-4   5
 Pikachu     3-5   4
-Dodrio      5-6   4
-Nidorino    5-6   1
+Mankey      3-4   4
+Doduo       3-4   1
 Eevee       4-5   1
 
 [grass night]
 Rattata     2-4  20
-Oddish      2-4  20
+Hoothoot    2-4  20
+Oddish      2-4  10
 Meowth      3-4  10
-Spearow     3-4  10
 Nidoran♂    3-4  10
 Nidoran♀    3-4  10
-Hoothoot    3-4   5
+Spearow     3-4   5
 Pidgey      3-4   5
 Pikachu     3-5   4
 Gastly      3-5   4
-Gengar      6-7   1
-Nidorino    5-6   1
+Eevee       4-5   1
+Murkrow     4-5   1

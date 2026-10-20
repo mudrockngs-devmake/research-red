@@ -1,12 +1,14 @@
-# Pallet Town's shore. Magikarp and Gyarados from the anime's first episode.
+# Pallet Town's shore. Magikarp and Gyarados from the anime's first episode,
+# the Kanto sea Pokemon and Johto neighbors (#59). Gyarados only at 20, the
+# level Magikarp evolves.
 map: MAP_PALLET_TOWN
 
 [surf]
 Tentacool   5-15 60
 Magikarp    5-15 30
-Poliwag     5-10  5
+Chinchou    5-10  5
 Psyduck     5-10  4
-Gyarados   15-20  1
+Gyarados   20     1
 
 [old rod]
 Magikarp    5     70
@@ -14,12 +16,12 @@ Poliwag     5     30
 
 [good rod]
 Magikarp   10-15  60
-Poliwag    10-15  20
-Goldeen    10-15  20
+Tentacool  10-15  20
+Remoraid   10-15  20
 
 [super rod]
-Poliwag    15-20  40
-Goldeen    15-20  40
-Psyduck    15-20  15
-Gyarados   15-20   4
+Horsea     15-20  40
+Krabby     15-20  40
+Shellder   15-20  15
+Qwilfish   15-20   4
 Dratini    10-15   1

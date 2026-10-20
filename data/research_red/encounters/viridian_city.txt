@@ -1,12 +1,12 @@
 # Viridian City's pond
+# Johto neighbors (#59); evolved forms only near their evolution level.
 map: MAP_VIRIDIAN_CITY
 
 [surf]
 Psyduck     5-10 60
 Poliwag     5-10 30
 Slowpoke    5-10  5
-Wooper      5-10  4
-Golduck    15-20  1
+Wooper      5-10  5
 
 [old rod]
 Magikarp    5     70
@@ -20,6 +20,6 @@ Magikarp   10-15  20
 [super rod]
 Poliwag    15-20  40
 Goldeen    15-20  40
-Poliwhirl  15-20  15
+Marill     15-20  15
 Slowpoke   15-20   4
-Gyarados   15-20   1
+Gyarados   20      1

@@ -7,11 +7,11 @@ Levels you'll meet in each area, in story order, next to the level cap. Use it t
 | Area | Wild levels | Trainer levels (lowest-highest) | Strongest trainer Pokémon |
 |---|---|---|---|
 | Pallet Town | 5-20 | 5-5 | 5 |
-| Route 1 | 2-7 | - | - |
+| Route 1 | 2-5 | - | - |
 | Viridian City | 5-20 | - | - |
 | Route 22 | 3-20 | 8-9 | 9 |
-| Route 2 | 3-9 | - | - |
-| Viridian Forest | 3-9 | 6-9 | 9 |
+| Route 2 | 3-5 | - | - |
+| Viridian Forest | 3-10 | 6-9 | 9 |
 | Pewter City | - | 10-15 | 15 |
 
 ## Level caps (src/caps.c)

@@ -12,9 +12,9 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 |---|---|---|
 | Tentacool | 5-15 | 60% |
 | Magikarp | 5-15 | 30% |
-| Poliwag | 5-10 | 5% |
+| Chinchou | 5-10 | 5% |
 | Psyduck | 5-10 | 4% |
-| Gyarados | 15-20 | 1% |
+| Gyarados | 20 | 1% |
 
 **Old Rod (Any time)**
 
@@ -28,17 +28,17 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Pokémon | Levels | Chance |
 |---|---|---|
 | Magikarp | 10-15 | 60% |
-| Poliwag | 10-15 | 20% |
-| Goldeen | 10-15 | 20% |
+| Tentacool | 10-15 | 20% |
+| Remoraid | 10-15 | 20% |
 
 **Super Rod (Any time)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
-| Poliwag | 15-20 | 40% |
-| Goldeen | 15-20 | 40% |
-| Psyduck | 15-20 | 15% |
-| Gyarados | 15-20 | 4% |
+| Horsea | 15-20 | 40% |
+| Krabby | 15-20 | 40% |
+| Shellder | 15-20 | 15% |
+| Qwilfish | 15-20 | 4% |
 | Dratini | 10-15 | 1% |
 
 ## Route 1
@@ -48,16 +48,16 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Pokémon | Levels | Chance |
 |---|---|---|
 | Pidgey | 2-4 | 20% |
-| Spearow | 2-4 | 20% |
-| Rattata | 2-4 | 10% |
-| Mankey | 3-4 | 10% |
+| Rattata | 2-4 | 20% |
+| Sentret | 2-4 | 10% |
+| Spearow | 2-4 | 10% |
 | Nidoran♂ | 3-4 | 10% |
 | Nidoran♀ | 3-4 | 10% |
-| Bellsprout | 3-4 | 5% |
+| Hoppip | 3-4 | 5% |
 | Meowth | 3-4 | 5% |
 | Pikachu | 3-5 | 4% |
-| Dodrio | 5-6 | 4% |
-| Nidorino | 5-6 | 1% |
+| Mankey | 3-4 | 4% |
+| Doduo | 3-4 | 1% |
 | Eevee | 4-5 | 1% |
 
 **Grass (Night)**
@@ -65,17 +65,17 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Pokémon | Levels | Chance |
 |---|---|---|
 | Rattata | 2-4 | 20% |
-| Oddish | 2-4 | 20% |
+| Hoothoot | 2-4 | 20% |
+| Oddish | 2-4 | 10% |
 | Meowth | 3-4 | 10% |
-| Spearow | 3-4 | 10% |
 | Nidoran♂ | 3-4 | 10% |
 | Nidoran♀ | 3-4 | 10% |
-| Hoothoot | 3-4 | 5% |
+| Spearow | 3-4 | 5% |
 | Pidgey | 3-4 | 5% |
 | Pikachu | 3-5 | 4% |
 | Gastly | 3-5 | 4% |
-| Gengar | 6-7 | 1% |
-| Nidorino | 5-6 | 1% |
+| Eevee | 4-5 | 1% |
+| Murkrow | 4-5 | 1% |
 
 ## Viridian City
 
@@ -86,8 +86,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Psyduck | 5-10 | 60% |
 | Poliwag | 5-10 | 30% |
 | Slowpoke | 5-10 | 5% |
-| Wooper | 5-10 | 4% |
-| Golduck | 15-20 | 1% |
+| Wooper | 5-10 | 5% |
 
 **Old Rod (Any time)**
 
@@ -110,9 +109,9 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 |---|---|---|
 | Poliwag | 15-20 | 40% |
 | Goldeen | 15-20 | 40% |
-| Poliwhirl | 15-20 | 15% |
+| Marill | 15-20 | 15% |
 | Slowpoke | 15-20 | 4% |
-| Gyarados | 15-20 | 1% |
+| Gyarados | 20 | 1% |
 
 ## Route 22
 
@@ -123,15 +122,15 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Rattata | 3-5 | 20% |
 | Spearow | 3-5 | 20% |
 | Mankey | 3-5 | 10% |
+| Ekans | 3-5 | 10% |
 | Nidoran♂ | 3-5 | 10% |
 | Nidoran♀ | 3-5 | 10% |
-| Ekans | 3-5 | 10% |
 | Sandshrew | 3-5 | 5% |
 | Doduo | 3-5 | 5% |
 | Growlithe | 4-5 | 4% |
 | Ponyta | 4-5 | 4% |
-| Fearow | 7-8 | 1% |
-| Primeape | 7-8 | 1% |
+| Phanpy | 4-5 | 1% |
+| Girafarig | 4-5 | 1% |
 
 **Grass (Night)**
 
@@ -139,16 +138,16 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 |---|---|---|
 | Rattata | 3-5 | 20% |
 | Ekans | 3-5 | 20% |
-| Meowth | 3-5 | 10% |
 | Zubat | 3-5 | 10% |
+| Meowth | 3-5 | 10% |
 | Nidoran♂ | 3-5 | 10% |
 | Nidoran♀ | 3-5 | 10% |
 | Murkrow | 4-5 | 5% |
 | Spinarak | 3-5 | 5% |
 | Hoothoot | 3-5 | 4% |
-| Mankey | 3-5 | 4% |
-| Raticate | 7-8 | 1% |
+| Snubbull | 3-5 | 4% |
 | Houndour | 4-5 | 1% |
+| Teddiursa | 4-5 | 1% |
 
 **Surfing (Any time)**
 
@@ -156,9 +155,8 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 |---|---|---|
 | Poliwag | 5-15 | 60% |
 | Psyduck | 5-15 | 30% |
+| Marill | 5-10 | 5% |
 | Goldeen | 5-15 | 5% |
-| Seaking | 15-20 | 4% |
-| Poliwhirl | 15-20 | 1% |
 
 **Old Rod (Any time)**
 
@@ -183,7 +181,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Goldeen | 15-20 | 40% |
 | Psyduck | 15-20 | 15% |
 | Krabby | 15-20 | 4% |
-| Gyarados | 15-20 | 1% |
+| Gyarados | 20 | 1% |
 
 ## Route 2
 
@@ -194,15 +192,15 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Pidgey | 3-5 | 20% |
 | Caterpie | 3-5 | 20% |
 | Weedle | 3-5 | 10% |
+| Ledyba | 3-5 | 10% |
+| Sentret | 3-5 | 10% |
 | Rattata | 3-5 | 10% |
-| Nidoran♀ | 3-5 | 10% |
-| Nidoran♂ | 3-5 | 10% |
 | Jigglypuff | 3-5 | 5% |
 | Abra | 3-5 | 5% |
+| Hoppip | 3-5 | 4% |
 | Paras | 3-5 | 4% |
-| Sentret | 3-5 | 4% |
-| Ledyba | 3-5 | 1% |
-| Pidgeotto | 8-9 | 1% |
+| Pineco | 4-5 | 1% |
+| Natu | 4-5 | 1% |
 
 **Grass (Night)**
 
@@ -210,16 +208,16 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 |---|---|---|
 | Rattata | 3-5 | 20% |
 | Venonat | 3-5 | 20% |
-| Weedle | 3-5 | 10% |
-| Oddish | 3-5 | 10% |
+| Spinarak | 3-5 | 10% |
 | Hoothoot | 3-5 | 10% |
-| Paras | 3-5 | 10% |
+| Oddish | 3-5 | 10% |
+| Weedle | 3-5 | 10% |
 | Abra | 3-5 | 5% |
 | Jigglypuff | 3-5 | 5% |
-| Spinarak | 3-5 | 4% |
+| Paras | 3-5 | 4% |
 | Clefairy | 3-5 | 4% |
 | Gastly | 3-5 | 1% |
-| Noctowl | 8-9 | 1% |
+| Misdreavus | 4-5 | 1% |
 
 ## Viridian Forest
 
@@ -229,14 +227,14 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 |---|---|---|
 | Caterpie | 3-5 | 20% |
 | Weedle | 3-5 | 20% |
-| Metapod | 4-6 | 10% |
-| Kakuna | 4-6 | 10% |
+| Metapod | 7 | 10% |
+| Kakuna | 7 | 10% |
 | Pikachu | 3-5 | 10% |
-| Pidgey | 4-6 | 10% |
+| Pineco | 4-6 | 10% |
 | Paras | 4-6 | 5% |
 | Bellsprout | 4-6 | 5% |
-| Butterfree | 7-8 | 4% |
-| Beedrill | 7-8 | 4% |
+| Butterfree | 10 | 4% |
+| Beedrill | 10 | 4% |
 | Scyther | 6-7 | 1% |
 | Pinsir | 6-7 | 1% |
 
@@ -245,14 +243,14 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Pokémon | Levels | Chance |
 |---|---|---|
 | Venonat | 3-5 | 20% |
-| Weedle | 3-5 | 20% |
-| Kakuna | 4-6 | 10% |
-| Metapod | 4-6 | 10% |
+| Spinarak | 3-5 | 20% |
+| Kakuna | 7 | 10% |
+| Metapod | 7 | 10% |
 | Oddish | 4-6 | 10% |
 | Paras | 4-6 | 10% |
 | Hoothoot | 4-6 | 5% |
-| Spinarak | 4-6 | 5% |
+| Weedle | 3-5 | 5% |
 | Pikachu | 3-5 | 4% |
 | Gastly | 4-6 | 4% |
-| Venomoth | 8-9 | 1% |
-| Ariados | 8-9 | 1% |
+| Yanma | 5-6 | 1% |
+| Shuckle | 5-6 | 1% |

@@ -83,8 +83,8 @@ Script `RR_Pallet_EventScript_Gerald`
 
 ## Wild Pokemon
 
-**Surfing:** Tentacool 60% (Lv 5-15), Magikarp 30% (Lv 5-15), Poliwag 5% (Lv 5-10), Psyduck 4% (Lv 5-10), Gyarados 1% (Lv 15-20)
-**Fishing:** Magikarp 130% (Lv 10-15/5), Poliwag 90% (Lv 10-15/15-20/5), Goldeen 60% (Lv 10-15/15-20), Psyduck 15% (Lv 15-20), Gyarados 4% (Lv 15-20), Dratini 1% (Lv 10-15)
+**Surfing:** Tentacool 60% (Lv 5-15), Magikarp 30% (Lv 5-15), Chinchou 5% (Lv 5-10), Psyduck 4% (Lv 5-10), Gyarados 1% (Lv 20)
+**Fishing:** Magikarp 130% (Lv 10-15/5), Horsea 40% (Lv 15-20), Krabby 40% (Lv 15-20), Poliwag 30% (Lv 5), Tentacool 20% (Lv 10-15), Remoraid 20% (Lv 10-15), Shellder 15% (Lv 15-20), Qwilfish 4% (Lv 15-20), Dratini 1% (Lv 10-15)
 
 ## Exits
 

@@ -350,8 +350,8 @@ Script `RR_Lunch_EventScript_Start`
 
 ## Wild Pokemon
 
-**Surfing:** Psyduck 60% (Lv 5-10), Poliwag 30% (Lv 5-10), Slowpoke 5% (Lv 5-10), Wooper 4% (Lv 5-10), Golduck 1% (Lv 15-20)
-**Fishing:** Poliwag 130% (Lv 10-15/15-20/5), Magikarp 90% (Lv 10-15/5), Goldeen 60% (Lv 10-15/15-20), Poliwhirl 15% (Lv 15-20), Slowpoke 4% (Lv 15-20), Gyarados 1% (Lv 15-20)
+**Surfing:** Psyduck 60% (Lv 5-10), Poliwag 30% (Lv 5-10), Slowpoke 5% (Lv 5-10), Wooper 5% (Lv 5-10)
+**Fishing:** Poliwag 130% (Lv 10-15/15-20/5), Magikarp 90% (Lv 10-15/5), Goldeen 60% (Lv 10-15/15-20), Marill 15% (Lv 15-20), Slowpoke 4% (Lv 15-20), Gyarados 1% (Lv 20)
 
 ## Exits
 
