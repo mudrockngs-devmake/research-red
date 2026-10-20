@@ -718,6 +718,7 @@ enum TrainerID
     TRAINER_RR_OAK_REMATCH,   // Research Red (#53): teams set by src/rr_rematch.c
     TRAINER_RR_DAISY_REMATCH,
     TRAINER_RR_DELIA_REMATCH, // Research Red (#70)
+    TRAINER_RR_BROCK_REMATCH, // Research Red (#52)
     TRAINERS_COUNT,
 
     // Special Trainer Ids.

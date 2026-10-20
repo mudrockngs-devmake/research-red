@@ -308,6 +308,24 @@ def sc_delia_battle():
             + expect("MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", story=7))
 
 
+def sc_brock_rematch():
+    # #52: after Brock (1 badge, test mode), back into the Gym: Brock offers a
+    # rematch with a tier menu (1 badge: Lv. 21, Cancel); his Gym team, stronger.
+    # Paths from a route search over the map data.
+    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_AFTER_BROCK)
+            + step("RIGHT", 5) + step("UP", 14) + step("LEFT", 14) + step("DOWN", 5) + step("RIGHT", 7) + step("UP")
+            + ["wait 120", "shot g001"] + check("in_gym", T.G.on_map("MAP_PEWTER_CITY_GYM"))
+            # the Camper spots us on the way up: beat him first (autopilot)
+            + step("UP", 8) + play_until("camper", T.G.in_battle(), 1500, key="A", every=40)
+            + play_until("camper_over", T.G.field_free(), 30000, key="A", every=120)
+            + step("UP", 8) + ["press UP 6", "wait 20", "shot g002", "press A", "wait 90", "shot g003",
+                               "press A", "wait 90", "press A", "wait 120", "shot g004", "press A", "wait 60", "shot g005"]
+            + play_until("battle", T.G.in_battle(), 1500, key="A", every=40)
+            + ["wait 300", "shot g006"]
+            + play_until("rematch_over", T.G.field_free(), 40000, key="A", every=120)
+            + expect("MAP_PEWTER_CITY_GYM", story=7))
+
+
 def sc_oak_rematch():
     # #53: after Brock (story 7, 1 badge, test mode), Ranch Pager > Fly to
     # Pallet, into the lab, talk to Oak: the Oak + Daisy double (tier 1:
@@ -478,6 +496,7 @@ SCENARIOS = {
     "rest_center": (sc_rest_center, "Nurse Joy in Pewter: Rest till night (#56)"),
     "oak_rematch": (sc_oak_rematch, "Oak + Daisy rematch in the lab after Brock (#53)"),
     "delia_battle": (sc_delia_battle, "Delia's double battle at home after Brock (#70)"),
+    "brock_rematch": (sc_brock_rematch, "Brock's rematch in the Gym, tier menu, his team at 1 badge (#52)"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),

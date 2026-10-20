@@ -125,3 +125,145 @@ RR_Rematch_Text_DeliaProud:
 RR_Rematch_Text_DeliaMomWins:
 	.string "Delia: Mom still has it! Now,\n"
 	.string "who wants pancakes?$"
+
+@ Research Red (#52): Gym leader rematches, Brock so far. After his badge,
+@ talking to him offers a rematch at any tier up to your badges (and the
+@ post-game tier after the League); his Gym team grows (src/rr_rematch.c).
+@ Prize money as usual, 1.5x EXP, no whiteout. Placeholder lines.
+RR_Gym_EventScript_BrockRematch::
+	msgbox RR_Rematch_Text_BrockAsk, MSGBOX_DEFAULT
+	callnative RR_ScriptGetRematchTier
+	copyvar VAR_0x8005, VAR_RESULT
+	message RR_Rematch_Text_BrockWhich
+	waitmessage
+	call_if_ge VAR_0x8005, 1, RR_Gym_EventScript_PushTier1
+	call_if_ge VAR_0x8005, 2, RR_Gym_EventScript_PushTier2
+	call_if_ge VAR_0x8005, 3, RR_Gym_EventScript_PushTier3
+	call_if_ge VAR_0x8005, 4, RR_Gym_EventScript_PushTier4
+	call_if_ge VAR_0x8005, 5, RR_Gym_EventScript_PushTier5
+	call_if_ge VAR_0x8005, 6, RR_Gym_EventScript_PushTier6
+	call_if_ge VAR_0x8005, 7, RR_Gym_EventScript_PushTier7
+	call_if_ge VAR_0x8005, 8, RR_Gym_EventScript_PushTier8
+	call_if_ge VAR_0x8005, 9, RR_Gym_EventScript_PushTier9
+	dynmultipush RR_Rematch_Text_TierCancel, 127
+	dynmultistack 16, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	closemessage
+	goto_if_ge VAR_RESULT, 10, RR_Gym_EventScript_BrockRematchDeclined
+	callnative RR_ScriptSetChosenTier
+	msgbox RR_Rematch_Text_BrockGo, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_RR_NO_WHITEOUT
+	cleartrainerflag TRAINER_RR_BROCK_REMATCH
+	trainerbattle_no_intro TRAINER_RR_BROCK_REMATCH, RR_Rematch_Text_BrockDefeat
+	clearflag FLAG_RR_NO_WHITEOUT
+	cleartrainerflag TRAINER_RR_BROCK_REMATCH
+	special HealPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Gym_EventScript_BrockRematchWon
+	msgbox RR_Rematch_Text_BrockWon, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_BrockRematchWon::
+	msgbox RR_Rematch_Text_BrockLost, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_BrockRematchDeclined::
+	msgbox RR_Rematch_Text_BrockAnytime, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_PushTier1::
+	dynmultipush RR_Rematch_Text_Tier1, 1
+	return
+
+RR_Gym_EventScript_PushTier2::
+	dynmultipush RR_Rematch_Text_Tier2, 2
+	return
+
+RR_Gym_EventScript_PushTier3::
+	dynmultipush RR_Rematch_Text_Tier3, 3
+	return
+
+RR_Gym_EventScript_PushTier4::
+	dynmultipush RR_Rematch_Text_Tier4, 4
+	return
+
+RR_Gym_EventScript_PushTier5::
+	dynmultipush RR_Rematch_Text_Tier5, 5
+	return
+
+RR_Gym_EventScript_PushTier6::
+	dynmultipush RR_Rematch_Text_Tier6, 6
+	return
+
+RR_Gym_EventScript_PushTier7::
+	dynmultipush RR_Rematch_Text_Tier7, 7
+	return
+
+RR_Gym_EventScript_PushTier8::
+	dynmultipush RR_Rematch_Text_Tier8, 8
+	return
+
+RR_Gym_EventScript_PushTier9::
+	dynmultipush RR_Rematch_Text_Tier9, 9
+	return
+
+RR_Rematch_Text_Tier1:
+	.string "1 badge: Lv. 21$"
+
+RR_Rematch_Text_Tier2:
+	.string "2 badges: Lv. 24$"
+
+RR_Rematch_Text_Tier3:
+	.string "3 badges: Lv. 29$"
+
+RR_Rematch_Text_Tier4:
+	.string "4 badges: Lv. 43$"
+
+RR_Rematch_Text_Tier5:
+	.string "5 badges: Lv. 43$"
+
+RR_Rematch_Text_Tier6:
+	.string "6 badges: Lv. 47$"
+
+RR_Rematch_Text_Tier7:
+	.string "7 badges: Lv. 50$"
+
+RR_Rematch_Text_Tier8:
+	.string "8 badges: Lv. 63$"
+
+RR_Rematch_Text_Tier9:
+	.string "Champion: Lv. 75$"
+
+RR_Rematch_Text_TierCancel:
+	.string "Cancel$"
+
+RR_Rematch_Text_BrockAsk:
+	.string "Brock: You already have my Boulder\n"
+	.string "Badge. Here for a rematch?\p"
+	.string "Brock: My Pokémon have been\n"
+	.string "training. Pick how hard I go.$"
+
+RR_Rematch_Text_BrockWhich:
+	.string "Brock: Which challenge?$"
+
+RR_Rematch_Text_BrockGo:
+	.string "Brock: Rock-hard defense.\n"
+	.string "Let's see you crack it!$"
+
+RR_Rematch_Text_BrockDefeat:
+	.string "Brock: Cracked again!\n"
+	.string "You really have grown.$"
+
+RR_Rematch_Text_BrockLost:
+	.string "Brock: Come back anytime. My\n"
+	.string "team keeps training too.$"
+
+RR_Rematch_Text_BrockWon:
+	.string "Brock: Solid as a rock! Train up\n"
+	.string "and try again.$"
+
+RR_Rematch_Text_BrockAnytime:
+	.string "Brock: Anytime you're ready.$"

@@ -6216,7 +6216,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
     u32 moneyReward;
     u8 trainerMoney = 0;
 
-    if (RR_IsRematchTrainer(trainerId)) // Research Red (#53): no money from rematches
+    if (RR_RematchGivesNoMoney(trainerId)) // Research Red (#53): no money from family rematches
         return 0;
     if (trainerId == TRAINER_SECRET_BASE)
     {
