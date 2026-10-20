@@ -273,6 +273,8 @@ Debug_EventScript_Script_6::
 	call RR_Debug_GiveTeam
 	setvar VAR_MAP_SCENE_ROUTE22, 2
 	setvar VAR_0x40FE, 6
+	setflag FLAG_RR_DEXNAV_GET @ Research Red: Jenny gives it after the Route 22 battle
+	setflag FLAG_RR_DEXNAV_DETECTOR
 	rr_ivy_create_follower
 	@ two steps below Elm, who sits right of the Pokemon Center (talk to start)
 	warp MAP_VIRIDIAN_CITY, 29, 28
@@ -324,6 +326,8 @@ Debug_EventScript_Script_10::
 	setvar VAR_MAP_SCENE_ROUTE22, 2
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
 	setvar VAR_0x40FE, 7
+	setflag FLAG_RR_DEXNAV_GET @ Research Red: Jenny gives it after the Route 22 battle
+	setflag FLAG_RR_DEXNAV_DETECTOR
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_DEFEATED_BROCK
 	setvar VAR_MAP_SCENE_PEWTER_CITY, 1

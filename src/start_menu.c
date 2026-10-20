@@ -327,6 +327,8 @@ static void BuildDebugStartMenu(void)
     AddStartMenuAction(MENU_ACTION_DEBUG);
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
+    if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET)) // Research Red: test builds too
+        AddStartMenuAction(MENU_ACTION_DEXNAV);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
     if (FlagGet(FLAG_SYS_POKEMON_GET)) // Research Red: the PC from anywhere (#34)

@@ -297,8 +297,8 @@
 #define VAR_RR_ROUTE1_CATCH_1            0x40F4 // Research Red: Route 1 catches before the group scene
 #define VAR_RR_ROUTE1_CATCH_2            0x40F5 // Research Red: Route 1 catches before the group scene
 #define VAR_RR_ROUTE1_CATCH_3            0x40F6 // Research Red: Route 1 catches before the group scene
-#define VAR_0x40F7                 0x40F7
-#define VAR_0x40F8                 0x40F8
+#define VAR_RR_DEXNAV_SPECIES      0x40F7 // Research Red: was VAR_0x40F7. Registered DexNav species
+#define VAR_RR_DEXNAV_STEPS        0x40F8 // Research Red: was VAR_0x40F8. DexNav steps for hidden Pokemon
 #define VAR_0x40F9                 0x40F9
 #define VAR_0x40FA                 0x40FA
 #define VAR_0x40FB                 0x40FB

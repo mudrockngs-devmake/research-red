@@ -43,6 +43,8 @@ What the results mean:
 | pc | Debug 2, Start > PC, into Pokémon storage and back out |
 | guide | Debug 3, walks onto Route 1, Pokédex > START > FIELD GUIDE |
 | rules | The lunch, then Options > Research Rules |
+| dexnav | Route 22: the 6v6, Jenny gives the DexNav, then Start > DexNav there |
+| ivy | Talk to Ivy in Pallet and on Route 1 (area lines) |
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.
 

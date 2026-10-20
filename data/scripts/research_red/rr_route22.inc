@@ -83,6 +83,21 @@ RR_Route22_EventScript_Won::
 	msgbox RR_Route22_Text_Elm_GoodGame, MSGBOX_DEFAULT
 
 RR_Route22_EventScript_Goodbye::
+	@ Win or lose, Jenny gives you the DexNav: her old spotting-drive logbook
+	msgbox RR_Route22_Text_Jenny_BeforeWeGo, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Jenny_Logbook, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_P_KeptIt, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Jenny_App, MSGBOX_DEFAULT
+	setflag FLAG_RR_DEXNAV_GET
+	setflag FLAG_RR_DEXNAV_DETECTOR
+	playfanfare MUS_OBTAIN_KEY_ITEM
+	message RR_Route22_Text_ReceivedDexNav
+	waitmessage
+	waitfanfare
+	msgbox RR_Route22_Text_Elm_Stickers, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Jenny_Stickers, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_P_JennyHug, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Jenny_HowTo, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Ivy_NextTown, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Jenny_NextTown, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Elm_Lunch, MSGBOX_DEFAULT
@@ -166,6 +181,40 @@ RR_Route22_Text_Elm_WeWon::
 RR_Route22_Text_Jenny_Thrilled::
     .string "Jenny: I'm thrilled, dear.\n"
     .string "I'm showing it on the inside.$"
+
+RR_Route22_Text_Jenny_BeforeWeGo::
+    .string "Jenny: {PLAYER}. Before we go.$"
+
+RR_Route22_Text_Jenny_Logbook::
+    .string "Jenny: Remember our spotting\n"
+    .string "drives? I kept the logbook.$"
+
+RR_Route22_Text_P_KeptIt::
+    .string "{PLAYER}: You kept the logbook?$"
+
+RR_Route22_Text_Jenny_App::
+    .string "Jenny: I turned it into an app.\n"
+    .string "It finds Pokémon. Like we used to.$"
+
+RR_Route22_Text_ReceivedDexNav::
+    .string "{PLAYER} received the DexNav!$"
+
+RR_Route22_Text_Elm_Stickers::
+    .string "Elm: She made me one too! Mine has\n"
+    .string "stickers.$"
+
+RR_Route22_Text_Jenny_Stickers::
+    .string "Jenny: He added the stickers.$"
+
+RR_Route22_Text_P_JennyHug::
+    .string "{PLAYER}: (Jenny doesn't hug.\n"
+    .string "This is a Jenny hug.)$"
+
+RR_Route22_Text_Jenny_HowTo::
+    .string "Jenny: Start menu, DexNav. Pick a\n"
+    .string "Pokémon you've seen nearby.\p"
+    .string "Then sneak up on it. Slowly.\n"
+    .string "It's procedure.$"
 
 RR_Route22_Text_Ivy_NextTown::
     .string "Ivy: Same time next town, Jenny?$"

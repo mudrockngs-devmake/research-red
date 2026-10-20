@@ -1671,6 +1671,32 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 
 ### RR_Route22_EventScript_Goodbye
 
+> Jenny: {PLAYER}. Before we go.
+
+> Jenny: Remember our spotting
+> drives? I kept the logbook.
+
+> {PLAYER}: You kept the logbook?
+
+> Jenny: I turned it into an app.
+> It finds Pokémon. Like we used to.
+
+> {PLAYER} received the DexNav!
+
+> Elm: She made me one too! Mine has
+> stickers.
+
+> Jenny: He added the stickers.
+
+> {PLAYER}: (Jenny doesn't hug.
+> This is a Jenny hug.)
+
+> Jenny: Start menu, DexNav. Pick a
+> Pokémon you've seen nearby.
+>
+> Then sneak up on it. Slowly.
+> It's procedure.
+
 > Ivy: Same time next town, Jenny?
 
 > Jenny: Same time next town.

@@ -9,6 +9,8 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `VAR_RR_STARTER` (0x40FD) | Lab pick: 0 Bulbasaur, 1 Charmander, 2 Squirtle, 3 Chikorita, 4 Cyndaquil, 5 Totodile. `VAR_STARTER_MON` is also set by type (grass 0, water 1, fire 2) so FireRed rival scripts still work | 0-5 |
 | `VAR_RR_ROUTE1_CATCHES` (0x40F2) | Wild Pokemon caught on Route 1 before the group scene (VAR_0x40FE == 4) | count |
 | `VAR_RR_ROUTE1_CATCH_0`, `VAR_RR_ROUTE1_CATCH_1`, `VAR_RR_ROUTE1_CATCH_2`, `VAR_RR_ROUTE1_CATCH_3` (0x40F3-0x40F6) | Species of the first four of those catches, for Elm and Jenny's reactions | species |
+| `VAR_RR_DEXNAV_SPECIES` (0x40F7, was `VAR_0x40F7`) | DexNav: the registered species (`DN_VAR_SPECIES`, `include/config/dexnav.h`) | species |
+| `VAR_RR_DEXNAV_STEPS` (0x40F8, was `VAR_0x40F8`) | DexNav: step counter for hidden Pokémon (`DN_VAR_STEP_COUNTER`) | steps |
 | `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 battle done (lunch pending), 7 lunch done (Options > Research Rules works from 4, after Daisy's house), 8 Elm and Jenny's rematch outside the Pewter Pokémon Center done (after Brock) |
 
 ## Repurposed vanilla scene vars
@@ -43,6 +45,9 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `FLAG_RR_EXP_SHARE` (0x021, was `FLAG_0x021`) | `I_EXP_SHARE_FLAG`: Exp. Share key item on/off. Set by the research grant |
 | `FLAG_RR_LEVEL_CAPS_OFF` (0x027, was `FLAG_0x027`) | Research Rules: level caps off (on by default; caps in `src/caps.c`) |
 | `FLAG_0x077` (was `FLAG_RR_HARD_LEVEL_CAPS`) | Free again (the soft/hard cap choice was removed in v0.0.16). Old saves may have it set: clear it before reusing |
+| `FLAG_RR_DEXNAV_GET` (0x0C0, was `FLAG_0x0C0`) | DexNav in the Start menu. Jenny gives it after the Route 22 battle, win or lose (debug skips 6+ set it) |
+| `FLAG_RR_DEXNAV_SEARCHING` (0x0C1, was `FLAG_0x0C1`) | DexNav: a search is running (`DN_FLAG_SEARCHING`) |
+| `FLAG_RR_DEXNAV_DETECTOR` (0x0C2, was `FLAG_0x0C2`) | DexNav: hidden Pokémon can be spotted (`DN_FLAG_DETECTOR_MODE`). Set with the DexNav |
 | `FLAG_RR_NO_WHITEOUT` (0x020, was `FLAG_0x020`) | `B_FLAG_NO_WHITEOUT`: set around story battles so a loss continues the script. Cleared after each battle |
 
 ## Temp flags used by scenes

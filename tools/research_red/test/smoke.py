@@ -216,6 +216,15 @@ def sc_ivy():
             + ["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60"] + talk("DOWN", "r")
             + expect("MAP_ROUTE1"))
 
+def sc_dexnav():
+    # Route 22: after the 6v6 Jenny gives you the DexNav (win or lose). Then
+    # Start (DEBUG, POKEDEX, DEXNAV, ...) > DEXNAV on Route 22 itself.
+    return (sc_route22() + ["mash B 200", "wait 60"] + check("dexnav_flag", T.G.flag_set("FLAG_RR_DEXNAV_GET"))
+            + start_menu_item(2) + ["wait 120", "shot d001", "press RIGHT", "wait 20", "shot d002",
+                                    "press DOWN", "wait 20", "shot d003", "press B", "wait 120", "shot d004"]
+            + play_until("dexnav_closed", T.G.field_free(), 1500, key="B", every=30)
+            + expect("MAP_ROUTE22"))
+
 # Maps the report can name (anything else shows as a number)
 MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
              "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", "MAP_PALLET_TOWN_RIVALS_HOUSE", "MAP_ROUTE1",
@@ -236,6 +245,7 @@ SCENARIOS = {
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
+    "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
