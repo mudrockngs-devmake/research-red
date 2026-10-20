@@ -61,3 +61,8 @@ Edit the source, run the tool, commit both. `rr_check.py` fails if a generated f
 - `tools/research_red/build_cast_art.py`: reference art to battle/portrait/call art and a contact sheet
 - `tools/research_red/render_map.py LAYOUT_ID out.png`: map layout to an image
 - `tools/research_red/export_story.py`: story data export (`docs/story/`)
+
+Installed on the dev machine (outside the repo; nothing in the build needs them yet):
+- Pillow (`python3-pil`) and ImageMagick (`convert`), from Ubuntu's packages: image editing for sprite and portrait work.
+- Porytiles 2.0.0 in `~/romhacks/_tools/porytiles/`: drawn PNG layers to map tiles and metatiles (new buildings, the picnic blanket).
+- Porymap (optional, Windows): visual map editor for the owner.
