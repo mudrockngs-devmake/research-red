@@ -84,6 +84,8 @@ PalletTown_EventScript_GrassHook::
 	msgbox PalletTown_Text_RR_Elm_Transferred, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_P_FightTheGrass, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox PalletTown_Text_RR_Jenny_EightOutOfTen, MSGBOX_DEFAULT
 	closemessage
 	@ Elm steps toward the grass
 	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmStepToGrass
@@ -505,6 +507,9 @@ PalletTown_Text_RR_P_FightTheGrass::
     .string "{PLAYER}: So the plan is to fight\n"
     .string "the grass. Personally.$"
 
+PalletTown_Text_RR_Jenny_EightOutOfTen::
+    .string "Jenny: Eight out of ten.$"
+
 PalletTown_Text_RR_Oak_WildMons::
     .string "Oak: Wild Pokémon live in tall\n"
     .string "grass!\p"
@@ -516,14 +521,13 @@ PalletTown_Text_RR_Elm_Observing::
     .string "observing it! From here!$"
 
 PalletTown_Text_RR_Oak_OfficerJenny::
-    .string "Oak: And you must be Jenny!\n"
-    .string "The one who made Elm so happy.\p"
-    .string "I've wanted to meet you for\n"
-    .string "years!$"
+    .string "Oak: And Jenny! At last, in\n"
+    .string "person! Elm talks about you\l"
+    .string "endlessly.$"
 
 PalletTown_Text_RR_Jenny_WeAllGetThat::
-    .string "Jenny: Most people just see\n"
-    .string "another Jenny, sir. Thank you.$"
+    .string "Jenny: He talks about you too,\n"
+    .string "sir. With footnotes.$"
 
 PalletTown_Text_RR_Oak_Haiku::
     .string "Oak: Ahem.\p"
@@ -532,7 +536,8 @@ PalletTown_Text_RR_Oak_Haiku::
     .string "Foolish, but so brave.$"
 
 PalletTown_Text_RR_Ivy_Poems::
-    .string "Ivy: He still does the poems.$"
+    .string "Ivy: I love that he still does\n"
+    .string "the poems.$"
 
 PalletTown_Text_RR_Oak_ComeToLab::
     .string "Oak: Come! This research trip\n"
