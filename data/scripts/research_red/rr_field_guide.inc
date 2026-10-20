@@ -19,6 +19,13 @@ RR_EventScript_ResearchRules::
 	lockall
 	callnative RR_ScriptResearchRules
 	waitstate
+	@ #45: a changed rule plays a short call with Elm and Jenny (#13)
+	goto_if_eq VAR_RESULT, FALSE, RR_EventScript_ResearchRules_End
+	fadescreen FADE_TO_BLACK
+	setvar VAR_0x8004, RR_CALL_RULES
+	callnative RR_ScriptStartCall
+	waitstate
+RR_EventScript_ResearchRules_End::
 	releaseall
 	end
 

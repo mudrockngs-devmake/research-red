@@ -42,7 +42,7 @@ What the results mean:
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | pc | Debug 2, Start > PC, into Pokémon storage and back out |
 | guide | Debug 3, walks onto Route 1, Pokédex > START > FIELD GUIDE |
-| rules | The lunch, then Options > Research Rules |
+| rules | The lunch, then Options > Research Rules: change a rule, close, the call with Elm and Jenny plays (#45); reopen and close unchanged: no call |
 | dexnav | Route 22: the 6v6, Jenny gives the DexNav, then Start > DexNav there |
 | ivy | Talk to Ivy in Pallet and on Route 1 (area lines) |
 | rename | Summary > A: rename to one letter, then to an empty name (the species name comes back) |

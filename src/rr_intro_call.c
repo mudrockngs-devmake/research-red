@@ -11,8 +11,17 @@
 //
 // The call is a list of steps (sCallScript); dialogue lines name their speaker
 // with the usual "Name:" prefix. Graphics: tools/research_red/build_call_ui.py.
+//
+// Later calls (#13) reuse the same screen: each is a struct CallDef in sCalls
+// (title, who is on the left "host" video, who is already in the call, and its
+// steps), started from a script with
+//     setvar VAR_0x8004, RR_CALL_RULES   @ include/constants/rr_calls.h
+//     callnative RR_ScriptStartCall      @ after fadescreen FADE_TO_BLACK
+//     waitstate
+// and they return to the map. The intro (RR_CALL_INTRO) goes on to a new game.
 #include "global.h"
 #include "bg.h"
+#include "event_data.h"
 #include "gpu_regs.h"
 #include "main.h"
 #include "malloc.h"
@@ -30,6 +39,8 @@
 #include "text.h"
 #include "text_window.h"
 #include "window.h"
+#include "script.h"
+#include "constants/rr_calls.h"
 #include "constants/songs.h"
 
 // ---------------------------------------------------------------------------
@@ -49,6 +60,8 @@ static const u16 sCircle_Ivy_Pal[] = INCBIN_U16("graphics/research_red/intro_cal
 static const u32 sRing_Gfx[] = INCBIN_U32("graphics/research_red/intro_call/ring.4bpp");
 static const u32 sVideo_Oak_Gfx[] = INCBIN_U32("graphics/research_red/cast/oak/portrait.4bpp");
 static const u16 sVideo_Oak_Pal[] = INCBIN_U16("graphics/research_red/cast/oak/portrait.gbapal");
+static const u32 sVideo_Elm_Gfx[] = INCBIN_U32("graphics/research_red/cast/elm/portrait.4bpp");
+static const u16 sVideo_Elm_Pal[] = INCBIN_U16("graphics/research_red/cast/elm/portrait.gbapal");
 static const u32 sVideo_Slowpoke_Gfx[] = INCBIN_U32("graphics/research_red/pokemon/slowpoke/portrait.4bpp");
 static const u16 sVideo_Slowpoke_Pal[] = INCBIN_U16("graphics/research_red/pokemon/slowpoke/portrait.gbapal");
 static const u32 sVideo_PlayerM_Gfx[] = INCBIN_U32("graphics/research_red/cast/player_m/portrait.4bpp");
@@ -62,7 +75,7 @@ static const u16 sRingPal_Talking[16] = {0, RGB(31, 25, 11)};
 #define BG_PAL_SLOT        1
 #define PAL_LIVE_DOT       5
 #define PAL_SIGNAL_BAR(i)  (6 + (i))
-#define PAL_BORDER_OAK     10
+#define PAL_BORDER_HOST     10
 #define PAL_BORDER_PLAYER  11
 #define COLOR_BORDER       RGB(7, 7, 11)
 #define COLOR_TALKING      RGB(31, 25, 11)
@@ -71,7 +84,7 @@ static const u16 sRingPal_Talking[16] = {0, RGB(31, 25, 11)};
 
 enum
 {
-    VIDEO_OAK,
+    VIDEO_HOST,     // left: whoever hosts the call (Oak in the intro)
     VIDEO_SLOWPOKE,
     VIDEO_PLAYER,
     NUM_VIDEOS,
@@ -110,7 +123,7 @@ enum
     STEP_FUZZ,          // arg: frames of static
     STEP_GENDER,        // which student are you? (shows the player's video)
     STEP_NAME,          // and your name was...?
-    STEP_OAK_LEAVES,
+    STEP_HOST_LEAVES,   // the left video drops out
     STEP_PLAYER_LEAVES, // the player's video shrinks away
     STEP_WAIT,          // arg: frames
     STEP_END,
@@ -200,7 +213,7 @@ static const struct CallStep sCallScript[] =
     DO(STEP_WAIT, 33),
     DO(STEP_DROP, CIRCLE_ELM),
     DO(STEP_WAIT, 42),
-    DO(STEP_OAK_LEAVES, 0),
+    DO(STEP_HOST_LEAVES, 0),
     DO(STEP_WAIT, 42),
     DO(STEP_PLAYER_LEAVES, 0),
     DO(STEP_WAIT, 90),
@@ -210,7 +223,27 @@ static const struct CallStep sCallScript[] =
     DO(STEP_END, 0),
 };
 
+// #45: after changing a Research Rule (Options > Research Rules). The same
+// lines for every rule for now. Elm hosts; Jenny and Ivy are in the call.
+static const struct CallStep sRulesCallScript[] =
+{
+    DO(STEP_WAIT, 20),
+    {STEP_LINE, 0, (const u8[])_("Elm: Hello? Oh! {PLAYER}! Ivy!\nHi, hi!\p")},
+    {STEP_LINE, 0, (const u8[])_("Ivy: Hi, Elm. We changed one of\nthe Research Rules.\p")},
+    {STEP_LINE, 0, (const u8[])_("Elm: A rule change! Noted.\nFor science. And for fairness.\p")},
+    {STEP_LINE, 0, (const u8[])_("Jenny: Noted, dated and initialed.\p")},
+    {STEP_LINE, 0, (const u8[])_("Jenny: The bet still stands.\nLosers cook dinner at Delia's.\p")},
+    {STEP_LINE, 0, (const u8[])_("Elm: Dessert included!\nBye-bye!\p")},
+    DO(STEP_DROP, CIRCLE_JENNY),
+    DO(STEP_WAIT, 30),
+    DO(STEP_HOST_LEAVES, 0),
+    DO(STEP_WAIT, 50),
+    DO(STEP_END, 0),
+};
+
 static const u8 sText_CallTitle[] = _("Oak Lab - live");
+static const u8 sText_RulesCallTitle[] = _("Rules call - live");
+static const u8 sText_Elm[] = _("Elm");
 static const u8 sText_Oak[] = _("Oak");
 static const u8 sText_Unknown[] = _("???");
 static const u8 sText_Empty[] = _("");
@@ -242,6 +275,26 @@ static const u8 sPrefix_Jenny[] = _("Jenny:");
 static const u8 sPrefix_Ivy[] = _("Ivy:");
 static const u8 sPrefix_Unknown[] = _("???:");
 
+// One call (#13): what is on screen when it starts, and its steps
+struct CallDef
+{
+    const struct CallStep *script;
+    const u8 *title;
+    const u8 *hostName;     // label under the left video
+    const u32 *hostGfx;     // 64x64 portrait
+    const u16 *hostPal;
+    u8 hostTalker;          // TALK_*: whose lines light up the left video
+    u8 circles;             // avatars already in the call (bit per CIRCLE_*)
+    bool8 fromField;        // TRUE: everyone is already in; back to the map after
+};
+
+static const struct CallDef sCalls[RR_CALL_COUNT] =
+{
+    [RR_CALL_INTRO] = {sCallScript, sText_CallTitle, sText_Oak, sVideo_Oak_Gfx, sVideo_Oak_Pal, TALK_OAK, 0, FALSE},
+    [RR_CALL_RULES] = {sRulesCallScript, sText_RulesCallTitle, sText_Elm, sVideo_Elm_Gfx, sVideo_Elm_Pal, TALK_ELM,
+                       (1 << CIRCLE_JENNY) | (1 << CIRCLE_IVY), TRUE},
+};
+
 static const struct { const u8 *prefix; u8 talker; } sTalkers[] =
 {
     {sPrefix_Oak, TALK_OAK},
@@ -259,7 +312,7 @@ enum
 {
     WIN_TEXTBOX, // from InitStandardTextBoxWindows
     WIN_TITLE,
-    WIN_LABEL_OAK,
+    WIN_LABEL_HOST,
     WIN_LABEL_PLAYER,
 };
 
@@ -354,6 +407,7 @@ static const union AffineAnimCmd *const sAffineAnims[] =
 
 struct CallResources
 {
+    const struct CallDef *def;
     u16 step;
     u8 videoSpriteIds[NUM_VIDEOS];
     u8 circleSpriteIds[NUM_CIRCLES];
@@ -417,8 +471,8 @@ static void PrintLabel(u32 windowId, const u8 *str)
 
 static void PrintLabels(void)
 {
-    PrintLabel(WIN_TITLE, sText_CallTitle);
-    PrintLabel(WIN_LABEL_OAK, sCall->videoShown[VIDEO_OAK] ? sText_Oak : sText_Empty);
+    PrintLabel(WIN_TITLE, sCall->def->title);
+    PrintLabel(WIN_LABEL_HOST, sCall->videoShown[VIDEO_HOST] ? sCall->def->hostName : sText_Empty);
     PrintLabel(WIN_LABEL_PLAYER, sCall->named ? gSaveBlock2Ptr->playerName : sText_Unknown);
 }
 
@@ -428,7 +482,7 @@ static void SetTalker(u32 talker)
     u32 i;
 
     sCall->talker = talker;
-    SetBgColor(PAL_BORDER_OAK, talker == TALK_OAK ? COLOR_TALKING : COLOR_BORDER);
+    SetBgColor(PAL_BORDER_HOST, talker == sCall->def->hostTalker ? COLOR_TALKING : COLOR_BORDER);
     SetBgColor(PAL_BORDER_PLAYER, talker == TALK_PLAYER ? COLOR_TALKING : COLOR_BORDER);
     for (i = 0; i < NUM_CIRCLES; i++)
     {
@@ -499,7 +553,7 @@ static void CreateCallSprites(void)
     bool32 male = gSaveBlock2Ptr->playerGender == MALE;
     u32 i;
 
-    sCall->videoSpriteIds[VIDEO_OAK] = CreateVideoSprite(VIDEO_OAK, sVideo_Oak_Gfx, sVideo_Oak_Pal);
+    sCall->videoSpriteIds[VIDEO_HOST] = CreateVideoSprite(VIDEO_HOST, sCall->def->hostGfx, sCall->def->hostPal);
     sCall->videoSpriteIds[VIDEO_SLOWPOKE] = CreateVideoSprite(VIDEO_SLOWPOKE, sVideo_Slowpoke_Gfx, sVideo_Slowpoke_Pal);
     sCall->videoSpriteIds[VIDEO_PLAYER] = CreateVideoSprite(VIDEO_PLAYER, male ? sVideo_PlayerM_Gfx : sVideo_PlayerF_Gfx,
                                                             male ? sVideo_PlayerM_Pal : sVideo_PlayerF_Pal);
@@ -623,7 +677,7 @@ static bool32 SetUpCallScene(void)
         AddWindow(&sWindow_LabelOak);
         AddWindow(&sWindow_LabelPlayer);
         PutWindowTilemap(WIN_TITLE);
-        PutWindowTilemap(WIN_LABEL_OAK);
+        PutWindowTilemap(WIN_LABEL_HOST);
         PutWindowTilemap(WIN_LABEL_PLAYER);
         break;
     case 3:
@@ -666,9 +720,29 @@ static void CB2_SetUpCall(void)
 void RR_StartIntroCall(void)
 {
     sCall = AllocZeroed(sizeof(*sCall));
+    sCall->def = &sCalls[RR_CALL_INTRO];
     sCall->signal = 2;
-    sCall->videoShown[VIDEO_OAK] = TRUE;
+    sCall->videoShown[VIDEO_HOST] = TRUE;
     PlayBGM(MUS_NEW_GAME_INTRO);
+    gMain.state = 0;
+    SetMainCallback2(CB2_SetUpCall);
+}
+
+// #13: a later call from a script. VAR_0x8004 = RR_CALL_*; call it after
+// fadescreen FADE_TO_BLACK and follow it with waitstate. Everyone in the call
+// is already there; the map comes back (and the script goes on) afterwards.
+void RR_ScriptStartCall(struct ScriptContext *ctx)
+{
+    u32 i;
+
+    sCall = AllocZeroed(sizeof(*sCall));
+    sCall->def = &sCalls[gSpecialVar_0x8004 < RR_CALL_COUNT ? gSpecialVar_0x8004 : RR_CALL_RULES];
+    sCall->signal = 4;
+    sCall->named = TRUE;
+    sCall->videoShown[VIDEO_HOST] = TRUE;
+    sCall->videoShown[VIDEO_PLAYER] = TRUE;
+    for (i = 0; i < NUM_CIRCLES; i++)
+        sCall->circleShown[i] = (sCall->def->circles >> i) & 1;
     gMain.state = 0;
     SetMainCallback2(CB2_SetUpCall);
 }
@@ -813,19 +887,21 @@ static void Task_Call(u8 taskId)
     case STATE_FADE_OUT:
         if (!gPaletteFade.active)
         {
-            SetRivalName();
+            bool32 fromField = sCall->def->fromField;
+            if (!fromField)
+                SetRivalName();
             FreeAllWindowBuffers();
             Free(sCall);
             sCall = NULL;
             gTextFlags.canABSpeedUpPrint = FALSE;
             DestroyTask(taskId);
-            SetMainCallback2(CB2_NewGame);
+            SetMainCallback2(fromField ? CB2_ReturnToFieldContinueScriptPlayMapMusic : CB2_NewGame);
         }
         return;
     }
 
     // STATE_NEXT_STEP
-    step = &sCallScript[sCall->step++];
+    step = &sCall->def->script[sCall->step++];
     switch (step->type)
     {
     case STEP_LINE:
@@ -870,9 +946,9 @@ static void Task_Call(u8 taskId)
         sCall->state = STATE_NAME_MENU;
         break;
     }
-    case STEP_OAK_LEAVES:
-        sCall->videoShown[VIDEO_OAK] = FALSE;
-        StartSpriteAffineAnim(&gSprites[sCall->videoSpriteIds[VIDEO_OAK]], AFFINE_DROP);
+    case STEP_HOST_LEAVES:
+        sCall->videoShown[VIDEO_HOST] = FALSE;
+        StartSpriteAffineAnim(&gSprites[sCall->videoSpriteIds[VIDEO_HOST]], AFFINE_DROP);
         PrintLabels();
         PlaySE(SE_BALL_TRAY_EXIT);
         break;

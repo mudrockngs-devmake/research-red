@@ -84,6 +84,7 @@ static const u8 sColors_Value[3] = {TEXT_COLOR_WHITE, TEXT_COLOR_RED, TEXT_COLOR
 
 #define tWindowId data[0]
 #define tCursor   data[1]
+#define tStartState data[2] // the rules when the window opened (#45)
 
 static const u8 *GetRuleValue(u32 rule)
 {
@@ -113,6 +114,16 @@ static void ToggleFlag(u32 flag)
         FlagClear(flag);
     else
         FlagSet(flag);
+}
+
+// Every rule as one bit, to tell whether anything changed (#45)
+static u16 GetRulesState(void)
+{
+    return FlagGet(FLAG_RR_LEVEL_CAPS_OFF)
+         | FlagGet(FLAG_RR_FORCE_DOUBLES) << 1
+         | FlagGet(FLAG_RR_FORCE_DOUBLE_WILD) << 2
+         | (gSaveBlock2Ptr->optionsBattleStyle & 1) << 3
+         | FlagGet(FLAG_RR_AUTO_HEAL) << 4;
 }
 
 static void ChangeRule(u32 rule)
@@ -170,6 +181,7 @@ static void Task_Rules(u8 taskId)
         PlaySE(SE_SELECT);
         ClearStdWindowAndFrameToTransparent(tWindowId, TRUE);
         RemoveWindow(tWindowId);
+        gSpecialVar_Result = GetRulesState() != tStartState; // #45: a change plays the call with Elm and Jenny
         ScriptContext_Enable();
         DestroyTask(taskId);
         return;
@@ -196,6 +208,7 @@ void RR_ScriptResearchRules(struct ScriptContext *ctx)
 
     tWindowId = AddWindow(&sRulesWindow);
     tCursor = 0;
+    tStartState = GetRulesState();
     DrawStdFrameWithCustomTileAndPalette(tWindowId, FALSE, GetStandardFrameBaseTileNum(), 14);
     PutWindowTilemap(tWindowId);
     PrintRules(tWindowId, tCursor);

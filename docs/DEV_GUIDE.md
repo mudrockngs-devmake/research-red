@@ -15,7 +15,7 @@ How the project is laid out and how work moves through it.
 | Flags / vars | `include/constants/flags.h`, `vars.h` (`FLAG_RR_*`, `VAR_RR_*`), registered in `docs/FLAGS_VARS.md` |
 | Config switches | `include/config/*.h`, every change tagged `// Research Red` |
 | Cast art | `graphics/research_red/cast/<name>/{battle,portrait,call}.png`; hand-made overrides in `cast_handmade/` |
-| Intro call | `src/rr_intro_call.c` (Discord-style; version stamp at the top of `sCallScript`). FireRed's Oak speech in `src/oak_speech.c` is bypassed |
+| Video calls | `src/rr_intro_call.c` (Discord-style; version stamp at the top of `sCallScript`). FireRed's Oak speech in `src/oak_speech.c` is bypassed. Later calls (#13): write the steps, add an entry to `sCalls` and a number to `include/constants/rr_calls.h`; a script starts one with `fadescreen FADE_TO_BLACK`, `setvar VAR_0x8004, RR_CALL_X`, `callnative RR_ScriptStartCall`, `waitstate` (example: `RR_EventScript_ResearchRules`) |
 | Debug skips | `data/scripts/debug.inc` (Start > Debug > Scripts, named 1-9; table in [PLAYTESTING.md](PLAYTESTING.md)) |
 | Save version | `include/rr_save_version.h`, `src/rr_save_version.c` ([SAVES.md](SAVES.md)) |
 | Tests | `tools/research_red/test/` ([TESTING.md](TESTING.md)) |

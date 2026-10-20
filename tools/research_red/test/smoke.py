@@ -311,14 +311,21 @@ def sc_guide():
 
 
 def sc_rules():
-    # after the lunch: Start menu DEBUG, POKEDEX, POKEMON, PC, BAG, PLAYER,
-    # SAVE, OPTION. Options row 3 is Research Rules: A leaves Options and
-    # opens Elm's Rules window on the map (#45).
-    return (sc_lunch() + ["mash B 200", "wait 60"] + start_menu_item(7)
+    # after the lunch: Start menu DEBUG, POKEDEX, DEXNAV, POKEMON, PC, BAG,
+    # PLAYER, SAVE, OPTION. Options row 3 is Research Rules: A leaves Options
+    # and opens Elm's Rules window on the map (#45).
+    return (sc_lunch() + ["mash B 200", "wait 60"] + start_menu_item(8)
             + ["wait 60", "shot t001", "press DOWN", "wait 10", "press DOWN", "wait 10", "shot t002",
                "press A", "wait 120", "shot t003", "press DOWN", "wait 10", "press RIGHT", "wait 10", "shot t004",
                "press B", "wait 30", "shot t005"]
-            + check("rules_closed", T.G.field_free()))
+            # a rule changed: the call with Elm and Jenny plays, then the map (#45, #13)
+            + ["wait 90", "shot t006"]
+            + play_until("call_over", T.G.field_free(), 6000, key="A", every=40)
+            + expect(story=7)
+            # open the Rules again and close them unchanged: no call
+            + start_menu_item(0) + ["wait 60", "press DOWN", "wait 10", "press DOWN", "wait 10", "press A", "wait 120",
+                                    "shot t007", "press B", "wait 40", "shot t008"]
+            + check("no_call", T.G.field_free()))
 
 
 def sc_ivy():
