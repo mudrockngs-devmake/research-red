@@ -51,31 +51,15 @@ const s32 sNumDaysInMonths[MONTH_COUNT] =
     [MONTH_DEC - 1] = 31,
 };
 
+// Research Red (#56): the same hours every season, so night always starts at
+// 8 PM (Rest moves the clock to 8 PM or 7 AM, src/rr_rest.c). Was by season:
+// summer nights from 9 PM, winter from 7 PM.
+#define RR_TIMES_OF_DAY { [TIME_MORNING] = 5, [TIME_DAY] = 10, [TIME_EVENING] = 17, [TIME_NIGHT] = 20 }
 static const u32 sTimeOfDayStarts[SEASON_WINTER + 1][TIME_NIGHT + 1] = {
-    [SEASON_SPRING] = {
-        [TIME_MORNING] = 5,
-        [TIME_DAY] = 10,
-        [TIME_EVENING] = 17,
-        [TIME_NIGHT] = 20,
-    },
-    [SEASON_SUMMER] = {
-        [TIME_MORNING] = 4,
-        [TIME_DAY] = 9,
-        [TIME_EVENING] = 19,
-        [TIME_NIGHT] = 21,
-    },
-    [SEASON_AUTUMN] = {
-        [TIME_MORNING] = 6,
-        [TIME_DAY] = 10,
-        [TIME_EVENING] = 18,
-        [TIME_NIGHT] = 20,
-    },
-    [SEASON_WINTER] = {
-        [TIME_MORNING] = 7,
-        [TIME_DAY] = 11,
-        [TIME_EVENING] = 17,
-        [TIME_NIGHT] = 19,
-    },
+    [SEASON_SPRING] = RR_TIMES_OF_DAY,
+    [SEASON_SUMMER] = RR_TIMES_OF_DAY,
+    [SEASON_AUTUMN] = RR_TIMES_OF_DAY,
+    [SEASON_WINTER] = RR_TIMES_OF_DAY,
 };
 
 void RtcDisableInterrupts(void)

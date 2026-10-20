@@ -53,6 +53,8 @@ What the results mean:
 | pager_select | Register the Ranch Pager in the Bag; SELECT on the map opens its menu, B closes it |
 | pager_dig | After Brock, inside Diglett's Cave: Ranch Pager > Dig > Yes, Oak's Diglett digs you out to Route 2 |
 | oak_mons | Oak's Pager Pokémon: talk to Tauros in the lab yard, pass Lapras and Gyarados on the shore, Pikachu, Farfetch'd, Abra and Machop in the lab |
+| rest | At home: Delia > Rest till night (clock 20:00, Start menu "Night 20:00"), then Rest till morning (7:00, "Day 7:00") |
+| rest_center | Pewter Pokémon Center: Nurse Joy > Rest till night (clock 20:00) |
 | tms | After the lab: the TM Case holds all 108 TMs and HMs (memory check); one screenshot per TM51-TM100 (names fit their rows, descriptions their box) and the longest name selected |
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.

@@ -29,12 +29,7 @@ PalletTown_PlayersHouse_1F_EventScript_Mom::
 	end
 
 PalletTown_PlayersHouse_1F_EventScript_MomHeal::
-	msgbox PalletTown_PlayersHouse_1F_Text_YouShouldTakeQuickRest
-	closemessage
-	call EventScript_OutOfCenterPartyHeal
-	msgbox PalletTown_PlayersHouse_1F_Text_LookingGreatTakeCare
-	release
-	end
+	goto RR_EventScript_DeliaHealOrRest @ Research Red (#56): Heal or Rest
 
 PalletTown_PlayersHouse_1F_EventScript_Mimey::
 	lock

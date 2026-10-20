@@ -163,8 +163,7 @@ static const u8 sStartMenuDesc_Debug[] = _("Debug Menu.");
 static const u8 sStartMenuDesc_PC[] = _("Use the PC from anywhere: Pokémon\nstorage and items."); // Research Red
 static const u8 sText_SaveError_PleaseExchangeBackupMemory[] = _("Save error.\pPlease exchange the\nbackup memory.");
 static const u8 sText_MenuSafariStats[] = _("{STR_VAR_1}/{STR_VAR_2}\nBALLS  {STR_VAR_3}");
-static const u8 sText_MenuTime[] = _("Time: {STR_VAR_1}:{STR_VAR_2}");
-static const u8 sText_MenuDay[] = _("{STR_VAR_1} Day {STR_VAR_2}");
+static const u8 sText_MenuTime[] = _("{STR_VAR_3} {STR_VAR_1}:{STR_VAR_2}"); // Research Red (#56): "Night 20:00"
 static const u8 sText_BattlePyramidFloor[] = _("Battle Pyramid\n{STR_VAR_1}");
 static const u8 sText_MenuPlayer[] = _("{PLAYER}");
 
@@ -191,9 +190,12 @@ static const struct WindowTemplate sTimeWindowTemplate = {
     .tilemapLeft = 1,
     .tilemapTop = 1,
     .width = 10,
-    .height = 4,
+    .height = 2, // Research Red (#56): one line, "Day 14:05" / "Night 20:00" (was 4: time + season day)
     .paletteNum = 15,
-    .baseBlock = 0x1A8
+    // Research Red (#27): was 0x1A8, inside the Start menu's tiles once the menu
+    // grew to 10 entries (its words showed up in the clock box). Tiles
+    // 0x21D-0x2FF are free on the map (frames end at 0x21D, tilemaps start at 0x300).
+    .baseBlock = 0x230
 };
 
 static const struct WindowTemplate sWindowTemplate_SafariZoneStats = {
@@ -462,6 +464,18 @@ static void RemoveExtraStartMenuWindows(void)
 
 #define tCounter data[0]
 
+// Research Red (#56): "Day 14:05" or "Night 20:00". Night is 8 PM to 5 AM
+// (src/rtc.c); morning and evening count as day, like the wild Pokemon.
+static void PrintTimeWindowText(void)
+{
+    StringCopy(gStringVar3, GetTimeOfDay() == TIME_NIGHT ? COMPOUND_STRING("Night") : COMPOUND_STRING("Day"));
+    ConvertIntToDecimalStringN(gStringVar1, GetCurrentHour(), STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar2, GetCurrentMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringExpandPlaceholders(gStringVar4, sText_MenuTime);
+    FillWindowPixelBuffer(sTimeWindowId, PIXEL_FILL(1));
+    AddTextPrinterParameterized(sTimeWindowId, FONT_NORMAL, gStringVar4, 4, 1, 0xFF, NULL);
+}
+
 static void Task_UpdateTimeWindow(u8 taskId)
 {
     if (gTasks[taskId].tCounter < 60)
@@ -474,15 +488,7 @@ static void Task_UpdateTimeWindow(u8 taskId)
         return;
 
     DrawStdWindowFrame(sTimeWindowId, FALSE);
-    ConvertIntToDecimalStringN(gStringVar1, GetCurrentHour(), STR_CONV_MODE_RIGHT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, GetCurrentMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringExpandPlaceholders(gStringVar4, sText_MenuTime);
-    AddTextPrinterParameterized(sTimeWindowId, FONT_NORMAL, gStringVar4, 4, 1, 0xFF, NULL);
-
-    StringCopy(gStringVar1, GetSeasonName(GetSeason()));
-    ConvertIntToDecimalStringN(gStringVar2, GetSeasonDay(), STR_CONV_MODE_RIGHT_ALIGN, 2);
-    StringExpandPlaceholders(gStringVar4, sText_MenuDay);
-    AddTextPrinterParameterized(sTimeWindowId, FONT_NORMAL, gStringVar4, 4, 18, 0xFF, NULL);
+    PrintTimeWindowText(); // Research Red (#56)
 
     CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
     gTasks[taskId].tCounter = 0;
@@ -494,15 +500,7 @@ static void DrawTimeWindow(void)
 
     PutWindowTilemap(sTimeWindowId);
     DrawStdWindowFrame(sTimeWindowId, FALSE);
-    ConvertIntToDecimalStringN(gStringVar1, GetCurrentHour(), STR_CONV_MODE_RIGHT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, GetCurrentMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringExpandPlaceholders(gStringVar4, sText_MenuTime);
-    AddTextPrinterParameterized(sTimeWindowId, FONT_NORMAL, gStringVar4, 4, 1, 0xFF, NULL);
-
-    StringCopy(gStringVar1, GetSeasonName(GetSeason()));
-    ConvertIntToDecimalStringN(gStringVar2, GetSeasonDay(), STR_CONV_MODE_RIGHT_ALIGN, 2);
-    StringExpandPlaceholders(gStringVar4, sText_MenuDay);
-    AddTextPrinterParameterized(sTimeWindowId, FONT_NORMAL, gStringVar4, 4, 18, 0xFF, NULL);
+    PrintTimeWindowText(); // Research Red (#56)
 
     CopyWindowToVram(sTimeWindowId, COPYWIN_GFX);
 

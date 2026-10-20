@@ -254,6 +254,37 @@ def sc_pager_dig():
             + expect("MAP_ROUTE2"))
 
 
+def sc_rest():
+    # #56: Delia offers Heal / Rest. Rest moves the clock to 8 PM (night),
+    # then again to 7 AM (morning). The Start menu clock says "Night 20:00",
+    # then "Day 7:00" (#27: no more garbled clock box). Debug 2 leaves us at
+    # (15,8); home is the door at (6,7); Delia stands at (8,4).
+    hour = f"{T.G.sym('gLocalTime') + 2:#x}:1"
+    def rest(prefix):
+        # A: Delia asks and the menu appears with her question; DOWN to Rest
+        return (["press A", "wait 150", f"shot {prefix}1",
+                 "press DOWN", "wait 10", f"shot {prefix}2", "press A", "wait 60"]
+                + play_until(f"rested_{prefix}", T.G.field_free(), 3000, key="A", every=60))
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT", 9) + step("UP") + ["wait 120"]
+            + step("UP", 5) + step("RIGHT", 4) + ["press DOWN 6", "wait 20", "shot r000"]
+            + rest("a") + check("night_20h", f"{hour} == 20")
+            + ["press START", "wait 40", "shot r001", "press B", "wait 30"]
+            + rest("b") + check("morning_7h", f"{hour} == 7")
+            + ["press START", "wait 40", "shot r002", "press B", "wait 30"]
+            + check("closed", T.G.field_free()))
+
+
+def sc_rest_center():
+    # #56: Nurse Joy in Pewter's Pokemon Center offers Heal / Rest / No thanks.
+    # Debug 10 leaves us below the door at (17,26); the counter is straight up.
+    hour = f"{T.G.sym('gLocalTime') + 2:#x}:1"
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK) + step("UP") + ["wait 120", "shot c000"]
+            + step("UP", 4) + ["press UP 6", "wait 20", "press A", "wait 200", "press A", "wait 120", "shot c001",
+                                "press DOWN", "wait 10", "shot c002", "press A", "wait 60"]
+            + play_until("rested", T.G.field_free(), 4000, key="A", every=60)
+            + check("night_20h", f"{hour} == 20") + ["shot c003"])
+
+
 def sc_oak_mons():
     # #29: Oak's Ranch Pager Pokemon. Debug 2 leaves us at (15,8) in Pallet:
     # east to the lab yard (Tauros 21,10 and Pidgeot 21,12), talk to Tauros,
@@ -389,6 +420,8 @@ SCENARIOS = {
     "pager_other": (sc_pager_other, "Ranch Pager > Flash (not dark), then Teleport with Oak's Abra (#29)"),
     "pager_select": (sc_pager_select, "Register the Ranch Pager, then SELECT opens it on the map (#29)"),
     "pager_dig": (sc_pager_dig, "Ranch Pager > Dig in Diglett's Cave: Oak's Diglett digs us out (#29)"),
+    "rest": (sc_rest, "Delia: Rest till night, then till morning; the Start menu clock (#56, #27)"),
+    "rest_center": (sc_rest_center, "Nurse Joy in Pewter: Rest till night (#56)"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),

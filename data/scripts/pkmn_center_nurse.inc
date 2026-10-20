@@ -2,10 +2,11 @@ EventScript_PkmnCenterNurse::
 	goto_if_questlog EventScript_ReleaseEnd
 	message Text_WelcomeWantToHealPkmn
 	waitmessage
-	multichoice 19, 8, MULTI_YESNO, FALSE | (TRUE << 1)
+	call RR_EventScript_HealOrRestMenu @ Research Red (#56): Heal, Rest, No thanks
 	switch VAR_RESULT
 	case 0, EventScript_PkmnCenterNurse_HealPkmn
-	case 1 EventScript_PkmnCenterNurse_Goodbye
+	case 1, RR_EventScript_PkmnCenterNurse_Rest
+	case 2, EventScript_PkmnCenterNurse_Goodbye
 	case MULTI_B_PRESSED, EventScript_PkmnCenterNurse_Goodbye
 	end
 

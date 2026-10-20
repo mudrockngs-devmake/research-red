@@ -901,6 +901,7 @@
 	.include "data/scripts/research_red/rr_demo_blockers.inc"
 	.include "data/scripts/research_red/rr_pewter.inc"
 	.include "data/scripts/research_red/rr_ranch_pager.inc"
+	.include "data/scripts/research_red/rr_rest.inc"
 
 	.include "data/text/aide.inc"
 	.include "data/text/apprentice.inc"
@@ -946,10 +947,10 @@ gText_SelectWithoutRegisteredItem::
 Text_PlayerBootedUpPC::
 	.string "{PLAYER} booted up the PC.$"
 
-Text_WelcomeWantToHealPkmn::
-	.string "Welcome to our POKéMON CENTER!\p"
-	.string "Would you like me to heal your\n"
-	.string "POKéMON back to perfect health?$"
+Text_WelcomeWantToHealPkmn:: @ Research Red (#56): Heal or Rest
+	.string "Welcome to our Pokémon Center!\p"
+	.string "We can heal your Pokémon, or you\n"
+	.string "can rest here while we do.$"
 
 Text_TakeYourPkmnForFewSeconds::
 	.string "Okay, I'll take your POKéMON for a\n"
