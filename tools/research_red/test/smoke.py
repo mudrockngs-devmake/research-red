@@ -225,6 +225,20 @@ def sc_dexnav():
             + play_until("dexnav_closed", T.G.field_free(), 1500, key="B", every=30)
             + expect("MAP_ROUTE22"))
 
+def sc_rename():
+    # #71: Start > POKEMON > first Pokémon > SUMMARY, A on the info page renames.
+    # Name it one letter, then rename again to an empty name: the species name
+    # comes back (so it takes the new species name when it evolves).
+    def rename(keys):
+        return ["press A", "wait 120", "shot {}a"] + ["press B", "wait 8"] * 12 + keys + [
+                "wait 20", "shot {}c", "press START", "wait 40", "press A", "wait 150", "shot {}b"]
+    one = [l.format("n1") if "{}" in l else l for l in rename(["press A", "wait 10"])]
+    empty = [l.format("n2") if "{}" in l else l for l in rename([])]
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(2)
+            + ["wait 90", "press A", "wait 30", "shot s001", "press A", "wait 120", "shot s002"]
+            + one + empty + ["mash B 120", "wait 30", "shot s003"]
+            + play_until("rename_closed", T.G.field_free(), 2000, key="B", every=30))
+
 # Maps the report can name (anything else shows as a number)
 MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
              "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", "MAP_PALLET_TOWN_RIVALS_HOUSE", "MAP_ROUTE1",
@@ -246,6 +260,7 @@ SCENARIOS = {
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),
+    "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),

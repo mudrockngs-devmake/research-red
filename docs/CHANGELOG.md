@@ -13,6 +13,7 @@ Test builds are v0.0.x. Each entry lists what changed for players and testers, a
 - Changed: Research Rules moved from the Start menu into Options (#45). The Options row "Research Rules" (where Battle style was; Battle style is in the Rules) opens Elm's Rules on the map, now titled as the bet's rules. It works from Daisy's house on, and not from the title screen's Options.
 - Changed: the Field Guide moved into the Pokédex: press START in the Pokédex, then FIELD GUIDE (it replaces LIST BOTTOM; holding Down still reaches the end of the list). The Start menu is shorter: no more Guide or Rules.
 - New: the DexNav. After the Route 22 battle (win or lose), Jenny gives you her old Pokémon-spotting logbook, turned into an app. Start > DexNav shows the area's Pokémon; pick one you've seen and sneak up on it (search levels, hidden abilities, egg moves, and hidden Pokémon in the grass).
+- New: rename your Pokémon anytime (#71): in its summary, press A on the info page. The name box starts with the current name; OK keeps it, and erasing it all and pressing OK gives back the species name, so it takes its new species name when it evolves.
 
 ## v0.0.15
 - Fixed: the Pokédex crashed (blue error screen) when moving from the Stats page to the Evo page.

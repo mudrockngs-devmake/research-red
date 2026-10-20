@@ -1874,6 +1874,10 @@ static void SaveInputText(void)
             break;
         }
     }
+    // Research Red (#71): renaming to an empty name restores the species name,
+    // so the Pokémon takes its new species name when it evolves again
+    if (i == sNamingScreen->template->maxChars && sNamingScreen->templateNum == NAMING_SCREEN_NICKNAME)
+        StringCopy(sNamingScreen->destBuffer, GetSpeciesName(sNamingScreen->monSpecies));
 }
 
 static void LoadGfx(void)
@@ -2082,6 +2086,18 @@ static const struct NamingScreenTemplate sMonNamingScreenTemplate =
     .title = COMPOUND_STRING("'s nickname?"),
 };
 
+// Research Red (#71): renaming starts from the current name, so OK without
+// changes keeps it and erasing it all restores the species name
+static const struct NamingScreenTemplate sMonRenameScreenTemplate =
+{
+    .copyExistingString = TRUE,
+    .maxChars = POKEMON_NAME_LENGTH,
+    .iconFunction = 3,
+    .addGenderIcon = 1,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .title = COMPOUND_STRING("'s nickname?"),
+};
+
 static const struct NamingScreenTemplate sRivalNamingScreenTemplate =
 {
     .copyExistingString = FALSE,
@@ -2097,7 +2113,7 @@ static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =
     [NAMING_SCREEN_PLAYER]     = &sPlayerNamingScreenTemplate,
     [NAMING_SCREEN_BOX]        = &sPcBoxNamingScreenTemplate,
     [NAMING_SCREEN_CAUGHT_MON] = &sMonNamingScreenTemplate,
-    [NAMING_SCREEN_NICKNAME]   = &sMonNamingScreenTemplate,
+    [NAMING_SCREEN_NICKNAME]   = &sMonRenameScreenTemplate, // Research Red
     [NAMING_SCREEN_RIVAL]      = &sRivalNamingScreenTemplate,
 };
 
