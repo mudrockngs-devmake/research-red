@@ -35,7 +35,8 @@ Pokédex banter after) and every story battle (nobody evolves afterwards).
 it shows EVOLVE too. Trade-with-item evolutions use the expansion's
 `I_USE_EVO_HELD_ITEMS_FROM_BAG` (the species data has a matching `EVO_ITEM`
 entry). For Gen 1-2 the data drops the Linking Cord lines and the unreachable
-trade-with-item lines, so the Pokédex EVO page shows one method each ("Lv↑37",
-"Metal Coat is used"). Trade-partner evolutions (Karrablast, Shelmet) are not
-covered yet.
+trade-with-item lines in every generation's data, so the Pokédex EVO page shows
+one method each ("Lv↑37", "Metal Coat is used"). Trade-partner evolutions
+(Karrablast, Shelmet) evolve from the same level with the partner species in the
+party (`RR_IsTradePartnerEvolution`, shown as "Lv↑37, with Shelmet").
 The trade items (and the Bag-usable held items such as Razor Claw) are kept after use: `RR_IsKeptEvolutionItem` in `src/party_menu.c` (`CB2_UseEvolutionStone`). Stones are still consumed.

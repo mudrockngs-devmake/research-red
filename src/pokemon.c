@@ -4460,6 +4460,23 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
     return TRUE;
 }
 
+// Research Red (#65): trade evolutions without trading (see P_RR_TRADE_EVO_LEVEL)
+bool32 RR_IsTradePartnerEvolution(const struct Evolution *evo)
+{
+    return evo->method == EVO_TRADE && evo->params != NULL
+        && evo->params[0].condition == IF_TRADE_PARTNER_SPECIES && evo->params[1].condition == CONDITIONS_END;
+}
+
+static bool32 RR_PartyHasSpecies(u32 species)
+{
+    u32 i;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == species && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+            return TRUE;
+    return FALSE;
+}
+
 u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 evolutionItem, struct Pokemon *tradePartner, bool32 *canStopEvo, enum EvoState evoState)
 {
     int i;
@@ -4515,6 +4532,14 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
                 if (P_RR_TRADE_EVO_LEVEL != 0 && evolutions[i].params == NULL && level >= P_RR_TRADE_EVO_LEVEL
                  && !(P_RR_EVOLVE_ON_DEMAND && mode == EVO_MODE_BATTLE_ONLY))
                     conditionsMet = TRUE;
+                // Traded for a species (Karrablast, Shelmet): that level, with that species in the party
+                if (P_RR_TRADE_EVO_LEVEL != 0 && RR_IsTradePartnerEvolution(&evolutions[i]) && level >= P_RR_TRADE_EVO_LEVEL
+                 && !(P_RR_EVOLVE_ON_DEMAND && mode == EVO_MODE_BATTLE_ONLY)
+                 && RR_PartyHasSpecies(evolutions[i].params[0].arg1))
+                {
+                    targetSpecies = evolutions[i].targetSpecies;
+                    goto rr_found; // its only condition (the trade partner) is met by the party
+                }
                 break;
             default:
                 break;
@@ -4651,6 +4676,7 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         }
         break;
     }
+rr_found: // Research Red (#65): a trade-partner evolution met by the party
 
     // Pikachu, Meowth, Eevee and Duraludon cannot evolve if they have the
     // Gigantamax Factor. We assume that is because their evolutions
