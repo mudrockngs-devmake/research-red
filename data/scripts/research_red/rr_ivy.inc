@@ -183,9 +183,9 @@ RR_Text_IvyTalk_Anywhere_1:
 	.string "Science is so romantic.$"
 
 RR_Text_IvyTalk_Anywhere_2:
-	.string "Ivy: If Elm wins this bet, we're\n"
-	.string "moving to Alola. No forwarding\l"
-	.string "address.$"
+	.string "Ivy: If Elm wins the bet, we'll\n"
+	.string "send him malasadas from Alola.\p"
+	.string "A whole box. He'll have earned it.$"
 
 RR_Text_IvyTalk_Pallet_0:
 	.string "Ivy: Pallet smells like sea salt\n"
@@ -244,8 +244,8 @@ RR_Text_IvyTalk_Route2_1:
 	.string "forest is spilling over.$"
 
 RR_Text_IvyTalk_Route2_2:
-	.string "Ivy: Bug spray, sweetie?\n"
-	.string "…You forgot the bug spray.$"
+	.string "Ivy: I love bug season. Everything\n"
+	.string "here is about to evolve.$"
 
 RR_Text_IvyTalk_Forest_0:
 	.string "Ivy: Pikachu in a forest. Ash's\n"
