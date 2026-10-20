@@ -9,7 +9,7 @@ How each of them talked in the early anime, with sample lines: [reference/VOICES
 
 | Who | Voice | Tics and habits | Avoid |
 |---|---|---|---|
-| **The player** (Maple / Cedar / Sumac) | Dry, self-deprecating, deadpan one-liners | Undersells themself ("I carried the snacks"), adores Ivy, teases Elm gently | Being cruel; long speeches |
+| **The player** (Maple / Cedar / Sumac) | Wry, warm, absurd: ironic mock-disbelief, dry understatement, puns ([sheet](characters/PLAYER.md)) | Undersells themself ("I carried the snacks"), adores Ivy, teases Elm gently | Being cruel; long speeches |
 | **Ivy** (the player's wife) | Warm, sharp, confident; the foremost expert on regional forms ([sheet](characters/IVY.md)) | Calls the player **"sweetie"**; corrects the record with a smile; fun facts | Being only the straight man; she gets jokes too |
 | **Elm** (rival, Johto professor) | Loud, eager, competitive, secretly sentimental | "For science!", grand declarations, instant excuses ("It's allergies! Daisy has a Persian!"), dessert names for his Pokémon | Being genuinely dumb; he's brilliant and over-excited |
 | **Jenny** (Elm's wife, off-duty officer) | Deadpan, loving, procedural | **"In my professional opinion"**, "by protocol", calls Elm **"dear"**, mid-sentence reality checks | Being cold; she's on his side, always |
