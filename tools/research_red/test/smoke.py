@@ -153,6 +153,16 @@ def sc_gerald():
             + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")) + ["shot t001"])
 
 
+def sc_pc():
+    # Start > PC from anywhere (#34). After the lab (story 3) the menu is
+    # DEBUG, POKEDEX, POKEMON, Guide, PC: open it, enter Pokemon storage, back out.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(4)
+            + ["wait 60", "shot p001", "press A", "wait 60", "mash A 60", "wait 90", "shot p002",
+               "press A", "wait 90", "shot p003"]
+            + play_until("closed", T.G.field_free(), 1500, key="B", every=30)
+            + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
+
+
 def sc_guide():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60", "shot s000"]
             # Start menu here: DEBUG, POKEDEX, POKEMON, Guide
@@ -186,6 +196,7 @@ SCENARIOS = {
     "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch in the Pokémon Center (test mode)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
+    "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "guide": (sc_guide, "Start > Guide on Route 1"),
     "rules": (sc_rules, "Start > Rules after the lunch"),
 }

@@ -989,6 +989,7 @@ extern const u8 BattlePyramid_FindItemBall[];
 // Research Red
 extern const u8 RR_EventScript_FieldGuide[];
 extern const u8 RR_EventScript_ResearchRules[];
+extern const u8 RR_EventScript_StartMenuPC[]; // Research Red: Start > PC (#34)
 extern const u8 RR_EventScript_DexBanter[];
 extern const u8 RR_EventScript_OldSaveWarning[];
 
