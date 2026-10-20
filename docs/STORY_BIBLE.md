@@ -31,3 +31,10 @@ Ivy and Jenny are old friends; Elm and the player are best-friend rivals. Couple
 
 ## Running gags
 Gerald the Tentacool on the anchor line; Slowpoke never hung up the call; "Persian" Muffin; the lab carpet; Elm's "warm-up"; Jenny's reports with diagrams; Mimey's dishes.
+
+## The research payoff (owner, 2026-10-19)
+- The research goal is the starters' alternate forms. Its payoff, after the Elite Four, is **Mega Evolution and regional forms**: those systems fit the story; no system goes in just for the sake of it. When and where is still open (a large new area or a reworked Sevii Islands could host it).
+- **Z-Moves, Dynamax / Gigantamax and Tera stay out of this game** (issue #1), saved for a possible sequel.
+
+## Sequel seeds (spitballing, nothing decided)
+A Johto game where Elm is the lead researcher (as Oak is here). The player and Ivy face Professors Kukui and Burnet as a couple of rivals in the Johto challenge. Their research goal: Z-Moves (Kukui's specialty), Ultra Wormholes (Burnet's), possibly leading to Eternatus and Gigantamax. Mentions in the Daisy scene lay groundwork for it.

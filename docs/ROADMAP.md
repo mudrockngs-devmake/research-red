@@ -21,7 +21,6 @@ added or closed.
 | # | What | Risk |
 |---|---|---|
 | [#26](https://github.com/mudrockngs-devmake/research-red/issues/26) | New game defaults: fast text, L/R buttons | low |
-| [#25](https://github.com/mudrockngs-devmake/research-red/issues/25) | When to show opponent types (owner decides; one setting) | low |
 | [#47](https://github.com/mudrockngs-devmake/research-red/issues/47) | Lab: proper dialogue after losing to Elm and Jenny | low |
 | [#48](https://github.com/mudrockngs-devmake/research-red/issues/48) | Elm's pastry nicknames for his starters | low |
 | [#31](https://github.com/mudrockngs-devmake/research-red/issues/31) | Daisy's normal lines with her portrait | low |
@@ -30,6 +29,7 @@ added or closed.
 | [#22](https://github.com/mudrockngs-devmake/research-red/issues/22) | Portrait and name tag sit lower (no gap when bouncing) | low |
 | [#23](https://github.com/mudrockngs-devmake/research-red/issues/23) | Oak's Lab table pieces join up | low |
 | [#14](https://github.com/mudrockngs-devmake/research-red/issues/14) | Route 22 odd tiles | low |
+| [#61](https://github.com/mudrockngs-devmake/research-red/issues/61) | Lab Slowpoke wanders too fast | low |
 | [#35](https://github.com/mudrockngs-devmake/research-red/issues/35) | Demo blocker at Pewter's exit | low |
 | [#36](https://github.com/mudrockngs-devmake/research-red/issues/36) | Demo blocker: Gerald at Pallet's shore | low |
 | [#54](https://github.com/mudrockngs-devmake/research-red/issues/54) | Rule: heal after every battle | low (new rule flag) |
@@ -42,7 +42,8 @@ added or closed.
 | [#44](https://github.com/mudrockngs-devmake/research-red/issues/44) | Research Rules talk moves to Daisy's house | medium (story order; old saves past Daisy need care, docs/SAVES.md) |
 | [#46](https://github.com/mudrockngs-devmake/research-red/issues/46) | Lab: watch or skip Elm and Jenny vs Oak | medium |
 | [#21](https://github.com/mudrockngs-devmake/research-red/issues/21) | Portraits hide while a choice menu is open | medium (portrait code is shared) |
-| [#3](https://github.com/mudrockngs-devmake/research-red/issues/3) | Portraits during camera pans (owner decides) | medium |
+| [#3](https://github.com/mudrockngs-devmake/research-red/issues/3) | Hide portraits during camera pans (decided) | medium |
+| [#25](https://github.com/mudrockngs-devmake/research-red/issues/25) | Opponent types shown for the whole battle (decided; new work) | medium |
 | [#42](https://github.com/mudrockngs-devmake/research-red/issues/42) | Field Guide cleanup: icons, caught color, day and night | low-medium |
 | [#20](https://github.com/mudrockngs-devmake/research-red/issues/20) | Pokédex tab glitches (with #19) | medium |
 | [#27](https://github.com/mudrockngs-devmake/research-red/issues/27) | Start menu clock glitch | medium |
@@ -85,12 +86,11 @@ added or closed.
 | [#11](https://github.com/mudrockngs-devmake/research-red/issues/11) | Proper case and more natural text everywhere |
 | [#33](https://github.com/mudrockngs-devmake/research-red/issues/33) | Animated battle sprites (gen 5 style) |
 | [#60](https://github.com/mudrockngs-devmake/research-red/issues/60) | Postgame Wild Area |
+| [#1](https://github.com/mudrockngs-devmake/research-red/issues/1) | Post-Elite Four payoff: Mega Evolution and regional forms |
 
 ## Waiting on the owner (decisions)
-- [#1](https://github.com/mudrockngs-devmake/research-red/issues/1) When Mega / Z-Moves / Dynamax / Tera unlock
-- [#3](https://github.com/mudrockngs-devmake/research-red/issues/3) Portraits during camera pans
-- [#25](https://github.com/mudrockngs-devmake/research-red/issues/25) When to show opponent types
-- [#29](https://github.com/mudrockngs-devmake/research-red/issues/29) Which of Oak's Pokémon does Fly, and the pager item's name
+- [#29](https://github.com/mudrockngs-devmake/research-red/issues/29) Which of Oak's Pokémon do each field move (list proposed 2026-10-19), and the pager item's name
+- Decided 2026-10-19: #1 (Mega + regional forms are the post-Elite Four payoff; no Z-Moves/Dynamax/Tera this game; see STORY_BIBLE.md), #3 (hide portraits during pans), #25 (types shown all battle)
 
 ## Tooling (no game changes)
 [#16](https://github.com/mudrockngs-devmake/research-red/issues/16) phone / hardware test,
