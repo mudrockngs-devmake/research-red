@@ -68,7 +68,8 @@ RR_Lab_EventScript_ChooseLoop::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	message RR_Lab_Text_ChooseStarter
 	waitmessage
-	dynmultichoice 1, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_RR_STARTER, RR_Lab_Text_Name_Bulbasaur, RR_Lab_Text_Name_Charmander, RR_Lab_Text_Name_Squirtle, RR_Lab_Text_Name_Chikorita, RR_Lab_Text_Name_Cyndaquil, RR_Lab_Text_Name_Totodile
+	@ The list sits right of the speaker's portrait (tile 10), its picture box after it (#21)
+	dynmultichoice 10, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_RR_STARTER, RR_Lab_Text_Name_Bulbasaur, RR_Lab_Text_Name_Charmander, RR_Lab_Text_Name_Squirtle, RR_Lab_Text_Name_Chikorita, RR_Lab_Text_Name_Cyndaquil, RR_Lab_Text_Name_Totodile
 	closemessage
 	switch VAR_RESULT
 	case 0, RR_Lab_EventScript_PickBulbasaur
