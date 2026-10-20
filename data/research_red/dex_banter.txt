@@ -256,7 +256,7 @@ Ivy: Galarian Meowth are tough little miners. Alolan ones are very proud.
 
 [Persian]
 Ivy: This is the Persian Elm keeps sneezing about!
-P: Daisy's Muffin is a Rattata, Elm.
+P: Muffin is a Rattata. Elm will never accept this.
 Ivy: Alolan Persian have round faces. They're a symbol of luxury there.
 
 [Psyduck]
@@ -278,15 +278,15 @@ P: It's angry at the concept of chasing.
 
 [Growlithe]
 P: Growlithe is famous for its loyalty.
-Ivy: The Hisuian ones guarded castles long ago, with rocky manes.
+Ivy: Jenny's Cruller is a Growlithe. Best partner on the force.
 
 [Arcanine]
 Ivy: Old stories call Arcanine the legendary Pokémon.
-P: Hisuian Arcanine had stone in their fur. Very old-timey.
+P: One day Cruller will be this big. Jenny will need a bigger bike.
 
 [Poliwag]
 P: The spiral on Poliwag's belly is its insides showing through.
-Ivy: Stop staring at it, sweetie. You'll get dizzy.
+Ivy: Stop staring at it. You'll get dizzy.
 
 [Poliwhirl]
 Ivy: Poliwhirl sweats a slippery oil.
@@ -311,7 +311,7 @@ P: My brain stopped at "Alakazam."
 
 [Machop]
 P: Machop trains all day, every day.
-Ivy: Maybe it could teach you to lift your suitcase.
+Ivy: Maybe it could carry our suitcases. Both of them.
 
 [Machoke]
 Ivy: Machoke wears a belt to hold back its strength.
@@ -369,6 +369,7 @@ Ivy: The Galarian ones are psychic and fairy. Sweetie, they're so pretty.
 Ivy: Slowpoke takes five seconds to notice pain.
 P: It's the one from the call! Well, a cousin.
 Ivy: The Galarian ones have yellow heads from eating spices.
+P: Diet really can change color. Flamingos are pink from what they eat.
 
 [Slowbro]
 P: The Shellder on Slowbro's tail never lets go.
@@ -385,14 +386,14 @@ Ivy: A very committed friendship.
 [Farfetch'd]
 Ivy: Farfetch'd always carries its leek.
 P: The Galarian ones carry an even bigger leek.
-Ivy: Leek fashion is regional too, sweetie.
+Ivy: Leek fashion is regional too.
 
 [Doduo]
 P: Doduo's two heads never sleep at the same time.
 Ivy: Someone's always on watch. Like us on the ferry.
 
 [Dodrio]
-Ivy: A Dodrio was in the first episode of the anime!
+Ivy: Three heads, and all of them want breakfast.
 P: Three heads, three opinions. Like a lab meeting.
 
 [Seel]
@@ -405,7 +406,7 @@ P: Sailors were very tired, I think.
 
 [Grimer]
 P: Grimer is made of sludge.
-Ivy: The Alolan ones are colorful. The crystals are its toxins, sweetie.
+Ivy: The Alolan ones are colorful. The crystals are its toxins.
 
 [Muk]
 Ivy: Plants won't grow where Muk has been.
@@ -428,7 +429,7 @@ Ivy: Haunter likes to lick people from the shadows.
 P: I felt something cold earlier! I thought it was the breeze!
 
 [Gengar]
-P: The Gengar from the anime's first episode! The TV battle!
+P: The Gengar from that famous TV battle!
 Ivy: Gengar hides in your shadow to steal your warmth.
 P: That's why I'm always cold.
 
@@ -454,7 +455,7 @@ P: My aim is also bad. We're kindred spirits.
 
 [Voltorb]
 P: Voltorb looks just like a Poké Ball.
-Ivy: Hisuian Voltorb look like the old wooden ones. Living history.
+Ivy: Silph says it isn't one of their Poké Balls. Very firmly.
 
 [Electrode]
 Ivy: Electrode can explode at the slightest touch.
@@ -547,7 +548,7 @@ P: Ours makes pancakes. Very elegant.
 
 [Scyther]
 Ivy: Scyther moves so fast it looks like it's cloning itself.
-P: Hisuian ones evolved into Kleavor using black rocks. Ancient stuff.
+P: (Field notes: Scyther. Very fast. Do not high-five.)
 
 [Jynx]
 P: Jynx dances to communicate.
@@ -570,12 +571,12 @@ P: Tauros whip themselves with their tails to get going.
 Ivy: In Paldea there are three breeds of Tauros. Fire, water, fighting!
 
 [Magikarp]
-Ivy: The first episode had Magikarp in the river!
+Ivy: Magikarp in every river in Kanto. Splashing proudly.
 P: Splash. Very brave. Mostly splash.
 
 [Gyarados]
-P: Gyarados chased Ash in the first episode!
-Ivy: Magikarp evolves into this. Patience pays off, sweetie.
+P: A Gyarados chased Ash down a river on his first day. Delia told us.
+Ivy: Magikarp evolves into this. Patience pays off.
 
 [Lapras]
 Ivy: Lapras carries people across the sea.
@@ -615,7 +616,7 @@ P: Me after Delia's pancakes.
 
 [Kabuto]
 P: Kabuto hasn't changed in three hundred million years.
-Ivy: Neither has your sense of humor.
+Ivy: Neither has your sense of humor. Thank goodness.
 
 [Kabutops]
 Ivy: Kabutops hunted with its scythes in ancient seas.
@@ -624,6 +625,7 @@ P: Fossils are the best kind of time travel.
 [Aerodactyl]
 P: Aerodactyl ruled the ancient skies.
 Ivy: Brought back from amber. It looks so happy to be here.
+P: Ancient DNA from amber. I have so many questions. Mostly about contamination.
 
 [Snorlax]
 Ivy: Snorlax eats nine hundred pounds of food a day.
@@ -648,7 +650,7 @@ P: Elm swears it smells like his mom's cookies.
 
 [Bayleef]
 P: Bayleef's leaves smell like spice.
-Ivy: Like tea. Calming tea, sweetie.
+Ivy: Like tea. Calming tea.
 
 [Meganium]
 Ivy: Meganium's breath can bring dead plants back to life.
@@ -657,7 +659,6 @@ P: I need one for the lab windowsill.
 [Cyndaquil]
 P: Cyndaquil's back flares up when it's scared.
 Ivy: It's shy. Like you at parties.
-Ivy: The old scrolls say the Hisuian Typhlosion had ghostly flames.
 
 [Quilava]
 Ivy: Quilava's fire is hot enough to make you sweat from far away.
@@ -665,7 +666,7 @@ P: Turn it down, Quilava. I'm already sweating.
 
 [Typhlosion]
 P: Typhlosion's heat can cause explosions.
-Ivy: In Hisui it burned with ghostly purple fire. That's Oak's old scrolls!
+Ivy: Oak's old scrolls draw one with strange, dark flames. A mystery!
 
 [Totodile]
 Ivy: Totodile bites everything. Lovingly.
@@ -674,7 +675,7 @@ Ivy: Lovingly.
 
 [Croconaw]
 P: Croconaw's teeth grow back when they fall out.
-Ivy: Like your bad jokes.
+Ivy: Like your jokes. Endless. I love them.
 
 [Feraligatr]
 Ivy: Feraligatr opens its huge jaws to scare its foes.
@@ -699,6 +700,7 @@ P: Like the lab at a party.
 [Spinarak]
 P: Spinarak's web is strong enough to hold a stone.
 Ivy: It waits for days without moving.
+P: Spider silk is stronger than steel, weight for weight. True fact.
 
 [Ariados]
 Ivy: Ariados spins thread from both ends.
@@ -727,3 +729,64 @@ Ivy: Then this one's a wish come true.
 [Igglybuff]
 Ivy: Igglybuff's body is so bouncy it never stops.
 P: Bouncy. That's my new research term.
+
+# --- Johto Pokémon in the demo's wild tables (#59) -----------------------
+[Chinchou]
+Ivy: Chinchou's antennae glow so they can talk in the deep.
+P: Bioluminescence. Same trick as fireflies. Science is beautiful.
+
+[Girafarig]
+P: Girafarig's tail has a tiny brain of its own.
+Ivy: So it's never lonely. Even when it's grumpy.
+P: Its name reads the same backwards. I checked twice.
+
+[Hoppip]
+Ivy: Hoppip are so light the wind carries them for miles.
+P: We'll need a paperweight. Jenny has several.
+
+[Marill]
+P: Marill's tail is full of oil, so it floats like a buoy.
+Ivy: A built-in life jacket. You'd love one on the ferry.
+
+[Misdreavus]
+Ivy: Misdreavus loves to startle people at night.
+P: (Field notes: Misdreavus. Startled me twice. Don't ask about the second.)
+
+[Natu]
+P: Natu barely moves. People say it can see the future.
+Ivy: Then it already knows how this conversation ends.
+
+[Phanpy]
+Ivy: Phanpy sprays water with its trunk to cool off.
+P: The cutest garden hose in Kanto.
+
+[Pineco]
+P: Pineco hangs in trees and blasts anyone who shakes them.
+Ivy: So we don't shake the tree, sweetie.
+P: I was absolutely going to shake the tree.
+
+[Qwilfish]
+Ivy: Qwilfish gulps water to puff up. Then the spines come out.
+P: Puffs up when it's scared. Relatable again.
+
+[Remoraid]
+P: Remoraid shoots water like a jet, and it never misses.
+Ivy: It could water Delia's garden from the porch.
+
+[Shuckle]
+Ivy: Shuckle keeps berries in its shell. They slowly turn to juice.
+P: A very long project. I respect that.
+
+[Snubbull]
+P: Snubbull looks tough, but it's a big softie.
+Ivy: Like you.
+P: Don't tell anyone.
+
+[Teddiursa]
+Ivy: Teddiursa licks honey off its paws all day.
+P: That's not a habit. That's a lifestyle.
+
+[Yanma]
+P: Yanma can see all around without turning its head.
+Ivy: Compound eyes. Thousands of tiny lenses.
+P: (Field notes: Yanma. Saw me first.)
