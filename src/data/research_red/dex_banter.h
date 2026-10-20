@@ -504,6 +504,17 @@ static const u8 sDexBanter_Snorlax_1[] = _("{PLAYER}: Jenny packs lunch for it.\
 static const u8 sDexBanter_Snorlax_2[] = _("Ivy: That's us on a Sunday.");
 static const u8 sDexBanter_Snorlax_3[] = _("{PLAYER}: That's a perfect Sunday.");
 static const u8 *const sDexBanter_Snorlax[] = { sDexBanter_Snorlax_0, sDexBanter_Snorlax_1, sDexBanter_Snorlax_2, sDexBanter_Snorlax_3, NULL };
+static const u8 sDexBanter_Articuno_0[] = _("Ivy: Articuno is said to appear to\ntravelers lost in the snowy\lmountains.");
+static const u8 sDexBanter_Articuno_1[] = _("{PLAYER}: A rescue service with\nwings. Is this in the helicopter\lstory too?");
+static const u8 sDexBanter_Articuno_2[] = _("Ivy: It's in the helicopter story\ntoo.");
+static const u8 *const sDexBanter_Articuno[] = { sDexBanter_Articuno_0, sDexBanter_Articuno_1, sDexBanter_Articuno_2, NULL };
+static const u8 sDexBanter_Zapdos_0[] = _("{PLAYER}: Zapdos is said to appear\nwhen thunderclouds gather.");
+static const u8 sDexBanter_Zapdos_1[] = _("Ivy: Like Elm before a battle.");
+static const u8 *const sDexBanter_Zapdos[] = { sDexBanter_Zapdos_0, sDexBanter_Zapdos_1, NULL };
+static const u8 sDexBanter_Moltres_0[] = _("Ivy: Each flap of Moltres's wings\nsets off a bright flame.");
+static const u8 sDexBanter_Moltres_1[] = _("{PLAYER}: They say it means spring\nis coming.");
+static const u8 sDexBanter_Moltres_2[] = _("Ivy: Good. Delia's garden can't\nwait.");
+static const u8 *const sDexBanter_Moltres[] = { sDexBanter_Moltres_0, sDexBanter_Moltres_1, sDexBanter_Moltres_2, NULL };
 static const u8 sDexBanter_Dratini_0[] = _("{PLAYER}: Dratini was thought to be\na myth for years.");
 static const u8 sDexBanter_Dratini_1[] = _("Ivy: Then someone fished one up.\nThe best research story.");
 static const u8 *const sDexBanter_Dratini[] = { sDexBanter_Dratini_0, sDexBanter_Dratini_1, NULL };
@@ -513,6 +524,14 @@ static const u8 *const sDexBanter_Dragonair[] = { sDexBanter_Dragonair_0, sDexBa
 static const u8 sDexBanter_Dragonite_0[] = _("{PLAYER}: Dragonite can circle the\nworld in sixteen hours.");
 static const u8 sDexBanter_Dragonite_1[] = _("Ivy: It helps lost ships find\ntheir way home. Like you with me.");
 static const u8 *const sDexBanter_Dragonite[] = { sDexBanter_Dragonite_0, sDexBanter_Dragonite_1, NULL };
+static const u8 sDexBanter_Mewtwo_0[] = _("{PLAYER}: Elm swears he saw a\npurple one fly over Route 1.");
+static const u8 sDexBanter_Mewtwo_1[] = _("Ivy: It had a tail, he says.");
+static const u8 sDexBanter_Mewtwo_2[] = _("{PLAYER}: (I believe him about\neighty percent now.)");
+static const u8 *const sDexBanter_Mewtwo[] = { sDexBanter_Mewtwo_0, sDexBanter_Mewtwo_1, sDexBanter_Mewtwo_2, NULL };
+static const u8 sDexBanter_Mew_0[] = _("Ivy: Some scientists think Mew\ncarries the genes of every\lPokémon.");
+static const u8 sDexBanter_Mew_1[] = _("{PLAYER}: One ancestor for\neverything. My whole field in one\lpink cat.");
+static const u8 sDexBanter_Mew_2[] = _("Ivy: Science is so romantic.");
+static const u8 *const sDexBanter_Mew[] = { sDexBanter_Mew_0, sDexBanter_Mew_1, sDexBanter_Mew_2, NULL };
 static const u8 sDexBanter_Chikorita_0[] = _("Ivy: The leaf on its head gives\noff a sweet smell.");
 static const u8 sDexBanter_Chikorita_1[] = _("{PLAYER}: Elm swears it smells like\nhis mom's cookies.");
 static const u8 *const sDexBanter_Chikorita[] = { sDexBanter_Chikorita_0, sDexBanter_Chikorita_1, NULL };
@@ -723,6 +742,127 @@ static const u8 sDexBanter_Gligar_0[] = _("{PLAYER}: Gligar glides in silently\n
 static const u8 sDexBanter_Gligar_1[] = _("Ivy: Keep your face behind your\nnotebook.");
 static const u8 sDexBanter_Gligar_2[] = _("{PLAYER}: My notebook is my shield.");
 static const u8 *const sDexBanter_Gligar[] = { sDexBanter_Gligar_0, sDexBanter_Gligar_1, sDexBanter_Gligar_2, NULL };
+static const u8 sDexBanter_Steelix_0[] = _("Ivy: Steelix lives deeper\nunderground than any other\lPokémon.");
+static const u8 sDexBanter_Steelix_1[] = _("{PLAYER}: Onix plus pressure plus\ntime. Same way you get diamonds.\lRoughly.");
+static const u8 *const sDexBanter_Steelix[] = { sDexBanter_Steelix_0, sDexBanter_Steelix_1, NULL };
+static const u8 sDexBanter_Granbull_0[] = _("{PLAYER}: Granbull looks scary, but\nit's actually timid.");
+static const u8 sDexBanter_Granbull_1[] = _("Ivy: Small Pokémon adore it.\nEveryone's big brother.");
+static const u8 sDexBanter_Granbull_2[] = _("{PLAYER}: Like me with Elm.");
+static const u8 *const sDexBanter_Granbull[] = { sDexBanter_Granbull_0, sDexBanter_Granbull_1, sDexBanter_Granbull_2, NULL };
+static const u8 sDexBanter_Scizor_0[] = _("Ivy: The eyes on Scizor's claws\nare fake. They scare off\lattackers.");
+static const u8 sDexBanter_Scizor_1[] = _("{PLAYER}: A bluff. In steel. Very\neffective.");
+static const u8 *const sDexBanter_Scizor[] = { sDexBanter_Scizor_0, sDexBanter_Scizor_1, NULL };
+static const u8 sDexBanter_Heracross_0[] = _("{PLAYER}: Heracross can throw a\nhundred times its own weight.");
+static const u8 sDexBanter_Heracross_1[] = _("Ivy: All for a sip of sweet tree\nsap.");
+static const u8 sDexBanter_Heracross_2[] = _("{PLAYER}: Elm's spirit Pokémon.");
+static const u8 *const sDexBanter_Heracross[] = { sDexBanter_Heracross_0, sDexBanter_Heracross_1, sDexBanter_Heracross_2, NULL };
+static const u8 sDexBanter_Sneasel_0[] = _("Ivy: Sneasel climb trees to steal\neggs from nests.");
+static const u8 sDexBanter_Sneasel_1[] = _("{PLAYER}: Elm discovered Eggs. He'd\nhave words with it.");
+static const u8 *const sDexBanter_Sneasel[] = { sDexBanter_Sneasel_0, sDexBanter_Sneasel_1, NULL };
+static const u8 sDexBanter_Ursaring_0[] = _("Ivy: Ursaring can smell food\nburied underground.");
+static const u8 sDexBanter_Ursaring_1[] = _("{PLAYER}: So it could find Jenny's\npicnic basket from here.");
+static const u8 *const sDexBanter_Ursaring[] = { sDexBanter_Ursaring_0, sDexBanter_Ursaring_1, NULL };
+static const u8 sDexBanter_Slugma_0[] = _("{PLAYER}: Slugma is made of magma.\nIf it stops moving, it hardens.");
+static const u8 sDexBanter_Slugma_1[] = _("Ivy: So it never sits down. Like\nElm at a conference.");
+static const u8 *const sDexBanter_Slugma[] = { sDexBanter_Slugma_0, sDexBanter_Slugma_1, NULL };
+static const u8 sDexBanter_Magcargo_0[] = _("{PLAYER}: The Pokédex says Magcargo\nis hotter than the sun's surface.");
+static const u8 sDexBanter_Magcargo_1[] = _("Ivy: The Pokédex and physics have\nnot agreed on that.");
+static const u8 *const sDexBanter_Magcargo[] = { sDexBanter_Magcargo_0, sDexBanter_Magcargo_1, NULL };
+static const u8 sDexBanter_Swinub_0[] = _("Ivy: Swinub sniffs out mushrooms\nunder frozen ground.");
+static const u8 sDexBanter_Swinub_1[] = _("{PLAYER}: A truffle pig with a\nfringe. Delicious research.");
+static const u8 *const sDexBanter_Swinub[] = { sDexBanter_Swinub_0, sDexBanter_Swinub_1, NULL };
+static const u8 sDexBanter_Piloswine_0[] = _("Ivy: Piloswine's hair covers its\neyes. It goes by smell.");
+static const u8 sDexBanter_Piloswine_1[] = _("{PLAYER}: It needs a haircut. Daisy\nwould love to groom it.");
+static const u8 *const sDexBanter_Piloswine[] = { sDexBanter_Piloswine_0, sDexBanter_Piloswine_1, NULL };
+static const u8 sDexBanter_Corsola_0[] = _("Ivy: Corsola live in warm, clean\nseas. If the water turns dirty,\lthey leave.");
+static const u8 sDexBanter_Corsola_1[] = _("{PLAYER}: Healthy reef, happy\nCorsola. Sometimes ecology is\lsimple.");
+static const u8 *const sDexBanter_Corsola[] = { sDexBanter_Corsola_0, sDexBanter_Corsola_1, NULL };
+static const u8 sDexBanter_Octillery_0[] = _("{PLAYER}: Remoraid, a fish, evolves\ninto Octillery, an octopus.");
+static const u8 sDexBanter_Octillery_1[] = _("Ivy: Don't tell Elm. He'll start a\nlecture.");
+static const u8 sDexBanter_Octillery_2[] = _("{PLAYER}: He's already started. I\ncan feel it.");
+static const u8 *const sDexBanter_Octillery[] = { sDexBanter_Octillery_0, sDexBanter_Octillery_1, sDexBanter_Octillery_2, NULL };
+static const u8 sDexBanter_Delibird_0[] = _("Ivy: Delibird carries food in its\ntail and shares it.");
+static const u8 sDexBanter_Delibird_1[] = _("{PLAYER}: A Pokémon that delivers.\nDelia would approve.");
+static const u8 *const sDexBanter_Delibird[] = { sDexBanter_Delibird_0, sDexBanter_Delibird_1, NULL };
+static const u8 sDexBanter_Mantine_0[] = _("Ivy: Mantine glide over the waves\nwith Remoraid riding along.");
+static const u8 sDexBanter_Mantine_1[] = _("{PLAYER}: A ferry with no delays.\nThe ferry company should take\lnotes.");
+static const u8 *const sDexBanter_Mantine[] = { sDexBanter_Mantine_0, sDexBanter_Mantine_1, NULL };
+static const u8 sDexBanter_Skarmory_0[] = _("{PLAYER}: People once made swords\nfrom Skarmory's fallen feathers.");
+static const u8 sDexBanter_Skarmory_1[] = _("Ivy: That's one way to recycle.");
+static const u8 *const sDexBanter_Skarmory[] = { sDexBanter_Skarmory_0, sDexBanter_Skarmory_1, NULL };
+static const u8 sDexBanter_Houndoom_0[] = _("Ivy: Long ago, people heard\nHoundoom's howl as an omen.");
+static const u8 sDexBanter_Houndoom_1[] = _("{PLAYER}: Mostly it just wants\ndinner.");
+static const u8 *const sDexBanter_Houndoom[] = { sDexBanter_Houndoom_0, sDexBanter_Houndoom_1, NULL };
+static const u8 sDexBanter_Kingdra_0[] = _("Ivy: When Kingdra yawns, it makes\na whirlpool.");
+static const u8 sDexBanter_Kingdra_1[] = _("{PLAYER}: When I yawn, I make you\nyawn.");
+static const u8 sDexBanter_Kingdra_2[] = _("Ivy: ...You did it again.");
+static const u8 *const sDexBanter_Kingdra[] = { sDexBanter_Kingdra_0, sDexBanter_Kingdra_1, sDexBanter_Kingdra_2, NULL };
+static const u8 sDexBanter_Donphan_0[] = _("{PLAYER}: Donphan curls up and\nrolls like a tire.");
+static const u8 sDexBanter_Donphan_1[] = _("Ivy: Fast enough to knock down a\nhouse. Not near Delia's, please.");
+static const u8 *const sDexBanter_Donphan[] = { sDexBanter_Donphan_0, sDexBanter_Donphan_1, NULL };
+static const u8 sDexBanter_Porygon2_0[] = _("Ivy: Porygon2 was upgraded to\nexplore space.");
+static const u8 sDexBanter_Porygon2_1[] = _("{PLAYER}: Did the warranty carry\nover?");
+static const u8 *const sDexBanter_Porygon2[] = { sDexBanter_Porygon2_0, sDexBanter_Porygon2_1, NULL };
+static const u8 sDexBanter_Stantler_0[] = _("Ivy: Stantler's antlers can make\nyou see things that aren't there.");
+static const u8 sDexBanter_Stantler_1[] = _("{PLAYER}: That explains the Elm I\nsaw in the tall grass.");
+static const u8 *const sDexBanter_Stantler[] = { sDexBanter_Stantler_0, sDexBanter_Stantler_1, NULL };
+static const u8 sDexBanter_Smeargle_0[] = _("{PLAYER}: Smeargle marks its\nterritory with paint. Its tail is\lthe brush.");
+static const u8 sDexBanter_Smeargle_1[] = _("Ivy: Let's commission one for the\nlab. Its abstract period.");
+static const u8 *const sDexBanter_Smeargle[] = { sDexBanter_Smeargle_0, sDexBanter_Smeargle_1, NULL };
+static const u8 sDexBanter_Tyrogue_0[] = _("Ivy: Tyrogue evolves three ways,\ndepending on how it trains.");
+static const u8 sDexBanter_Tyrogue_1[] = _("{PLAYER}: An Eevee with a gym\nmembership.");
+static const u8 *const sDexBanter_Tyrogue[] = { sDexBanter_Tyrogue_0, sDexBanter_Tyrogue_1, NULL };
+static const u8 sDexBanter_Hitmontop_0[] = _("Ivy: Hitmontop fights spinning on\nits head.");
+static const u8 sDexBanter_Hitmontop_1[] = _("{PLAYER}: I tried that once. In\ncollege. Never again.");
+static const u8 *const sDexBanter_Hitmontop[] = { sDexBanter_Hitmontop_0, sDexBanter_Hitmontop_1, NULL };
+static const u8 sDexBanter_Smoochum_0[] = _("Ivy: Smoochum tests everything\nwith its lips.");
+static const u8 sDexBanter_Smoochum_1[] = _("{PLAYER}: Like Elm with a new\ndessert.");
+static const u8 sDexBanter_Smoochum_2[] = _("Ivy: ...Want to test something?");
+static const u8 sDexBanter_Smoochum_3[] = _("{PLAYER}: (Blushing again. Ivy is\nwinning today.)");
+static const u8 *const sDexBanter_Smoochum[] = { sDexBanter_Smoochum_0, sDexBanter_Smoochum_1, sDexBanter_Smoochum_2, sDexBanter_Smoochum_3, NULL };
+static const u8 sDexBanter_Elekid_0[] = _("Ivy: Elekid spins its arms to\ncharge itself up.");
+static const u8 sDexBanter_Elekid_1[] = _("{PLAYER}: I do that before coffee.");
+static const u8 *const sDexBanter_Elekid[] = { sDexBanter_Elekid_0, sDexBanter_Elekid_1, NULL };
+static const u8 sDexBanter_Magby_0[] = _("{PLAYER}: Little embers puff out\nevery time Magby breathes.");
+static const u8 sDexBanter_Magby_1[] = _("Ivy: A walking campfire. Bring\nmarshmallows.");
+static const u8 *const sDexBanter_Magby[] = { sDexBanter_Magby_0, sDexBanter_Magby_1, NULL };
+static const u8 sDexBanter_Miltank_0[] = _("Ivy: Miltank's milk is so\nnutritious it's given to sick\lPokémon.");
+static const u8 sDexBanter_Miltank_1[] = _("{PLAYER}: Elm still has nightmares\nabout Whitney's Miltank. The\lRollout.");
+static const u8 sDexBanter_Miltank_2[] = _("Ivy: Delia's is much nicer. Fresh\nmilk at breakfast.");
+static const u8 *const sDexBanter_Miltank[] = { sDexBanter_Miltank_0, sDexBanter_Miltank_1, sDexBanter_Miltank_2, NULL };
+static const u8 sDexBanter_Blissey_0[] = _("Ivy: Blissey can sense sadness,\nand rushes over to help.");
+static const u8 sDexBanter_Blissey_1[] = _("{PLAYER}: It can stay. Forever.\nPlease.");
+static const u8 *const sDexBanter_Blissey[] = { sDexBanter_Blissey_0, sDexBanter_Blissey_1, NULL };
+static const u8 sDexBanter_Raikou_0[] = _("{PLAYER}: Raikou carries\nthunderclouds on its back.");
+static const u8 sDexBanter_Raikou_1[] = _("Ivy: Bring an umbrella. A rubber\none.");
+static const u8 *const sDexBanter_Raikou[] = { sDexBanter_Raikou_0, sDexBanter_Raikou_1, NULL };
+static const u8 sDexBanter_Entei_0[] = _("{PLAYER}: Delia once told off an\nEntei.");
+static const u8 sDexBanter_Entei_1[] = _("Ivy: And?");
+static const u8 sDexBanter_Entei_2[] = _("{PLAYER}: The Entei apologized.");
+static const u8 *const sDexBanter_Entei[] = { sDexBanter_Entei_0, sDexBanter_Entei_1, sDexBanter_Entei_2, NULL };
+static const u8 sDexBanter_Suicune_0[] = _("Ivy: Suicune can purify dirty\nwater with a touch.");
+static const u8 sDexBanter_Suicune_1[] = _("{PLAYER}: Every lab sink in Kanto\nneeds one.");
+static const u8 *const sDexBanter_Suicune[] = { sDexBanter_Suicune_0, sDexBanter_Suicune_1, NULL };
+static const u8 sDexBanter_Larvitar_0[] = _("{PLAYER}: Larvitar eats a whole\nmountain's worth of soil to grow\lup.");
+static const u8 sDexBanter_Larvitar_1[] = _("Ivy: And you complain about\nvegetables.");
+static const u8 *const sDexBanter_Larvitar[] = { sDexBanter_Larvitar_0, sDexBanter_Larvitar_1, NULL };
+static const u8 sDexBanter_Pupitar_0[] = _("Ivy: Pupitar rockets around by\nshooting out gas.");
+static const u8 sDexBanter_Pupitar_1[] = _("{PLAYER}: Gas-powered. Very\nold-fashioned.");
+static const u8 *const sDexBanter_Pupitar[] = { sDexBanter_Pupitar_0, sDexBanter_Pupitar_1, NULL };
+static const u8 sDexBanter_Tyranitar_0[] = _("{PLAYER}: When Tyranitar gets\nangry, the maps have to be\lredrawn.");
+static const u8 sDexBanter_Tyranitar_1[] = _("Ivy: Don't make it angry, then.\nDaisy's Town Maps are rare.");
+static const u8 *const sDexBanter_Tyranitar[] = { sDexBanter_Tyranitar_0, sDexBanter_Tyranitar_1, NULL };
+static const u8 sDexBanter_Lugia_0[] = _("Ivy: I saw one once. From a\nhelicopter, with Oak and Delia.");
+static const u8 sDexBanter_Lugia_1[] = _("{PLAYER}: You never tell me that\nstory.");
+static const u8 sDexBanter_Lugia_2[] = _("Ivy: It's a very long story,\nsweetie.");
+static const u8 *const sDexBanter_Lugia[] = { sDexBanter_Lugia_0, sDexBanter_Lugia_1, sDexBanter_Lugia_2, NULL };
+static const u8 sDexBanter_HoOh_0[] = _("Ivy: Legend says Ho-Oh leaves a\nrainbow behind it.");
+static const u8 sDexBanter_HoOh_1[] = _("{PLAYER}: Ash swears he saw one on\nhis very first day. Nobody\lbelieved him.");
+static const u8 *const sDexBanter_HoOh[] = { sDexBanter_HoOh_0, sDexBanter_HoOh_1, NULL };
+static const u8 sDexBanter_Celebi_0[] = _("Ivy: Celebi is said to travel\nthrough time.");
+static const u8 sDexBanter_Celebi_1[] = _("{PLAYER}: If it visits, I have\nquestions about Oak's old scrolls.");
+static const u8 sDexBanter_Celebi_2[] = _("Ivy: Get in line. Oak's first.");
+static const u8 *const sDexBanter_Celebi[] = { sDexBanter_Celebi_0, sDexBanter_Celebi_1, sDexBanter_Celebi_2, NULL };
 
 static const struct RRDexBanter sDexBanterTable[] =
 {
@@ -869,9 +1009,14 @@ static const struct RRDexBanter sDexBanterTable[] =
     { SPECIES_KABUTOPS, sDexBanter_Kabutops },
     { SPECIES_AERODACTYL, sDexBanter_Aerodactyl },
     { SPECIES_SNORLAX, sDexBanter_Snorlax },
+    { SPECIES_ARTICUNO, sDexBanter_Articuno },
+    { SPECIES_ZAPDOS, sDexBanter_Zapdos },
+    { SPECIES_MOLTRES, sDexBanter_Moltres },
     { SPECIES_DRATINI, sDexBanter_Dratini },
     { SPECIES_DRAGONAIR, sDexBanter_Dragonair },
     { SPECIES_DRAGONITE, sDexBanter_Dragonite },
+    { SPECIES_MEWTWO, sDexBanter_Mewtwo },
+    { SPECIES_MEW, sDexBanter_Mew },
     { SPECIES_CHIKORITA, sDexBanter_Chikorita },
     { SPECIES_BAYLEEF, sDexBanter_Bayleef },
     { SPECIES_MEGANIUM, sDexBanter_Meganium },
@@ -935,4 +1080,41 @@ static const struct RRDexBanter sDexBanterTable[] =
     { SPECIES_FORRETRESS, sDexBanter_Forretress },
     { SPECIES_DUNSPARCE, sDexBanter_Dunsparce },
     { SPECIES_GLIGAR, sDexBanter_Gligar },
+    { SPECIES_STEELIX, sDexBanter_Steelix },
+    { SPECIES_GRANBULL, sDexBanter_Granbull },
+    { SPECIES_SCIZOR, sDexBanter_Scizor },
+    { SPECIES_HERACROSS, sDexBanter_Heracross },
+    { SPECIES_SNEASEL, sDexBanter_Sneasel },
+    { SPECIES_URSARING, sDexBanter_Ursaring },
+    { SPECIES_SLUGMA, sDexBanter_Slugma },
+    { SPECIES_MAGCARGO, sDexBanter_Magcargo },
+    { SPECIES_SWINUB, sDexBanter_Swinub },
+    { SPECIES_PILOSWINE, sDexBanter_Piloswine },
+    { SPECIES_CORSOLA, sDexBanter_Corsola },
+    { SPECIES_OCTILLERY, sDexBanter_Octillery },
+    { SPECIES_DELIBIRD, sDexBanter_Delibird },
+    { SPECIES_MANTINE, sDexBanter_Mantine },
+    { SPECIES_SKARMORY, sDexBanter_Skarmory },
+    { SPECIES_HOUNDOOM, sDexBanter_Houndoom },
+    { SPECIES_KINGDRA, sDexBanter_Kingdra },
+    { SPECIES_DONPHAN, sDexBanter_Donphan },
+    { SPECIES_PORYGON2, sDexBanter_Porygon2 },
+    { SPECIES_STANTLER, sDexBanter_Stantler },
+    { SPECIES_SMEARGLE, sDexBanter_Smeargle },
+    { SPECIES_TYROGUE, sDexBanter_Tyrogue },
+    { SPECIES_HITMONTOP, sDexBanter_Hitmontop },
+    { SPECIES_SMOOCHUM, sDexBanter_Smoochum },
+    { SPECIES_ELEKID, sDexBanter_Elekid },
+    { SPECIES_MAGBY, sDexBanter_Magby },
+    { SPECIES_MILTANK, sDexBanter_Miltank },
+    { SPECIES_BLISSEY, sDexBanter_Blissey },
+    { SPECIES_RAIKOU, sDexBanter_Raikou },
+    { SPECIES_ENTEI, sDexBanter_Entei },
+    { SPECIES_SUICUNE, sDexBanter_Suicune },
+    { SPECIES_LARVITAR, sDexBanter_Larvitar },
+    { SPECIES_PUPITAR, sDexBanter_Pupitar },
+    { SPECIES_TYRANITAR, sDexBanter_Tyranitar },
+    { SPECIES_LUGIA, sDexBanter_Lugia },
+    { SPECIES_HO_OH, sDexBanter_HoOh },
+    { SPECIES_CELEBI, sDexBanter_Celebi },
 };

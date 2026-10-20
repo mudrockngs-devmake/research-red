@@ -676,6 +676,20 @@ P: Jenny packs lunch for it. I'm sure of it.
 Ivy: That's us on a Sunday.
 P: That's a perfect Sunday.
 
+[Articuno]
+Ivy: Articuno is said to appear to travelers lost in the snowy mountains.
+P: A rescue service with wings. Is this in the helicopter story too?
+Ivy: It's in the helicopter story too.
+
+[Zapdos]
+P: Zapdos is said to appear when thunderclouds gather.
+Ivy: Like Elm before a battle.
+
+[Moltres]
+Ivy: Each flap of Moltres's wings sets off a bright flame.
+P: They say it means spring is coming.
+Ivy: Good. Delia's garden can't wait.
+
 [Dratini]
 P: Dratini was thought to be a myth for years.
 Ivy: Then someone fished one up. The best research story.
@@ -687,6 +701,16 @@ P: Can it fix the ferry schedule?
 [Dragonite]
 P: Dragonite can circle the world in sixteen hours.
 Ivy: It helps lost ships find their way home. Like you with me.
+
+[Mewtwo]
+P: Elm swears he saw a purple one fly over Route 1.
+Ivy: It had a tail, he says.
+P: (I believe him about eighty percent now.)
+
+[Mew]
+Ivy: Some scientists think Mew carries the genes of every Pokémon.
+P: One ancestor for everything. My whole field in one pink cat.
+Ivy: Science is so romantic.
 
 # --- Johto (lab starters and the Pokémon that live along our route) ---------
 [Chikorita]
@@ -963,3 +987,161 @@ Ivy: And those tiny wings. Bless them.
 P: Gligar glides in silently and grabs your face.
 Ivy: Keep your face behind your notebook.
 P: My notebook is my shield.
+
+[Steelix]
+Ivy: Steelix lives deeper underground than any other Pokémon.
+P: Onix plus pressure plus time. Same way you get diamonds. Roughly.
+
+[Granbull]
+P: Granbull looks scary, but it's actually timid.
+Ivy: Small Pokémon adore it. Everyone's big brother.
+P: Like me with Elm.
+
+[Scizor]
+Ivy: The eyes on Scizor's claws are fake. They scare off attackers.
+P: A bluff. In steel. Very effective.
+
+[Heracross]
+P: Heracross can throw a hundred times its own weight.
+Ivy: All for a sip of sweet tree sap.
+P: Elm's spirit Pokémon.
+
+[Sneasel]
+Ivy: Sneasel climb trees to steal eggs from nests.
+P: Elm discovered Eggs. He'd have words with it.
+
+[Ursaring]
+Ivy: Ursaring can smell food buried underground.
+P: So it could find Jenny's picnic basket from here.
+
+[Slugma]
+P: Slugma is made of magma. If it stops moving, it hardens.
+Ivy: So it never sits down. Like Elm at a conference.
+
+[Magcargo]
+P: The Pokédex says Magcargo is hotter than the sun's surface.
+Ivy: The Pokédex and physics have not agreed on that.
+
+[Swinub]
+Ivy: Swinub sniffs out mushrooms under frozen ground.
+P: A truffle pig with a fringe. Delicious research.
+
+[Piloswine]
+Ivy: Piloswine's hair covers its eyes. It goes by smell.
+P: It needs a haircut. Daisy would love to groom it.
+
+[Corsola]
+Ivy: Corsola live in warm, clean seas. If the water turns dirty, they leave.
+P: Healthy reef, happy Corsola. Sometimes ecology is simple.
+
+[Octillery]
+P: Remoraid, a fish, evolves into Octillery, an octopus.
+Ivy: Don't tell Elm. He'll start a lecture.
+P: He's already started. I can feel it.
+
+[Delibird]
+Ivy: Delibird carries food in its tail and shares it.
+P: A Pokémon that delivers. Delia would approve.
+
+[Mantine]
+Ivy: Mantine glide over the waves with Remoraid riding along.
+P: A ferry with no delays. The ferry company should take notes.
+
+[Skarmory]
+P: People once made swords from Skarmory's fallen feathers.
+Ivy: That's one way to recycle.
+
+[Houndoom]
+Ivy: Long ago, people heard Houndoom's howl as an omen.
+P: Mostly it just wants dinner.
+
+[Kingdra]
+Ivy: When Kingdra yawns, it makes a whirlpool.
+P: When I yawn, I make you yawn.
+Ivy: ...You did it again.
+
+[Donphan]
+P: Donphan curls up and rolls like a tire.
+Ivy: Fast enough to knock down a house. Not near Delia's, please.
+
+[Porygon2]
+Ivy: Porygon2 was upgraded to explore space.
+P: Did the warranty carry over?
+
+[Stantler]
+Ivy: Stantler's antlers can make you see things that aren't there.
+P: That explains the Elm I saw in the tall grass.
+
+[Smeargle]
+P: Smeargle marks its territory with paint. Its tail is the brush.
+Ivy: Let's commission one for the lab. Its abstract period.
+
+[Tyrogue]
+Ivy: Tyrogue evolves three ways, depending on how it trains.
+P: An Eevee with a gym membership.
+
+[Hitmontop]
+Ivy: Hitmontop fights spinning on its head.
+P: I tried that once. In college. Never again.
+
+[Smoochum]
+Ivy: Smoochum tests everything with its lips.
+P: Like Elm with a new dessert.
+Ivy: ...Want to test something?
+P: (Blushing again. Ivy is winning today.)
+
+[Elekid]
+Ivy: Elekid spins its arms to charge itself up.
+P: I do that before coffee.
+
+[Magby]
+P: Little embers puff out every time Magby breathes.
+Ivy: A walking campfire. Bring marshmallows.
+
+[Miltank]
+Ivy: Miltank's milk is so nutritious it's given to sick Pokémon.
+P: Elm still has nightmares about Whitney's Miltank. The Rollout.
+Ivy: Delia's is much nicer. Fresh milk at breakfast.
+
+[Blissey]
+Ivy: Blissey can sense sadness, and rushes over to help.
+P: It can stay. Forever. Please.
+
+[Raikou]
+P: Raikou carries thunderclouds on its back.
+Ivy: Bring an umbrella. A rubber one.
+
+[Entei]
+P: Delia once told off an Entei.
+Ivy: And?
+P: The Entei apologized.
+
+[Suicune]
+Ivy: Suicune can purify dirty water with a touch.
+P: Every lab sink in Kanto needs one.
+
+[Larvitar]
+P: Larvitar eats a whole mountain's worth of soil to grow up.
+Ivy: And you complain about vegetables.
+
+[Pupitar]
+Ivy: Pupitar rockets around by shooting out gas.
+P: Gas-powered. Very old-fashioned.
+
+[Tyranitar]
+P: When Tyranitar gets angry, the maps have to be redrawn.
+Ivy: Don't make it angry, then. Daisy's Town Maps are rare.
+
+[Lugia]
+Ivy: I saw one once. From a helicopter, with Oak and Delia.
+P: You never tell me that story.
+Ivy: It's a very long story, sweetie.
+
+[Ho-Oh]
+Ivy: Legend says Ho-Oh leaves a rainbow behind it.
+P: Ash swears he saw one on his very first day. Nobody believed him.
+
+[Celebi]
+Ivy: Celebi is said to travel through time.
+P: If it visits, I have questions about Oak's old scrolls.
+Ivy: Get in line. Oak's first.
