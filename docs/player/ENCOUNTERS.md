@@ -42,8 +42,8 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Meowth | 3-4 | 5% |
 | Pikachu | 3-5 | 4% |
 | Mankey | 3-4 | 4% |
-| Doduo | 3-4 | 1% |
-| Eevee | 4-5 | 1% |
+| Sandshrew | 3-4 | 1% |
+| Diglett | 3-4 | 1% |
 
 **Grass (Night)**
 

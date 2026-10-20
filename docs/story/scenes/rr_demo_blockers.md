@@ -63,8 +63,8 @@ Research Red: demo boundaries (#35, #36, #62)
 
 ### RR_DiglettsCave_EventScript_Diglett
 
-> The Diglett are hard at work.
-> Dig dig dig… Trio trio trio!
+> Diglett dig, Diglett dig,
+> trio, trio, trio!
 
 ### RR_DiglettsCave_EventScript_Dugtrio
 
