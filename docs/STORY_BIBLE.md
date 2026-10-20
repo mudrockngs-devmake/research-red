@@ -34,6 +34,9 @@ Ivy and Jenny are old friends; Elm and the player are best-friend rivals. Couple
 - **Elm and Jenny travel along as friends** after Pewter: they don't rush off after scenes. The player and Ivy still do their own thing, but the group of four can meet up in towns (watching a Gym, visiting the Museum...).
 - **Oak's lab after the story:** Oak is a rematch that grows with every badge (EXP, no money); Daisy drops by for it with Muffin. Oak no longer asks about the Pokédex (that's the PC's job).
 
+## The League's interest (owner, 2026-10-19)
+The Pokémon League wants to learn more about the research. That's why extras arrive with the grant (mysteriously, from the League: e.g. held items that never break), why gym leaders accept rematches anytime, and why they bring bigger, more varied teams: to help the player bring out the starters' potential.
+
 ## Running gags
 Gerald the Tentacool on the anchor line; Slowpoke never hung up the call; "Persian" Muffin; the lab carpet; Elm's "warm-up"; Jenny's reports with diagrams; Mimey's dishes.
 

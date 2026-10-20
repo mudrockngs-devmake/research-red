@@ -32,6 +32,8 @@ added or closed.
 | [#61](https://github.com/mudrockngs-devmake/research-red/issues/61) | Lab Slowpoke wanders too fast | low |
 | [#35](https://github.com/mudrockngs-devmake/research-red/issues/35) | Demo blocker at Pewter's exit | low |
 | [#36](https://github.com/mudrockngs-devmake/research-red/issues/36) | Demo blocker: Gerald at Pallet's shore | low |
+| [#62](https://github.com/mudrockngs-devmake/research-red/issues/62) | Remove the Running Shoes aide in Pewter | low |
+| [#63](https://github.com/mudrockngs-devmake/research-red/issues/63) | Delia's whiteout lines with her portrait | low |
 | [#54](https://github.com/mudrockngs-devmake/research-red/issues/54) | Rule: heal after every battle | low (new rule flag) |
 
 ## 2. Moderate (scene rework, menus, art)
@@ -41,6 +43,7 @@ added or closed.
 | [#43](https://github.com/mudrockngs-devmake/research-red/issues/43) | Viridian lunch starts by talking to Elm and Jenny right of the Pokémon Center | medium (do with #44) |
 | [#44](https://github.com/mudrockngs-devmake/research-red/issues/44) | Research Rules talk moves to Daisy's house | medium (story order; old saves past Daisy need care, docs/SAVES.md) |
 | [#46](https://github.com/mudrockngs-devmake/research-red/issues/46) | Lab: watch or skip Elm and Jenny vs Oak | medium |
+| [#10](https://github.com/mudrockngs-devmake/research-red/issues/10) | Elm and Jenny rematch at the Pewter Pokémon Center after Brock (teams ready) | medium |
 | [#21](https://github.com/mudrockngs-devmake/research-red/issues/21) | Portraits hide while a choice menu is open | medium (portrait code is shared) |
 | [#3](https://github.com/mudrockngs-devmake/research-red/issues/3) | Hide portraits during camera pans (decided) | medium |
 | [#25](https://github.com/mudrockngs-devmake/research-red/issues/25) | Opponent types shown for the whole battle (decided; new work) | medium |
@@ -68,7 +71,6 @@ added or closed.
 | [#56](https://github.com/mudrockngs-devmake/research-red/issues/56) | Time of day: clearer night, rest at Pokémon Centers | medium-high (the clock) |
 | [#5](https://github.com/mudrockngs-devmake/research-red/issues/5) | Dex banter as a cutscene over the entry, before nicknaming | medium-high (catch flow) |
 | [#4](https://github.com/mudrockngs-devmake/research-red/issues/4) | Replay banter from the Pokédex | medium |
-| [#6](https://github.com/mudrockngs-devmake/research-red/issues/6) | Difficulty rule (Relaxed / Standard / Challenge) | medium-high (every trainer) |
 | [#7](https://github.com/mudrockngs-devmake/research-red/issues/7) | Battle intros and back sprites: player and Ivy | medium (lots of art) |
 | [#50](https://github.com/mudrockngs-devmake/research-red/issues/50) | Evolve on demand from the party menu | high (evolution, every Pokémon, saves) |
 | [#58](https://github.com/mudrockngs-devmake/research-red/issues/58) | Held items not used up / restock shop | high (battle engine) |
@@ -80,7 +82,6 @@ added or closed.
 | # | What |
 |---|---|
 | [#9](https://github.com/mudrockngs-devmake/research-red/issues/9) | Viridian Forest exchanges after each Bug Catcher (v0.3) |
-| [#10](https://github.com/mudrockngs-devmake/research-red/issues/10) | Pewter finale: Elm and Jenny's double (v1.0) |
 | [#49](https://github.com/mudrockngs-devmake/research-red/issues/49) | Museum grass with rare fossils + museum scenes |
 | [#15](https://github.com/mudrockngs-devmake/research-red/issues/15) | Portraits toward all 151 + regional forms |
 | [#11](https://github.com/mudrockngs-devmake/research-red/issues/11) | Proper case and more natural text everywhere |
@@ -89,8 +90,8 @@ added or closed.
 | [#1](https://github.com/mudrockngs-devmake/research-red/issues/1) | Post-Elite Four payoff: Mega Evolution and regional forms |
 
 ## Waiting on the owner (decisions)
-- [#29](https://github.com/mudrockngs-devmake/research-red/issues/29) The pager item's name (Oak's field-move Pokémon decided 2026-10-19, see the issue)
-- Decided 2026-10-19: #1 (Mega + regional forms are the post-Elite Four payoff; no Z-Moves/Dynamax/Tera this game; see STORY_BIBLE.md), #3 (hide portraits during pans), #25 (types shown all battle)
+- [#29](https://github.com/mudrockngs-devmake/research-red/issues/29) The pager item's final name ("Oak's Pager" for now; Claude suggests "Ranch Pager")
+- Decided 2026-10-19: #6 closed (the rules already cover difficulty), #7 (our cast art in battle for now), #35 (Pewter's usual blocker), #53 (Oak + Daisy double, Muffin, EXP not money), #56 (heal or rest at Joy and Delia), #58 (held items never break); #1 (Mega + regional forms are the post-Elite Four payoff; no Z-Moves/Dynamax/Tera this game; see STORY_BIBLE.md), #3 (hide portraits during pans), #25 (types shown all battle)
 
 ## Tooling (no game changes)
 [#16](https://github.com/mudrockngs-devmake/research-red/issues/16) phone / hardware test,
@@ -106,8 +107,7 @@ Document every new system (how it works, which files, how to turn it off) and
 test it with the smoke tests, so nothing breaks and each one could be reused in
 other ROM hacks later.
 
-## Suggested next playtest (v0.0.15)
-Everything in tiers 0 and 1, plus the scene fixes that polish what's already
-playable: #30, #43 + #44 (+ #8), #21, #42, #34, #20. That's mostly low risk,
-fixes the crash, and keeps the big systems (tier 3) for later builds, one at a
-time.
+## Next build (owner, 2026-10-19: as much as the session allows)
+Work down this page in order, building and smoke-testing after each step, and
+stop at a clean point: tiers 0-2 including #10 (the Pewter rematch), then tier 3
+one system at a time. Whatever isn't done rolls into the following build.
