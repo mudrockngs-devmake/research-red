@@ -29,7 +29,7 @@ Warm, cheerful, quietly formidable.
 - Available after the 6v6 with Elm and Jenny on Route 22. When you heal at her house, she offers a battle in a short exchange; you can say no and just heal or rest.
 - A **double battle**, Delia alone with two Pokémon out, Mimey leading under its nickname.
 - Scales with your badges, like Oak's rematch (#53).
-- Team ideas (to decide): Mimey; garden and kitchen Pokémon (Bellossom or Gloom from the Xanadu Nursery, Chansey, Miltank); maybe Pokémon Ash left at home, anime-style.
+- Team (decided): Mimey (lead), Oddish → Gloom → Bellossom, Grimer → Muk (a nod to Ash's kind, sweet-smelling Muk), Miltank, a shiny Butterfree, Munchlax. Oak sends Pokémon over from the lab whenever she wants.
 
 ## Later in the game
 A travelling Pallet party (Oak, Daisy, Delia and Mimey) turns up in places to
