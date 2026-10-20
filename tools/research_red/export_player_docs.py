@@ -185,7 +185,7 @@ def build():
     # ENCOUNTERS
     lines = ["# Wild Pokémon", "", note.strip(), "",
              "Chances are per encounter. \"Day\" covers morning, day and evening; \"Night\" is the game's night "
-             "(the same clock that tints the screen). In game: Start > Guide.", ""]
+             "(the same clock that tints the screen). In game: Pokédex > START > Field Guide.", ""]
     balance_rows = []
     for title, const, prefixes in AREAS:
         tables = encounter_tables(const, species)

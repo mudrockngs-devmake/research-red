@@ -41,7 +41,7 @@ What the results mean:
 | demo_end | Debug 10 (after Brock), walks to the east exit: the Gym guide turns you back (demo) |
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | pc | Debug 2, Start > PC, into Pokémon storage and back out |
-| guide | Debug 3, walks onto Route 1, Start > Guide |
+| guide | Debug 3, walks onto Route 1, Pokédex > START > FIELD GUIDE |
 | rules | The lunch, then Options > Research Rules |
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.

@@ -170,8 +170,8 @@ def sc_gerald():
 
 def sc_pc():
     # Start > PC from anywhere (#34). After the lab (story 3) the menu is
-    # DEBUG, POKEDEX, POKEMON, Guide, PC: open it, enter Pokemon storage, back out.
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(4)
+    # DEBUG, POKEDEX, POKEMON, PC: open it, enter Pokemon storage, back out.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(3)
             + ["wait 60", "shot p001", "press A", "wait 60", "mash A 60", "wait 90", "shot p002",
                "press A", "wait 90", "shot p003"]
             + play_until("closed", T.G.field_free(), 1500, key="B", every=30)
@@ -180,17 +180,21 @@ def sc_pc():
 
 def sc_guide():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60", "shot s000"]
-            # Start menu here: DEBUG, POKEDEX, POKEMON, Guide
-            + start_menu_item(3) + ["shot s001", "press RIGHT", "wait 20", "shot s002",
-                                    "press B", "wait 30", "shot s003"]
+            # Start > POKEDEX, then the Pokédex's START menu: BACK TO LIST, LIST TOP,
+            # FIELD GUIDE, CLOSE. It closes the Pokédex and opens the Guide on the map.
+            + start_menu_item(1) + ["wait 150", "shot s001", "press START", "wait 40",
+                                    "press DOWN", "wait 10", "shot s001b", "press DOWN", "wait 10", "shot s002",
+                                    "press A", "wait 180", "shot s003", "press RIGHT", "wait 20", "shot s004",
+                                    "press B", "wait 40", "shot s005"]
+            + check("guide_closed", T.G.field_free())
             + expect("MAP_ROUTE1"))
 
 
 def sc_rules():
-    # after the lunch: Start menu DEBUG, POKEDEX, POKEMON, Guide, PC, BAG,
-    # PLAYER, SAVE, OPTION. Options row 3 is Research Rules: A leaves Options
-    # and opens Elm's Rules window on the map (#45).
-    return (sc_lunch() + ["mash B 200", "wait 60"] + start_menu_item(8)
+    # after the lunch: Start menu DEBUG, POKEDEX, POKEMON, PC, BAG, PLAYER,
+    # SAVE, OPTION. Options row 3 is Research Rules: A leaves Options and
+    # opens Elm's Rules window on the map (#45).
+    return (sc_lunch() + ["mash B 200", "wait 60"] + start_menu_item(7)
             + ["wait 60", "shot t001", "press DOWN", "wait 10", "press DOWN", "wait 10", "shot t002",
                "press A", "wait 120", "shot t003", "press DOWN", "wait 10", "press RIGHT", "wait 10", "shot t004",
                "press B", "wait 30", "shot t005"]
@@ -233,7 +237,7 @@ SCENARIOS = {
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
-    "guide": (sc_guide, "Start > Guide on Route 1"),
+    "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
 }
 

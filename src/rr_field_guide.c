@@ -1,4 +1,4 @@
-// Research Red: the Field Guide (Start menu > Guide).
+// Research Red: the Field Guide (Pokédex > START > FIELD GUIDE, src/pokedex_plus_hgss.c).
 //
 // Shows which wild Pokemon live where the player is standing and how often
 // they appear: for each kind of encounter (grass, surf, fishing, rock
@@ -9,6 +9,8 @@
 // data/research_red/encounters/), so the numbers are always the real ones.
 #include "global.h"
 #include "event_data.h"
+#include "event_scripts.h"
+#include "field_fadetransition.h"
 #include "main.h"
 #include "rr_portrait.h"
 #include "menu.h"
@@ -289,4 +291,11 @@ void RR_ScriptFieldGuide(struct ScriptContext *ctx)
     PutWindowTilemap(tWindowId);
     PrintPage(tWindowId, tPage);
     CopyWindowToVram(tWindowId, COPYWIN_FULL);
+}
+
+// Pokédex > Field Guide closes the Pokédex and lands here, back on the map
+void RR_FieldCB_OpenFieldGuide(void)
+{
+    FadeInFromBlack();
+    ScriptContext_SetupScript(RR_EventScript_FieldGuide);
 }

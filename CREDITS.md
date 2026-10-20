@@ -24,6 +24,7 @@ One row per asset that isn't the game's own art or the owner's own work, plus th
 | Pokémon dialogue portraits | `graphics/research_red/pokemon/` | Cut from the games' front sprites | game |
 | Player walking sprite (male) | `graphics/research_red/player_ow/src/prof_birch.png` | Professor Birch overworld sprite (Pokémon Emerald, via pret/pokeemerald), recolored | game |
 | Player walking sprite (female) | `graphics/research_red/player_ow/` | FireRed's Reporter overworld sprite, recolored | game |
+| Pokédex START menu words, "FIELD GUIDE" added | `graphics/pokedex/hgss/tileset_menu_list.png` | The engine's HGSS-style Pokédex art (pokefirered-expansion), with FIELD GUIDE drawn in its font | granted (ships with the engine) |
 | Route 1 fly-by streak | `src/rr_flyby.c` | Mewtwo's front sprite, blurred in game | game |
 | Animatic placeholder art: Slowpoke, Mimey portrait | `docs/animatic/` only (not in the game) | Fan sprites from the Pokémon Snakewood wiki and FusionDex | needed if they ever go in the game |
 

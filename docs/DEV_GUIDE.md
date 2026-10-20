@@ -20,7 +20,7 @@ How the project is laid out and how work moves through it.
 | Save version | `include/rr_save_version.h`, `src/rr_save_version.c` ([SAVES.md](SAVES.md)) |
 | Tests | `tools/research_red/test/` ([TESTING.md](TESTING.md)) |
 | Wild Pokemon | `data/research_red/encounters/<area>.txt` -> `tools/research_red/build_encounters.py`; day/night tables (`OW_TIME_OF_DAY_ENCOUNTERS`) |
-| Field Guide / Research Rules | `src/rr_field_guide.c` (Start > Guide), `src/rr_rules.c` (Options > Research Rules, from Daisy's house on; the row is in `src/option_menu.c`) |
+| Field Guide / Research Rules | `src/rr_field_guide.c` (Pokédex > START > FIELD GUIDE; the menu entry is in `src/pokedex_plus_hgss.c`, its words in `graphics/pokedex/hgss/tileset_menu_list.png`), `src/rr_rules.c` (Options > Research Rules, from Daisy's house on; the row is in `src/option_menu.c`) |
 | Pokedex banter | `data/research_red/dex_banter.txt` -> `tools/research_red/build_dex_banter.py`; `src/rr_dex_banter.c` (queued on new species, played back on the map) |
 | Mid-battle lines | `src/data/research_red/trainer_slides.h` (adds slide types RR_TWO_DOWN / RR_FOUR_DOWN) |
 | Tools | `tools/research_red/` |

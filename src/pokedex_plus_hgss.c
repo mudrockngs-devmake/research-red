@@ -25,6 +25,7 @@
 #include "pokedex.h"
 #include "pokedex_emerald.h"
 #include "pokedex_plus_hgss.h"
+#include "rr_field_guide.h" // Research Red
 #include "pokedex_emerald_area_screen.h"
 #include "pokedex_emerald_cry_screen.h"
 #include "pokemon_icon.h"
@@ -462,6 +463,7 @@ static void Task_OpenInfoScreenAfterMonMovement(u8);
 static void Task_WaitForExitInfoScreen(u8);
 static void Task_WaitForExitSearch(u8);
 static void Task_ClosePokedex(u8);
+static bool8 sRR_OpenFieldGuide; // Research Red: START > FIELD GUIDE closes the Pokédex into the Guide
 static void Task_OpenSearchResults(u8);
 static void Task_HandleSearchResultsInput(u8);
 static void Task_WaitForSearchResultsScroll(u8);
@@ -2254,12 +2256,11 @@ static void Task_HandlePokedexStartMenuInput(u8 taskId)
                 CreateMonSpritesAtPos(sPokedexView->selectedPokemon, 0xE);
                 gMain.newKeys |= START_BUTTON;  //Exit menu
                 break;
-            case 2: //LIST BOTTOM
-                sPokedexView->selectedPokemon = sPokedexView->pokemonListCount - 1;
-                sPokedexView->pokeBallRotation = sPokedexView->pokemonListCount * 16 + POKEBALL_ROTATION_BOTTOM;
-                ClearMonSprites();
-                CreateMonSpritesAtPos(sPokedexView->selectedPokemon, 0xE);
-                gMain.newKeys |= START_BUTTON;  //Exit menu
+            case 2: // Research Red: FIELD GUIDE (was LIST BOTTOM; tiles in tileset_menu_list.png)
+                sRR_OpenFieldGuide = TRUE;
+                BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+                gTasks[taskId].func = Task_ClosePokedex;
+                PlaySE(SE_PC_OFF);
                 break;
             case 3: //CLOSE POKEDEX
                 BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
@@ -2329,7 +2330,14 @@ static void Task_ClosePokedex(u8 taskId)
         ClearMonSprites();
         FreeWindowAndBgBuffers();
         DestroyTask(taskId);
-        SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
+        if (sRR_OpenFieldGuide) // Research Red: back to the map, straight into the Guide
+        {
+            sRR_OpenFieldGuide = FALSE;
+            gFieldCallback = RR_FieldCB_OpenFieldGuide;
+            SetMainCallback2(CB2_ReturnToField);
+        }
+        else
+            SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
         Free(sPokedexView);
     }
