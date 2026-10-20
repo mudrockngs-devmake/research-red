@@ -7,6 +7,12 @@ Map `MAP_ROUTE22_NORTH_ENTRANCE` · music `MUS_VIRIDIAN_FOREST` · weather `WEAT
 ### Policeman (Policeman) at 8,2
 Script `Route22_NorthEntrance_EventScript_BoulderBadgeGuard`
 
+> Officer: The road to the Pokémon
+> League is closed for now.
+>
+> This is a demo of Research Red.
+> Thanks so much for playing!
+
 > Oh! That is the {STR_VAR_1}!
 > Go right ahead.
 

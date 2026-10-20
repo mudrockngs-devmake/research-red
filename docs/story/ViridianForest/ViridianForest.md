@@ -127,7 +127,7 @@ Script `ViridianForest_EventScript_ItemPotion2`
 
 ## Wild Pokemon
 
-**Grass:** Venonat 20% (Lv 3-5), Spinarak 20% (Lv 3-5), Kakuna 10% (Lv 7), Metapod 10% (Lv 7), Oddish 10% (Lv 4-6), Paras 10% (Lv 4-6), Hoothoot 5% (Lv 4-6), Weedle 5% (Lv 3-5), Pikachu 4% (Lv 3-5), Gastly 4% (Lv 4-6), Yanma 1% (Lv 5-6), Shuckle 1% (Lv 5-6)
+**Grass:** Venonat 20% (Lv 3-5), Spinarak 20% (Lv 3-5), Kakuna 10% (Lv 7), Metapod 10% (Lv 7), Oddish 10% (Lv 4-6), Paras 10% (Lv 4-6), Hoothoot 5% (Lv 4-6), Pineco 5% (Lv 4-6), Pikachu 4% (Lv 3-5), Gastly 4% (Lv 4-6), Yanma 1% (Lv 5-6), Shuckle 1% (Lv 5-6)
 
 ## Exits
 

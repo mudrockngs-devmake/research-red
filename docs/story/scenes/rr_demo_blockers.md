@@ -60,3 +60,35 @@ Research Red: demo boundaries (#35, #36, #62)
 >
 > Cinnabar and beyond come later.
 > Thanks for playing!”
+
+### RR_DiglettsCave_EventScript_Diglett
+
+> The Diglett are hard at work.
+> Dig dig dig… Trio trio trio!
+
+### RR_DiglettsCave_EventScript_Dugtrio
+
+> Dugtrio is sitting right on the
+> ladder, holding up a tiny sign:
+>
+> “Tunnel closed for digging.
+> Thank you for your patience.
+>
+> This is a demo of Research Red.
+> Thanks so much for playing!”
+
+### RR_Route22Gate_EventScript_DemoGuardTalk
+
+> Officer: The road to the Pokémon
+> League is closed for now.
+>
+> This is a demo of Research Red.
+> Thanks so much for playing!
+
+### RR_Route22Gate_EventScript_DemoBlock
+
+> Officer: The road to the Pokémon
+> League is closed for now.
+>
+> This is a demo of Research Red.
+> Thanks so much for playing!

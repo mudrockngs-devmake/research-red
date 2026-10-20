@@ -592,10 +592,6 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 *[additem ITEM_BICYCLE]*
 
-*[additem ITEM_OLD_ROD]*
-
-*[additem ITEM_GOOD_ROD]*
-
 *[additem ITEM_SUPER_ROD]*
 
 *[additem ITEM_ITEMFINDER]*

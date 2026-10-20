@@ -2,6 +2,7 @@ Route22_NorthEntrance_MapScripts::
 	.byte 0
 
 Route22_NorthEntrance_EventScript_BoulderBadgeGuard::
+	goto RR_Route22Gate_EventScript_DemoGuardTalk @ Research Red: the League road is closed in the demo
 	lock
 	faceplayer
 	setvar VAR_TEMP_1, 1
@@ -10,6 +11,7 @@ Route22_NorthEntrance_EventScript_BoulderBadgeGuard::
 	end
 
 Route22_NorthEntrance_EventScript_BoulderBadgeGuardTrigger::
+	goto RR_Route22Gate_EventScript_DemoBlock @ Research Red: the League road is closed in the demo
 	lockall
 	setvar VAR_TEMP_1, 1
 	setvar VAR_0x8009, 1

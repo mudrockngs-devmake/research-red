@@ -139,6 +139,23 @@ def sc_demo_end():
             + check("still_in_pewter_again", T.G.on_map("MAP_PEWTER_CITY")))
 
 
+def sc_digletts():
+    # After Brock, south into Route 2, Cut the tree, into Diglett's Cave:
+    # Dugtrio sits on the ladder (demo block). Debug 10 leaves us at Pewter (17,26).
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"]
+            + step("DOWN", 9) + step("RIGHT", 4) + step("DOWN", 5)      # Route 2 (9,0)
+            + step("DOWN", 12) + step("RIGHT", 2) + ["shot s001"]        # (11,12), tree below
+            + ["press DOWN 6", "wait 20", "press A", "wait 60", "shot s002"]
+            + play_until("cut", T.G.field_free(), 1500, key="A", every=30)
+            + step("DOWN", 2) + step("RIGHT", 6) + step("UP", 3) + ["wait 420", "shot s003"]  # past the area preview
+            + check("in_entrance", T.G.on_map("MAP_DIGLETTS_CAVE_NORTH_ENTRANCE"))
+            + step("RIGHT", 2)  # from the doormat (4,5) to (6,5), below Dugtrio
+            + ["press UP 6", "wait 20", "press A", "wait 60", "shot s004"]
+            + play_until("dugtrio", T.G.field_free(), 1500, key="A", every=30)
+            + step("UP", 2) + ["wait 30", "shot s005"]
+            + check("still_in_entrance", T.G.on_map("MAP_DIGLETTS_CAVE_NORTH_ENTRANCE")))
+
+
 def sc_gerald():
     # Surf south from Pallet's shore: Gerald blocks the sea route (#36).
     # Debug 2 leaves us at (15,8); round the lab to the shore at (8,16),
@@ -192,6 +209,7 @@ SCENARIOS = {
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
     "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch outside the Pokémon Center (test mode)"),
+    "digletts": (sc_digletts, "After Brock: Diglett's Cave is closed by the Diglett crew (demo)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
