@@ -7,6 +7,11 @@
 ## Tools
 - Automated test runs use mGBA (endrift, MPL 2.0) as a library. It isn't part of the patch.
 
+## Quoted material
+| What | Where | Source / author | Permission |
+|---|---|---|---|
+| A few short phrases sung by the cast | Route 1 sing-along on the way to Viridian City (v0.0.16) | "Viridian City", written by Neil Jason and John Loeffler, performed by Jason Paige; *Pokémon 2.B.A. Master* (Koch Records, 1999) | needed (a few words, credited; confirm or trim before a public release) |
+
 ## Assets
 One row per asset that isn't the game's own art or the owner's own work, plus the owner's art for the record.
 **Permission** says whether the author has OK'd its use in a public release:
