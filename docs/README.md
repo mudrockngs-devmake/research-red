@@ -4,6 +4,7 @@ Start here. Everything about how the project works, in one place.
 
 ## Where we are
 - **[STATUS.md](STATUS.md)**: the current build, what's waiting on whom, what's next. Read this first in every session; update it at the end of every session.
+- [ROADMAP.md](ROADMAP.md): every open issue, easiest and safest first, and what goes in the next playtest.
 - [CHECKLIST.md](CHECKLIST.md): the long plan, milestone by milestone.
 - [CHANGELOG.md](CHANGELOG.md): what changed in each test build (becomes the release notes).
 - Bugs and ideas: [GitHub Issues](https://github.com/mudrockngs-devmake/research-red/issues), grouped by milestone.
