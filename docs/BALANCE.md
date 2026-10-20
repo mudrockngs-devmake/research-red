@@ -9,7 +9,7 @@ Levels you'll meet in each area, in story order, next to the level cap. Use it t
 | Pallet Town | 3-6 | 5-5 | 5 |
 | Route 1 | 2-5 | - | - |
 | Viridian City | 4-7 | - | - |
-| Route 22 | 3-20 | 8-9 | 9 |
+| Route 22 | 3-7 | 8-9 | 9 |
 | Route 2 | 3-5 | - | - |
 | Viridian Forest | 3-10 | 6-9 | 9 |
 | Pewter City | - | 10-15 | 15 |

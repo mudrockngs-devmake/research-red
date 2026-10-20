@@ -110,7 +110,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Rattata | 3-5 | 20% |
 | Ekans | 3-5 | 20% |
 | Zubat | 3-5 | 10% |
-| Meowth | 3-5 | 10% |
+| Poliwag | 3-5 | 10% |
 | Nidoran♂ | 3-5 | 10% |
 | Nidoran♀ | 3-5 | 10% |
 | Murkrow | 4-5 | 5% |
@@ -124,20 +124,21 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 
 | Pokémon | Levels | Chance |
 |---|---|---|
-| Poliwag | 5-15 | 60% |
-| Psyduck | 5-15 | 30% |
-| Marill | 5-10 | 5% |
-| Goldeen | 5-15 | 5% |
+| Poliwag | 4-7 | 60% |
+| Goldeen | 4-7 | 30% |
+| Psyduck | 4-7 | 5% |
+| Marill | 4-7 | 4% |
+| Wooper | 4-7 | 1% |
 
 **Fishing (Any time)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
-| Poliwag | 15-20 | 40% |
-| Goldeen | 15-20 | 40% |
-| Psyduck | 15-20 | 15% |
-| Krabby | 15-20 | 4% |
-| Gyarados | 20 | 1% |
+| Magikarp | 4-7 | 40% |
+| Poliwag | 4-7 | 40% |
+| Krabby | 4-7 | 15% |
+| Goldeen | 4-7 | 4% |
+| Wooper | 4-7 | 1% |
 
 ## Route 2
 
