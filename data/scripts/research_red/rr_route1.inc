@@ -43,8 +43,37 @@ RR_Route1_EventScript_Walk::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_RightHere, MSGBOX_DEFAULT
 	call RR_Route1_EventScript_CatchReactions
+	@ The sing-along on the road to Viridian (song credited in CREDITS.md)
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route1_Text_Humming, MSGBOX_DEFAULT
+	msgbox RR_Route1_Text_Elm_SingStart, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Elm_Sing1, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_P_Sing2, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Elm_Sing3, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_P_Trainer, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Elm_InMyHeart, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ShareALook, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Jenny_Evidence, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Ivy_ThatsWhy, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Jenny_CaseClosed, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Ivy_Sing4, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Jenny_Sing5, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Elm_KnowWords, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Jenny_Everyone, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Everyone_Sing, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Ivy_OffKey, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -149,9 +178,59 @@ RR_Route1_Text_Jenny_RightHere::
     .string "Jenny: And a wife.\n"
     .string "I'm right here, dear.$"
 
-RR_Route1_Text_Humming::
-    .string "Elm starts humming a traveling\n"
-    .string "song. Ivy joins in.$"
+RR_Route1_Text_Elm_SingStart::
+    .string "Elm starts singing. {PLAYER} joins\n"
+    .string "in on the second word.$"
+
+RR_Route1_Text_Elm_Sing1::
+    .string "Elm: {EMOJI_NOTE} We're on the road to\n"
+    .string "Viridian City! {EMOJI_NOTE}$"
+
+RR_Route1_Text_P_Sing2::
+    .string "{PLAYER}: {EMOJI_NOTE} Meet my friends\n"
+    .string "along the way! {EMOJI_NOTE}$"
+
+RR_Route1_Text_Elm_Sing3::
+    .string "Elm: {EMOJI_NOTE} I'm on the road to be the\n"
+    .string "greatest… professor! {EMOJI_NOTE}$"
+
+RR_Route1_Text_P_Trainer::
+    .string "{PLAYER}: Trainer, Elm.$"
+
+RR_Route1_Text_Elm_InMyHeart::
+    .string "Elm: Professor in my heart!$"
+
+RR_Route1_Text_ShareALook::
+    .string "Ivy and Jenny share a look.$"
+
+RR_Route1_Text_Jenny_Evidence::
+    .string "Jenny: The evidence suggests…$"
+
+RR_Route1_Text_Ivy_ThatsWhy::
+    .string "Ivy: Yep. That's why they're\n"
+    .string "friends.$"
+
+RR_Route1_Text_Jenny_CaseClosed::
+    .string "Jenny: Case closed.$"
+
+RR_Route1_Text_Ivy_Sing4::
+    .string "Ivy: {EMOJI_NOTE} We keep on trying… {EMOJI_NOTE}$"
+
+RR_Route1_Text_Jenny_Sing5::
+    .string "Jenny: {EMOJI_NOTE} …and then we try\n"
+    .string "some more! {EMOJI_NOTE}$"
+
+RR_Route1_Text_Elm_KnowWords::
+    .string "Elm: Jenny! You know the words?!$"
+
+RR_Route1_Text_Jenny_Everyone::
+    .string "Jenny: Dear. Everyone knows\n"
+    .string "the words.$"
+
+RR_Route1_Text_Everyone_Sing::
+    .string "Everyone sings together:\n"
+    .string "{EMOJI_NOTE} To find a place worth\l"
+    .string "fighting for! {EMOJI_NOTE}$"
 
 RR_Route1_Text_Ivy_OffKey::
     .string "Ivy: You're off-key, sweetie.$"
