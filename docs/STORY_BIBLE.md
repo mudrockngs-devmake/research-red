@@ -22,7 +22,9 @@ Ivy and Jenny are old friends; Elm and the player are best-friend rivals. Couple
 ## Story rules
 - The Johto starters came to Pallet for a research stay; Ash and Gary's journeys inspire Elm to turn it into a Gym challenge.
 - Timeline: Research Red happens alongside the anime, at no stated point in it. Ash and Gary are off on their own journeys and never appear; the anime and movies are homages and background (see docs/reference/, #66).
-- The bet: first team to eight badges; losers do Mimey's dishes. Made official by swapping Cell Phone numbers at Daisy's.
+- The bet: first team to eight badges. **Stakes:** the losers cook a big dinner (dessert included) for everyone at Delia's, and Delia gets the night off. Made official by swapping Cell Phone numbers at Daisy's. The player and Ivy always reach each badge first; the ending can still play differently depending on how close the race was.
+- The research goal: **one joint paper**, with Oak as the PI and all four as authors, Jenny included (her reports and diagrams are part of the work). Authorship is shared and settled from the start, never something they fight over; the bet is about dinner, not credit.
+- Gym order: the player and Ivy always challenge each Gym Leader first; Elm and Jenny challenge after. Exception: at the Viridian Gym, Elm and Jenny get there first and lose. Elm and Jenny's Gym battles can be watched as optional scenes (with lines for the Gym Leader too), triggered after the player's own win, never blocking anything (#69).
 - Starter chain: player picks a Kanto starter; Ivy takes the Kanto counter (travels in the player's party); Elm takes the Johto counter; Jenny counters Elm.
 - Battles: trainers fight in doubles; you and Ivy are one team, as are Elm and Jenny. Elm and Jenny battle you in or near every Gym city, with lines every two faints and before their last Pokemon.
 - Regular trainers: at most one short you-and-Ivy exchange afterward, flavored by trainer class.
