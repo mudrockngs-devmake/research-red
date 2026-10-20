@@ -93,8 +93,9 @@ void RR_OnWildBattleEnd(void)
 enum
 {
     RR_REACT_DEFAULT, RR_REACT_SPEAROW, RR_REACT_RATTATA, RR_REACT_MANKEY, RR_REACT_NIDORAN_M,
-    RR_REACT_PIDGEY, RR_REACT_NIDORAN_F, RR_REACT_ODDISH, RR_REACT_BELLSPROUT, RR_REACT_DUPLICATE,
-    RR_REACT_MEOWTH, RR_REACT_EEVEE,
+    RR_REACT_PIDGEY, RR_REACT_NIDORAN_F, RR_REACT_ODDISH, RR_REACT_SENTRET, RR_REACT_DUPLICATE,
+    RR_REACT_MEOWTH, RR_REACT_EEVEE, RR_REACT_HOPPIP, RR_REACT_PIKACHU, RR_REACT_SANDSHREW,
+    RR_REACT_DIGLETT, RR_REACT_HOOTHOOT, RR_REACT_GASTLY, RR_REACT_MURKROW,
 };
 
 void RR_ScriptRoute1Reaction(struct ScriptContext *ctx)
@@ -121,9 +122,16 @@ void RR_ScriptRoute1Reaction(struct ScriptContext *ctx)
     case SPECIES_PIDGEY:     gSpecialVar_Result = RR_REACT_PIDGEY;     break;
     case SPECIES_NIDORAN_F:  gSpecialVar_Result = RR_REACT_NIDORAN_F;  break;
     case SPECIES_ODDISH:     gSpecialVar_Result = RR_REACT_ODDISH;     break;
-    case SPECIES_BELLSPROUT: gSpecialVar_Result = RR_REACT_BELLSPROUT; break;
+    case SPECIES_SENTRET:    gSpecialVar_Result = RR_REACT_SENTRET;    break;
     case SPECIES_MEOWTH:     gSpecialVar_Result = RR_REACT_MEOWTH;     break;
     case SPECIES_EEVEE:      gSpecialVar_Result = RR_REACT_EEVEE;      break;
+    case SPECIES_HOPPIP:     gSpecialVar_Result = RR_REACT_HOPPIP;     break;
+    case SPECIES_PIKACHU:    gSpecialVar_Result = RR_REACT_PIKACHU;    break;
+    case SPECIES_SANDSHREW:  gSpecialVar_Result = RR_REACT_SANDSHREW;  break;
+    case SPECIES_DIGLETT:    gSpecialVar_Result = RR_REACT_DIGLETT;    break;
+    case SPECIES_HOOTHOOT:   gSpecialVar_Result = RR_REACT_HOOTHOOT;   break;
+    case SPECIES_GASTLY:     gSpecialVar_Result = RR_REACT_GASTLY;     break;
+    case SPECIES_MURKROW:    gSpecialVar_Result = RR_REACT_MURKROW;    break;
     default:                 gSpecialVar_Result = RR_REACT_DEFAULT;    break;
     }
 }

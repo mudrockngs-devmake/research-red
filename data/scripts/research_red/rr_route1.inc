@@ -295,7 +295,8 @@ RR_Route1_Text_P_Wonderful::
 
 @ ---------------------------------------------------------------
 @ Catch reactions: one Elm/Jenny exchange per catch (up to four),
-@ each followed by Elm getting more jealous. Placeholder lines.
+@ each followed by Elm getting more jealous. Species match
+@ data/research_red/encounters/route1.txt (day and night).
 @ ---------------------------------------------------------------
 RR_Route1_EventScript_CatchReactions::
 	goto_if_eq VAR_RR_ROUTE1_CATCHES, 0, RR_Route1_EventScript_NoCatches
@@ -313,10 +314,17 @@ RR_Route1_EventScript_ReactLoop::
 	case 5, RR_Route1_EventScript_ReactPidgey
 	case 6, RR_Route1_EventScript_ReactNidoranF
 	case 7, RR_Route1_EventScript_ReactOddish
-	case 8, RR_Route1_EventScript_ReactBellsprout
+	case 8, RR_Route1_EventScript_ReactSentret
 	case 9, RR_Route1_EventScript_ReactDuplicate
 	case 10, RR_Route1_EventScript_ReactMeowth
 	case 11, RR_Route1_EventScript_ReactEevee
+	case 12, RR_Route1_EventScript_ReactHoppip
+	case 13, RR_Route1_EventScript_ReactPikachu
+	case 14, RR_Route1_EventScript_ReactSandshrew
+	case 15, RR_Route1_EventScript_ReactDiglett
+	case 16, RR_Route1_EventScript_ReactHoothoot
+	case 17, RR_Route1_EventScript_ReactGastly
+	case 18, RR_Route1_EventScript_ReactMurkrow
 RR_Route1_EventScript_ReactNext::
 	addvar VAR_0x8004, 1
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -385,10 +393,10 @@ RR_Route1_EventScript_ReactOddish::
 	msgbox RR_Route1_Text_ReactOddishB, MSGBOX_DEFAULT
 	goto RR_Route1_EventScript_ReactNext
 
-RR_Route1_EventScript_ReactBellsprout::
-	msgbox RR_Route1_Text_ReactBellsproutA, MSGBOX_DEFAULT
+RR_Route1_EventScript_ReactSentret::
+	msgbox RR_Route1_Text_ReactSentretA, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Route1_Text_ReactBellsproutB, MSGBOX_DEFAULT
+	msgbox RR_Route1_Text_ReactSentretB, MSGBOX_DEFAULT
 	goto RR_Route1_EventScript_ReactNext
 
 RR_Route1_EventScript_ReactDuplicate::
@@ -407,6 +415,48 @@ RR_Route1_EventScript_ReactEevee::
 	msgbox RR_Route1_Text_ReactEeveeA, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_ReactEeveeB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactHoppip::
+	msgbox RR_Route1_Text_ReactHoppipA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactHoppipB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactPikachu::
+	msgbox RR_Route1_Text_ReactPikachuA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactPikachuB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactSandshrew::
+	msgbox RR_Route1_Text_ReactSandshrewA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactSandshrewB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactDiglett::
+	msgbox RR_Route1_Text_ReactDiglettA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactDiglettB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactHoothoot::
+	msgbox RR_Route1_Text_ReactHoothootA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactHoothootB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactGastly::
+	msgbox RR_Route1_Text_ReactGastlyA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactGastlyB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactMurkrow::
+	msgbox RR_Route1_Text_ReactMurkrowA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactMurkrowB, MSGBOX_DEFAULT
 	goto RR_Route1_EventScript_ReactNext
 
 RR_Route1_EventScript_Jealous1::
@@ -445,20 +495,20 @@ RR_Route1_Text_ReactSpearowB::
     .string "parking violation.$"
 
 RR_Route1_Text_ReactRattataA::
-    .string "Elm: Rattata! Classic. Reliable.\n"
-    .string "Like you, apparently.$"
+    .string "Elm: A Rattata! Is it related\n"
+    .string "to Muffin? Is it watching me?$"
 
 RR_Route1_Text_ReactRattataB::
-    .string "Jenny: Daisy will want to compare\n"
-    .string "tails.$"
+    .string "Ivy: In Alola they're black,\n"
+    .string "with a little moustache.$"
 
 RR_Route1_Text_ReactMankeyA::
     .string "Elm: Is it supposed to be that\n"
     .string "mad?$"
 
 RR_Route1_Text_ReactMankeyB::
-    .string "Jenny: In my professional opinion,\n"
-    .string "it needs anger management.$"
+    .string "{PLAYER}: That's its resting face.\n"
+    .string "We've all been there.$"
 
 RR_Route1_Text_ReactNidoranMA::
     .string "Elm: A Nidoran! Poisonous AND\n"
@@ -481,8 +531,8 @@ RR_Route1_Text_ReactNidoranFA::
     .string "even allowed?$"
 
 RR_Route1_Text_ReactNidoranFB::
-    .string "Jenny: Two kinds, one name. Filed\n"
-    .string "under complicated.$"
+    .string "{PLAYER}: Two species, one name.\n"
+    .string "I have a forum thread on it.$"
 
 RR_Route1_Text_ReactOddishA::
     .string "Elm: It's a weed. With feet.$"
@@ -490,12 +540,13 @@ RR_Route1_Text_ReactOddishA::
 RR_Route1_Text_ReactOddishB::
     .string "Jenny: Dear, it can hear you.$"
 
-RR_Route1_Text_ReactBellsproutA::
-    .string "Elm: Is that a plant or a noodle?$"
+RR_Route1_Text_ReactSentretA::
+    .string "Elm: A Sentret! From Johto! It\n"
+    .string "followed us here, I bet!$"
 
-RR_Route1_Text_ReactBellsproutB::
-    .string "Jenny: In my professional opinion:\n"
-    .string "both.$"
+RR_Route1_Text_ReactSentretB::
+    .string "Jenny: It keeps watch on its\n"
+    .string "tail. I respect a lookout.$"
 
 RR_Route1_Text_ReactDuplicateA::
     .string "Elm: Another one? Are you\n"
@@ -509,15 +560,71 @@ RR_Route1_Text_ReactMeowthA::
     .string "Elm: A Meowth! Hide your coins!$"
 
 RR_Route1_Text_ReactMeowthB::
-    .string "Jenny: It's already eyeing your\n"
-    .string "wallet, dear.$"
+    .string "Ivy: In Galar they're iron-clad.\n"
+    .string "They'd take your fork too.$"
 
 RR_Route1_Text_ReactEeveeA::
-    .string "Elm: An Eevee?! On Route One?!$"
+    .string "Elm: An Eevee?! Eight evolutions!\n"
+    .string "On Route One!$"
 
 RR_Route1_Text_ReactEeveeB::
     .string "Jenny: Breathe, dear. In through\n"
     .string "the nose.$"
+
+RR_Route1_Text_ReactHoppipA::
+    .string "Elm: A Hoppip! Hold on tight, or\n"
+    .string "the wind takes it to Johto!$"
+
+RR_Route1_Text_ReactHoppipB::
+    .string "Jenny: Noted. I'll file it under\n"
+    .string "flight risk.$"
+
+RR_Route1_Text_ReactPikachuA::
+    .string "Elm: A Pikachu?! Like Ash's!\n"
+    .string "Don't put it in its ball!$"
+
+RR_Route1_Text_ReactPikachuB::
+    .string "Jenny: Rubber gloves, dear.\n"
+    .string "It sparks when it's happy.$"
+
+RR_Route1_Text_ReactSandshrewA::
+    .string "Elm: A Sandshrew! It's a long\n"
+    .string "way from the desert!$"
+
+RR_Route1_Text_ReactSandshrewB::
+    .string "Ivy: Alola's live up snowy\n"
+    .string "mountains. Ice, not sand.$"
+
+RR_Route1_Text_ReactDiglettA::
+    .string "Elm: A Diglett! What's under it?\n"
+    .string "Nobody knows! Science!$"
+
+RR_Route1_Text_ReactDiglettB::
+    .string "Ivy: In Alola it has three\n"
+    .string "golden hairs. Lovely ones.$"
+
+RR_Route1_Text_ReactHoothootA::
+    .string "Elm: A Hoothoot! It keeps time\n"
+    .string "with its head!$"
+
+RR_Route1_Text_ReactHoothootB::
+    .string "Jenny: Finally. Someone punctual.$"
+
+RR_Route1_Text_ReactGastlyA::
+    .string "Elm: A g-g-ghost! {PLAYER},\n"
+    .string "it went right through me!$"
+
+RR_Route1_Text_ReactGastlyB::
+    .string "Jenny: It's mostly gas, dear.\n"
+    .string "Don't inhale.$"
+
+RR_Route1_Text_ReactMurkrowA::
+    .string "Elm: A Murkrow! Is that bad luck?\n"
+    .string "Jenny, is that bad luck?$"
+
+RR_Route1_Text_ReactMurkrowB::
+    .string "Jenny: Known for petty theft.\n"
+    .string "I'll keep an eye on it.$"
 
 RR_Route1_Text_Jealous1::
     .string "Elm: Beginner's luck.$"
