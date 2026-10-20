@@ -67,7 +67,7 @@ P: Aerodynamic. Hydrodynamic. Very dynamic.
 
 [Wartortle]
 P: Wartortle's fluffy tail is a sign of a long life.
-Ivy: Then we'd better brush it. Every day, sweetie.
+Ivy: Then we'd better brush it. Every day.
 
 [Blastoise]
 Ivy: The cannons on its shell can hit a can from over a hundred feet.
@@ -75,7 +75,8 @@ P: I can't hit a can from three feet.
 
 [Caterpie]
 P: Caterpie's red antennae give off a smell that scares off birds.
-Ivy: You give off a smell when you skip laundry. Same idea.
+Ivy: Clever. Birds leave it alone, so it can eat all day.
+P: (Field notes: Caterpie. Eats all day. Relatable.)
 
 [Metapod]
 Ivy: Metapod's shell is hard, but the inside is soft and gooey.
@@ -107,7 +108,7 @@ P: Like Jenny at a picnic.
 
 [Pidgeot]
 P: Pidgeot can fly faster than the speed of sound.
-Ivy: And yet you still can't get us to the ferry on time.
+Ivy: Then it could get us to Cinnabar before Gerald moves.
 
 [Rattata]
 Ivy: Rattata will make its nest anywhere. Even attics.
@@ -153,6 +154,7 @@ Ivy: The Alolan ones live on snowy mountains. They have ice for skin.
 [Sandslash]
 P: Sandslash's spines grow back when they break off.
 Ivy: The Alolan ones have icicles for spines. Very cold to the touch.
+P: Different climate, different spines. I'd love to sequence the icy ones.
 
 [Nidoran F]
 Ivy: Small but the poison in its horn is powerful.
@@ -172,8 +174,8 @@ P: Nidoran's big ears can hear the faintest sounds.
 Ivy: So it heard you call it "a small purple problem."
 
 [Nidorino]
-Ivy: Nidorino from the anime fought a Gengar on TV!
-P: I watched that episode six times. Don't tell Elm.
+Ivy: A Nidorino fought a Gengar on TV once. A classic!
+P: Jenny and I watched it six times. Elm still hasn't seen it.
 
 [Nidoking]
 P: One swing of Nidoking's tail can snap a telephone pole.
@@ -188,8 +190,8 @@ P: Clefable can hear a pin drop half a mile away.
 Ivy: So whispering won't help you, sweetie.
 
 [Vulpix]
-Ivy: Burnett showed me an Alolan Vulpix once. White, and cold to the touch.
-P: Same species, different home. That's the moment you married me.
+Ivy: Kanto Vulpix run warm. Alola's are white, and cold to the touch.
+P: Same species, two climates. I'd love to see the genes behind that.
 
 [Ninetales]
 P: Legend says Ninetales lives for a thousand years.
