@@ -97,6 +97,7 @@ static void Task_CreateLevelUpVerticalStripes(u8 taskId);
 static void ReloadMoveNames(enum BattlerId battler);
 static u32 CheckTypeEffectiveness(enum BattlerId battlerAtk, enum BattlerId battlerDef);
 static u32 CheckTargetTypeEffectiveness(enum BattlerId battler);
+static u8 *RR_StartMoveNameColor(u8 *dst, enum BattlerId battler, u32 moveIndex); // Research Red
 static void MoveSelectionDisplayMoveEffectiveness(u32 foeEffectiveness, enum BattlerId battler);
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(enum BattlerId battler) =
@@ -1756,11 +1757,13 @@ static void MoveSelectionDisplayMoveNames(enum BattlerId battler)
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
+        u8 *txtPtr = RR_StartMoveNameColor(gDisplayedStringBattle, battler, i); // Research Red
+
         MoveSelectionDestroyCursorAt(i);
         if (IsGimmickSelected(battler, GIMMICK_DYNAMAX) || GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
-            StringCopy(gDisplayedStringBattle, GetMoveName(GetMaxMove(battler, moveInfo->moves[i])));
+            StringCopy(txtPtr, GetMoveName(GetMaxMove(battler, moveInfo->moves[i])));
         else
-            StringCopy(gDisplayedStringBattle, GetMoveName(moveInfo->moves[i]));
+            StringCopy(txtPtr, GetMoveName(moveInfo->moves[i]));
         // Prints on windows B_WIN_MOVE_NAME_1, B_WIN_MOVE_NAME_2, B_WIN_MOVE_NAME_3, B_WIN_MOVE_NAME_4
         BattlePutTextOnWindow(gDisplayedStringBattle, i + B_WIN_MOVE_NAME_1);
         if (moveInfo->moves[i] != MOVE_NONE)
@@ -2524,6 +2527,35 @@ static u32 CheckTargetTypeEffectiveness(enum BattlerId battler)
             return partnerFoeEffectiveness;
     }
     return foeEffectiveness; // fallthrough for any other circumstance
+}
+
+// Research Red: move names coloured by how well they work on the foe, the same
+// answer as the effectiveness circle (in doubles, the better of the two foes).
+// Colours live in BG palette 5, slots 1-6 (LoadBattleMenuWindowGfx, battle_bg.c).
+static u8 *RR_StartMoveNameColor(u8 *dst, enum BattlerId battler, u32 moveIndex)
+{
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+    u32 cursor = gMoveSelectionCursor[battler], effectiveness, color;
+
+    if (!B_SHOW_EFFECTIVENESS || moveInfo->moves[moveIndex] == MOVE_NONE || IsBattleMoveStatus(moveInfo->moves[moveIndex]))
+        return dst;
+    gMoveSelectionCursor[battler] = moveIndex;
+    effectiveness = CheckTargetTypeEffectiveness(battler);
+    gMoveSelectionCursor[battler] = cursor;
+    switch (effectiveness)
+    {
+    case EFFECTIVENESS_SUPER_EFFECTIVE:    color = 1; break; // green
+    case EFFECTIVENESS_NOT_VERY_EFFECTIVE: color = 3; break; // grey
+    case EFFECTIVENESS_NO_EFFECT:          color = 5; break; // red-brown
+    default:                               return dst;      // normal: as before
+    }
+    *dst++ = EXT_CTRL_CODE_BEGIN;
+    *dst++ = EXT_CTRL_CODE_COLOR;
+    *dst++ = color;
+    *dst++ = EXT_CTRL_CODE_BEGIN;
+    *dst++ = EXT_CTRL_CODE_SHADOW;
+    *dst++ = color + 1;
+    return dst;
 }
 
 static void MoveSelectionDisplayMoveEffectiveness(u32 foeEffectiveness, enum BattlerId battler)

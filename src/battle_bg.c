@@ -1001,6 +1001,15 @@ void LoadBattleMenuWindowGfx(void)
     gPlttBufferUnfaded[BG_PLTT_ID(5) + 14] = RGB(31, 31, 31);
     gPlttBufferUnfaded[BG_PLTT_ID(5) + 15] = RGB( 26,  26,  25);
     CpuCopy16(&gPlttBufferUnfaded[BG_PLTT_ID(5) + 12], &gPlttBufferFaded[BG_PLTT_ID(5) + 12], PLTT_SIZEOF(4));
+    // Research Red: move-name colours by effectiveness (battle_controller_player.c),
+    // text + shadow pairs in slots 1-6, unused by every other battle window
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 1] = RGB( 3, 17,  5); // super effective
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 2] = RGB(20, 28, 20);
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 3] = RGB(16, 16, 16); // not very effective
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 4] = RGB(27, 27, 27);
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 5] = RGB(22,  6,  4); // no effect
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 6] = RGB(29, 22, 20);
+    CpuCopy16(&gPlttBufferUnfaded[BG_PLTT_ID(5) + 1], &gPlttBufferFaded[BG_PLTT_ID(5) + 1], PLTT_SIZEOF(6));
 
     if (gBattleTypeFlags & (BATTLE_TYPE_ARENA | BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_POKEDUDE))
     {
