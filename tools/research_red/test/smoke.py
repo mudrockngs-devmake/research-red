@@ -193,6 +193,21 @@ def sc_rules():
                "press B", "wait 30", "shot t003"])
 
 
+def sc_ivy():
+    # Talk to Ivy (the follower, right behind you) in Pallet and on Route 1:
+    # each area has its own lines (rr_ivy.inc). Tap toward her once to face
+    # her, then talk three times (a random line each time).
+    def talk(toward, tag):
+        lines = [f"press {toward} 2", "wait 10"]
+        for i in range(1, 4):
+            lines += ["press A", "wait 50", f"shot {tag}{i}", "mash B 60", "wait 20"]
+        return lines
+    # Pallet: debug 2 leaves us below Daisy's door; step left, Ivy is to the right
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT") + ["wait 30"] + talk("RIGHT", "p")
+            + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN"))
+            + ["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60"] + talk("DOWN", "r")
+            + expect("MAP_ROUTE1"))
+
 # Maps the report can name (anything else shows as a number)
 MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
              "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", "MAP_PALLET_TOWN_RIVALS_HOUSE", "MAP_ROUTE1",
@@ -213,6 +228,7 @@ SCENARIOS = {
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
+    "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Start > Guide on Route 1"),
     "rules": (sc_rules, "Start > Rules after the lunch"),
 }

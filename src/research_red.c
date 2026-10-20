@@ -8,6 +8,7 @@
 #include "battle.h"
 #include "constants/battle.h"
 #include "constants/maps.h"
+#include "constants/region_map_sections.h"
 #include "constants/species.h"
 #include "script.h"
 #include "constants/event_objects.h"
@@ -133,6 +134,45 @@ void RR_ScriptRoute1Reaction(struct ScriptContext *ctx)
     case SPECIES_GASTLY:     gSpecialVar_Result = RR_REACT_GASTLY;     break;
     case SPECIES_MURKROW:    gSpecialVar_Result = RR_REACT_MURKROW;    break;
     default:                 gSpecialVar_Result = RR_REACT_DEFAULT;    break;
+    }
+}
+
+// Ivy's follower chat: which area's lines to use (VAR_RESULT, matches the
+// case list in rr_ivy.inc). Indoor maps share their town's map section.
+enum
+{
+    RR_IVY_AREA_ANYWHERE, RR_IVY_AREA_PALLET, RR_IVY_AREA_ROUTE1, RR_IVY_AREA_VIRIDIAN, RR_IVY_AREA_ROUTE22, RR_IVY_AREA_ROUTE2, RR_IVY_AREA_FOREST, RR_IVY_AREA_PEWTER,
+};
+
+void RR_ScriptIvyTalkArea(struct ScriptContext *ctx)
+{
+    switch (gMapHeader.regionMapSectionId)
+    {
+    case MAPSEC_PALLET_TOWN:
+        gSpecialVar_Result = RR_IVY_AREA_PALLET;
+        break;
+    case MAPSEC_ROUTE_1:
+        gSpecialVar_Result = RR_IVY_AREA_ROUTE1;
+        break;
+    case MAPSEC_VIRIDIAN_CITY:
+        gSpecialVar_Result = RR_IVY_AREA_VIRIDIAN;
+        break;
+    case MAPSEC_ROUTE_22:
+        gSpecialVar_Result = RR_IVY_AREA_ROUTE22;
+        break;
+    case MAPSEC_ROUTE_2:
+    case MAPSEC_DIGLETTS_CAVE:
+        gSpecialVar_Result = RR_IVY_AREA_ROUTE2;
+        break;
+    case MAPSEC_VIRIDIAN_FOREST:
+        gSpecialVar_Result = RR_IVY_AREA_FOREST;
+        break;
+    case MAPSEC_PEWTER_CITY:
+        gSpecialVar_Result = RR_IVY_AREA_PEWTER;
+        break;
+    default:
+        gSpecialVar_Result = RR_IVY_AREA_ANYWHERE;
+        break;
     }
 }
 

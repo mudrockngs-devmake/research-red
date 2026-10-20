@@ -181,6 +181,8 @@ def run(suite, rom, name, lines, workdir, timeout):
                          f"(script line {p[1]}, see stuck_{int(p[1]):05d}.png)")
         elif p[0] == "PEEK":
             peeks[p[1]] = int(p[2])
+            if os.environ.get("RR_SHOW_PEEKS"):    # debugging: RR_SHOW_PEEKS=1 smoke.py ...
+                print(f"    {name}: {p[1]} = {p[2]}")
     states = [(f, classify(os.path.join(sdir, f))) for f in shots]
     crashes = [f for f, s in states if s == "crash"]
     if crashes:

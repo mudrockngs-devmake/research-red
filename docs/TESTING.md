@@ -7,6 +7,7 @@ A headless copy of mGBA plays the game from scripted button presses, takes scree
 python3 tools/research_red/test/smoke.py            # all scenarios (about 5 minutes)
 python3 tools/research_red/test/smoke.py lunch guide # just these
 python3 tools/research_red/test/smoke.py --list      # what's covered
+RR_SHOW_PEEKS=1 python3 tools/research_red/test/smoke.py ivy   # also print every memory peek (debugging)
 ```
 Results go to `E:\Workspace\romhacks\research-red\test-runs\<date>_<version>_<commit>\`:
 - `REPORT.md`: PASS / WARN / FAIL per scenario, with where each one ended (story step, map, team size)
