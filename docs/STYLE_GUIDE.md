@@ -5,6 +5,8 @@ their work, being a little ridiculous about it. Jokes come from character,
 not meanness. Every scene should leave the player smiling.
 
 ## The cast's voices
+How each of them talked in the early anime, with sample lines: [reference/VOICES_EARLY_ANIME.md](reference/VOICES_EARLY_ANIME.md).
+
 | Who | Voice | Tics and habits | Avoid |
 |---|---|---|---|
 | **The player** (Maple / Cedar / Sumac) | Dry, self-deprecating, deadpan one-liners | Undersells themself ("I carried the snacks"), adores Ivy, teases Elm gently | Being cruel; long speeches |
