@@ -37,7 +37,7 @@ Deadpan, devoted, sharp.
 - Detective-show flavour, written with love for *Case Closed* (*Detective Conan*), reworked for Pokémon: the deduction, the reveal (draft set below, being workshopped).
 - Anime-Jenny habits: playfully suspicious first, apologetic after ("Halt!"), then reminded she's off duty.
 
-## Catchphrases (draft, workshopping)
+## Catchphrases (agreed 2026-10-20)
 At most one per scene, so they stay special.
 - **Everyday deduction:** "The evidence suggests…" (setup) then "Case closed." (punchline).
 - **Big moments, rare:** "One truth prevails." Or to Elm, softly: "There's only ever one truth, dear."
