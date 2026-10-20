@@ -1,7 +1,10 @@
 # The player (Maple / Cedar / Sumac)
 
 Character sheet for the player character, workshopped with the owner on
-2026-10-20. Male or female, same voice.
+2026-10-20. Male or female, same voice: either way the player is married to
+Ivy. Write the player's lines and other people's lines about them so they work
+for both (no "husband", "he" or "his" for the player; "spouse", "partner" or the
+name instead).
 
 ## In one line
 A wisecracking professor who truly cares about everyone in their life, and

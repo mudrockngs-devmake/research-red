@@ -23,7 +23,7 @@ Deadpan, devoted, sharp.
 | Who | How Jenny sees them |
 |---|---|
 | **Elm** | His passion is what drew her to him, and it complements her procedure. She's his rock: regulates without dimming, translates Ivy's jokes for him, advises him against things (walking into tall grass unarmed), reminds him to be a good sport, always on his side. Calls him "dear". |
-| **Ivy** | Best friends; their own fun gossip ritual; knowing looks about their husbands. |
+| **Ivy** | Best friends; their own fun gossip ritual; knowing looks about their spouses (Elm and the player). |
 | **The player** | Deadpan duo and crisis team; same old Kanto TV shows; the spotting drives; asks how to handle Elm. Rates their jokes. |
 | **Oak** | Touched that he sees her, not "a Jenny". |
 | **Daisy** | Appreciates how sweet and patient Daisy is with Elm, who can rub people the wrong way. |

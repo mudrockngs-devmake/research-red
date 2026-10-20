@@ -6,6 +6,7 @@ not meanness. Every scene should leave the player smiling.
 
 ## The cast's voices
 How each of them talked in the early anime, with sample lines: [reference/VOICES_EARLY_ANIME.md](reference/VOICES_EARLY_ANIME.md).
+What the couples call each other (and the player being male or female): [characters/NAMES.md](characters/NAMES.md).
 
 | Who | Voice | Tics and habits | Avoid |
 |---|---|---|---|

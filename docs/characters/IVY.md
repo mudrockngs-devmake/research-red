@@ -15,7 +15,7 @@ Cute, strong, confident.
 |---|---|
 | **The player** | Her spouse and research partner. She teases them with love, laughs at their jokes, and worries quietly when they're not OK. Calls them "sweetie". |
 | **Elm** | Teases him like a little brother (he's like the player's little brother too). Respects his work completely. |
-| **Jenny** | Her best friend, for her own reasons. The two wives share knowing looks at their husbands' shenanigans and play off each other to get through the weird moments: sitcom energy, never a literal fourth-wall break. They have their own gossip style, fun and funny, like Oak and Delia's. |
+| **Jenny** | Her best friend, for her own reasons. The two of them share knowing looks at their spouses' shenanigans and play off each other to get through the weird moments: sitcom energy, never a literal fourth-wall break. They have their own gossip style, fun and funny, like Oak and Delia's. |
 | **The four of them** | Two couples who go through anything, thick or thin, each pair with its own dynamic. |
 | **Oak** | A colleague with mutual respect (she didn't study under him). He's thrilled she and his student found each other. |
 | **Delia** | Their warm host for the research stay. |
@@ -28,7 +28,7 @@ Cute, strong, confident.
 ## How she talks
 - Sitcom levels of corny, never cringey.
 - Warm, quick, a little teasing; "sweetie" for the player, "dear" back at Jenny's habit.
-- Chaos doesn't rattle her: that's just life with her work (and her husband).
+- Chaos doesn't rattle her: that's just life with her work (and her spouse).
 - Fun facts about how Pokémon change by region, often romantic about science ("Regional forms can start with one stubborn ancestor. Science is so romantic.").
 - Gets her own jokes; never only the straight man.
 
