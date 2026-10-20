@@ -97,7 +97,7 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 - Battles: types all battle (#25), held items restored after battle incl. Berries (#58), choose which wild to catch in doubles (#55, if supported).
 - Evolution and moves: evolve on demand (#50), trade evolutions at 37, no Linking Cord (#65), pre-evolution moves relearnable at any level (#51), 100 TMs all from the grant (#57).
 - Ranch Pager (#29), Rest for day/night + clock fix (#56, #27), rule-change calls (#13, #45).
-- Rematches: Oak + Daisy (#53), Delia (#70), Brock tiers (#52); watch Elm and Jenny vs Brock (#69); dex banter cutscene and replay with field notes (#5, #4).
+- Rematches: Oak + Daisy (#53), Delia (#70), Brock tiers (#52); watch Elm and Jenny vs Brock (#69; Elm and Jenny inside the Gym entrance during your run; Brock's nine siblings: 5 in the Gym, 4 in town, generic kid sprites); dex banter cutscene and replay with field notes (#5, #4).
 - World: ambient Pokémon pilot (#64), Forest exchanges + the Samurai (#9), Pokédex Area tab (#20), proper case (#11), Cruller (Jenny's Growlithe) in the Daisy scene and on Jenny's team, features list + a lab aide who explains them (#72).
 - Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), title screen + Slowking disclaimer and demo notice + a Mareep "A fan project by MudrockNGS" boot splash (#12, mock-ups first), cozier interface colours (#73, mock-ups first), battle backgrounds per location (#74). If the build drags, the art items move to v0.0.17.
 
