@@ -4,6 +4,8 @@ Research Red: Start menu > Guide (src/rr_field_guide.c)
 
 ### RR_EventScript_FieldGuide
 
+### RR_EventScript_StartMenuPC
+
 ### RR_EventScript_ResearchRules
 
 ### RR_EventScript_OldSaveWarning

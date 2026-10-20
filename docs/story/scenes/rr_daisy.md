@@ -108,6 +108,50 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 
 > Elm: He is so excited about this.
 
+> Daisy: Muffin. Here, sweetheart.
+
+> Elm climbs down onto his chair.
+> Calmly. Mostly.
+
+> Elm: So. {PLAYER}. Before the Gyms,
+> I've been thinking about rules.
+
+> {PLAYER}: You've been thinking?
+> Should we sit down?
+
+> Elm: We are sitting down.
+
+> Elm: Real research needs controls!
+> Level caps before each Gym,
+> so nobody overtrains.
+
+> Jenny: He means so he doesn't
+> overtrain. He has a problem.
+
+> Elm: I have a passion.
+
+> Elm: Want to change them later?
+> Start menu, “Rules.” Day or night.
+
+> Jenny: Please not night.
+
+> Elm: …Hey. I'm really glad you two
+> came. Johto was quiet without you.
+
+> {PLAYER}: Elm. You called me
+> every week.
+
+> Elm: And it was quiet between
+> the calls!
+
+> {PLAYER}: …I'm glad we came too.
+
+> Ivy: Group hug, or are we too
+> professional?
+
+> Jenny: In my professional opinion:
+> group hug.
+
 > Elm: See you on Route 1!
 > Last one to Viridian buys lunch!
 
@@ -116,6 +160,14 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 *[setvar VAR_0x40FE ]*
 
 ### RR_Daisy_EventScript_SetupScene
+
+### RR_Daisy_EventScript_Talk
+
+> Daisy: Muffin has claimed the
+> chair. Elm will have to stand.
+>
+> Grandpa's proud of you two, you
+> know. He just won't say it.
 
 ### RR_Daisy_EventScript_Muffin
 

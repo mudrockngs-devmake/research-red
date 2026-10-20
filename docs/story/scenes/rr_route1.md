@@ -69,6 +69,12 @@ Research Red: First walk up Route 1 (Route1)
 
 *[setvar VAR_0x40FE ]*
 
+### RR_Route1_EventScript_LineUpWithElm
+
+### RR_Route1_EventScript_StepLeftToElm
+
+### RR_Route1_EventScript_StepRightToElm
+
 ### RR_Route1_EventScript_PlaceIvy
 
 ### RR_Route1_EventScript_CatchReactions

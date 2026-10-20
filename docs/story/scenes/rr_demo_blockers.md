@@ -1,0 +1,62 @@
+# Scene: rr_demo_blockers
+
+Research Red: demo boundaries (#35, #36, #62)
+
+### RR_Pewter_EventScript_DemoSetup
+
+### RR_Pewter_EventScript_DemoGuideTalk
+
+> Hey! Sorry, the road past Pewter
+> isn't built yet.
+>
+> This is a demo of Research Red.
+> Thanks so much for playing!
+>
+> We'll open the way in a future
+> update. Please understand!
+
+### RR_Pewter_EventScript_DemoBlock
+
+> Hey! Sorry, the road past Pewter
+> isn't built yet.
+>
+> This is a demo of Research Red.
+> Thanks so much for playing!
+>
+> We'll open the way in a future
+> update. Please understand!
+
+### RR_Pallet_EventScript_GeraldBlock
+
+> Gerald the Tentacool is floating
+> right in the way. Tenta! Cool!
+
+> Ivy: Gerald! You followed us
+> all the way from the ferry?
+
+> Gerald holds up a tiny sign:
+>
+> “Sea route under construction.
+> This is a demo of Research Red.
+>
+> Cinnabar and beyond come later.
+> Thanks for playing!”
+
+> {PLAYER}: Still blocking boats.
+> Honestly? Respect.
+
+> Ivy: Don't worry, Gerald.
+> We'll come back for you.
+
+### RR_Pallet_EventScript_Gerald
+
+> Gerald the Tentacool is floating
+> right in the way. Tenta! Cool!
+
+> Gerald holds up a tiny sign:
+>
+> “Sea route under construction.
+> This is a demo of Research Red.
+>
+> Cinnabar and beyond come later.
+> Thanks for playing!”

@@ -1,0 +1,100 @@
+# Scene: rr_pewter
+
+Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
+
+### RR_Pewter_OnTransitionPC
+
+### RR_Pewter_EventScript_HideElmJenny
+
+### RR_Pewter_EventScript_Rematch
+
+> Elm: Wait. Is that… a badge?
+> You have a badge already?!
+
+> Jenny: We were at the Museum.
+> He cried at a fossil.
+
+> Elm: It was a very moving fossil!
+
+> Ivy: We were there too. We cried
+> at the gift shop prices.
+
+> Elm: {PLAYER}! Ivy! Badge or no
+> badge, the race isn't over!
+>
+> Six on six! Right here!
+
+> Jenny: By protocol, we battle
+> before Brock. To warm up.
+
+> {PLAYER}: Your warm-up is us?
+
+> Jenny: You are very warm people.
+
+### RR_Pewter_EventScript_BattleAfterBulbasaur
+
+*[trainerbattle_two_trainers Rival Early Elm (Cinnamon, Pudding, Churro) + RR Officer Jenny (Biscotti, Licorice, Macaron)]*
+
+### RR_Pewter_EventScript_BattleAfterCharmander
+
+*[trainerbattle_two_trainers Rival Early Elm (Biscotti, Pudding, Churro) + RR Officer Jenny (Matcha, Licorice, Macaron)]*
+
+### RR_Pewter_EventScript_BattleAfterSquirtle
+
+*[trainerbattle_two_trainers Rival Early Elm (Matcha, Pudding, Churro) + RR Officer Jenny (Cinnamon, Licorice, Macaron)]*
+
+### RR_Pewter_EventScript_BattleAfterChikorita
+
+*[trainerbattle_two_trainers Rival Early Elm (Toffee, Pudding, Churro) + RR Officer Jenny (Cream Puff, Licorice, Macaron)]*
+
+### RR_Pewter_EventScript_BattleAfterCyndaquil
+
+*[trainerbattle_two_trainers Rival Early Elm (Cream Puff, Pudding, Churro) + RR Officer Jenny (Pistachio, Licorice, Macaron)]*
+
+### RR_Pewter_EventScript_BattleAfterTotodile
+
+*[trainerbattle_two_trainers Rival Early Elm (Pistachio, Pudding, Churro) + RR Officer Jenny (Toffee, Licorice, Macaron)]*
+
+### RR_Pewter_EventScript_AfterBattle
+
+> Elm: We won! In a Pokémon Center!
+> It still counts!
+
+> Jenny: Conveniently, they heal
+> you right over there.
+
+### RR_Pewter_EventScript_Won
+
+> Elm: …Hey. Good battle. Really.
+> I mean it.
+
+> {PLAYER}: I know you do.
+> You always do.
+
+### RR_Pewter_EventScript_ToTheGym
+
+> Jenny: We're going to challenge
+> Brock now. Wish us luck.
+
+> Ivy: Good luck, Jenny.
+> He made stew.
+
+> Jenny: …I am suddenly very
+> motivated.
+
+> Elm: See you down the road, you
+> two! We always catch up!
+
+> Elm and Jenny head for the Gym,
+> arguing happily about strategy.
+
+> Ivy: One badge down, sweetie.
+
+> {PLAYER}: Seven to go.
+> And one bet.
+
+> Ivy: And Mimey's dishes.
+
+> {PLAYER}: And Mimey's dishes.
+
+*[setvar VAR_0x40FE ]*

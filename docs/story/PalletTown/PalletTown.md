@@ -2,6 +2,10 @@
 
 Map `MAP_PALLET_TOWN` · music `MUS_PALLET` · weather `WEATHER_SUNNY`
 
+## Story scene triggers
+
+- `RR_Pallet_EventScript_GeraldBlock` when `VAR_TEMP_3` = 0 (see scenes/)
+
 ## People and objects
 
 ### Pallet Sign Lady (Woman 1) at 3,10
@@ -54,6 +58,20 @@ Script `PalletTown_EventScript_FatMan`
 ### Pallet Jenny (Rr Jenny) at 13,1
 *hidden by `FLAG_TEMP_3`*
 (no talk script; used in cutscenes)
+
+### Pallet Gerald (Species(Tentacool)) at 8,19
+Script `RR_Pallet_EventScript_Gerald`
+
+> Gerald the Tentacool is floating
+> right in the way. Tenta! Cool!
+
+> Gerald holds up a tiny sign:
+>
+> “Sea route under construction.
+> This is a demo of Research Red.
+>
+> Cinnabar and beyond come later.
+> Thanks for playing!”
 
 ## Signs
 

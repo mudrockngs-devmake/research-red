@@ -83,7 +83,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Kanto on top, Johto below.
 > Which one will you study?
 
-*[dynmultichoice 1]*
+*[dynmultichoice 10]*
 
 ### RR_Lab_EventScript_PickBulbasaur
 
@@ -276,6 +276,15 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Elm: Ha! History!
 > Write that down, Jenny!
 
+> Jenny: Already written, dear.
+> With a diagram.
+
+> Ivy: We let them win, sweetie.
+> For morale.
+
+> Elm: Nobody let anybody win!
+> That was pure science!
+
 ### RR_Lab_EventScript_AfterBattle
 
 > Elm: Again! Best of three!
@@ -283,6 +292,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Jenny: Best of zero.
 > We're in a lab, dear.
+
+### RR_Lab_EventScript_OakSteps
 
 > Oak: Hmm. If you're going to do
 > this unorthodox thing, do it
@@ -733,6 +744,9 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Ivy: Sweetie, we get front row
 > seats. Somebody find popcorn.
 
+> Watch Elm and Jenny battle
+> Prof. Oak?
+
 ### RR_Lab_EventScript_OakVsElmBattle
 
 ### RR_Lab_EventScript_ElmTeam0
@@ -773,6 +787,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 ### RR_Lab_EventScript_OakVsElmResult
 
+### RR_Lab_EventScript_OakBeatElm
+
 > Oak: Ho ho! Not bad. Not bad at
 > all. Still mine, though.
 
@@ -786,6 +802,11 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Elm: For science! And for
 > bragging rights! Mostly that.
+
+### RR_Lab_EventScript_OakVsElmSkip
+
+> The battle is a blur of flashes,
+> cries and Elm shouting.
 
 ### RR_Lab_EventScript_Slowpoke
 

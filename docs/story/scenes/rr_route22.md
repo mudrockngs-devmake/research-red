@@ -13,6 +13,12 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 > Jenny: We've caught four.
 > Elm named them after desserts.
 
+> Elm: And the starters too! Both
+> are pastries now. Very official.
+
+> Jenny: He made name tags.
+> With glitter.
+
 > Elm: Our team is complete!
 > Six on six! Right here! Right now!
 
@@ -23,27 +29,27 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 
 ### RR_Route22_EventScript_BattleAfterBulbasaur
 
-*[trainerbattle_two_trainers Rival Early Elm (Cyndaquil, Churro, Pudding) + RR Officer Jenny (Totodile, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Cinnamon, Churro, Pudding) + RR Officer Jenny (Biscotti, Licorice, Macaron)]*
 
 ### RR_Route22_EventScript_BattleAfterCharmander
 
-*[trainerbattle_two_trainers Rival Early Elm (Totodile, Churro, Pudding) + RR Officer Jenny (Chikorita, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Biscotti, Churro, Pudding) + RR Officer Jenny (Matcha, Licorice, Macaron)]*
 
 ### RR_Route22_EventScript_BattleAfterSquirtle
 
-*[trainerbattle_two_trainers Rival Early Elm (Chikorita, Churro, Pudding) + RR Officer Jenny (Cyndaquil, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Matcha, Churro, Pudding) + RR Officer Jenny (Cinnamon, Licorice, Macaron)]*
 
 ### RR_Route22_EventScript_BattleAfterChikorita
 
-*[trainerbattle_two_trainers Rival Early Elm (Charmander, Churro, Pudding) + RR Officer Jenny (Squirtle, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Toffee, Churro, Pudding) + RR Officer Jenny (Cream Puff, Licorice, Macaron)]*
 
 ### RR_Route22_EventScript_BattleAfterCyndaquil
 
-*[trainerbattle_two_trainers Rival Early Elm (Squirtle, Churro, Pudding) + RR Officer Jenny (Bulbasaur, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Cream Puff, Churro, Pudding) + RR Officer Jenny (Pistachio, Licorice, Macaron)]*
 
 ### RR_Route22_EventScript_BattleAfterTotodile
 
-*[trainerbattle_two_trainers Rival Early Elm (Bulbasaur, Churro, Pudding) + RR Officer Jenny (Charmander, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Pistachio, Churro, Pudding) + RR Officer Jenny (Toffee, Licorice, Macaron)]*
 
 ### RR_Route22_EventScript_AfterBattle
 

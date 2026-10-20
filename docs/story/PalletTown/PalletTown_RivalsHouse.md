@@ -70,15 +70,11 @@ Script `PalletTown_RivalsHouse_EventScript_Daisy`
 > DAISY: Okay, I'll get it looking
 > nice in no time.
 
-> DAISY: Just like people, POKéMON
-> are living things.
+> Daisy: Muffin has claimed the
+> chair. Elm will have to stand.
 >
-> When they get tired, please give
-> them a rest.
-
-> You can use the TOWN MAP to find
-> out where you are, or check the
-> names of places.
+> Grandpa's proud of you two, you
+> know. He just won't say it.
 
 > Grandpa asked you to run an
 > errand?
@@ -113,7 +109,7 @@ Script `PalletTown_RivalsHouse_EventScript_TownMap`
 *hidden by `FLAG_HIDE_TOWN_MAP`*
 (no talk script; used in cutscenes)
 
-### Rivals House Jenny (Rr Jenny) at 8,6
+### Rivals House Jenny (Rr Jenny) at 9,5
 *hidden by `FLAG_HIDE_TOWN_MAP`*
 (no talk script; used in cutscenes)
 

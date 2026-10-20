@@ -63,121 +63,121 @@
 - desserts Lv?
 
 ## Rival Early Elm (`TRAINER_RR_ELM_R22_BULBASAUR`, single)
-- Bulbasaur Lv9
+- Pistachio Lv9
 - Churro Lv8
 - Pudding Lv8
 
 ## Rival Early Elm (`TRAINER_RR_ELM_R22_CHARMANDER`, single)
-- Charmander Lv9
+- Toffee Lv9
 - Churro Lv8
 - Pudding Lv8
 
 ## Rival Early Elm (`TRAINER_RR_ELM_R22_SQUIRTLE`, single)
-- Squirtle Lv9
+- Cream Puff Lv9
 - Churro Lv8
 - Pudding Lv8
 
 ## Rival Early Elm (`TRAINER_RR_ELM_R22_CHIKORITA`, single)
-- Chikorita Lv9
+- Matcha Lv9
 - Churro Lv8
 - Pudding Lv8
 
 ## Rival Early Elm (`TRAINER_RR_ELM_R22_CYNDAQUIL`, single)
-- Cyndaquil Lv9
+- Cinnamon Lv9
 - Churro Lv8
 - Pudding Lv8
 
 ## Rival Early Elm (`TRAINER_RR_ELM_R22_TOTODILE`, single)
-- Totodile Lv9
+- Biscotti Lv9
 - Churro Lv8
 - Pudding Lv8
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_R22_BULBASAUR`, single)
-- Bulbasaur Lv9
+- Pistachio Lv9
 - Licorice Lv8
 - Macaron Lv8
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_R22_CHARMANDER`, single)
-- Charmander Lv9
+- Toffee Lv9
 - Licorice Lv8
 - Macaron Lv8
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_R22_SQUIRTLE`, single)
-- Squirtle Lv9
+- Cream Puff Lv9
 - Licorice Lv8
 - Macaron Lv8
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_R22_CHIKORITA`, single)
-- Chikorita Lv9
+- Matcha Lv9
 - Licorice Lv8
 - Macaron Lv8
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_R22_CYNDAQUIL`, single)
-- Cyndaquil Lv9
+- Cinnamon Lv9
 - Licorice Lv8
 - Macaron Lv8
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_R22_TOTODILE`, single)
-- Totodile Lv9
+- Biscotti Lv9
 - Licorice Lv8
 - Macaron Lv8
 
 ## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_BULBASAUR`, single)
-- Bulbasaur Lv15
+- Pistachio Lv15
 - Pudding Lv14
 - Churro Lv14
 
 ## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_CHARMANDER`, single)
-- Charmander Lv15
+- Toffee Lv15
 - Pudding Lv14
 - Churro Lv14
 
 ## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_SQUIRTLE`, single)
-- Squirtle Lv15
+- Cream Puff Lv15
 - Pudding Lv14
 - Churro Lv14
 
 ## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_CHIKORITA`, single)
-- Chikorita Lv15
+- Matcha Lv15
 - Pudding Lv14
 - Churro Lv14
 
 ## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_CYNDAQUIL`, single)
-- Cyndaquil Lv15
+- Cinnamon Lv15
 - Pudding Lv14
 - Churro Lv14
 
 ## Rival Early Elm (`TRAINER_RR_ELM_PEWTER_TOTODILE`, single)
-- Totodile Lv15
+- Biscotti Lv15
 - Pudding Lv14
 - Churro Lv14
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_BULBASAUR`, single)
-- Bulbasaur Lv15
+- Pistachio Lv15
 - Licorice Lv14
 - Macaron Lv14
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CHARMANDER`, single)
-- Charmander Lv15
+- Toffee Lv15
 - Licorice Lv14
 - Macaron Lv14
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_SQUIRTLE`, single)
-- Squirtle Lv15
+- Cream Puff Lv15
 - Licorice Lv14
 - Macaron Lv14
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CHIKORITA`, single)
-- Chikorita Lv15
+- Matcha Lv15
 - Licorice Lv14
 - Macaron Lv14
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CYNDAQUIL`, single)
-- Cyndaquil Lv15
+- Cinnamon Lv15
 - Licorice Lv14
 - Macaron Lv14
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_TOTODILE`, single)
-- Totodile Lv15
+- Biscotti Lv15
 - Licorice Lv14
 - Macaron Lv14

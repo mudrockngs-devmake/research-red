@@ -2,6 +2,25 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
+## v0.0.15
+- Fixed: the Pokédex crashed (blue error screen) when moving from the Stats page to the Evo page.
+- New: after Brock, Elm and Jenny wait in the Pewter Pokémon Center for a 6v6 rematch, then head off to challenge Brock themselves.
+- New: the demo ends at Pewter. After Brock, the boy at the east exit turns you back with a note, and Gerald the Tentacool blocks the sea route south of Pallet. The Running Shoes delivery in Pewter is gone (you can run from the start).
+- Daisy's house: Muffin really hops onto the chair and Elm onto the table. Elm and Jenny leave through the door, and Daisy has her own lines afterwards.
+- Elm's Research Rules talk now happens at Daisy's house, after things calm down. Start > Rules is there from then on.
+- Viridian lunch: Elm and Jenny sit right of the Pokémon Center; talk to them to start it.
+- Route 1: Elm and Jenny wait where the path meets the top of the route, you line up in front of them, and Mewtwo streaks from the right to the upper left.
+- Lab: losing to Elm and Jenny has its own lines, and you can choose whether to watch their battle with Oak. The Johto starters' table is one table now, and the Slowpoke takes it easy.
+- Elm and Jenny's starters get pastry nicknames (from Route 22 on).
+- Portraits sit lower, on the text box, and step aside when nobody's talking (people walking off, camera pans). Oak's starter list no longer hides behind his portrait.
+- Start > PC: the PC from anywhere once you have a Pokémon.
+- Start > Guide: separate day and night pages, and species you've caught are shown in green.
+- New Research Rule: heal after battles (off by default).
+- New games start with fast text, and L/R work as buttons instead of opening Help.
+- Blacking out at home: Delia has her own lines.
+- Debug skip 10: after Brock, outside the Pewter Pokémon Center.
+- **Save:** old saves work. If your save is between Daisy's house and the Viridian lunch, you'll miss Elm's rules talk, but Start > Rules works.
+
 ## v0.0.14
 - Fixed: a portrait could flash for a moment in the previous speaker's colors when the speaker changed (most visible in Oak's lab), and could show up in the colors of a nearby person.
 - Portraits now leave the screen as soon as a battle starts.

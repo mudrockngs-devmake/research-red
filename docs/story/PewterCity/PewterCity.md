@@ -2,6 +2,11 @@
 
 Map `MAP_PEWTER_CITY` · music `MUS_PEWTER` · weather `WEATHER_SUNNY`
 
+## Story scene triggers
+
+- `RR_Pewter_EventScript_DemoBlock` when `VAR_MAP_SCENE_PEWTER_CITY` = 1 (see scenes/)
+- `RR_Pewter_EventScript_DemoBlock` when `VAR_MAP_SCENE_PEWTER_CITY` = 2 (see scenes/)
+
 ## People and objects
 
 ### Lass (Lass) at 6,15
@@ -57,6 +62,15 @@ Script `PewterCity_EventScript_BugCatcher`
 ### Pewter Gym Guide (Boy) at 42,20
 *hidden by `FLAG_HIDE_PEWTER_CITY_GYM_GUIDE`*
 Script `PewterCity_EventScript_GymGuide`
+
+> Hey! Sorry, the road past Pewter
+> isn't built yet.
+>
+> This is a demo of Research Red.
+> Thanks so much for playing!
+>
+> We'll open the way in a future
+> update. Please understand!
 
 > You're a TRAINER, right?
 >

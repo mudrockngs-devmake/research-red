@@ -4,6 +4,8 @@ Research Red: lunch in Viridian City (animatic 07)
 
 ### RR_Lunch_OnTransition
 
+### RR_Lunch_EventScript_HideElmJenny
+
 ### RR_Lunch_EventScript_Start
 
 > Elm: There you are! Lunch!
@@ -70,45 +72,6 @@ Research Red: lunch in Viridian City (animatic 07)
 
 > Jenny: I still have the report.
 > Four pages. Two are diagrams.
-
-> Elm: So. {PLAYER}. Before the Gyms,
-> I've been thinking about rules.
-
-> {PLAYER}: You've been thinking?
-> Should we sit down?
-
-> Elm: We are sitting down.
-
-> Elm: Real research needs controls!
-> Level caps before each Gym,
-> so nobody overtrains.
-
-> Jenny: He means so he doesn't
-> overtrain. He has a problem.
-
-> Elm: I have a passion.
-
-> Elm: Want to change them later?
-> Start menu, “Rules.” Day or night.
-
-> Jenny: Please not night.
-
-> Elm: …Hey. I'm really glad you two
-> came. Johto was quiet without you.
-
-> {PLAYER}: Elm. You called me
-> every week.
-
-> Elm: And it was quiet between
-> the calls!
-
-> {PLAYER}: …I'm glad we came too.
-
-> Ivy: Group hug, or are we too
-> professional?
-
-> Jenny: In my professional opinion:
-> group hug.
 
 *[setvar VAR_0x40FE ]*
 

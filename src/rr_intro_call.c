@@ -130,7 +130,7 @@ static const struct CallStep sCallScript[] =
     DO(STEP_SIGNAL, 2),
     DO(STEP_WAIT, 30),
     // Version stamp for test builds (bump every build)
-    {STEP_LINE, 0, (const u8[])_("Research Red\nv0.0.14 test build\p")},
+    {STEP_LINE, 0, (const u8[])_("Research Red\nv0.0.15 test build\p")},
     {STEP_LINE, 0, (const u8[])_("Oak: Hello? Hello!\nIs this thing on?\p")},
     {STEP_LINE, 0, (const u8[])_("Oak: Ah, there you are! Welcome to\nKanto, a world full of Pokémon!\p")},
     {STEP_LINE, 0, (const u8[])_("Oak: People and Pokémon live,\nwork, and play together here.\p")},
