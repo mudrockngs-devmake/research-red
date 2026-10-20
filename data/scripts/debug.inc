@@ -313,8 +313,9 @@ Debug_EventScript_Script_9::
 	release
 	end
 
-@ After Brock: badge 1, story past the lunch, in Pewter by the east exit.
-@ For testing the demo blocker (#35) and the Pewter scenes.
+@ After Brock: badge 1, story past the lunch, in Pewter just below the
+@ Pokemon Center door (Elm and Jenny's rematch inside, #10; the demo
+@ blocker at the east exit, #35).
 Debug_EventScript_Script_10::
 	call RR_Debug_StateGrassDone
 	call RR_Debug_StateLabDone
@@ -328,7 +329,7 @@ Debug_EventScript_Script_10::
 	setvar VAR_MAP_SCENE_PEWTER_CITY, 1
 	setflag FLAG_WORLD_MAP_PEWTER_CITY
 	rr_ivy_create_follower
-	warp MAP_PEWTER_CITY, 39, 22
+	warp MAP_PEWTER_CITY, 17, 26
 	waitstate
 	release
 	end

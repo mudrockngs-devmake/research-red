@@ -5,6 +5,7 @@ PewterCity_PokemonCenter_1F_MapScripts::
 
 PewterCity_PokemonCenter_1F_OnTransition::
 	setrespawn HEAL_LOCATION_PEWTER_CITY
+	call RR_Pewter_OnTransitionPC @ Research Red: Elm and Jenny's rematch (#10)
 	end
 
 PewterCity_PokemonCenter_1F_EventScript_Nurse::

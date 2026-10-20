@@ -9,7 +9,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `VAR_RR_STARTER` (0x40FD) | Lab pick: 0 Bulbasaur, 1 Charmander, 2 Squirtle, 3 Chikorita, 4 Cyndaquil, 5 Totodile. `VAR_STARTER_MON` is also set by type (grass 0, water 1, fire 2) so FireRed rival scripts still work | 0-5 |
 | `VAR_RR_ROUTE1_CATCHES` (0x40F2) | Wild Pokemon caught on Route 1 before the group scene (VAR_0x40FE == 4) | count |
 | `VAR_RR_ROUTE1_CATCH_0`, `VAR_RR_ROUTE1_CATCH_1`, `VAR_RR_ROUTE1_CATCH_2`, `VAR_RR_ROUTE1_CATCH_3` (0x40F3-0x40F6) | Species of the first four of those catches, for Elm and Jenny's reactions | species |
-| `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 battle done (lunch pending), 7 lunch done (Start > Rules appears from 4, after Daisy's house) |
+| `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 battle done (lunch pending), 7 lunch done (Start > Rules appears from 4, after Daisy's house), 8 Elm and Jenny's rematch in the Pewter Pokémon Center done (after Brock) |
 
 ## Repurposed vanilla scene vars
 
@@ -27,6 +27,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 |---|---|
 | `FLAG_HIDE_PEWTER_CITY_GYM_GUIDE` | Cleared on entering Pewter after Brock, so the guide stays as the demo blocker (`rr_demo_blockers.inc`) |
 | `FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY` | Set on entering Pewter after Brock: the aide never appears (#62; Running Shoes are given from the start) |
+| `FLAG_TEMP_11`, `FLAG_TEMP_12` (Pewter Pokémon Center 1F) | Hide Elm and Jenny unless their rematch is pending (story 7 + after Brock) (`rr_pewter.inc`) |
 | `VAR_TEMP_3` (Pallet Town) | Always 0 there: keeps Gerald's water triggers (7-10, 18) active (#36) |
 
 ## Custom flags

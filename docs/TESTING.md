@@ -36,7 +36,8 @@ What the results mean:
 | lunch | Debug 6, talks to Elm by the Pokémon Center: the lunch and Officer Jenny |
 | banter | Debug 2 + 7, the Pokédex banter preview |
 | pokedex | Debug 2, Start > Pokédex, every page of Bulbasaur both ways (the Evo page crashed before v0.0.15) |
-| demo_end | Debug 10 (after Brock), walks east: the Gym guide turns you back (demo) |
+| pewter | Test mode + debug 10, into the Pewter Pokémon Center: Elm and Jenny's rematch (story 8) |
+| demo_end | Debug 10 (after Brock), walks to the east exit: the Gym guide turns you back (demo) |
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | guide | Debug 3, walks onto Route 1, Start > Guide |
 | rules | The lunch, then Start > Rules |

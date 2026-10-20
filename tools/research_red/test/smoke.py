@@ -118,9 +118,23 @@ def sc_pokedex():
             + pages + expect(story=3))
 
 
+def sc_pewter():
+    # After Brock: Elm and Jenny's rematch in the Pokemon Center (#10).
+    # Debug 10 leaves us below the door; inside, they sit at (4-5, 5).
+    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"]
+            + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"] + step("UP")
+            + play_until("inside", f"{T.G.on_map('MAP_PEWTER_CITY_POKEMON_CENTER_1F')} && {T.G.field_free()}",
+                         600, key="-") + ["wait 10"]
+            + step("UP", 2) + step("LEFT", 2) + ["press UP 2", "wait 10", "press A", "wait 30"]
+            + play_until("pewter", scene_end(8), 30000)
+            + expect("MAP_PEWTER_CITY_POKEMON_CENTER_1F", story=8, party=1))
+
+
 def sc_demo_end():
-    # After Brock, walking east out of Pewter: the guide turns us back (#35)
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"] + step("RIGHT", 4)
+    # After Brock, walking east out of Pewter: the guide turns us back (#35).
+    # Debug 10 leaves us at (17,26); the exit tiles are at x 42.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"]
+            + step("RIGHT", 5) + step("UP", 4) + step("RIGHT", 20)
             + play_until("turned_back", T.G.field_free(), 3000, key="B", every=20)
             + check("still_in_pewter", T.G.on_map("MAP_PEWTER_CITY"))
             + step("RIGHT", 4) + ["wait 30", "shot t001"]
@@ -169,6 +183,7 @@ SCENARIOS = {
     "lunch": (sc_lunch, "Viridian lunch by the Pokémon Center, Officer Jenny"),
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
+    "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch in the Pokémon Center (test mode)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "guide": (sc_guide, "Start > Guide on Route 1"),

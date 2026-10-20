@@ -26,7 +26,7 @@ Documentation index: `docs/README.md`.
 ## Where things are
 - Story scenes: one file each in `data/scripts/research_red/rr_*.inc`; FireRed maps keep only their hooks. Layout and conventions: `docs/DEV_GUIDE.md`.
 - Ivy is an NPC follower (FNPC). Cutscenes: `rr_ivy_to_scene LOCALID_X_IVY` at the start, `rr_ivy_follow LOCALID_X_IVY` at the end (scene Ivy objects need a hide flag). Helpers: `asm/macros/event.inc` (Research Red section), `src/research_red.c`, `data/scripts/research_red/rr_ivy.inc`.
-- Story progress var `VAR_0x40FE`: 0 none, 1 breakfast, 2 grass hook, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 done, 7 lunch done.
+- Story progress var `VAR_0x40FE`: 0 none, 1 breakfast, 2 grass hook, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 done, 7 lunch done, 8 Pewter rematch done (after Brock).
 - Intro video call: `src/rr_intro_call.c` (graphics: `tools/research_red/build_call_ui.py`). Debug skips: `data/scripts/debug.inc`. Art: `graphics/research_red/`.
 - Dialogue portraits: `src/rr_portrait.c`; speakers in `graphics/research_red/portraits.txt` -> `tools/research_red/build_portraits.py`. Sprite palettes for interface art go through `RR_LoadInterfaceSpritePalette` (slots 12-15).
 - Wild Pokemon: `data/research_red/encounters/*.txt` -> `tools/research_red/build_encounters.py`. Field Guide: `src/rr_field_guide.c`. Research Rules: `src/rr_rules.c`.
