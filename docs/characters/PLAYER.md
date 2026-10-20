@@ -16,7 +16,7 @@ Wry, warm, absurd.
 |---|---|
 | **Ivy** | Their wife and research partner. Loves making her laugh; a loving married double act. |
 | **Elm** | Not related; same age, but in the vein of a slightly younger brother: looks out for him, rolls with his craziness, teases him often but never harshly. |
-| **Jenny** | Like a sister-in-law and a buddy. Doesn't tease her; they just get each other. "Thanks for making my brother happy." A different dynamic from Jenny and Ivy's. |
+| **Jenny** | Like a sister-in-law and a buddy; never teased. They click for their own reasons: (1) **the deadpan duo**: the two straight faces, each other's best audience; Jenny never laughs out loud, she *rates* his jokes ("Seven out of ten. Procedural."). (2) **the calm ones in a crisis**: when Elm causes chaos they share a look and handle it; he points out the absurd hazard, she writes it up as one of her reports. (3) **a shared childhood of the same TV shows**: they quote the same old Kanto sitcoms and cartoons; Elm grew up in a lab and never watched any of it, so he's baffled every time. (4) **Pokémon-spotting drives**: they used to ride around on Jenny's motorbike logging sightings (it fits DexNav). (5) Jenny sometimes asks him how to handle Elm, affectionately; he's known Elm longest. |
 | **Oak** | Mentor and grandfather figure; one of his two best students (with Elm). |
 | **Delia** | Their warm host. |
 
