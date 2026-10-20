@@ -68,20 +68,21 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 
 | Pokémon | Levels | Chance |
 |---|---|---|
-| Psyduck | 5-10 | 60% |
-| Poliwag | 5-10 | 30% |
-| Slowpoke | 5-10 | 5% |
-| Wooper | 5-10 | 5% |
+| Psyduck | 4-7 | 60% |
+| Poliwag | 4-7 | 30% |
+| Goldeen | 4-7 | 5% |
+| Wooper | 4-7 | 4% |
+| Marill | 4-7 | 1% |
 
 **Fishing (Any time)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
-| Poliwag | 15-20 | 40% |
-| Goldeen | 15-20 | 40% |
-| Marill | 15-20 | 15% |
-| Slowpoke | 15-20 | 4% |
-| Gyarados | 20 | 1% |
+| Magikarp | 4-7 | 40% |
+| Goldeen | 4-7 | 40% |
+| Marill | 4-7 | 15% |
+| Wooper | 4-7 | 4% |
+| Slowpoke | 5-7 | 1% |
 
 ## Route 22
 

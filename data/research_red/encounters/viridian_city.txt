@@ -1,25 +1,19 @@
-# Viridian City's pond
-# Johto neighbors (#59); evolved forms only near their evolution level.
+# Viridian City's pond: freshwater Pokemon plus Johto neighbors (#59).
+# Surfing finds the everyday ones, fishing the rarer ones (one Fishing Rod).
+# Psyduck and Goldeen are common: Misty is fishing near Viridian when she
+# meets Ash in the anime.
 map: MAP_VIRIDIAN_CITY
 
 [surf]
-Psyduck     5-10 60
-Poliwag     5-10 30
-Slowpoke    5-10  5
-Wooper      5-10  5
+Psyduck     4-7  60
+Poliwag     4-7  30
+Goldeen     4-7   5
+Wooper      4-7   4
+Marill      4-7   1
 
-[old rod]
-Magikarp    5     70
-Poliwag     5     30
-
-[good rod]
-Poliwag    10-15  60
-Goldeen    10-15  20
-Magikarp   10-15  20
-
-[super rod]
-Poliwag    15-20  40
-Goldeen    15-20  40
-Marill     15-20  15
-Slowpoke   15-20   4
-Gyarados   20      1
+[fishing]
+Magikarp    4-7  40
+Goldeen     4-7  40
+Marill      4-7  15
+Wooper      4-7   4
+Slowpoke    5-7   1
