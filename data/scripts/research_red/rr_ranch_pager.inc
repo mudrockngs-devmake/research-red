@@ -130,3 +130,129 @@ RR_RanchPager_Text_TopUp:
 	.string "And no need to teach anyone Cut\n"
 	.string "or Surf: my Pokémon come to help\l"
 	.string "when nobody on your team knows it!$"
+
+@ Oak's Pokemon in the lab, the lab yard and on the Pallet shore (#29).
+@ The lab ones are hidden (FLAG_TEMP_3) until the lab scene is over.
+RR_RanchPager_EventScript_HideLabPokemon::
+	setflag FLAG_TEMP_3
+	return
+
+RR_RanchPager_EventScript_OakPikachu::
+	lock
+	faceplayer
+	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_RanchPager_Text_OakPikachu, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_RanchPager_EventScript_OakFarfetchd::
+	lock
+	faceplayer
+	playmoncry SPECIES_FARFETCHD, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_RanchPager_Text_OakFarfetchd, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_RanchPager_EventScript_OakAbra::
+	lock
+	faceplayer
+	playmoncry SPECIES_ABRA, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_RanchPager_Text_OakAbra, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_RanchPager_EventScript_OakMachop::
+	lock
+	faceplayer
+	playmoncry SPECIES_MACHOP, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_RanchPager_Text_OakMachop, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_RanchPager_EventScript_OakTauros::
+	lock
+	faceplayer
+	playmoncry SPECIES_TAUROS, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_RanchPager_Text_OakTauros, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_RanchPager_EventScript_OakPidgeot::
+	lock
+	faceplayer
+	playmoncry SPECIES_PIDGEOT, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_RanchPager_Text_OakPidgeot, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_RanchPager_EventScript_OakLapras::
+	lock
+	faceplayer
+	playmoncry SPECIES_LAPRAS, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_RanchPager_Text_OakLapras, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_RanchPager_EventScript_OakGyarados::
+	lock
+	faceplayer
+	playmoncry SPECIES_GYARADOS, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_RanchPager_Text_OakGyarados, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+RR_RanchPager_Text_OakPikachu:
+	.string "Pikachu: Pika pika!\p"
+	.string "It's Prof. Oak's Pikachu.\n"
+	.string "It's on call for Flash.$"
+
+RR_RanchPager_Text_OakFarfetchd:
+	.string "Farfetch'd: Kwaa!\p"
+	.string "It's Prof. Oak's Farfetch'd.\n"
+	.string "It's on call for Cut.$"
+
+RR_RanchPager_Text_OakAbra:
+	.string "Abra: …Abra.\p"
+	.string "It's Prof. Oak's Abra.\n"
+	.string "It's on call for Teleport.$"
+
+RR_RanchPager_Text_OakMachop:
+	.string "Machop: Macho!\p"
+	.string "It's Prof. Oak's Machop.\n"
+	.string "It's on call for Rock Smash.$"
+
+RR_RanchPager_Text_OakTauros:
+	.string "Tauros: Mooo!\p"
+	.string "It's Prof. Oak's Tauros.\n"
+	.string "It's on call for Strength.$"
+
+RR_RanchPager_Text_OakPidgeot:
+	.string "Pidgeot: Pijooo!\p"
+	.string "It's Prof. Oak's Pidgeot.\n"
+	.string "It's on call for Fly.$"
+
+RR_RanchPager_Text_OakLapras:
+	.string "Lapras: Laaa…\p"
+	.string "It's Prof. Oak's Lapras.\n"
+	.string "It's on call for Surf.$"
+
+RR_RanchPager_Text_OakGyarados:
+	.string "Gyarados: Gyaaa!\p"
+	.string "It's Prof. Oak's Gyarados.\n"
+	.string "It's on call for Waterfall.$"

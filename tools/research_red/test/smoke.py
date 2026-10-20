@@ -226,6 +226,19 @@ def sc_pager_other():
             + play_until("teleported", T.G.field_free(), 3000, key="B", every=20))
 
 
+def sc_oak_mons():
+    # #29: Oak's Ranch Pager Pokemon. Debug 2 leaves us at (15,8) in Pallet:
+    # east to the lab yard (Tauros 21,10 and Pidgeot 21,12), talk to Tauros,
+    # west along the shore (Lapras 7,17, Gyarados 10,17), into the lab
+    # (Pikachu, Farfetch'd, Abra, Machop; hidden until the lab scene is over).
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("RIGHT", 5) + step("DOWN", 2)
+            + ["wait 30", "shot o001", "press RIGHT", "wait 10", "press A", "wait 60", "shot o002", "press A", "wait 60",
+               "shot o003", "mash B 120", "wait 30"]
+            + step("DOWN", 5) + step("LEFT", 11) + ["wait 30", "shot o004"]
+            + step("RIGHT", 7) + step("UP", 2) + ["wait 120", "shot o005"] + step("UP", 4) + ["wait 30", "shot o006"]
+            + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=3))
+
+
 def sc_guide():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60", "shot s000"]
             # Start > POKEDEX, then the Pokédex's START menu: BACK TO LIST, LIST TOP,
@@ -346,6 +359,7 @@ SCENARIOS = {
     "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
     "pager_fly": (sc_pager_fly, "Ranch Pager > Fly: the Fly map, Oak's Pidgeot flies to Pallet (#29)"),
     "pager_other": (sc_pager_other, "Ranch Pager > Flash (not dark), then Teleport with Oak's Abra (#29)"),
+    "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
