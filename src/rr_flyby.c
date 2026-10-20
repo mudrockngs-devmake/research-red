@@ -1,6 +1,7 @@
 // Research Red: the Route 1 fly-by. Something streaks across the sky, too fast
 // to see properly: Mewtwo's sprite, stretched sideways and see-through, with two
-// fainter copies trailing behind it for a motion blur. Used while the camera is
+// fainter copies trailing behind it for a motion blur. It crosses from the lower
+// right to the upper left, like the movie (#30). Used while the camera is
 // panned up in RR_Route1_EventScript_Walk (callnative + waitstate).
 #include "global.h"
 #include "gpu_regs.h"
@@ -14,8 +15,9 @@
 
 #define TAG_RR_FLYBY  0x5A20
 #define NUM_COPIES    3      // the sprite and two trailing copies
-#define FLYBY_Y       36
-#define FLYBY_SPEED   8      // pixels per frame
+#define FLYBY_START_Y 92     // enters at the right, low
+#define FLYBY_SPEED   8      // pixels left per frame
+#define FLYBY_RISE    2      // pixels up per frame
 #define COPY_GAP      18     // pixels between the copies
 
 static const u32 sFlyby_Gfx[] = INCBIN_U32("graphics/pokemon/mewtwo/anim_front.4bpp");
@@ -31,9 +33,10 @@ static const struct OamData sOam_Flyby =
 };
 
 // Stretched long and thin: a streak, not a clear look. Copies get thinner.
-static const union AffineAnimCmd sAffine_Streak0[] = { AFFINEANIMCMD_FRAME(400, 200, 0, 0), AFFINEANIMCMD_END };
-static const union AffineAnimCmd sAffine_Streak1[] = { AFFINEANIMCMD_FRAME(460, 160, 0, 0), AFFINEANIMCMD_END };
-static const union AffineAnimCmd sAffine_Streak2[] = { AFFINEANIMCMD_FRAME(512, 110, 0, 0), AFFINEANIMCMD_END };
+// Negative x scale mirrors it so it faces left, the way it flies.
+static const union AffineAnimCmd sAffine_Streak0[] = { AFFINEANIMCMD_FRAME(-400, 200, 0, 0), AFFINEANIMCMD_END };
+static const union AffineAnimCmd sAffine_Streak1[] = { AFFINEANIMCMD_FRAME(-460, 160, 0, 0), AFFINEANIMCMD_END };
+static const union AffineAnimCmd sAffine_Streak2[] = { AFFINEANIMCMD_FRAME(-512, 110, 0, 0), AFFINEANIMCMD_END };
 static const union AffineAnimCmd *const sAffineAnims_Flyby[] = { sAffine_Streak0, sAffine_Streak1, sAffine_Streak2 };
 
 static const struct SpriteTemplate sSpriteTemplate_Flyby =
@@ -62,9 +65,10 @@ static void Task_Flyby(u8 taskId)
     for (i = 0; i < NUM_COPIES; i++)
     {
         struct Sprite *sprite = &gSprites[tSpriteId(i)];
-        sprite->x += FLYBY_SPEED;
+        sprite->x -= FLYBY_SPEED;
+        sprite->y -= FLYBY_RISE;
         sprite->y2 = (tTimer / 3) % 2; // a little wobble
-        if (sprite->x < DISPLAY_WIDTH + 64)
+        if (sprite->x > -64 && sprite->y > -64)
             onScreen = TRUE;
     }
     if (onScreen)
@@ -90,7 +94,9 @@ void RR_ScriptMewtwoFlyby(struct ScriptContext *ctx)
     RR_LoadInterfaceSpritePalette(&palette);
     for (i = 0; i < NUM_COPIES; i++)
     {
-        u8 spriteId = CreateSprite(&sSpriteTemplate_Flyby, -64 - i * COPY_GAP, FLYBY_Y, 2 + i);
+        // the copies trail behind: further right and lower
+        u8 spriteId = CreateSprite(&sSpriteTemplate_Flyby, DISPLAY_WIDTH + 64 + i * COPY_GAP,
+                                   FLYBY_START_Y + i * COPY_GAP * FLYBY_RISE / FLYBY_SPEED, 2 + i);
         StartSpriteAffineAnim(&gSprites[spriteId], i);
         tSpriteId(i) = spriteId;
     }

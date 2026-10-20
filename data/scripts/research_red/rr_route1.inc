@@ -1,6 +1,8 @@
 @ Research Red: First walk up Route 1 (Route1)
 @ Moved out of the FireRed map files; the map keeps only its map_script hooks.
 
+.set RR_ROUTE1_ELM_X, 16  @ Elm's column (map.json: Elm 16,3; Jenny 17,3)
+
 @ ===================================================================
 @ Research Red: first walk up Route 1 (VAR_0x40FE == 4, after Daisy's house)
 @ Elm and Jenny wait at the north end; walking up to them starts the scene.
@@ -20,6 +22,11 @@ RR_Route1_EventScript_HideElmJenny::
 
 RR_Route1_EventScript_Walk::
 	lockall
+	@ Elm and Jenny wait where the path from the grass meets the top of the
+	@ route (16-17, 3); step over to stand right in front of Elm (#30).
+	@ Ivy is still the follower here, so she comes along.
+	getplayerxy VAR_0x8004, VAR_0x8005
+	call RR_Route1_EventScript_LineUpWithElm
 	getplayerxy VAR_0x8004, VAR_0x8005
 	copyvar VAR_0x8006, VAR_0x8005
 	addvar VAR_0x8006, 1
@@ -96,6 +103,23 @@ RR_Route1_EventScript_Walk::
 	setvar VAR_0x40FE, 5
 	releaseall
 	end
+
+RR_Route1_EventScript_LineUpWithElm::
+	goto_if_gt VAR_0x8004, RR_ROUTE1_ELM_X, RR_Route1_EventScript_StepLeftToElm
+	goto_if_lt VAR_0x8004, RR_ROUTE1_ELM_X, RR_Route1_EventScript_StepRightToElm
+	return
+
+RR_Route1_EventScript_StepLeftToElm::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkLeft
+	waitmovement 0
+	subvar VAR_0x8004, 1
+	goto RR_Route1_EventScript_LineUpWithElm
+
+RR_Route1_EventScript_StepRightToElm::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkRight
+	waitmovement 0
+	addvar VAR_0x8004, 1
+	goto RR_Route1_EventScript_LineUpWithElm
 
 @ No follower (e.g. an old save): put Ivy behind the player
 RR_Route1_EventScript_PlaceIvy::
