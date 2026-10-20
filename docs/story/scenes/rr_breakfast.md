@@ -33,13 +33,11 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > Delia: Prof. Oak called earlier.
 > He's so excited you're here.
 >
-> He still says you were his
-> quietest student…
->
-> …and his most reliable.
+> He says his two best students
+> are finally under one roof.
 
-> Ivy: Unlike a certain someone
-> who's staying next door?
+> Ivy: And one of them is staying
+> next door. Loudly?
 
 > {PLAYER}: I've always respected
 > Elm's passion.

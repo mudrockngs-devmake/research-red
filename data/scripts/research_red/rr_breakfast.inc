@@ -210,13 +210,12 @@ PalletTown_PlayersHouse_1F_Text_P_Authorities::
 PalletTown_PlayersHouse_1F_Text_Delia_OakCalled::
     .string "Delia: Prof. Oak called earlier.\n"
     .string "He's so excited you're here.\p"
-    .string "He still says you were his\n"
-    .string "quietest student…\p"
-    .string "…and his most reliable.$"
+    .string "He says his two best students\n"
+    .string "are finally under one roof.$"
 
 PalletTown_PlayersHouse_1F_Text_Ivy_CertainSomeone::
-    .string "Ivy: Unlike a certain someone\n"
-    .string "who's staying next door?$"
+    .string "Ivy: And one of them is staying\n"
+    .string "next door. Loudly?$"
 
 PalletTown_PlayersHouse_1F_Text_P_LoudPassion::
     .string "{PLAYER}: I've always respected\n"

@@ -67,14 +67,16 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > another lab.
 
 > Oak: So! Choose a partner to
-> study. {PLAYER}, my most reliable
-> student. You choose first.
+> study. {PLAYER}, you choose first.
+>
+> Elm went first last time.
+> He chose a Bunsen burner.
 
-> Elm: “Reliable” is code
-> for “slow.”
+> Elm: It was a very good Bunsen
+> burner!
 
-> Ivy: “Reliable” is code for
-> “never set the lab on fire.”
+> Ivy: Is that why the east wing
+> is new?
 
 > Elm: That was one Bunsen burner!
 

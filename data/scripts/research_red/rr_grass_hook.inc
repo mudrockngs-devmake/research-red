@@ -516,11 +516,14 @@ PalletTown_Text_RR_Elm_Observing::
     .string "observing it! From here!$"
 
 PalletTown_Text_RR_Oak_OfficerJenny::
-    .string "Oak: And Officer… Jenny,\n"
-    .string "was it?$"
+    .string "Oak: And you must be Jenny!\n"
+    .string "The one who made Elm so happy.\p"
+    .string "I've wanted to meet you for\n"
+    .string "years!$"
 
 PalletTown_Text_RR_Jenny_WeAllGetThat::
-    .string "Jenny: We all get that, sir.$"
+    .string "Jenny: Most people just see\n"
+    .string "another Jenny, sir. Thank you.$"
 
 PalletTown_Text_RR_Oak_Haiku::
     .string "Oak: Ahem.\p"

@@ -160,7 +160,7 @@ static const struct CallStep sCallScript[] =
     {STEP_LINE, 0, (const u8[])_("Oak: {PLAYER}! Right.\nI knew that.\p")},
     DO(STEP_SIGNAL, 4),
     DO(STEP_WAIT, 27),
-    {STEP_LINE, 0, (const u8[])_("Elm: He did not know that.\p")},
+    {STEP_LINE, 0, (const u8[])_("Elm: He knew. It loads slowly.\nLike Slowpoke.\p")},
     DO(STEP_POP, CIRCLE_JENNY),
     DO(STEP_WAIT, 27),
     {STEP_LINE, 0, (const u8[])_("Jenny: Elm. Sit down.\p")},

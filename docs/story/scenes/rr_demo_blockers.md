@@ -63,11 +63,12 @@ Research Red: demo boundaries (#35, #36, #62)
 
 ### RR_DiglettsCave_EventScript_Diglett
 
-> Diglett dig, Diglett dig,
-> trio, trio, trio!
+> Diglett dig, Diglett dig…
 
 ### RR_DiglettsCave_EventScript_Dugtrio
 
+> Dugtrio: Trio, trio, trio!
+>
 > Dugtrio is sitting right on the
 > ladder, holding up a tiny sign:
 >

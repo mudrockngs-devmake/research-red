@@ -37,7 +37,7 @@ Oak: Ah, of course! My old student! And your name was…?
 
 Oak: {PLAYER}! Right. I knew that.
 
-Elm: He did not know that.
+Elm: He knew. It loads slowly. Like Slowpoke.
 
 Jenny: Elm. Sit down.
 
@@ -114,13 +114,11 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > Delia: Prof. Oak called earlier.
 > He's so excited you're here.
 >
-> He still says you were his
-> quietest student…
->
-> …and his most reliable.
+> He says his two best students
+> are finally under one roof.
 
-> Ivy: Unlike a certain someone
-> who's staying next door?
+> Ivy: And one of them is staying
+> next door. Loudly?
 
 > {PLAYER}: I've always respected
 > Elm's passion.
@@ -237,10 +235,14 @@ Research Red: Grass hook outside the house (PalletTown)
 > Elm: P-Professor! I was just
 > observing it! From here!
 
-> Oak: And Officer… Jenny,
-> was it?
+> Oak: And you must be Jenny!
+> The one who made Elm so happy.
+>
+> I've wanted to meet you for
+> years!
 
-> Jenny: We all get that, sir.
+> Jenny: Most people just see
+> another Jenny, sir. Thank you.
 
 > Oak: Ahem.
 >
@@ -329,14 +331,16 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > another lab.
 
 > Oak: So! Choose a partner to
-> study. {PLAYER}, my most reliable
-> student. You choose first.
+> study. {PLAYER}, you choose first.
+>
+> Elm went first last time.
+> He chose a Bunsen burner.
 
-> Elm: “Reliable” is code
-> for “slow.”
+> Elm: It was a very good Bunsen
+> burner!
 
-> Ivy: “Reliable” is code for
-> “never set the lab on fire.”
+> Ivy: Is that why the east wing
+> is new?
 
 > Elm: That was one Bunsen burner!
 

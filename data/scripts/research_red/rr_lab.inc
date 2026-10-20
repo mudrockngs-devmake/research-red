@@ -55,9 +55,9 @@ RR_Lab_EventScript_Scene::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_MidBattle, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_ChooseFirst, MSGBOX_DEFAULT
-	msgbox RR_Lab_Text_Elm_Reliable, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Elm_GoodBurner, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Ivy_Reliable, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Ivy_EastWing, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Bunsen, MSGBOX_DEFAULT
 	closemessage
@@ -854,16 +854,17 @@ RR_Lab_Text_Oak_MidBattle::
 
 RR_Lab_Text_Oak_ChooseFirst::
     .string "Oak: So! Choose a partner to\n"
-    .string "study. {PLAYER}, my most reliable\l"
-    .string "student. You choose first.$"
+    .string "study. {PLAYER}, you choose first.\p"
+    .string "Elm went first last time.\n"
+    .string "He chose a Bunsen burner.$"
 
-RR_Lab_Text_Elm_Reliable::
-    .string "Elm: “Reliable” is code\n"
-    .string "for “slow.”$"
+RR_Lab_Text_Elm_GoodBurner::
+    .string "Elm: It was a very good Bunsen\n"
+    .string "burner!$"
 
-RR_Lab_Text_Ivy_Reliable::
-    .string "Ivy: “Reliable” is code for\n"
-    .string "“never set the lab on fire.”$"
+RR_Lab_Text_Ivy_EastWing::
+    .string "Ivy: Is that why the east wing\n"
+    .string "is new?$"
 
 RR_Lab_Text_Elm_Bunsen::
     .string "Elm: That was one Bunsen burner!$"

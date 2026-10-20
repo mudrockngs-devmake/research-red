@@ -61,10 +61,14 @@ Research Red: Grass hook outside the house (PalletTown)
 > Elm: P-Professor! I was just
 > observing it! From here!
 
-> Oak: And Officer… Jenny,
-> was it?
+> Oak: And you must be Jenny!
+> The one who made Elm so happy.
+>
+> I've wanted to meet you for
+> years!
 
-> Jenny: We all get that, sir.
+> Jenny: Most people just see
+> another Jenny, sir. Thank you.
 
 > Oak: Ahem.
 >
