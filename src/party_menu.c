@@ -159,6 +159,8 @@ static void ShiftMoveSlot(struct Pokemon *, u8, u8);
 static void BlitBitmapToPartyWindow_LeftColumn(u8 windowId, u8 x, u8 y, u8 width, u8 height, bool8 hideHP);
 static void BlitBitmapToPartyWindow_RightColumn(u8 windowId, u8 x, u8 y, u8 width, u8 height, bool8 hideHP);
 static void CursorCB_Summary(u8 taskId);
+static void CursorCB_RR_Evolve(u8 taskId); // Research Red (#50)
+static bool32 RR_CanEvolveFromPartyMenu(struct Pokemon *mon); // Research Red (#50)
 static void CursorCB_Switch(u8 taskId);
 static void CursorCB_Cancel1(u8 taskId);
 static void CursorCB_Item(u8 taskId);
@@ -3221,6 +3223,10 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, CURSOR_OPTION_SUMMARY);
 
+    // Research Red (#50): EVOLVE when this Pokémon could evolve right now
+    if (P_RR_EVOLVE_ON_DEMAND && RR_CanEvolveFromPartyMenu(&mons[slotId]))
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, CURSOR_OPTION_RR_EVOLVE);
+
     if (P_PARTY_MOVE_RELEARNER
      && GetMonData(&mons[slotId], MON_DATA_SPECIES)
      && CanBoxMonRelearnAnyMove(&mons[slotId].box))
@@ -3236,7 +3242,8 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
             continue;
         for (j = 0; j < FIELD_MOVE_COUNT; ++j)
         {
-            if (moveId == gFieldMovesInfo[j].moveId)
+            // Research Red: keep room for SWITCH, ITEM and CANCEL (8 entries at most)
+            if (moveId == gFieldMovesInfo[j].moveId && sPartyMenuInternal->numActions < ARRAY_COUNT(sPartyMenuInternal->actions) - 3)
             {
                 AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + CURSOR_OPTION_FIELD_MOVES);
                 break;
@@ -3407,6 +3414,41 @@ static void Task_HandleSelectionMenuInput(u8 taskId)
             break;
         }
     }
+}
+
+// Research Red (#50): evolve on demand. A Pokémon is ready when its level-up
+// evolution (with every extra condition: friendship, time of day, held item...)
+// would happen right now; nothing extra is saved. B in the scene still cancels.
+static bool32 RR_CanEvolveFromPartyMenu(struct Pokemon *mon)
+{
+    bool32 canStopEvo = TRUE;
+
+    if (GetMonData(mon, MON_DATA_IS_EGG) || GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE)
+        return FALSE;
+    return GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO) != SPECIES_NONE;
+}
+
+static void CB2_RR_EvolveFromPartyMenu(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    bool32 canStopEvo = TRUE;
+    u32 targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
+
+    if (targetSpecies == SPECIES_NONE)
+    {
+        SetMainCallback2(gPartyMenu.exitCallback);
+        return;
+    }
+    GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, DO_EVO);
+    gCB2_AfterEvolution = gPartyMenu.exitCallback;
+    BeginEvolutionScene(mon, targetSpecies, TRUE, gPartyMenu.slotId);
+}
+
+static void CursorCB_RR_Evolve(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    sPartyMenuInternal->exitCallback = CB2_RR_EvolveFromPartyMenu;
+    Task_ClosePartyMenu(taskId);
 }
 
 static void CursorCB_Summary(u8 taskId)
@@ -5976,7 +6018,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc func)
         sInitialLevel = 0;
         sFinalLevel = 0;
 
-        if (holdEffectParam == 0)
+        if (holdEffectParam == 0 && !P_RR_EVOLVE_ON_DEMAND) // Research Red (#50): evolve from the party menu instead
         {
             targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
         }
@@ -6187,7 +6229,8 @@ static void PartyMenuTryEvolution(u8 taskId)
     sInitialLevel = 0;
     sFinalLevel = 0;
 
-    targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
+    if (!P_RR_EVOLVE_ON_DEMAND) // Research Red (#50): evolve from the party menu instead
+        targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
 
     if (targetSpecies != SPECIES_NONE)
     {

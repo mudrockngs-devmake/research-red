@@ -20,6 +20,7 @@ Start here. Everything about how the project works, in one place.
 ## Making the game
 - [DEV_GUIDE.md](DEV_GUIDE.md): where everything lives, conventions, generated files, memory budget.
 - [STYLE_GUIDE.md](STYLE_GUIDE.md): how the characters talk, text rules.
+- [addons/](addons/): Research Red features written up so other hacks can reuse them (evolve on demand).
 - [STORY_BIBLE.md](STORY_BIBLE.md): the story. [animatic/](animatic/): the scene spec. `scenes/`: scene specs that override it.
 - [reference/ANIME_AND_GEN2.md](reference/ANIME_AND_GEN2.md): what each area had in the anime and in Gold/Silver/Crystal, for wild tables and homages (copy on E: in `reference/`).
 - [reference/KANTO_ANIME.md](reference/KANTO_ANIME.md): Kanto in the anime, place by place (characters, set pieces, ideas); source sheet `kanto_anime.csv` opens in Excel (`tools/research_red/build_reference.py`).

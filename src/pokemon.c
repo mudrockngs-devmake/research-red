@@ -4502,7 +4502,8 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
             switch (evolutions[i].method)
             {
             case EVO_LEVEL:
-                if (evolutions[i].param <= level)
+                // Research Red (#50): after battle, level-up evolutions wait for the party menu
+                if (evolutions[i].param <= level && !(P_RR_EVOLVE_ON_DEMAND && mode == EVO_MODE_BATTLE_ONLY))
                     conditionsMet = TRUE;
                 break;
             case EVO_LEVEL_BATTLE_ONLY:

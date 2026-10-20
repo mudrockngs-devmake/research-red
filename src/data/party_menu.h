@@ -1096,6 +1096,7 @@ enum
     CURSOR_OPTION_CATALOG_MOWER,
     CURSOR_OPTION_CHANGE_FORM,
     CURSOR_OPTION_CHANGE_ABILITY,
+    CURSOR_OPTION_RR_EVOLVE, // Research Red (#50)
     CURSOR_OPTION_FIELD_MOVES, // needs to be last
 };
 
@@ -1137,6 +1138,7 @@ static struct
     [CURSOR_OPTION_CATALOG_MOWER]   = {COMPOUND_STRING("Lawn mower"),      CursorCB_CatalogMower        },
     [CURSOR_OPTION_CHANGE_FORM]     = {COMPOUND_STRING("Change form"),     CursorCB_ChangeForm          },
     [CURSOR_OPTION_CHANGE_ABILITY]  = {COMPOUND_STRING("Change Ability"),  CursorCB_ChangeAbility       },
+    [CURSOR_OPTION_RR_EVOLVE]       = {COMPOUND_STRING("EVOLVE"),          CursorCB_RR_Evolve           }, // Research Red (#50)
 };
 
 static const u8 sPartyMenuAction_SummarySwitchCancel[]   = {CURSOR_OPTION_SUMMARY,  CURSOR_OPTION_SWITCH,    CURSOR_OPTION_CANCEL1};

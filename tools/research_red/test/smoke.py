@@ -252,6 +252,18 @@ def sc_wild():
             # keep choosing RUN (the cursor stays on it) until the escape works
             + play_until("ran_away", T.G.field_free(), 6000, key="A", every=40))
 
+def sc_evolve():
+    # #50: no automatic evolution; EVOLVE in the party menu when ready. Test
+    # mode raises the team to Lv 30 (no evolving), so Squirtle can become
+    # Wartortle: Start > POKEMON > Squirtle > EVOLVE (second entry).
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + debug_script(SCRIPT_TEST_MODE) + ["mash B 60"]
+            + start_menu_item(2) + ["wait 90", "press A", "wait 30", "shot e001", "press DOWN", "wait 10", "shot e002",
+                                    "press A", "wait 120", "shot e003"]
+            + advance(12, key="A", every=90, prefix="v")
+            + play_until("evolved", T.G.field_free(), 4000, key="B", every=60)
+            + start_menu_item(2) + ["wait 90", "shot e004", "press A", "wait 30", "shot e005"]
+            + play_until("closed", T.G.field_free(), 1500, key="B", every=30))
+
 # Maps the report can name (anything else shows as a number)
 MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
              "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", "MAP_PALLET_TOWN_RIVALS_HOUSE", "MAP_ROUTE1",
@@ -275,6 +287,7 @@ SCENARIOS = {
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),
     "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
     "wild": (sc_wild, "A wild single battle on Route 1: opponent types, then run away (#25)"),
+    "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
