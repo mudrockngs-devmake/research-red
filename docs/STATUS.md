@@ -7,18 +7,18 @@ _Last updated: 2026-10-19_
 
 ## Current build
 - GitHub front page (2026-10-19): Research Red README with fan-project disclaimer, description, topics, wiki/projects off, upstream CI disabled, release notes carry the disclaimer. Credits say "story and character designs: MudrockNGS". No AI note in the README for now (owner's choice).
-- **v0.0.14**: installed as `ResearchRed_local.gba` (copy in `builds/`). Smoke tests: 9/9 passing.
-- Changes since the last playtest: see [CHANGELOG.md](CHANGELOG.md) (v0.0.13 and v0.0.14 entries).
+- **v0.0.15** (2026-10-19): installed as `ResearchRed_local.gba` (copy in `builds/`), tagged and pushed (the Action makes the GitHub pre-release with the BPS). Smoke tests: 15/15 passing (new: pokedex, daisy, pewter, demo_end, gerald, pc).
+- Changes since the last playtest: see [CHANGELOG.md](CHANGELOG.md) (v0.0.13, v0.0.14 and v0.0.15 entries).
 - Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
 - Releases: [v0.0.13](https://github.com/mudrockngs-devmake/research-red/releases/tag/v0.0.13), [v0.0.14](https://github.com/mudrockngs-devmake/research-red/releases/tag/v0.0.14) (pre-releases with the BPS patch).
-- Latest smoke test: `test-runs/2026-10-19_0304_v0.0.14_*` (9/9, first run of the upgraded tester: every scene reached its end, memory checks pass, nothing stuck).
+- Latest smoke test: `test-runs/2026-10-19_1958_v0.0.15_*` (15/15).
 
 ## Waiting on the owner
-- [ ] Playtest v0.0.14 (the v0.0.13 features + the fixes). Testers played v0.0.13: the owner folds their notes in, marked "(tester, .13)"; check those against v0.0.14 before filing (portrait-color/portrait-in-battle notes may already be fixed). Checklist: [PLAYTESTING.md](PLAYTESTING.md) and issue #2.
+- [ ] Playtest **v0.0.15** (the v0.0.13-15 features; v0.0.15 is the big polish build, see its changelog). Testers played v0.0.13: the owner folds their notes in, marked "(tester, .13)"; check those against v0.0.14 before filing (portrait-color/portrait-in-battle notes may already be fixed). Checklist: [PLAYTESTING.md](PLAYTESTING.md) and issue #2.
 - [ ] Decide when Mega / Z-Moves / Dynamax / Tera unlock (issue #1).
 - [ ] Decide whether portraits should hide during camera pans (issue #3).
 - [ ] Log in the next round's NOTES.md: `/cost` for the v0.0.13-14 build + GitHub/hub setup session (2026-10-18/19): $121.56, 2h36m API time, 7,494 lines added.
-- [ ] Log in the next round's NOTES.md: tester-upgrades + notes-to-issues + cost-logging session (2026-10-19, logged automatically, as of the wrap-up): `2026-10-19 03:56  $4.24  0h11m API  1h56m total  +301/-0 lines  Opus 5.5`. From now on `session-cost --all-days` lists every session, so no more /cost.
+- [ ] Log in the next round's NOTES.md: the 2026-10-19 session (tester upgrades, ideas filed, v0.0.15 build), logged automatically: `2026-10-19 03:56  $29.26  0h51m API  4h17m total` (as of the wrap-up; `session-cost --all-days`).
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
 ## Next up (after the playtest)
@@ -30,8 +30,8 @@ _Last updated: 2026-10-19_
 4. Tooling: smaller BPS patch (#17).
 
 ## Half-finished / open threads
-- **v0.0.15 build in progress (2026-10-19), not tagged yet.** Working down docs/ROADMAP.md, committing and smoke-testing after each step. Done so far (on master, issues still open until the build ships): #19 Pokédex Evo-page crash, #26 defaults, #61 Slowpoke, #22 + #3 portraits (lower; step aside when the box closes), #38/#39/#31 Daisy scene, #47/#46 lab loss lines + watch-or-skip, #48 pastry starters, #35/#62/#36 demo blockers (rr_demo_blockers.inc), debug skip 10 "After Brock", #63 Delia blackout lines, #54 heal-after-battles rule, #23 lab table. Checked, no code fix: #41 (likely B during evolution; soft-cap question noted on the issue), #20/#14 (need owner screenshots). New smoke scenarios: pokedex, daisy, demo_end, gerald.
-- **Next:** tier 2 (#30 Mewtwo scene, #43+#44 lunch/rules move, #10 Pewter rematch, #21, #25, #42, #27, #34, #37, art items), then the v0.0.15 release steps (stamp, CHANGELOG with Save: line, full smoke run, install, tag) and close the fixed issues.
+- None in progress. v0.0.15 shipped; 24 issues closed. Next steps are in [ROADMAP.md](ROADMAP.md) ("Next build").
+- Needs the owner's eyes in the playtest: #20 (which Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges: where), #41 (level caps: did the evolution start and get cancelled?), and the soft-cap question on #41.
 
 ## How to resume in a new session
 1. Open Ubuntu (or double-click `E:\Workspace\Claude Hub.bat`): the Claude Hub menu appears. Work on a project > research-red > Start a fresh conversation (normal; Continue only to resume the same task). (By hand: `cd ~/romhacks/research-red && claude --continue`.)

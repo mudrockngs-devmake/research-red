@@ -1,7 +1,8 @@
 # Roadmap: every open idea, easiest and safest first
 
 Every open issue, sorted by how much work it is and how likely it is to break
-something. Made 2026-10-19 from the owner's playtest notes and ideas list.
+something. Made 2026-10-19 from the owner's playtest notes and ideas list;
+v0.0.15 (2026-10-19) shipped 24 of them (closed on GitHub, see CHANGELOG.md).
 The issues hold the details; this page is the order. Update it when issues are
 added or closed.
 
@@ -13,44 +14,20 @@ added or closed.
 ## 0. Fix first (before anything new)
 | # | What | Work | Risk |
 |---|---|---|---|
-| [#19](https://github.com/mudrockngs-devmake/research-red/issues/19) | Pokédex crash (blue screen) going from the Area page to the next | unknown until reproduced | it *is* a crash |
 | [#41](https://github.com/mudrockngs-devmake/research-red/issues/41) | Level caps: Totodile didn't evolve on the hard cap after Brock | small to check | medium (caps affect every battle) |
 | [#2](https://github.com/mudrockngs-devmake/research-red/issues/2) | Things still untested since v0.0.13 | playtest | none |
 
 ## 1. Quick and safe (text, settings, small script or tile fixes)
 | # | What | Risk |
 |---|---|---|
-| [#26](https://github.com/mudrockngs-devmake/research-red/issues/26) | New game defaults: fast text, L/R buttons | low |
-| [#47](https://github.com/mudrockngs-devmake/research-red/issues/47) | Lab: proper dialogue after losing to Elm and Jenny | low |
-| [#48](https://github.com/mudrockngs-devmake/research-red/issues/48) | Elm's pastry nicknames for his starters | low |
-| [#31](https://github.com/mudrockngs-devmake/research-red/issues/31) | Daisy's normal lines with her portrait | low |
-| [#38](https://github.com/mudrockngs-devmake/research-red/issues/38) | Elm and Jenny leave Daisy's house through the door | low |
-| [#39](https://github.com/mudrockngs-devmake/research-red/issues/39) | Muffin actually on the chair | low |
-| [#22](https://github.com/mudrockngs-devmake/research-red/issues/22) | Portrait and name tag sit lower (no gap when bouncing) | low |
-| [#23](https://github.com/mudrockngs-devmake/research-red/issues/23) | Oak's Lab table pieces join up | low |
 | [#14](https://github.com/mudrockngs-devmake/research-red/issues/14) | Route 22 odd tiles | low |
-| [#61](https://github.com/mudrockngs-devmake/research-red/issues/61) | Lab Slowpoke wanders too fast | low |
-| [#35](https://github.com/mudrockngs-devmake/research-red/issues/35) | Demo blocker at Pewter's exit | low |
-| [#36](https://github.com/mudrockngs-devmake/research-red/issues/36) | Demo blocker: Gerald at Pallet's shore | low |
-| [#62](https://github.com/mudrockngs-devmake/research-red/issues/62) | Remove the Running Shoes aide in Pewter | low |
-| [#63](https://github.com/mudrockngs-devmake/research-red/issues/63) | Delia's whiteout lines with her portrait | low |
-| [#54](https://github.com/mudrockngs-devmake/research-red/issues/54) | Rule: heal after every battle | low (new rule flag) |
 
 ## 2. Moderate (scene rework, menus, art)
 | # | What | Risk |
 |---|---|---|
-| [#30](https://github.com/mudrockngs-devmake/research-red/issues/30) | Route 1 Mewtwo: flies right to upper left; Elm and Jenny wait by the grass | low-medium |
-| [#43](https://github.com/mudrockngs-devmake/research-red/issues/43) | Viridian lunch starts by talking to Elm and Jenny right of the Pokémon Center | medium (do with #44) |
-| [#44](https://github.com/mudrockngs-devmake/research-red/issues/44) | Research Rules talk moves to Daisy's house | medium (story order; old saves past Daisy need care, docs/SAVES.md) |
-| [#46](https://github.com/mudrockngs-devmake/research-red/issues/46) | Lab: watch or skip Elm and Jenny vs Oak | medium |
-| [#10](https://github.com/mudrockngs-devmake/research-red/issues/10) | Elm and Jenny rematch at the Pewter Pokémon Center after Brock (teams ready) | medium |
-| [#21](https://github.com/mudrockngs-devmake/research-red/issues/21) | Portraits hide while a choice menu is open | medium (portrait code is shared) |
-| [#3](https://github.com/mudrockngs-devmake/research-red/issues/3) | Hide portraits during camera pans (decided) | medium |
 | [#25](https://github.com/mudrockngs-devmake/research-red/issues/25) | Opponent types shown for the whole battle (decided; new work) | medium |
-| [#42](https://github.com/mudrockngs-devmake/research-red/issues/42) | Field Guide cleanup: icons, caught color, day and night | low-medium |
 | [#20](https://github.com/mudrockngs-devmake/research-red/issues/20) | Pokédex tab glitches (with #19) | medium |
 | [#27](https://github.com/mudrockngs-devmake/research-red/issues/27) | Start menu clock glitch | medium |
-| [#34](https://github.com/mudrockngs-devmake/research-red/issues/34) | PC from the Start menu (grant-to-PC part is tier 3) | medium |
 | [#37](https://github.com/mudrockngs-devmake/research-red/issues/37) | Ivy hops ledges with the player | medium (follower code runs everywhere) |
 | [#40](https://github.com/mudrockngs-devmake/research-red/issues/40) | Jenny walking frames; cousin Jenny in police uniform | low (art) |
 | [#28](https://github.com/mudrockngs-devmake/research-red/issues/28) | Surf sprite: the player instead of Red | low (art) |
@@ -107,7 +84,7 @@ Document every new system (how it works, which files, how to turn it off) and
 test it with the smoke tests, so nothing breaks and each one could be reused in
 other ROM hacks later.
 
-## Next build (owner, 2026-10-19: as much as the session allows)
-Work down this page in order, building and smoke-testing after each step, and
-stop at a clean point: tiers 0-2 including #10 (the Pewter rematch), then tier 3
-one system at a time. Whatever isn't done rolls into the following build.
+## Next build (after the v0.0.15 playtest)
+1. Fix what the playtest finds (and #20, #14, #37, #41 need the owner's screenshots / details).
+2. The rest of tier 2: #25 types all battle, #27 clock glitch, art (#40, #28, #24, #32, #8, #12), #59 Johto tables (Claude drafts, owner reviews).
+3. Tier 3, one system per build: #13 -> #45 calls, #51 relearner, #57 TMs, #29 Oak's Pager, #56 night/rest, #5 dex cutscene, #50 evolve on demand, #52/#53 rematches, #58 held items, #55.
