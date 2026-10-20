@@ -42,7 +42,7 @@ The Pokémon League wants to learn more about the research. That's why extras ar
 Gerald the Tentacool on the anchor line; Slowpoke never hung up the call; "Persian" Muffin; the lab carpet; Elm's "warm-up"; Jenny's reports with diagrams; Mimey's dishes.
 
 ## The research payoff (owner, 2026-10-19)
-- Why this team works: the player and Ivy study regional forms, Elm is the evolution expert (and Jenny's along for fun). Alternate forms of the starters sit right where their fields meet.
+- Why this team works: the player and Ivy study regional forms (Ivy in the field, the player on the molecular side: sequencing and analysis), Elm is the evolution expert (and Jenny's along for fun). Alternate forms of the starters sit right where their fields meet.
 - The research goal is the starters' alternate forms. Its payoff, after the Elite Four, is **Mega Evolution and regional forms**: those systems fit the story; no system goes in just for the sake of it. When and where is still open (a large new area or a reworked Sevii Islands could host it).
 - **Z-Moves, Dynamax / Gigantamax and Tera stay out of this game** (issue #1), saved for a possible sequel.
 

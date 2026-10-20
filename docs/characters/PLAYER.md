@@ -14,11 +14,26 @@ Wry, warm, absurd.
 ## Relationships
 | Who | How the player sees them |
 |---|---|
-| **Ivy** | Their wife and research partner. Loves making her laugh; a loving married double act. |
+| **Ivy** | Their wife and research partner (she has the field side, the player the molecular side). Loves making her laugh; a loving married double act. |
 | **Elm** | Not related; same age, but in the vein of a slightly younger brother: looks out for him, rolls with his craziness, teases him often but never harshly. |
 | **Jenny** | Like a sister-in-law and a buddy; never teased. They click for their own reasons: (1) **the deadpan duo**: the two straight faces, each other's best audience; Jenny never laughs out loud, she *rates* their jokes ("Seven out of ten. Procedural."). (2) **the calm ones in a crisis**: when Elm causes chaos they share a look and handle it; the player points out the absurd hazard, she writes it up as one of her reports. (3) **a shared childhood of the same TV shows**: they quote the same old Kanto sitcoms and cartoons; Elm grew up in a lab and never watched any of it, so he's baffled every time. (4) **Pokémon-spotting drives**: they used to ride around on Jenny's motorbike logging sightings (it fits DexNav). (5) Jenny sometimes asks him how to handle Elm, affectionately; the player has known Elm longest. |
 | **Oak** | Mentor and grandfather figure; one of his two best students (with Elm). |
 | **Delia** | Their host, and warmly grateful for it: she treats them like her own kids, and the player appreciates every pancake and every "take care now". Wholesome appreciation only, never flirtatious; their scenes are kind and a little funny. |
+
+## Research specialty
+Regional forms, from the **molecular side**: sequencing and analysis, tracing
+which ancestor a regional form came from and how its genes differ. Ivy works the
+**field and ecology** side; Elm is the **evolution** expert. That's why the
+three clicked in school, and why Oak brought them together now.
+
+- The science should hold up: lab scientists playing should nod along. No
+  movie-science (no clip-on gadget that "switches off" a gene, no machine that
+  simply turns off a disease). Real lab life is the joke: runs take all night,
+  quality checks fail, samples get contaminated, expression is complicated.
+- Competent but deadpan about it; expertise lands as a joke, not a lecture.
+- **Habit:** writes everything down. Their field notes are a running gag
+  ("Mimey: pancakes. Dangerous. See Ivy.").
+- Genuinely fond of Mimey.
 
 ## Comedy toolbox
 Sitcom-level jokes, for the whole game.
