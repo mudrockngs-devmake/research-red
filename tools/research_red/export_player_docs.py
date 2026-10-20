@@ -43,13 +43,14 @@ SLOT_RATES = {
 SECTIONS = [("land_mons", "Grass", None), ("water_mons", "Surfing", None), ("rock_smash_mons", "Rock Smash", None),
             ("fishing_mons", "Old Rod", (0, 2)), ("fishing_mons", "Good Rod", (2, 5)), ("fishing_mons", "Super Rod", (5, 10))]
 # Level caps (src/caps.c): the cap before each badge
-LEVEL_CAPS = [("Brock", 14), ("Misty", 21), ("Lt. Surge", 24), ("Erika", 29), ("Koga", 43), ("Sabrina", 43),
-              ("Blaine", 47), ("Giovanni", 50)]
+# Badges you have -> cap (src/caps.c counts badges, so gym order doesn't matter)
+LEVEL_CAPS = [("0 (before Brock)", 14), ("1", 21), ("2", 24), ("3", 29), ("4", 43), ("5", 43),
+              ("6", 47), ("7", 50), ("8 (until the Elite Four)", 63)]
 # Story trainers in the demo that aren't on a map script (scene battles)
 STORY_TRAINERS = [
     ("Oak's lab", "TRAINER_RR_ELM_LAB_", "TRAINER_RR_JENNY_LAB_", "Elm & Jenny (2v2, their lab starters)"),
     ("Route 22", "TRAINER_RR_ELM_R22_", "TRAINER_RR_JENNY_R22_", "Elm & Jenny (6v6 double)"),
-    ("Pewter City", "TRAINER_RR_ELM_PEWTER_", "TRAINER_RR_JENNY_PEWTER_", "Elm & Jenny after Brock (scene not built yet)"),
+    ("Pewter City", "TRAINER_RR_ELM_PEWTER_", "TRAINER_RR_JENNY_PEWTER_", "Elm & Jenny after Brock (6v6 double, outside the Pokémon Center)"),
 ]
 # The starter chain: your pick -> (Elm's, Jenny's)
 # Maps inside these areas that belong to later in the game
@@ -277,9 +278,10 @@ def build():
     for title, wl in balance_rows:
         tl = trainer_levels.get(title, [])
         lines.append(f"| {title} | {f'{wl[0]}-{wl[1]}' if wl else '-'} | {f'{min(tl)}-{max(tl)}' if tl else '-'} | {max(tl) if tl else '-'} |")
-    lines += ["", "## Level caps (src/caps.c)", "", "| Before | Cap |", "|---|---|"]
+    lines += ["", "## Level caps (src/caps.c)", "", "| Badges | Cap |", "|---|---|"]
     lines += [f"| {who} | {cap} |" for who, cap in LEVEL_CAPS]
-    lines += ["", "Caps are soft by default (little EXP over the cap), hard or off in Start > Rules.",
+    lines += ["", "The cap follows how many badges you have (gyms in any order). At the cap your team gets no EXP and Rare Candies stop; "
+              "below it they get bonus EXP to catch up. Caps can be turned off in Start > Rules, which shows the current cap.",
               "", "## Notes", "",
               "- The debug skips (Start > Debug > Scripts) raise the team to Lv 12 for Route 22 and the lunch.",
               "- Elm and Jenny's starters are in the starter slot of their teams; see TRAINERS.md for the chain.", ""]

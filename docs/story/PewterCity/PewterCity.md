@@ -132,6 +132,258 @@ Script `PewterCity_EventScript_RunningShoesAide`
 >
 > From Mom
 
+### Pewter Elm (Rr Elm) at 15,27
+*hidden by `FLAG_TEMP_13`*
+Script `RR_Pewter_EventScript_Rematch`
+
+> Elm: Wait. Is that… a badge?
+> You have a badge already?!
+
+> Jenny: We were at the Museum.
+> He cried at a fossil.
+
+> Elm: It was a very moving fossil!
+
+> Ivy: We were there too. We cried
+> at the gift shop prices.
+
+> Elm: {PLAYER}! Ivy! Badge or no
+> badge, the race isn't over!
+>
+> Six on six! Right here!
+
+> Jenny: Out here, please. Nurse Joy
+> gave us a look last time.
+>
+> By protocol, we battle before
+> Brock. To warm up.
+
+> {PLAYER}: Your warm-up is us?
+
+> Jenny: You are very warm people.
+
+**Battle:** Rival Early Elm (single): Cinnamon Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Biscotti Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+> Elm: …Hey. Good battle. Really.
+> I mean it.
+
+> {PLAYER}: I know you do.
+> You always do.
+
+> Elm: We won! On a sidewalk!
+> It still counts!
+
+> Jenny: Conveniently, the healing
+> is right through that door.
+
+> Jenny: We're going to challenge
+> Brock now. Wish us luck.
+
+> Ivy: Good luck, Jenny.
+> He made stew.
+
+> Jenny: …I am suddenly very
+> motivated.
+
+> Elm: See you down the road, you
+> two! We always catch up!
+
+> Elm and Jenny head for the Gym,
+> arguing happily about strategy.
+
+> Ivy: One badge down, sweetie.
+
+> {PLAYER}: Seven to go.
+> And one bet.
+
+> Ivy: And Mimey's dishes.
+
+> {PLAYER}: And Mimey's dishes.
+
+**Battle:** Rival Early Elm (single): Biscotti Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Matcha Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+**Battle:** Rival Early Elm (single): Matcha Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Cinnamon Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+**Battle:** Rival Early Elm (single): Toffee Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Cream Puff Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+**Battle:** Rival Early Elm (single): Cream Puff Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Pistachio Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+**Battle:** Rival Early Elm (single): Pistachio Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Toffee Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+### Pewter Jenny (Rr Jenny) at 16,27
+*hidden by `FLAG_TEMP_14`*
+Script `RR_Pewter_EventScript_Rematch`
+
+> Elm: Wait. Is that… a badge?
+> You have a badge already?!
+
+> Jenny: We were at the Museum.
+> He cried at a fossil.
+
+> Elm: It was a very moving fossil!
+
+> Ivy: We were there too. We cried
+> at the gift shop prices.
+
+> Elm: {PLAYER}! Ivy! Badge or no
+> badge, the race isn't over!
+>
+> Six on six! Right here!
+
+> Jenny: Out here, please. Nurse Joy
+> gave us a look last time.
+>
+> By protocol, we battle before
+> Brock. To warm up.
+
+> {PLAYER}: Your warm-up is us?
+
+> Jenny: You are very warm people.
+
+**Battle:** Rival Early Elm (single): Cinnamon Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Biscotti Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+> Elm: …Hey. Good battle. Really.
+> I mean it.
+
+> {PLAYER}: I know you do.
+> You always do.
+
+> Elm: We won! On a sidewalk!
+> It still counts!
+
+> Jenny: Conveniently, the healing
+> is right through that door.
+
+> Jenny: We're going to challenge
+> Brock now. Wish us luck.
+
+> Ivy: Good luck, Jenny.
+> He made stew.
+
+> Jenny: …I am suddenly very
+> motivated.
+
+> Elm: See you down the road, you
+> two! We always catch up!
+
+> Elm and Jenny head for the Gym,
+> arguing happily about strategy.
+
+> Ivy: One badge down, sweetie.
+
+> {PLAYER}: Seven to go.
+> And one bet.
+
+> Ivy: And Mimey's dishes.
+
+> {PLAYER}: And Mimey's dishes.
+
+**Battle:** Rival Early Elm (single): Biscotti Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Matcha Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+**Battle:** Rival Early Elm (single): Matcha Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Cinnamon Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+**Battle:** Rival Early Elm (single): Toffee Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Cream Puff Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+**Battle:** Rival Early Elm (single): Cream Puff Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Pistachio Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
+**Battle:** Rival Early Elm (single): Pistachio Lv15, Pudding Lv14, Churro Lv14
+
+**Battle:** RR Officer Jenny (single): Toffee Lv15, Licorice Lv14, Macaron Lv14
+
+> Elm: One to nothing. Fine. FINE.
+> It's a long road.
+
+> Jenny: He means
+> “congratulations.”
+
 ## Signs
 
 - at 19,7: PEWTER MUSEUM OF SCIENCE

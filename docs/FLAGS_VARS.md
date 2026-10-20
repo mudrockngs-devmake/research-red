@@ -42,7 +42,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `FLAG_RR_JENNY_UNIFORM` (0x026, was `FLAG_0x026`) | Jenny's police-uniform portrait (casual is the default) |
 | `FLAG_RR_EXP_SHARE` (0x021, was `FLAG_0x021`) | `I_EXP_SHARE_FLAG`: Exp. Share key item on/off. Set by the research grant |
 | `FLAG_RR_LEVEL_CAPS_OFF` (0x027, was `FLAG_0x027`) | Research Rules: level caps off (on by default; caps in `src/caps.c`) |
-| `FLAG_RR_HARD_LEVEL_CAPS` (0x077, was `FLAG_0x077`) | Research Rules: hard caps (no EXP at the cap) instead of soft |
+| `FLAG_0x077` (was `FLAG_RR_HARD_LEVEL_CAPS`) | Free again (the soft/hard cap choice was removed in v0.0.16). Old saves may have it set: clear it before reusing |
 | `FLAG_RR_NO_WHITEOUT` (0x020, was `FLAG_0x020`) | `B_FLAG_NO_WHITEOUT`: set around story battles so a loss continues the script. Cleared after each battle |
 
 ## Temp flags used by scenes

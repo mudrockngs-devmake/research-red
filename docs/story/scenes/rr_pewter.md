@@ -2,7 +2,7 @@
 
 Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 
-### RR_Pewter_OnTransitionPC
+### RR_Pewter_OnTransitionCity
 
 ### RR_Pewter_EventScript_HideElmJenny
 
@@ -24,8 +24,11 @@ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 >
 > Six on six! Right here!
 
-> Jenny: By protocol, we battle
-> before Brock. To warm up.
+> Jenny: Out here, please. Nurse Joy
+> gave us a look last time.
+>
+> By protocol, we battle before
+> Brock. To warm up.
 
 > {PLAYER}: Your warm-up is us?
 
@@ -57,11 +60,11 @@ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 
 ### RR_Pewter_EventScript_AfterBattle
 
-> Elm: We won! In a Pokémon Center!
+> Elm: We won! On a sidewalk!
 > It still counts!
 
-> Jenny: Conveniently, they heal
-> you right over there.
+> Jenny: Conveniently, the healing
+> is right through that door.
 
 ### RR_Pewter_EventScript_Won
 

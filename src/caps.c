@@ -58,7 +58,8 @@ u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
     u32 levelDifference;
     u32 currentLevelCap = GetCurrentLevelCap();
 
-    if (B_EXP_CAP_TYPE == EXP_CAP_NONE)
+    // Research Red: caps off also means no catch-up bonus (the "cap" is then 100)
+    if (B_EXP_CAP_TYPE == EXP_CAP_NONE || FlagGet(FLAG_RR_LEVEL_CAPS_OFF))
         return expValue;
 
     if (level < currentLevelCap)
@@ -76,7 +77,7 @@ u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
             return expValue;
         }
     }
-    else if (B_EXP_CAP_TYPE == EXP_CAP_HARD || FlagGet(FLAG_RR_HARD_LEVEL_CAPS)) // Research Red: hard caps from the Research Rules
+    else if (B_EXP_CAP_TYPE == EXP_CAP_HARD)
     {
         return 0;
     }

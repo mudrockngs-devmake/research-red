@@ -16,18 +16,19 @@ Levels you'll meet in each area, in story order, next to the level cap. Use it t
 
 ## Level caps (src/caps.c)
 
-| Before | Cap |
+| Badges | Cap |
 |---|---|
-| Brock | 14 |
-| Misty | 21 |
-| Lt. Surge | 24 |
-| Erika | 29 |
-| Koga | 43 |
-| Sabrina | 43 |
-| Blaine | 47 |
-| Giovanni | 50 |
+| 0 (before Brock) | 14 |
+| 1 | 21 |
+| 2 | 24 |
+| 3 | 29 |
+| 4 | 43 |
+| 5 | 43 |
+| 6 | 47 |
+| 7 | 50 |
+| 8 (until the Elite Four) | 63 |
 
-Caps are soft by default (little EXP over the cap), hard or off in Start > Rules.
+The cap follows how many badges you have (gyms in any order). At the cap your team gets no EXP and Rare Candies stop; below it they get bonus EXP to catch up. Caps can be turned off in Start > Rules, which shows the current cap.
 
 ## Notes
 

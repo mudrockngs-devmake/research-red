@@ -103,7 +103,7 @@ Their starters depend on yours:
 
 ## Pewter City
 
-### Elm & Jenny after Brock (scene not built yet)
+### Elm & Jenny after Brock (6v6 double, outside the Pokémon Center)
 
 Their starters depend on yours:
 

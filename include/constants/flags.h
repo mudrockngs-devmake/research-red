@@ -132,7 +132,7 @@
 #define FLAG_HIDE_TWO_ISLAND_GAME_CORNER_BIKER             0x074
 #define FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE          0x075
 #define FLAG_HIDE_LOSTELLE_IN_HER_HOME                     0x076
-#define FLAG_RR_HARD_LEVEL_CAPS                            0x077 // Research Red: Research Rules: hard caps (no EXP at the cap) instead of soft
+#define FLAG_0x077                                         0x077 // Research Red: was FLAG_RR_HARD_LEVEL_CAPS (soft/hard choice, removed); old saves may have it set
 #define FLAG_RR_AUTO_HEAL                                  0x078 // Research Red: Research Rules: heal the team after every battle (#54); off by default
 #define FLAG_HIDE_THREE_ISLAND_BIKERS                      0x079
 #define FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST                 0x07A

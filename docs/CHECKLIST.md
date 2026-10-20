@@ -27,7 +27,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] Old man stays asleep until the Route 22 battle (already scripted, verify) (v0.0.13: now wakes after the Viridian lunch)
 - [ ] Viridian Gym roof hole as map art (Porymap) to match the "hole from the inside" text
 - [x] Picnic lunch outside the Pokemon Center (dialogue in the animatic `lunch()`) (v0.0.13, plus Officer Jenny cousin gag)
-- [x] Research Rules menu: level caps on/off, hard/soft cap, difficulty (Relaxed/Standard/Challenge), battle style (Shift/Set); saved; changeable by calling Elm (v0.0.13: level caps, cap style, trainer/wild doubles, battle style; Start > Rules. Difficulty still to do)
+- [x] Research Rules menu: level caps on/off, hard/soft cap, difficulty (Relaxed/Standard/Challenge), battle style (Shift/Set); saved; changeable by calling Elm (v0.0.13: level caps, cap style (v0.0.16: removed, caps are on/off and show the level), trainer/wild doubles, battle style; Start > Rules. Difficulty still to do)
 - [x] Level cap system tied to badges (v0.0.13, src/caps.c)
 - [x] Encounter tables for Route 1 and Route 22 (below) (Route 1 done v0.0.12; FRLG slot rates are fixed, so: Pidgey 20, Rattata 20, Spearow 11, Mankey 10, Nidoran M 10, Oddish 10, Nidoran F 8, Bellsprout 5, Meowth 5, Eevee 1) (v0.0.13: data/research_red/encounters/, day and night)
 
