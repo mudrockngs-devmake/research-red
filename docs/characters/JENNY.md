@@ -34,7 +34,26 @@ Deadpan, devoted, sharp.
 - Bone-dry deadpan; her deadpan is love.
 - Procedure as comedy ("Sandwiches are labeled. Crusts left, crustless right.").
 - Reports with diagrams.
-- Detective-show flavour: an occasional *Detective Conan*-style beat, reworked for Pokémon (the deduction, the reveal). Signature phrase: to decide (replaces or joins "In my professional opinion").
+- Detective-show flavour, written with love for *Case Closed* (*Detective Conan*), reworked for Pokémon: the deduction, the reveal (draft set below, being workshopped).
+- Anime-Jenny habits: playfully suspicious first, apologetic after ("Halt!"), then reminded she's off duty.
+
+## Catchphrases (draft, workshopping)
+At most one per scene, so they stay special.
+- **Everyday deduction:** "The evidence suggests…" (setup) then "Case closed." (punchline).
+- **Big moments, rare:** "One truth prevails." Or to Elm, softly: "There's only ever one truth, dear."
+- **Off-duty slips:** "Halt!" … "Off duty, dear." … "…Halt, recreationally."
+- **The relaxing arc:** "In my professional opinion" slowly becomes "In my off-duty opinion" as the trip goes on.
+
+## The relaxing arc
+Everyone, Elm most of all, wants Jenny to relax and not be a cop unless she has
+to. Elm goes out of his way to help her unwind (badly, sweetly); the player and
+Ivy help in funny ways. Her instincts keep clocking in anyway.
+
+## Also
+- Connected to the **International Police**, so she can act at that level if a story ever needs it.
+- **Brock** (later): funny and professional with her, never advances.
+- **Cruller** (her Growlithe): she wanted a proper police name; Elm explained the name in a lecture (with citations) and changed her mind. "His lecture had citations. I lost."
+- Written partly as a love letter to *Case Closed* fans.
 
 ## She would never
 - Be cold or mean.
