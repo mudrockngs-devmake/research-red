@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_ranch_pager.h" // Research Red (#29)
 #include "battle_transition.h"
 #include "bg.h"
 #include "data.h"
@@ -1258,8 +1259,8 @@ static void Task_UseFly(u8 taskId)
             if (!IsWeatherNotFadingIn())
                 return;
 
-            gFieldEffectArguments[0] = GetCursorSelectionMonId();
-            if ((int)gFieldEffectArguments[0] >= PARTY_SIZE)
+            gFieldEffectArguments[0] = RR_FieldMoveMonArg(); // Research Red (#29): Oak's Pokemon with the Ranch Pager
+            if ((int)gFieldEffectArguments[0] >= PARTY_SIZE && !(gFieldEffectArguments[0] & SHOW_MON_NOT_IN_PARTY))
                 gFieldEffectArguments[0] = 0;
 
             FieldEffectStart(FLDEFF_USE_FLY);
@@ -3847,7 +3848,7 @@ static void FlyOutFieldEffect_ShowMon(struct Task *task)
         return;
 
     task->tState = FLY_OUT_BIRD_LEAVE_BALL;
-    gFieldEffectArguments[0] = task->tMonPartyId;
+    gFieldEffectArguments[0] = (u16)task->tMonPartyId; // Research Red (#29): keep SHOW_MON_NOT_IN_PARTY unsigned
     FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
 }
 

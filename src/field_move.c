@@ -57,7 +57,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
     },
     [FIELD_MOVE_STRENGTH] =
     {
-        .defaultSpecies = SPECIES_MACHAMP,
+        .defaultSpecies = SPECIES_TAUROS, // Research Red (#29): Oak's Tauros (his anime herd)
         .isUnlockedFunc = FieldMove_IsUnlockedStrength,
         .moveId = MOVE_STRENGTH,
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,

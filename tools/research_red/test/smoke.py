@@ -181,13 +181,13 @@ def sc_pc():
 def sc_tms():
     # #57: the grant fills the TM Case: 8 HMs + TM01-TM100 = all 108 slots,
     # so the last slot holds something. Then look: Start > BAG (after the
-    # lab: DEBUG, POKEDEX, POKEMON, PC, BAG), Key Items, the TM Case (8th
-    # key item, below the Berry Pouch), OPEN, then one screenshot per new TM
+    # lab: DEBUG, POKEDEX, POKEMON, PC, BAG), Key Items, the TM Case (9th
+    # key item, below the Ranch Pager), OPEN, then one screenshot per new TM
     # (TM51-TM100: name fits the row, description fits the box) and the HMs.
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
             + check("tm_case_full", T.G.bag_slot_filled("TMsHMs", 107))
             + start_menu_item(4) + ["wait 90", "shot t001", "press RIGHT", "wait 30"]
-            + ["press DOWN", "wait 8"] * 7 + ["shot t002", "press A", "wait 20", "shot t003", "press A", "wait 90",
+            + ["press DOWN", "wait 8"] * 8 + ["shot t002", "press A", "wait 20", "shot t003", "press A", "wait 90",
                                               "shot t004"]
             + ["press DOWN", "wait 6"] * 49
             + sum([["press DOWN", "wait 10", f"shot t{n:03d}"] for n in range(51, 101)], [])
@@ -195,6 +195,35 @@ def sc_tms():
             + ["press UP", "wait 10", "press A", "wait 30", "shot t199", "press B", "wait 30"]
             + ["hold DOWN 300", "wait 30", "shot t200"]
             + play_until("closed", T.G.field_free(), 2000, key="B", every=30))
+
+
+def open_ranch_pager(choice, prefix):
+    """After the lab (debug 2): Start > BAG > Key Items > Ranch Pager (7th,
+    below the Berry Pouch) > USE, then pick menu entry `choice` (0 Fly,
+    1 Flash, 2 Teleport, 3 Dig)."""
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + start_menu_item(4) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + [f"shot {prefix}001", "press A", "wait 20", "press A", "wait 150", f"shot {prefix}002"]
+            + ["press DOWN", "wait 8"] * choice + [f"shot {prefix}003", "press A", "wait 60"])
+
+
+def sc_pager_fly():
+    # #29: Ranch Pager > Fly opens the Fly map without a flyer in the team;
+    # A on Pallet Town: Oak's Pidgeot flies us there
+    return (open_ranch_pager(0, "f") + ["wait 120", "shot f004", "press A", "wait 30", "shot f005", "press A"]
+            + play_until("landed", T.G.field_free(), 3000, key="B", every=20)
+            + expect("MAP_PALLET_TOWN", story=3))
+
+
+def sc_pager_other():
+    # #29: Flash outside a cave says it isn't needed; Teleport asks, then
+    # Oak's Abra takes us back to the last healing spot
+    return (open_ranch_pager(1, "l") + ["wait 60", "shot l004"]
+            + play_until("flash_closed", T.G.field_free(), 1500, key="B", every=30)
+            + ["wait 30", "press START", "wait 20", "press B", "wait 20"]
+            + start_menu_item(0) + ["wait 90", "shot t001", "press A", "wait 20", "press A", "wait 150", "shot t002"]
+            + ["press DOWN", "wait 8"] * 2 + ["shot t003", "press A", "wait 90", "shot t004", "press A", "wait 60", "shot t005"]
+            + play_until("teleported", T.G.field_free(), 3000, key="B", every=20))
 
 
 def sc_guide():
@@ -315,6 +344,8 @@ SCENARIOS = {
     "wild": (sc_wild, "A wild single battle on Route 1: opponent types, then run away (#25)"),
     "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
     "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
+    "pager_fly": (sc_pager_fly, "Ranch Pager > Fly: the Fly map, Oak's Pidgeot flies to Pallet (#29)"),
+    "pager_other": (sc_pager_other, "Ranch Pager > Flash (not dark), then Teleport with Oak's Abra (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),

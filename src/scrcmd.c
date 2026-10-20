@@ -2375,7 +2375,7 @@ bool8 ScrCmd_checkfieldmoveusable(struct ScriptContext* ctx)
         gFieldEffectArguments[0] = species | SHOW_MON_NOT_IN_PARTY;
         gSpecialVar_0x8004 = species;
         gSpecialVar_Result = TRUE;
-        StringCopy(gStringVar1, COMPOUND_STRING("PROF. OAK's "));
+        StringCopy(gStringVar1, COMPOUND_STRING("Prof. Oak's ")); // Research Red: proper case
         StringAppend(gStringVar1, gSpeciesInfo[species].speciesName);
         StringCopy(gStringVar2, gMovesInfo[moveId].name);
     }

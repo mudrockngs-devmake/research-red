@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_ranch_pager.h" // Research Red (#29)
 #include "field_effect.h"
 #include "field_player_avatar.h"
 #include "fldeff.h"
@@ -27,7 +28,7 @@ static void FieldCallback_Teleport(void)
 {
     Overworld_ResetStateAfterTeleport();
     FieldEffectStart(FLDEFF_USE_TELEPORT);
-    gFieldEffectArguments[0] = (u32)GetCursorSelectionMonId();
+    gFieldEffectArguments[0] = RR_FieldMoveMonArg(); // Research Red (#29): Oak's Pokemon with the Ranch Pager
 }
 
 u32 FldEff_UseTeleport(void)

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_ranch_pager.h" // Research Red (#29)
 #include "bg.h"
 #include "decompress.h"
 #include "event_data.h"
@@ -182,7 +183,7 @@ bool32 FieldMove_SetUpFlash(void)
 static void FieldCallback_Flash(void)
 {
     u8 taskId = CreateFieldEffectShowMon();
-    gFieldEffectArguments[0] = GetCursorSelectionMonId();
+    gFieldEffectArguments[0] = RR_FieldMoveMonArg(); // Research Red (#29): Oak's Pokemon with the Ranch Pager
     gTasks[taskId].data[8] = ((uintptr_t)FldEff_UseFlash) >> 16;
     gTasks[taskId].data[9] = ((uintptr_t)FldEff_UseFlash);
 }

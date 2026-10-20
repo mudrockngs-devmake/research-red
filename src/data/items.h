@@ -14112,6 +14112,24 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_VsSeeker,
     },
 
+    // Research Red (#29): calls Oak's Pokemon for Fly, Flash, Teleport and Dig
+    // (src/rr_ranch_pager.c). Placeholder icon: the Poke Radar's.
+    [ITEM_RANCH_PAGER] =
+    {
+        .name = ITEM_NAME("Ranch Pager"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Calls Prof. Oak's\n"
+            "Pokémon to Fly, Flash,\n"
+            "Teleport or Dig."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_RanchPager,
+        .iconPic = gItemIcon_PokeRadar,
+        .iconPalette = gItemIconPalette_PokeRadar,
+    },
+
     [ITEM_TM_CASE] =
     {
         .name = ITEM_NAME("TM Case"),

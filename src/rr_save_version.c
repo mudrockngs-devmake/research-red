@@ -38,5 +38,11 @@ bool32 RR_TryStartSaveVersionWarning(void)
         ScriptContext_SetupScript(RR_EventScript_TopUpTMs);
         return TRUE;
     }
+    // #29: the same for the Ranch Pager
+    if (FlagGet(FLAG_RR_EXP_SHARE) && !CheckBagHasItem(ITEM_RANCH_PAGER, 1))
+    {
+        ScriptContext_SetupScript(RR_EventScript_TopUpRanchPager);
+        return TRUE;
+    }
     return FALSE;
 }

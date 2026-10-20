@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_ranch_pager.h" // Research Red (#29)
 #include "decompress.h"
 #include "event_data.h"
 #include "field_effect.h"
@@ -4030,7 +4031,7 @@ static void FreeFlyMap(u8 taskId)
     FreeAllWindowBuffers();
     if (sFlyMap->selectedDestination == TRUE)
         SetMainCallback2(CB2_ReturnToField);
-    else
+    else if (!RR_RanchPagerCancelFly()) // Research Red (#29): the Ranch Pager returns to the map
         SetMainCallback2(CB2_ReturnToPartyMenuFromFlyMap);
     FREE_IF_NOT_NULL(sFlyMap);
 }

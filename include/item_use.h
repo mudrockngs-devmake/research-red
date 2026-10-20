@@ -26,6 +26,7 @@ void ItemUseOutOfBattle_Medicine(u8 taskId);
 void ItemUseOutOfBattle_Mint(u8 taskId);
 void ItemUseOutOfBattle_PokeFlute(u8 taskId);
 void ItemUseOutOfBattle_PokemonBoxLink(u8 taskId);
+void ItemUseOutOfBattle_RanchPager(u8 taskId); // Research Red (#29)
 void ItemUseOutOfBattle_PowderJar(u8 taskId);
 void ItemUseOutOfBattle_PPRecovery(u8 taskId);
 void ItemUseOutOfBattle_PPUp(u8 taskId);

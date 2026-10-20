@@ -554,6 +554,13 @@ RR_Lab_EventScript_Grant::
 	msgbox RR_Lab_Text_Oak_CarriedAway, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Trust, MSGBOX_DEFAULT
+	@ Research Red (#29): the Ranch Pager and the PC (tutorial lines, owner to rework)
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_RanchPager, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Ivy_OnCall, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_Exercise, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_SecondGrant, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_SameGrant, MSGBOX_DEFAULT
@@ -671,6 +678,7 @@ RR_Lab_EventScript_GiveGrant::
 	additem ITEM_ITEMFINDER, 1
 	additem ITEM_VS_SEEKER, 1
 	additem ITEM_BERRY_POUCH, 1
+	additem ITEM_RANCH_PAGER, 1 @ Research Red (#29)
 	setflag FLAG_RR_EXP_SHARE
 	@ berries (Berry Pouch above)
 	additem ITEM_ORAN_BERRY, 20
@@ -1177,6 +1185,25 @@ RR_Lab_Text_Oak_CarriedAway::
 RR_Lab_Text_Jenny_Trust::
     .string "Jenny: Master Balls. Plural.\n"
     .string "That's a lot of trust, sir.$"
+
+RR_Lab_Text_Oak_RanchPager::
+    .string "Oak: And the best part: a Ranch\n"
+    .string "Pager! Page my ranch, and one of\l"
+    .string "my Pokémon comes to Fly, Flash,\l"
+    .string "Teleport or Dig for you.\p"
+    .string "If nobody on your team can Cut or\n"
+    .string "Surf, mine will step in too!\p"
+    .string "Anything you don't carry waits in\n"
+    .string "your PC. Open it from the Start\l"
+    .string "menu, anywhere.$"
+
+RR_Lab_Text_Ivy_OnCall::
+    .string "Ivy: So your Pidgeot is on call\n"
+    .string "now?$"
+
+RR_Lab_Text_Oak_Exercise::
+    .string "Oak: Pidgeot, Lapras, Tauros…\n"
+    .string "They love the exercise!$"
 
 RR_Lab_Text_Elm_SecondGrant::
     .string "Elm: Can I get a grant?$"

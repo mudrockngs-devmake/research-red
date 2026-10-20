@@ -426,6 +426,19 @@ void ItemUseOutOfBattle_Itemfinder(u8 taskId)
     SetUpItemUseOnFieldCallback(taskId);
 }
 
+// Research Red (#29): the Ranch Pager's menu runs on the map
+static void Task_UseRanchPager(u8 taskId)
+{
+    ScriptContext_SetupScript(RR_EventScript_RanchPager);
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_RanchPager(u8 taskId)
+{
+    sItemUseOnFieldCB = Task_UseRanchPager;
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
 void ItemUseOutOfBattle_PokemonBoxLink(u8 taskId)
 {
     sItemUseOnFieldCB = Task_AccessPokemonBoxLink;

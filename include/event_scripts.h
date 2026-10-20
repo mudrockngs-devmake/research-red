@@ -875,6 +875,8 @@ extern const u8 CableClub_Text_YouMayBattleHere[];
 extern const u8 CableClub_Text_CanMakeBerryPowder[];
 extern const u8 EventScript_PC[];
 extern const u8 EventScript_AccessPokemonBoxLink[];
+extern const u8 RR_EventScript_RanchPager[]; // Research Red (#29)
+extern const u8 RR_EventScript_TopUpRanchPager[]; // Research Red (#29)
 
 extern const u8 EventScript_SprayWoreOff[];
 
