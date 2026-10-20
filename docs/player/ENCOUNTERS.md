@@ -6,7 +6,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 
 ## Pallet Town
 
-**Surfing (Any time)**
+**Surfing (Day)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
@@ -16,7 +16,17 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Chinchou | 3-6 | 4% |
 | Qwilfish | 4-6 | 1% |
 
-**Fishing (Any time)**
+**Surfing (Night)**
+
+| Pokémon | Levels | Chance |
+|---|---|---|
+| Tentacool | 3-6 | 60% |
+| Chinchou | 3-6 | 30% |
+| Staryu | 3-6 | 5% |
+| Horsea | 3-6 | 4% |
+| Qwilfish | 4-6 | 1% |
+
+**Fishing (Day)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
@@ -24,6 +34,16 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Staryu | 3-6 | 40% |
 | Shellder | 3-6 | 15% |
 | Remoraid | 4-6 | 4% |
+| Dratini | 4-6 | 1% |
+
+**Fishing (Night)**
+
+| Pokémon | Levels | Chance |
+|---|---|---|
+| Staryu | 3-6 | 40% |
+| Krabby | 3-6 | 40% |
+| Shellder | 3-6 | 15% |
+| Chinchou | 3-6 | 4% |
 | Dratini | 4-6 | 1% |
 
 ## Route 1
@@ -64,7 +84,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 
 ## Viridian City
 
-**Surfing (Any time)**
+**Surfing (Day)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
@@ -74,7 +94,17 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Wooper | 4-7 | 4% |
 | Marill | 4-7 | 1% |
 
-**Fishing (Any time)**
+**Surfing (Night)**
+
+| Pokémon | Levels | Chance |
+|---|---|---|
+| Wooper | 4-7 | 60% |
+| Poliwag | 4-7 | 30% |
+| Psyduck | 4-7 | 5% |
+| Slowpoke | 5-7 | 4% |
+| Marill | 4-7 | 1% |
+
+**Fishing (Day)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
@@ -83,6 +113,16 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Marill | 4-7 | 15% |
 | Wooper | 4-7 | 4% |
 | Slowpoke | 5-7 | 1% |
+
+**Fishing (Night)**
+
+| Pokémon | Levels | Chance |
+|---|---|---|
+| Magikarp | 4-7 | 40% |
+| Goldeen | 4-7 | 40% |
+| Wooper | 4-7 | 15% |
+| Slowpoke | 5-7 | 4% |
+| Marill | 4-7 | 1% |
 
 ## Route 22
 
@@ -120,7 +160,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Houndour | 4-5 | 1% |
 | Teddiursa | 4-5 | 1% |
 
-**Surfing (Any time)**
+**Surfing (Day)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
@@ -130,7 +170,17 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Marill | 4-7 | 4% |
 | Wooper | 4-7 | 1% |
 
-**Fishing (Any time)**
+**Surfing (Night)**
+
+| Pokémon | Levels | Chance |
+|---|---|---|
+| Poliwag | 4-7 | 60% |
+| Wooper | 4-7 | 30% |
+| Psyduck | 4-7 | 5% |
+| Marill | 4-7 | 4% |
+| Goldeen | 4-7 | 1% |
+
+**Fishing (Day)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
@@ -139,6 +189,16 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Krabby | 4-7 | 15% |
 | Goldeen | 4-7 | 4% |
 | Wooper | 4-7 | 1% |
+
+**Fishing (Night)**
+
+| Pokémon | Levels | Chance |
+|---|---|---|
+| Poliwag | 4-7 | 40% |
+| Magikarp | 4-7 | 40% |
+| Wooper | 4-7 | 15% |
+| Krabby | 4-7 | 4% |
+| Goldeen | 4-7 | 1% |
 
 ## Route 2
 

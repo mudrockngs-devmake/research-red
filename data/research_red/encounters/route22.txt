@@ -45,3 +45,18 @@ Poliwag     4-7  40
 Krabby      4-7  15
 Goldeen     4-7   4
 Wooper      4-7   1
+
+# Night water (#56, owner 2026-10-20): Wooper comes out of the water when it's cool
+[surf night]
+Poliwag     4-7  60
+Wooper      4-7  30
+Psyduck     4-7   5
+Marill      4-7   4
+Goldeen     4-7   1
+
+[fishing night]
+Poliwag     4-7  40
+Magikarp    4-7  40
+Wooper      4-7  15
+Krabby      4-7   4
+Goldeen     4-7   1

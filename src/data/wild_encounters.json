@@ -21555,7 +21555,7 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_GOLDEEN"
+                "species": "SPECIES_WOOPER"
               },
               {
                 "min_level": 4,
@@ -21570,7 +21570,7 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_GOLDEEN"
               }
             ]
           },
@@ -21580,11 +21580,6 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 4,
-                "max_level": 7,
                 "species": "SPECIES_POLIWAG"
               },
               {
@@ -21600,7 +21595,17 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_KRABBY"
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_POLIWAG"
               },
               {
                 "min_level": 4,
@@ -21610,7 +21615,7 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_POLIWAG"
+                "species": "SPECIES_WOOPER"
               },
               {
                 "min_level": 4,
@@ -21621,11 +21626,6 @@
                 "min_level": 4,
                 "max_level": 7,
                 "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 4,
-                "max_level": 7,
-                "species": "SPECIES_WOOPER"
               }
             ]
           }
@@ -21863,7 +21863,7 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_GOLDEEN"
+                "species": "SPECIES_WOOPER"
               },
               {
                 "min_level": 4,
@@ -21878,7 +21878,7 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_WOOPER"
+                "species": "SPECIES_GOLDEEN"
               }
             ]
           },
@@ -21888,11 +21888,6 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 4,
-                "max_level": 7,
                 "species": "SPECIES_POLIWAG"
               },
               {
@@ -21908,7 +21903,17 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_KRABBY"
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_POLIWAG"
               },
               {
                 "min_level": 4,
@@ -21918,7 +21923,7 @@
               {
                 "min_level": 4,
                 "max_level": 7,
-                "species": "SPECIES_POLIWAG"
+                "species": "SPECIES_WOOPER"
               },
               {
                 "min_level": 4,
@@ -21929,11 +21934,6 @@
                 "min_level": 4,
                 "max_level": 7,
                 "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 4,
-                "max_level": 7,
-                "species": "SPECIES_WOOPER"
               }
             ]
           }
@@ -22953,6 +22953,95 @@
         },
         {
           "map": "MAP_PALLET_TOWN",
+          "base_label": "sPalletTown_FireRed_Night",
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_CHINCHOU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 4,
+                "max_level": 6,
+                "species": "SPECIES_QWILFISH"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_SHELLDER"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_SHELLDER"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_CHINCHOU"
+              },
+              {
+                "min_level": 4,
+                "max_level": 6,
+                "species": "SPECIES_DRATINI"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_PALLET_TOWN",
           "base_label": "sPalletTown_LeafGreen",
           "water_mons": {
             "encounter_rate": 2,
@@ -23031,6 +23120,95 @@
                 "min_level": 4,
                 "max_level": 6,
                 "species": "SPECIES_REMORAID"
+              },
+              {
+                "min_level": 4,
+                "max_level": 6,
+                "species": "SPECIES_DRATINI"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_PALLET_TOWN",
+          "base_label": "sPalletTown_LeafGreen_Night",
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_CHINCHOU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 4,
+                "max_level": 6,
+                "species": "SPECIES_QWILFISH"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_SHELLDER"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_SHELLDER"
+              },
+              {
+                "min_level": 3,
+                "max_level": 6,
+                "species": "SPECIES_CHINCHOU"
               },
               {
                 "min_level": 4,
@@ -23131,6 +23309,95 @@
         },
         {
           "map": "MAP_VIRIDIAN_CITY",
+          "base_label": "sViridianCity_FireRed_Night",
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_POLIWAG"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 5,
+                "max_level": 7,
+                "species": "SPECIES_SLOWPOKE"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MARILL"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 5,
+                "max_level": 7,
+                "species": "SPECIES_SLOWPOKE"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MARILL"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_VIRIDIAN_CITY",
           "base_label": "sViridianCity_LeafGreen",
           "water_mons": {
             "encounter_rate": 2,
@@ -23214,6 +23481,95 @@
                 "min_level": 5,
                 "max_level": 7,
                 "species": "SPECIES_SLOWPOKE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_VIRIDIAN_CITY",
+          "base_label": "sViridianCity_LeafGreen_Night",
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_POLIWAG"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 5,
+                "max_level": 7,
+                "species": "SPECIES_SLOWPOKE"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MARILL"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 5,
+                "max_level": 7,
+                "species": "SPECIES_SLOWPOKE"
+              },
+              {
+                "min_level": 4,
+                "max_level": 7,
+                "species": "SPECIES_MARILL"
               }
             ]
           }

@@ -17,3 +17,18 @@ Goldeen     4-7  40
 Marill      4-7  15
 Wooper      4-7   4
 Slowpoke    5-7   1
+
+# Night water (#56, owner 2026-10-20): Wooper takes over the pond; a rare Slowpoke (a nod to the one in Oak's lab)
+[surf night]
+Wooper      4-7  60
+Poliwag     4-7  30
+Psyduck     4-7   5
+Slowpoke    5-7   4
+Marill      4-7   1
+
+[fishing night]
+Magikarp    4-7  40
+Goldeen     4-7  40
+Wooper      4-7  15
+Slowpoke    5-7   4
+Marill      4-7   1

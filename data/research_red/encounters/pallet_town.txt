@@ -18,3 +18,18 @@ Staryu      3-6  40
 Shellder    3-6  15
 Remoraid    4-6   4
 Dratini     4-6   1
+
+# Night water (#56, owner 2026-10-20): Chinchou's lights glow in the dark sea; Staryu's core shines at night
+[surf night]
+Tentacool   3-6  60
+Chinchou    3-6  30
+Staryu      3-6   5
+Horsea      3-6   4
+Qwilfish    4-6   1
+
+[fishing night]
+Staryu      3-6  40
+Krabby      3-6  40
+Shellder    3-6  15
+Chinchou    3-6   4
+Dratini     4-6   1
