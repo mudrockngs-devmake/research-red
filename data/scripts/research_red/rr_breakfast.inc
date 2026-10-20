@@ -98,6 +98,9 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
 	waitmovement 0
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox PalletTown_PlayersHouse_1F_Text_P_Thanks, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_DoorOpen, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_MOM, PalletTown_PlayersHouse_1F_Movement_FaceLeft
@@ -208,7 +211,7 @@ PalletTown_PlayersHouse_1F_Text_Delia_Pancakes::
 
 PalletTown_PlayersHouse_1F_Text_Ivy_Dangerous::
     .string "Ivy: I've already had three.\n"
-    .string "They're dangerous, dear.$"
+    .string "They're dangerous, sweetie.$"
 
 PalletTown_PlayersHouse_1F_Text_P_Authorities::
     .string "{PLAYER}: Three? I'll notify the\n"
@@ -218,7 +221,7 @@ PalletTown_PlayersHouse_1F_Text_Delia_OakCalled::
     .string "Delia: Prof. Oak called earlier.\n"
     .string "He's so excited you're here.\p"
     .string "He says his two best students\n"
-    .string "are finally under one roof.$"
+    .string "are finally back in Pallet.$"
 
 PalletTown_PlayersHouse_1F_Text_Ivy_CertainSomeone::
     .string "Ivy: And one of them is staying\n"
@@ -262,19 +265,22 @@ PalletTown_PlayersHouse_1F_Text_Delia_Supervised::
     .string "Delia: …I supervised.$"
 
 PalletTown_PlayersHouse_1F_Text_Mimey_MimeMime::
-    .string "Mimey: Mime mime.\n"
-    .string "Mime mime mime!$"
+    .string "Mimey: Mime. Mime mime mime!\n"
+    .string "(It did not need supervising.)$"
 
 PalletTown_PlayersHouse_1F_Text_P_WritingThisDown::
-    .string "{PLAYER}: A Pokémon that makes\n"
-    .string "pancakes. I should be writing\l"
-    .string "this down.$"
+    .string "{PLAYER}: (Field notes: Mimey.\n"
+    .string "Pancakes. Dangerous. See Ivy.)$"
 
 PalletTown_PlayersHouse_1F_Text_Ivy_PublishLater::
     .string "Ivy: Eat first, sweetie.\n"
     .string "Publish later.\p"
     .string "We'll head to the lab after this.\n"
     .string "Oak's waiting.$"
+
+PalletTown_PlayersHouse_1F_Text_P_Thanks::
+    .string "{PLAYER}: Thanks for having us,\n"
+    .string "Delia. Truly.$"
 
 PalletTown_PlayersHouse_1F_Text_Delia_DoorOpen::
     .string "Delia: Come back anytime you need\n"
