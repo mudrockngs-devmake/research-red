@@ -22,7 +22,7 @@ _Last updated: 2026-10-19_
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
 ## Next up (after the playtest)
-- **All open ideas and issues are ordered in [ROADMAP.md](ROADMAP.md)** (easiest and safest first). Owner's notes and ideas from 2026-10-19 are issues #19-#60 (plus comments on #5, #11, #19, #22, #29, #30, #32, #34). Suggested v0.0.15: tiers 0 and 1 (starting with the #19 Pokédex crash and #41 level caps) plus #30, #43+#44, #21, #42, #34, #20.
+- **All open ideas and issues are ordered in [ROADMAP.md](ROADMAP.md)** (easiest and safest first; see its "Next build"). Ideas from 2026-10-19 are issues #19-#63; v0.0.15 closed 24 of them.
 - **Tester upgrades (issue #18)**: parts 1-4 done 2026-10-19 (stuck detector, memory checks, wait-until, reusable `tester.py` split from Research Red's `smoke.py`; see [TESTING.md](TESTING.md) and `tools/research_red/test/README.md`). Left: the "later" ideas (before/after screenshot comparison, random-input stress test, AI-vs-AI balance sims, running in the GitHub Action). Tooling only, no version bump.
 1. Fix whatever the playtest finds (issues labeled `playtest`).
 2. Milestone **v0.1 Pallet**: title screen + boot disclaimer (#12), compatibility check (#16).
