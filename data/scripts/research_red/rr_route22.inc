@@ -80,6 +80,7 @@ RR_Route22_EventScript_Won::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route22_Text_Elm_Forever, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Jenny_GoodGame, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Elm_GoodGame, MSGBOX_DEFAULT
 
 RR_Route22_EventScript_Goodbye::
 	msgbox RR_Route22_Text_Ivy_NextTown, MSGBOX_DEFAULT
@@ -144,7 +145,8 @@ RR_Route22_Text_Elm_Defeat::
     .string "At every Gym. Forever.$"
 
 RR_Route22_Text_Jenny_Defeat::
-    .string "Jenny: Noted. For the report.$"
+    .string "Jenny: Well fought, you two.\n"
+    .string "I'll write it up kindly.$"
 
 RR_Route22_Text_Elm_Forever::
     .string "Elm: Fine. FINE.\n"
@@ -153,13 +155,17 @@ RR_Route22_Text_Elm_Forever::
 RR_Route22_Text_Jenny_GoodGame::
     .string "Jenny: He means “good game.”$"
 
+RR_Route22_Text_Elm_GoodGame::
+    .string "Elm: …Good game, {PLAYER}.\n"
+    .string "Really.$"
+
 RR_Route22_Text_Elm_WeWon::
     .string "Elm: We won?! Jenny!\n"
     .string "Jenny, we WON!$"
 
 RR_Route22_Text_Jenny_Thrilled::
-    .string "Jenny: Professionally speaking,\n"
-    .string "I am thrilled.$"
+    .string "Jenny: I'm thrilled, dear.\n"
+    .string "I'm showing it on the inside.$"
 
 RR_Route22_Text_Ivy_NextTown::
     .string "Ivy: Same time next town, Jenny?$"

@@ -18,7 +18,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_BULBASAUR] =
@@ -48,7 +48,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_CHARMANDER] =
@@ -78,7 +78,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_SQUIRTLE] =
@@ -108,7 +108,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_CHIKORITA] =
@@ -138,7 +138,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_CYNDAQUIL] =
@@ -168,7 +168,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_TOTODILE] =
