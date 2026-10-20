@@ -16,6 +16,7 @@ Test builds are v0.0.x. Each entry lists what changed for players and testers, a
 - New: rename your Pokémon anytime (#71): in its summary, press A on the info page. The name box starts with the current name; OK keeps it, and erasing it all and pressing OK gives back the species name, so it takes its new species name when it evolves.
 - New: the opponent's types stay next to its health bar for the whole battle (#25), not only while you pick a move. They step aside for a moment during attack animations. Your own side still shows its types while you choose a move.
 - New: in the move list, move names are coloured by how well they work on the foe: green for super effective, grey for not very effective, red-brown for no effect (the same answer as the circle; status moves and normal hits stay dark).
+- Changed: held items come back after every battle, Berries included (#58). They still work normally during the battle (a Sitrus Berry is eaten once), then the Pokémon holds it again afterwards. Stolen or swapped items follow the usual rules.
 
 ## v0.0.15
 - Fixed: the Pokédex crashed (blue error screen) when moving from the Stats page to the Evo page.
