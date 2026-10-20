@@ -1,5 +1,6 @@
 # Route 2: Viridian City to Viridian Forest
 # Johto neighbors (#59); evolved forms only near their evolution level.
+# Pikachu by day: a rare find here in Gold/Silver/Crystal.
 map: MAP_ROUTE2
 
 [grass]
@@ -12,7 +13,7 @@ Rattata     3-5  10
 Jigglypuff  3-5   5
 Abra        3-5   5
 Hoppip      3-5   4
-Paras       3-5   4
+Pikachu     3-5   4
 Pineco      4-5   1
 Natu        4-5   1
 

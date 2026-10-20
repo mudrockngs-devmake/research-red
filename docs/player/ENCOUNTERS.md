@@ -155,7 +155,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Jigglypuff | 3-5 | 5% |
 | Abra | 3-5 | 5% |
 | Hoppip | 3-5 | 4% |
-| Paras | 3-5 | 4% |
+| Pikachu | 3-5 | 4% |
 | Pineco | 4-5 | 1% |
 | Natu | 4-5 | 1% |
 
@@ -184,16 +184,16 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 |---|---|---|
 | Caterpie | 3-5 | 20% |
 | Weedle | 3-5 | 20% |
+| Pidgey | 4-6 | 10% |
 | Metapod | 7 | 10% |
 | Kakuna | 7 | 10% |
 | Pikachu | 3-5 | 10% |
-| Pineco | 4-6 | 10% |
 | Paras | 4-6 | 5% |
 | Bellsprout | 4-6 | 5% |
 | Butterfree | 10 | 4% |
 | Beedrill | 10 | 4% |
-| Scyther | 6-7 | 1% |
 | Pinsir | 6-7 | 1% |
+| Scyther | 6-7 | 1% |
 
 **Grass (Night)**
 
@@ -206,7 +206,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Oddish | 4-6 | 10% |
 | Paras | 4-6 | 10% |
 | Hoothoot | 4-6 | 5% |
-| Weedle | 3-5 | 5% |
+| Pineco | 4-6 | 5% |
 | Pikachu | 3-5 | 4% |
 | Gastly | 4-6 | 4% |
 | Yanma | 5-6 | 1% |
