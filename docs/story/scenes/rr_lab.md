@@ -9,6 +9,12 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 >
 > Mostly the cables.
 
+> {PLAYER}: No, I'm sure the cables
+> are across the floor on purpose.
+>
+> Trip-based security.
+> Very modern.
+
 > Oak: Now. Why I asked the four of
 > you to Pallet Town.
 >

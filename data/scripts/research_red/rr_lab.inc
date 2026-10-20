@@ -23,6 +23,8 @@ RR_Lab_EventScript_Scene::
 	fadedefaultbgm
 	@ --- why everyone is here ---
 	msgbox RR_Lab_Text_Oak_Welcome, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_P_TripSecurity, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_WhyHere, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_Mailed, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -787,6 +789,12 @@ RR_Lab_Text_Oak_Welcome::
     .string "Oak: Welcome, welcome!\n"
     .string "Mind the cables. And the aides.\p"
     .string "Mostly the cables.$"
+
+RR_Lab_Text_P_TripSecurity::
+    .string "{PLAYER}: No, I'm sure the cables\n"
+    .string "are across the floor on purpose.\p"
+    .string "Trip-based security.\n"
+    .string "Very modern.$"
 
 RR_Lab_Text_Oak_WhyHere::
     .string "Oak: Now. Why I asked the four of\n"

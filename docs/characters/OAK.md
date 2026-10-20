@@ -20,6 +20,7 @@ Warm, theatrical, forgetful (about small things).
 | **Ivy** | A colleague he respects greatly (her Orange Islands work on regional forms). Their banter is a running pleasure for both. |
 | **Jenny** (Elm's wife) | Genuinely wants to know her, because she matters to his student. She is not "a Jenny" to him; she is Elm's Jenny. |
 | **Delia** | Old friend up the road. Tea, chats and gossip about the kids. Proud of Ash together (the anime's "So am I, Delia. So am I."). |
+| **His aides and assistants** | Cares about every one of them (the "Mind the cables. And the aides. Mostly the cables." joke is affection). |
 | **Daisy** | His granddaughter. Teams up with him for the rematches, with Muffin. |
 | **Ash and Gary** | He cares about both openly and speaks of them warmly. No coyness. |
 
