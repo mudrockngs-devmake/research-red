@@ -10,7 +10,7 @@ Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stoppe
 | --- | --- | --- |
 | Player | Professor; studies regional forms with Ivy | Dry wit, left-field jokes, deeply caring; makes Ivy laugh |
 | Ivy | Wife; regional-forms researcher (Orange Islands) | Teases, loves; calls the player "sweetie"; shares forms wisdom learned from other professors |
-| Elm | Friendly rival (Johto professor) | Loud, passionate, competitive; secretly sentimental |
+| Elm | Friendly rival (Johto professor; Pokémon evolution expert, discovered Pokémon eggs) | Loud, passionate, competitive; secretly sentimental |
 | Jenny | Elm's wife, police officer | Warm but by-the-book: "In my professional opinion..."; casual clothes, uniform only for Team Rocket |
 | Prof. Oak | Mentor | Haiku, warns about tall grass, hints at forms in "other lands and other eras" |
 | Delia | Host in Pallet | Warm; Mimey (her Mr. Mime) makes pancakes; "I supervised" |
@@ -33,6 +33,7 @@ Ivy and Jenny are old friends; Elm and the player are best-friend rivals. Couple
 Gerald the Tentacool on the anchor line; Slowpoke never hung up the call; "Persian" Muffin; the lab carpet; Elm's "warm-up"; Jenny's reports with diagrams; Mimey's dishes.
 
 ## The research payoff (owner, 2026-10-19)
+- Why this team works: the player and Ivy study regional forms, Elm is the evolution expert (and Jenny's along for fun). Alternate forms of the starters sit right where their fields meet.
 - The research goal is the starters' alternate forms. Its payoff, after the Elite Four, is **Mega Evolution and regional forms**: those systems fit the story; no system goes in just for the sake of it. When and where is still open (a large new area or a reworked Sevii Islands could host it).
 - **Z-Moves, Dynamax / Gigantamax and Tera stay out of this game** (issue #1), saved for a possible sequel.
 

@@ -89,7 +89,7 @@ added or closed.
 | [#1](https://github.com/mudrockngs-devmake/research-red/issues/1) | Post-Elite Four payoff: Mega Evolution and regional forms |
 
 ## Waiting on the owner (decisions)
-- [#29](https://github.com/mudrockngs-devmake/research-red/issues/29) Which of Oak's Pokémon do each field move (list proposed 2026-10-19), and the pager item's name
+- [#29](https://github.com/mudrockngs-devmake/research-red/issues/29) The pager item's name (Oak's field-move Pokémon decided 2026-10-19, see the issue)
 - Decided 2026-10-19: #1 (Mega + regional forms are the post-Elite Four payoff; no Z-Moves/Dynamax/Tera this game; see STORY_BIBLE.md), #3 (hide portraits during pans), #25 (types shown all battle)
 
 ## Tooling (no game changes)
