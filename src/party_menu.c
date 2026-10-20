@@ -6424,6 +6424,36 @@ void ItemUseCB_EvolutionStone(u8 taskId, TaskFunc func)
     }
 }
 
+// Research Red (#65): the items that used to need a trade (and the held items
+// the expansion lets you use from the Bag) stay in the Bag after evolving a
+// Pokémon. Evolution stones are still used up.
+static bool32 RR_IsKeptEvolutionItem(u16 itemId)
+{
+    switch (itemId)
+    {
+    case ITEM_KINGS_ROCK:
+    case ITEM_METAL_COAT:
+    case ITEM_DRAGON_SCALE:
+    case ITEM_UPGRADE:
+    case ITEM_DUBIOUS_DISC:
+    case ITEM_PROTECTOR:
+    case ITEM_ELECTIRIZER:
+    case ITEM_MAGMARIZER:
+    case ITEM_REAPER_CLOTH:
+    case ITEM_PRISM_SCALE:
+    case ITEM_DEEP_SEA_TOOTH:
+    case ITEM_DEEP_SEA_SCALE:
+    case ITEM_WHIPPED_DREAM:
+    case ITEM_SACHET:
+    case ITEM_RAZOR_CLAW:
+    case ITEM_RAZOR_FANG:
+    case ITEM_OVAL_STONE:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
 static void CB2_UseEvolutionStone(void)
 {
     u16 targetSpecies;
@@ -6431,7 +6461,8 @@ static void CB2_UseEvolutionStone(void)
     targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_ITEM_USE, gSpecialVar_ItemId, NULL, NULL, CHECK_EVO);
     BeginEvolutionScene(&gPlayerParty[gPartyMenu.slotId], targetSpecies, FALSE, gPartyMenu.slotId);
     ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, &gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, 0xFFFF);
-    RemoveBagItem(gSpecialVar_ItemId, 1);
+    if (!RR_IsKeptEvolutionItem(gSpecialVar_ItemId)) // Research Red (#65)
+        RemoveBagItem(gSpecialVar_ItemId, 1);
 }
 
 static bool8 MonCanEvolve(void)

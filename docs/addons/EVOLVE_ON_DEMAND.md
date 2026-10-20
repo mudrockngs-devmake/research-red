@@ -38,4 +38,4 @@ entry). For Gen 1-2 the data drops the Linking Cord lines and the unreachable
 trade-with-item lines, so the Pokédex EVO page shows one method each ("Lv↑37",
 "Metal Coat is used"). Trade-partner evolutions (Karrablast, Shelmet) are not
 covered yet.
-
+The trade items (and the Bag-usable held items such as Razor Claw) are kept after use: `RR_IsKeptEvolutionItem` in `src/party_menu.c` (`CB2_UseEvolutionStone`). Stones are still consumed.
