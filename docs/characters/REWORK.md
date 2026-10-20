@@ -10,3 +10,4 @@ the sheets are done, then everything is reworked in one pass (owner's plan,
 | Daisy's house, Pewter (`rr_daisy.inc`, `rr_pewter.inc`, breakfast) | The bet: "losers do Mimey's dishes" | New stakes: losers cook a big dinner (dessert included) at Delia's and Delia gets the night off | ELM, DELIA |
 | Lunch rules talk / Start menu | "Start menu, 'Rules.'" | Rules move into Options (v0.0.16 Start menu cleanup) | — |
 | Intro call, lab, Daisy's house | Oak's plan | Make the goal explicit early: one joint paper, Oak as PI, all four as authors (Jenny too); authorship never fought over | OAK |
+| Route 1 scene (`rr_route1.inc`), walking up to Viridian | (new) | Elm and the player start singing the anime song about the road to Viridian City; Ivy and Jenny share a look ("Yep. That's why they're friends."), then join in without missing a beat. Reference the song's title and feel only: no quoted lyrics (copyright) | ELM, PLAYER |
