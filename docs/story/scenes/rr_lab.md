@@ -38,8 +38,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > {PLAYER}: Mostly Ivy proved it.
 > I carried the snacks.
 
-> Ivy: He carried the snacks and
-> the field notes.
+> Ivy: And the field notes,
+> sweetie.
 >
 > The notes were sticky.
 

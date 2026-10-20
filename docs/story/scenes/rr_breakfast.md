@@ -14,12 +14,16 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > line. For two hours.
 
 > {PLAYER}: Honestly? Respect.
+> I couldn't look away from him.
 
-> Ivy: You threw up off the side
-> twice.
+> Ivy: You watched him so long you
+> got seasick, sweetie. Twice.
 
 > {PLAYER}: Once. The second time
 > was a sacrifice to the sea.
+
+> Ivy: Mm-hm. Glad you're feeling
+> better, my brave sailor.
 
 > Delia: Well, I made pancakes.
 > Sit, sit!

@@ -9,7 +9,7 @@ Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stoppe
 | Character | Role | Voice |
 | --- | --- | --- |
 | Player | Professor; studies regional forms with Ivy | Dry wit, left-field jokes, deeply caring; makes Ivy laugh |
-| Ivy | Wife; regional-forms researcher (Orange Islands) | Teases, loves; calls the player "sweetie"; shares forms wisdom learned from other professors |
+| Ivy | Wife; regional-forms researcher (Orange Islands) | Teases, loves; calls the player "sweetie"; shares forms wisdom learned from other professors. Sheet: docs/characters/IVY.md |
 | Elm | Friendly rival (Johto professor; Pokémon evolution expert, discovered Pokémon eggs) | Loud, passionate, competitive; secretly sentimental |
 | Jenny | Elm's wife, police officer | Warm but by-the-book: "In my professional opinion..."; casual clothes, uniform only for Team Rocket |
 | Prof. Oak | Mentor, a grandfather to everyone | Poems, warns about tall grass, Pokémon proverbs, hints at forms in "other lands and other eras". Sheet: docs/characters/OAK.md |

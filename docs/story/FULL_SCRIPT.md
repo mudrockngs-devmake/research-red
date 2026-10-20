@@ -95,12 +95,16 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > line. For two hours.
 
 > {PLAYER}: Honestly? Respect.
+> I couldn't look away from him.
 
-> Ivy: You threw up off the side
-> twice.
+> Ivy: You watched him so long you
+> got seasick, sweetie. Twice.
 
 > {PLAYER}: Once. The second time
 > was a sacrifice to the sea.
+
+> Ivy: Mm-hm. Glad you're feeling
+> better, my brave sailor.
 
 > Delia: Well, I made pancakes.
 > Sit, sit!
@@ -302,8 +306,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > {PLAYER}: Mostly Ivy proved it.
 > I carried the snacks.
 
-> Ivy: He carried the snacks and
-> the field notes.
+> Ivy: And the field notes,
+> sweetie.
 >
 > The notes were sticky.
 

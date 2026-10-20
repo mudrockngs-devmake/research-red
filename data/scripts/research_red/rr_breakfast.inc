@@ -27,6 +27,8 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_ThrewUp, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_Sacrifice, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_BraveSailor, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
 	waitmovement 0
@@ -185,11 +187,16 @@ PalletTown_PlayersHouse_1F_Text_Ivy_Gerald::
     .string "line. For two hours.$"
 
 PalletTown_PlayersHouse_1F_Text_P_Respect::
-    .string "{PLAYER}: Honestly? Respect.$"
+    .string "{PLAYER}: Honestly? Respect.\n"
+    .string "I couldn't look away from him.$"
 
 PalletTown_PlayersHouse_1F_Text_Ivy_ThrewUp::
-    .string "Ivy: You threw up off the side\n"
-    .string "twice.$"
+    .string "Ivy: You watched him so long you\n"
+    .string "got seasick, sweetie. Twice.$"
+
+PalletTown_PlayersHouse_1F_Text_Ivy_BraveSailor::
+    .string "Ivy: Mm-hm. Glad you're feeling\n"
+    .string "better, my brave sailor.$"
 
 PalletTown_PlayersHouse_1F_Text_P_Sacrifice::
     .string "{PLAYER}: Once. The second time\n"

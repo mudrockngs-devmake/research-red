@@ -823,8 +823,8 @@ RR_Lab_Text_P_Snacks::
     .string "I carried the snacks.$"
 
 RR_Lab_Text_Ivy_StickyNotes::
-    .string "Ivy: He carried the snacks and\n"
-    .string "the field notes.\p"
+    .string "Ivy: And the field notes,\n"
+    .string "sweetie.\p"
     .string "The notes were sticky.$"
 
 RR_Lab_Text_P_Delicious::
