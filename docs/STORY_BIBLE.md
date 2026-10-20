@@ -11,7 +11,7 @@ Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stoppe
 | Player | Professor; studies regional forms with Ivy | Wry, warm, absurd: ironic mock-disbelief, dry understatement, puns, quiet asides; deeply caring; makes Ivy laugh. Sheet: docs/characters/PLAYER.md |
 | Ivy | Wife; regional-forms researcher (Orange Islands) | Teases, loves; calls the player "sweetie"; shares forms wisdom learned from other professors. Sheet: docs/characters/IVY.md |
 | Elm | Friendly rival (Johto professor; Pokémon evolution expert, discovered Pokémon eggs) | Loud, passionate, competitive; secretly sentimental. Sheet: docs/characters/ELM.md |
-| Jenny | Elm's wife, police officer | Warm but by-the-book: "In my professional opinion..."; casual clothes, uniform only for Team Rocket |
+| Jenny | Elm's wife; New Bark Town's Officer Jenny, a detective, off duty for once | Deadpan, devoted, procedural; casual clothes, uniform only for Team Rocket; Growlithe partner. Sheet: docs/characters/JENNY.md |
 | Prof. Oak | Mentor, a grandfather to everyone | Poems, warns about tall grass, Pokémon proverbs, hints at forms in "other lands and other eras". Sheet: docs/characters/OAK.md |
 | Delia | Host in Pallet | Warm; Mimey (her Mr. Mime) makes pancakes; "I supervised" |
 | Daisy | Hosts Elm and Jenny | Her Rattata is Muffin (Elm insists it's a Persian) |
