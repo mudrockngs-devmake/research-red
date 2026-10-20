@@ -898,6 +898,7 @@
 	.include "data/scripts/research_red/rr_field_guide.inc"
 	.include "data/scripts/research_red/rr_lunch.inc"
 	.include "data/scripts/research_red/rr_dex_banter.inc"
+	.include "data/scripts/research_red/rr_demo_blockers.inc"
 
 	.include "data/text/aide.inc"
 	.include "data/text/apprentice.inc"

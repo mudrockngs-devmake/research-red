@@ -20,6 +20,8 @@ RR_Route22_EventScript_ElmJenny::
 	msgbox RR_Route22_Text_Elm_FoundYou, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_P_Sights, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Jenny_Desserts, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Elm_PastryStarters, MSGBOX_DEFAULT
+	msgbox RR_Route22_Text_Jenny_NameTags, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Elm_SixOnSix, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Ivy_Ready, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_P_Always, MSGBOX_DEFAULT
@@ -114,6 +116,17 @@ RR_Route22_Text_P_Sights::
 RR_Route22_Text_Jenny_Desserts::
     .string "Jenny: We've caught four.\n"
     .string "Elm named them after desserts.$"
+
+@ The starters get pastry names from here on (#48): Bulbasaur Pistachio,
+@ Charmander Toffee, Squirtle Cream Puff, Chikorita Matcha, Cyndaquil
+@ Cinnamon, Totodile Biscotti (src/data/trainers.party, R22 and Pewter teams)
+RR_Route22_Text_Elm_PastryStarters::
+    .string "Elm: And the starters too! Both\n"
+    .string "are pastries now. Very official.$"
+
+RR_Route22_Text_Jenny_NameTags::
+    .string "Jenny: He made name tags.\n"
+    .string "With glitter.$"
 
 RR_Route22_Text_Elm_SixOnSix::
     .string "Elm: Our team is complete!\n"

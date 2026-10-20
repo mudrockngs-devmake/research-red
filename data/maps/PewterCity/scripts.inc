@@ -5,6 +5,7 @@ PewterCity_MapScripts::
 PewterCity_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
 	setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F, 0
+	call_if_ge VAR_MAP_SCENE_PEWTER_CITY, 1, RR_Pewter_EventScript_DemoSetup @ Research Red: demo stops at Pewter (#35, #62)
 	end
 
 @ Impossible to speak to this NPC from a facing dir != DIR_EAST normally, so they arent checked
@@ -12,6 +13,7 @@ PewterCity_OnTransition::
 PewterCity_EventScript_GymGuide::
 	lock
 	faceplayer
+	goto_if_ge VAR_MAP_SCENE_PEWTER_CITY, 1, RR_Pewter_EventScript_DemoGuideTalk @ Research Red: after Brock (#35)
 	msgbox PewterCity_Text_BrocksLookingForChallengersFollowMe
 	closemessage
 	playbgm MUS_FOLLOW_ME, 0

@@ -378,11 +378,21 @@ RR_Lab_EventScript_BattleResult::
 	clearflag FLAG_RR_NO_WHITEOUT
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_AfterBattle
-	@ Lost: Elm and Jenny earned the right to face Oak (VAR_TEMP_5 = 1)
+	@ Lost: Elm and Jenny earned the right to face Oak (VAR_TEMP_5 = 1).
+	@ Their own lines: "best of five" only makes sense when Elm lost (#47)
 	setvar VAR_TEMP_5, 1
+	special HealPlayerParty
+	fadedefaultbgm
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Victory, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Jenny_Diagram, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Ivy_Morale, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_PureScience, MSGBOX_DEFAULT
 	closemessage
+	goto RR_Lab_EventScript_OakSteps
 
 RR_Lab_EventScript_AfterBattle::
 	special HealPlayerParty
@@ -392,6 +402,7 @@ RR_Lab_EventScript_AfterBattle::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_BestOfZero, MSGBOX_DEFAULT
 	closemessage
+RR_Lab_EventScript_OakSteps::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -996,6 +1007,18 @@ RR_Lab_Text_Elm_Victory::
     .string "Elm: Ha! History!\n"
     .string "Write that down, Jenny!$"
 
+RR_Lab_Text_Jenny_Diagram::
+    .string "Jenny: Already written, dear.\n"
+    .string "With a diagram.$"
+
+RR_Lab_Text_Ivy_Morale::
+    .string "Ivy: We let them win, sweetie.\n"
+    .string "For morale.$"
+
+RR_Lab_Text_Elm_PureScience::
+    .string "Elm: Nobody let anybody win!\n"
+    .string "That was pure science!$"
+
 RR_Lab_Text_Elm_BestOfFive::
     .string "Elm: Again! Best of three!\n"
     .string "Best of five!$"
@@ -1115,6 +1138,10 @@ RR_Lab_EventScript_OakVsElm::
 	msgbox RR_Lab_Text_Jenny_Accept, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_Popcorn, MSGBOX_DEFAULT
+	@ Watching is optional (#46): skipping picks a winner at random
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_WatchAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_OakVsElmSkip
 	closemessage
 	switch VAR_RR_STARTER
 	case 0, RR_Lab_EventScript_ElmTeam0
@@ -1198,16 +1225,36 @@ RR_Lab_EventScript_OakVsElmResult::
 	special HealPlayerParty
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_OakLostToElm
+RR_Lab_EventScript_OakBeatElm::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_BeatElm, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Rematch, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_Grant
 
 RR_Lab_EventScript_OakLostToElm::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_ElmWon, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Science, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_Grant
+
+@ Skipped the Elm and Jenny vs Oak battle: a coin flip decides it
+RR_Lab_EventScript_OakVsElmSkip::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_BattleBlur, MSGBOX_DEFAULT
+	special HealPlayerParty
+	random 2
+	goto_if_eq VAR_RESULT, 0, RR_Lab_EventScript_OakLostToElm
+	goto RR_Lab_EventScript_OakBeatElm
+
+RR_Lab_Text_WatchAsk::
+    .string "Watch Elm and Jenny battle\n"
+    .string "Prof. Oak?$"
+
+RR_Lab_Text_BattleBlur::
+    .string "The battle is a blur of flashes,\n"
+    .string "cries and Elm shouting.$"
 
 @ The lab's Slowpoke (the one from the intro call, still on the line)
 RR_Lab_EventScript_Slowpoke::

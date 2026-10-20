@@ -19,6 +19,15 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE` | Daisy scene state |
 | `VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN` | The old man blocks the way north (0) until the Viridian lunch sets it to 2 (path open; FireRed's catching tutorial is skipped) |
 | `VAR_MAP_SCENE_ROUTE22` | Route 22 Elm & Jenny battle: 1 waiting (set by the lab), 2 done |
+| `VAR_MAP_SCENE_PEWTER_CITY` | 0 before Brock (FireRed's Gym guide walks you to the Gym). 1 after Brock: demo blocker (#35) at the east exit (42, 21-23, also for 2 on old saves); the Running Shoes aide (FireRed's value 1 scene) never appears |
+
+## Other flags and vars used by Research Red scenes
+
+| What | Use |
+|---|---|
+| `FLAG_HIDE_PEWTER_CITY_GYM_GUIDE` | Cleared on entering Pewter after Brock, so the guide stays as the demo blocker (`rr_demo_blockers.inc`) |
+| `FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY` | Set on entering Pewter after Brock: the aide never appears (#62; Running Shoes are given from the start) |
+| `VAR_TEMP_3` (Pallet Town) | Always 0 there: keeps Gerald's water triggers (7-10, 18) active (#36) |
 
 ## Custom flags
 

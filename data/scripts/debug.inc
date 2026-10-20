@@ -312,6 +312,26 @@ Debug_EventScript_Script_9::
 	release
 	end
 
+@ After Brock: badge 1, story past the lunch, in Pewter by the east exit.
+@ For testing the demo blocker (#35) and the Pewter scenes.
+Debug_EventScript_Script_10::
+	call RR_Debug_StateGrassDone
+	call RR_Debug_StateLabDone
+	call RR_Debug_StateDaisyDone
+	call RR_Debug_GiveTeam
+	setvar VAR_MAP_SCENE_ROUTE22, 2
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
+	setvar VAR_0x40FE, 7
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_DEFEATED_BROCK
+	setvar VAR_MAP_SCENE_PEWTER_CITY, 1
+	setflag FLAG_WORLD_MAP_PEWTER_CITY
+	rr_ivy_create_follower
+	warp MAP_PEWTER_CITY, 39, 22
+	waitstate
+	release
+	end
+
 RR_Debug_TestModeOff::
 	clearflag FLAG_RR_AI_VS_AI
 	msgbox RR_Debug_Text_TestModeOff, MSGBOX_DEFAULT

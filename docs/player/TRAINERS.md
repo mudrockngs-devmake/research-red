@@ -50,7 +50,7 @@ Their starters depend on yours:
 
 | Pokémon | Level | Moves |
 |---|---|---|
-| Cyndaquil | 9 | level-up moves |
+| Cinnamon (Cyndaquil) | 9 | level-up moves |
 | Churro (Sandshrew) | 8 | level-up moves |
 | Pudding (Pidgey) | 8 | level-up moves |
 
@@ -58,7 +58,7 @@ Their starters depend on yours:
 
 | Pokémon | Level | Moves |
 |---|---|---|
-| Totodile | 9 | level-up moves |
+| Biscotti (Totodile) | 9 | level-up moves |
 | Licorice (Ekans) | 8 | level-up moves |
 | Macaron (Nidoran♀) | 8 | level-up moves |
 
@@ -120,7 +120,7 @@ Their starters depend on yours:
 
 | Pokémon | Level | Moves |
 |---|---|---|
-| Cyndaquil | 15 | level-up moves |
+| Cinnamon (Cyndaquil) | 15 | level-up moves |
 | Pudding (Pidgeotto) | 14 | level-up moves |
 | Churro (Sandshrew) | 14 | level-up moves |
 
@@ -128,7 +128,7 @@ Their starters depend on yours:
 
 | Pokémon | Level | Moves |
 |---|---|---|
-| Totodile | 15 | level-up moves |
+| Biscotti (Totodile) | 15 | level-up moves |
 | Licorice (Ekans) | 14 | level-up moves |
 | Macaron (Nidorina) | 14 | level-up moves |
 

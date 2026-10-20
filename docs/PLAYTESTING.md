@@ -54,5 +54,6 @@ Start > DEBUG > Scripts:
 | 7 | Dex banter | Queues the banter for Tentacool, Slowpoke, Quilava |
 | 8 | Route 1 Elm | Daisy done, one step from Elm and Jenny's Route 1 scene |
 | 9 | Test mode | On/off: the AI fights your battles; team to Lv 30 |
+| 10 | After Brock | Badge 1, story past the lunch, in Pewter by the east exit (demo blocker, Pewter scenes) |
 
 Skips 4 and 6 give a Lv 12 team.

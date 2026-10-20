@@ -242,6 +242,60 @@
       "var": "VAR_MAP_SCENE_PEWTER_CITY",
       "var_value": "1",
       "script": "PewterCity_EventScript_RunningShoesAideTriggerBottom"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 21,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_PEWTER_CITY",
+      "var_value": "1",
+      "script": "RR_Pewter_EventScript_DemoBlock"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 22,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_PEWTER_CITY",
+      "var_value": "1",
+      "script": "RR_Pewter_EventScript_DemoBlock"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 23,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_PEWTER_CITY",
+      "var_value": "1",
+      "script": "RR_Pewter_EventScript_DemoBlock"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 21,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_PEWTER_CITY",
+      "var_value": "2",
+      "script": "RR_Pewter_EventScript_DemoBlock"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 22,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_PEWTER_CITY",
+      "var_value": "2",
+      "script": "RR_Pewter_EventScript_DemoBlock"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 23,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_PEWTER_CITY",
+      "var_value": "2",
+      "script": "RR_Pewter_EventScript_DemoBlock"
     }
   ],
   "bg_events": [

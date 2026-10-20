@@ -115,6 +115,21 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0",
       "flag": "FLAG_TEMP_3"
+    },
+    {
+      "local_id": "LOCALID_PALLET_GERALD",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TENTACOOL)",
+      "x": 8,
+      "y": 19,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RR_Pallet_EventScript_Gerald",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -167,6 +182,42 @@
       "var": "VAR_TEMP_2",
       "var_value": "1",
       "script": "PalletTown_EventScript_SignLadyTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "RR_Pallet_EventScript_GeraldBlock"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "RR_Pallet_EventScript_GeraldBlock"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "RR_Pallet_EventScript_GeraldBlock"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "RR_Pallet_EventScript_GeraldBlock"
     }
   ],
   "bg_events": [

@@ -373,6 +373,7 @@ extern const u8 Debug_EventScript_Script_6[];
 extern const u8 Debug_EventScript_Script_7[];
 extern const u8 Debug_EventScript_Script_8[];
 extern const u8 Debug_EventScript_Script_9[]; // Research Red
+extern const u8 Debug_EventScript_Script_10[]; // Research Red
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
@@ -646,6 +647,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Scripts[] =
     { COMPOUND_STRING("7 Dex banter"), DebugAction_ExecuteScript, Debug_EventScript_Script_7 },
     { COMPOUND_STRING("8 Route 1 Elm"), DebugAction_ExecuteScript, Debug_EventScript_Script_8 },
     { COMPOUND_STRING("9 Test mode"), DebugAction_ExecuteScript, Debug_EventScript_Script_9 },
+    { COMPOUND_STRING("10 After Brock"), DebugAction_ExecuteScript, Debug_EventScript_Script_10 },
     { NULL }
 };
 

@@ -27,7 +27,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 sys.path.insert(0, HERE)
 import tester as T  # noqa: E402
-from tester import advance, expect, play_until, scene_end, start_menu_item, step  # noqa: E402
+from tester import advance, check, expect, play_until, scene_end, start_menu_item, step  # noqa: E402
 
 TOOLS = os.environ.get("RR_TOOLS", os.path.expanduser("~/romhacks/_tools"))
 WORKSPACE = "/mnt/e/Workspace/romhacks/research-red"
@@ -35,7 +35,7 @@ STORY = "VAR_0x40FE"  # story progress, see CLAUDE.md
 
 # Debug menu (Start > DEBUG > Scripts): see data/scripts/debug.inc
 SCRIPT_LAB, SCRIPT_AFTER_LAB, SCRIPT_ROUTE1, SCRIPT_ROUTE22, SCRIPT_TEAM, \
-    SCRIPT_LUNCH, SCRIPT_BANTER, SCRIPT_ROUTE1_ELM, SCRIPT_TEST_MODE = range(1, 10)
+    SCRIPT_LUNCH, SCRIPT_BANTER, SCRIPT_ROUTE1_ELM, SCRIPT_TEST_MODE, SCRIPT_AFTER_BROCK = range(1, 11)
 
 
 def debug_script(n):
@@ -116,6 +116,27 @@ def sc_pokedex():
             + pages + expect(story=3))
 
 
+def sc_demo_end():
+    # After Brock, walking east out of Pewter: the guide turns us back (#35)
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"] + step("RIGHT", 4)
+            + play_until("turned_back", T.G.field_free(), 3000, key="B", every=20)
+            + check("still_in_pewter", T.G.on_map("MAP_PEWTER_CITY"))
+            + step("RIGHT", 4) + ["wait 30", "shot t001"]
+            + check("still_in_pewter_again", T.G.on_map("MAP_PEWTER_CITY")))
+
+
+def sc_gerald():
+    # Surf south from Pallet's shore: Gerald blocks the sea route (#36).
+    # Debug 2 leaves us at (15,8); round the lab to the shore at (8,16),
+    # face the water (8,17), surf, then one step south onto the trigger row.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT", 3) + step("DOWN", 8)
+            + step("LEFT", 4) + ["press DOWN 2", "wait 10", "shot s000", "press A", "wait 30",
+                                 "mash A 200", "wait 60", "shot s001"]
+            + step("DOWN", 1)
+            + play_until("gerald_done", T.G.field_free(), 3000, key="B", every=20)
+            + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")) + ["shot t001"])
+
+
 def sc_guide():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60", "shot s000"]
             # Start menu here: DEBUG, POKEDEX, POKEMON, Guide
@@ -146,6 +167,8 @@ SCENARIOS = {
     "lunch": (sc_lunch, "Viridian lunch, Officer Jenny, Research Rules"),
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
+    "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
+    "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "guide": (sc_guide, "Start > Guide on Route 1"),
     "rules": (sc_rules, "Start > Rules after the lunch"),
 }

@@ -36,6 +36,8 @@ What the results mean:
 | lunch | Debug 6, the lunch, Officer Jenny, Research Rules |
 | banter | Debug 2 + 7, the Pokédex banter preview |
 | pokedex | Debug 2, Start > Pokédex, every page of Bulbasaur both ways (the Evo page crashed before v0.0.15) |
+| demo_end | Debug 10 (after Brock), walks east: the Gym guide turns you back (demo) |
+| gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | guide | Debug 3, walks onto Route 1, Start > Guide |
 | rules | The lunch, then Start > Rules |
 
