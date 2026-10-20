@@ -28,3 +28,14 @@ as before (use the stone).
 ## Tested
 Smoke test `evolve` (a Lv 30 Squirtle: EVOLVE in the menu, the scene, the
 Pokédex banter after) and every story battle (nobody evolves afterwards).
+
+## Trade evolutions without trading (#65)
+`P_RR_TRADE_EVO_LEVEL` (37) in `include/config/pokemon.h`: a plain `EVO_TRADE`
+(no item, no partner condition) counts as a level evolution from that level, so
+it shows EVOLVE too. Trade-with-item evolutions use the expansion's
+`I_USE_EVO_HELD_ITEMS_FROM_BAG` (the species data has a matching `EVO_ITEM`
+entry). For Gen 1-2 the data drops the Linking Cord lines and the unreachable
+trade-with-item lines, so the Pokédex EVO page shows one method each ("Lv↑37",
+"Metal Coat is used"). Trade-partner evolutions (Karrablast, Shelmet) are not
+covered yet.
+

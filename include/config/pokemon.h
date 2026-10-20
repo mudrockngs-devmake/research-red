@@ -18,6 +18,7 @@
                                                 // GEN_8: Use the following priority: BDSP for Gen1-4 Pokémon, then LA for species introduced in that game, then SwSh for species present in those games. Otherwise, use GEN_7.
                                                 // GEN_9: SV For species present in those games. Otherwise use GEN_8.
 #define P_RR_EVOLVE_ON_DEMAND       TRUE        // Research Red (#50): no automatic evolution after battle or a Rare Candy; ready Pokémon get EVOLVE in the party menu
+#define P_RR_TRADE_EVO_LEVEL        37          // Research Red (#65): plain trade evolutions happen from this level instead (0 = trading only). Trade-with-item ones use the item like a stone
 #define P_EVOLUTION_LEVEL_1_LEARN   GEN_LATEST  // Since Gen 8, Pokémon evolving while at level 1 do not get the chance to learn their level 1 moves, while before they did.
 
 // Evolution settings

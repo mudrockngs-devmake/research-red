@@ -4510,6 +4510,14 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
                 if (mode == EVO_MODE_BATTLE_ONLY && evolutions[i].param <= level)
                     conditionsMet = TRUE;
                 break;
+            case EVO_TRADE:
+                // Research Red (#65): a plain trade evolution (no item, no partner) is a level evolution
+                if (P_RR_TRADE_EVO_LEVEL != 0 && evolutions[i].params == NULL && level >= P_RR_TRADE_EVO_LEVEL
+                 && !(P_RR_EVOLVE_ON_DEMAND && mode == EVO_MODE_BATTLE_ONLY))
+                    conditionsMet = TRUE;
+                break;
+            default:
+                break;
             }
 
             if (conditionsMet && DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, canStopEvo, evoState))

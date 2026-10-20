@@ -6614,7 +6614,14 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
                     StringAppend(gStringVar4, COMPOUND_STRING(", in battle"));
                 break;
             case EVO_TRADE:
-                StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Trading"));
+                if (P_RR_TRADE_EVO_LEVEL != 0 && evolutions[i].params == NULL) // Research Red (#65)
+                {
+                    StringCopy(gStringVar4, COMPOUND_STRING("{LV}{UP_ARROW}"));
+                    ConvertIntToDecimalStringN(gStringVar2, P_RR_TRADE_EVO_LEVEL, STR_CONV_MODE_LEFT_ALIGN, EVO_SCREEN_LVL_DIGITS);
+                    StringAppend(gStringVar4, gStringVar2);
+                }
+                else
+                    StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Trading"));
                 break;
             case EVO_ITEM:
                 CopyItemName(evolutions[i].param, gStringVar2);

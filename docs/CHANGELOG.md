@@ -18,6 +18,7 @@ Test builds are v0.0.x. Each entry lists what changed for players and testers, a
 - New: in the move list, move names are coloured by how well they work on the foe: green for super effective, grey for not very effective, red-brown for no effect (the same answer as the circle; status moves and normal hits stay dark).
 - Changed: held items come back after every battle, Berries included (#58). They still work normally during the battle (a Sitrus Berry is eaten once), then the Pokémon holds it again afterwards. Stolen or swapped items follow the usual rules.
 - New: evolve when you want (#50). Pokémon no longer evolve on their own after a battle or a Rare Candy. When one is ready, its party menu shows EVOLVE (B still cancels). Evolution stones work as before.
+- Changed: no trading needed to evolve (#65). Kadabra, Machoke, Graveler and Haunter are ready to evolve from level 37 (no Linking Cord). Pokémon that evolve by trading while holding an item (Onix and Scyther with a Metal Coat, Slowpoke and Poliwhirl with a King's Rock, Seadra with a Dragon Scale, Porygon with an Up-Grade...) evolve when you use that item on them from the Bag, like a stone. The Pokédex's EVO page says so.
 
 ## v0.0.15
 - Fixed: the Pokédex crashed (blue error screen) when moving from the Stats page to the Evo page.
