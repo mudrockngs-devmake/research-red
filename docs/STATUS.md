@@ -20,10 +20,11 @@ _Last updated: 2026-10-20_
 - [ ] Log in the next round's NOTES.md: the 2026-10-19 session (tester upgrades, ideas filed, v0.0.15 build), logged automatically: `2026-10-19 03:56  $62.88  1h42m API  12h18m total` (the same long session, 2026-10-19/20, as of the wrap-up; `session-cost --all-days`).
 - [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
 
-## Next up: build v0.0.16 (fresh conversation)
+## Next up: build v0.0.16
 - The whole plan is in [ROADMAP.md](ROADMAP.md) "Next build: v0.0.16" (Step 1 dialogue pass, Step 2 systems and content, Step 3 release). Every decision is on its GitHub issue.
-- **Start with Step 1: the dialogue pass, scene by scene, beginning with the intro call** (`src/rr_intro_call.c`). Redraft each scene in the voices from `docs/characters/*.md` (+ `docs/reference/VOICES_EARLY_ANIME.md`), include `docs/characters/REWORK.md`, and let the owner review each scene in chat before applying.
-- Owner wants: one question at a time; nothing built for v0.0.16 until they said "go ahead" (they did, for the next conversation). Show mock-ups first for the title screen (#12), the interface colours (#73) and the TM split.
+- **Step 1 progress (2026-10-20):** done and approved by the owner: intro call, breakfast, tall grass, lab, Daisy's house, Route 1 (sing-along + catch reactions for the new tables), Route 22, Viridian lunch, Pewter. The old "Mimey's dishes" bet is gone everywhere (new stakes: dinner at Delia's). Couples' names: [characters/NAMES.md](characters/NAMES.md). Still to do in Step 1: Ivy's follower chat, Pokédex banter, then the lines that come with Step 2 features (Rules in Options, Cruller at Daisy's, Brock watch scene, tutorials).
+- Owner wants: one question at a time; show mock-ups first for the title screen (#12), the interface colours (#73) and the TM split.
+- Step 3 includes the new what's-new report with screenshots (#75).
 - After v0.0.16: test-tool upgrades (#18), smaller patch (#17).
 
 ## Half-finished / open threads
