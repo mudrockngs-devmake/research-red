@@ -2,6 +2,13 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
+## v0.0.17
+- New: the Field notebook look (#73). Menus, the dialogue box, the Start menu and Options are cream paper with brown ink and tan frames; the battle text box is leather brown with brass trim; the FIGHT/BAG menu and the move list are cream with brown frames; the HP boxes have warm brown borders. Layouts and the HP bar colours are unchanged.
+- New: picking up an item shows its picture and a short description.
+- Changed: battles are a little snappier (shorter pauses between battle messages), and in wild battles B jumps the cursor straight to RUN.
+- Already in from earlier builds, for testers who missed them: move info in the FIGHT menu (power, accuracy, category), the ability pop-up, R to throw your last-used ball, critical captures, fast HP and EXP bars.
+- **Save:** old saves work.
+
 ## v0.0.16
 - Changed: Elm and Jenny's Pewter rematch happens just outside the Pokémon Center (Nurse Joy doesn't allow battles indoors).
 - Fixed: level caps follow how many badges you have, so gyms beaten out of order (Surge, Erika, Koga, Sabrina) don't leave the cap too low.

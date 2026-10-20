@@ -3,23 +3,23 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-20 (v0.0.16 released)_
+_Last updated: 2026-10-20 (v0.0.17 released)_
 
 ## Current build
-- **v0.0.16** (2026-10-20): installed as `ResearchRed_local.gba` (copy `builds/ResearchRed_v0.0.16_614a59840`), tagged and pushed (the Action makes the GitHub pre-release with the BPS). Smoke tests 33/33 (`test-runs/2026-10-20_0930_v0.0.16_*`). **Save: old saves work** (grant saves get TM51-100 and the Ranch Pager once).
-- What's in it: [CHANGELOG.md](CHANGELOG.md) "v0.0.16". Highlights: dialogue pass for every scene and all 251 banters; Rules in Options + the Rules call; Field Guide in the Pokédex; DexNav; PC anywhere; rename; types all battle; held items back; evolve on demand; trade evolutions without trading; relearner; 100 TMs; Ranch Pager + Oak's Pokémon on the maps; Rest + 8 PM nights + night water; clock box fix; rematches (Oak + Daisy, Delia, Brock) with a post-game tier; lab aide.
-- **What's-new report for the testers:** `E:\Workspace\romhacks\research-red\whats-new\v0.0.16\report.html` (33 items with pictures, checkboxes, notes, "Save my notes"). Rebuild it with `python3 tools/research_red/rr_whats_new.py v0.0.16`.
-- Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/` (v0.0.13-15 weren't playtested by the owner).
+- **v0.0.17** (2026-10-20): v0.0.16 + the Field notebook look (#73) + item descriptions on pickup, snappier battle text, B to RUN. Installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke tests 33/33 (`test-runs/2026-10-20_0942_v0.0.17_*`). **Save: old saves work.**
+- **v0.0.16** (2026-10-20, pre-release on GitHub): the big systems build, see [CHANGELOG.md](CHANGELOG.md).
+- **Reports for the testers:** `E:\Workspace\romhacks\research-red\whats-new\v0.0.16\report.html` (33 items, everything new since v0.0.15) and `...\whats-new\v0.0.17\report.html` (the new look). Rebuild with `python3 tools/research_red/rr_whats_new.py <version>`.
+- Interface colours: `tools/research_red/ui_theme.py notebook` is applied in the source (`--restore` returns to FireRed's). Mock-ups: `E:\Workspace\romhacks\research-red\mockups\`.
+- Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
 
 ## Waiting on the owner
-- [ ] Playtest **v0.0.16** with the report (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
-- [ ] Pick an interface colour theme (#73): sheets in `E:\Workspace\romhacks\research-red\mockups\ui-colours\` (current / A Field notebook / B Pallet meadow / C Sunset lab, or a mix).
+- [ ] Playtest **v0.0.17** with both reports (v0.0.16 and v0.0.17) (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
 - [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
 - [ ] Log in the next round's NOTES.md: the costs since v0.0.12: 2026-10-18/19 build + hub setup $121.56 (2h36m API); 2026-10-19 $62.88/$63.85 (1h42m API); 2026-10-20 sessions: run `session-cost --all-days` (this v0.0.16 session included).
 - [ ] Optional: phone emulator / real hardware (#16).
 
-## Next up: v0.0.17
-- Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.17" (the colour theme once picked, title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
+## Next up: v0.0.18
+- Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.18" (battle backgrounds per location #74 first, with mock-ups; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
 - After that: test-tool upgrades (#18; a route planner from map data was prototyped this session for the Pewter Gym path), smaller patch (#17).
 
 ## Half-finished / open threads

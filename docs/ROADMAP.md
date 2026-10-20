@@ -105,11 +105,15 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 
 **Shipped in v0.0.16 (2026-10-20):** all of Step 1; from Step 2 the menus, battles, evolution and moves, 100 TMs (#57), Ranch Pager with Oak's Pokémon on the maps (#29), Rest and the clock fix (#56, #27, incl. night water tables), reusable video calls and the Rules call (#13, #45), rematches for Oak + Daisy, Delia and Brock with a post-game tier (#53, #70, #52), features list and the lab aide (#72). The rest moved to v0.0.17 (below) so the owner and testers can play the new systems.
 
-## Next build: v0.0.17 (moved from v0.0.16 on 2026-10-20)
-- **Waiting on the owner:** interface colours, pick a theme from the mock-ups in `E:\Workspace\romhacks\research-red\mockups\ui-colours\` (#73, `tools/research_red/ui_theme.py`); title screen + boot splash mock-ups (#12).
+**Shipped in v0.0.17 (2026-10-20):** the Field notebook look (#73: menus, dialogue, battle text box, FIGHT menu, HP boxes; `tools/research_red/ui_theme.py notebook`), item descriptions on pickup, snappier battle text, B to RUN in wild battles.
+
+## Next build: v0.0.18 (moved from v0.0.16/17 on 2026-10-20)
+- **Battle backgrounds per location (#74), first:** FireRed's backgrounds already switch by place (grass, plain, building, Gym, cave, water) but the art is very plain (`E:\Workspace\romhacks\research-red\mockups\battle-backgrounds-now.png`). New art for the Route grass, Viridian Forest, Pallet's shore and sea, Oak's Lab and homes, Brock's Gym and caves, mock-ups first, within the palette and tile limits.
+- **Waiting on the owner:** title screen + boot splash mock-ups (#12).
 - Rematches: post-game Mega Evolutions, the other Gym leaders as their Gyms are reworked (#52); watch Elm and Jenny vs Brock (#69); dex banter cutscene and replay with field notes (#5, #4).
 - World: ambient Pokémon pilot (#64), Forest exchanges + the Samurai (#9), Pokédex Area tab (#20), proper-case sweep (#11, also "PKMN TRAINER", "YES/NO", FireRed's map names), Cruller (Jenny's Growlithe) in the Daisy scene and on Jenny's team.
-- Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), battle backgrounds (#74), the Ranch Pager's own icon (Poké Radar's for now).
+- Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), the Ranch Pager's own icon (Poké Radar's for now). The notebook colours for the map name pop-ups and other screens that keep their own palettes (Bag, party, summary, Pokédex), if wanted.
 - Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, rematches, the lab aide).
+- Engine extras to consider (built in, off for now): Emerald-style map pop-ups (`OW_MAP_POPUP_EMERALD`); item descriptions only the first time (needs a save-layout change, so at a save-version bump); follower Pokémon (clashes with Ivy following, an experiment at most). Type-tinted battle text boxes would be new work.
 
 **After v0.0.16:** Claude's test-tool upgrades (#18: memory-poke warps and no-encounter mode, a route planner from map data, the engine's battle tests, wait-until-ready), smaller patch (#17).

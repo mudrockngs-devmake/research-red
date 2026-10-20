@@ -1,0 +1,25 @@
+{
+  "version": "v0.0.17",
+  "intro": "v0.0.17 is v0.0.16 with the new Field notebook look and a few battle comforts. If you haven't tested v0.0.16 yet, use its report too (whats-new/v0.0.16). Tick each item once you've seen it and note anything odd.",
+  "save": "Save: old saves work.",
+  "sections": [
+    {
+      "title": "The Field notebook look",
+      "items": [
+        {"id": "dialogue", "title": "Dialogue box and menus", "what": "Cream paper, brown ink, tan frames.", "try": "Talk to anyone; open a Yes/No or a choice menu.", "shots": ["rest/a1.png", "lab_aide/l002.png"]},
+        {"id": "start-menu", "title": "Start menu, Options and the Research Rules", "what": "The same paper look, including the clock box.", "try": "Open the Start menu, then Option, then Research Rules.", "shots": ["rest/r001.png", "rules/t002.png", "rules/t004.png"]},
+        {"id": "battle", "title": "Battle text box, FIGHT menu and HP boxes", "what": "A leather-brown text box with brass trim, a cream FIGHT/BAG menu and move list with brown frames, HP boxes with warm brown borders. The HP bar keeps its green, yellow and red.", "try": "Any battle: check the text box, the FIGHT menu, the move list and both HP boxes.", "shots": ["wild/w001.png", "wild/w003.png", "pewter/s0100.png"]},
+        {"id": "other-screens", "title": "Screens that keep their old colours", "what": "The Bag, party menu, summary, Pokédex and TM Case use their own art and keep their colours for now. Tell us if any of them clash with the new look.", "try": "Open each one and note what you'd like warmer.", "shots": ["evolve/e002.png", "tms/t004.png"]}
+      ]
+    },
+    {
+      "title": "Battle and pickup comforts",
+      "items": [
+        {"id": "item-desc", "title": "Item descriptions on pickup", "what": "Picking up an item shows its picture and a short description.", "try": "Pick up any item ball or hidden item.", "shots": []},
+        {"id": "snappier", "title": "Snappier battle text", "what": "Shorter pauses between battle messages.", "try": "Any battle: does it feel quicker but still readable?", "shots": []},
+        {"id": "quick-run", "title": "B jumps to RUN in wild battles", "what": "In a wild battle's FIGHT/BAG menu, B moves the cursor to RUN.", "try": "Start a wild battle and press B once.", "shots": []},
+        {"id": "already-in", "title": "Already in: move info, ability pop-up, last-used ball", "what": "Power, accuracy and category while picking a move; a banner when an ability triggers; R throws your last-used ball in wild battles.", "try": "Pick a move and look at the info; press R in a wild battle with Poké Balls in the Bag.", "shots": ["wild/w004.png"]}
+      ]
+    }
+  ]
+}

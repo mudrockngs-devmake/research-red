@@ -31,6 +31,13 @@ THEMES = {
         "paper": "#f8f0d8", "ink": "#584030", "shadow": "#d8c8a8",
         "frame": ["#f8f0d8", "#e8d8b0", "#d0b888", "#f0e4c4", "#b09060", "#806040"],
         "battle": "#5a4632", "trim": ["#a07838", "#d8b868"],
+        # HP boxes (healthbox.pal): paper, shading and brass instead of teal;
+        # the HP bar and status colours (9-15) stay as they are
+        "healthbox": {2: "#f8f0d8", 3: "#e0cfa8", 4: "#c8a868", 5: "#a08a6a", 6: "#6e5a44", 7: "#3b2f25", 8: "#5a4632"},
+        # FIGHT/BAG menu and the move list (textbox2.pal): brown and tan
+        # instead of blue-purple, cream paper, brown ink
+        "battlemenu": {1: "#5a4632", 2: "#806040", 3: "#b09060", 4: "#3b2f25", 5: "#f8f0d8",
+                       6: "#6e5a44", 7: "#e8d8b0", 8: "#6a5848", 9: "#d8c8a8", 10: "#c8a878", 11: "#6e5040"},
     },
     "meadow": {
         "about": "Pallet meadow: soft white-green, forest ink, green frames, a deep green battle box",
@@ -57,6 +64,11 @@ WINDOW_PALETTES = [
     ("graphics/interface/std_menu.gbapal", False),        # menu text
 ]
 BATTLE_PALETTES = ["graphics/battle_interface/textbox1.gbapal"]
+# Optional per-theme extras: {slot: colour} for these palettes
+EXTRA_PALETTES = {
+    "healthbox": "graphics/battle_interface/healthbox.gbapal",
+    "battlemenu": "graphics/battle_interface/textbox2.gbapal",
+}
 
 
 def to555(hexcol):
@@ -69,7 +81,7 @@ def read(path):
     return list(struct.unpack("<%dH" % (len(data) // 2), data))
 
 
-SOURCES_OF_INCLUDES = ["src/graphics.c", "src/text_window.c", "src/menu.c", "src/battle_interface.c"]
+SOURCES_OF_INCLUDES = ["src/graphics.c", "src/text_window.c", "src/menu.c", "src/battle_interface.c", "src/battle_gfx_sfx_util.c"]
 
 
 def rgb(v):
@@ -102,7 +114,7 @@ def touch_includers():
 def generated_targets():
     targets = [rel for rel, _ in WINDOW_PALETTES]
     # textbox.gbapal is textbox1 + textbox2 (Makefile): theme textbox1, rebuild both
-    return targets + ["graphics/battle_interface/textbox1.gbapal", "graphics/battle_interface/textbox.gbapal"]
+    return targets + ["graphics/battle_interface/textbox1.gbapal", "graphics/battle_interface/textbox.gbapal"] + list(EXTRA_PALETTES.values())
 
 
 def restore():
@@ -142,6 +154,13 @@ def apply(theme):
         c[15] = to555(t["battle"])
         c[13], c[14] = to555(t["trim"][0]), to555(t["trim"][1])
         write(path, c)
+    for key, rel in EXTRA_PALETTES.items():
+        if key in t:
+            path = os.path.join(REPO, rel)
+            c = read(path)
+            for slot, col in t[key].items():
+                c[slot] = to555(col)
+            write(path, c)
     combined = os.path.join(REPO, "graphics/battle_interface/textbox.gbapal")
     if os.path.exists(combined):
         os.remove(combined)
