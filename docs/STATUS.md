@@ -3,39 +3,31 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-20_
+_Last updated: 2026-10-20 (v0.0.16 released)_
 
 ## Current build
-- GitHub front page (2026-10-19): Research Red README with fan-project disclaimer, description, topics, wiki/projects off, upstream CI disabled, release notes carry the disclaimer. Credits say "story and character designs: MudrockNGS". No AI note in the README for now (owner's choice).
-- **v0.0.15** (2026-10-19): installed as `ResearchRed_local.gba` (copy in `builds/`), tagged and pushed (the Action makes the GitHub pre-release with the BPS). Smoke tests: 15/15 passing (new: pokedex, daisy, pewter, demo_end, gerald, pc).
-- Changes since the last playtest: see [CHANGELOG.md](CHANGELOG.md) (v0.0.13, v0.0.14 and v0.0.15 entries).
-- Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
-- Releases: [v0.0.13](https://github.com/mudrockngs-devmake/research-red/releases/tag/v0.0.13), [v0.0.14](https://github.com/mudrockngs-devmake/research-red/releases/tag/v0.0.14) (pre-releases with the BPS patch).
-- Latest smoke test: `test-runs/2026-10-20_0044_*` (16/16, new scenario `digletts`).
-- **master is ahead of v0.0.15** with v0.0.16 work (not released or installed yet; the installed ROM is still v0.0.15): see CHANGELOG "v0.0.16 (in progress)" and ROADMAP "Next build: v0.0.16".
+- **v0.0.16** (2026-10-20): installed as `ResearchRed_local.gba` (copy `builds/ResearchRed_v0.0.16_614a59840`), tagged and pushed (the Action makes the GitHub pre-release with the BPS). Smoke tests 33/33 (`test-runs/2026-10-20_0930_v0.0.16_*`). **Save: old saves work** (grant saves get TM51-100 and the Ranch Pager once).
+- What's in it: [CHANGELOG.md](CHANGELOG.md) "v0.0.16". Highlights: dialogue pass for every scene and all 251 banters; Rules in Options + the Rules call; Field Guide in the Pokédex; DexNav; PC anywhere; rename; types all battle; held items back; evolve on demand; trade evolutions without trading; relearner; 100 TMs; Ranch Pager + Oak's Pokémon on the maps; Rest + 8 PM nights + night water; clock box fix; rematches (Oak + Daisy, Delia, Brock) with a post-game tier; lab aide.
+- **What's-new report for the testers:** `E:\Workspace\romhacks\research-red\whats-new\v0.0.16\report.html` (33 items with pictures, checkboxes, notes, "Save my notes"). Rebuild it with `python3 tools/research_red/rr_whats_new.py v0.0.16`.
+- Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/` (v0.0.13-15 weren't playtested by the owner).
 
 ## Waiting on the owner
-- [ ] (Skipped by the owner: v0.0.15 playtest; they'll test v0.0.16 long-term instead.) Old note: playtest **v0.0.15** (the v0.0.13-15 features; v0.0.15 is the big polish build, see its changelog). Testers played v0.0.13: the owner folds their notes in, marked "(tester, .13)"; check those against v0.0.14 before filing (portrait-color/portrait-in-battle notes may already be fixed). Checklist: [PLAYTESTING.md](PLAYTESTING.md) and issue #2.
-- [ ] Log in the next round's NOTES.md: `/cost` for the v0.0.13-14 build + GitHub/hub setup session (2026-10-18/19): $121.56, 2h36m API time, 7,494 lines added.
-- [ ] Log in the next round's NOTES.md: the 2026-10-19 session (tester upgrades, ideas filed, v0.0.15 build), logged automatically: `2026-10-19 03:56  $62.88  1h42m API  12h18m total` (the same long session, 2026-10-19/20, as of the wrap-up; `session-cost --all-days`).
-- [ ] Optional: try the patch on a phone emulator / real hardware (issue #16, [COMPATIBILITY.md](COMPATIBILITY.md)).
+- [ ] Playtest **v0.0.16** with the report (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
+- [ ] Pick an interface colour theme (#73): sheets in `E:\Workspace\romhacks\research-red\mockups\ui-colours\` (current / A Field notebook / B Pallet meadow / C Sunset lab, or a mix).
+- [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
+- [ ] Log in the next round's NOTES.md: the costs since v0.0.12: 2026-10-18/19 build + hub setup $121.56 (2h36m API); 2026-10-19 $62.88/$63.85 (1h42m API); 2026-10-20 sessions: run `session-cost --all-days` (this v0.0.16 session included).
+- [ ] Optional: phone emulator / real hardware (#16).
 
-## Next up: build v0.0.16
-- The whole plan is in [ROADMAP.md](ROADMAP.md) "Next build: v0.0.16" (Step 1 dialogue pass, Step 2 systems and content, Step 3 release). Every decision is on its GitHub issue.
-- **Step 1 progress (2026-10-20):** done and approved by the owner: intro call, breakfast, tall grass, lab, Daisy's house, Route 1 (sing-along + catch reactions for the new tables), Route 22, Viridian lunch, Pewter. The old "Mimey's dishes" bet is gone everywhere (new stakes: dinner at Delia's). Couples' names: [characters/NAMES.md](characters/NAMES.md). Still to do in Step 1: Ivy's follower chat, Pokédex banter, then the lines that come with Step 2 features (Rules in Options, Cruller at Daisy's, Brock watch scene, tutorials).
-- **Step 1 finished (2026-10-20)**: also Ivy's follower lines by area and the Pokédex banter for all 251 Gen 1-2 species (style rules at the top of `data/research_red/dex_banter.txt`).
-- **Step 2 progress (2026-10-20):** done: Rules into Options (#45, the Elm-and-Jenny call part still to do with #13), Field Guide into the Pokédex (START > FIELD GUIDE), DexNav (Jenny, Route 22), rename + restore (#71), opponent types all battle (#25), move names coloured by effectiveness, Berries restored (#58), evolve on demand (#50), trade evolutions at Lv 37 / items like stones and kept (#65), pre-evolution moves at any level (#51). #55 moved to later (engine can't). Smoke tests 22/22 (new: ivy, dexnav, rename, wild, evolve, tms). 100 TMs (#57) done (TM51-65 FireRed tutors, TM66-100 modern moves, own descriptions; smoke test `tms`). Next: Ranch Pager (#29), Rest + clock (#56, #27), calls (#13, #45), rematches, world, art.
-- Owner wants: one question at a time; show mock-ups first for the title screen (#12), the interface colours (#73) and the TM split.
-- Step 3 includes the new what's-new report with screenshots (#75).
-- After v0.0.16: test-tool upgrades (#18), smaller patch (#17).
+## Next up: v0.0.17
+- Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.17" (the colour theme once picked, title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
+- After that: test-tool upgrades (#18; a route planner from map data was prototyped this session for the Pewter Gym path), smaller patch (#17).
 
 ## Half-finished / open threads
-- Session cost (logged automatically, `session-cost` at the wrap-up): `2026-10-20 04:06  $49.16  1h21m API  3h10m total` (this long session, 2026-10-20: dialogue pass, all banter, Step 2 menus/battles/evolution). Add it to the next round's NOTES.md with the 2026-10-19 line above (now $63.85).
-- Everything is committed and pushed; smoke tests 22/22 (2026-10-20, after #57).
-- New reference and planning docs (2026-10-20): `docs/characters/` (OAK, IVY, PLAYER, ELM, JENNY, DELIA, DAISY, MIMEY_MUFFIN_SLOWPOKE, REWORK), `docs/reference/` (ANIME_AND_GEN2, KANTO_ANIME + kanto_anime.csv via `tools/research_red/build_reference.py`, VOICES_EARLY_ANIME), `docs/scenes/pewter_brock_watch.md`. Copies on E: in `reference/`.
+- Nothing half-done: everything is committed and pushed.
+- Rematch rules (owner, 2026-10-20) are on #52: build on each character's existing team, separate tiers for 7 and 8 badges, a post-game tier with regional forms and exchange-program visitors (Mimey, Muffin stay home), Megas in the post-game tier (to add).
+- Still needs the owner's eyes: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile evolution under the cap).
 - The League gate block (Route 22) has no automatic test; check by hand (#2).
-- 13 rows of `docs/reference/kanto_anime.csv` are marked "memory" (to verify). More of the reference (Johto, movies, #66) can be added a few pages per session from the Internet Archive.
-- Still needs the owner's eyes in a playtest: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile evolution).
+- 13 rows of `docs/reference/kanto_anime.csv` are marked "memory" (to verify).
 
 ## How to resume in a new session
 1. Open Ubuntu (or double-click `E:\Workspace\Claude Hub.bat`): the Claude Hub menu appears. Work on a project > research-red > Start a fresh conversation (normal; Continue only to resume the same task). (By hand: `cd ~/romhacks/research-red && claude --continue`.)
