@@ -30,7 +30,8 @@ _Last updated: 2026-10-19_
 4. Tooling: smaller BPS patch (#17).
 
 ## Half-finished / open threads
-- None in progress. (If a session ends mid-task, describe it here: what was being done, which files, what's left.)
+- **v0.0.15 build in progress (2026-10-19), not tagged yet.** Working down docs/ROADMAP.md, committing and smoke-testing after each step. Done so far (on master, issues still open until the build ships): #19 Pokédex Evo-page crash, #26 defaults, #61 Slowpoke, #22 + #3 portraits (lower; step aside when the box closes), #38/#39/#31 Daisy scene, #47/#46 lab loss lines + watch-or-skip, #48 pastry starters, #35/#62/#36 demo blockers (rr_demo_blockers.inc), debug skip 10 "After Brock", #63 Delia blackout lines, #54 heal-after-battles rule, #23 lab table. Checked, no code fix: #41 (likely B during evolution; soft-cap question noted on the issue), #20/#14 (need owner screenshots). New smoke scenarios: pokedex, daisy, demo_end, gerald.
+- **Next:** tier 2 (#30 Mewtwo scene, #43+#44 lunch/rules move, #10 Pewter rematch, #21, #25, #42, #27, #34, #37, art items), then the v0.0.15 release steps (stamp, CHANGELOG with Save: line, full smoke run, install, tag) and close the fixed issues.
 
 ## How to resume in a new session
 1. Open Ubuntu (or double-click `E:\Workspace\Claude Hub.bat`): the Claude Hub menu appears. Work on a project > research-red > Start a fresh conversation (normal; Continue only to resume the same task). (By hand: `cd ~/romhacks/research-red && claude --continue`.)
