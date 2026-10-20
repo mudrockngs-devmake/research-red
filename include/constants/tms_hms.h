@@ -51,7 +51,59 @@
     F(STEEL_WING) \
     F(SKILL_SWAP) \
     F(SNATCH) \
-    F(OVERHEAT)
+    F(OVERHEAT) \
+    /* Research Red (#57): TM51-65, FireRed's move tutors */ \
+    F(MEGA_PUNCH) \
+    F(MEGA_KICK) \
+    F(SWORDS_DANCE) \
+    F(BODY_SLAM) \
+    F(DOUBLE_EDGE) \
+    F(COUNTER) \
+    F(SEISMIC_TOSS) \
+    F(MIMIC) \
+    F(METRONOME) \
+    F(SOFT_BOILED) \
+    F(DREAM_EATER) \
+    F(THUNDER_WAVE) \
+    F(EXPLOSION) \
+    F(ROCK_SLIDE) \
+    F(SUBSTITUTE) \
+    /* Research Red (#57): TM66-100, modern moves */ \
+    F(HYPER_VOICE) \
+    F(WILL_O_WISP) \
+    F(FIRE_PUNCH) \
+    F(SCALD) \
+    F(LIQUIDATION) \
+    F(ENERGY_BALL) \
+    F(SEED_BOMB) \
+    F(VOLT_SWITCH) \
+    F(WILD_CHARGE) \
+    F(THUNDER_PUNCH) \
+    F(ICE_PUNCH) \
+    F(ICY_WIND) \
+    F(DRAIN_PUNCH) \
+    F(AURA_SPHERE) \
+    F(POISON_JAB) \
+    F(EARTH_POWER) \
+    F(BULLDOZE) \
+    F(AIR_SLASH) \
+    F(PSYSHOCK) \
+    F(ZEN_HEADBUTT) \
+    F(TRICK_ROOM) \
+    F(U_TURN) \
+    F(X_SCISSOR) \
+    F(BUG_BUZZ) \
+    F(STONE_EDGE) \
+    F(STEALTH_ROCK) \
+    F(SHADOW_CLAW) \
+    F(HEX) \
+    F(DRAGON_PULSE) \
+    F(DARK_PULSE) \
+    F(CRUNCH) \
+    F(FLASH_CANNON) \
+    F(IRON_HEAD) \
+    F(DAZZLING_GLEAM) \
+    F(PLAY_ROUGH)
 
 #define FOREACH_HM(F) \
     F(CUT) \

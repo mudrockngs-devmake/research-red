@@ -5,7 +5,10 @@
 // map suggesting a new game, and the save is marked current so it isn't shown
 // again. Saves from before v0.0.14 have no version (0) and get the message.
 #include "global.h"
+#include "event_data.h"
 #include "event_scripts.h"
+#include "item.h"
+#include "constants/items.h"
 #include "rr_save_version.h"
 #include "script.h"
 
@@ -22,9 +25,18 @@ void RR_CheckSaveVersion(void)
 
 bool32 RR_TryStartSaveVersionWarning(void)
 {
-    if (!sWarningPending)
-        return FALSE;
-    sWarningPending = FALSE;
-    ScriptContext_SetupScript(RR_EventScript_OldSaveWarning);
-    return TRUE;
+    if (sWarningPending)
+    {
+        sWarningPending = FALSE;
+        ScriptContext_SetupScript(RR_EventScript_OldSaveWarning);
+        return TRUE;
+    }
+    // #57: a save that got the research grant before TM51-100 existed gets
+    // them once (the grant also set FLAG_RR_EXP_SHARE)
+    if (FlagGet(FLAG_RR_EXP_SHARE) && !CheckBagHasItem(ITEM_TM51, 1) && !CheckPCHasItem(ITEM_TM51, 1))
+    {
+        ScriptContext_SetupScript(RR_EventScript_TopUpTMs);
+        return TRUE;
+    }
+    return FALSE;
 }

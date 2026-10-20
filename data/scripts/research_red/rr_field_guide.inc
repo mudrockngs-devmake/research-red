@@ -30,6 +30,21 @@ RR_EventScript_OldSaveWarning::
 	releaseall
 	end
 
+@ Research Red (#57): a save from before TM51-100 existed gets them once
+@ (src/rr_save_version.c; the grant script is in rr_lab.inc)
+RR_EventScript_TopUpTMs::
+	lockall
+	call RR_EventScript_GiveTM51To100
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Text_TopUpTMs, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RR_Text_TopUpTMs::
+	.string "Oak: {PLAYER}! The League sent more\n"
+	.string "TMs for the grant. Fifty of them!\p"
+	.string "They're in your TM Case. Ho ho!$"
+
 RR_Text_OldSaveWarning::
 	.string "This save is from an older test\n"
 	.string "build of Research Red.\p"

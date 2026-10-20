@@ -737,6 +737,62 @@ RR_Lab_EventScript_GiveGrant::
 	additem ITEM_TM48, 1
 	additem ITEM_TM49, 1
 	additem ITEM_TM50, 1
+	@ Research Red (#57): TM51-65 FireRed's move tutors, TM66-100 modern moves
+	call RR_EventScript_GiveTM51To100
+	return
+
+@ Also used to top up older saves that got the grant before TM51-100 existed
+RR_EventScript_GiveTM51To100::
+	additem ITEM_TM51, 1
+	additem ITEM_TM52, 1
+	additem ITEM_TM53, 1
+	additem ITEM_TM54, 1
+	additem ITEM_TM55, 1
+	additem ITEM_TM56, 1
+	additem ITEM_TM57, 1
+	additem ITEM_TM58, 1
+	additem ITEM_TM59, 1
+	additem ITEM_TM60, 1
+	additem ITEM_TM61, 1
+	additem ITEM_TM62, 1
+	additem ITEM_TM63, 1
+	additem ITEM_TM64, 1
+	additem ITEM_TM65, 1
+	additem ITEM_TM66, 1
+	additem ITEM_TM67, 1
+	additem ITEM_TM68, 1
+	additem ITEM_TM69, 1
+	additem ITEM_TM70, 1
+	additem ITEM_TM71, 1
+	additem ITEM_TM72, 1
+	additem ITEM_TM73, 1
+	additem ITEM_TM74, 1
+	additem ITEM_TM75, 1
+	additem ITEM_TM76, 1
+	additem ITEM_TM77, 1
+	additem ITEM_TM78, 1
+	additem ITEM_TM79, 1
+	additem ITEM_TM80, 1
+	additem ITEM_TM81, 1
+	additem ITEM_TM82, 1
+	additem ITEM_TM83, 1
+	additem ITEM_TM84, 1
+	additem ITEM_TM85, 1
+	additem ITEM_TM86, 1
+	additem ITEM_TM87, 1
+	additem ITEM_TM88, 1
+	additem ITEM_TM89, 1
+	additem ITEM_TM90, 1
+	additem ITEM_TM91, 1
+	additem ITEM_TM92, 1
+	additem ITEM_TM93, 1
+	additem ITEM_TM94, 1
+	additem ITEM_TM95, 1
+	additem ITEM_TM96, 1
+	additem ITEM_TM97, 1
+	additem ITEM_TM98, 1
+	additem ITEM_TM99, 1
+	additem ITEM_TM100, 1
 	return
 
 RR_Lab_Movement_Up6:

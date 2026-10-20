@@ -992,5 +992,6 @@ extern const u8 RR_EventScript_ResearchRules[];
 extern const u8 RR_EventScript_StartMenuPC[]; // Research Red: Start > PC (#34)
 extern const u8 RR_EventScript_DexBanter[];
 extern const u8 RR_EventScript_OldSaveWarning[];
+extern const u8 RR_EventScript_TopUpTMs[]; // Research Red (#57): TM51-100 for older saves
 
 #endif //GUARD_EVENT_SCRIPTS_H
