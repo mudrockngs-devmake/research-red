@@ -94,7 +94,7 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 
 **Step 2: systems and content** (test each one):
 - Menus: Start menu cleanup (Rules into Options #45, Guide into the Pokédex), DexNav, rename + restore names (#71).
-- Battles: types all battle (#25), held items restored after battle incl. Berries (#58), choose which wild to catch in doubles (#55, if supported).
+- Battles: types all battle (#25), held items restored after battle incl. Berries (#58), choose which wild to catch in doubles (#55: not supported by the engine; moved to later).
 - Evolution and moves: evolve on demand (#50), trade evolutions at 37, no Linking Cord (#65), pre-evolution moves relearnable at any level (#51), 100 TMs all from the grant (#57).
 - Ranch Pager (#29), Rest for day/night + clock fix (#56, #27), rule-change calls (#13, #45).
 - Rematches: Oak + Daisy (#53), Delia (#70), Brock tiers (#52); watch Elm and Jenny vs Brock (#69; Elm and Jenny inside the Gym entrance during your run; Brock's nine siblings: 5 in the Gym, 4 in town, generic kid sprites); dex banter cutscene and replay with field notes (#5, #4).
