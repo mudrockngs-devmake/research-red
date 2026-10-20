@@ -226,6 +226,34 @@ def sc_pager_other():
             + play_until("teleported", T.G.field_free(), 3000, key="B", every=20))
 
 
+def sc_pager_select():
+    # #29: register the Ranch Pager (Bag > Key Items > Ranch Pager > REGISTER),
+    # close the Bag, then SELECT opens the Pager's menu on the map; B cancels
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + start_menu_item(4) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + ["press A", "wait 20", "press DOWN", "wait 10", "shot r001", "press A", "wait 30", "shot r002"]
+            + play_until("bag_closed", T.G.field_free(), 1500, key="B", every=30)
+            + ["wait 30", "press SELECT", "wait 150", "shot r003", "press B", "wait 60", "shot r004"]
+            + play_until("pager_closed", T.G.field_free(), 1500, key="B", every=30))
+
+
+def sc_pager_dig():
+    # #29: Ranch Pager > Dig inside Diglett's Cave (the entrance, as in
+    # "digletts"): Yes, Oak's Diglett digs us out to Route 2
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK)
+            + step("DOWN", 9) + step("RIGHT", 4) + step("DOWN", 5) + step("DOWN", 12) + step("RIGHT", 2)
+            + ["press DOWN 6", "wait 20", "press A", "wait 60"]
+            + play_until("cut", T.G.field_free(), 1500, key="A", every=30)
+            + step("DOWN", 2) + step("RIGHT", 6) + step("UP", 3) + ["wait 420"]
+            + check("in_entrance", T.G.on_map("MAP_DIGLETTS_CAVE_NORTH_ENTRANCE"))
+            # after Brock the Start menu has DEXNAV too: BAG is the 6th entry
+            + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + ["shot d001", "press A", "wait 20", "press A", "wait 150"] + ["press DOWN", "wait 8"] * 3
+            + ["shot d002", "press A", "wait 90", "shot d003", "press A", "wait 60", "shot d004"]
+            + play_until("dug_out", T.G.field_free(), 3000, key="B", every=20)
+            + expect("MAP_ROUTE2"))
+
+
 def sc_oak_mons():
     # #29: Oak's Ranch Pager Pokemon. Debug 2 leaves us at (15,8) in Pallet:
     # east to the lab yard (Tauros 21,10 and Pidgeot 21,12), talk to Tauros,
@@ -335,7 +363,7 @@ def sc_evolve():
 # Maps the report can name (anything else shows as a number)
 MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
              "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", "MAP_PALLET_TOWN_RIVALS_HOUSE", "MAP_ROUTE1",
-             "MAP_VIRIDIAN_CITY", "MAP_ROUTE22"]
+             "MAP_VIRIDIAN_CITY", "MAP_ROUTE22", "MAP_ROUTE2"]
 
 SCENARIOS = {
     "intro": (sc_intro, "New game: the video call, ending in the bedroom"),
@@ -359,6 +387,8 @@ SCENARIOS = {
     "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
     "pager_fly": (sc_pager_fly, "Ranch Pager > Fly: the Fly map, Oak's Pidgeot flies to Pallet (#29)"),
     "pager_other": (sc_pager_other, "Ranch Pager > Flash (not dark), then Teleport with Oak's Abra (#29)"),
+    "pager_select": (sc_pager_select, "Register the Ranch Pager, then SELECT opens it on the map (#29)"),
+    "pager_dig": (sc_pager_dig, "Ranch Pager > Dig in Diglett's Cave: Oak's Diglett digs us out (#29)"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
