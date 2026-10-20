@@ -30,6 +30,8 @@ RR_Lab_EventScript_Scene::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Proofread, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_Fridge, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_StudyForms, MSGBOX_DEFAULT
 	applymovement LOCALID_LAB_IVY, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -547,8 +549,11 @@ RR_Lab_EventScript_Grant::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_LotOfBalls, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Ivy_NotAStore, MSGBOX_DEFAULT
-	msgbox RR_Lab_Text_Jenny_Receipts, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Ivy_BuyOutMart, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_CarriedAway, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Jenny_Trust, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_SecondGrant, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_SameGrant, MSGBOX_DEFAULT
@@ -804,18 +809,21 @@ RR_Lab_Text_Oak_WhyHere::
     .string "courtesy of Elm.$"
 
 RR_Lab_Text_Elm_Mailed::
-    .string "Elm: Hand-delivered! Well. Mailed.\n"
-    .string "With a very nice note.$"
+    .string "Elm: Hand-delivered! Well. Sent\n"
+    .string "by PC transfer. With a card!$"
 
 RR_Lab_Text_Jenny_Proofread::
-    .string "Jenny: It was a very nice note.\n"
+    .string "Jenny: It was a very nice card.\n"
     .string "I proofread it.$"
+
+RR_Lab_Text_Oak_Fridge::
+    .string "Oak: It's on my fridge.$"
 
 RR_Lab_Text_Oak_StudyForms::
     .string "Oak: While you stay in Pallet, I\n"
     .string "want each of you to study one.\p"
     .string "Observe it. Compare notes.\n"
-    .string "Specifically, notes on forms.$"
+    .string "All of it goes in the paper.$"
 
 RR_Lab_Text_Ivy_InStarters::
     .string "Ivy: Regional forms?\n"
@@ -964,8 +972,8 @@ RR_Lab_Text_Oak_Quietly::
     .string "observe them here. Quietly.$"
 
 RR_Lab_Text_Jenny_NotASetting::
-    .string "Jenny: In my professional opinion,\n"
-    .string "“quietly” is not a setting he has.$"
+    .string "Jenny: “Quietly” is not a setting\n"
+    .string "he has, Professor.$"
 
 RR_Lab_Text_Elm_Scared::
     .string "Elm: Unless {PLAYER} is scared.$"
@@ -996,8 +1004,8 @@ RR_Lab_Text_Ivy_SideBet::
     .string "we carry them both?$"
 
 RR_Lab_Text_Jenny_Absolutely::
-    .string "Jenny: Professionally?\n"
-    .string "Absolutely.$"
+    .string "Jenny: Absolutely. I've seen him\n"
+    .string "battle.$"
 
 RR_Lab_Text_Elm_TestNow::
     .string "Elm: A test, then! Right here!\n"
@@ -1102,13 +1110,17 @@ RR_Lab_Text_P_LotOfBalls::
     .string "{PLAYER}: That is… a lot\n"
     .string "of Poké Balls.$"
 
-RR_Lab_Text_Ivy_NotAStore::
-    .string "Ivy: We're doing research,\n"
-    .string "sweetie. Not opening a store.$"
+RR_Lab_Text_Ivy_BuyOutMart::
+    .string "Ivy: Professor, did you buy out\n"
+    .string "the whole Poké Mart?$"
 
-RR_Lab_Text_Jenny_Receipts::
-    .string "Jenny: I will need receipts.\n"
-    .string "For every ball.$"
+RR_Lab_Text_Oak_CarriedAway::
+    .string "Oak: I may have got carried away.\n"
+    .string "The clerk sent me a card.$"
+
+RR_Lab_Text_Jenny_Trust::
+    .string "Jenny: Master Balls. Plural.\n"
+    .string "That's a lot of trust, sir.$"
 
 RR_Lab_Text_Elm_SecondGrant::
     .string "Elm: Can I get a grant?$"
@@ -1127,7 +1139,7 @@ RR_Lab_Text_Elm_MeetAtDaisys::
     .string "We'll make the bet official!$"
 
 RR_Lab_Text_Ivy_WaitOutside::
-    .string "Ivy: Daisy's house next, sweetie.\n"
+    .string "Ivy: Daisy's house next.\n"
     .string "Lead the way.$"
 
 RR_Lab_Text_IvyMonJoins::
@@ -1290,8 +1302,7 @@ RR_Lab_Text_Elm_HoldMyNotebook::
     .string "Jenny, hold my notebook.$"
 
 RR_Lab_Text_Jenny_Accept::
-    .string "Jenny: Professionally speaking,\n"
-    .string "I accept.$"
+    .string "Jenny: Holding it. And accepting.$"
 
 RR_Lab_Text_Ivy_Popcorn::
     .string "Ivy: Sweetie, we get front row\n"
@@ -1302,8 +1313,8 @@ RR_Lab_Text_Oak_BeatElm::
     .string "all. Still mine, though.$"
 
 RR_Lab_Text_Elm_Rematch::
-    .string "Elm: That was the warm-up!\n"
-    .string "…It was not the warm-up.$"
+    .string "Elm: Best of thr- No. Good\n"
+    .string "battle, Professor. Really.$"
 
 RR_Lab_Text_Oak_ElmWon::
     .string "Oak: Well! Beaten in my own lab.\n"
