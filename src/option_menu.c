@@ -7,6 +7,8 @@
 #include "menu_helpers.h"
 #include "menu.h"
 #include "overworld.h"
+#include "rr_rules.h" // Research Red
+#include "event_data.h" // Research Red
 #include "palette.h"
 #include "scanline_effect.h"
 #include "string_util.h"
@@ -20,7 +22,7 @@ enum
 {
     MENUITEM_TEXTSPEED = 0,
     MENUITEM_BATTLESCENE,
-    MENUITEM_BATTLESTYLE,
+    MENUITEM_RR_RULES, // Research Red: opens Elm's Research Rules (battle style moved there)
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
@@ -43,6 +45,7 @@ struct OptionMenu
     /*0x10*/ u8 loadState;
     /*0x11*/ u8 state;
     /*0x12*/ u8 loadPaletteState;
+    bool8 openRules; // Research Red: leave Options for the Research Rules
 };
 
 static EWRAM_DATA struct OptionMenu *sOptionMenuPtr = NULL;
@@ -134,13 +137,13 @@ static const struct BgTemplate sOptionMenuBgTemplates[] =
 };
 
 static const u16 sOptionMenuPalette[] = INCBIN_U16("graphics/misc/option_menu.gbapal");
-static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {3, 2, 2, 2, 3, 10, 0};
+static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {3, 2, 0, 2, 3, 10, 0}; // Research Red: Rules has no values
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("TEXT SPEED"),
     [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE"),
-    [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("BATTLE STYLE"),
+    [MENUITEM_RR_RULES]    = COMPOUND_STRING("RESEARCH RULES"), // Research Red
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
@@ -158,12 +161,6 @@ static const u8 *const sBattleSceneOptions[] =
 {
     gText_On,
     gText_Off,
-};
-
-static const u8 *const sBattleStyleOptions[] =
-{
-    gText_Shift,
-    COMPOUND_STRING("SET"),
 };
 
 static const u8 *const sSoundOptions[] =
@@ -211,7 +208,6 @@ void CB2_InitOptionMenu(void)
     sOptionMenuPtr->cursorPos = 0;
     sOptionMenuPtr->option[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
     sOptionMenuPtr->option[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
-    sOptionMenuPtr->option[MENUITEM_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattleStyle;
     sOptionMenuPtr->option[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
     sOptionMenuPtr->option[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
     sOptionMenuPtr->option[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
@@ -415,6 +411,16 @@ static u8 OptionMenu_ProcessInput(void)
 {
     u16 current;
     u16 *curr;
+    // Research Red: the Rules row has no values; A on it opens the Rules
+    if (sOptionMenuPtr->cursorPos == MENUITEM_RR_RULES && JOY_REPEAT(DPAD_LEFT | DPAD_RIGHT))
+        return 0;
+    if (sOptionMenuPtr->cursorPos == MENUITEM_RR_RULES && JOY_NEW(A_BUTTON))
+    {
+        if (!RR_CanOpenRulesFromOptions())
+            return 0;
+        sOptionMenuPtr->openRules = TRUE;
+        return 1;
+    }
     if (JOY_REPEAT(DPAD_RIGHT))
     {
         current = sOptionMenuPtr->option[(sOptionMenuPtr->cursorPos)];
@@ -486,8 +492,8 @@ static void BufferOptionMenuString(u8 selection)
     case MENUITEM_BATTLESCENE:
         AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBattleSceneOptions[sOptionMenuPtr->option[selection]]);
         break;
-    case MENUITEM_BATTLESTYLE:
-        AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBattleStyleOptions[sOptionMenuPtr->option[selection]]);
+    case MENUITEM_RR_RULES: // Research Red
+        AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, RR_CanOpenRulesFromOptions() ? COMPOUND_STRING("{A_BUTTON} OPEN") : COMPOUND_STRING("---"));
         break;
     case MENUITEM_SOUND:
         AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sSoundOptions[sOptionMenuPtr->option[selection]]);
@@ -511,11 +517,16 @@ static void BufferOptionMenuString(u8 selection)
 static void CloseAndSaveOptionMenu(u8 taskId)
 {
     gFieldCallback = FieldCB_DefaultWarpExit;
-    SetMainCallback2(gMain.savedCallback);
+    if (sOptionMenuPtr->openRules) // Research Red: back to the map, straight into the Rules
+    {
+        gFieldCallback = RR_FieldCB_OpenResearchRules;
+        SetMainCallback2(CB2_ReturnToField);
+    }
+    else
+        SetMainCallback2(gMain.savedCallback);
     FreeAllWindowBuffers();
     gSaveBlock2Ptr->optionsTextSpeed = sOptionMenuPtr->option[MENUITEM_TEXTSPEED];
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptionMenuPtr->option[MENUITEM_BATTLESCENE];
-    gSaveBlock2Ptr->optionsBattleStyle = sOptionMenuPtr->option[MENUITEM_BATTLESTYLE];
     gSaveBlock2Ptr->optionsSound = sOptionMenuPtr->option[MENUITEM_SOUND];
     gSaveBlock2Ptr->optionsButtonMode = sOptionMenuPtr->option[MENUITEM_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptionMenuPtr->option[MENUITEM_FRAMETYPE];

@@ -82,26 +82,32 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > to win all eight Gym badges
 > takes the bet!
 
-> Jenny: Small stakes.
-> In my professional opinion.
+> Jenny: Badges? Small stakes, dear.
+> What does the loser do?
 
-> Ivy: Losers do the dishes
-> for a month.
+> Ivy: Losers cook a big dinner at
+> Delia's. Dessert included.
 
-> {PLAYER}: Mimey already does
-> the dishes.
+> {PLAYER}: Mimey won't like anyone
+> else in its kitchen.
 
-> Ivy: Then the losers do
-> Mimey's dishes.
+> Ivy: Then Mimey supervises. And
+> Delia gets the night off.
 
-> Elm: Deal! We swap numbers,
-> and it's official!
+> Elm: Deal! Not that I'll lose.
+> But I'd make a great tart.
+>
+> We swap numbers, and
+> it's official!
 
 > Elm's and Jenny's numbers were
 > saved!
 
 > The bet is on: first team to
 > eight Gym badges.
+
+> Daisy: I'll keep score.
+> Somebody neutral should.
 
 > Daisy: Grandpa is going to pretend
 > he's not excited about this.
@@ -131,7 +137,9 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > Elm: I have a passion.
 
 > Elm: Want to change them later?
-> Start menu, “Rules.” Day or night.
+> Options, “Research Rules.”
+>
+> Day or night!
 
 > Jenny: Please not night.
 

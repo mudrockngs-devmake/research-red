@@ -1,7 +1,8 @@
 // Research Red: Elm's Research Rules (animatic 07, the lunch in Viridian).
 //
 // A small settings window: Up/Down picks a rule, Left/Right/A changes it,
-// B (or "Done") closes. First shown at lunch, then from Start > Rules.
+// B (or "Done") closes. First shown at Daisy's house, then from
+// Options > Research Rules (the row leaves Options and opens this on the map).
 //   Level caps     Lv. N / off         FLAG_RR_LEVEL_CAPS_OFF (src/caps.c); shows the current cap
 //   Trainers       doubles / singles   FLAG_RR_FORCE_DOUBLES
 //   Wild Pokémon   singles / doubles   FLAG_RR_FORCE_DOUBLE_WILD
@@ -10,6 +11,9 @@
 #include "global.h"
 #include "caps.h"
 #include "event_data.h"
+#include "event_scripts.h"
+#include "field_fadetransition.h"
+#include "overworld.h"
 #include "main.h"
 #include "rr_portrait.h"
 #include "menu.h"
@@ -50,10 +54,10 @@ static const u8 *const sRuleHelp[NUM_RULES] =
     [RULE_WILD] = COMPOUND_STRING("Wild Pokémon one or two at a time."),
     [RULE_BATTLE_STYLE] = COMPOUND_STRING("Shift: switch after a faint.\nSet: no free switch."),
     [RULE_AUTO_HEAL] = COMPOUND_STRING("On: your team is fully healed\nafter every battle you win."),
-    [RULE_DONE] = COMPOUND_STRING("Change these anytime:\nStart > Rules."),
+    [RULE_DONE] = COMPOUND_STRING("The bet's rules, for both teams.\nChange them anytime in Options."),
 };
 
-static const u8 sText_Title[] = _("Elm's Research Rules");
+static const u8 sText_Title[] = _("Elm's Research Rules: the bet");
 static const u8 sText_On[] = _("On");
 static const u8 sText_Off[] = _("Off");
 static const u8 sText_CapLevel[] = _("Lv. {STR_VAR_2}");
@@ -196,4 +200,17 @@ void RR_ScriptResearchRules(struct ScriptContext *ctx)
     PutWindowTilemap(tWindowId);
     PrintRules(tWindowId, tCursor);
     CopyWindowToVram(tWindowId, COPYWIN_FULL);
+}
+
+// Options > Research Rules: only from the Start menu on the map (not the title
+// screen's Options), and only once Elm has explained the rules at Daisy's
+bool32 RR_CanOpenRulesFromOptions(void)
+{
+    return gMain.savedCallback == CB2_ReturnToFieldWithOpenMenu && VarGet(VAR_0x40FE) >= 4;
+}
+
+void RR_FieldCB_OpenResearchRules(void)
+{
+    FadeInFromBlack();
+    ScriptContext_SetupScript(RR_EventScript_ResearchRules);
 }

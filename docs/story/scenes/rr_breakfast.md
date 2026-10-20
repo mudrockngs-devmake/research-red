@@ -29,7 +29,7 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > Sit, sit!
 
 > Ivy: I've already had three.
-> They're dangerous, dear.
+> They're dangerous, sweetie.
 
 > {PLAYER}: Three? I'll notify the
 > authorities.
@@ -38,7 +38,7 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > He's so excited you're here.
 >
 > He says his two best students
-> are finally under one roof.
+> are finally back in Pallet.
 
 > Ivy: And one of them is staying
 > next door. Loudly?
@@ -74,18 +74,20 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 
 > Delia: …I supervised.
 
-> Mimey: Mime mime.
-> Mime mime mime!
+> Mimey: Mime. Mime mime mime!
+> (It did not need supervising.)
 
-> {PLAYER}: A Pokémon that makes
-> pancakes. I should be writing
-> this down.
+> {PLAYER}: (Field notes: Mimey.
+> Pancakes. Dangerous. See Ivy.)
 
 > Ivy: Eat first, sweetie.
 > Publish later.
 >
 > We'll head to the lab after this.
 > Oak's waiting.
+
+> {PLAYER}: Thanks for having us,
+> Delia. Truly.
 
 > Delia: Come back anytime you need
 > rest. My door's always open.

@@ -90,7 +90,7 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 
 **Already in master (since v0.0.15):** Pewter rematch outside the Center (#10); level caps on/off, counting badges, Rare Candy cap, catch-up EXP, Rules shows the cap (#41); Johto Pokémon and the evolution-level rule in every demo table, one Fishing Rod (#59); TV homage; Diglett's Cave and the League gate closed; Oak/Ivy line updates; reference database and character sheets.
 
-**Step 1: dialogue pass, scene by scene** (Claude redrafts in the sheets' voices, the owner reviews in chat): every demo scene, plus `docs/characters/REWORK.md` (Elm knows his Jenny, the dinner-at-Delia's bet, the joint paper with Oak as PI, the Viridian City sing-along with the owner's phrases, Elm and Jenny saw your Brock win), tutorial banter for new features (Ranch Pager, PC, DexNav, Options > Rules), Brock watch scene (`docs/scenes/pewter_brock_watch.md`).
+**Step 1: dialogue pass, scene by scene** (Claude redrafts in the sheets' voices, the owner reviews in chat): every demo scene, plus `docs/characters/REWORK.md` (Elm knows his Jenny, the dinner-at-Delia's bet, the joint paper with Oak as PI, the Viridian City sing-along with the owner's phrases, Elm and Jenny saw your Brock win), tutorial banter for new features (Ranch Pager, PC, DexNav, Options > Research Rules), Brock watch scene (`docs/scenes/pewter_brock_watch.md`).
 
 **Step 2: systems and content** (test each one):
 - Menus: Start menu cleanup (Rules into Options #45, Guide into the Pokédex), DexNav, rename + restore names (#71).

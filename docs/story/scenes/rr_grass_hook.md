@@ -49,6 +49,8 @@ Research Red: Grass hook outside the house (PalletTown)
 > {PLAYER}: So the plan is to fight
 > the grass. Personally.
 
+> Jenny: Eight out of ten.
+
 > Oak: Hey! Wait!
 > Don't go out!
 
@@ -61,14 +63,12 @@ Research Red: Grass hook outside the house (PalletTown)
 > Elm: P-Professor! I was just
 > observing it! From here!
 
-> Oak: And you must be Jenny!
-> The one who made Elm so happy.
->
-> I've wanted to meet you for
-> years!
+> Oak: And Jenny! At last, in
+> person! Elm talks about you
+> endlessly.
 
-> Jenny: Most people just see
-> another Jenny, sir. Thank you.
+> Jenny: He talks about you too,
+> sir. With footnotes.
 
 > Oak: Ahem.
 >
@@ -77,7 +77,8 @@ Research Red: Grass hook outside the house (PalletTown)
 > A grown man walks in, unarmed…
 > Foolish, but so brave.
 
-> Ivy: He still does the poems.
+> Ivy: I love that he still does
+> the poems.
 
 > Oak: Come! This research trip
 > starts at my lab, not in the

@@ -9,11 +9,15 @@ Research Red v0.0.15 test build
 
 Oak: Hello? Hello! Is this thing on?
 
-Oak: Ah, there you are! Welcome to Kanto, a world full of Pokémon!
+Oak: Ah, there you are! Welcome to the world of Pokémon!
 
-Oak: People and Pokémon live, work, and play together here.
+Oak: My name is Oak! People call me the Pokémon Prof-
 
-Oak: This is Slowpoke! Say hello!
+???: Professor, we know. You taught us.
+
+Oak: Ho ho! Forty years of opening lectures. It slips out.
+
+Oak: And this is Slowpoke! Say hello!
 
 Slowpoke: …
 
@@ -21,7 +25,7 @@ Slowpoke: …
 
 Oak: No, that's just Slowpoke.
 
-Oak: Studying Pokémon is my life's work. Well, ours now.
+Oak: Now, the others should be joining us any moment…
 
 Elm: Professor! Is that them? Let me see!
 
@@ -29,7 +33,7 @@ Oak: Elm, you're too close to the camera.
 
 Elm: Sorry! Sorry. Hi!!
 
-Oak: Now then… the signal's fuzzy. Remind me…
+Oak: Hmm, the signal's fuzzy. Remind me…
 
 Oak: Which of my students are you?
 
@@ -39,9 +43,13 @@ Oak: {PLAYER}! Right. I knew that.
 
 Elm: He knew. It loads slowly. Like Slowpoke.
 
-Jenny: Elm. Sit down.
+Jenny: Dear. Chair.
 
-Oak: Is Ivy with you?
+Oak: Jenny! Elm's Jenny! I'd know you anywhere.
+
+Jenny: …That's a first, Professor.
+
+Oak: {PLAYER}, is Ivy with you?
 
 Ivy: Hello, Professor! We're stuck at sea.
 
@@ -51,7 +59,17 @@ Ivy: A Tentacool is sitting on the anchor line.
 
 Oak: Ho ho! Well, Delia has your room ready.
 
-Oak: Come by the lab tomorrow. I have something special planned.
+Oak: Now, the plan. One summer, one joint paper.
+
+Oak: I'll lead it, and all four of you are authors.
+
+Elm: Authors! Plural! Professor, I have a draft title!
+
+Jenny: He has eleven.
+
+Jenny: I'll do the figures. I like a good diagram.
+
+Oak: Splendid! Come by the lab tomorrow. I have a surprise.
 
 Elm: And I'm already in Pallet! Home field advantage!
 
@@ -75,7 +93,9 @@ Oak: …
 
 Jenny: I'm taking his tablet away.
 
-{PLAYER}: Gerald just left! We're moving! Bye!
+Ivy: Gerald's off! See you in Pallet, everyone!
+
+{PLAYER}: Bye, Gerald. We'll always have the anchor.
 
 Slowpoke: …Slow?
 
@@ -110,7 +130,7 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > Sit, sit!
 
 > Ivy: I've already had three.
-> They're dangerous, dear.
+> They're dangerous, sweetie.
 
 > {PLAYER}: Three? I'll notify the
 > authorities.
@@ -119,7 +139,7 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > He's so excited you're here.
 >
 > He says his two best students
-> are finally under one roof.
+> are finally back in Pallet.
 
 > Ivy: And one of them is staying
 > next door. Loudly?
@@ -155,18 +175,20 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 
 > Delia: …I supervised.
 
-> Mimey: Mime mime.
-> Mime mime mime!
+> Mimey: Mime. Mime mime mime!
+> (It did not need supervising.)
 
-> {PLAYER}: A Pokémon that makes
-> pancakes. I should be writing
-> this down.
+> {PLAYER}: (Field notes: Mimey.
+> Pancakes. Dangerous. See Ivy.)
 
 > Ivy: Eat first, sweetie.
 > Publish later.
 >
 > We'll head to the lab after this.
 > Oak's waiting.
+
+> {PLAYER}: Thanks for having us,
+> Delia. Truly.
 
 > Delia: Come back anytime you need
 > rest. My door's always open.
@@ -227,6 +249,8 @@ Research Red: Grass hook outside the house (PalletTown)
 > {PLAYER}: So the plan is to fight
 > the grass. Personally.
 
+> Jenny: Eight out of ten.
+
 > Oak: Hey! Wait!
 > Don't go out!
 
@@ -239,14 +263,12 @@ Research Red: Grass hook outside the house (PalletTown)
 > Elm: P-Professor! I was just
 > observing it! From here!
 
-> Oak: And you must be Jenny!
-> The one who made Elm so happy.
->
-> I've wanted to meet you for
-> years!
+> Oak: And Jenny! At last, in
+> person! Elm talks about you
+> endlessly.
 
-> Jenny: Most people just see
-> another Jenny, sir. Thank you.
+> Jenny: He talks about you too,
+> sir. With footnotes.
 
 > Oak: Ahem.
 >
@@ -255,7 +277,8 @@ Research Red: Grass hook outside the house (PalletTown)
 > A grown man walks in, unarmed…
 > Foolish, but so brave.
 
-> Ivy: He still does the poems.
+> Ivy: I love that he still does
+> the poems.
 
 > Oak: Come! This research trip
 > starts at my lab, not in the
@@ -290,17 +313,19 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Three from Johto below them,
 > courtesy of Elm.
 
-> Elm: Hand-delivered! Well. Mailed.
-> With a very nice note.
+> Elm: Hand-delivered! Well. Sent
+> by PC transfer. With a card!
 
-> Jenny: It was a very nice note.
+> Jenny: It was a very nice card.
 > I proofread it.
+
+> Oak: It's on my fridge.
 
 > Oak: While you stay in Pallet, I
 > want each of you to study one.
 >
 > Observe it. Compare notes.
-> Specifically, notes on forms.
+> All of it goes in the paper.
 
 > Ivy: Regional forms?
 > In starters?
@@ -492,8 +517,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Elm, the point was to
 > observe them here. Quietly.
 
-> Jenny: In my professional opinion,
-> “quietly” is not a setting he has.
+> Jenny: “Quietly” is not a setting
+> he has, Professor.
 
 > Elm: Unless {PLAYER} is scared.
 
@@ -517,8 +542,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Ivy: Jenny. Side bet:
 > we carry them both?
 
-> Jenny: Professionally?
-> Absolutely.
+> Jenny: Absolutely. I've seen him
+> battle.
 
 > Elm: A test, then! Right here!
 > Right now! For science!
@@ -684,11 +709,14 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > {PLAYER}: That is… a lot
 > of Poké Balls.
 
-> Ivy: We're doing research,
-> sweetie. Not opening a store.
+> Ivy: Professor, did you buy out
+> the whole Poké Mart?
 
-> Jenny: I will need receipts.
-> For every ball.
+> Oak: I may have got carried away.
+> The clerk sent me a card.
+
+> Jenny: Master Balls. Plural.
+> That's a lot of trust, sir.
 
 > Elm: Can I get a grant?
 
@@ -703,7 +731,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Elm: Meet you at Daisy's!
 > We'll make the bet official!
 
-> Ivy: Daisy's house next, sweetie.
+> Ivy: Daisy's house next.
 > Lead the way.
 
 *[rr_ivy_follow LOCALID_LAB_IVY]*
@@ -1010,8 +1038,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Elm: Us? Against you?
 > Jenny, hold my notebook.
 
-> Jenny: Professionally speaking,
-> I accept.
+> Jenny: Holding it. And accepting.
 
 > Ivy: Sweetie, we get front row
 > seats. Somebody find popcorn.
@@ -1064,8 +1091,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Ho ho! Not bad. Not bad at
 > all. Still mine, though.
 
-> Elm: That was the warm-up!
-> …It was not the warm-up.
+> Elm: Best of thr- No. Good
+> battle, Professor. Really.
 
 ### RR_Lab_EventScript_OakLostToElm
 
@@ -1172,26 +1199,32 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > to win all eight Gym badges
 > takes the bet!
 
-> Jenny: Small stakes.
-> In my professional opinion.
+> Jenny: Badges? Small stakes, dear.
+> What does the loser do?
 
-> Ivy: Losers do the dishes
-> for a month.
+> Ivy: Losers cook a big dinner at
+> Delia's. Dessert included.
 
-> {PLAYER}: Mimey already does
-> the dishes.
+> {PLAYER}: Mimey won't like anyone
+> else in its kitchen.
 
-> Ivy: Then the losers do
-> Mimey's dishes.
+> Ivy: Then Mimey supervises. And
+> Delia gets the night off.
 
-> Elm: Deal! We swap numbers,
-> and it's official!
+> Elm: Deal! Not that I'll lose.
+> But I'd make a great tart.
+>
+> We swap numbers, and
+> it's official!
 
 > Elm's and Jenny's numbers were
 > saved!
 
 > The bet is on: first team to
 > eight Gym badges.
+
+> Daisy: I'll keep score.
+> Somebody neutral should.
 
 > Daisy: Grandpa is going to pretend
 > he's not excited about this.
@@ -1221,7 +1254,9 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > Elm: I have a passion.
 
 > Elm: Want to change them later?
-> Start menu, “Rules.” Day or night.
+> Options, “Research Rules.”
+>
+> Day or night!
 
 > Jenny: Please not night.
 
@@ -1285,8 +1320,44 @@ Research Red: First walk up Route 1 (Route1)
 > Jenny: And a wife.
 > I'm right here, dear.
 
-> Elm starts humming a traveling
-> song. Ivy joins in.
+> Elm starts singing. {PLAYER} joins
+> in on the second word.
+
+> Elm: {EMOJI_NOTE} We're on the road to
+> Viridian City! {EMOJI_NOTE}
+
+> {PLAYER}: {EMOJI_NOTE} Meet my friends
+> along the way! {EMOJI_NOTE}
+
+> Elm: {EMOJI_NOTE} I'm on the road to be the
+> greatest… professor! {EMOJI_NOTE}
+
+> {PLAYER}: Trainer, Elm.
+
+> Elm: Professor in my heart!
+
+> Ivy and Jenny share a look.
+
+> Jenny: The evidence suggests…
+
+> Ivy: Yep. That's why they're
+> friends.
+
+> Jenny: Case closed.
+
+> Ivy: {EMOJI_NOTE} We keep on trying… {EMOJI_NOTE}
+
+> Jenny: {EMOJI_NOTE} …and then we try
+> some more! {EMOJI_NOTE}
+
+> Elm: Jenny! You know the words?!
+
+> Jenny: Dear. Everyone knows
+> the words.
+
+> Everyone sings together:
+> {EMOJI_NOTE} To find a place worth
+> fighting for! {EMOJI_NOTE}
 
 > Ivy: You're off-key, sweetie.
 
@@ -1378,19 +1449,19 @@ Research Red: First walk up Route 1 (Route1)
 
 ### RR_Route1_EventScript_ReactRattata
 
-> Elm: Rattata! Classic. Reliable.
-> Like you, apparently.
+> Elm: A Rattata! Is it related
+> to Muffin? Is it watching me?
 
-> Jenny: Daisy will want to compare
-> tails.
+> Ivy: In Alola they're black,
+> with a little moustache.
 
 ### RR_Route1_EventScript_ReactMankey
 
 > Elm: Is it supposed to be that
 > mad?
 
-> Jenny: In my professional opinion,
-> it needs anger management.
+> {PLAYER}: That's its resting face.
+> We've all been there.
 
 ### RR_Route1_EventScript_ReactNidoranM
 
@@ -1413,8 +1484,8 @@ Research Red: First walk up Route 1 (Route1)
 > Elm: The other Nidoran! Is that
 > even allowed?
 
-> Jenny: Two kinds, one name. Filed
-> under complicated.
+> {PLAYER}: Two species, one name.
+> I have a forum thread on it.
 
 ### RR_Route1_EventScript_ReactOddish
 
@@ -1422,12 +1493,13 @@ Research Red: First walk up Route 1 (Route1)
 
 > Jenny: Dear, it can hear you.
 
-### RR_Route1_EventScript_ReactBellsprout
+### RR_Route1_EventScript_ReactSentret
 
-> Elm: Is that a plant or a noodle?
+> Elm: A Sentret! From Johto! It
+> followed us here, I bet!
 
-> Jenny: In my professional opinion:
-> both.
+> Jenny: It keeps watch on its
+> tail. I respect a lookout.
 
 ### RR_Route1_EventScript_ReactDuplicate
 
@@ -1441,15 +1513,71 @@ Research Red: First walk up Route 1 (Route1)
 
 > Elm: A Meowth! Hide your coins!
 
-> Jenny: It's already eyeing your
-> wallet, dear.
+> Ivy: In Galar they're iron-clad.
+> They'd take your fork too.
 
 ### RR_Route1_EventScript_ReactEevee
 
-> Elm: An Eevee?! On Route One?!
+> Elm: An Eevee?! Eight evolutions!
+> On Route One!
 
 > Jenny: Breathe, dear. In through
 > the nose.
+
+### RR_Route1_EventScript_ReactHoppip
+
+> Elm: A Hoppip! Hold on tight, or
+> the wind takes it to Johto!
+
+> Jenny: Noted. I'll file it under
+> flight risk.
+
+### RR_Route1_EventScript_ReactPikachu
+
+> Elm: A Pikachu?! Like Ash's!
+> Don't put it in its ball!
+
+> Jenny: Rubber gloves, dear.
+> It sparks when it's happy.
+
+### RR_Route1_EventScript_ReactSandshrew
+
+> Elm: A Sandshrew! It's a long
+> way from the desert!
+
+> Ivy: Alola's live up snowy
+> mountains. Ice, not sand.
+
+### RR_Route1_EventScript_ReactDiglett
+
+> Elm: A Diglett! What's under it?
+> Nobody knows! Science!
+
+> Ivy: In Alola it has three
+> golden hairs. Lovely ones.
+
+### RR_Route1_EventScript_ReactHoothoot
+
+> Elm: A Hoothoot! It keeps time
+> with its head!
+
+> Jenny: Finally. Someone punctual.
+
+### RR_Route1_EventScript_ReactGastly
+
+> Elm: A g-g-ghost! {PLAYER},
+> it went right through me!
+
+> Jenny: It's mostly gas, dear.
+> Don't inhale.
+
+### RR_Route1_EventScript_ReactMurkrow
+
+> Elm: A Murkrow! Is that bad luck?
+> Jenny, is that bad luck?
+
+> Jenny: Known for petty theft.
+> I'll keep an eye on it.
 
 ### RR_Route1_EventScript_Jealous1
 
@@ -1528,8 +1656,8 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 > Elm: We won?! Jenny!
 > Jenny, we WON!
 
-> Jenny: Professionally speaking,
-> I am thrilled.
+> Jenny: I'm thrilled, dear.
+> I'm showing it on the inside.
 
 ### RR_Route22_EventScript_Won
 
@@ -1537,6 +1665,9 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 > It's a long road to eight badges.
 
 > Jenny: He means “good game.”
+
+> Elm: …Good game, {PLAYER}.
+> Really.
 
 ### RR_Route22_EventScript_Goodbye
 
@@ -1570,12 +1701,16 @@ Research Red: lunch in Viridian City (animatic 07)
 
 > Jenny: Cousin!
 
-> Elm: …Ivy. Which one is my wife?
+> Elm: Hello! Pleased to meet you,
+> Officer.
 
-> Ivy: The one in jeans, sweetie.
+> Ivy: Elm, how did you know which
+> one was which?
 
-> Officer Jenny: So this is the
-> famous Elm. The family talks.
+> Elm: That's my Jenny. Obviously.
+
+> Officer Jenny: So you're Elm! The
+> family says you always know.
 
 > {PLAYER}: How many Jennys
 > are there, exactly?
@@ -1607,9 +1742,9 @@ Research Red: lunch in Viridian City (animatic 07)
 > Jenny: Sandwiches are labeled.
 > Crusts left, crustless right.
 
-> Elm: I lost the bet, so I bought
-> dessert. Then I ate dessert.
-> On the walk here.
+> Elm: I was in charge of dessert.
+> Then I ate dessert. On the walk
+> here.
 
 > Ivy: So you bought dessert for
 > yourself.
@@ -1643,21 +1778,129 @@ Research Red: Ivy, the player's wife, follows the player from the end
 
 ### RR_EventScript_IvyTalk
 
-> Ivy: If Elm wins this bet, we're
-> moving to Alola. No forwarding
-> address.
-
-### RR_EventScript_IvyTalk0
+### RR_EventScript_IvyTalk_Anywhere
 
 > Ivy: Field notes are up to date,
 > sweetie. Lead the way.
 
-### RR_EventScript_IvyTalk1
+### RR_EventScript_IvyTalk_Anywhere_1
 
 > Ivy: Regional forms can start
 > with one stubborn ancestor.
 >
 > Science is so romantic.
+
+### RR_EventScript_IvyTalk_Anywhere_2
+
+> Ivy: If Elm wins the bet, we'll
+> send him malasadas from Alola.
+>
+> A whole box. He'll have earned it.
+
+### RR_EventScript_IvyTalk_Pallet
+
+> Ivy: Pallet smells like sea salt
+> and pancakes. I approve.
+
+### RR_EventScript_IvyTalk_Pallet_1
+
+> Ivy: Oak's Slowpoke still hasn't
+> hung up the call, you know.
+
+### RR_EventScript_IvyTalk_Pallet_2
+
+> Ivy: Ash grew up here. You can
+> tell. Even the fences look brave.
+
+### RR_EventScript_IvyTalk_Route1
+
+> Ivy: Elm got lost on this road.
+> It's one road, sweetie.
+
+### RR_EventScript_IvyTalk_Route1_1
+
+> Ivy: Kanto Pidgey are bigger than
+> Valencia's. All that sea wind.
+
+### RR_EventScript_IvyTalk_Route1_2
+
+> Ivy: Are you still humming that
+> song? …Me too.
+
+### RR_EventScript_IvyTalk_Viridian
+
+> Ivy: Jenny's cousin waved at me.
+> Or Jenny did. I'll ask Elm.
+
+### RR_EventScript_IvyTalk_Viridian_1
+
+> Ivy: The Gym's locked. Somebody
+> here is very busy.
+
+### RR_EventScript_IvyTalk_Viridian_2
+
+> Ivy: That old man and his nap.
+> I respect a man with priorities.
+
+### RR_EventScript_IvyTalk_Route22
+
+> Ivy: The League is up that way.
+> Not for us. Not yet.
+
+### RR_EventScript_IvyTalk_Route22_1
+
+> Ivy: The Spearow here have
+> attitude. Regional temperament?
+
+### RR_EventScript_IvyTalk_Route22_2
+
+> Ivy: Elm still says that was a
+> warm-up. Let him have it.
+
+### RR_EventScript_IvyTalk_Route2
+
+> Ivy: Diglett's Cave is closed. I
+> think they're having a meeting.
+
+### RR_EventScript_IvyTalk_Route2_1
+
+> Ivy: Caterpie everywhere. The
+> forest is spilling over.
+
+### RR_EventScript_IvyTalk_Route2_2
+
+> Ivy: I love bug season. Everything
+> here is about to evolve.
+
+### RR_EventScript_IvyTalk_Forest
+
+> Ivy: Pikachu in a forest. Ash's
+> was from somewhere like this.
+
+### RR_EventScript_IvyTalk_Forest_1
+
+> Ivy: Every Bug Catcher wants a
+> battle. It's a rite of passage.
+
+### RR_EventScript_IvyTalk_Forest_2
+
+> Ivy: If you meet a Samurai in
+> here, sweetie, just say yes.
+
+### RR_EventScript_IvyTalk_Pewter
+
+> Ivy: Pewter is all rock and grit.
+> Even the Pidgey look sturdier.
+
+### RR_EventScript_IvyTalk_Pewter_1
+
+> Ivy: One badge. I'm already
+> bragging to Jenny.
+
+### RR_EventScript_IvyTalk_Pewter_2
+
+> Ivy: The Museum has a moon rock.
+> Elm is going to cry.
 
 
 ## Battle lines (mid-battle trainer slides)
@@ -1673,7 +1916,7 @@ Elm and Jenny have one version per starter; their lines are the same in each, so
 ### Jenny (Route 22)
 - **two down**: Elm: Okay! Okay. That was the warm-up. / Jenny: That was not the warm-up, dear. / {PLAYER}: It looked like a very thorough warm-up from here.
 - **four down**: Jenny: In my professional opinion, we are losing. / Elm: Strategically losing! / Ivy: That's the best kind, Elm.
-- **last pokémon out**: Jenny: And where dishes are assigned.
+- **last pokémon out**: Jenny: Legends. And dinner plans.
 
 ### Elm (Pewter)
 - **before first turn**: Elm: I've been training since breakfast! Second breakfast! / Jenny: He means lunch.
@@ -1684,7 +1927,7 @@ Elm and Jenny have one version per starter; their lines are the same in each, so
 ### Jenny (Pewter)
 - **two down**: Elm: Okay! That was the warm-up! / Jenny: Dear, we just said this battle is the warm-up.
 - **four down**: Jenny: In my professional opinion, they are very good. / Ivy: In my personal opinion, so are you.
-- **last pokémon out**: Jenny: And where dishes are assigned.
+- **last pokémon out**: Jenny: Still legends. Still dinner.
 
 ### Leader Brock
 - **before first turn**: Brock: My rock-hard willpower is evident even in my Pokémon! Let's go!
@@ -1754,6 +1997,7 @@ P: We should keep one at the lab. For Elm.
 ### Charmander
 P: The flame on its tail shows how it's feeling.
 Ivy: Like your ears when you're embarrassed. They're doing it now.
+Ivy: There's a documentary where a boy named Red picks one. Lovely film.
 
 ### Charmeleon
 Ivy: Charmeleon gets fiery when it's riled up. Very fiery.
@@ -1769,7 +2013,7 @@ P: Aerodynamic. Hydrodynamic. Very dynamic.
 
 ### Wartortle
 P: Wartortle's fluffy tail is a sign of a long life.
-Ivy: Then we'd better brush it. Every day, sweetie.
+Ivy: Then we'd better brush it. Every day.
 
 ### Blastoise
 Ivy: The cannons on its shell can hit a can from over a hundred feet.
@@ -1777,15 +2021,20 @@ P: I can't hit a can from three feet.
 
 ### Caterpie
 P: Caterpie's red antennae give off a smell that scares off birds.
-Ivy: You give off a smell when you skip laundry. Same idea.
+Ivy: Clever. Birds leave it alone, so it can eat all day.
+P: (Field notes: Caterpie. Eats all day. Relatable.)
 
 ### Metapod
 Ivy: Metapod's shell is hard, but the inside is soft and gooey.
 P: Relatable.
+Ivy: Two Metapod once used Harden at each other for hours.
+P: Nobody blinked. Nobody can.
 
 ### Butterfree
 P: Butterfree's wings are covered in powder that repels water.
 Ivy: It's going to be a beautiful flier. Look at it go!
+P: You said that about me on the ferry.
+Ivy: And I was wrong. You were green.
 
 ### Weedle
 Ivy: Mind the stinger on its head. It's poisonous.
@@ -1809,7 +2058,7 @@ P: Like Jenny at a picnic.
 
 ### Pidgeot
 P: Pidgeot can fly faster than the speed of sound.
-Ivy: And yet you still can't get us to the ferry on time.
+Ivy: Then it could get us to Cinnabar before Gerald moves.
 
 ### Rattata
 Ivy: Rattata will make its nest anywhere. Even attics.
@@ -1841,6 +2090,8 @@ Ivy: A regional difference you can see! I love that, sweetie.
 Ivy: Pikachu store electricity in their cheeks.
 P: Ash's mom says Ash's Pikachu refuses to ride in a Poké Ball.
 Ivy: Smart Pikachu.
+P: (Field notes: Pikachu. Very round cheeks. Ivy says I'm staring.)
+Ivy: You're staring.
 
 ### Raichu
 P: Raichu can knock out an elephant with one shock.
@@ -1855,6 +2106,7 @@ Ivy: The Alolan ones live on snowy mountains. They have ice for skin.
 ### Sandslash
 P: Sandslash's spines grow back when they break off.
 Ivy: The Alolan ones have icicles for spines. Very cold to the touch.
+P: Different climate, different spines. I'd love to sequence the icy ones.
 
 ### Nidoran F
 Ivy: Small but the poison in its horn is powerful.
@@ -1872,10 +2124,13 @@ P: Remember when the ferry staff tried to take your snacks?
 ### Nidoran M
 P: Nidoran's big ears can hear the faintest sounds.
 Ivy: So it heard you call it "a small purple problem."
+P: Nidoran come in pairs. Like us.
+Ivy: Less poisonous.
+P: Speak for yourself.
 
 ### Nidorino
-Ivy: Nidorino from the anime fought a Gengar on TV!
-P: I watched that episode six times. Don't tell Elm.
+Ivy: A Nidorino fought a Gengar on TV once. A classic!
+P: Jenny and I watched it six times. Elm still hasn't seen it.
 
 ### Nidoking
 P: One swing of Nidoking's tail can snap a telephone pole.
@@ -1890,8 +2145,8 @@ P: Clefable can hear a pin drop half a mile away.
 Ivy: So whispering won't help you, sweetie.
 
 ### Vulpix
-Ivy: Burnett showed me an Alolan Vulpix once. White, and cold to the touch.
-P: Same species, different home. That's the moment you married me.
+Ivy: Kanto Vulpix run warm. Alola's are white, and cold to the touch.
+P: Same species, two climates. I'd love to see the genes behind that.
 
 ### Ninetales
 P: Legend says Ninetales lives for a thousand years.
@@ -1900,6 +2155,8 @@ Ivy: Alolan Ninetales are called deities of the snowy mountains.
 ### Jigglypuff
 Ivy: When Jigglypuff sings, everyone falls asleep.
 P: Then it draws on their faces. With a marker.
+P: If one sings, I'm falling asleep on your shoulder.
+Ivy: You do that anyway.
 
 ### Wigglytuff
 P: Wigglytuff's fur is so soft people buy pillows of it.
@@ -1928,6 +2185,7 @@ P: Its pollen is the reason I'm sneezing.
 ### Paras
 P: The mushrooms on Paras's back are called tochukaso.
 Ivy: The mushroom is the one in charge. Don't tell Paras.
+P: Real fungi do that to insects. Kanto just made it cute.
 
 ### Parasect
 Ivy: Parasect is basically all mushroom now.
@@ -1956,7 +2214,7 @@ Ivy: Galarian Meowth are tough little miners. Alolan ones are very proud.
 
 ### Persian
 Ivy: This is the Persian Elm keeps sneezing about!
-P: Daisy's Muffin is a Rattata, Elm.
+P: Muffin is a Rattata. Elm will never accept this.
 Ivy: Alolan Persian have round faces. They're a symbol of luxury there.
 
 ### Psyduck
@@ -1966,6 +2224,7 @@ Ivy: When it gets bad, it unleashes psychic power. Like you before coffee.
 ### Golduck
 Ivy: Golduck swims faster than any Olympic swimmer.
 P: Its forehead glows when it uses its power.
+P: Psyduck grows up and gets abs. There's hope for all of us.
 
 ### Mankey
 P: Mankey get angry when they're hungry.
@@ -1978,15 +2237,15 @@ P: It's angry at the concept of chasing.
 
 ### Growlithe
 P: Growlithe is famous for its loyalty.
-Ivy: The Hisuian ones guarded castles long ago, with rocky manes.
+Ivy: Jenny's Cruller is a Growlithe. Best partner on the force.
 
 ### Arcanine
 Ivy: Old stories call Arcanine the legendary Pokémon.
-P: Hisuian Arcanine had stone in their fur. Very old-timey.
+P: One day Cruller will be this big. Jenny will need a bigger bike.
 
 ### Poliwag
 P: The spiral on Poliwag's belly is its insides showing through.
-Ivy: Stop staring at it, sweetie. You'll get dizzy.
+Ivy: Stop staring at it. You'll get dizzy.
 
 ### Poliwhirl
 Ivy: Poliwhirl sweats a slippery oil.
@@ -2011,7 +2270,7 @@ P: My brain stopped at "Alakazam."
 
 ### Machop
 P: Machop trains all day, every day.
-Ivy: Maybe it could teach you to lift your suitcase.
+Ivy: Maybe it could carry our suitcases. Both of them.
 
 ### Machoke
 Ivy: Machoke wears a belt to hold back its strength.
@@ -2069,6 +2328,7 @@ Ivy: The Galarian ones are psychic and fairy. Sweetie, they're so pretty.
 Ivy: Slowpoke takes five seconds to notice pain.
 P: It's the one from the call! Well, a cousin.
 Ivy: The Galarian ones have yellow heads from eating spices.
+P: Diet really can change color. Flamingos are pink from what they eat.
 
 ### Slowbro
 P: The Shellder on Slowbro's tail never lets go.
@@ -2077,6 +2337,9 @@ Ivy: Galarian Slowbro fire Shellder from their arms like a cannon.
 ### Magnemite
 Ivy: Magnemite floats using magnetism.
 P: Keep it away from the Pokédex.
+Ivy: I find it very attractive.
+P: ...Was that a magnet pun?
+Ivy: Positively.
 
 ### Magneton
 P: Three Magnemite stuck together.
@@ -2085,19 +2348,23 @@ Ivy: A very committed friendship.
 ### Farfetch'd
 Ivy: Farfetch'd always carries its leek.
 P: The Galarian ones carry an even bigger leek.
-Ivy: Leek fashion is regional too, sweetie.
+Ivy: Leek fashion is regional too.
 
 ### Doduo
 P: Doduo's two heads never sleep at the same time.
 Ivy: Someone's always on watch. Like us on the ferry.
 
 ### Dodrio
-Ivy: A Dodrio was in the first episode of the anime!
+Ivy: Three heads, and all of them want breakfast.
 P: Three heads, three opinions. Like a lab meeting.
 
 ### Seel
 P: Seel loves the cold. It swims under ice.
 Ivy: Its nose horn breaks the ice so it can breathe.
+Ivy: Does it sing?
+P: Only "Kiss from a Rose."
+Ivy: ...Baby.
+P: (I am blushing. In the field. Professionally.)
 
 ### Dewgong
 Ivy: Sailors used to mistake Dewgong for mermaids.
@@ -2105,7 +2372,7 @@ P: Sailors were very tired, I think.
 
 ### Grimer
 P: Grimer is made of sludge.
-Ivy: The Alolan ones are colorful. The crystals are its toxins, sweetie.
+Ivy: The Alolan ones are colorful. The crystals are its toxins.
 
 ### Muk
 Ivy: Plants won't grow where Muk has been.
@@ -2126,15 +2393,18 @@ Ivy: The other five percent is mischief.
 ### Haunter
 Ivy: Haunter likes to lick people from the shadows.
 P: I felt something cold earlier! I thought it was the breeze!
+P: A Haunter once made Sabrina laugh. Nobody else ever has.
 
 ### Gengar
-P: The Gengar from the anime's first episode! The TV battle!
+P: The Gengar from that famous TV battle!
 Ivy: Gengar hides in your shadow to steal your warmth.
 P: That's why I'm always cold.
 
 ### Onix
 Ivy: Onix tunnels through the ground at fifty miles an hour.
 P: Brock's partner. We'll see it in Pewter.
+P: Onix has a magnet in its brain, a compass for tunneling.
+Ivy: Elm needs one of those.
 
 ### Drowzee
 P: Drowzee eats dreams.
@@ -2154,7 +2424,9 @@ P: My aim is also bad. We're kindred spirits.
 
 ### Voltorb
 P: Voltorb looks just like a Poké Ball.
-Ivy: Hisuian Voltorb look like the old wooden ones. Living history.
+Ivy: Silph says it isn't one of their Poké Balls. Very firmly.
+P: Delia says Ash's alarm clock was a Voltorb. He smashed it in his sleep.
+Ivy: That explains the oversleeping.
 
 ### Electrode
 Ivy: Electrode can explode at the slightest touch.
@@ -2191,6 +2463,7 @@ Ivy: Do not let it near your sandwich.
 ### Koffing
 Ivy: Koffing is full of toxic gas.
 P: Galarian Weezing clean the air instead! With top hats!
+P: Its gas is lighter than air. That's why it floats. Chemistry!
 
 ### Weezing
 P: Weezing is two Koffing that became one.
@@ -2218,7 +2491,8 @@ P: Very protective. Very safe. Don't make eye contact.
 
 ### Horsea
 P: Horsea balances on its tail and fires ink.
-Ivy: It's adorable. Look at it.
+Ivy: It balances on its tail. You can't balance on your feet.
+P: I balance emotionally.
 
 ### Seadra
 Ivy: Seadra's spines are poisonous.
@@ -2227,6 +2501,7 @@ P: Very adorable from far away.
 ### Goldeen
 P: Goldeen is called the water queen.
 Ivy: It swims upstream every spring. Very determined.
+P: Misty once sent hers out on dry land. It flopped. Bravely.
 
 ### Seaking
 Ivy: Seaking digs nests in riverbeds with its horn.
@@ -2235,6 +2510,7 @@ P: A fish with a construction business.
 ### Staryu
 P: Staryu's core glows at night.
 Ivy: Misty in Cerulean has one. We'll compare.
+P: Real starfish regrow lost arms. Biology's best trick.
 
 ### Starmie
 Ivy: Starmie's core sends radio signals into space.
@@ -2247,7 +2523,7 @@ P: Ours makes pancakes. Very elegant.
 
 ### Scyther
 Ivy: Scyther moves so fast it looks like it's cloning itself.
-P: Hisuian ones evolved into Kleavor using black rocks. Ancient stuff.
+P: (Field notes: Scyther. Very fast. Do not high-five.)
 
 ### Jynx
 P: Jynx dances to communicate.
@@ -2270,12 +2546,13 @@ P: Tauros whip themselves with their tails to get going.
 Ivy: In Paldea there are three breeds of Tauros. Fire, water, fighting!
 
 ### Magikarp
-Ivy: The first episode had Magikarp in the river!
+Ivy: Magikarp in every river in Kanto. Splashing proudly.
 P: Splash. Very brave. Mostly splash.
+Ivy: Somebody once paid a fortune for one on a cruise ship. It just splashed.
 
 ### Gyarados
-P: Gyarados chased Ash in the first episode!
-Ivy: Magikarp evolves into this. Patience pays off, sweetie.
+P: A Gyarados chased Ash down a river on his first day. Delia told us.
+Ivy: Magikarp evolves into this. Patience pays off.
 
 ### Lapras
 Ivy: Lapras carries people across the sea.
@@ -2288,6 +2565,9 @@ Ivy: It can't get the face right, though. Look.
 ### Eevee
 Ivy: Eevee's genes are so unstable it can evolve eight ways!
 P: Eight futures. Like a choose-your-own-adventure.
+Ivy: Which one would you evolve into?
+P: Whichever one stays with you.
+Ivy: Sweetie.
 
 ### Vaporeon
 P: Vaporeon's cells are like water. It can melt into a lake.
@@ -2315,7 +2595,7 @@ P: Me after Delia's pancakes.
 
 ### Kabuto
 P: Kabuto hasn't changed in three hundred million years.
-Ivy: Neither has your sense of humor.
+Ivy: Neither has your sense of humor. Thank goodness.
 
 ### Kabutops
 Ivy: Kabutops hunted with its scythes in ancient seas.
@@ -2324,10 +2604,27 @@ P: Fossils are the best kind of time travel.
 ### Aerodactyl
 P: Aerodactyl ruled the ancient skies.
 Ivy: Brought back from amber. It looks so happy to be here.
+P: Ancient DNA from amber. I have so many questions. Mostly about contamination.
 
 ### Snorlax
 Ivy: Snorlax eats nine hundred pounds of food a day.
 P: Jenny packs lunch for it. I'm sure of it.
+Ivy: That's us on a Sunday.
+P: That's a perfect Sunday.
+
+### Articuno
+Ivy: Articuno is said to appear to travelers lost in the snowy mountains.
+P: A rescue service with wings. Is this in the helicopter story too?
+Ivy: It's in the helicopter story too.
+
+### Zapdos
+P: Zapdos is said to appear when thunderclouds gather.
+Ivy: Like Elm before a battle.
+
+### Moltres
+Ivy: Each flap of Moltres's wings sets off a bright flame.
+P: They say it means spring is coming.
+Ivy: Good. Delia's garden can't wait.
 
 ### Dratini
 P: Dratini was thought to be a myth for years.
@@ -2341,13 +2638,23 @@ P: Can it fix the ferry schedule?
 P: Dragonite can circle the world in sixteen hours.
 Ivy: It helps lost ships find their way home. Like you with me.
 
+### Mewtwo
+P: Elm swears he saw a purple one fly over Route 1.
+Ivy: It had a tail, he says.
+P: (I believe him about eighty percent now.)
+
+### Mew
+Ivy: Some scientists think Mew carries the genes of every Pokémon.
+P: One ancestor for everything. My whole field in one pink cat.
+Ivy: Science is so romantic.
+
 ### Chikorita
 Ivy: The leaf on its head gives off a sweet smell.
 P: Elm swears it smells like his mom's cookies.
 
 ### Bayleef
 P: Bayleef's leaves smell like spice.
-Ivy: Like tea. Calming tea, sweetie.
+Ivy: Like tea. Calming tea.
 
 ### Meganium
 Ivy: Meganium's breath can bring dead plants back to life.
@@ -2356,7 +2663,6 @@ P: I need one for the lab windowsill.
 ### Cyndaquil
 P: Cyndaquil's back flares up when it's scared.
 Ivy: It's shy. Like you at parties.
-Ivy: The old scrolls say the Hisuian Typhlosion had ghostly flames.
 
 ### Quilava
 Ivy: Quilava's fire is hot enough to make you sweat from far away.
@@ -2364,7 +2670,7 @@ P: Turn it down, Quilava. I'm already sweating.
 
 ### Typhlosion
 P: Typhlosion's heat can cause explosions.
-Ivy: In Hisui it burned with ghostly purple fire. That's Oak's old scrolls!
+Ivy: Oak's old scrolls draw one with strange, dark flames. A mystery!
 
 ### Totodile
 Ivy: Totodile bites everything. Lovingly.
@@ -2373,7 +2679,7 @@ Ivy: Lovingly.
 
 ### Croconaw
 P: Croconaw's teeth grow back when they fall out.
-Ivy: Like your bad jokes.
+Ivy: Like your jokes. Endless. I love them.
 
 ### Feraligatr
 Ivy: Feraligatr opens its huge jaws to scare its foes.
@@ -2382,6 +2688,7 @@ P: It's scaring me and I'm on its side.
 ### Hoothoot
 P: Hoothoot always stands on one foot.
 Ivy: It switches feet so fast you can't see it.
+P: (Field notes: Hoothoot. Keeps perfect time. Judges me for being late.)
 
 ### Noctowl
 Ivy: Noctowl's eyes can see in the dark.
@@ -2398,6 +2705,7 @@ P: Like the lab at a party.
 ### Spinarak
 P: Spinarak's web is strong enough to hold a stone.
 Ivy: It waits for days without moving.
+P: Spider silk is stronger than steel, weight for weight. True fact.
 
 ### Ariados
 Ivy: Ariados spins thread from both ends.
@@ -2426,3 +2734,347 @@ Ivy: Then this one's a wish come true.
 ### Igglybuff
 Ivy: Igglybuff's body is so bouncy it never stops.
 P: Bouncy. That's my new research term.
+
+### Chinchou
+Ivy: Chinchou's antennae glow so they can talk in the deep.
+P: Bioluminescence. Same trick as fireflies. Science is beautiful.
+
+### Girafarig
+P: Girafarig's tail has a tiny brain of its own.
+Ivy: So it's never lonely. Even when it's grumpy.
+P: Its name reads the same backwards. I checked twice.
+
+### Hoppip
+Ivy: Hoppip are so light the wind carries them for miles.
+P: We'll need a paperweight. Jenny has several.
+
+### Marill
+P: Marill's tail is full of oil, so it floats like a buoy.
+Ivy: A built-in life jacket. You'd love one on the ferry.
+
+### Misdreavus
+Ivy: Misdreavus loves to startle people at night.
+P: (Field notes: Misdreavus. Startled me twice. Don't ask about the second.)
+
+### Natu
+P: Natu barely moves. People say it can see the future.
+Ivy: Then it already knows how this conversation ends.
+
+### Phanpy
+Ivy: Phanpy sprays water with its trunk to cool off.
+P: The cutest garden hose in Kanto.
+
+### Pineco
+P: Pineco hangs in trees and blasts anyone who shakes them.
+Ivy: So we don't shake the tree, sweetie.
+P: I was absolutely going to shake the tree.
+
+### Qwilfish
+Ivy: Qwilfish gulps water to puff up. Then the spines come out.
+P: Puffs up when it's scared. Relatable again.
+
+### Remoraid
+P: Remoraid shoots water like a jet, and it never misses.
+Ivy: It could water Delia's garden from the porch.
+
+### Shuckle
+Ivy: Shuckle keeps berries in its shell. They slowly turn to juice.
+P: A very long project. I respect that.
+
+### Snubbull
+P: Snubbull looks tough, but it's a big softie.
+Ivy: Like you.
+P: Don't tell anyone.
+
+### Teddiursa
+Ivy: Teddiursa licks honey off its paws all day.
+P: That's not a habit. That's a lifestyle.
+
+### Yanma
+P: Yanma can see all around without turning its head.
+Ivy: Compound eyes. Thousands of tiny lenses.
+P: (Field notes: Yanma. Saw me first.)
+
+### Furret
+P: Furret builds its tunnels to fit its exact shape.
+Ivy: Custom-made housing. Fancy.
+P: (Field notes: Furret. Long. Continues to be long.)
+
+### Ledian
+Ivy: On starry nights, Ledian scatter a glowing powder.
+P: Biological glitter. Elm's name tags have competition.
+
+### Crobat
+Ivy: Golbat only becomes Crobat if it truly loves its trainer.
+P: Friendship-powered evolution. Elm wants to write a paper on it.
+Ivy: He already has. Three drafts.
+
+### Lanturn
+Ivy: Lanturn's light can be seen from the surface. From the deep sea!
+P: A lighthouse with fins. Gerald should take notes.
+
+### Togepi
+Ivy: They say Togepi's shell is full of happiness.
+P: So that's where it all goes.
+Ivy: Hold it. Just for a second. See?
+P: (Field notes: Togepi. Held it. Can confirm.)
+
+### Togetic
+Ivy: Togetic only shows itself to kind hearts.
+P: And it came to you.
+Ivy: To both of us, sweetie.
+
+### Xatu
+P: They say Xatu sees the past with one eye and the future with the other.
+Ivy: What does it see for us?
+P: It's staring at me. I think I'm cooking dinner at Delia's.
+
+### Mareep
+Ivy: Mareep's wool builds up static. Hugs are a gamble.
+P: I'll risk it.
+P: ...Worth it.
+
+### Flaaffy
+P: Flaaffy's bare skin doesn't conduct electricity. Built-in rubber.
+Ivy: Unlike your hair after that Mareep hug.
+
+### Ampharos
+Ivy: Long ago, Ampharos' tail light was used as a lighthouse.
+P: Ampharos and Lanturn should start a lighting company.
+
+### Bellossom
+Ivy: Bellossom dance in the sun when the rainy season ends.
+P: Delia's Gloom will be one of these one day. She'll dance with it.
+
+### Azumarill
+Ivy: Azumarill can hear what's swimming in a rushing river.
+P: I can't hear you over a kettle.
+
+### Sudowoodo
+Ivy: Sudowoodo pretends to be a tree. It's a rock.
+P: A rock pretending to be a plant. The biology department will be furious.
+Ivy: It runs from watering cans.
+
+### Politoed
+P: When Politoed croaks, every Poliwag nearby comes running.
+Ivy: Like Delia calling "Pancakes!"
+
+### Skiploom
+Ivy: Skiploom's flower opens when it's warm and closes when it's cold.
+P: A living thermometer. I want one for the lab.
+
+### Jumpluff
+P: Jumpluff ride the wind all the way around the world.
+Ivy: And they'd still beat the ferry.
+
+### Aipom
+Ivy: Aipom's tail is better at grabbing than its hands.
+P: So it uses its tail for everything?
+Ivy: It just took your pen, sweetie.
+
+### Sunkern
+Ivy: Sometimes a Sunkern just drops out of the sky.
+P: That's not how seeds work. Usually.
+
+### Sunflora
+P: Sunflora turns to follow the sun all day.
+Ivy: Real sunflowers only do that while they're young. Sunflora never grew out of it.
+
+### Quagsire
+Ivy: Quagsire is so carefree it bumps into boats and doesn't notice.
+P: My role model.
+Ivy: Look at that face. No thoughts. Only peace.
+
+### Espeon
+P: Espeon reads the air with its fur to sense what's coming.
+Ivy: It evolves from an Eevee that loves its trainer, by day.
+P: By day. Very sensible.
+
+### Umbreon
+Ivy: Umbreon's rings glow under the moon.
+P: The night version. Same love, different shift.
+
+### Slowking
+P: A Shellder bit its head and made it a genius.
+Ivy: It's always thinking. It never says what.
+P: Relatable. Mostly.
+
+### Unown
+Ivy: Unown come in twenty-eight shapes. Some say they're letters.
+P: A Pokémon that spells. Jenny wants one for her reports.
+
+### Wobbuffet
+Ivy: Wobbuffet hides its tail in the dark. The tail is the real secret.
+P: It just stands there and takes it. Very patient. Very Jenny.
+
+### Forretress
+P: Forretress is a pinecone with steel armor.
+Ivy: Don't knock on it. It takes that personally.
+
+### Dunsparce
+Ivy: When Dunsparce is spotted, it escapes backwards.
+P: A strategic retreat. In reverse.
+Ivy: And those tiny wings. Bless them.
+
+### Gligar
+P: Gligar glides in silently and grabs your face.
+Ivy: Keep your face behind your notebook.
+P: My notebook is my shield.
+
+### Steelix
+Ivy: Steelix lives deeper underground than any other Pokémon.
+P: Onix plus pressure plus time. Same way you get diamonds. Roughly.
+
+### Granbull
+P: Granbull looks scary, but it's actually timid.
+Ivy: Small Pokémon adore it. Everyone's big brother.
+P: Like me with Elm.
+
+### Scizor
+Ivy: The eyes on Scizor's claws are fake. They scare off attackers.
+P: A bluff. In steel. Very effective.
+
+### Heracross
+P: Heracross can throw a hundred times its own weight.
+Ivy: All for a sip of sweet tree sap.
+P: Elm's spirit Pokémon.
+
+### Sneasel
+Ivy: Sneasel climb trees to steal eggs from nests.
+P: Elm discovered Eggs. He'd have words with it.
+
+### Ursaring
+Ivy: Ursaring can smell food buried underground.
+P: So it could find Jenny's picnic basket from here.
+
+### Slugma
+P: Slugma is made of magma. If it stops moving, it hardens.
+Ivy: So it never sits down. Like Elm at a conference.
+
+### Magcargo
+P: The Pokédex says Magcargo is hotter than the sun's surface.
+Ivy: The Pokédex and physics have not agreed on that.
+
+### Swinub
+Ivy: Swinub sniffs out mushrooms under frozen ground.
+P: A truffle pig with a fringe. Delicious research.
+
+### Piloswine
+Ivy: Piloswine's hair covers its eyes. It goes by smell.
+P: It needs a haircut. Daisy would love to groom it.
+
+### Corsola
+Ivy: Corsola live in warm, clean seas. If the water turns dirty, they leave.
+P: Healthy reef, happy Corsola. Sometimes ecology is simple.
+
+### Octillery
+P: Remoraid, a fish, evolves into Octillery, an octopus.
+Ivy: Don't tell Elm. He'll start a lecture.
+P: He's already started. I can feel it.
+
+### Delibird
+Ivy: Delibird carries food in its tail and shares it.
+P: A Pokémon that delivers. Delia would approve.
+
+### Mantine
+Ivy: Mantine glide over the waves with Remoraid riding along.
+P: A ferry with no delays. The ferry company should take notes.
+
+### Skarmory
+P: People once made swords from Skarmory's fallen feathers.
+Ivy: That's one way to recycle.
+
+### Houndoom
+Ivy: Long ago, people heard Houndoom's howl as an omen.
+P: Mostly it just wants dinner.
+
+### Kingdra
+Ivy: When Kingdra yawns, it makes a whirlpool.
+P: When I yawn, I make you yawn.
+Ivy: ...You did it again.
+
+### Donphan
+P: Donphan curls up and rolls like a tire.
+Ivy: Fast enough to knock down a house. Not near Delia's, please.
+
+### Porygon2
+Ivy: Porygon2 was upgraded to explore space.
+P: Did the warranty carry over?
+
+### Stantler
+Ivy: Stantler's antlers can make you see things that aren't there.
+P: That explains the Elm I saw in the tall grass.
+
+### Smeargle
+P: Smeargle marks its territory with paint. Its tail is the brush.
+Ivy: Let's commission one for the lab. Its abstract period.
+
+### Tyrogue
+Ivy: Tyrogue evolves three ways, depending on how it trains.
+P: An Eevee with a gym membership.
+
+### Hitmontop
+Ivy: Hitmontop fights spinning on its head.
+P: I tried that once. In college. Never again.
+
+### Smoochum
+Ivy: Smoochum tests everything with its lips.
+P: Like Elm with a new dessert.
+Ivy: ...Want to test something?
+P: (Blushing again. Ivy is winning today.)
+
+### Elekid
+Ivy: Elekid spins its arms to charge itself up.
+P: I do that before coffee.
+
+### Magby
+P: Little embers puff out every time Magby breathes.
+Ivy: A walking campfire. Bring marshmallows.
+
+### Miltank
+Ivy: Miltank's milk is so nutritious it's given to sick Pokémon.
+P: Elm still has nightmares about Whitney's Miltank. The Rollout.
+Ivy: Delia's is much nicer. Fresh milk at breakfast.
+
+### Blissey
+Ivy: Blissey can sense sadness, and rushes over to help.
+P: It can stay. Forever. Please.
+
+### Raikou
+P: Raikou carries thunderclouds on its back.
+Ivy: Bring an umbrella. A rubber one.
+
+### Entei
+P: Delia once told off an Entei.
+Ivy: And?
+P: The Entei apologized.
+
+### Suicune
+Ivy: Suicune can purify dirty water with a touch.
+P: Every lab sink in Kanto needs one.
+
+### Larvitar
+P: Larvitar eats a whole mountain's worth of soil to grow up.
+Ivy: And you complain about vegetables.
+
+### Pupitar
+Ivy: Pupitar rockets around by shooting out gas.
+P: Gas-powered. Very old-fashioned.
+
+### Tyranitar
+P: When Tyranitar gets angry, the maps have to be redrawn.
+Ivy: Don't make it angry, then. Daisy's Town Maps are rare.
+
+### Lugia
+Ivy: I saw one once. From a helicopter, with Oak and Delia.
+P: You never tell me that story.
+Ivy: It's a very long story, sweetie.
+
+### Ho-Oh
+Ivy: Legend says Ho-Oh leaves a rainbow behind it.
+P: Ash swears he saw one on his very first day. Nobody believed him.
+
+### Celebi
+Ivy: Celebi is said to travel through time.
+P: If it visits, I have questions about Oak's old scrolls.
+Ivy: Get in line. Oak's first.

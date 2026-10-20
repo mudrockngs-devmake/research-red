@@ -28,7 +28,7 @@ Levels you'll meet in each area, in story order, next to the level cap. Use it t
 | 7 | 50 |
 | 8 (until the Elite Four) | 63 |
 
-The cap follows how many badges you have (gyms in any order). At the cap your team gets no EXP and Rare Candies stop; below it they get bonus EXP to catch up. Caps can be turned off in Start > Rules, which shows the current cap.
+The cap follows how many badges you have (gyms in any order). At the cap your team gets no EXP and Rare Candies stop; below it they get bonus EXP to catch up. Caps can be turned off in Options > Research Rules, which shows the current cap.
 
 ## Notes
 

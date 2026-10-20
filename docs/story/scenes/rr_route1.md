@@ -16,8 +16,44 @@ Research Red: First walk up Route 1 (Route1)
 > Jenny: And a wife.
 > I'm right here, dear.
 
-> Elm starts humming a traveling
-> song. Ivy joins in.
+> Elm starts singing. {PLAYER} joins
+> in on the second word.
+
+> Elm: {EMOJI_NOTE} We're on the road to
+> Viridian City! {EMOJI_NOTE}
+
+> {PLAYER}: {EMOJI_NOTE} Meet my friends
+> along the way! {EMOJI_NOTE}
+
+> Elm: {EMOJI_NOTE} I'm on the road to be the
+> greatest… professor! {EMOJI_NOTE}
+
+> {PLAYER}: Trainer, Elm.
+
+> Elm: Professor in my heart!
+
+> Ivy and Jenny share a look.
+
+> Jenny: The evidence suggests…
+
+> Ivy: Yep. That's why they're
+> friends.
+
+> Jenny: Case closed.
+
+> Ivy: {EMOJI_NOTE} We keep on trying… {EMOJI_NOTE}
+
+> Jenny: {EMOJI_NOTE} …and then we try
+> some more! {EMOJI_NOTE}
+
+> Elm: Jenny! You know the words?!
+
+> Jenny: Dear. Everyone knows
+> the words.
+
+> Everyone sings together:
+> {EMOJI_NOTE} To find a place worth
+> fighting for! {EMOJI_NOTE}
 
 > Ivy: You're off-key, sweetie.
 
@@ -109,19 +145,19 @@ Research Red: First walk up Route 1 (Route1)
 
 ### RR_Route1_EventScript_ReactRattata
 
-> Elm: Rattata! Classic. Reliable.
-> Like you, apparently.
+> Elm: A Rattata! Is it related
+> to Muffin? Is it watching me?
 
-> Jenny: Daisy will want to compare
-> tails.
+> Ivy: In Alola they're black,
+> with a little moustache.
 
 ### RR_Route1_EventScript_ReactMankey
 
 > Elm: Is it supposed to be that
 > mad?
 
-> Jenny: In my professional opinion,
-> it needs anger management.
+> {PLAYER}: That's its resting face.
+> We've all been there.
 
 ### RR_Route1_EventScript_ReactNidoranM
 
@@ -144,8 +180,8 @@ Research Red: First walk up Route 1 (Route1)
 > Elm: The other Nidoran! Is that
 > even allowed?
 
-> Jenny: Two kinds, one name. Filed
-> under complicated.
+> {PLAYER}: Two species, one name.
+> I have a forum thread on it.
 
 ### RR_Route1_EventScript_ReactOddish
 
@@ -153,12 +189,13 @@ Research Red: First walk up Route 1 (Route1)
 
 > Jenny: Dear, it can hear you.
 
-### RR_Route1_EventScript_ReactBellsprout
+### RR_Route1_EventScript_ReactSentret
 
-> Elm: Is that a plant or a noodle?
+> Elm: A Sentret! From Johto! It
+> followed us here, I bet!
 
-> Jenny: In my professional opinion:
-> both.
+> Jenny: It keeps watch on its
+> tail. I respect a lookout.
 
 ### RR_Route1_EventScript_ReactDuplicate
 
@@ -172,15 +209,71 @@ Research Red: First walk up Route 1 (Route1)
 
 > Elm: A Meowth! Hide your coins!
 
-> Jenny: It's already eyeing your
-> wallet, dear.
+> Ivy: In Galar they're iron-clad.
+> They'd take your fork too.
 
 ### RR_Route1_EventScript_ReactEevee
 
-> Elm: An Eevee?! On Route One?!
+> Elm: An Eevee?! Eight evolutions!
+> On Route One!
 
 > Jenny: Breathe, dear. In through
 > the nose.
+
+### RR_Route1_EventScript_ReactHoppip
+
+> Elm: A Hoppip! Hold on tight, or
+> the wind takes it to Johto!
+
+> Jenny: Noted. I'll file it under
+> flight risk.
+
+### RR_Route1_EventScript_ReactPikachu
+
+> Elm: A Pikachu?! Like Ash's!
+> Don't put it in its ball!
+
+> Jenny: Rubber gloves, dear.
+> It sparks when it's happy.
+
+### RR_Route1_EventScript_ReactSandshrew
+
+> Elm: A Sandshrew! It's a long
+> way from the desert!
+
+> Ivy: Alola's live up snowy
+> mountains. Ice, not sand.
+
+### RR_Route1_EventScript_ReactDiglett
+
+> Elm: A Diglett! What's under it?
+> Nobody knows! Science!
+
+> Ivy: In Alola it has three
+> golden hairs. Lovely ones.
+
+### RR_Route1_EventScript_ReactHoothoot
+
+> Elm: A Hoothoot! It keeps time
+> with its head!
+
+> Jenny: Finally. Someone punctual.
+
+### RR_Route1_EventScript_ReactGastly
+
+> Elm: A g-g-ghost! {PLAYER},
+> it went right through me!
+
+> Jenny: It's mostly gas, dear.
+> Don't inhale.
+
+### RR_Route1_EventScript_ReactMurkrow
+
+> Elm: A Murkrow! Is that bad luck?
+> Jenny, is that bad luck?
+
+> Jenny: Known for petty theft.
+> I'll keep an eye on it.
 
 ### RR_Route1_EventScript_Jealous1
 

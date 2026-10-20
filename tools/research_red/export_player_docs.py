@@ -224,7 +224,7 @@ def build():
         return out, lv
 
     lines = ["# Trainers on the way to Brock", "", note.strip(), "",
-             "Every trainer battle is a double (you and Ivy). Change that in Start > Rules after the Viridian lunch.", ""]
+             "Every trainer battle is a double (you and Ivy). Change that in Options > Research Rules (from Daisy's house on).", ""]
     trainer_levels = {}
     for title, _, prefixes in AREAS:
         ids = area_trainers(prefixes)
@@ -281,7 +281,7 @@ def build():
     lines += ["", "## Level caps (src/caps.c)", "", "| Badges | Cap |", "|---|---|"]
     lines += [f"| {who} | {cap} |" for who, cap in LEVEL_CAPS]
     lines += ["", "The cap follows how many badges you have (gyms in any order). At the cap your team gets no EXP and Rare Candies stop; "
-              "below it they get bonus EXP to catch up. Caps can be turned off in Start > Rules, which shows the current cap.",
+              "below it they get bonus EXP to catch up. Caps can be turned off in Options > Research Rules, which shows the current cap.",
               "", "## Notes", "",
               "- The debug skips (Start > Debug > Scripts) raise the team to Lv 12 for Route 22 and the lunch.",
               "- Elm and Jenny's starters are in the starter slot of their teams; see TRAINERS.md for the chain.", ""]

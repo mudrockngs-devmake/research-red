@@ -187,10 +187,14 @@ def sc_guide():
 
 
 def sc_rules():
-    # after the lunch: Start menu DEBUG, POKEDEX, POKEMON, Guide, Rules
-    return (sc_lunch() + ["mash B 200", "wait 60"] + start_menu_item(4)
-            + ["shot t001", "press DOWN", "wait 10", "press RIGHT", "wait 10", "shot t002",
-               "press B", "wait 30", "shot t003"])
+    # after the lunch: Start menu DEBUG, POKEDEX, POKEMON, Guide, PC, BAG,
+    # PLAYER, SAVE, OPTION. Options row 3 is Research Rules: A leaves Options
+    # and opens Elm's Rules window on the map (#45).
+    return (sc_lunch() + ["mash B 200", "wait 60"] + start_menu_item(8)
+            + ["wait 60", "shot t001", "press DOWN", "wait 10", "press DOWN", "wait 10", "shot t002",
+               "press A", "wait 120", "shot t003", "press DOWN", "wait 10", "press RIGHT", "wait 10", "shot t004",
+               "press B", "wait 30", "shot t005"]
+            + check("rules_closed", T.G.field_free()))
 
 
 def sc_ivy():
@@ -230,7 +234,7 @@ SCENARIOS = {
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Start > Guide on Route 1"),
-    "rules": (sc_rules, "Start > Rules after the lunch"),
+    "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
 }
 
 

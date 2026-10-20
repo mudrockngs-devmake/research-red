@@ -6,7 +6,7 @@ RR_EventScript_FieldGuide::
 	releaseall
 	end
 
-@ Research Red: Start menu > Rules (src/rr_rules.c)
+@ Research Red: Options > Research Rules (src/rr_rules.c, src/option_menu.c)
 @ Start > PC (#34): the usual PC menu (Pokemon storage, your item storage,
 @ Prof. Oak's PC) from anywhere. Turning it off only animates a real PC.
 RR_EventScript_StartMenuPC::

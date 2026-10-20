@@ -56,8 +56,8 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 > Elm: We won?! Jenny!
 > Jenny, we WON!
 
-> Jenny: Professionally speaking,
-> I am thrilled.
+> Jenny: I'm thrilled, dear.
+> I'm showing it on the inside.
 
 ### RR_Route22_EventScript_Won
 
@@ -65,6 +65,9 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 > It's a long road to eight badges.
 
 > Jenny: He means “good game.”
+
+> Elm: …Good game, {PLAYER}.
+> Really.
 
 ### RR_Route22_EventScript_Goodbye
 

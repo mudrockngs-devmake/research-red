@@ -225,7 +225,8 @@ RR_Daisy_Text_Elm_Passion::
 
 RR_Daisy_Text_Elm_CallMe::
     .string "Elm: Want to change them later?\n"
-    .string "Start menu, “Rules.” Day or night.$"
+    .string "Options, “Research Rules.”\p"
+    .string "Day or night!$"
 
 RR_Daisy_Text_Jenny_NotNight::
     .string "Jenny: Please not night.$"

@@ -6,4 +6,3 @@ the sheets are done, then everything is reworked in one pass (owner's plan,
 
 | Where | Line now | Why | Sheet |
 |---|---|---|---|
-| Lunch rules talk / Start menu | "Start menu, 'Rules.'" | Rules move into Options (v0.0.16 Start menu cleanup) | — |

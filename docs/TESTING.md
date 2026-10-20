@@ -42,7 +42,7 @@ What the results mean:
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | pc | Debug 2, Start > PC, into Pokémon storage and back out |
 | guide | Debug 3, walks onto Route 1, Start > Guide |
-| rules | The lunch, then Start > Rules |
+| rules | The lunch, then Options > Research Rules |
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.
 

@@ -18,12 +18,16 @@ Research Red: lunch in Viridian City (animatic 07)
 
 > Jenny: Cousin!
 
-> Elm: …Ivy. Which one is my wife?
+> Elm: Hello! Pleased to meet you,
+> Officer.
 
-> Ivy: The one in jeans, sweetie.
+> Ivy: Elm, how did you know which
+> one was which?
 
-> Officer Jenny: So this is the
-> famous Elm. The family talks.
+> Elm: That's my Jenny. Obviously.
+
+> Officer Jenny: So you're Elm! The
+> family says you always know.
 
 > {PLAYER}: How many Jennys
 > are there, exactly?
@@ -55,9 +59,9 @@ Research Red: lunch in Viridian City (animatic 07)
 > Jenny: Sandwiches are labeled.
 > Crusts left, crustless right.
 
-> Elm: I lost the bet, so I bought
-> dessert. Then I ate dessert.
-> On the walk here.
+> Elm: I was in charge of dessert.
+> Then I ate dessert. On the walk
+> here.
 
 > Ivy: So you bought dessert for
 > yourself.

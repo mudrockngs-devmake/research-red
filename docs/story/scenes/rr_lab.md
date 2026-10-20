@@ -22,17 +22,19 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Three from Johto below them,
 > courtesy of Elm.
 
-> Elm: Hand-delivered! Well. Mailed.
-> With a very nice note.
+> Elm: Hand-delivered! Well. Sent
+> by PC transfer. With a card!
 
-> Jenny: It was a very nice note.
+> Jenny: It was a very nice card.
 > I proofread it.
+
+> Oak: It's on my fridge.
 
 > Oak: While you stay in Pallet, I
 > want each of you to study one.
 >
 > Observe it. Compare notes.
-> Specifically, notes on forms.
+> All of it goes in the paper.
 
 > Ivy: Regional forms?
 > In starters?
@@ -224,8 +226,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Elm, the point was to
 > observe them here. Quietly.
 
-> Jenny: In my professional opinion,
-> “quietly” is not a setting he has.
+> Jenny: “Quietly” is not a setting
+> he has, Professor.
 
 > Elm: Unless {PLAYER} is scared.
 
@@ -249,8 +251,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Ivy: Jenny. Side bet:
 > we carry them both?
 
-> Jenny: Professionally?
-> Absolutely.
+> Jenny: Absolutely. I've seen him
+> battle.
 
 > Elm: A test, then! Right here!
 > Right now! For science!
@@ -416,11 +418,14 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > {PLAYER}: That is… a lot
 > of Poké Balls.
 
-> Ivy: We're doing research,
-> sweetie. Not opening a store.
+> Ivy: Professor, did you buy out
+> the whole Poké Mart?
 
-> Jenny: I will need receipts.
-> For every ball.
+> Oak: I may have got carried away.
+> The clerk sent me a card.
+
+> Jenny: Master Balls. Plural.
+> That's a lot of trust, sir.
 
 > Elm: Can I get a grant?
 
@@ -435,7 +440,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Elm: Meet you at Daisy's!
 > We'll make the bet official!
 
-> Ivy: Daisy's house next, sweetie.
+> Ivy: Daisy's house next.
 > Lead the way.
 
 *[rr_ivy_follow LOCALID_LAB_IVY]*
@@ -742,8 +747,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Elm: Us? Against you?
 > Jenny, hold my notebook.
 
-> Jenny: Professionally speaking,
-> I accept.
+> Jenny: Holding it. And accepting.
 
 > Ivy: Sweetie, we get front row
 > seats. Somebody find popcorn.
@@ -796,8 +800,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Ho ho! Not bad. Not bad at
 > all. Still mine, though.
 
-> Elm: That was the warm-up!
-> …It was not the warm-up.
+> Elm: Best of thr- No. Good
+> battle, Professor. Really.
 
 ### RR_Lab_EventScript_OakLostToElm
 

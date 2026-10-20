@@ -136,16 +136,8 @@ Script `PewterCity_EventScript_RunningShoesAide`
 *hidden by `FLAG_TEMP_13`*
 Script `RR_Pewter_EventScript_Rematch`
 
-> Elm: Wait. Is that… a badge?
-> You have a badge already?!
-
-> Jenny: We were at the Museum.
-> He cried at a fossil.
-
-> Elm: It was a very moving fossil!
-
-> Ivy: We were there too. We cried
-> at the gift shop prices.
+> Elm: {PLAYER}! We saw the whole
+> thing! Onix went DOWN!
 
 > Elm: {PLAYER}! Ivy! Badge or no
 > badge, the race isn't over!
@@ -172,11 +164,11 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-> Elm: …Hey. Good battle. Really.
-> I mean it.
+> Elm: …You're really good at this,
+> {PLAYER}. I'm proud of you.
 
-> {PLAYER}: I know you do.
-> You always do.
+> {PLAYER}: I know you are.
+> You always are.
 
 > Elm: We won! On a sidewalk!
 > It still counts!
@@ -204,9 +196,9 @@ Script `RR_Pewter_EventScript_Rematch`
 > {PLAYER}: Seven to go.
 > And one bet.
 
-> Ivy: And Mimey's dishes.
+> Ivy: And one very big dinner.
 
-> {PLAYER}: And Mimey's dishes.
+> {PLAYER}: And one very big dinner.
 
 **Battle:** Rival Early Elm (single): Biscotti Lv15, Pudding Lv14, Churro Lv14
 
@@ -262,16 +254,8 @@ Script `RR_Pewter_EventScript_Rematch`
 *hidden by `FLAG_TEMP_14`*
 Script `RR_Pewter_EventScript_Rematch`
 
-> Elm: Wait. Is that… a badge?
-> You have a badge already?!
-
-> Jenny: We were at the Museum.
-> He cried at a fossil.
-
-> Elm: It was a very moving fossil!
-
-> Ivy: We were there too. We cried
-> at the gift shop prices.
+> Elm: {PLAYER}! We saw the whole
+> thing! Onix went DOWN!
 
 > Elm: {PLAYER}! Ivy! Badge or no
 > badge, the race isn't over!
@@ -298,11 +282,11 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-> Elm: …Hey. Good battle. Really.
-> I mean it.
+> Elm: …You're really good at this,
+> {PLAYER}. I'm proud of you.
 
-> {PLAYER}: I know you do.
-> You always do.
+> {PLAYER}: I know you are.
+> You always are.
 
 > Elm: We won! On a sidewalk!
 > It still counts!
@@ -330,9 +314,9 @@ Script `RR_Pewter_EventScript_Rematch`
 > {PLAYER}: Seven to go.
 > And one bet.
 
-> Ivy: And Mimey's dishes.
+> Ivy: And one very big dinner.
 
-> {PLAYER}: And Mimey's dishes.
+> {PLAYER}: And one very big dinner.
 
 **Battle:** Rival Early Elm (single): Biscotti Lv15, Pudding Lv14, Churro Lv14
 
