@@ -101,6 +101,6 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 - World: ambient Pokémon pilot (#64), Forest exchanges + the Samurai (#9), Pokédex Area tab (#20), proper case (#11), Cruller (Jenny's Growlithe) in the Daisy scene and on Jenny's team, features list + a lab aide who explains them (#72).
 - Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), title screen + Slowking disclaimer and demo notice + a Mareep "A fan project by MudrockNGS" boot splash (#12, mock-ups first), cozier interface colours (#73, mock-ups first), battle backgrounds per location (#74). If the build drags, the art items move to v0.0.17.
 
-**Step 3:** full test run, release v0.0.16, CHANGELOG with a clear **Save:** line.
+**Step 3:** full test run, the what's-new report with screenshots of every change (#75, first version: start to demo end), release v0.0.16, CHANGELOG with a clear **Save:** line.
 
 **After v0.0.16:** Claude's test-tool upgrades (#18: memory-poke warps and no-encounter mode, a route planner from map data, the engine's battle tests, wait-until-ready), smaller patch (#17).
