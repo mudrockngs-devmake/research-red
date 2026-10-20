@@ -97,4 +97,4 @@ Not in Gold/Silver/Crystal (the forest was cut down to a small clearing).
 
 **Gold/Silver/Crystal:** no wild Pokémon.
 
-**Used:** Elm cries at a fossil in the Museum (rematch scene). Ideas: Brock's siblings as townsfolk, a Museum amber/Aerodactyl nod (#49).
+**Saved for the Museum scenes (#49):** Elm cries at a fossil (cut from the Pewter rematch, 2026-10-20). Ideas: Brock's siblings as townsfolk, a Museum amber/Aerodactyl nod (#49).

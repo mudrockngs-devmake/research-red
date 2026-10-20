@@ -33,7 +33,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_CHARMANDER] =
@@ -63,7 +63,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_SQUIRTLE] =
@@ -93,7 +93,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_CHIKORITA] =
@@ -123,7 +123,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_CYNDAQUIL] =
@@ -153,7 +153,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_TOTODILE] =
@@ -183,7 +183,7 @@
         {
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: And where dishes are assigned.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_LEADER_BROCK] =

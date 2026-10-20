@@ -27,9 +27,6 @@ RR_Pewter_EventScript_Rematch::
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Pewter_Text_Elm_Badge, MSGBOX_DEFAULT
-	msgbox RR_Pewter_Text_Jenny_Museum, MSGBOX_DEFAULT
-	msgbox RR_Pewter_Text_Elm_Moving, MSGBOX_DEFAULT
-	msgbox RR_Pewter_Text_Ivy_GiftShop, MSGBOX_DEFAULT
 	msgbox RR_Pewter_Text_Elm_SixOnSix, MSGBOX_DEFAULT
 	msgbox RR_Pewter_Text_Jenny_Protocol, MSGBOX_DEFAULT
 	msgbox RR_Pewter_Text_P_WarmUp, MSGBOX_DEFAULT
@@ -99,27 +96,16 @@ RR_Pewter_EventScript_ToTheGym::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Pewter_Text_Ivy_OneBadge, MSGBOX_DEFAULT
 	msgbox RR_Pewter_Text_P_SevenToGo, MSGBOX_DEFAULT
-	msgbox RR_Pewter_Text_Ivy_Dishes, MSGBOX_DEFAULT
-	msgbox RR_Pewter_Text_P_Dishes, MSGBOX_DEFAULT
+	msgbox RR_Pewter_Text_Ivy_BigDinner, MSGBOX_DEFAULT
+	msgbox RR_Pewter_Text_P_BigDinner, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_0x40FE, 8
 	releaseall
 	end
 
 RR_Pewter_Text_Elm_Badge::
-    .string "Elm: Wait. Is that… a badge?\n"
-    .string "You have a badge already?!$"
-
-RR_Pewter_Text_Jenny_Museum::
-    .string "Jenny: We were at the Museum.\n"
-    .string "He cried at a fossil.$"
-
-RR_Pewter_Text_Elm_Moving::
-    .string "Elm: It was a very moving fossil!$"
-
-RR_Pewter_Text_Ivy_GiftShop::
-    .string "Ivy: We were there too. We cried\n"
-    .string "at the gift shop prices.$"
+    .string "Elm: {PLAYER}! We saw the whole\n"
+    .string "thing! Onix went DOWN!$"
 
 RR_Pewter_Text_Elm_SixOnSix::
     .string "Elm: {PLAYER}! Ivy! Badge or no\n"
@@ -147,12 +133,12 @@ RR_Pewter_Text_Jenny_Defeat::
     .string "“congratulations.”$"
 
 RR_Pewter_Text_Elm_GoodBattle::
-    .string "Elm: …Hey. Good battle. Really.\n"
-    .string "I mean it.$"
+    .string "Elm: …You're really good at this,\n"
+    .string "{PLAYER}. I'm proud of you.$"
 
 RR_Pewter_Text_P_KnowYouDo::
-    .string "{PLAYER}: I know you do.\n"
-    .string "You always do.$"
+    .string "{PLAYER}: I know you are.\n"
+    .string "You always are.$"
 
 RR_Pewter_Text_Elm_WeWon::
     .string "Elm: We won! On a sidewalk!\n"
@@ -189,8 +175,8 @@ RR_Pewter_Text_P_SevenToGo::
     .string "{PLAYER}: Seven to go.\n"
     .string "And one bet.$"
 
-RR_Pewter_Text_Ivy_Dishes::
-    .string "Ivy: And Mimey's dishes.$"
+RR_Pewter_Text_Ivy_BigDinner::
+    .string "Ivy: And one very big dinner.$"
 
-RR_Pewter_Text_P_Dishes::
-    .string "{PLAYER}: And Mimey's dishes.$"
+RR_Pewter_Text_P_BigDinner::
+    .string "{PLAYER}: And one very big dinner.$"
