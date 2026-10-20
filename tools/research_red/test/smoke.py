@@ -261,8 +261,15 @@ def sc_evolve():
                                     "press A", "wait 120", "shot e003"]
             + advance(12, key="A", every=90, prefix="v")
             + play_until("evolved", T.G.field_free(), 4000, key="B", every=60)
-            + start_menu_item(2) + ["wait 90", "shot e004", "press A", "wait 30", "shot e005"]
-            + play_until("closed", T.G.field_free(), 1500, key="B", every=30))
+            # #51: Wartortle's LEARN MOVES > LEVEL MOVES lists Squirtle's moves at any level
+            # (first let the new species' Pokédex banter play out on the map)
+            + ["wait 120", "mash B 400", "wait 60"] + play_until("banter_done", T.G.field_free(), 2000, key="B", every=30)
+            # the Start menu remembers its cursor: still on POKEMON
+            + start_menu_item(0) + ["wait 90", "shot e004", "press A", "wait 30", "shot e005",
+                                    "press DOWN", "wait 10", "press A", "wait 30", "shot e006", "press A", "wait 120", "shot e007"]
+            + sum([["press DOWN", "wait 8"] * 4 + [f"shot e1{i:02d}"] for i in range(6)], [])
+            + ["press A", "wait 60", "mash A 60", "wait 90"]  # CANCEL, "Give up?" Yes
+            + play_until("closed", T.G.field_free(), 6000, key="B", every=40))
 
 # Maps the report can name (anything else shows as a number)
 MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
@@ -287,7 +294,7 @@ SCENARIOS = {
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),
     "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
     "wild": (sc_wild, "A wild single battle on Route 1: opponent types, then run away (#25)"),
-    "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50)"),
+    "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),

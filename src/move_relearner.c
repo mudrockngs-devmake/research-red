@@ -1023,6 +1023,17 @@ static void SortMovesAlphabetically(u16 *moves, u32 numMoves)
         QuickSortMoves(moves, 0, numMoves - 1);
 }
 
+// Research Red (#51): a family can share a move (Tackle...); list it once
+static bool32 RR_ListHasMove(const u16 *moves, u32 numMoves, u32 move)
+{
+    u32 i;
+
+    for (i = 0; i < numMoves; i++)
+        if (moves[i] == move)
+            return TRUE;
+    return FALSE;
+}
+
 static u32 GetRelearnerLevelUpMoves(struct BoxPokemon *mon, u16 *moves)
 {
     u32 numMoves = 0;
@@ -1041,11 +1052,15 @@ static u32 GetRelearnerLevelUpMoves(struct BoxPokemon *mon, u16 *moves)
             if (learnset[i].level > level)
                 break;
 
-            if (!BoxMonKnowsMove(mon, learnset[i].move))
+            if (numMoves >= MAX_RELEARNER_MOVES) // Research Red: the list is full
+                break;
+            if (!BoxMonKnowsMove(mon, learnset[i].move) && !RR_ListHasMove(moves, numMoves, learnset[i].move))
                 moves[numMoves++] = learnset[i].move;
         }
 
         species = (P_PRE_EVO_MOVES ? GetSpeciesPreEvolution(species) : SPECIES_NONE);
+        if (P_RR_PRE_EVO_MOVES_ANY_LEVEL) // Research Red (#51): pre-evolutions' moves at any level
+            level = MAX_LEVEL;
     } while (species != SPECIES_NONE);
 
     if (P_SORT_MOVES)
@@ -1197,6 +1212,8 @@ static bool32 HasRelearnerLevelUpMoves(struct BoxPokemon *boxMon)
         }
 
         species = (P_PRE_EVO_MOVES ? GetSpeciesPreEvolution(species) : SPECIES_NONE);
+        if (P_RR_PRE_EVO_MOVES_ANY_LEVEL) // Research Red (#51): pre-evolutions' moves at any level
+            level = MAX_LEVEL;
 
     } while (species != SPECIES_NONE);
 
