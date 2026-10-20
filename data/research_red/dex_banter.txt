@@ -16,6 +16,15 @@
 #                   pair picked at random. {SPECIES} = the species' name
 #
 # After editing: python3 tools/research_red/build_dex_banter.py, then rebuild.
+#
+# Style (owner, 2026-10-20): mostly the two scientists having fun: science
+# jokes and puns, ecology, how the Pokemon looks, lab life, the player's field
+# notes, cute or funny couple moments. Anime, movie or other-media nods only now
+# and then (told in-world, never "the anime"), and not mostly about Ash. Facts
+# must be true; anime nods come from docs/reference/ (checked rows only).
+# No spoilers: the starters' other-era forms (Hisuian) and Mega Evolution are
+# the research mystery, so nobody knows them yet. Ivy teases with love, never
+# meanly, and adores the player's jokes. "sweetie" now and then, not every line.
 
 [DEFAULT]
 Ivy: A {SPECIES}! First one for the notebook, sweetie.
