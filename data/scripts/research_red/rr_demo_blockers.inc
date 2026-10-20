@@ -133,10 +133,10 @@ RR_DiglettsCave_EventScript_Dugtrio::
 
 @ Placeholder lines: the owner will write the final ones
 RR_DiglettsCave_Text_Diglett::
-    .string "Diglett dig, Diglett dig,\n"
-    .string "trio, trio, trio!$"
+    .string "Diglett dig, Diglett dig…$"
 
 RR_DiglettsCave_Text_Dugtrio::
+    .string "Dugtrio: Trio, trio, trio!\p"
     .string "Dugtrio is sitting right on the\n"
     .string "ladder, holding up a tiny sign:\p"
     .string "“Tunnel closed for digging.\n"
