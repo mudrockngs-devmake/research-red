@@ -29,10 +29,12 @@
 #define TAG_RR_PORTRAIT   0x5A10
 #define TAG_RR_NAMEPLATE  0x5A11
 #define PORTRAIT_X        40   // centre; left edge lines up with the box at x 8
-#define PORTRAIT_Y        64   // centre; bottom edge sits on the name plate
+#define PORTRAIT_Y        70   // centre; bottom 2 rows tuck behind the name plate, so the
+                               // 2-pixel bob never opens a gap above it (#22)
 #define PLATE_X           40   // 64x32 sprite, the plate is its top 16 rows
-#define PLATE_Y           112  // so the plate fills y 96-111, just above the box
+#define PLATE_Y           116  // so the plate fills y 100-115, sitting on the box's top edge (#22)
 #define BOB_PERIOD        108  // frames per bob (1.8 s, as in the animatic)
+#define PORTRAIT_GRACE    10   // frames the box may stay closed mid-script before the portrait leaves
 
 enum
 {
@@ -165,13 +167,22 @@ void RR_PortraitHide(void)
     sShownSpeaker = 0;
 }
 
-// Bob gently; leave once the box is closed and the scene's script has ended.
+// Bob gently; leave once the box is closed. Outside a script that's at once;
+// inside one (camera pans, people walking off, #3) after a short grace, so a
+// closemessage straight into the next line doesn't make it flicker.
 static void SpriteCB_Portrait(struct Sprite *sprite)
 {
-    if (IsFieldMessageBoxHidden() && !RR_IsScriptActive())
+    if (IsFieldMessageBoxHidden())
     {
-        RR_PortraitHide();
-        return;
+        if (!RR_IsScriptActive() || ++sprite->data[2] > PORTRAIT_GRACE)
+        {
+            RR_PortraitHide();
+            return;
+        }
+    }
+    else
+    {
+        sprite->data[2] = 0;
     }
     // A new portrait stays hidden for its first two frames: the overworld
     // copies new sprite colors to the screen a frame late, so showing it at
@@ -300,7 +311,7 @@ static bool32 LoadPortrait(const u32 *gfx, const u16 *pal)
         return FALSE;
     if (RR_LoadInterfaceSpritePalette(&palette) == 0xFF)
         return FALSE;
-    sPortraitIdPlus1 = CreateSprite(&sSpriteTemplate_Portrait, PORTRAIT_X, PORTRAIT_Y, 0) + 1;
+    sPortraitIdPlus1 = CreateSprite(&sSpriteTemplate_Portrait, PORTRAIT_X, PORTRAIT_Y, 1) + 1; // behind the plate
     if (sPortraitIdPlus1 - 1 == MAX_SPRITES)
     {
         sPortraitIdPlus1 = 0;

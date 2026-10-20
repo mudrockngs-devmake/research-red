@@ -30,6 +30,7 @@ What the results mean:
 | intro | New game, the whole call, ends in the bedroom (saved as the starting point for the rest) |
 | breakfast | Walks downstairs |
 | lab | Debug 9 (test mode) + debug 1, then the lab scene and battles |
+| daisy | Debug 2, steps into Daisy's house, the whole scene |
 | route1 | Debug 8, the Route 1 scene and the Mewtwo fly-by |
 | route22 | Debug 4 + test mode, the 6v6 double and its banter |
 | lunch | Debug 6, the lunch, Officer Jenny, Research Rules |

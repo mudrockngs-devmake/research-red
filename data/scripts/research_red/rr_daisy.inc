@@ -63,6 +63,13 @@ RR_Daisy_EventScript_Scene::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_MuffinHops, MSGBOX_DEFAULT
 	closemessage
+	@ Muffin hops toward Elm's chair, Elm leaps onto the table, Muffin takes the chair
+	applymovement LOCALID_RIVALS_HOUSE_MUFFIN, RR_Daisy_Movement_JumpRight
+	waitmovement LOCALID_RIVALS_HOUSE_MUFFIN
+	applymovement LOCALID_RIVALS_HOUSE_ELM, RR_Daisy_Movement_JumpLeft
+	waitmovement LOCALID_RIVALS_HOUSE_ELM
+	applymovement LOCALID_RIVALS_HOUSE_MUFFIN, RR_Daisy_Movement_JumpUp
+	waitmovement LOCALID_RIVALS_HOUSE_MUFFIN
 	playse SE_PIN
 	applymovement LOCALID_RIVALS_HOUSE_ELM, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -113,18 +120,31 @@ RR_Daisy_Movement_Up2:
 	walk_up
 	step_end
 
+RR_Daisy_Movement_JumpRight:
+	jump_right
+	step_end
+
+RR_Daisy_Movement_JumpLeft:
+	jump_left
+	step_end
+
+RR_Daisy_Movement_JumpUp:
+	jump_up
+	step_end
+
+@ Elm hops down from the table (7,5) and both leave over the doormat (4,8)
 RR_Daisy_Movement_ElmExit:
 	walk_down
 	walk_down
 	walk_left
 	walk_left
 	walk_left
-	walk_left
-	walk_left
 	walk_down
 	step_end
 
+@ Jenny holds the chair from its right side (9,5)
 RR_Daisy_Movement_JennyExit:
+	walk_down
 	walk_down
 	walk_left
 	walk_left
@@ -267,6 +287,19 @@ RR_Daisy_Text_Elm_SeeYou::
 RR_Daisy_EventScript_SetupScene::
 	setobjectmovementtype LOCALID_DAISY, MOVEMENT_TYPE_FACE_DOWN
 	return
+
+@ Daisy after her scene (#31): her own lines, with her portrait
+RR_Daisy_EventScript_Talk::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_Talk, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Daisy_Text_Talk::
+    .string "Daisy: Muffin has claimed the\n"
+    .string "chair. Elm will have to stand.\p"
+    .string "Grandpa's proud of you two, you\n"
+    .string "know. He just won't say it.$"
 
 @ Muffin, Daisy's Rattata (Elm insists she is a Persian)
 RR_Daisy_EventScript_Muffin::

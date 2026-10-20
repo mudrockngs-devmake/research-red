@@ -72,6 +72,16 @@ def sc_lab():
             + expect(story=3, party=1))
 
 
+def sc_daisy():
+    # Debug 2 leaves us below Daisy's door (story 3): step in, the scene plays
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + ["shot s000"] + step("UP")
+            + play_until("daisy", scene_end(4), 12000, key="B", every=30)
+            + expect("MAP_PALLET_TOWN_RIVALS_HOUSE", story=4)
+            # then talk to Daisy at (5,4) from (4,4): her own lines, with portrait
+            + step("UP", 2) + ["press RIGHT 2", "wait 10", "press A", "wait 40", "shot t001",
+                               "press A", "wait 60", "shot t002", "mash B 120", "shot t003"])
+
+
 def sc_route1():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1_ELM) + ["shot s000"] + step("DOWN")
             + play_until("route1", scene_end(5), 6000, key="B", every=24)
@@ -130,6 +140,7 @@ SCENARIOS = {
     "intro": (sc_intro, "New game: the video call, ending in the bedroom"),
     "breakfast": (sc_breakfast, "Downstairs: breakfast with Delia, Ivy and Mimey"),
     "lab": (sc_lab, "Lab scene (test mode: the AI fights)"),
+    "daisy": (sc_daisy, "Daisy's house: Muffin, the Town Map, the bet"),
     "route1": (sc_route1, "Route 1: Elm and Jenny, the Mewtwo fly-by"),
     "route22": (sc_route22, "Route 22: the 6v6 double (test mode)"),
     "lunch": (sc_lunch, "Viridian lunch, Officer Jenny, Research Rules"),
