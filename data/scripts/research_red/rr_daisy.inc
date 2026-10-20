@@ -82,11 +82,11 @@ RR_Daisy_EventScript_Scene::
 	msgbox RR_Daisy_Text_Elm_Terms, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Jenny_SmallStakes, MSGBOX_DEFAULT
-	msgbox RR_Daisy_Text_Ivy_Dishes, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Ivy_Dinner, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Daisy_Text_P_Mimey, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_P_MimeyKitchen, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Daisy_Text_Ivy_MimeysDishes, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Ivy_NightOff, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_Deal, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -95,6 +95,8 @@ RR_Daisy_EventScript_Scene::
 	waitmessage
 	waitfanfare
 	msgbox RR_Daisy_Text_BetIsOn, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_Daisy_KeepScore, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Daisy_Excited, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -342,24 +344,26 @@ RR_Daisy_Text_Elm_Terms::
     .string "takes the bet!$"
 
 RR_Daisy_Text_Jenny_SmallStakes::
-    .string "Jenny: Small stakes.\n"
-    .string "In my professional opinion.$"
+    .string "Jenny: Badges? Small stakes, dear.\n"
+    .string "What does the loser do?$"
 
-RR_Daisy_Text_Ivy_Dishes::
-    .string "Ivy: Losers do the dishes\n"
-    .string "for a month.$"
+RR_Daisy_Text_Ivy_Dinner::
+    .string "Ivy: Losers cook a big dinner at\n"
+    .string "Delia's. Dessert included.$"
 
-RR_Daisy_Text_P_Mimey::
-    .string "{PLAYER}: Mimey already does\n"
-    .string "the dishes.$"
+RR_Daisy_Text_P_MimeyKitchen::
+    .string "{PLAYER}: Mimey won't like anyone\n"
+    .string "else in its kitchen.$"
 
-RR_Daisy_Text_Ivy_MimeysDishes::
-    .string "Ivy: Then the losers do\n"
-    .string "Mimey's dishes.$"
+RR_Daisy_Text_Ivy_NightOff::
+    .string "Ivy: Then Mimey supervises. And\n"
+    .string "Delia gets the night off.$"
 
 RR_Daisy_Text_Elm_Deal::
-    .string "Elm: Deal! We swap numbers,\n"
-    .string "and it's official!$"
+    .string "Elm: Deal! Not that I'll lose.\n"
+    .string "But I'd make a great tart.\p"
+    .string "We swap numbers, and\n"
+    .string "it's official!$"
 
 RR_Daisy_Text_NumbersRegistered::
     .string "Elm's and Jenny's numbers were\n"
@@ -368,6 +372,10 @@ RR_Daisy_Text_NumbersRegistered::
 RR_Daisy_Text_BetIsOn::
     .string "The bet is on: first team to\n"
     .string "eight Gym badges.$"
+
+RR_Daisy_Text_Daisy_KeepScore::
+    .string "Daisy: I'll keep score.\n"
+    .string "Somebody neutral should.$"
 
 RR_Daisy_Text_Daisy_Excited::
     .string "Daisy: Grandpa is going to pretend\n"
