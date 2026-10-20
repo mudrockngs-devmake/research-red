@@ -19,17 +19,31 @@ EventScript_AfterWhiteOutHealMsg::
 	msgbox Text_MonsHealed
 	return
 
+@ Research Red: Delia isn't the player's mom; her own lines, with portrait (#63)
 EventScript_AfterWhiteOutMomHeal::
 	lockall
-	textcolor NPC_TEXT_COLOR_FEMALE
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	msgbox Text_HadQuiteAnExperienceTakeRest
+	msgbox RR_WhiteOut_Text_Delia_RoughDay
 	call EventScript_OutOfCenterPartyHeal
-	msgbox Text_MomExplainHPGetPotions
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_WhiteOut_Text_Delia_AllBetter
 	fadedefaultbgm
 	releaseall
 	end
+
+RR_WhiteOut_Text_Delia_RoughDay::
+    .string "Delia: Oh my, look at you two!\n"
+    .string "Rough day out there?\p"
+    .string "Sit, sit. I'll take care of your\n"
+    .string "Pokémon. And there's pie.$"
+
+RR_WhiteOut_Text_Delia_AllBetter::
+    .string "Delia: There, all better!\n"
+    .string "Ash came home like this a lot.\p"
+    .string "Take a snack for the road.\n"
+    .string "And be careful, you two!$"
 
 EventScript_FieldPoison::
 	lockall

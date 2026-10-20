@@ -41,6 +41,7 @@
 #include "m4a.h"
 #include "palette.h"
 #include "party_menu.h"
+#include "script_pokemon_util.h" // Research Red: HealPlayerParty (auto-heal rule)
 #include "pokeball.h"
 #include "pokedex.h"
 #include "pokemon.h"
@@ -5770,6 +5771,12 @@ static void ReturnFromBattleToOverworld(void)
     gSpecialVar_Result = gBattleOutcome;
     gMain.inBattle = FALSE;
     gMain.callback1 = gPreBattleCallback1;
+
+    // Research Red: Research Rules "Heal after battles" (#54). A loss heals
+    // through the normal blackout anyway.
+    if (FlagGet(FLAG_RR_AUTO_HEAL) && !(gBattleTypeFlags & BATTLE_TYPE_LINK)
+     && gBattleOutcome != B_OUTCOME_LOST && gBattleOutcome != B_OUTCOME_DREW)
+        HealPlayerParty();
 
     if (gBattleTypeFlags & BATTLE_TYPE_ROAMER)
     {

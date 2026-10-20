@@ -37,6 +37,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `FLAG_RR_FORCE_DOUBLE_WILD` (0x023, was `FLAG_0x023`) | `B_FLAG_FORCE_DOUBLE_WILD`: wild doubles. Off by default |
 | `FLAG_RR_AI_VS_AI` (0x024, was `FLAG_0x024`) | `B_FLAG_AI_VS_AI_BATTLE`: set only while Elm and Jenny fight Oak in the lab |
 | `FLAG_RR_IVY_SWIMSUIT` (0x025, was `FLAG_0x025`) | Ivy's swimsuit portrait in dialogue |
+| `FLAG_RR_AUTO_HEAL` (0x078, was `FLAG_0x078`) | Research Rules "Heal after battles": the team is healed after every battle that isn't lost (#54). Off by default |
 | `FLAG_RR_JENNY_UNIFORM` (0x026, was `FLAG_0x026`) | Jenny's police-uniform portrait (casual is the default) |
 | `FLAG_RR_EXP_SHARE` (0x021, was `FLAG_0x021`) | `I_EXP_SHARE_FLAG`: Exp. Share key item on/off. Set by the research grant |
 | `FLAG_RR_LEVEL_CAPS_OFF` (0x027, was `FLAG_0x027`) | Research Rules: level caps off (on by default; caps in `src/caps.c`) |
