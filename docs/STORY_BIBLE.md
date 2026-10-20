@@ -13,7 +13,7 @@ Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stoppe
 | Elm | Friendly rival (Johto professor; Pokémon evolution expert, discovered Pokémon eggs) | Loud, passionate, competitive; secretly sentimental. Sheet: docs/characters/ELM.md |
 | Jenny | Elm's wife; New Bark Town's Officer Jenny, a detective, off duty for once | Deadpan, devoted, procedural; casual clothes, uniform only for Team Rocket; Growlithe partner. Sheet: docs/characters/JENNY.md |
 | Prof. Oak | Mentor, a grandfather to everyone | Poems, warns about tall grass, Pokémon proverbs, hints at forms in "other lands and other eras". Sheet: docs/characters/OAK.md |
-| Delia | Host in Pallet | Warm; Mimey (her Mr. Mime) makes pancakes; "I supervised" |
+| Delia | Host in Pallet, Ash's mom | Warm, cheerful, quietly formidable; feeds everyone; optional double battle with Mimey (#70). Sheet: docs/characters/DELIA.md |
 | Daisy | Hosts Elm and Jenny | Her Rattata is Muffin (Elm insists it's a Persian) |
 | Brock | Pewter Gym Leader | Kind, cooks stew for challengers, big brother to nine, planned puns |
 
