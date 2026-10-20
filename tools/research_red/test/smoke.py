@@ -363,6 +363,36 @@ def sc_lab_aide():
             + play_until("aide_done", T.G.field_free(), 2000, key="B", every=60))
 
 
+def sc_forest():
+    # #74: any battle in Viridian Forest uses the forest background. After
+    # Brock (test mode), walk south into the forest (route from
+    # tools/research_red/test/route_plan.py), wander until a battle starts.
+    wander = []
+    for _ in range(40):
+        wander += ["hold DOWN 16", "wait 4", "hold UP 16", "wait 4", "hold RIGHT 16", "wait 4", "hold LEFT 16", "wait 4"]
+    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_AFTER_BROCK)
+            + T.set_flag("FLAG_RR_NO_ENCOUNTERS")   # no wild battles on the way (Route 2 grass)
+            + step("RIGHT", 2) + step("DOWN", 5) + step("RIGHT") + step("DOWN", 11) + step("LEFT", 2) + step("DOWN", 11)
+            + ["wait 90"] + step("DOWN", 12) + ["wait 150"] + step("DOWN", 2) + ["wait 150", "shot v001"]   # through the gatehouse
+            + check("in_forest", T.G.on_map("MAP_VIRIDIAN_FOREST"))
+            + step("DOWN", 6) + T.clear_flag("FLAG_RR_NO_ENCOUNTERS") + wander + check("in_battle", T.G.in_battle())
+            + ["wait 240", "shot v002", "wait 120", "shot v003"]
+            + play_until("battle_over", T.G.field_free(), 30000, key="A", every=120))
+
+
+def sc_route2_wild():
+    # Diagnosis: a wild battle on Route 2 after Brock WITHOUT test mode
+    wander = []
+    for _ in range(40):
+        wander += ["hold DOWN 16", "wait 4", "hold UP 16", "wait 4"]
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK)
+            + step("RIGHT", 2) + step("DOWN", 5) + step("RIGHT") + step("DOWN", 11) + step("LEFT", 2) + step("DOWN", 3)
+            + wander + check("in_battle", T.G.in_battle())
+            + ["wait 240", "shot q001", "press A", "wait 60", "shot q002", "press A", "wait 60", "shot q003"]
+            + ["press B", "wait 20", "press A", "wait 60", "shot q004"]
+            + play_until("ran", T.G.field_free(), 6000, key="A", every=40))
+
+
 def sc_oak_mons():
     # #29: Oak's Ranch Pager Pokemon. Debug 2 leaves us at (15,8) in Pallet:
     # east to the lab yard (Tauros 21,10 and Pidgeot 21,12), talk to Tauros,
@@ -479,7 +509,7 @@ def sc_evolve():
 # Maps the report can name (anything else shows as a number)
 MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
              "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", "MAP_PALLET_TOWN_RIVALS_HOUSE", "MAP_ROUTE1",
-             "MAP_VIRIDIAN_CITY", "MAP_ROUTE22", "MAP_ROUTE2"]
+             "MAP_VIRIDIAN_CITY", "MAP_ROUTE22", "MAP_ROUTE2", "MAP_VIRIDIAN_FOREST"]
 
 SCENARIOS = {
     "intro": (sc_intro, "New game: the video call, ending in the bedroom"),
@@ -511,6 +541,8 @@ SCENARIOS = {
     "delia_battle": (sc_delia_battle, "Delia's double battle at home after Brock (#70)"),
     "brock_rematch": (sc_brock_rematch, "Brock's rematch in the Gym, tier menu, his team at 1 badge (#52)"),
     "lab_aide": (sc_lab_aide, "The lab aide explains the research tools (#72)"),
+    "forest": (sc_forest, "Viridian Forest: a battle there uses the forest background (#74)"),
+    "route2_wild": (sc_route2_wild, "Diagnosis: wild battle on Route 2 after Brock, no test mode"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),

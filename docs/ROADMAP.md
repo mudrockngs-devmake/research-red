@@ -107,8 +107,10 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 
 **Shipped in v0.0.17 (2026-10-20):** the Field notebook look (#73: menus, dialogue, battle text box, FIGHT menu, HP boxes; `tools/research_red/ui_theme.py notebook`), item descriptions on pickup, snappier battle text, B to RUN in wild battles.
 
-## Next build: v0.0.18 (moved from v0.0.16/17 on 2026-10-20)
-- **Battle backgrounds per location (#74), first:** FireRed's backgrounds already switch by place (grass, plain, building, Gym, cave, water) but the art is very plain (`E:\Workspace\romhacks\research-red\mockups\battle-backgrounds-now.png`). New art for the Route grass, Viridian Forest, Pallet's shore and sea, Oak's Lab and homes, Brock's Gym and caves, mock-ups first, within the palette and tile limits.
+**Shipped in v0.0.18 (2026-10-20):** battle backgrounds per place in cozier colours (#74, `tools/research_red/battle_bg_theme.py`; Viridian Forest uses the long-grass background), the test-mode wild battle freeze fix, the route planner and memory pokes for tests (#18, part).
+
+## Next build: v0.0.19 (moved from v0.0.16-18 on 2026-10-20)
+- Battle backgrounds, round 2 (#74, optional): new art (not just colours) for places that deserve it, e.g. the lab, the sea, Brock's Gym; mock-ups first, within the palette and tile limits.
 - **Waiting on the owner:** title screen + boot splash mock-ups (#12).
 - Rematches: post-game Mega Evolutions, the other Gym leaders as their Gyms are reworked (#52); watch Elm and Jenny vs Brock (#69); dex banter cutscene and replay with field notes (#5, #4).
 - World: ambient Pokémon pilot (#64), Forest exchanges + the Samurai (#9), Pokédex Area tab (#20), proper-case sweep (#11, also "PKMN TRAINER", "YES/NO", FireRed's map names), Cruller (Jenny's Growlithe) in the Daisy scene and on Jenny's team.

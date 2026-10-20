@@ -3,24 +3,25 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-20 (v0.0.17 released)_
+_Last updated: 2026-10-20 (v0.0.18 released)_
 
 ## Current build
-- **v0.0.17** (2026-10-20): v0.0.16 + the Field notebook look (#73) + item descriptions on pickup, snappier battle text, B to RUN. Installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke tests 33/33 (`test-runs/2026-10-20_0942_v0.0.17_*`). **Save: old saves work.**
+- **v0.0.18** (2026-10-20): v0.0.17 + battle backgrounds per place in cozier colours (#74, `tools/research_red/battle_bg_theme.py`), the test-mode wild battle freeze fix. Installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke tests 35/35 (`test-runs/2026-10-20_0952_v0.0.18_*`). **Save: old saves work.**
+- **v0.0.17** (2026-10-20, pre-release): the Field notebook look (#73) + item descriptions on pickup, snappier battle text, B to RUN.
 - **v0.0.16** (2026-10-20, pre-release on GitHub): the big systems build, see [CHANGELOG.md](CHANGELOG.md).
 - **Reports for the testers:** `E:\Workspace\romhacks\research-red\whats-new\v0.0.16\report.html` (33 items, everything new since v0.0.15) and `...\whats-new\v0.0.17\report.html` (the new look). Rebuild with `python3 tools/research_red/rr_whats_new.py <version>`.
 - Interface colours: `tools/research_red/ui_theme.py notebook` is applied in the source (`--restore` returns to FireRed's). Mock-ups: `E:\Workspace\romhacks\research-red\mockups\`.
 - Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
 
 ## Waiting on the owner
-- [ ] Playtest **v0.0.17** with both reports (v0.0.16 and v0.0.17) (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
+- [ ] Playtest **v0.0.18** with the three reports (v0.0.16, v0.0.17, v0.0.18) (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
 - [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
 - [ ] Log in the next round's NOTES.md: the costs since v0.0.12: 2026-10-18/19 build + hub setup $121.56 (2h36m API); 2026-10-19 $62.88/$63.85 (1h42m API); 2026-10-20 sessions: run `session-cost --all-days` (this v0.0.16 session included).
 - [ ] Optional: phone emulator / real hardware (#16).
 
-## Next up: v0.0.18
-- Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.18" (battle backgrounds per location #74 first, with mock-ups; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
-- After that: test-tool upgrades (#18; a route planner from map data was prototyped this session for the Pewter Gym path), smaller patch (#17).
+## Next up: v0.0.19
+- Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
+- Test tools (#18): done this session: route planner (`tools/research_red/test/route_plan.py`), memory pokes (`poke`, `T.set_flag`/`T.clear_flag`, `FLAG_RR_NO_ENCOUNTERS`). Still open: wait-until-ready, the engine's battle tests. Then a smaller patch (#17).
 
 ## Half-finished / open threads
 - Nothing half-done: everything is committed and pushed.

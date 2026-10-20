@@ -53,6 +53,7 @@ What the results mean:
 | pager_select | Register the Ranch Pager in the Bag; SELECT on the map opens its menu, B closes it |
 | pager_dig | After Brock, inside Diglett's Cave: Ranch Pager > Dig > Yes, Oak's Diglett digs you out to Route 2 |
 | lab_aide | After the lab: walk into the lab, the aide's topic menu, the Ranch Pager explanation, close |
+| forest | After Brock: walk (no wild encounters on the way) into Viridian Forest, wander until a battle: the forest background |
 | oak_mons | Oak's Pager Pokémon: talk to Tauros in the lab yard, pass Lapras and Gyarados on the shore, Pikachu, Farfetch'd, Abra and Machop in the lab |
 | rest | At home: Delia > Rest till night (clock 20:00, Start menu "Night 20:00"), then Rest till morning (7:00, "Day 7:00") |
 | rest_center | Pewter Pokémon Center: Nurse Joy > Rest till night (clock 20:00) |
@@ -70,6 +71,8 @@ tools/research_red/test/setup_mgba.sh
 Downloads CMake and mGBA 0.10.5 into `~/romhacks/_tools/` (outside the repo) and builds `rr_run`. Takes a few minutes. Run it again if `~/romhacks/_tools` is ever deleted.
 
 ## Adding a scenario
+Paths: `python3 tools/research_red/test/route_plan.py MAP_FROM x y MAP_TO [x y]` prints the steps (doors included). To walk without wild battles, wrap the walk in `T.set_flag("FLAG_RR_NO_ENCOUNTERS")` ... `T.clear_flag(...)` (the runner's `poke` command).
+
 Scenarios are short functions in `smoke.py` that return script lines. Building blocks (from `tester.py`):
 - `play_until(label, scene_end(step), max_frames, key="A")`: press a key until the scene sets story progress to `step` and hands control back; screenshots every 60 frames
 - `expect(map_name="MAP_ROUTE1", story=5, party=1)`: check where the scene left us

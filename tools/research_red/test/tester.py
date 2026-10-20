@@ -94,6 +94,17 @@ def scene_end(step):
     return f"{progress_is(step)} && {G.field_free()}"
 
 
+def set_flag(flag):
+    """Set a game flag directly in memory (test setup, e.g. FLAG_RR_NO_ENCOUNTERS)."""
+    addr, bit = G.flag_addr(flag)
+    return [f"poke {addr} |{bit}"]
+
+
+def clear_flag(flag):
+    addr, bit = G.flag_addr(flag)
+    return [f"poke {addr} &~{bit}"]
+
+
 def check(label, cond):
     return [f"check {label} {cond}"]
 

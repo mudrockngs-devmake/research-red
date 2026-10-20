@@ -59,7 +59,9 @@ static void AnimateMonAfterKnockout(enum BattlerId battler);
 
 bool32 IsAiVsAiBattle(void)
 {
-    return (B_FLAG_AI_VS_AI_BATTLE && FlagGet(B_FLAG_AI_VS_AI_BATTLE));
+    // Research Red: trainer battles only. In a wild battle there is no trainer
+    // for the AI to play as, and the battle froze ("TRAINER None sent out...").
+    return (B_FLAG_AI_VS_AI_BATTLE && FlagGet(B_FLAG_AI_VS_AI_BATTLE) && (gBattleTypeFlags & BATTLE_TYPE_TRAINER));
 }
 
 bool32 BattlerIsPlayer(enum BattlerId battlerId)

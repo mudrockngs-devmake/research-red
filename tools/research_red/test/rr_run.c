@@ -372,6 +372,29 @@ int main(int argc, char **argv)
                 }
             }
         }
+        else if (!strcmp(cmd, "poke") && ntok >= 3)
+        {
+            // poke <addr[:size]> <value>, or poke <addr:1> |<mask> / &~<mask>
+            // to set / clear bits (flags). Research Red test setup (#18).
+            struct Term t;
+            if (parseAddr(tok[1], &t))
+            {
+                uint32_t a = t.off + (t.ptr ? core->rawRead32(core, t.ptr, -1) : 0);
+                uint32_t v;
+                if (tok[2][0] == '|')
+                    v = readAddr(&t) | strtoul(tok[2] + 1, NULL, 0);
+                else if (tok[2][0] == '&' && tok[2][1] == '~')
+                    v = readAddr(&t) & ~strtoul(tok[2] + 2, NULL, 0);
+                else
+                    v = strtoul(tok[2], NULL, 0);
+                if (t.size == 4)
+                    core->rawWrite32(core, a, -1, v);
+                else if (t.size == 2)
+                    core->rawWrite16(core, a, -1, v);
+                else
+                    core->rawWrite8(core, a, -1, v);
+            }
+        }
         else if (!strcmp(cmd, "peek") && ntok >= 3)
         {
             struct Term t;

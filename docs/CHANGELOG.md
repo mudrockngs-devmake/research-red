@@ -2,6 +2,12 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
+## v0.0.18
+- New: battle backgrounds that match where you are (#74), in cozier colours: warmer, sunnier grass on routes; a shaded forest in Viridian Forest (every battle there); a sandy platform under a soft sky in towns and on paths; a warm wooden floor in Oak's Lab and homes; Pewter stone for Gym leaders; a richer sea and richer cave earth. Same art, new colours only, so nothing changes size.
+- Fixed (test builds): with the debug test mode on (Debug > Scripts > 9), a wild battle froze ("TRAINER None sent out..."). Test mode now only plays trainer battles for you; wild battles are yours.
+- Testing tools: a route planner across maps and doors, and the test runner can set game flags (no wild encounters while it walks somewhere). New automatic test: a battle in Viridian Forest.
+- **Save:** old saves work.
+
 ## v0.0.17
 - New: the Field notebook look (#73). Menus, the dialogue box, the Start menu and Options are cream paper with brown ink and tan frames; the battle text box is leather brown with brass trim; the FIGHT/BAG menu and the move list are cream with brown frames; the HP boxes have warm brown borders. Layouts and the HP bar colours are unchanged.
 - New: picking up an item shows its picture and a short description.

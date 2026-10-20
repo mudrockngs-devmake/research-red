@@ -594,6 +594,11 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
 
     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
 
+    // Research Red (#74): every battle in Viridian Forest gets the forest
+    // background (long grass, recoloured by tools/research_red/battle_bg_theme.py)
+    if (gMapHeader.regionMapSectionId == MAPSEC_VIRIDIAN_FOREST)
+        return BATTLE_ENVIRONMENT_LONG_GRASS;
+
     if (MetatileBehavior_IsTallGrass(tileBehavior))
         return BATTLE_ENVIRONMENT_GRASS;
     if (MetatileBehavior_IsLongGrass(tileBehavior))

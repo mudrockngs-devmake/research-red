@@ -1,0 +1,24 @@
+{
+  "version": "v0.0.18",
+  "intro": "v0.0.18 is v0.0.17 with battle backgrounds that match each place, in the cozier colours. Battle in each place below and tick it once you've seen the background. If you haven't tested v0.0.16 and v0.0.17 yet, use their reports too (whats-new/v0.0.16 and v0.0.17).",
+  "save": "Save: old saves work.",
+  "sections": [
+    {
+      "title": "Battle backgrounds by place",
+      "items": [
+        {"id": "route-grass", "title": "Routes (tall grass)", "what": "Warmer, sunnier greens with a cream sky.", "try": "A wild battle on Route 1 or Route 2.", "shots": ["wild/w001.png"]},
+        {"id": "forest", "title": "Viridian Forest", "what": "A shaded forest green for every battle in the forest, wild or trainer.", "try": "Any battle in Viridian Forest (wild Pokémon or a Bug Catcher).", "shots": ["forest/v002.png", "forest/v003.png"]},
+        {"id": "towns", "title": "Towns and paths", "what": "A sandy platform under a soft sky.", "try": "A trainer battle on a path, e.g. Route 22 or Elm and Jenny in Pewter.", "shots": ["pewter/s0169.png"]},
+        {"id": "indoors", "title": "Oak's Lab and homes", "what": "A warm wooden floor.", "try": "The lab battle, the Oak + Daisy rematch, or Delia's battle at home.", "shots": ["lab/s0105.png", "delia_battle/b003.png"]},
+        {"id": "gym", "title": "Gym leaders", "what": "Pewter stone for Brock (and later Gym leaders).", "try": "Brock, or his rematch.", "shots": ["brock_rematch/g006.png"]},
+        {"id": "water-cave", "title": "Sea, ponds and caves", "what": "Richer blues for the sea and ponds, richer earth in caves.", "try": "Surf or fish in Pallet's sea; a wild battle in Diglett's Cave entrance if one happens.", "shots": []}
+      ]
+    },
+    {
+      "title": "Fixes",
+      "items": [
+        {"id": "test-mode", "title": "Debug test mode no longer freezes wild battles", "what": "With Debug > Scripts > 9 on, wild battles used to freeze. Test mode now only plays trainer battles for you.", "try": "Turn test mode on and walk into tall grass.", "shots": ["forest/v003.png"]}
+      ]
+    }
+  ]
+}
