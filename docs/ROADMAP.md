@@ -99,7 +99,7 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 - Ranch Pager (#29), Rest for day/night + clock fix (#56, #27), rule-change calls (#13, #45).
 - Rematches: Oak + Daisy (#53), Delia (#70), Brock tiers (#52); watch Elm and Jenny vs Brock (#69); dex banter cutscene and replay with field notes (#5, #4).
 - World: ambient Pokémon pilot (#64), Forest exchanges + the Samurai (#9), Pokédex Area tab (#20), proper case (#11), Cruller (Jenny's Growlithe) in the Daisy scene and on Jenny's team, features list + a lab aide who explains them (#72).
-- Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), title screen + Slowking disclaimer and demo notice (#12, mock-up first), cozier interface colours (#73, mock-ups first), battle backgrounds per location (#74). If the build drags, the art items move to v0.0.17.
+- Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), title screen + Slowking disclaimer and demo notice + a Mareep "A fan project by MudrockNGS" boot splash (#12, mock-ups first), cozier interface colours (#73, mock-ups first), battle backgrounds per location (#74). If the build drags, the art items move to v0.0.17.
 
 **Step 3:** full test run, release v0.0.16, CHANGELOG with a clear **Save:** line.
 
