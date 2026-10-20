@@ -84,7 +84,23 @@ Document every new system (how it works, which files, how to turn it off) and
 test it with the smoke tests, so nothing breaks and each one could be reused in
 other ROM hacks later.
 
-## Next build (after the v0.0.15 playtest)
-1. Fix what the playtest finds (and #20, #14, #37, #41 need the owner's screenshots / details).
-2. The rest of tier 2: #25 types all battle, #27 clock glitch, art (#40, #28, #24, #32, #8, #12), #59 Johto tables (Claude drafts, owner reviews).
-3. Tier 3, one system per build: #13 -> #45 calls, #51 relearner, #57 TMs, #29 Oak's Pager, #56 night/rest, #5 dex cutscene, #50 evolve on demand, #52/#53 rematches, #58 held items, #55.
+## Next build: v0.0.16 (planned with the owner 2026-10-19/20; build starts in a fresh conversation)
+The owner skips the v0.0.15 playtest and tests v0.0.16 long-term (and gives it to the v0.0.13 testers).
+Every decision is on its issue; the character sheets are in `docs/characters/`, the anime and lore reference in `docs/reference/`.
+
+**Already in master (since v0.0.15):** Pewter rematch outside the Center (#10); level caps on/off, counting badges, Rare Candy cap, catch-up EXP, Rules shows the cap (#41); Johto Pokémon and the evolution-level rule in every demo table, one Fishing Rod (#59); TV homage; Diglett's Cave and the League gate closed; Oak/Ivy line updates; reference database and character sheets.
+
+**Step 1: dialogue pass, scene by scene** (Claude redrafts in the sheets' voices, the owner reviews in chat): every demo scene, plus `docs/characters/REWORK.md` (Elm knows his Jenny, the dinner-at-Delia's bet, the joint paper with Oak as PI, the Viridian City sing-along with the owner's phrases, Elm and Jenny saw your Brock win), tutorial banter for new features (Ranch Pager, PC, DexNav, Options > Rules), Brock watch scene (`docs/scenes/pewter_brock_watch.md`).
+
+**Step 2: systems and content** (test each one):
+- Menus: Start menu cleanup (Rules into Options #45, Guide into the Pokédex), DexNav, rename + restore names (#71).
+- Battles: types all battle (#25), held items restored after battle incl. Berries (#58), choose which wild to catch in doubles (#55, if supported).
+- Evolution and moves: evolve on demand (#50), trade evolutions at 37, no Linking Cord (#65), pre-evolution moves relearnable at any level (#51), 100 TMs all from the grant (#57).
+- Ranch Pager (#29), Rest for day/night + clock fix (#56, #27), rule-change calls (#13, #45).
+- Rematches: Oak + Daisy (#53), Delia (#70), Brock tiers (#52); watch Elm and Jenny vs Brock (#69); dex banter cutscene and replay with field notes (#5, #4).
+- World: ambient Pokémon pilot (#64), Forest exchanges + the Samurai (#9), Pokédex Area tab (#20), proper case (#11), Cruller (Jenny's Growlithe) in the Daisy scene and on Jenny's team, features list + a lab aide who explains them (#72).
+- Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), title screen + Slowking disclaimer and demo notice (#12, mock-up first), cozier interface colours (#73, mock-ups first), battle backgrounds per location (#74). If the build drags, the art items move to v0.0.17.
+
+**Step 3:** full test run, release v0.0.16, CHANGELOG with a clear **Save:** line.
+
+**After v0.0.16:** Claude's test-tool upgrades (#18: memory-poke warps and no-encounter mode, a route planner from map data, the engine's battle tests, wait-until-ready), smaller patch (#17).
