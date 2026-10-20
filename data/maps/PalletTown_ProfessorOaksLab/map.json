@@ -311,6 +311,21 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RR_RanchPager_EventScript_OakMachop",
       "flag": "FLAG_TEMP_3"
+    },
+    {
+      "local_id": "LOCALID_LAB_DAISY",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_DAISY",
+      "x": 5,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RR_Lab_EventScript_DaisyRematch",
+      "flag": "FLAG_TEMP_4"
     }
   ],
   "warp_events": [

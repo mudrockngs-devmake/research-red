@@ -715,6 +715,9 @@ enum TrainerID
     TRAINER_RR_JENNY_PEWTER_CHIKORITA,
     TRAINER_RR_JENNY_PEWTER_CYNDAQUIL,
     TRAINER_RR_JENNY_PEWTER_TOTODILE,
+    TRAINER_RR_OAK_REMATCH,   // Research Red (#53): teams set by src/rr_rematch.c
+    TRAINER_RR_DAISY_REMATCH,
+    TRAINER_RR_DELIA_REMATCH, // Research Red (#70)
     TRAINERS_COUNT,
 
     // Special Trainer Ids.

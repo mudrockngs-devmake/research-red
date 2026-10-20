@@ -285,6 +285,53 @@ def sc_rest_center():
             + check("night_20h", f"{hour} == 20") + ["shot c003"])
 
 
+def fly_to_pallet_after_brock():
+    """Debug 10 (after Brock, test mode), then Ranch Pager > Fly to Pallet.
+    Lands at (6,8), in front of home."""
+    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_AFTER_BROCK)
+            + ["press START", "wait 20", "press B", "wait 20"] + start_menu_item(5)
+            + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + ["press A", "wait 20", "press A", "wait 150", "press A", "wait 150"]
+            + ["press DOWN", "wait 30"] * 7 + ["wait 30", "press A", "wait 90"]
+            + play_until("landed", T.G.field_free(), 3000, key="START", every=400)
+            + check("in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
+
+
+def sc_delia_battle():
+    # #70: after Brock, home: Delia asks for a battle first (Yes), a double
+    # with Mimey leading (1 badge: Lv 21 Mimey, Gloom)
+    return (fly_to_pallet_after_brock() + step("UP") + ["wait 120"] + step("UP", 5) + step("RIGHT", 4)
+            + ["press DOWN 6", "wait 20", "press A", "wait 90", "shot b001", "press A", "wait 60", "shot b002"]
+            + play_until("battle", T.G.in_battle(), 1500, key="A", every=40)
+            + ["wait 300", "shot b003"]
+            + play_until("battle_over", T.G.field_free(), 40000, key="A", every=120)
+            + expect("MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", story=7))
+
+
+def sc_oak_rematch():
+    # #53: after Brock (story 7, 1 badge, test mode), Ranch Pager > Fly to
+    # Pallet, into the lab, talk to Oak: the Oak + Daisy double (tier 1:
+    # middle-stage starters at Lv 21). Daisy stands by Oak.
+    fly = (["press START", "wait 20"] + ["press B", "wait 20"] + start_menu_item(5)
+           + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+           + ["press A", "wait 20", "press A", "wait 150", "press A", "wait 150", "shot k001"]
+           + sum([["press DOWN", "wait 30", f"shot k1{i:02d}"] for i in range(7)], [])
+           + ["wait 30", "press A", "wait 90", "shot k002"]   # Pallet Town
+           + play_until("landed", T.G.field_free(), 3000, key="START", every=400)
+           + check("in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
+    # from the landing spot (6,8): around to the lab door (16,13), up to Oak (6,4)
+    walk = (["shot k003"] + step("DOWN") + step("RIGHT", 6) + step("DOWN", 5) + step("RIGHT", 4) + step("UP")
+            + ["wait 120", "shot k004"] + check("in_lab", T.G.on_map("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB"))
+            + step("UP", 8) + ["press UP 6", "wait 20", "shot k005"])
+    battle = (["press A", "wait 60", "shot k006"]
+              + play_until("battle", T.G.in_battle(), 1500, key="A", every=40)
+              + ["wait 300", "shot k007"]
+              + play_until("rematch_over", T.G.field_free(), 40000, key="A", every=120)
+              + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=7))
+    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_AFTER_BROCK)
+            + fly + walk + battle)
+
+
 def sc_oak_mons():
     # #29: Oak's Ranch Pager Pokemon. Debug 2 leaves us at (15,8) in Pallet:
     # east to the lab yard (Tauros 21,10 and Pidgeot 21,12), talk to Tauros,
@@ -429,6 +476,8 @@ SCENARIOS = {
     "pager_dig": (sc_pager_dig, "Ranch Pager > Dig in Diglett's Cave: Oak's Diglett digs us out (#29)"),
     "rest": (sc_rest, "Delia: Rest till night, then till morning; the Start menu clock (#56, #27)"),
     "rest_center": (sc_rest_center, "Nurse Joy in Pewter: Rest till night (#56)"),
+    "oak_rematch": (sc_oak_rematch, "Oak + Daisy rematch in the lab after Brock (#53)"),
+    "delia_battle": (sc_delia_battle, "Delia's double battle at home after Brock (#70)"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),

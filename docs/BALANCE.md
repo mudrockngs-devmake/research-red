@@ -12,7 +12,7 @@ Levels you'll meet in each area, in story order, next to the level cap. Use it t
 | Route 22 | 3-7 | 8-9 | 9 |
 | Route 2 | 3-5 | - | - |
 | Viridian Forest | 3-10 | 6-9 | 9 |
-| Pewter City | - | 10-15 | 15 |
+| Pewter City | - | 0-15 | 15 |
 
 ## Level caps (src/caps.c)
 

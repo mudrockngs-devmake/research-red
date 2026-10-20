@@ -903,6 +903,7 @@
 	.include "data/scripts/research_red/rr_pewter.inc"
 	.include "data/scripts/research_red/rr_ranch_pager.inc"
 	.include "data/scripts/research_red/rr_rest.inc"
+	.include "data/scripts/research_red/rr_rematch.inc"
 
 	.include "data/text/aide.inc"
 	.include "data/text/apprentice.inc"

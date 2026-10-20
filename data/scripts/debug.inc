@@ -331,6 +331,8 @@ Debug_EventScript_Script_10::
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_DEFEATED_BROCK
 	setvar VAR_MAP_SCENE_PEWTER_CITY, 1
+	setflag FLAG_WORLD_MAP_PALLET_TOWN @ Research Red: the towns you'd have passed (Fly targets)
+	setflag FLAG_WORLD_MAP_VIRIDIAN_CITY
 	setflag FLAG_WORLD_MAP_PEWTER_CITY
 	rr_ivy_create_follower
 	warp MAP_PEWTER_CITY, 17, 26

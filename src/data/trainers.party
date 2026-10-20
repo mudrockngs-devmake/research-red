@@ -15204,3 +15204,85 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Macaron (Nidorina)
 Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+/* Research Red (#53): Oak + Daisy rematch, a double in Oak's Lab after the
+   Route 22 6v6. Species, levels and moves here are placeholders: the team is
+   set from your badges and lab pick when the battle starts (src/rr_rematch.c).
+   No money, 1.5x EXP. */
+=== TRAINER_RR_OAK_REMATCH ===
+Name: Oak
+Class: Pkmn Prof
+Pic: RR Oak
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Squirtle
+Level: 14
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Chikorita
+Level: 14
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Slowpoke
+Level: 13
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+=== TRAINER_RR_DAISY_REMATCH ===
+Name: Daisy
+Class: Pkmn Trainer 1
+Pic: RR Daisy
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Muffin (Rattata) @ Eviolite
+Level: 13
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Clefairy
+Level: 13
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Vulpix
+Level: 13
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+/* Research Red (#70): Delia at home, a double, from the Route 22 6v6 on.
+   Placeholder species/levels: set from your badges (src/rr_rematch.c). */
+=== TRAINER_RR_DELIA_REMATCH ===
+Name: Delia
+Class: Pkmn Trainer 1
+Pic: RR Delia
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mimey (Mr. Mime)
+Level: 14
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Oddish
+Level: 13
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Grimer
+Level: 13
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Miltank
+Level: 13
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Butterfree
+Level: 13
+Shiny: Yes
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+Munchlax
+Level: 13
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe

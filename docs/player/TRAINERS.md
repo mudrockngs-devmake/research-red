@@ -131,6 +131,9 @@ Their starters depend on yours:
 | Biscotti (Totodile) | 15 | level-up moves |
 | Licorice (Ekans) | 14 | level-up moves |
 | Macaron (Nidorina) | 14 | level-up moves |
+| Route 22 6V6 Species Levels And Moves Here Are Placeholders The Team Is | None | level-up moves |
+| Set From Your Badges And Lab Pick When The Battle Starts Src Rr Rematch C | None | level-up moves |
+| No Money 1 5X Exp | None | level-up moves |
 
 ### Leader Brock
 

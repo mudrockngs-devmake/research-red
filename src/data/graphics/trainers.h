@@ -483,6 +483,12 @@ static const u16 gTrainerPalette_PyramidKingBrandon[] = INCBIN_U16("graphics/tra
 // Research Red: battle pics made from the owner's full-body ref art (graphics/research_red/cast, built by tools/research_red/build_cast_art.py)
 static const u32 gTrainerFrontPic_RR_Elm[] = INCBIN_U32("graphics/research_red/cast/elm/battle.4bpp.smol");
 static const u16 gTrainerPalette_RR_Elm[] = INCBIN_U16("graphics/research_red/cast/elm/battle.gbapal");
+static const u32 gTrainerFrontPic_RR_Oak[] = INCBIN_U32("graphics/research_red/cast/oak/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_Oak[] = INCBIN_U16("graphics/research_red/cast/oak/battle.gbapal");
+static const u32 gTrainerFrontPic_RR_Daisy[] = INCBIN_U32("graphics/research_red/cast/daisy/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_Daisy[] = INCBIN_U16("graphics/research_red/cast/daisy/battle.gbapal");
+static const u32 gTrainerFrontPic_RR_Delia[] = INCBIN_U32("graphics/research_red/cast/delia/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_Delia[] = INCBIN_U16("graphics/research_red/cast/delia/battle.gbapal");
 static const u32 gTrainerFrontPic_RR_Jenny[] = INCBIN_U32("graphics/research_red/cast/jenny/battle.4bpp.smol");
 static const u16 gTrainerPalette_RR_Jenny[] = INCBIN_U16("graphics/research_red/cast/jenny/battle.gbapal");
 
@@ -1232,5 +1238,17 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_RR_JENNY] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_Jenny, gTrainerPalette_RR_Jenny, TRAINER_PIC_SIZE),
+    },
+    [TRAINER_PIC_RR_OAK] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_Oak, gTrainerPalette_RR_Oak, TRAINER_PIC_SIZE),
+    },
+    [TRAINER_PIC_RR_DAISY] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_Daisy, gTrainerPalette_RR_Daisy, TRAINER_PIC_SIZE),
+    },
+    [TRAINER_PIC_RR_DELIA] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_Delia, gTrainerPalette_RR_Delia, TRAINER_PIC_SIZE),
     },
 };

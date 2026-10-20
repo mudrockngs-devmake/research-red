@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_rematch.h" // Research Red
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_ai_main.h"
@@ -2121,6 +2122,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     {
         retVal = CreateNPCTrainerPartyFromTrainer(party, GetTrainerStructFromId(trainerNum), firstTrainer, gBattleTypeFlags);
     }
+    RR_AdjustRematchParty(party, trainerNum, retVal); // Research Red (#53): rematch teams follow your badges
     return retVal;
 }
 

@@ -42,6 +42,8 @@ RR_EventScript_PkmnCenterNurse_Rest::
 
 @ Delia at home (PalletTown_PlayersHouse_1F_EventScript_MomHeal)
 RR_EventScript_DeliaHealOrRest::
+	goto_if_ge VAR_0x40FE, 6, RR_EventScript_DeliaBattleAsk @ #70: from the Route 22 6v6 on
+RR_EventScript_DeliaHealOrRestMenu::
 	message RR_Rest_Text_DeliaAsk
 	waitmessage
 	call RR_EventScript_HealOrRestMenu

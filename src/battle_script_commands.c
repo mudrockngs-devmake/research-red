@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_rematch.h" // Research Red
 #include "rr_dex_banter.h"
 #include "battle.h"
 #include "battle_hold_effects.h"
@@ -4214,6 +4215,9 @@ static void Cmd_getexp(void)
 
             if (B_TRAINER_EXP_MULTIPLIER <= GEN_7 && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                 calculatedExp = (calculatedExp * 150) / 100;
+            // Research Red (#53): rematches are for training: 1.5x EXP
+            if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && RR_IsRematchTrainer(TRAINER_BATTLE_PARAM.opponentA))
+                calculatedExp = (calculatedExp * 150) / 100;
 
             if (B_SPLIT_EXP < GEN_6)
             {
@@ -6212,6 +6216,8 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
     u32 moneyReward;
     u8 trainerMoney = 0;
 
+    if (RR_IsRematchTrainer(trainerId)) // Research Red (#53): no money from rematches
+        return 0;
     if (trainerId == TRAINER_SECRET_BASE)
     {
         moneyReward = 20 * gBattleResources->secretBase->party.levels[0] * gBattleStruct->moneyMultiplier;

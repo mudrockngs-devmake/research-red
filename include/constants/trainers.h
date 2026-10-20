@@ -185,6 +185,9 @@ enum __attribute__((packed)) TrainerPicID
     // Research Red
     TRAINER_PIC_RR_ELM,
     TRAINER_PIC_RR_JENNY,
+    TRAINER_PIC_RR_OAK,   // Research Red (#53, #70): from graphics/research_red/cast/*/battle.png
+    TRAINER_PIC_RR_DAISY,
+    TRAINER_PIC_RR_DELIA,
     TRAINER_PIC_COUNT,
 };
 
