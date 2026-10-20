@@ -34,6 +34,8 @@ three clicked in school, and why Oak brought them together now.
 - **Habit:** writes everything down. Their field notes are a running gag
   ("Mimey: pancakes. Dangerous. See Ivy.").
 - Genuinely fond of Mimey.
+- A Pokémon lore buff: loves deep trivia and big-picture theories about the Pokémon world.
+- The field notes feed the Pokédex-entry banter with Ivy (#5).
 
 ## Comedy toolbox
 Sitcom-level jokes, for the whole game.

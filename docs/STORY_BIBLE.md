@@ -10,7 +10,7 @@ Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stoppe
 | --- | --- | --- |
 | Player | Professor; studies regional forms with Ivy | Wry, warm, absurd: ironic mock-disbelief, dry understatement, puns, quiet asides; deeply caring; makes Ivy laugh. Sheet: docs/characters/PLAYER.md |
 | Ivy | Wife; regional-forms researcher (Orange Islands) | Teases, loves; calls the player "sweetie"; shares forms wisdom learned from other professors. Sheet: docs/characters/IVY.md |
-| Elm | Friendly rival (Johto professor; Pokémon evolution expert, discovered Pokémon eggs) | Loud, passionate, competitive; secretly sentimental |
+| Elm | Friendly rival (Johto professor; Pokémon evolution expert, discovered Pokémon eggs) | Loud, passionate, competitive; secretly sentimental. Sheet: docs/characters/ELM.md |
 | Jenny | Elm's wife, police officer | Warm but by-the-book: "In my professional opinion..."; casual clothes, uniform only for Team Rocket |
 | Prof. Oak | Mentor, a grandfather to everyone | Poems, warns about tall grass, Pokémon proverbs, hints at forms in "other lands and other eras". Sheet: docs/characters/OAK.md |
 | Delia | Host in Pallet | Warm; Mimey (her Mr. Mime) makes pancakes; "I supervised" |
@@ -48,3 +48,9 @@ Gerald the Tentacool on the anchor line; Slowpoke never hung up the call; "Persi
 
 ## Sequel seeds (spitballing, nothing decided)
 A Johto game where Elm is the lead researcher (as Oak is here). The player and Ivy face Professors Kukui and Burnet as a couple of rivals in the Johto challenge. Their research goal: Z-Moves (Kukui's specialty), Ultra Wormholes (Burnet's), possibly leading to Eternatus and Gigantamax. Mentions in the Daisy scene lay groundwork for it.
+
+## Science in the story
+The player's molecular side lets the game teach a little real biology through
+Pokémon (shared ancestors, how regional forms split off, what sequencing can and
+can't tell you), without knocking the games' own lore. Accuracy matters: no
+movie-science. The owner can write or check these lines.

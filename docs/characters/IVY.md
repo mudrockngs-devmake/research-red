@@ -5,7 +5,7 @@ Character sheet, workshopped with the owner on 2026-10-20. Voice reference:
 
 ## In one line
 The player's wife: a confident, strong woman and the foremost expert on regional
-forms, who teases the player lovingly and adores their jokes.
+forms in the field (ecology and how forms fit where they live; the player has the molecular side), who teases the player lovingly and adores their jokes.
 
 ## Three words
 Cute, strong, confident.
