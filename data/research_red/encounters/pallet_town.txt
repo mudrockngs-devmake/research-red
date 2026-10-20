@@ -1,27 +1,20 @@
-# Pallet Town's shore. Magikarp and Gyarados from the anime's first episode,
-# the Kanto sea Pokemon and Johto neighbors (#59). Gyarados only at 20, the
-# level Magikarp evolves.
+# Pallet Town's shore: Kanto's sea Pokemon plus Johto neighbors (#59).
+# Surfing finds the everyday ones, fishing the rarer ones (one Fishing Rod).
+# Levels match the start of the game. Gyarados from the anime's first
+# episode becomes an ambient Pokemon here instead (#64). Gerald the
+# Tentacool marks where Pallet's water ends (the demo boundary).
 map: MAP_PALLET_TOWN
 
 [surf]
-Tentacool   5-15 60
-Magikarp    5-15 30
-Chinchou    5-10  5
-Psyduck     5-10  4
-Gyarados   20     1
+Tentacool   3-6  60
+Magikarp    3-6  30
+Horsea      3-6   5
+Chinchou    3-6   4
+Qwilfish    4-6   1
 
-[old rod]
-Magikarp    5     70
-Poliwag     5     30
-
-[good rod]
-Magikarp   10-15  60
-Tentacool  10-15  20
-Remoraid   10-15  20
-
-[super rod]
-Horsea     15-20  40
-Krabby     15-20  40
-Shellder   15-20  15
-Qwilfish   15-20   4
-Dratini    10-15   1
+[fishing]
+Krabby      3-6  40
+Staryu      3-6  40
+Shellder    3-6  15
+Remoraid    4-6   4
+Dratini     4-6   1

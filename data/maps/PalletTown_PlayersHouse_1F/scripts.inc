@@ -54,9 +54,7 @@ PalletTown_PlayersHouse_1F_EventScript_TV::
 	end
 
 PalletTown_PlayersHouse_1F_EventScript_TVScreen::
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, PalletTown_PlayersHouse_1F_EventScript_TVScreenMale
-	call_if_eq VAR_RESULT, FEMALE, PalletTown_PlayersHouse_1F_EventScript_TVScreenFemale
+	msgbox RR_PlayersHouse_Text_TVGengarNidorino @ Research Red: the anime's first-episode TV battle
 	releaseall
 	end
 

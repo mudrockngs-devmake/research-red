@@ -13900,12 +13900,12 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_SUPER_ROD] =
     {
-        .name = ITEM_NAME("Super Rod"),
+        .name = ITEM_NAME("Fishing Rod"), // Research Red: the one rod (fishing tables use its slots)
         .price = 0,
         .description = COMPOUND_STRING(
-            "The best fishing "
-            "rod for catching\n"
-            "wild Pokémon."),
+            "A fishing rod for "
+            "hooking the rarer\n"
+            "water Pokémon."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_FIELD,

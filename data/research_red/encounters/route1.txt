@@ -1,14 +1,14 @@
 # Route 1: the anime's first episode, family by family (Pidgey, Spearow,
 # Rattata, Pikachu, Nidoran, Doduo, Gastly; Magikarp and Gyarados are in
-# Pallet Town's water) plus the Route 1 regulars and Johto neighbors (#59).
+# Pallet Town's water; Gengar vs. Nidorino is on the TV at home) plus the Route 1 regulars and Johto neighbors (#59).
 # Evolved forms only at or near the level they evolve (owner, 2026-10-19).
 map: MAP_ROUTE1
 
 [grass]
 Pidgey      2-4  20
-Rattata     2-4  20
+Spearow     2-4  20
 Sentret     2-4  10
-Spearow     2-4  10
+Rattata     2-4  10
 Nidoran♂    3-4  10
 Nidoran♀    3-4  10
 Hoppip      3-4   5

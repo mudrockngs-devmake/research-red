@@ -1,7 +1,7 @@
 // Research Red: the Field Guide (Start menu > Guide).
 //
 // Shows which wild Pokemon live where the player is standing and how often
-// they appear: for each kind of encounter (grass, surf, each fishing rod, rock
+// they appear: for each kind of encounter (grass, surf, fishing, rock
 // smash) a day page and, when the night list differs, a night page (#42).
 // Left/Right flips pages; it opens on the page for the current time.
 // Species already caught are listed in green.
@@ -36,9 +36,7 @@ enum
 {
     PAGE_GRASS,
     PAGE_SURF,
-    PAGE_OLD_ROD,
-    PAGE_GOOD_ROD,
-    PAGE_SUPER_ROD,
+    PAGE_FISHING, // the one Fishing Rod: the Super Rod's slots
     PAGE_ROCK_SMASH,
     NUM_PAGES,
 };
@@ -47,9 +45,7 @@ static const u8 *const sPageNames[NUM_PAGES] =
 {
     [PAGE_GRASS] = COMPOUND_STRING("Grass"),
     [PAGE_SURF] = COMPOUND_STRING("Surfing"),
-    [PAGE_OLD_ROD] = COMPOUND_STRING("Old Rod"),
-    [PAGE_GOOD_ROD] = COMPOUND_STRING("Good Rod"),
-    [PAGE_SUPER_ROD] = COMPOUND_STRING("Super Rod"),
+    [PAGE_FISHING] = COMPOUND_STRING("Fishing"),
     [PAGE_ROCK_SMASH] = COMPOUND_STRING("Rock Smash"),
 };
 
@@ -118,16 +114,11 @@ static const struct WildPokemonInfo *GetKindInfo(u32 page, enum TimeOfDay time, 
         info = gWildMonHeaders[headerId].encounterTypes[season][time].rockSmashMonsInfo;
         *firstSlot = 0, *slotCount = ROCK_WILD_COUNT, *rates = sWaterRates;
         break;
-    default: // the rods share one table: old 0-1, good 2-4, super 5-9
+    default: // the rods share one table: old 0-1, good 2-4, super 5-9 (the Fishing Rod)
         GetSeasonAndTimeOfDayForEncounters(headerId, WILD_AREA_FISHING, &season, &time);
         info = gWildMonHeaders[headerId].encounterTypes[season][time].fishingMonsInfo;
         *rates = sFishingRates;
-        if (page == PAGE_OLD_ROD)
-            *firstSlot = 0, *slotCount = 2;
-        else if (page == PAGE_GOOD_ROD)
-            *firstSlot = 2, *slotCount = 3;
-        else
-            *firstSlot = 5, *slotCount = 5;
+        *firstSlot = 5, *slotCount = 5;
         break;
     }
     return info;

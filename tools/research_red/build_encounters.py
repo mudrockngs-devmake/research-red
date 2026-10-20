@@ -9,8 +9,10 @@ Each file in data/research_red/encounters/ describes one area:
     ...
     [grass night]           optional; used at night (the plain table otherwise)
 
-Sections: grass, surf, rock smash, old rod, good rod, super rod; add " night"
-for a night-only version. The game picks from fixed slots (grass has 12 slots
+Sections: grass, surf, rock smash, fishing; add " night" for a night-only
+version. Research Red has one Fishing Rod (the renamed Super Rod), so [fishing]
+fills the Super Rod's slots; the Old and Good Rod slots get the [fishing]
+list's most common Pokemon (only old saves still carry those rods). The game picks from fixed slots (grass has 12 slots
 worth 20/20/10/10/10/10/5/5/4/4/1/1 percent), so the tool finds the slots that
 add up to each percent, and says so if a percent can't be made exactly.
 
@@ -38,6 +40,7 @@ SLOTS = {
     "old rod": ("fishing_mons", [70, 30], 10),
     "good rod": ("fishing_mons", [60, 20, 20], 10),
     "super rod": ("fishing_mons", [40, 40, 15, 4, 1], 10),
+    "fishing": ("fishing_mons", [40, 40, 15, 4, 1], 10),
 }
 ROD_ORDER = ["old rod", "good rod", "super rod"]
 
@@ -145,6 +148,11 @@ def build_table(area, night):
             out[jtype] = {"encounter_rate": data["rate"], "mons": slots}
     if "fishing_mons" in out:
         rods = out["fishing_mons"]["rods"]
+        if "fishing" in rods:
+            if len(rods) > 1:
+                sys.exit(f"{area['map']}: use [fishing] or the three rods, not both")
+            f = rods.pop("fishing")   # slots in rate order: 40, 40, 15, 4, 1
+            rods.update({"old rod": f[:2], "good rod": f[:3], "super rod": f})
         if set(rods) != set(ROD_ORDER):
             sys.exit(f"{area['map']}: give all three rods ([old rod], [good rod], [super rod]) or none")
         out["fishing_mons"] = {"encounter_rate": out["fishing_mons"]["encounter_rate"],

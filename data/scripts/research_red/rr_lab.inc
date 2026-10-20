@@ -660,9 +660,7 @@ RR_Lab_EventScript_GiveGrant::
 	@ key items (story items like the Town Map stay in their scenes)
 	additem ITEM_EXP_SHARE, 1
 	additem ITEM_BICYCLE, 1
-	additem ITEM_OLD_ROD, 1
-	additem ITEM_GOOD_ROD, 1
-	additem ITEM_SUPER_ROD, 1
+	additem ITEM_SUPER_ROD, 1 @ the one Fishing Rod (renamed Super Rod)
 	additem ITEM_ITEMFINDER, 1
 	additem ITEM_VS_SEEKER, 1
 	additem ITEM_BERRY_POUCH, 1

@@ -28,7 +28,7 @@ Script `PalletTown_PlayersHouse_1F_EventScript_Mimey`
 
 ## Signs
 
-- at 6,1: There's a movie on TV. Four boys are walking on railroad tracks.  …I better go, too. / There's a movie on TV. A girl with her hair in pigtails is walking up a brick road.  …I better go, too. / Oops, wrong side…
+- at 6,1: There's a Pokémon battle on TV. A Gengar and a Nidorino are going all out!  …Ivy will want notes on this. / Oops, wrong side…
 
 ## Exits
 

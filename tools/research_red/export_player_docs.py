@@ -41,7 +41,7 @@ SLOT_RATES = {
     "fishing_mons": [70, 30, 60, 20, 20, 40, 40, 15, 4, 1],
 }
 SECTIONS = [("land_mons", "Grass", None), ("water_mons", "Surfing", None), ("rock_smash_mons", "Rock Smash", None),
-            ("fishing_mons", "Old Rod", (0, 2)), ("fishing_mons", "Good Rod", (2, 5)), ("fishing_mons", "Super Rod", (5, 10))]
+            ("fishing_mons", "Fishing", (5, 10))]  # one Fishing Rod: the Super Rod slots
 # Level caps (src/caps.c): the cap before each badge
 # Badges you have -> cap (src/caps.c counts badges, so gym order doesn't matter)
 LEVEL_CAPS = [("0 (before Brock)", 14), ("1", 21), ("2", 24), ("3", 29), ("4", 43), ("5", 43),

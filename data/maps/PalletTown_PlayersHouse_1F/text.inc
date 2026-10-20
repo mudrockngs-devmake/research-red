@@ -19,5 +19,12 @@ PalletTown_PlayersHouse_1F_Text_MovieOnTVGirlOnBrickRoad::
     .string "walking up a brick road.\p"
     .string "…I better go, too.$"
 
+@ Research Red: the anime's first-episode TV battle
+RR_PlayersHouse_Text_TVGengarNidorino::
+    .string "There's a Pokémon battle on TV.\n"
+    .string "A Gengar and a Nidorino are going\l"
+    .string "all out!\p"
+    .string "…Ivy will want notes on this.$"
+
 PalletTown_PlayersHouse_1F_Text_OopsWrongSide::
     .string "Oops, wrong side…$"

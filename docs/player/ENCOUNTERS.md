@@ -10,36 +10,21 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 
 | Pokémon | Levels | Chance |
 |---|---|---|
-| Tentacool | 5-15 | 60% |
-| Magikarp | 5-15 | 30% |
-| Chinchou | 5-10 | 5% |
-| Psyduck | 5-10 | 4% |
-| Gyarados | 20 | 1% |
+| Tentacool | 3-6 | 60% |
+| Magikarp | 3-6 | 30% |
+| Horsea | 3-6 | 5% |
+| Chinchou | 3-6 | 4% |
+| Qwilfish | 4-6 | 1% |
 
-**Old Rod (Any time)**
-
-| Pokémon | Levels | Chance |
-|---|---|---|
-| Magikarp | 5 | 70% |
-| Poliwag | 5 | 30% |
-
-**Good Rod (Any time)**
+**Fishing (Any time)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
-| Magikarp | 10-15 | 60% |
-| Tentacool | 10-15 | 20% |
-| Remoraid | 10-15 | 20% |
-
-**Super Rod (Any time)**
-
-| Pokémon | Levels | Chance |
-|---|---|---|
-| Horsea | 15-20 | 40% |
-| Krabby | 15-20 | 40% |
-| Shellder | 15-20 | 15% |
-| Qwilfish | 15-20 | 4% |
-| Dratini | 10-15 | 1% |
+| Krabby | 3-6 | 40% |
+| Staryu | 3-6 | 40% |
+| Shellder | 3-6 | 15% |
+| Remoraid | 4-6 | 4% |
+| Dratini | 4-6 | 1% |
 
 ## Route 1
 
@@ -48,9 +33,9 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Pokémon | Levels | Chance |
 |---|---|---|
 | Pidgey | 2-4 | 20% |
-| Rattata | 2-4 | 20% |
+| Spearow | 2-4 | 20% |
 | Sentret | 2-4 | 10% |
-| Spearow | 2-4 | 10% |
+| Rattata | 2-4 | 10% |
 | Nidoran♂ | 3-4 | 10% |
 | Nidoran♀ | 3-4 | 10% |
 | Hoppip | 3-4 | 5% |
@@ -88,22 +73,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Slowpoke | 5-10 | 5% |
 | Wooper | 5-10 | 5% |
 
-**Old Rod (Any time)**
-
-| Pokémon | Levels | Chance |
-|---|---|---|
-| Magikarp | 5 | 70% |
-| Poliwag | 5 | 30% |
-
-**Good Rod (Any time)**
-
-| Pokémon | Levels | Chance |
-|---|---|---|
-| Poliwag | 10-15 | 60% |
-| Goldeen | 10-15 | 20% |
-| Magikarp | 10-15 | 20% |
-
-**Super Rod (Any time)**
+**Fishing (Any time)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
@@ -158,22 +128,7 @@ Chances are per encounter. "Day" covers morning, day and evening; "Night" is the
 | Marill | 5-10 | 5% |
 | Goldeen | 5-15 | 5% |
 
-**Old Rod (Any time)**
-
-| Pokémon | Levels | Chance |
-|---|---|---|
-| Magikarp | 5 | 70% |
-| Poliwag | 5 | 30% |
-
-**Good Rod (Any time)**
-
-| Pokémon | Levels | Chance |
-|---|---|---|
-| Poliwag | 10-15 | 60% |
-| Goldeen | 10-15 | 20% |
-| Magikarp | 10-15 | 20% |
-
-**Super Rod (Any time)**
+**Fishing (Any time)**
 
 | Pokémon | Levels | Chance |
 |---|---|---|
