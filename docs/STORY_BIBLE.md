@@ -3,7 +3,7 @@
 The animatic is the detailed script; this file holds the rules of the world. Scene specs in `docs/scenes/` override both.
 
 ## Premise and tone
-Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stopped loving Pokemon. You are an adult professor (Maple, Cedar or Sumac; male or female), Prof. Oak's quietest and most reliable former student, visiting Pallet with your wife Ivy for a research stay.
+Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stopped loving Pokemon. You are an adult professor (Maple, Cedar or Sumac; male or female), one of Prof. Oak's two best former students (Elm is the other), visiting Pallet with your wife Ivy for a research stay.
 
 ## Cast
 | Character | Role | Voice |
@@ -12,7 +12,7 @@ Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stoppe
 | Ivy | Wife; regional-forms researcher (Orange Islands) | Teases, loves; calls the player "sweetie"; shares forms wisdom learned from other professors |
 | Elm | Friendly rival (Johto professor; Pokémon evolution expert, discovered Pokémon eggs) | Loud, passionate, competitive; secretly sentimental |
 | Jenny | Elm's wife, police officer | Warm but by-the-book: "In my professional opinion..."; casual clothes, uniform only for Team Rocket |
-| Prof. Oak | Mentor | Haiku, warns about tall grass, hints at forms in "other lands and other eras" |
+| Prof. Oak | Mentor, a grandfather to everyone | Poems, warns about tall grass, Pokémon proverbs, hints at forms in "other lands and other eras". Sheet: docs/characters/OAK.md |
 | Delia | Host in Pallet | Warm; Mimey (her Mr. Mime) makes pancakes; "I supervised" |
 | Daisy | Hosts Elm and Jenny | Her Rattata is Muffin (Elm insists it's a Persian) |
 | Brock | Pewter Gym Leader | Kind, cooks stew for challengers, big brother to nine, planned puns |
@@ -28,7 +28,7 @@ Ivy and Jenny are old friends; Elm and the player are best-friend rivals. Couple
 - Regular trainers: at most one short you-and-Ivy exchange afterward, flavored by trainer class.
 - Kukui and Burnett were meant to come but are "starting a league".
 - Recurring: a group video call after every badge (Oak, Elm, Jenny, Ivy, player; sometimes Delia or Daisy).
-- Endgame payoff: the forms Oak hinted at (Megas, Dynamax/Gigantamax, regional/Hisuian starter forms) become usable late, via a custom area.
+- Endgame payoff: the forms Oak hinted at (Mega Evolution and regional forms; no Z-Moves/Dynamax/Tera this game, #1) become usable late, via a custom area.
 
 ## Story rules for towns (owner, 2026-10-19)
 - **Town cutscenes and rematches happen just outside Pokémon Centers**: easy to find, a natural place for the cast to meet, and outside because Nurse Joy doesn't allow battles indoors.

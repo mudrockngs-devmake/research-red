@@ -14,7 +14,7 @@ How each of them talked in the early anime, with sample lines: [reference/VOICES
 | **Elm** (rival, Johto professor) | Loud, eager, competitive, secretly sentimental | "For science!", grand declarations, instant excuses ("It's allergies! Daisy has a Persian!"), dessert names for his Pokémon | Being genuinely dumb; he's brilliant and over-excited |
 | **Jenny** (Elm's wife, off-duty officer) | Deadpan, loving, procedural | **"In my professional opinion"**, "by protocol", calls Elm **"dear"**, mid-sentence reality checks | Being cold; she's on his side, always |
 | **Officer Jenny** (her cousin) | Brisk, on duty | Family-reunion jokes (every Jenny looks the same) | |
-| **Prof. Oak** | Grandfatherly, a little forgetful, dramatic | Haiku at odd moments, "Ho ho!", remembers students' names eventually | |
+| **Prof. Oak** | Grandfatherly, theatrical about joy, forgetful about small things | Poems at odd moments, "Ho ho!", Pokémon proverbs ("the early Pidgey catches the Weedle"), even tutorials are him talking to you ([sheet](characters/OAK.md)) | Cruelty, anger, sounding like a rules screen |
 | **Delia** | Motherly, feeds everyone | Pancakes, "Ash used to forget breakfast every time" | |
 | **Daisy** | Calm, practical, unimpressed by Elm | Corrects "Persian" to "Rattata" | |
 | **Mimey** | Mime | "Mime mime!" Bows. Makes pancakes. | Real words |
