@@ -239,6 +239,19 @@ def sc_rename():
             + one + empty + ["mash B 120", "wait 30", "shot s003"]
             + play_until("rename_closed", T.G.field_free(), 2000, key="B", every=30))
 
+def sc_wild():
+    # A wild single battle on Route 1 (#25: the opponent's types stay on screen
+    # all battle): pace in the grass until something appears, look, run away.
+    pace = []
+    for _ in range(60):
+        pace += ["hold LEFT 16", "wait 4", "hold RIGHT 16", "wait 4"]
+    return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 6) + pace
+            + check("in_wild_battle", T.G.in_battle())
+            + ["wait 200", "shot w001", "mash B 120", "wait 30", "shot w002", "press A", "wait 60", "shot w003",
+               "press B", "wait 30", "press RIGHT", "wait 10", "press DOWN", "wait 10", "shot w004", "press A"]
+            # keep choosing RUN (the cursor stays on it) until the escape works
+            + play_until("ran_away", T.G.field_free(), 6000, key="A", every=40))
+
 # Maps the report can name (anything else shows as a number)
 MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
              "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", "MAP_PALLET_TOWN_RIVALS_HOUSE", "MAP_ROUTE1",
@@ -261,6 +274,7 @@ SCENARIOS = {
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),
     "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
+    "wild": (sc_wild, "A wild single battle on Route 1: opponent types, then run away (#25)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),

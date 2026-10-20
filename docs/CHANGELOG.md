@@ -14,6 +14,7 @@ Test builds are v0.0.x. Each entry lists what changed for players and testers, a
 - Changed: the Field Guide moved into the Pokédex: press START in the Pokédex, then FIELD GUIDE (it replaces LIST BOTTOM; holding Down still reaches the end of the list). The Start menu is shorter: no more Guide or Rules.
 - New: the DexNav. After the Route 22 battle (win or lose), Jenny gives you her old Pokémon-spotting logbook, turned into an app. Start > DexNav shows the area's Pokémon; pick one you've seen and sneak up on it (search levels, hidden abilities, egg moves, and hidden Pokémon in the grass).
 - New: rename your Pokémon anytime (#71): in its summary, press A on the info page. The name box starts with the current name; OK keeps it, and erasing it all and pressing OK gives back the species name, so it takes its new species name when it evolves.
+- New: the opponent's types stay next to its health bar for the whole battle (#25), not only while you pick a move. They step aside for a moment during attack animations. Your own side still shows its types while you choose a move.
 
 ## v0.0.15
 - Fixed: the Pokédex crashed (blue error screen) when moving from the Stats page to the Evo page.

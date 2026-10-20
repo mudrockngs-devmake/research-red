@@ -46,6 +46,7 @@ What the results mean:
 | dexnav | Route 22: the 6v6, Jenny gives the DexNav, then Start > DexNav there |
 | ivy | Talk to Ivy in Pallet and on Route 1 (area lines) |
 | rename | Summary > A: rename to one letter, then to an empty name (the species name comes back) |
+| wild | Pace in Route 1 grass until a wild battle, look at the opponent's type icon, run away |
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.
 
