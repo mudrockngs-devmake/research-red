@@ -6,6 +6,7 @@ PewterCity_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
 	setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F, 0
 	call_if_ge VAR_MAP_SCENE_PEWTER_CITY, 1, RR_Pewter_EventScript_DemoSetup @ Research Red: demo stops at Pewter (#35, #62)
+	call RR_Pewter_OnTransitionCity @ Research Red: Elm and Jenny's rematch outside the Center (#10)
 	end
 
 @ Impossible to speak to this NPC from a facing dir != DIR_EAST normally, so they arent checked

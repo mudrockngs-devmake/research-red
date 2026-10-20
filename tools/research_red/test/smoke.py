@@ -119,15 +119,13 @@ def sc_pokedex():
 
 
 def sc_pewter():
-    # After Brock: Elm and Jenny's rematch in the Pokemon Center (#10).
-    # Debug 10 leaves us below the door; inside, they sit at (4-5, 5).
+    # After Brock: Elm and Jenny's rematch outside the Pokemon Center (#10).
+    # Debug 10 leaves us below the door at (17,26); they stand at (15-16, 27).
     return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"]
-            + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"] + step("UP")
-            + play_until("inside", f"{T.G.on_map('MAP_PEWTER_CITY_POKEMON_CENTER_1F')} && {T.G.field_free()}",
-                         600, key="-") + ["wait 10"]
-            + step("UP", 2) + step("LEFT", 2) + ["press UP 2", "wait 10", "press A", "wait 30"]
+            + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"]
+            + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20", "shot s001", "press A", "wait 30"]
             + play_until("pewter", scene_end(8), 30000)
-            + expect("MAP_PEWTER_CITY_POKEMON_CENTER_1F", story=8, party=1))
+            + expect("MAP_PEWTER_CITY", story=8, party=1))
 
 
 def sc_demo_end():
@@ -193,7 +191,7 @@ SCENARIOS = {
     "lunch": (sc_lunch, "Viridian lunch by the Pokémon Center, Officer Jenny"),
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
-    "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch in the Pokémon Center (test mode)"),
+    "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch outside the Pokémon Center (test mode)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),

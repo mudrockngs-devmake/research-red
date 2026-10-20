@@ -28,11 +28,19 @@ u32 GetCurrentLevelCap(void)
 
     if (B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST)
     {
-        for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
+        // Research Red: the cap follows how many badges you have, not which
+        // ones, since several gyms (Surge, Erika, Koga, Sabrina) can be beaten
+        // in any order. The table's flags only give the row order now.
+        u32 badges = 0;
+        for (i = FLAG_BADGE01_GET; i <= FLAG_BADGE08_GET; i++)
         {
-            if (!FlagGet(sLevelCapFlagMap[i][0]))
-                return sLevelCapFlagMap[i][1];
+            if (FlagGet(i))
+                badges++;
         }
+        if (badges < 8)
+            return sLevelCapFlagMap[badges][1];
+        if (!FlagGet(FLAG_SYS_GAME_CLEAR))
+            return sLevelCapFlagMap[8][1];
     }
     else if (B_LEVEL_CAP_TYPE == LEVEL_CAP_VARIABLE)
     {

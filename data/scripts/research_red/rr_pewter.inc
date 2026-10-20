@@ -1,28 +1,29 @@
 @ ===================================================================
 @ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
-@ Pokemon Center: town scenes and rematches happen in Pokemon Centers, #10)
-@ Story step 7 + badge 1: Elm and Jenny wait in the Pewter Pokemon Center
-@ lounge (4-5, 5). Talking to them: they spot the badge, 6v6 double, then
+@ Pokemon Center: town scenes and rematches happen just outside Pokemon
+@ Centers, #10; Nurse Joy doesn't allow battles indoors)
+@ Story step 7 + badge 1: Elm and Jenny wait below-left of the Pewter
+@ Pokemon Center door (15-16, 27). Talking to them: they spot the badge, 6v6 double, then
 @ they head off to challenge Brock themselves. Sets VAR_0x40FE to 8.
 @ They're friends travelling the same road: they'll turn up again.
 @ ===================================================================
 
-@ PewterCity_PokemonCenter_1F OnTransition: Elm and Jenny only while it's pending
-RR_Pewter_OnTransitionPC::
+@ PewterCity OnTransition: Elm and Jenny only while it's pending
+RR_Pewter_OnTransitionCity::
 	call_if_ne VAR_0x40FE, 7, RR_Pewter_EventScript_HideElmJenny
 	call_if_lt VAR_MAP_SCENE_PEWTER_CITY, 1, RR_Pewter_EventScript_HideElmJenny
 	return
 
 RR_Pewter_EventScript_HideElmJenny::
-	setflag FLAG_TEMP_11
-	setflag FLAG_TEMP_12
+	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_14
 	return
 
 RR_Pewter_EventScript_Rematch::
 	lockall
 	faceplayer
 	playse SE_PIN
-	applymovement LOCALID_PEWTER_PC_ELM, Common_Movement_ExclamationMark
+	applymovement LOCALID_PEWTER_ELM, Common_Movement_ExclamationMark
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Pewter_Text_Elm_Badge, MSGBOX_DEFAULT
@@ -90,8 +91,8 @@ RR_Pewter_EventScript_ToTheGym::
 	msgbox RR_Pewter_Text_Elm_CatchUp, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_PEWTER_PC_ELM
-	removeobject LOCALID_PEWTER_PC_JENNY
+	removeobject LOCALID_PEWTER_ELM
+	removeobject LOCALID_PEWTER_JENNY
 	msgbox RR_Pewter_Text_HeadForGym, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_FROM_BLACK
@@ -126,8 +127,10 @@ RR_Pewter_Text_Elm_SixOnSix::
     .string "Six on six! Right here!$"
 
 RR_Pewter_Text_Jenny_Protocol::
-    .string "Jenny: By protocol, we battle\n"
-    .string "before Brock. To warm up.$"
+    .string "Jenny: Out here, please. Nurse Joy\n"
+    .string "gave us a look last time.\p"
+    .string "By protocol, we battle before\n"
+    .string "Brock. To warm up.$"
 
 RR_Pewter_Text_P_WarmUp::
     .string "{PLAYER}: Your warm-up is us?$"
@@ -152,12 +155,12 @@ RR_Pewter_Text_P_KnowYouDo::
     .string "You always do.$"
 
 RR_Pewter_Text_Elm_WeWon::
-    .string "Elm: We won! In a Pokémon Center!\n"
+    .string "Elm: We won! On a sidewalk!\n"
     .string "It still counts!$"
 
 RR_Pewter_Text_Jenny_HealHere::
-    .string "Jenny: Conveniently, they heal\n"
-    .string "you right over there.$"
+    .string "Jenny: Conveniently, the healing\n"
+    .string "is right through that door.$"
 
 RR_Pewter_Text_Jenny_Brock::
     .string "Jenny: We're going to challenge\n"

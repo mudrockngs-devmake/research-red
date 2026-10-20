@@ -314,7 +314,7 @@ Debug_EventScript_Script_9::
 	end
 
 @ After Brock: badge 1, story past the lunch, in Pewter just below the
-@ Pokemon Center door (Elm and Jenny's rematch inside, #10; the demo
+@ Pokemon Center door (Elm and Jenny's rematch just left of it, #10; the demo
 @ blocker at the east exit, #35).
 Debug_EventScript_Script_10::
 	call RR_Debug_StateGrassDone
