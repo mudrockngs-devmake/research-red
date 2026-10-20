@@ -29,6 +29,11 @@ Ivy and Jenny are old friends; Elm and the player are best-friend rivals. Couple
 - Recurring: a group video call after every badge (Oak, Elm, Jenny, Ivy, player; sometimes Delia or Daisy).
 - Endgame payoff: the forms Oak hinted at (Megas, Dynamax/Gigantamax, regional/Hisuian starter forms) become usable late, via a custom area.
 
+## Story rules for towns (owner, 2026-10-19)
+- **Pokémon Centers are where town cutscenes and rematches happen**: easy to find, and a natural place for the cast to meet.
+- **Elm and Jenny travel along as friends** after Pewter: they don't rush off after scenes. The player and Ivy still do their own thing, but the group of four can meet up in towns (watching a Gym, visiting the Museum...).
+- **Oak's lab after the story:** Oak is a rematch that grows with every badge (EXP, no money); Daisy drops by for it with Muffin. Oak no longer asks about the Pokédex (that's the PC's job).
+
 ## Running gags
 Gerald the Tentacool on the anchor line; Slowpoke never hung up the call; "Persian" Muffin; the lab carpet; Elm's "warm-up"; Jenny's reports with diagrams; Mimey's dishes.
 
