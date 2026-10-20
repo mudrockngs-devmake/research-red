@@ -20,7 +20,8 @@ Things that have broken before or would be embarrassing. Do these every round, o
 - [ ] Your player sprite walks, runs, bikes and surfs correctly (male and, now and then, female)
 - [ ] Breakfast: portraits and name plates switch with each speaker; Ivy follows you after
 - [ ] A trainer battle is a double; the battle ends and the scene continues
-- [ ] Start menu: Guide opens and closes; Save works and Continue loads it
+- [ ] Start menu: the clock box reads "Day 14:05" / "Night 20:00" cleanly; Save works and Continue loads it
+- [ ] Pokédex > START > FIELD GUIDE opens and closes
 - [ ] A wild catch of something new: the Pokédex banter plays back on the map
 - [ ] Nothing flashes the wrong colors when the speaker changes
 
@@ -54,6 +55,6 @@ Start > DEBUG > Scripts:
 | 7 | Dex banter | Queues the banter for Tentacool, Slowpoke, Quilava |
 | 8 | Route 1 Elm | Daisy done, one step from Elm and Jenny's Route 1 scene |
 | 9 | Test mode | On/off: the AI fights your battles; team to Lv 30 |
-| 10 | After Brock | Badge 1, story past the lunch, in Pewter below the Pokémon Center door (Elm and Jenny's rematch inside; the demo blocker at the east exit) |
+| 10 | After Brock | Badge 1, story past the lunch, in Pewter below the Pokémon Center door (Elm and Jenny's rematch just outside; the demo blocker at the east exit). Pallet, Viridian and Pewter are Fly targets |
 
 Skips 4 and 6 give a Lv 12 team.

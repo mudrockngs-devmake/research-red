@@ -2,7 +2,7 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
-## v0.0.16 (in progress)
+## v0.0.16
 - Changed: Elm and Jenny's Pewter rematch happens just outside the Pokémon Center (Nurse Joy doesn't allow battles indoors).
 - Fixed: level caps follow how many badges you have, so gyms beaten out of order (Surge, Erika, Koga, Sabrina) don't leave the cap too low.
 - Wild Pokémon: more Johto neighbors in every demo area (Sentret, Hoppip, Ledyba, Pineco, Phanpy, Marill, Chinchou and more), Kanto still the majority. Evolved Pokémon only appear at or near the level they evolve (Butterfree and Beedrill at 10, Metapod and Kakuna at 7; no more low-level Dodrio, Gengar, Noctowl and so on). The Pallet sea gets Horsea, Shellder and Krabby (#59).
@@ -31,6 +31,10 @@ Test builds are v0.0.x. Each entry lists what changed for players and testers, a
 - New: Brock rematches (#52). After his badge, talk to Brock in the Gym and pick a challenge, up to your badge count ("1 badge: Lv. 21" and so on, "Champion: Lv. 75" after the League). His Gym team grows: Sandslash at 2 badges, Graveler at 3, Golem, Kabutops, Omastar, Rhydon and Steelix at 4. Prize money as usual, 1.5x EXP, no whiteout. The other Gym leaders follow when their Gyms are reworked.
 - Post-game rematches bring regional forms (owner's rule): after the Elite Four, Mimey and Muffin stay home while exchange-program visitors fight in their place (a Galarian Mr. Rime, an Alolan Raticate), with Alolan Ninetales, Alolan Muk, Hisuian Typhlosion, Alolan Golem, Alolan Sandslash and Rhyperior.
 - Fixed: the Start menu clock box no longer shows garbled text (#27). It now reads "Day 14:05" or "Night 20:00" (the season line is gone; seasons don't change anything in this game).
+- New: a lab aide in Oak's Lab (#72) explains every research tool on request: Ranch Pager, PC anywhere, DexNav, Field Guide, Research Rules, evolving, TMs, resting and rematches.
+- Test builds: the debug menu stays on (Start > Debug > Scripts). Skip 10 (after Brock) now also makes Pallet and Viridian Fly targets.
+- Still to come (moved to v0.0.17): the cozier interface colours (pick from the mock-ups), the title screen, Brock watch scene, proper case for FireRed's own text, and the art items.
+- **Save:** old saves work. Saves that already got the research grant receive TM51-TM100 and the Ranch Pager once, with a note from Oak.
 
 ## v0.0.15
 - Fixed: the Pokédex crashed (blue error screen) when moving from the Stats page to the Evo page.

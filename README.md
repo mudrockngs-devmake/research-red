@@ -7,8 +7,8 @@ pancakes with Delia and Mimey, a friendly rivalry with Professor Elm (and his wi
 Officer Jenny), regional forms, and a road trip from Pallet to Pewter.
 Inspired by the early anime: warm, silly, and kid-friendly.
 
-> **Status: early test builds.** Pallet Town to Viridian City is playable; the demo
-> will end at Brock. Saves may not carry over between test builds before v0.1.
+> **Status: early test builds.** Pallet Town to Pewter City is playable, up to and
+> including Brock. Saves may not carry over between test builds before v0.1.
 
 ## How to play
 1. Get the **Pokémon FireRed (USA) v1.1 (Rev 1)** ROM from your own cartridge.
@@ -21,10 +21,33 @@ This repository only ever contains patches and source code: **no ROMs**, and ple
 don't ask for or share them in Issues.
 
 ## Features (so far)
+**Story and cast**
 - Story scenes with character portraits, a video-call intro and a following partner
-- Double battles, a level cap, and rival trainers with mid-battle banter
-- Anime-inspired wild Pokémon by time of day, with an in-game Field Guide
-- National Dex, with comments from the cast on new entries
+  who chats about wherever you are
+- Comments from the cast on every Gen 1 and Gen 2 Pokémon you register
+- Rival trainers with mid-battle banter, and a friendly bet that runs all game
+
+**Research tools**
+- **Research Rules** (Options): level caps on/off, double or single battles,
+  battle style, heal after battles. Changing one calls Elm and Jenny.
+- **Ranch Pager**: call Prof. Oak's Pokémon to Fly, Flash, Teleport or Dig. No
+  HM slaves: Oak's Pokémon also Cut, Surf and push boulders when nobody on your
+  team knows the move.
+- **PC from anywhere** (Start menu), **DexNav** (find and sneak up on Pokémon),
+  **Field Guide** in the Pokédex (what lives here, by day and night)
+- **100 TMs**, all from the research grant; TM51-65 are FireRed's old move tutors
+
+**Pokémon**
+- Evolve when you want (an EVOLVE option in the party menu); trade evolutions
+  without trading; relearn earlier forms' moves at any level; rename anytime
+- Anime-inspired wild Pokémon with Johto neighbours, different by day and night
+  (surfing and fishing too)
+- Held items and Berries come back after every battle
+
+**World**
+- Rest at Pokémon Centers or at home to skip to night or morning
+- Rematches that grow with your badges: Prof. Oak and Daisy, Delia, and Brock at a
+  difficulty you choose, with a stronger post-game tier
 
 Full history: [docs/CHANGELOG.md](docs/CHANGELOG.md). Player guides (wild Pokémon,
 trainers, items): [docs/player/](docs/player/).

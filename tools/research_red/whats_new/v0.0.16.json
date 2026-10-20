@@ -1,0 +1,65 @@
+{
+  "version": "v0.0.16",
+  "intro": "Everything new or changed since v0.0.15, from the intro call to the end of the demo at Pewter. Play a new game (or keep your save), tick each item once you've tried it, and write anything odd in its notes box. Ticks and notes stay in this browser; press \"Save my notes\" to download them as a text file to send back. The pictures come from the automated test run of this exact build.",
+  "save": "Save: old saves work. Saves that already got the research grant receive TM51-TM100 and the Ranch Pager once, with a note from Oak.",
+  "sections": [
+    {
+      "title": "The story, start to Pewter (rewritten dialogue)",
+      "items": [
+        {"id": "intro", "title": "Intro video call", "what": "Rewritten in the new character voices: Oak starts his famous welcome speech out of habit, greets Jenny as Elm's Jenny, and spells out the plan: one joint paper, all four of you as authors.", "try": "Start a new game and watch the call to the end (Slowpoke never hangs up). The first line shows v0.0.16.", "shots": ["intro/s0001.png", "intro/s0004.png", "intro/s0008.png"]},
+        {"id": "breakfast", "title": "Breakfast at Delia's", "what": "New lines: Mimey won't share the credit for the pancakes, a field note, a thank-you to Delia.", "try": "Go downstairs after the call.", "shots": ["breakfast/s0008.png", "breakfast/s0020.png"]},
+        {"id": "lab", "title": "Oak's Lab: starters, the battle, the grant", "what": "Elm's starters came by PC transfer; the bet; Oak got carried away at the Poké Mart. New: Oak explains the Ranch Pager and the PC anywhere.", "try": "Pick a starter, battle Elm and Jenny, receive the grant.", "shots": ["lab/s0280.png", "lab/s0290.png", "lab/s0296.png"]},
+        {"id": "daisy", "title": "Daisy's house and the bet", "what": "New stakes: the losers cook a big dinner at Delia's, dessert included. Daisy keeps score. The Research Rules first appear here.", "try": "Visit Daisy after the lab.", "shots": ["daisy/s0060.png", "daisy/s0100.png"]},
+        {"id": "route1", "title": "Route 1 sing-along and catch reactions", "what": "Elm and you start singing on the road to Viridian, Ivy and Jenny join in. Every Route 1 Pokémon has its own catch reaction.", "try": "Walk Route 1 and catch a few different Pokémon.", "shots": ["route1/s0040.png", "route1/s0080.png"]},
+        {"id": "route22", "title": "Route 22 6v6 and the DexNav", "what": "Elm says a sincere 'good game' after losing; Jenny gives you her old Pokémon-spotting logbook, now the DexNav.", "try": "Battle Elm and Jenny on Route 22, then open Start > DexNav.", "shots": ["route22/s0380.png", "dexnav/d001.png", "dexnav/d002.png"]},
+        {"id": "lunch", "title": "Viridian lunch", "what": "Elm always knows his Jenny, even next to her cousin. New lines throughout.", "try": "Meet Elm and Jenny by the Viridian Pokémon Center.", "shots": ["lunch/s0010.png", "lunch/s0025.png"]},
+        {"id": "pewter", "title": "Pewter: Elm and Jenny saw your Brock win", "what": "After Brock, Elm and Jenny wait just outside the Pokémon Center for a 6v6 rematch.", "try": "Beat Brock, then step out of the Gym.", "shots": ["pewter/s0001.png", "pewter/s0500.png"]},
+        {"id": "demo-end", "title": "End of the demo", "what": "Diglett's Cave is closed by the Diglett crew, the way east out of Pewter is closed, Gerald the Tentacool blocks the sea route, and Route 22's League gate turns you back.", "try": "Try each exit after Brock.", "shots": ["digletts/s004.png", "demo_end/s0005.png", "gerald/s0010.png"]}
+      ]
+    },
+    {
+      "title": "New research tools",
+      "items": [
+        {"id": "ranch-pager", "title": "Ranch Pager: Oak's Pokémon do your field moves", "what": "Use the Ranch Pager from the Bag (or register it for SELECT): Pidgeot Flies, Pikachu Flashes, Abra Teleports, Diglett Digs. Trees, water and boulders: press A as usual; if nobody on your team knows the move, Oak's Pokémon step in.", "try": "Fly somewhere you've been; try Flash outside a cave; Teleport; Dig out of Diglett's Cave; register it and press SELECT.", "shots": ["pager_fly/f002.png", "pager_fly/f004.png", "pager_other/l004.png", "pager_dig/d003.png", "pager_select/r003.png"]},
+        {"id": "oak-pokemon", "title": "Oak's Pokémon out in Pallet", "what": "Pikachu, Farfetch'd, Abra and Machop in the lab (after the lab scene), Tauros and Pidgeot in the lab yard, Lapras and Gyarados on the shore. Talk to them.", "try": "Walk around the lab and its yard, and the pond in Pallet.", "shots": ["oak_mons/o001.png", "oak_mons/o003.png", "oak_mons/o004.png", "oak_mons/o006.png"]},
+        {"id": "lab-aide", "title": "The lab aide explains everything", "what": "A lab aide in Oak's Lab explains each research tool from a menu.", "try": "Talk to the aide by the bookshelves in the lab and ask about a few topics.", "shots": ["lab_aide/l002.png", "lab_aide/l003.png"]},
+        {"id": "rules", "title": "Research Rules in Options, and the Rules call", "what": "Options > Research Rules opens Elm's rules on the map. Change one and close: you and Ivy call Elm and Jenny, who note it for the bet. No change, no call.", "try": "After Daisy's house: Start > Option > Research Rules, change one rule, close.", "shots": ["rules/t002.png", "rules/t004.png", "rules/t006.png"]},
+        {"id": "field-guide", "title": "Field Guide inside the Pokédex", "what": "Press START in the Pokédex, then FIELD GUIDE: what lives here, by day and night. The Start menu is shorter (no Guide or Rules).", "try": "On Route 1: Pokédex > START > FIELD GUIDE.", "shots": ["guide/s003.png", "guide/s004.png"]},
+        {"id": "pc", "title": "PC from anywhere", "what": "Start > PC: Pokémon storage and your item box, anywhere.", "try": "Open it on a route.", "shots": ["pc/p002.png", "pc/p003.png"]},
+        {"id": "tms", "title": "100 TMs", "what": "TM51-TM65 are FireRed's old move tutors, TM66-TM100 newer moves (Scald, Volt Switch, U-turn, Dazzling Gleam...). All from the grant, each with its own description.", "try": "Bag > Key Items > TM Case: scroll to the bottom; teach something new.", "shots": ["tms/t004.png", "tms/t066.png", "tms/t099.png"]}
+      ]
+    },
+    {
+      "title": "Pokémon",
+      "items": [
+        {"id": "evolve", "title": "Evolve when you want; relearn earlier forms' moves", "what": "No automatic evolution: EVOLVE appears in the party menu when ready. LEARN MOVES lists every move of earlier forms at any level.", "try": "Level a starter past 16, evolve it from the party menu, then open LEARN MOVES.", "shots": ["evolve/e002.png", "evolve/e003.png", "evolve/e104.png"]},
+        {"id": "trade-evo", "title": "Trade evolutions without trading", "what": "Kadabra, Machoke, Graveler and Haunter evolve from Lv 37; item trade evolutions (Onix + Metal Coat...) work from the Bag like a stone, and the item stays.", "try": "If you get that far: use a Metal Coat on Onix, or reach Lv 37 with Machop's evolution.", "shots": []},
+        {"id": "rename", "title": "Rename anytime", "what": "In a Pokémon's summary, press A on the info page. An empty name gives back the species name.", "try": "Rename one Pokémon, then erase the name.", "shots": ["rename/n1b.png", "rename/n2b.png"]},
+        {"id": "battle-info", "title": "Opponent types all battle; coloured move names", "what": "The foe's types stay by its health bar all battle. Move names are green when super effective, grey when not very effective, red-brown when they have no effect.", "try": "Any wild battle.", "shots": ["wild/w001.png", "wild/w004.png"]},
+        {"id": "held-items", "title": "Held items come back after battle", "what": "Berries and other held items return after every battle.", "try": "Give a Pokémon an Oran Berry, let it eat it in battle, check after.", "shots": []}
+      ]
+    },
+    {
+      "title": "The world",
+      "items": [
+        {"id": "rest", "title": "Rest at Pokémon Centers and at home", "what": "Nurse Joy and Delia offer Heal, Rest or No thanks. Rest heals and moves the clock: by day to 8 PM, at night to 7 AM. Night always starts at 8 PM.", "try": "Rest at a Pokémon Center, then open the Start menu.", "shots": ["rest/a1.png", "rest_center/c001.png", "rest/r001.png"]},
+        {"id": "clock", "title": "Start menu clock fixed", "what": "The clock box reads 'Day 14:05' or 'Night 20:00' with no garbled text.", "try": "Open the Start menu by day and by night.", "shots": ["rest/r001.png", "rest/r002.png"]},
+        {"id": "night-water", "title": "Night water Pokémon", "what": "Surfing and fishing find different Pokémon at night: Chinchou and Staryu in Pallet's sea, Wooper in the Route 22 and Viridian ponds.", "try": "Rest till night, then fish or surf.", "shots": []},
+        {"id": "oak-rematch", "title": "Rematch: Prof. Oak and Daisy", "what": "After Route 22, Daisy waits by Oak in the lab. A double: Oak's leftover starters and Slowpoke, Daisy's Muffin, Clefairy and Vulpix, at your level cap. No money, 1.5x EXP, as often as you like.", "try": "Talk to Oak after Route 22.", "shots": ["oak_rematch/k005.png", "oak_rematch/k006.png", "oak_rematch/k007.png"]},
+        {"id": "delia-battle", "title": "Battle Delia", "what": "After Route 22, Delia asks if you want a battle before Heal / Rest: Mimey leads a double.", "try": "Talk to Delia at home after Route 22.", "shots": ["delia_battle/b001.png", "delia_battle/b003.png"]},
+        {"id": "brock-rematch", "title": "Rematch Brock at a level you choose", "what": "After his badge, Brock offers a rematch: pick a challenge up to your badges. His Gym team grows with each tier.", "try": "Go back into the Gym after beating Brock.", "shots": ["brock_rematch/g003.png", "brock_rematch/g004.png", "brock_rematch/g006.png"]}
+      ]
+    },
+    {
+      "title": "Every-round checks",
+      "items": [
+        {"id": "check-newgame", "title": "New game to the bedroom", "what": "The intro call plays to the end and you wake up in the bedroom.", "try": "", "shots": []},
+        {"id": "check-sprites", "title": "Player sprite: walk, run, bike, surf", "what": "Male and, now and then, female.", "try": "", "shots": []},
+        {"id": "check-portraits", "title": "Portraits switch with each speaker", "what": "Name plates and portraits match whoever is talking; no wrong colours flash.", "try": "", "shots": []},
+        {"id": "check-battle", "title": "Trainer battles are doubles and the scene continues", "what": "Unless you changed the Research Rules.", "try": "", "shots": []},
+        {"id": "check-save", "title": "Save and Continue", "what": "Save from the Start menu, reset, Continue.", "try": "", "shots": []},
+        {"id": "check-banter", "title": "Pokédex banter after a new catch", "what": "The cast comments on the map after you register something new.", "try": "", "shots": []}
+      ]
+    }
+  ]
+}

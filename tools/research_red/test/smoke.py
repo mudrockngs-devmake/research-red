@@ -350,6 +350,19 @@ def sc_oak_rematch():
             + fly + walk + battle)
 
 
+def sc_lab_aide():
+    # #72: the lab aide explains the research tools. Debug 2 leaves us at
+    # (15,8); route-searched path to the lab door, then to the aide at (3,11).
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT", 3) + step("DOWN", 6) + step("RIGHT", 4)
+            + step("UP") + ["wait 120"] + check("in_lab", T.G.on_map("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB"))
+            + step("UP") + step("LEFT", 2) + ["press LEFT 6", "wait 20", "press A", "wait 90", "shot l001", "press A", "wait 90",
+                                               "press A", "wait 90", "shot l002",   # the topic menu
+                                               "press A", "wait 90", "shot l003"]    # Ranch Pager
+            + advance(4, key="A", every=90, prefix="l1")
+            + ["shot l004", "press B", "wait 60", "shot l005"]
+            + play_until("aide_done", T.G.field_free(), 2000, key="B", every=60))
+
+
 def sc_oak_mons():
     # #29: Oak's Ranch Pager Pokemon. Debug 2 leaves us at (15,8) in Pallet:
     # east to the lab yard (Tauros 21,10 and Pidgeot 21,12), talk to Tauros,
@@ -497,6 +510,7 @@ SCENARIOS = {
     "oak_rematch": (sc_oak_rematch, "Oak + Daisy rematch in the lab after Brock (#53)"),
     "delia_battle": (sc_delia_battle, "Delia's double battle at home after Brock (#70)"),
     "brock_rematch": (sc_brock_rematch, "Brock's rematch in the Gym, tier menu, his team at 1 badge (#52)"),
+    "lab_aide": (sc_lab_aide, "The lab aide explains the research tools (#72)"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),

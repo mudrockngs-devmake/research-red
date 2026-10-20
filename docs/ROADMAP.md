@@ -84,7 +84,7 @@ Document every new system (how it works, which files, how to turn it off) and
 test it with the smoke tests, so nothing breaks and each one could be reused in
 other ROM hacks later.
 
-## Next build: v0.0.16 (planned with the owner 2026-10-19/20; build starts in a fresh conversation)
+## Build v0.0.16 (planned with the owner 2026-10-19/20; built 2026-10-20)
 The owner skips the v0.0.15 playtest and tests v0.0.16 long-term (and gives it to the v0.0.13 testers).
 Every decision is on its issue; the character sheets are in `docs/characters/`, the anime and lore reference in `docs/reference/`.
 
@@ -102,5 +102,14 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 - Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), title screen + Slowking disclaimer and demo notice + a Mareep "A fan project by MudrockNGS" boot splash (#12, mock-ups first), cozier interface colours (#73, mock-ups first), battle backgrounds per location (#74). If the build drags, the art items move to v0.0.17.
 
 **Step 3:** full test run, the what's-new report with screenshots of every change (#75, first version: start to demo end), release v0.0.16, CHANGELOG with a clear **Save:** line.
+
+**Shipped in v0.0.16 (2026-10-20):** all of Step 1; from Step 2 the menus, battles, evolution and moves, 100 TMs (#57), Ranch Pager with Oak's Pokémon on the maps (#29), Rest and the clock fix (#56, #27, incl. night water tables), reusable video calls and the Rules call (#13, #45), rematches for Oak + Daisy, Delia and Brock with a post-game tier (#53, #70, #52), features list and the lab aide (#72). The rest moved to v0.0.17 (below) so the owner and testers can play the new systems.
+
+## Next build: v0.0.17 (moved from v0.0.16 on 2026-10-20)
+- **Waiting on the owner:** interface colours, pick a theme from the mock-ups in `E:\Workspace\romhacks\research-red\mockups\ui-colours\` (#73, `tools/research_red/ui_theme.py`); title screen + boot splash mock-ups (#12).
+- Rematches: post-game Mega Evolutions, the other Gym leaders as their Gyms are reworked (#52); watch Elm and Jenny vs Brock (#69); dex banter cutscene and replay with field notes (#5, #4).
+- World: ambient Pokémon pilot (#64), Forest exchanges + the Samurai (#9), Pokédex Area tab (#20), proper-case sweep (#11, also "PKMN TRAINER", "YES/NO", FireRed's map names), Cruller (Jenny's Growlithe) in the Daisy scene and on Jenny's team.
+- Art: Jenny sprites (#40), surf sprite (#28), Trainer Card (#24), portraits (#32), picnic blanket (#8), battle sprites (#7), battle backgrounds (#74), the Ranch Pager's own icon (Poké Radar's for now).
+- Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, rematches, the lab aide).
 
 **After v0.0.16:** Claude's test-tool upgrades (#18: memory-poke warps and no-encounter mode, a route planner from map data, the engine's battle tests, wait-until-ready), smaller patch (#17).
