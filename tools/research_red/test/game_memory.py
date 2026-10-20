@@ -89,6 +89,10 @@ class GameMemory:
         """mapGroup then mapNum as one 16-bit read: group | num << 8."""
         return self._sb1(self.const("sb1_location"), 2)
 
+    def bag_slot_addr(self, pocket, index):
+        """itemId of slot `index` in a Bag pocket (e.g. "TMsHMs"), 2 bytes."""
+        return self._sb1(self.const(f"offsetof(struct SaveBlock1, bag.{pocket}[{index}].itemId)"), 2)
+
     def party_addr(self):
         return f"{self.sym('gPlayerPartyCount'):#x}:1"
 
@@ -107,6 +111,9 @@ class GameMemory:
     def flag_clear(self, flag):
         addr, bit = self.flag_addr(flag)
         return f"{addr} !& {bit}"
+
+    def bag_slot_filled(self, pocket, index):
+        return f"{self.bag_slot_addr(pocket, index)} != 0"
 
     def on_map(self, map_name):
         return f"{self.map_addr()} == {self.map_value(map_name)}"

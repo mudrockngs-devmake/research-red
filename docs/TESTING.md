@@ -48,6 +48,7 @@ What the results mean:
 | rename | Summary > A: rename to one letter, then to an empty name (the species name comes back) |
 | wild | Pace in Route 1 grass until a wild battle, look at the opponent's type icon, run away |
 | evolve | Test mode (Lv 30): Squirtle shows EVOLVE in the party menu; evolves into Wartortle; LEARN MOVES > LEVEL MOVES lists Squirtle's moves at any level |
+| tms | After the lab: the TM Case holds all 108 TMs and HMs (memory check); one screenshot per TM51-TM100 (names fit their rows, descriptions their box) and the longest name selected |
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.
 

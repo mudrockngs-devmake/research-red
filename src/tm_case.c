@@ -125,7 +125,10 @@ static const u8 sText_TMCaseWillBePutAway[] = _("The TM CASE will be\nput away."
 
 static EWRAM_DATA void *sTilemapBuffer = NULL;
 static EWRAM_DATA struct ListMenuItem *sListMenuItemsBuffer = NULL;
-static EWRAM_DATA u8 (* sListMenuStringsBuffer)[29] = NULL;
+// Research Red (#57): was 29, too short for "No099" + a 14-letter move name
+// and the font codes (the row ran on into the next one)
+#define LIST_STRING_LENGTH 40
+static EWRAM_DATA u8 (* sListMenuStringsBuffer)[LIST_STRING_LENGTH] = NULL;
 
 static void CB2_SetUpTMCaseUI_Blocking(void);
 static bool8 DoSetUpTMCaseUI(void);
@@ -650,7 +653,7 @@ static void CreateTMCaseListMenuBuffers(void)
 {
     struct BagPocket *pocket = &gBagPockets[POCKET_TM_HM];
     sListMenuItemsBuffer = Alloc((pocket->capacity + 1) * sizeof(struct ListMenuItem));
-    sListMenuStringsBuffer = Alloc(sTMCaseDynamicResources->numTMs * 29);
+    sListMenuStringsBuffer = Alloc(sTMCaseDynamicResources->numTMs * LIST_STRING_LENGTH); // Research Red (#57)
 }
 
 static void InitTMCaseListMenuItems(void)
@@ -705,7 +708,14 @@ static void GetTMNumberAndMoveString(u8 *dest, enum Item itemId)
     }
     StringAppend(gStringVar4, sText_SingleSpace);
     StringAppend(gStringVar4, gText_FontNormal);
-    StringAppend(gStringVar4, gMovesInfo[ItemIdToBattleMoveId(itemId)].name);
+    // Research Red (#57): three-digit TM numbers leave less room, so a long
+    // move name (Dazzling Gleam) switches to a narrower font to fit the row.
+    {
+        u32 room = sWindowTemplates[WIN_LIST].width * 8 - 8 - GetStringWidth(FONT_SMALL, gStringVar4, 0);
+        u8 *name = gStringVar4 + StringLength(gStringVar4);
+        u8 *end = StringCopy(name, gMovesInfo[ItemIdToBattleMoveId(itemId)].name);
+        PrependFontIdToFit(name, end, FONT_NORMAL, room);
+    }
     StringCopy(dest, gStringVar4);
 }
 

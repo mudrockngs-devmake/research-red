@@ -124,7 +124,7 @@ def sc_pewter():
     return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"]
             + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"]
             + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20", "shot s001", "press A", "wait 30"]
-            + play_until("pewter", scene_end(8), 30000)
+            + play_until("pewter", scene_end(8), 45000)  # the autopilot battle can run long
             + expect("MAP_PEWTER_CITY", story=8, party=1))
 
 
@@ -176,6 +176,25 @@ def sc_pc():
                "press A", "wait 90", "shot p003"]
             + play_until("closed", T.G.field_free(), 1500, key="B", every=30)
             + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
+
+
+def sc_tms():
+    # #57: the grant fills the TM Case: 8 HMs + TM01-TM100 = all 108 slots,
+    # so the last slot holds something. Then look: Start > BAG (after the
+    # lab: DEBUG, POKEDEX, POKEMON, PC, BAG), Key Items, the TM Case (8th
+    # key item, below the Berry Pouch), OPEN, then one screenshot per new TM
+    # (TM51-TM100: name fits the row, description fits the box) and the HMs.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + check("tm_case_full", T.G.bag_slot_filled("TMsHMs", 107))
+            + start_menu_item(4) + ["wait 90", "shot t001", "press RIGHT", "wait 30"]
+            + ["press DOWN", "wait 8"] * 7 + ["shot t002", "press A", "wait 20", "shot t003", "press A", "wait 90",
+                                              "shot t004"]
+            + ["press DOWN", "wait 6"] * 49
+            + sum([["press DOWN", "wait 10", f"shot t{n:03d}"] for n in range(51, 101)], [])
+            # the longest name, selected: "No099 Dazzling Gleam is selected."
+            + ["press UP", "wait 10", "press A", "wait 30", "shot t199", "press B", "wait 30"]
+            + ["hold DOWN 300", "wait 30", "shot t200"]
+            + play_until("closed", T.G.field_free(), 2000, key="B", every=30))
 
 
 def sc_guide():
@@ -295,6 +314,7 @@ SCENARIOS = {
     "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
     "wild": (sc_wild, "A wild single battle on Route 1: opponent types, then run away (#25)"),
     "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
+    "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
