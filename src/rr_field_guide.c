@@ -1,8 +1,10 @@
 // Research Red: the Field Guide (Start menu > Guide).
 //
 // Shows which wild Pokemon live where the player is standing and how often
-// they appear, for the current time of day: one page per kind of encounter
-// (grass, surf, each fishing rod, rock smash), Left/Right to flip pages.
+// they appear: for each kind of encounter (grass, surf, each fishing rod, rock
+// smash) a day page and, when the night list differs, a night page (#42).
+// Left/Right flips pages; it opens on the page for the current time.
+// Species already caught are listed in green.
 // It reads the game's own encounter tables (built from
 // data/research_red/encounters/), so the numbers are always the real ones.
 #include "global.h"
@@ -51,20 +53,11 @@ static const u8 *const sPageNames[NUM_PAGES] =
     [PAGE_ROCK_SMASH] = COMPOUND_STRING("Rock Smash"),
 };
 
-static const u8 *const sTimeNames[TIMES_OF_DAY_COUNT] =
-{
-    [TIME_MORNING] = COMPOUND_STRING("Morning"),
-    [TIME_DAY] = COMPOUND_STRING("Day"),
-    [TIME_EVENING] = COMPOUND_STRING("Evening"),
-    [TIME_NIGHT] = COMPOUND_STRING("Night"),
-};
-
 static const u8 sText_NothingHere[] = _("No wild Pokémon live here.");
-static const u8 sText_Controls[] = _("Name, levels, chance.   {DPAD_LEFTRIGHT} Page   {B_BUTTON} Close");
+static const u8 sText_Controls[] = _("Green: caught.   {DPAD_LEFTRIGHT} Page   {B_BUTTON} Close");
 static const u8 sText_Percent[] = _("{STR_VAR_1}%");
 static const u8 sText_Levels[] = _("{STR_VAR_1}-{STR_VAR_2}");
 static const u8 sText_Level[] = _("{STR_VAR_1}");
-static const u8 sText_Caught[] = _("{PKMN}");
 
 static const struct WindowTemplate sGuideWindow =
 {
@@ -79,6 +72,12 @@ static const struct WindowTemplate sGuideWindow =
 
 static const u8 sColors_Normal[3] = {TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY};
 static const u8 sColors_Title[3] = {TEXT_COLOR_WHITE, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_BLUE};
+static const u8 sColors_Caught[3] = {TEXT_COLOR_WHITE, TEXT_COLOR_GREEN, TEXT_COLOR_LIGHT_GREEN};
+
+// Guide pages: each kind of encounter twice, day then night
+#define NUM_GUIDE_PAGES (NUM_PAGES * 2)
+#define PAGE_KIND(p)    ((p) / 2)
+#define PAGE_NIGHT(p)   ((p) % 2)
 
 struct GuideRow
 {
@@ -92,12 +91,12 @@ struct GuideRow
 #define tWindowId data[0]
 #define tPage     data[1]
 
-static const struct WildPokemonInfo *GetPageInfo(u32 page, u32 *firstSlot, u32 *slotCount, const u8 **rates)
+// The table the game would use for this kind of encounter at this time of day
+// (times without their own list fall back, e.g. to the day one)
+static const struct WildPokemonInfo *GetKindInfo(u32 page, enum TimeOfDay time, u32 *firstSlot, u32 *slotCount, const u8 **rates)
 {
     u32 headerId = GetCurrentMapWildMonHeaderId();
-    // the encounter code expects the current season/time going in
     enum Season season = gLoadedSeason;
-    enum TimeOfDay time = GetTimeOfDay();
     const struct WildPokemonInfo *info = NULL;
 
     if (headerId == HEADER_NONE)
@@ -134,10 +133,27 @@ static const struct WildPokemonInfo *GetPageInfo(u32 page, u32 *firstSlot, u32 *
     return info;
 }
 
+static bool32 HasOwnNightList(u32 kind)
+{
+    u32 first, count;
+    const u8 *rates;
+    const struct WildPokemonInfo *day = GetKindInfo(kind, TIME_DAY, &first, &count, &rates);
+    const struct WildPokemonInfo *night = GetKindInfo(kind, TIME_NIGHT, &first, &count, &rates);
+    return night != NULL && night != day;
+}
+
+static const struct WildPokemonInfo *GetPageInfo(u32 page, u32 *firstSlot, u32 *slotCount, const u8 **rates)
+{
+    return GetKindInfo(PAGE_KIND(page), PAGE_NIGHT(page) ? TIME_NIGHT : TIME_DAY, firstSlot, slotCount, rates);
+}
+
+// A night page only exists when the night list differs from the day one
 static bool32 PageExists(u32 page)
 {
     u32 first, count;
     const u8 *rates;
+    if (PAGE_NIGHT(page) && !HasOwnNightList(PAGE_KIND(page)))
+        return FALSE;
     return GetPageInfo(page, &first, &count, &rates) != NULL;
 }
 
@@ -187,18 +203,20 @@ static void PrintPage(u32 windowId, u32 page)
     struct GuideRow rows[MAX_ROWS];
     u32 n = BuildRows(page, rows);
     u32 i, x, y, width;
-    enum TimeOfDay time = GetTimeOfDay(); // the clock's time (tables without a night list use the day one)
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
 
-    // "Route 1 - Grass (Night)"
+    // "Route 1 - Grass (Night)", or "(Day & Night)" when night is the same
     GetMapName(gStringVar1, gMapHeader.regionMapSectionId, 0);
     StringCopy(gStringVar4, gStringVar1);
     StringAppend(gStringVar4, COMPOUND_STRING(" - "));
-    StringAppend(gStringVar4, sPageNames[page]);
-    StringAppend(gStringVar4, COMPOUND_STRING(" ("));
-    StringAppend(gStringVar4, sTimeNames[time]);
-    StringAppend(gStringVar4, COMPOUND_STRING(")"));
+    StringAppend(gStringVar4, sPageNames[PAGE_KIND(page)]);
+    if (PAGE_NIGHT(page))
+        StringAppend(gStringVar4, COMPOUND_STRING(" (Night)"));
+    else if (HasOwnNightList(PAGE_KIND(page)))
+        StringAppend(gStringVar4, COMPOUND_STRING(" (Day)"));
+    else
+        StringAppend(gStringVar4, COMPOUND_STRING(" (Day & Night)"));
     AddTextPrinterParameterized3(windowId, FONT_NORMAL, 4, 1, sColors_Title, TEXT_SKIP_DRAW, gStringVar4);
 
     if (n == 0)
@@ -208,10 +226,10 @@ static void PrintPage(u32 windowId, u32 page)
     {
         x = (i % 2) * 112 + 4;
         y = (i / 2) * 18 + 20;
-        // a Poké Ball mark on species already caught
-        if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(rows[i].species), FLAG_GET_CAUGHT))
-            AddTextPrinterParameterized3(windowId, FONT_SMALL, x, y + 2, sColors_Normal, TEXT_SKIP_DRAW, sText_Caught);
-        AddTextPrinterParameterized3(windowId, FONT_NORMAL, x + 8, y, sColors_Normal, TEXT_SKIP_DRAW, GetSpeciesName(rows[i].species));
+        // species already caught are green (still listed, to catch more)
+        AddTextPrinterParameterized3(windowId, FONT_NORMAL, x + 2, y,
+                                     GetSetPokedexFlag(SpeciesToNationalPokedexNum(rows[i].species), FLAG_GET_CAUGHT) ? sColors_Caught : sColors_Normal,
+                                     TEXT_SKIP_DRAW, GetSpeciesName(rows[i].species));
         ConvertIntToDecimalStringN(gStringVar1, rows[i].minLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
         ConvertIntToDecimalStringN(gStringVar2, rows[i].maxLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
         StringExpandPlaceholders(gStringVar4, rows[i].minLevel == rows[i].maxLevel ? sText_Level : sText_Levels);
@@ -248,7 +266,7 @@ static void Task_FieldGuide(u8 taskId)
         return;
     do
     {
-        page = (page + dir + NUM_PAGES) % NUM_PAGES;
+        page = (page + dir + NUM_GUIDE_PAGES) % NUM_GUIDE_PAGES;
     } while (page != tPage && !PageExists(page));
     if (page != tPage)
     {
@@ -268,9 +286,14 @@ void RR_ScriptFieldGuide(struct ScriptContext *ctx)
     RR_PortraitHide(); // a full-size window: no speaker portrait on top
 
     tWindowId = AddWindow(&sGuideWindow);
-    for (page = 0; page < NUM_PAGES && !PageExists(page); page++)
+    for (page = 0; page < NUM_GUIDE_PAGES && !PageExists(page); page++)
         ;
-    tPage = page < NUM_PAGES ? page : PAGE_GRASS;
+    if (page >= NUM_GUIDE_PAGES)
+        page = PAGE_GRASS * 2;
+    // open on the night page at night, when there is one
+    else if (GetTimeOfDay() == TIME_NIGHT && PageExists(page + 1))
+        page++;
+    tPage = page;
     DrawStdFrameWithCustomTileAndPalette(tWindowId, FALSE, GetStandardFrameBaseTileNum(), 14);
     PutWindowTilemap(tWindowId);
     PrintPage(tWindowId, tPage);
