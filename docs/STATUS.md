@@ -3,7 +3,7 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-20 (v0.0.18 released)_
+_Last updated: 2026-10-20 (v0.0.18 released; session wrapped up)_
 
 ## Current build
 - **v0.0.18** (2026-10-20): v0.0.17 + battle backgrounds per place in cozier colours (#74, `tools/research_red/battle_bg_theme.py`), the test-mode wild battle freeze fix. Installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke tests 35/35 (`test-runs/2026-10-20_0952_v0.0.18_*`). **Save: old saves work.**
@@ -16,7 +16,7 @@ _Last updated: 2026-10-20 (v0.0.18 released)_
 ## Waiting on the owner
 - [ ] Playtest **v0.0.18** with the three reports (v0.0.16, v0.0.17, v0.0.18) (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
 - [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
-- [ ] Log in the next round's NOTES.md: the costs since v0.0.12: 2026-10-18/19 build + hub setup $121.56 (2h36m API); 2026-10-19 $62.88/$63.85 (1h42m API); 2026-10-20 sessions: run `session-cost --all-days` (this v0.0.16 session included).
+- [ ] Log in the next round's NOTES.md (`session-cost` lines since v0.0.12): 2026-10-18/19 build + hub setup $121.56 (2h36m API); `2026-10-19 03:56  $63.85  1h42m API`; `2026-10-20 04:06  $49.62  1h22m API` (dialogue pass, Step 2 menus/battles/evolution); `2026-10-20 07:18  $48.48  0h58m API  2h44m total` (this session: 100 TMs, Ranch Pager, Rest, calls, rematches, v0.0.16-18 releases, as of the wrap-up).
 - [ ] Optional: phone emulator / real hardware (#16).
 
 ## Next up: v0.0.19
