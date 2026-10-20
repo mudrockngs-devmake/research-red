@@ -96,6 +96,16 @@ def sc_banter():
             + advance(26, every=50) + expect(story=3, party=1))
 
 
+def sc_pokedex():
+    # Start menu after the lab: DEBUG, POKEDEX. Open Bulbasaur and flip through
+    # every page both ways (the Evo page used to crash, #19), then an unseen entry.
+    pages = []
+    for i, key in enumerate(["A"] + ["RIGHT"] * 7 + ["LEFT"] * 7 + ["B", "DOWN", "A", "RIGHT", "B", "B"], 1):
+        pages += [f"press {key}", "wait 50", f"shot p{i:03d}"]
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(1) + ["wait 60", "shot p000"]
+            + pages + expect(story=3))
+
+
 def sc_guide():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60", "shot s000"]
             # Start menu here: DEBUG, POKEDEX, POKEMON, Guide
@@ -124,6 +134,7 @@ SCENARIOS = {
     "route22": (sc_route22, "Route 22: the 6v6 double (test mode)"),
     "lunch": (sc_lunch, "Viridian lunch, Officer Jenny, Research Rules"),
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
+    "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
     "guide": (sc_guide, "Start > Guide on Route 1"),
     "rules": (sc_rules, "Start > Rules after the lunch"),
 }

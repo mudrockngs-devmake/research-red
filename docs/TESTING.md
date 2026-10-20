@@ -34,6 +34,7 @@ What the results mean:
 | route22 | Debug 4 + test mode, the 6v6 double and its banter |
 | lunch | Debug 6, the lunch, Officer Jenny, Research Rules |
 | banter | Debug 2 + 7, the Pokédex banter preview |
+| pokedex | Debug 2, Start > Pokédex, every page of Bulbasaur both ways (the Evo page crashed before v0.0.15) |
 | guide | Debug 3, walks onto Route 1, Start > Guide |
 | rules | The lunch, then Start > Rules |
 

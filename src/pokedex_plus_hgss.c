@@ -6374,6 +6374,10 @@ static u8 PrintPreEvolutions(u8 taskId, enum Species species)
     //Calculate previous evolution
     for (enum Species i = 0; i < NUM_SPECIES; i++)
     {
+        // Research Red: skip disabled species (e.g. Shadow Lugia): asking for
+        // their evolutions trips the "invalid species" assert (Evo page crash, #19)
+        if (i != SPECIES_NONE && !IsSpeciesEnabled(i))
+            continue;
         const struct Evolution *evolutions = GetSpeciesEvolutions(i);
         if (evolutions == NULL)
             continue;
@@ -6420,6 +6424,8 @@ static u8 PrintPreEvolutions(u8 taskId, enum Species species)
     {
         for (enum Species i = 0; i < NUM_SPECIES; i++)
         {
+            if (i != SPECIES_NONE && !IsSpeciesEnabled(i)) // Research Red: as above (#19)
+                continue;
             const struct Evolution *evolutions = GetSpeciesEvolutions(i);
             if (evolutions == NULL)
                 continue;
