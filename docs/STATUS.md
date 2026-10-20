@@ -23,6 +23,8 @@ _Last updated: 2026-10-20_
 ## Next up: build v0.0.16
 - The whole plan is in [ROADMAP.md](ROADMAP.md) "Next build: v0.0.16" (Step 1 dialogue pass, Step 2 systems and content, Step 3 release). Every decision is on its GitHub issue.
 - **Step 1 progress (2026-10-20):** done and approved by the owner: intro call, breakfast, tall grass, lab, Daisy's house, Route 1 (sing-along + catch reactions for the new tables), Route 22, Viridian lunch, Pewter. The old "Mimey's dishes" bet is gone everywhere (new stakes: dinner at Delia's). Couples' names: [characters/NAMES.md](characters/NAMES.md). Still to do in Step 1: Ivy's follower chat, Pokédex banter, then the lines that come with Step 2 features (Rules in Options, Cruller at Daisy's, Brock watch scene, tutorials).
+- **Step 1 finished (2026-10-20)**: also Ivy's follower lines by area and the Pokédex banter for all 251 Gen 1-2 species (style rules at the top of `data/research_red/dex_banter.txt`).
+- **Step 2 progress (2026-10-20):** done: Rules into Options (#45, the Elm-and-Jenny call part still to do with #13), Field Guide into the Pokédex (START > FIELD GUIDE), DexNav (Jenny, Route 22), rename + restore (#71), opponent types all battle (#25). Smoke tests 20/20 (new: ivy, dexnav, rename, wild). Next: held items restored (#58), choose which wild to catch in doubles (#55), then evolution and moves.
 - Owner wants: one question at a time; show mock-ups first for the title screen (#12), the interface colours (#73) and the TM split.
 - Step 3 includes the new what's-new report with screenshots (#75).
 - After v0.0.16: test-tool upgrades (#18), smaller patch (#17).
