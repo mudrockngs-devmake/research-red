@@ -101,7 +101,7 @@ def sc_pokedex():
     # every page both ways (the Evo page used to crash, #19), then an unseen entry.
     pages = []
     for i, key in enumerate(["A"] + ["RIGHT"] * 7 + ["LEFT"] * 7 + ["B", "DOWN", "A", "RIGHT", "B", "B"], 1):
-        pages += [f"press {key}", "wait 50", f"shot p{i:03d}"]
+        pages += [f"press {key}", "wait 120", f"shot p{i:03d}"]
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(1) + ["wait 60", "shot p000"]
             + pages + expect(story=3))
 
