@@ -100,6 +100,13 @@ class GameMemory:
         off = self.const("offsetof(struct SaveBlock1, pos)")
         return f"*{base}+{off:#x}:2", f"*{base}+{off + 2:#x}:2"
 
+    def player_at(self, x, y):
+        """True while the player stands on map tile (x, y), read live from the
+        player's object (the first object; its coordinates carry the 7-tile
+        map border offset)."""
+        base = self.sym("gObjectEvents") + self.const("offsetof(struct ObjectEvent, currentCoords)")
+        return f"{base:#x}:2 == {x + 7} && {base + 2:#x}:2 == {y + 7}"
+
     def party_addr(self):
         return f"{self.sym('gPlayerPartyCount'):#x}:1"
 

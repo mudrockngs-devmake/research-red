@@ -58,6 +58,19 @@ def after_brock_test_mode():
 # --- scenarios ------------------------------------------------------------
 # Each returns script lines. "@bedroom" is the state saved at the end of the
 # intro (a new game standing in the bedroom); the others start from it.
+def walk_via(label, start, *points, max_frames=600):
+    """Walk in straight lines through each point, tapping the direction until
+    the player is really there: a wandering NPC in the way only costs time,
+    instead of throwing every later step off."""
+    out, (x, y) = [], start
+    for i, (nx, ny) in enumerate(points):
+        key = "LEFT" if nx < x else "RIGHT" if nx > x else "UP" if ny < y else "DOWN"
+        # the position changes when a step starts: let it finish
+        out += [f"until {label}{i} {max_frames} {key} {T.G.player_at(nx, ny)}", "wait 20"]
+        x, y = nx, ny
+    return out
+
+
 def on_title():
     """Our title screen (#12) is up: its task is the first one."""
     return f"{T.G.sym('gTasks'):#x}:4 == {T.G.sym('Task_Title') | 1:#x}"
@@ -633,7 +646,8 @@ def sc_ambient():
     seen_off = T.G.const("offsetof(struct SaveBlock1, dexSeen)") + (dodrio - 1) // 8
     seen = f"{T.G._sb1(seen_off, 1)} & {1 << ((dodrio - 1) % 8)}"
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
-            + step("LEFT", 4) + step("DOWN") + step("LEFT", 7) + step("DOWN", 6) + step("LEFT")
+            # the Pallet woman wanders across this path (x 2-4, y 6-14): walk by waypoints
+            + walk_via("to_dodrio", (15, 8), (11, 8), (11, 9), (4, 9), (4, 15), (3, 15))
             + ["press UP 6", "wait 20", "press A", "wait 90", "shot a001", "press A", "wait 60", "shot a002"]
             + play_until("dodrio_done", T.G.field_free(), 2000, key="B", every=40)
             + check("dodrio_seen", seen)
