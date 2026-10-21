@@ -36,9 +36,9 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #20 Area tab (demo areas)
 - [x] #5 / #4 banter over the dex page, SELECT replay
 - [x] #91 Field Guide in the Start menu
-- [ ] #83 Jenny follows Elm
-- [ ] #84 Daisy tea scene seated; breakfast seated; other positioning passes
-- [ ] #85 Route 1 rework; #88 Elm's dialogue
+- [x] #83 Jenny follows Elm
+- [x] #84 Daisy tea scene seated; breakfast seated; other positioning passes
+- [x] #85 Route 1 rework; #88 Elm's dialogue
 - [ ] #86 Oak steps in after a lab loss
 - [ ] Cruller (Jenny's Growlithe)
 - [ ] #92 battle boxes in notebook colours; #11 proper case
