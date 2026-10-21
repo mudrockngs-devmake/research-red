@@ -98,9 +98,9 @@ def sc_starter_menu():
 def sc_grass():
     # The grass scene outside the house (story 1 -> 2): Elm and Jenny at the
     # grass, Oak, then everyone walks to the lab; Jenny trails Elm (#83).
-    # Breakfast leaves you at (7,6) in the house (route_plan.py to the door).
-    # down first, then along the bottom row: Ivy, following, can block a step left
-    return (sc_breakfast() + step("DOWN", 2) + step("LEFT", 3) + step("DOWN")   # turning eats a step; DOWN on the mat (4-5,8) leaves
+    # Breakfast leaves you in your chair (5,5) (#84): down to (5,8), left onto
+    # the exit mat (4,8), down off it
+    return (sc_breakfast() + step("DOWN", 3) + step("LEFT") + step("DOWN")
             + play_until("grass", scene_end(2), 20000, key="B", every=40)
             + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=2))
 

@@ -6,16 +6,18 @@
 @ ---------------------------------------------------------------
 PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	lockall
+	@ #84: breakfast at the table. Ivy is already in her chair (5,4); you sit
+	@ below her (5,5), Mom across (8,4). Facing each other = up/down, Mom = right.
 	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_PlayerToTable
 	waitmovement 0
-	applymovement LOCALID_MOM, PalletTown_PlayersHouse_1F_Movement_FaceDown
+	applymovement LOCALID_MOM, PalletTown_PlayersHouse_1F_Movement_FaceLeft
 	waitmovement 0
 	delay 15
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_GoodMorning, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceLeft
-	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
+	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceDown
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_Ferry, MSGBOX_DEFAULT
@@ -30,24 +32,24 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_BraveSailor, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceRight
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_Pancakes, MSGBOX_DEFAULT
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_Dangerous, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_Authorities, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
-	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceRight
+	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceRight
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_OakCalled, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceRight
+	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceDown
 	waitmovement 0
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_CertainSomeone, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -69,7 +71,7 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_PayingRent, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceRight
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Delia_Family, MSGBOX_DEFAULT
@@ -88,15 +90,15 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 	textcolor NPC_TEXT_COLOR_MON
 	msgbox PalletTown_PlayersHouse_1F_Text_Mimey_MimeMime, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceLeft
-	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
+	applymovement LOCALID_PALLET_HOUSE_IVY, PalletTown_PlayersHouse_1F_Movement_FaceDown
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_WritingThisDown, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_Ivy_PublishLater, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_PlayersHouse_1F_Movement_FaceRight
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_PlayersHouse_1F_Text_P_Thanks, MSGBOX_DEFAULT
@@ -114,6 +116,7 @@ PalletTown_PlayersHouse_1F_EventScript_Breakfast::
 @ ---------------------------------------------------------------
 @ Movements
 @ ---------------------------------------------------------------
+@ From the stairs (10,2), round the table to the lower left chair (5,5)
 PalletTown_PlayersHouse_1F_Movement_PlayerToTable:
 	walk_down
 	walk_down
@@ -122,7 +125,10 @@ PalletTown_PlayersHouse_1F_Movement_PlayerToTable:
 	walk_left
 	walk_left
 	walk_left
-	face_up
+	walk_left
+	walk_left
+	walk_up
+	face_right
 	step_end
 
 PalletTown_PlayersHouse_1F_Movement_FaceUp:
@@ -158,8 +164,8 @@ PalletTown_PlayersHouse_1F_Movement_MimeySweep:
 	step_end
 
 PalletTown_PlayersHouse_1F_Movement_IvyElbow:
-	face_right
-	walk_in_place_fast_right
+	face_down
+	walk_in_place_fast_down
 	step_end
 
 PalletTown_PlayersHouse_1F_Movement_MimeyBow:

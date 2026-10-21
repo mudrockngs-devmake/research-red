@@ -30,9 +30,9 @@ def tileset_dir(symbol):
     """gTileset_GenericBuilding2 -> data/tilesets/secondary/generic_building_2"""
     headers = open(os.path.join(REPO, "src/data/tilesets/headers.h")).read()
     m = re.search(r"const struct Tileset %s =\s*\{(.*?)\};" % re.escape(symbol), headers, re.S)
-    tiles_sym = re.search(r"\.tiles = (\w+)", m.group(1)).group(1)
-    graphics = open(os.path.join(REPO, "src/data/tilesets/graphics.h")).read()
-    path = re.search(r"%s\[\] = INCBIN_U32\(\"(data/tilesets/[^\"]+)/tiles" % re.escape(tiles_sym), graphics).group(1)
+    metatiles_sym = re.search(r"\.metatiles = (\w+)", m.group(1)).group(1)
+    metatiles = open(os.path.join(REPO, "src/data/tilesets/metatiles.h")).read()
+    path = re.search(r"%s\[\] = INCBIN_U16\(\"(data/tilesets/[^\"]+)/metatiles" % re.escape(metatiles_sym), metatiles).group(1)
     return os.path.join(REPO, path)
 
 
