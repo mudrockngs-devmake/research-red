@@ -739,7 +739,8 @@ def sc_dexnav():
 def sc_rename():
     # #71: Start > POKEMON > first Pokémon > SUMMARY, A on the info page renames.
     # Name it one letter, then rename again to an empty name: the species name
-    # comes back (so it takes the new species name when it evolves).
+    # comes back (so it takes the new species name when it evolves). Memory
+    # checks: the first party Pokémon (Squirtle) is called "A", then "Squirtle".
     def rename(keys):
         return ["press A", "wait 120", "shot {}a"] + ["press B", "wait 8"] * 12 + keys + [
                 "wait 20", "shot {}c", "press START", "wait 40", "press A", "wait 150", "shot {}b"]
@@ -747,7 +748,9 @@ def sc_rename():
     empty = [l.format("n2") if "{}" in l else l for l in rename([])]
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(3)
             + ["wait 90", "press A", "wait 30", "shot s001", "press A", "wait 120", "shot s002"]
-            + one + empty + ["mash B 120", "wait 30", "shot s003"]
+            + one + check("named_A", T.G.party_nickname_is(0, "A"))
+            + empty + check("species_name_back", T.G.party_nickname_is(0, "Squirtle"))
+            + ["mash B 120", "wait 30", "shot s003"]
             + play_until("rename_closed", T.G.field_free(), 2000, key="B", every=30))
 
 def sc_wild():

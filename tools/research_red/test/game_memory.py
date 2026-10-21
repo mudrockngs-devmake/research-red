@@ -110,6 +110,22 @@ class GameMemory:
     def party_addr(self):
         return f"{self.sym('gPlayerPartyCount'):#x}:1"
 
+    def text_bytes(self, text):
+        """A string in the game's character encoding (charmap.txt), plus EOS."""
+        if not hasattr(self, "_charmap"):
+            self._charmap = {}
+            for line in open(os.path.join(self.repo, "charmap.txt"), encoding="utf-8"):
+                m = re.match(r"'(.)'\s*=\s*([0-9A-Fa-f]{2})\s*$", line.strip())
+                if m:
+                    self._charmap.setdefault(m.group(1), int(m.group(2), 16))
+        return [self._charmap[c] for c in text] + [0xFF]
+
+    def party_nickname_is(self, slot, text):
+        """The nickname of party slot `slot` is exactly `text`."""
+        base = self.sym("gPlayerParty") + slot * self.const("sizeof(struct Pokemon)") \
+            + self.const("offsetof(struct BoxPokemon, nickname)")
+        return " && ".join(f"{base + i:#x}:1 == {b:#x}" for i, b in enumerate(self.text_bytes(text)))
+
     def map_value(self, map_name):
         m = self.const(map_name)  # MAP_X = num | group << 8
         return (m >> 8) | ((m & 0xFF) << 8)
