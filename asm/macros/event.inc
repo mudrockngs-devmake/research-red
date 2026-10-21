@@ -2531,3 +2531,17 @@
 	.2byte \follower
 	.4byte \movement
 	.endm
+
+	@ Walk an object to tile (x, y) from wherever it stands, in a straight
+	@ L: first along x then along y (or y first if yFirst is TRUE), at
+	@ normal walking speed, after `delay` frames (0-255). For staging people
+	@ whose start depends on how the player arrived (e.g. Ivy after
+	@ rr_ivy_to_scene). Scripted walks ignore collisions: pick a clear path.
+	.macro rr_walk_to localId:req, x:req, y:req, yFirst=FALSE, delay=0
+	callnative RR_ScriptWalkTo
+	.2byte \localId
+	.2byte \x
+	.2byte \y
+	.byte \yFirst
+	.byte \delay
+	.endm

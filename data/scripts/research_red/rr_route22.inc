@@ -11,11 +11,9 @@ RR_Route22_EventScript_ElmJenny::
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	addobject LOCALID_ROUTE22_RIVAL
 	addobject LOCALID_ROUTE22_JENNY
-	applymovement LOCALID_ROUTE22_JENNY, Route22_Movement_RivalApproach
-	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_EarlyRivalApproach
-	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_EarlyRivalApproach
-	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_EarlyRivalApproachBottom
-	waitmovement LOCALID_ROUTE22_JENNY
+	@ #83: Jenny (24,4) trails Elm (25,4) whichever row you came in on
+	call_if_ne VAR_TEMP_1, 2, RR_Route22_EventScript_PairApproach
+	call_if_eq VAR_TEMP_1, 2, RR_Route22_EventScript_PairApproachBottom
 	delay 6
 	msgbox RR_Route22_Text_Elm_FoundYou, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_P_Sights, MSGBOX_DEFAULT
@@ -104,11 +102,8 @@ RR_Route22_EventScript_Goodbye::
 	closemessage
 	delay 10
 	playbgm MUS_RIVAL_EXIT, 0
-	applymovement LOCALID_ROUTE22_JENNY, Route22_Movement_EarlyRivalExit
-	call_if_eq VAR_TEMP_1, 0, Route22_EventScript_EarlyRivalExit
-	call_if_eq VAR_TEMP_1, 1, Route22_EventScript_EarlyRivalExit
-	call_if_eq VAR_TEMP_1, 2, Route22_EventScript_EarlyRivalExitBottom
-	waitmovement LOCALID_ROUTE22_JENNY
+	call_if_ne VAR_TEMP_1, 2, RR_Route22_EventScript_PairExit
+	call_if_eq VAR_TEMP_1, 2, RR_Route22_EventScript_PairExitBottom
 	fadedefaultbgm
 	removeobject LOCALID_ROUTE22_RIVAL
 	removeobject LOCALID_ROUTE22_JENNY
@@ -225,3 +220,25 @@ RR_Route22_Text_Jenny_NextTown::
 RR_Route22_Text_Elm_Lunch::
     .string "Elm: But first, lunch! We'll meet\n"
     .string "you at the Pokémon Center!$"
+
+@ #83: Elm leads, Jenny trails one step behind (rr_move_pair)
+RR_Route22_EventScript_PairApproach::
+	rr_move_pair LOCALID_ROUTE22_RIVAL, LOCALID_ROUTE22_JENNY, Route22_Movement_RivalApproach
+	waitmovement LOCALID_ROUTE22_JENNY
+	return
+
+RR_Route22_EventScript_PairApproachBottom::
+	rr_move_pair LOCALID_ROUTE22_RIVAL, LOCALID_ROUTE22_JENNY, Route22_Movement_RivalApproachBottom
+	applymovement LOCALID_PLAYER, Route22_Movement_PlayerFaceRival
+	waitmovement LOCALID_ROUTE22_JENNY
+	return
+
+RR_Route22_EventScript_PairExit::
+	rr_move_pair LOCALID_ROUTE22_RIVAL, LOCALID_ROUTE22_JENNY, Route22_Movement_EarlyRivalExit
+	waitmovement LOCALID_ROUTE22_JENNY
+	return
+
+RR_Route22_EventScript_PairExitBottom::
+	rr_move_pair LOCALID_ROUTE22_RIVAL, LOCALID_ROUTE22_JENNY, Route22_Movement_EarlyRivalExitBottom
+	waitmovement LOCALID_ROUTE22_JENNY
+	return

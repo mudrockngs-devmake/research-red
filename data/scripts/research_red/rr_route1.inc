@@ -22,9 +22,9 @@ RR_Route1_EventScript_HideElmJenny::
 
 RR_Route1_EventScript_Walk::
 	lockall
-	@ Elm and Jenny wait where the path from the grass meets the top of the
-	@ route (16-17, 3); step over to stand right in front of Elm (#30).
-	@ Ivy is still the follower here, so she comes along.
+	@ Elm (16,3) waits where the path from the grass meets the top of the
+	@ route, Jenny diagonally behind him (17,2) (#83). Step over to stand right
+	@ in front of Elm (#30). Ivy is still the follower here, so she comes along.
 	getplayerxy VAR_0x8004, VAR_0x8005
 	call RR_Route1_EventScript_LineUpWithElm
 	getplayerxy VAR_0x8004, VAR_0x8005
@@ -43,7 +43,19 @@ RR_Route1_EventScript_Walk::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_RightHere, MSGBOX_DEFAULT
 	call RR_Route1_EventScript_CatchReactions
-	@ The sing-along on the road to Viridian (song credited in CREDITS.md)
+	@ #85: everyone walks on together, two by two: Elm and Jenny ahead on
+	@ the top row, you and Ivy beside them, singing on the road to Viridian
+	@ (song credited in CREDITS.md)
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Elm_WalkWithUs, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ROUTE1_ELM, RR_Route1_Movement_ElmWalk
+	applymovement LOCALID_ROUTE1_JENNY, RR_Route1_Movement_JennyWalk
+	applymovement LOCALID_PLAYER, RR_Route1_Movement_PlayerWalk
+	@ Ivy walks to her place beside you (14,4) from wherever she stood
+	rr_walk_to LOCALID_ROUTE1_IVY, 14, 4, TRUE, 16
+	waitmovement LOCALID_ROUTE1_IVY
+	waitmovement LOCALID_ROUTE1_JENNY
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Elm_SingStart, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -84,7 +96,17 @@ RR_Route1_EventScript_Walk::
 	msgbox RR_Route1_Text_Elm_Banter, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_Singing, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_Elm_UpTheHill, MSGBOX_DEFAULT
 	closemessage
+	@ #85: up onto the path to Viridian, all four facing north
+	applymovement LOCALID_ROUTE1_ELM, RR_Route1_Movement_ElmUp
+	applymovement LOCALID_ROUTE1_JENNY, RR_Route1_Movement_JennyUp
+	applymovement LOCALID_PLAYER, RR_Route1_Movement_PlayerUp
+	applymovement LOCALID_ROUTE1_IVY, RR_Route1_Movement_IvyUp
+	waitmovement LOCALID_ROUTE1_IVY
+	waitmovement LOCALID_PLAYER
+	delay 20
 	@ --- something streaks across the sky (Mewtwo, blurred) ---
 	playse SE_PIN
 	applymovement LOCALID_ROUTE1_ELM, Common_Movement_ExclamationMark
@@ -117,12 +139,17 @@ RR_Route1_EventScript_Walk::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Jenny_Protocol, MSGBOX_DEFAULT
 	closemessage
-	fadescreen FADE_TO_BLACK
+	@ Elm runs for Viridian, Jenny right behind him
+	applymovement LOCALID_ROUTE1_ELM, RR_Route1_Movement_RunNorth
+	applymovement LOCALID_ROUTE1_JENNY, RR_Route1_Movement_RunNorthLate
+	waitmovement LOCALID_ROUTE1_JENNY
 	removeobject LOCALID_ROUTE1_ELM
 	removeobject LOCALID_ROUTE1_JENNY
-	fadescreen FADE_FROM_BLACK
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_DashedAhead, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_ROUTE1_IVY, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Route1_Text_Ivy_Quiet, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -156,18 +183,77 @@ RR_Route1_EventScript_PlaceIvy::
 	addobject LOCALID_ROUTE1_IVY
 	return
 
-@ Only 3 tiles: the scene triggers at y=4, and panning past the top of
-@ Route 1 into the Viridian connection left the camera offset.
+@ One tile: the group stands at y 1-2 for the fly-by, and panning past the
+@ top of Route 1 into the Viridian connection leaves the camera offset.
 RR_Route1_Movement_CameraUp:
-	walk_up
-	walk_up
 	walk_up
 	step_end
 
 RR_Route1_Movement_CameraDown:
 	walk_down
+	step_end
+
+@ #85: the walk. Elm (16,3) -> (12,3) on the top row, Jenny (17,2) steps
+@ down behind him -> (13,3); you (16,4) -> (13,4) beside them, Ivy (14,4).
+RR_Route1_Movement_ElmWalk:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_right
+	step_end
+
+RR_Route1_Movement_JennyWalk:
 	walk_down
-	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_left
+	step_end
+
+RR_Route1_Movement_PlayerWalk:
+	delay_8
+	walk_left
+	walk_left
+	walk_left
+	face_up
+	step_end
+
+@ Up onto the path to Viridian: Elm (12,1), Jenny (13,1), you (12,2), Ivy (13,2)
+RR_Route1_Movement_ElmUp:
+	walk_up
+	walk_up
+	step_end
+
+RR_Route1_Movement_JennyUp:
+	walk_up
+	walk_up
+	step_end
+
+RR_Route1_Movement_PlayerUp:
+	delay_8
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+RR_Route1_Movement_IvyUp:
+	delay_16
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+RR_Route1_Movement_RunNorth:
+	walk_fast_up
+	set_invisible
+	step_end
+
+RR_Route1_Movement_RunNorthLate:
+	delay_8
+	walk_fast_up
+	set_invisible
 	step_end
 
 RR_Route1_Text_Elm_WeMeetAgain::
@@ -266,16 +352,16 @@ RR_Route1_Text_Elm_Tail::
     .string "Elm: It had a tail!$"
 
 RR_Route1_Text_P_Seventy::
-    .string "{PLAYER}: (I believe him about\n"
-    .string "seventy percent.)$"
+    .string "{PLAYER}: I saw a tail too.\n"
+    .string "Mostly. I'm writing it down.$"
 
 RR_Route1_Text_Ivy_Sixty::
-    .string "Ivy: (Sixty. But I love him\n"
-    .string "for it.)$"
+    .string "Ivy: Whatever it was, it came\n"
+    .string "from Viridian, sweetie. Look.$"
 
 RR_Route1_Text_Elm_Race::
-    .string "Elm: It flew toward Viridian!\n"
-    .string "Jenny! After it!$"
+    .string "Elm: It came out of Viridian and\n"
+    .string "turned west! Jenny! After it!$"
 
 RR_Route1_Text_Jenny_Protocol::
     .string "Jenny: Dear, by protocol we stay\n"
@@ -286,17 +372,18 @@ RR_Route1_Text_DashedAhead::
     .string "toward Viridian City.$"
 
 RR_Route1_Text_Ivy_Quiet::
-    .string "Ivy: And they're off. Lunch is\n"
-    .string "going to be very quiet, sweetie.$"
+    .string "Ivy: And they're off. Will they\n"
+    .string "remember lunch, sweetie?$"
 
 RR_Route1_Text_P_Wonderful::
-    .string "{PLAYER}: Lunch is going to be\n"
-    .string "wonderful.$"
+    .string "{PLAYER}: Elm never forgets a meal.\n"
+    .string "And Jenny packed it anyway.$"
 
 @ ---------------------------------------------------------------
 @ Catch reactions: one Elm/Jenny exchange per catch (up to four),
-@ each followed by Elm getting more jealous. Species match
-@ data/research_red/encounters/route1.txt (day and night).
+@ each followed by Elm cheering (and getting a little competitive).
+@ Species match data/research_red/encounters/route1.txt and pallet_town.txt
+@ (grass, surf and fishing, day and night): catches in Pallet's sea count too.
 @ ---------------------------------------------------------------
 RR_Route1_EventScript_CatchReactions::
 	goto_if_eq VAR_RR_ROUTE1_CATCHES, 0, RR_Route1_EventScript_NoCatches
@@ -325,6 +412,16 @@ RR_Route1_EventScript_ReactLoop::
 	case 16, RR_Route1_EventScript_ReactHoothoot
 	case 17, RR_Route1_EventScript_ReactGastly
 	case 18, RR_Route1_EventScript_ReactMurkrow
+	case 19, RR_Route1_EventScript_ReactTentacool
+	case 20, RR_Route1_EventScript_ReactMagikarp
+	case 21, RR_Route1_EventScript_ReactHorsea
+	case 22, RR_Route1_EventScript_ReactChinchou
+	case 23, RR_Route1_EventScript_ReactQwilfish
+	case 24, RR_Route1_EventScript_ReactKrabby
+	case 25, RR_Route1_EventScript_ReactStaryu
+	case 26, RR_Route1_EventScript_ReactShellder
+	case 27, RR_Route1_EventScript_ReactRemoraid
+	case 28, RR_Route1_EventScript_ReactDratini
 RR_Route1_EventScript_ReactNext::
 	addvar VAR_0x8004, 1
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -459,6 +556,66 @@ RR_Route1_EventScript_ReactMurkrow::
 	msgbox RR_Route1_Text_ReactMurkrowB, MSGBOX_DEFAULT
 	goto RR_Route1_EventScript_ReactNext
 
+RR_Route1_EventScript_ReactTentacool::
+	msgbox RR_Route1_Text_ReactTentacoolA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactTentacoolB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactMagikarp::
+	msgbox RR_Route1_Text_ReactMagikarpA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactMagikarpB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactHorsea::
+	msgbox RR_Route1_Text_ReactHorseaA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactHorseaB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactChinchou::
+	msgbox RR_Route1_Text_ReactChinchouA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactChinchouB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactQwilfish::
+	msgbox RR_Route1_Text_ReactQwilfishA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactQwilfishB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactKrabby::
+	msgbox RR_Route1_Text_ReactKrabbyA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactKrabbyB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactStaryu::
+	msgbox RR_Route1_Text_ReactStaryuA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactStaryuB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactShellder::
+	msgbox RR_Route1_Text_ReactShellderA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactShellderB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactRemoraid::
+	msgbox RR_Route1_Text_ReactRemoraidA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactRemoraidB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
+RR_Route1_EventScript_ReactDratini::
+	msgbox RR_Route1_Text_ReactDratiniA, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Route1_Text_ReactDratiniB, MSGBOX_DEFAULT
+	goto RR_Route1_EventScript_ReactNext
+
 RR_Route1_EventScript_Jealous1::
 	msgbox RR_Route1_Text_Jealous1, MSGBOX_DEFAULT
 	goto RR_Route1_EventScript_ReactCheck
@@ -476,8 +633,8 @@ RR_Route1_EventScript_Jealous4::
 	goto RR_Route1_EventScript_ReactCheck
 
 RR_Route1_Text_Elm_NoCatches::
-    .string "Elm: Nothing caught yet? Ha!\n"
-    .string "There's still time!$"
+    .string "Elm: No catches yet? That's fine!\n"
+    .string "The best research takes time!$"
 
 RR_Route1_Text_ReactDefaultA::
     .string "Elm: Huh! I didn't know\n"
@@ -511,8 +668,8 @@ RR_Route1_Text_ReactMankeyB::
     .string "We've all been there.$"
 
 RR_Route1_Text_ReactNidoranMA::
-    .string "Elm: A Nidoran! Poisonous AND\n"
-    .string "adorable!$"
+    .string "Elm: A Nidoran! The male one.\n"
+    .string "Big horn, even bigger ears!$"
 
 RR_Route1_Text_ReactNidoranMB::
     .string "Jenny: Mind the horn, everyone.\n"
@@ -527,18 +684,20 @@ RR_Route1_Text_ReactPidgeyB::
     .string "too, dear. It flew away.$"
 
 RR_Route1_Text_ReactNidoranFA::
-    .string "Elm: The other Nidoran! Is that\n"
-    .string "even allowed?$"
+    .string "Elm: A Nidoran! The female one.\n"
+    .string "Smaller horn, same spirit!$"
 
 RR_Route1_Text_ReactNidoranFB::
     .string "{PLAYER}: Two species, one name.\n"
     .string "I have a forum thread on it.$"
 
 RR_Route1_Text_ReactOddishA::
-    .string "Elm: It's a weed. With feet.$"
+    .string "Elm: An Oddish! It's a little\n"
+    .string "garden that goes for walks!$"
 
 RR_Route1_Text_ReactOddishB::
-    .string "Jenny: Dear, it can hear you.$"
+    .string "Jenny: Only at night. Like you\n"
+    .string "before a deadline, dear.$"
 
 RR_Route1_Text_ReactSentretA::
     .string "Elm: A Sentret! From Johto! It\n"
@@ -627,16 +786,106 @@ RR_Route1_Text_ReactMurkrowB::
     .string "I'll keep an eye on it.$"
 
 RR_Route1_Text_Jealous1::
-    .string "Elm: Beginner's luck.$"
+    .string "Elm: A fine start! I'm not\n"
+    .string "counting. Jenny's counting.$"
 
 RR_Route1_Text_Jealous2::
-    .string "Elm: …Two? Two already?$"
+    .string "Elm: Two already? Inspiring!\n"
+    .string "Terrifying, but inspiring!$"
 
 RR_Route1_Text_Jealous3::
-    .string "Elm: Three. Okay. Three is fine.\n"
-    .string "I am fine.$"
+    .string "Elm: Three! Jenny, we have to\n"
+    .string "catch up! For science!$"
 
 RR_Route1_Text_Jealous4::
-    .string "Elm: Four?! Jenny, they have\n"
-    .string "four!$"
+    .string "Elm: Four?! A whole research\n"
+    .string "team! I'm so proud of you!\l"
+    .string "…And a little nervous.$"
 
+RR_Route1_Text_Elm_WalkWithUs::
+    .string "Elm: Viridian's this way! Walk\n"
+    .string "with us! It's a beautiful day!$"
+
+RR_Route1_Text_Elm_UpTheHill::
+    .string "Elm: Up we go! Viridian's just\n"
+    .string "over the hill!$"
+
+RR_Route1_Text_ReactTentacoolA::
+    .string "Elm: A Tentacool! Is it… related\n"
+    .string "to Gerald? Should we tell him?$"
+
+RR_Route1_Text_ReactTentacoolB::
+    .string "Jenny: In my professional opinion,\n"
+    .string "there is only one Gerald.$"
+
+RR_Route1_Text_ReactMagikarpA::
+    .string "Elm: A Magikarp! Don't laugh.\n"
+    .string "They become Gyarados one day!$"
+
+RR_Route1_Text_ReactMagikarpB::
+    .string "Ivy: Patience and a lot of\n"
+    .string "splashing. Like a PhD, sweetie.$"
+
+RR_Route1_Text_ReactHorseaA::
+    .string "Elm: A Horsea! It squirts ink\n"
+    .string "when it's startled!$"
+
+RR_Route1_Text_ReactHorseaB::
+    .string "Jenny: Noted. Don't startle it,\n"
+    .string "dear. Protocol.$"
+
+RR_Route1_Text_ReactChinchouA::
+    .string "Elm: A Chinchou! It lights up\n"
+    .string "the whole sea at night!$"
+
+RR_Route1_Text_ReactChinchouB::
+    .string "Jenny: Good. A witness that\n"
+    .string "brings its own flashlight.$"
+
+RR_Route1_Text_ReactQwilfishA::
+    .string "Elm: A Qwilfish! Don't hug it.\n"
+    .string "Trust me. Don't hug it.$"
+
+RR_Route1_Text_ReactQwilfishB::
+    .string "Jenny: He hugged one. I filed\n"
+    .string "the report. Twice.$"
+
+RR_Route1_Text_ReactKrabbyA::
+    .string "Elm: A Krabby! Strong pincers!\n"
+    .string "Great for research! Ow!$"
+
+RR_Route1_Text_ReactKrabbyB::
+    .string "Ivy: Keep it away from the\n"
+    .string "sandwiches, sweetie. Again.$"
+
+RR_Route1_Text_ReactStaryuA::
+    .string "Elm: A Staryu! Its core glows\n"
+    .string "at night like a little star!$"
+
+RR_Route1_Text_ReactStaryuB::
+    .string "Jenny: It regrows lost arms.\n"
+    .string "Very useful on stakeouts.$"
+
+RR_Route1_Text_ReactShellderA::
+    .string "Elm: A Shellder! It sticks its\n"
+    .string "tongue out at everyone!$"
+
+RR_Route1_Text_ReactShellderB::
+    .string "{PLAYER}: Same, Shellder.\n"
+    .string "Same.$"
+
+RR_Route1_Text_ReactRemoraidA::
+    .string "Elm: A Remoraid! It's a water\n"
+    .string "pistol with fins!$"
+
+RR_Route1_Text_ReactRemoraidB::
+    .string "Jenny: Point it elsewhere,\n"
+    .string "please. Protocol.$"
+
+RR_Route1_Text_ReactDratiniA::
+    .string "Elm: A D-Dratini?! People\n"
+    .string "search their whole lives!$"
+
+RR_Route1_Text_ReactDratiniB::
+    .string "Ivy: It's perfect. Breathe, Elm.\n"
+    .string "Don't cry on it.$"

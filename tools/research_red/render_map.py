@@ -3,6 +3,7 @@
 decomp's own data, for planning scenes and map edits.
 
   python3 tools/research_red/render_map.py MAP_PALLET_TOWN_RIVALS_HOUSE out.png [--grid] [--objects]
+  python3 tools/research_red/render_map.py LAYOUT_PALLET_TOWN_RIVALS_HOUSE out.png [--grid]
   python3 tools/research_red/render_map.py --metatiles gTileset_GenericBuilding2 out.png
 
 --grid writes each tile's x,y; --objects marks the map's people (local id
@@ -18,7 +19,7 @@ import re
 import struct
 import sys
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw  # python3-pil (see docs/DEV_GUIDE.md)
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 NUM_PRIMARY_TILES = 640
@@ -103,8 +104,12 @@ def find_map(map_const):
 
 
 def render_map(map_const, out, grid=False, objects=False):
-    m = find_map(map_const)
+    """map_const: a map (MAP_X, people can be marked) or a layout (LAYOUT_X)."""
     layouts = json.load(open(os.path.join(REPO, "data/layouts/layouts.json")))["layouts"]
+    if map_const.startswith("LAYOUT_"):
+        m = {"layout": map_const, "object_events": []}
+    else:
+        m = find_map(map_const)
     lay = next(l for l in layouts if l.get("id") == m["layout"])
     w, h = lay["width"], lay["height"]
     blocks = open(os.path.join(REPO, lay["blockdata_filepath"]), "rb").read()

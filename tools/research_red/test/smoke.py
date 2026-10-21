@@ -123,7 +123,8 @@ def sc_daisy():
 
 
 def sc_route1():
-    return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1_ELM) + ["shot s000"] + step("DOWN")
+    # Debug 8 leaves us at (19,6): walk up into the trigger row (y 4), as from the grass
+    return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1_ELM) + ["shot s000"] + step("UP", 2)
             + play_until("route1", scene_end(5), 6000, key="B", every=24)
             + advance(20, key="B", every=24, prefix="t")   # the Mewtwo fly-by
             + expect("MAP_ROUTE1", story=5))
@@ -212,7 +213,8 @@ def sc_catch():
 
 def sc_pewter():
     # After Brock: Elm and Jenny's rematch outside the Pokemon Center (#10).
-    # Debug 10 leaves us below the door at (17,26); they stand at (15-16, 27).
+    # Debug 10 leaves us below the door at (17,26); Elm stands at (16,27) with
+    # Jenny behind him (16,28) (#83).
     return (["load @bedroom"] + after_brock_test_mode() + ["shot s000"]
             + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20", "shot s001", "press A", "wait 30"]
             + play_until("pewter", scene_end(8), 45000)  # the autopilot battle can run long

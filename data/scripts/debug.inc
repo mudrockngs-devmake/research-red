@@ -299,8 +299,9 @@ Debug_EventScript_Script_8::
 	call RR_Debug_StateLabDone
 	call RR_Debug_StateDaisyDone
 	rr_ivy_create_follower
-	@ one step south of here is the scene's trigger row (y 4)
-	warp MAP_ROUTE1, 14, 3
+	@ two steps south of the scene's trigger row (y 4), coming from the
+	@ grass like in real play (Ivy follows from below)
+	warp MAP_ROUTE1, 19, 6
 	waitstate
 	release
 	end

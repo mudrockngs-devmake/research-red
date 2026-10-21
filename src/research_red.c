@@ -12,6 +12,7 @@
 #include "constants/species.h"
 #include "script.h"
 #include "script_movement.h"
+#include "fieldmap.h"
 #include "constants/event_objects.h"
 
 // rr_ivy_to_scene localId: Ivy stops following and becomes a cutscene object.
@@ -72,7 +73,7 @@ void RR_ScriptReturnPlayerTeam(struct ScriptContext *ctx)
 }
 
 // Route 1 catch reactions: remember the first four catches made on Route 1
-// while the group scene is pending (VAR_0x40FE == 4). Called when a wild
+// (or in Pallet's sea) while the group scene is pending (VAR_0x40FE == 4). Called when a wild
 // battle ends (battle_setup.c, CB2_EndWildBattle).
 void RR_OnWildBattleEnd(void)
 {
@@ -80,8 +81,9 @@ void RR_OnWildBattleEnd(void)
 
     if (gBattleOutcome != B_OUTCOME_CAUGHT || VarGet(VAR_0x40FE) != 4)
         return;
-    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_ROUTE1)
-     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_ROUTE1))
+    // #85: Route 1, and Pallet's sea (surfing and fishing before the walk)
+    if (!(gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE1) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE1))
+     && !(gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_PALLET_TOWN) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_PALLET_TOWN)))
         return;
 
     count = VarGet(VAR_RR_ROUTE1_CATCHES);
@@ -98,6 +100,8 @@ enum
     RR_REACT_PIDGEY, RR_REACT_NIDORAN_F, RR_REACT_ODDISH, RR_REACT_SENTRET, RR_REACT_DUPLICATE,
     RR_REACT_MEOWTH, RR_REACT_EEVEE, RR_REACT_HOPPIP, RR_REACT_PIKACHU, RR_REACT_SANDSHREW,
     RR_REACT_DIGLETT, RR_REACT_HOOTHOOT, RR_REACT_GASTLY, RR_REACT_MURKROW,
+    RR_REACT_TENTACOOL, RR_REACT_MAGIKARP, RR_REACT_HORSEA, RR_REACT_CHINCHOU, RR_REACT_QWILFISH,
+    RR_REACT_KRABBY, RR_REACT_STARYU, RR_REACT_SHELLDER, RR_REACT_REMORAID, RR_REACT_DRATINI,
 };
 
 void RR_ScriptRoute1Reaction(struct ScriptContext *ctx)
@@ -134,6 +138,16 @@ void RR_ScriptRoute1Reaction(struct ScriptContext *ctx)
     case SPECIES_HOOTHOOT:   gSpecialVar_Result = RR_REACT_HOOTHOOT;   break;
     case SPECIES_GASTLY:     gSpecialVar_Result = RR_REACT_GASTLY;     break;
     case SPECIES_MURKROW:    gSpecialVar_Result = RR_REACT_MURKROW;    break;
+    case SPECIES_TENTACOOL:  gSpecialVar_Result = RR_REACT_TENTACOOL;  break;
+    case SPECIES_MAGIKARP:   gSpecialVar_Result = RR_REACT_MAGIKARP;   break;
+    case SPECIES_HORSEA:     gSpecialVar_Result = RR_REACT_HORSEA;     break;
+    case SPECIES_CHINCHOU:   gSpecialVar_Result = RR_REACT_CHINCHOU;   break;
+    case SPECIES_QWILFISH:   gSpecialVar_Result = RR_REACT_QWILFISH;   break;
+    case SPECIES_KRABBY:     gSpecialVar_Result = RR_REACT_KRABBY;     break;
+    case SPECIES_STARYU:     gSpecialVar_Result = RR_REACT_STARYU;     break;
+    case SPECIES_SHELLDER:   gSpecialVar_Result = RR_REACT_SHELLDER;   break;
+    case SPECIES_REMORAID:   gSpecialVar_Result = RR_REACT_REMORAID;   break;
+    case SPECIES_DRATINI:    gSpecialVar_Result = RR_REACT_DRATINI;    break;
     default:                 gSpecialVar_Result = RR_REACT_DEFAULT;    break;
     }
 }
@@ -279,4 +293,46 @@ void RR_ScriptMovePair(struct ScriptContext *ctx)
     follower->directionOverwrite = DIR_NONE;
     ScriptMovement_StartObjectMovementScript(leaderId, mapNum, mapGroup, movement);
     ScriptMovement_StartObjectMovementScript(followerId, mapNum, mapGroup, sRRTrailMovement);
+}
+
+// rr_walk_to: walk an object to (x, y) along an L-shaped path, after a delay
+static EWRAM_DATA u8 sRRWalkToMovement[4][RR_TRAIL_MAX] = {0};
+static EWRAM_DATA u8 sRRWalkToNext = 0;
+
+static u32 RR_AddSteps(u8 *buf, u32 n, s32 delta, u8 negAction, u8 posAction)
+{
+    while (delta != 0 && n < RR_TRAIL_MAX - 1)
+    {
+        buf[n++] = delta < 0 ? negAction : posAction;
+        delta += delta < 0 ? 1 : -1;
+    }
+    return n;
+}
+
+void RR_ScriptWalkTo(struct ScriptContext *ctx)
+{
+    u16 localId = VarGet(ScriptReadHalfword(ctx));
+    s32 x = VarGet(ScriptReadHalfword(ctx));
+    s32 y = VarGet(ScriptReadHalfword(ctx));
+    bool32 yFirst = ScriptReadByte(ctx);
+    u32 delay = ScriptReadByte(ctx);
+    struct ObjectEvent *obj = &gObjectEvents[GetObjectEventIdByLocalId(localId)];
+    // several walkers can be on the way at once: each gets its own buffer
+    u8 *buf = sRRWalkToMovement[sRRWalkToNext++ % ARRAY_COUNT(sRRWalkToMovement)];
+    s32 dx = x - (obj->currentCoords.x - MAP_OFFSET);
+    s32 dy = y - (obj->currentCoords.y - MAP_OFFSET);
+    u32 n = 0;
+
+    for (; delay >= 16 && n < 8; delay -= 16)
+        buf[n++] = MOVEMENT_ACTION_DELAY_16;
+    for (; delay >= 1 && n < 12; delay--)
+        buf[n++] = MOVEMENT_ACTION_DELAY_1;
+    if (yFirst)
+        n = RR_AddSteps(buf, n, dy, MOVEMENT_ACTION_WALK_NORMAL_UP, MOVEMENT_ACTION_WALK_NORMAL_DOWN);
+    n = RR_AddSteps(buf, n, dx, MOVEMENT_ACTION_WALK_NORMAL_LEFT, MOVEMENT_ACTION_WALK_NORMAL_RIGHT);
+    if (!yFirst)
+        n = RR_AddSteps(buf, n, dy, MOVEMENT_ACTION_WALK_NORMAL_UP, MOVEMENT_ACTION_WALK_NORMAL_DOWN);
+    buf[n] = MOVEMENT_ACTION_STEP_END;
+    obj->directionOverwrite = DIR_NONE;
+    ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, buf);
 }

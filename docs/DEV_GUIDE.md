@@ -28,6 +28,7 @@ How the project is laid out and how work moves through it.
 ## Conventions
 - Labels: `RR_<Scene>_EventScript_*`, `RR_<Scene>_Text_*`, `RR_<Scene>_Movement_*`.
 - Text: proper case, max 34 characters per line, story lines use `NPC_TEXT_COLOR_NEUTRAL`.
+- Staging cutscenes (`asm/macros/event.inc`, Research Red section): `rr_move_pair leader, follower, movement` (the follower trails one step behind, e.g. Jenny behind Elm, #83; wait on the follower), `rr_walk_to id, x, y[, yFirst, delay]` (walk someone to a tile from wherever they are, e.g. Ivy after `rr_ivy_to_scene`). Check the staging with the smoke tests' screenshots.
 - Any edit to a FireRed/expansion file gets a `Research Red:` comment so it can be found with grep and carried through upstream merges.
 
 ## FireRed content we bypass
@@ -59,7 +60,7 @@ Edit the source, run the tool, commit both. `rr_check.py` fails if a generated f
 
 ## Other tools
 - `tools/research_red/build_cast_art.py`: reference art to battle/portrait/call art and a contact sheet
-- `tools/research_red/render_map.py LAYOUT_ID out.png`: map layout to an image
+- `tools/research_red/render_map.py MAP_X|LAYOUT_X out.png [--grid] [--objects]`: a map to an image (tile coordinates, people marked); `--metatiles gTileset_X out.png`: every tile of a tileset with its number, to pick tiles for map edits (e.g. the chairs in Daisy's house)
 - `tools/research_red/export_story.py`: story data export (`docs/story/`)
 
 Installed on the dev machine (outside the repo; nothing in the build needs them yet):

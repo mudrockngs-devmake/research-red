@@ -178,8 +178,8 @@
     {
       "local_id": "LOCALID_VIRIDIAN_JENNY",
       "graphics_id": "OBJ_EVENT_GFX_RR_JENNY",
-      "x": 30,
-      "y": 26,
+      "x": 29,
+      "y": 25,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
