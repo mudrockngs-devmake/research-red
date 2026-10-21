@@ -399,7 +399,7 @@ def sc_pager_dig():
             + step("DOWN", 2) + step("RIGHT", 6) + step("UP", 3) + ready("cave")
             + check("in_entrance", T.G.on_map("MAP_DIGLETTS_CAVE_NORTH_ENTRANCE"))
             # after Brock the Start menu has DEXNAV too: BAG is the 7th entry
-            + start_menu_item(6) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + start_menu_item(6) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 6
             + ["shot d001", "press A", "wait 20", "press A", "wait 150"] + ["press DOWN", "wait 8"] * 3
             + ["shot d002", "press A", "wait 90", "shot d003", "press A", "wait 60", "shot d004"]
             + play_until("dug_out", T.G.field_free(), 3000, key="B", every=20)
@@ -442,7 +442,7 @@ def fly_to_pallet_after_brock():
     Lands at (6,8), in front of home."""
     return (["load @bedroom"] + after_brock_test_mode()
             + ["press START", "wait 20", "press B", "wait 20"] + start_menu_item(6)
-            + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 6
             + ["press A", "wait 20", "press A", "wait 150", "press A", "wait 150"]
             + ["press DOWN", "wait 30"] * 7 + ["wait 30", "press A", "wait 90"]
             + play_until("landed", T.G.field_free(), 3000, key="START", every=400)
@@ -483,7 +483,7 @@ def sc_oak_rematch():
     # Pallet, into the lab, talk to Oak: the Oak + Daisy double (tier 1:
     # middle-stage starters at Lv 21). Daisy stands by Oak.
     fly = (["press START", "wait 20"] + ["press B", "wait 20"] + start_menu_item(6)
-           + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+           + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 6
            + ["press A", "wait 20", "press A", "wait 150", "press A", "wait 150", "shot k001"]
            + sum([["press DOWN", "wait 30", f"shot k1{i:02d}"] for i in range(7)], [])
            + ["wait 30", "press A", "wait 90", "shot k002"]   # Pallet Town

@@ -142,8 +142,8 @@ RR_LabAide_Text_AboutDexNav:
 	.string "sneak up on it, slowly!$"
 
 RR_LabAide_Text_AboutGuide:
-	.string "Aide: The Field Guide is in the\n"
-	.string "Pokédex: press START there.\p"
+	.string "Aide: The Field Guide is on the\n"
+	.string "Start menu, under the Pokédex.\p"
 	.string "It lists what lives in the area,\n"
 	.string "by day and by night.$"
 
@@ -166,8 +166,9 @@ RR_LabAide_Text_AboutEvolve:
 RR_LabAide_Text_AboutTMs:
 	.string "Aide: The grant came with all 100\n"
 	.string "TMs, and they never run out.\p"
-	.string "TM51 to TM65 are the old move\n"
-	.string "tutors' moves.$"
+	.string "Moves LEARN MOVES teaches for free\n"
+	.string "aren't TMs, so the TM slots go\l"
+	.string "to moves you can't get elsewhere.$"
 
 RR_LabAide_Text_AboutRest:
 	.string "Aide: Nurse Joy and Delia let you\n"

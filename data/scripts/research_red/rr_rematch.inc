@@ -60,7 +60,10 @@ RR_Rematch_Text_DaisyMuffin:
 	.string "She's not evolving. She's perfect.$"
 
 RR_Rematch_Text_OakDefeat:
-	.string "Oak: Ho ho! Splendid work!$"
+	.string "Oak: Ho ho! Splendid! A haiku:\p"
+	.string "“Bright young researcher,\n"
+	.string "my Slowpoke still hasn't noticed\l"
+	.string "the battle is done.”$"
 
 RR_Rematch_Text_DaisyDefeat:
 	.string "Daisy: Oh, Muffin. You were still\n"

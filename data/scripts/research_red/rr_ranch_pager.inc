@@ -122,14 +122,16 @@ RR_RanchPager_Text_DigTo:
 	.string "to {STR_VAR_2}. Go?$"
 
 RR_RanchPager_Text_TopUp:
-	.string "Oak: {PLAYER}! I forgot one thing\n"
-	.string "from the grant: the Ranch Pager!\p"
-	.string "Page my Pokémon from the ranch\n"
-	.string "whenever you need to Fly, Flash,\l"
+	.string "Oak: {PLAYER}! I nearly forgot\n"
+	.string "the best part of the grant!\p"
+	.string "The Ranch Pager! Page my Pokémon\n"
+	.string "from the ranch to Fly, Flash,\l"
 	.string "Teleport or Dig.\p"
-	.string "And no need to teach anyone Cut\n"
-	.string "or Surf: my Pokémon come to help\l"
-	.string "when nobody on your team knows it!$"
+	.string "And when nobody on your team\n"
+	.string "knows Cut or Surf, my Pokémon\l"
+	.string "come running to help.\p"
+	.string "As they say, a Pidgeot in the\n"
+	.string "hand is worth two in the bush!$"
 
 @ Oak's Pokemon in the lab, the lab yard and on the Pallet shore (#29).
 @ The lab ones are hidden (FLAG_TEMP_3) until the lab scene is over.
@@ -219,40 +221,40 @@ RR_RanchPager_EventScript_OakGyarados::
 
 RR_RanchPager_Text_OakPikachu:
 	.string "Pikachu: Pika pika!\p"
-	.string "It's Prof. Oak's Pikachu.\n"
-	.string "It's on call for Flash.$"
+	.string "Prof. Oak's Pikachu. It lights up\n"
+	.string "the dark for Flash. And the room.$"
 
 RR_RanchPager_Text_OakFarfetchd:
 	.string "Farfetch'd: Kwaa!\p"
-	.string "It's Prof. Oak's Farfetch'd.\n"
-	.string "It's on call for Cut.$"
+	.string "Prof. Oak's Farfetch'd. Its leek\n"
+	.string "is sharp enough to Cut trees.$"
 
 RR_RanchPager_Text_OakAbra:
 	.string "Abra: …Abra.\p"
-	.string "It's Prof. Oak's Abra.\n"
-	.string "It's on call for Teleport.$"
+	.string "Prof. Oak's Abra. It's asleep. It\n"
+	.string "Teleports in its sleep, too.$"
 
 RR_RanchPager_Text_OakMachop:
 	.string "Machop: Macho!\p"
-	.string "It's Prof. Oak's Machop.\n"
-	.string "It's on call for Rock Smash.$"
+	.string "Prof. Oak's Machop. It practices\n"
+	.string "Rock Smash on the lab's walnuts.$"
 
 RR_RanchPager_Text_OakTauros:
 	.string "Tauros: Mooo!\p"
-	.string "It's Prof. Oak's Tauros.\n"
-	.string "It's on call for Strength.$"
+	.string "Prof. Oak's Tauros. Strength? It\n"
+	.string "has plenty, and it knows it.$"
 
 RR_RanchPager_Text_OakPidgeot:
 	.string "Pidgeot: Pijooo!\p"
-	.string "It's Prof. Oak's Pidgeot.\n"
-	.string "It's on call for Fly.$"
+	.string "Prof. Oak's Pidgeot. It knows the\n"
+	.string "way to every town. Fly anytime!$"
 
 RR_RanchPager_Text_OakLapras:
 	.string "Lapras: Laaa…\p"
-	.string "It's Prof. Oak's Lapras.\n"
-	.string "It's on call for Surf.$"
+	.string "Prof. Oak's Lapras. It hums while\n"
+	.string "it Surfs. Rather beautifully.$"
 
 RR_RanchPager_Text_OakGyarados:
 	.string "Gyarados: Gyaaa!\p"
-	.string "It's Prof. Oak's Gyarados.\n"
-	.string "It's on call for Waterfall.$"
+	.string "Prof. Oak's Gyarados. It climbs\n"
+	.string "Waterfalls. It was a Magikarp!$"

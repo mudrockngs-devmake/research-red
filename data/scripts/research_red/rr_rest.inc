@@ -92,8 +92,8 @@ RR_Rest_Text_Morning:
 	.string "{PLAYER} rested until morning.$"
 
 RR_Rest_Text_DeliaAsk:
-	.string "Delia: {PLAYER}! Do you want me to\n"
-	.string "fix up your team, or have a rest?$"
+	.string "Delia: {PLAYER}! Hungry? Tired?\n"
+	.string "Let me look after your team.$"
 
 RR_Rest_Text_DeliaBye:
 	.string "Delia: All right. Take care now!$"
