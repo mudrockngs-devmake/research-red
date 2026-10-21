@@ -113,9 +113,18 @@ void RR_DexBanterForget(u16 species)
 static const u8 *const *GetSpeciesLines(u16 species)
 {
     u32 i;
+    u16 base = GET_BASE_SPECIES_ID(species);
+
     for (i = 0; i < ARRAY_COUNT(sDexBanterTable); i++)
     {
         if (sDexBanterTable[i].species == species)
+            return sDexBanterTable[i].lines;
+    }
+    // A regional form or other form without its own lines (e.g. Alolan
+    // Rattata) uses its base species' lines until it gets some
+    for (i = 0; i < ARRAY_COUNT(sDexBanterTable); i++)
+    {
+        if (sDexBanterTable[i].species == base)
             return sDexBanterTable[i].lines;
     }
     return NULL;

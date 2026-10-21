@@ -67,6 +67,17 @@ def sc_intro():
     return lines + ["save @bedroom"]
 
 
+def sc_intro_skip():
+    # Test builds: START during the new-game call skips it as Maple (male)
+    bedroom = f"{T.G.on_map('MAP_PALLET_TOWN_PLAYERS_HOUSE_2F')} && {T.G.field_free()}"
+    cb2 = T.G.sym("gMain") + T.G.const("offsetof(struct Main, callback2)")
+    in_call = f"{cb2:#x}:4 == {T.G.sym('CB2_Call') | 1:#x}"
+    return (["wait 240", "press START", "wait 200", "press START", f"until call 3000 START {in_call}",
+             "wait 200", "shot k001", "press START", "wait 30", "shot k002"]
+            + play_until("bedroom", bedroom, 2500, key="B", every=120)
+            + check("male", f"{T.G.sym('gSaveBlock2Ptr'):#x}:4 != 0"))
+
+
 def sc_breakfast():
     return (["load @bedroom"] + step("RIGHT", 4) + step("UP", 5) + ["hold LEFT 20", "wait 60", "shot s000"]
             + play_until("breakfast", scene_end(1), 6000)
@@ -660,6 +671,7 @@ MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_
 
 SCENARIOS = {
     "intro": (sc_intro, "New game: the video call, ending in the bedroom"),
+    "intro_skip": (sc_intro_skip, "Test builds: START skips the new-game call (as Maple)"),
     "breakfast": (sc_breakfast, "Downstairs: breakfast with Delia, Ivy and Mimey"),
     "grass": (sc_grass, "Outside after breakfast: Elm and Jenny at the grass, Oak, the walk to the lab (#83)"),
     "portraits": (sc_portraits, "Portraits stay up while a finished line waits for a button (#76)"),

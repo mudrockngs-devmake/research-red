@@ -836,6 +836,21 @@ static void Task_Call(u8 taskId)
     if (gPaletteFade.active && sCall->state != STATE_FADE_OUT)
         return;
 
+    // Test builds only (the debug menu is on): START skips the new-game call
+    // as Maple (male), straight to the bedroom
+    if (DEBUG_OVERWORLD_MENU && !sCall->def->fromField && JOY_NEW(START_BUTTON)
+     && sCall->state != STATE_FADE_OUT && sCall->state != STATE_TO_NAMING_SCREEN)
+    {
+        if (sCall->state == STATE_GENDER_MENU || sCall->state == STATE_NAME_MENU)
+            CloseMenu();
+        gSaveBlock2Ptr->playerGender = MALE;
+        SetName(sNameChoices[0]);
+        ClearDialogWindowAndFrame(WIN_TEXTBOX, TRUE);
+        BeginNormalPaletteFade(PALETTES_ALL, 2, 0, 16, RGB_BLACK);
+        sCall->state = STATE_FADE_OUT;
+        return;
+    }
+
     switch (sCall->state)
     {
     case STATE_WAIT_TEXT:
