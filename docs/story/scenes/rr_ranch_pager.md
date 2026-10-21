@@ -68,6 +68,9 @@
 >
 > Prof. Oak's Pikachu. It lights up
 > the dark for Flash. And the room.
+>
+> It dims its cheeks so it won't
+> wake the Slowpoke on the table.
 
 ### RR_RanchPager_EventScript_OakFarfetchd
 
@@ -75,6 +78,9 @@
 >
 > Prof. Oak's Farfetch'd. Its leek
 > is sharp enough to Cut trees.
+>
+> It keeps the leek well away from
+> the napping Slowpoke.
 
 ### RR_RanchPager_EventScript_OakAbra
 
@@ -82,6 +88,9 @@
 >
 > Prof. Oak's Abra. It's asleep. It
 > Teleports in its sleep, too.
+>
+> It and the Slowpoke are having a
+> napping contest. Nobody's winning.
 
 ### RR_RanchPager_EventScript_OakMachop
 
@@ -89,6 +98,9 @@
 >
 > Prof. Oak's Machop. It practices
 > Rock Smash on the lab's walnuts.
+>
+> Quietly, though. Slowpoke is
+> napping on the table.
 
 ### RR_RanchPager_EventScript_OakTauros
 

@@ -1,6 +1,10 @@
 @ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_ProfessorOaksLab, triggered from map)
 @ Moved out of the FireRed map files; the map keeps only its map_script hooks.
 
+@ The empty starter table, where the lab's Slowpoke naps after the scene
+.set RR_LAB_NAP_X, 9
+.set RR_LAB_NAP_Y, 4
+
 @ ===================================================================
 @ Research Red: Oak's lab scene
 @ Started by floor triggers just inside the lab door when
@@ -385,13 +389,11 @@ RR_Lab_EventScript_BattleAfterTotodile::
 
 RR_Lab_EventScript_BattleResult::
 	clearflag FLAG_RR_NO_WHITEOUT
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_AfterBattle
-	@ Lost: Elm and Jenny earned the right to face Oak (VAR_TEMP_5 = 1).
-	@ Their own lines: "best of five" only makes sense when Elm lost (#47)
-	setvar VAR_TEMP_5, 1
 	special HealPlayerParty
 	fadedefaultbgm
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_AfterBattle
+	@ Lost: Elm and Jenny gloat, then challenge Oak (#86 rework)
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Victory, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -400,109 +402,109 @@ RR_Lab_EventScript_BattleResult::
 	msgbox RR_Lab_Text_Ivy_Morale, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_PureScience, MSGBOX_DEFAULT
-	closemessage
-	goto RR_Lab_EventScript_OakSteps
+	msgbox RR_Lab_Text_Elm_OnARoll, MSGBOX_DEFAULT
+	goto RR_Lab_EventScript_ElmChallengesOak
 
 RR_Lab_EventScript_AfterBattle::
-	special HealPlayerParty
-	fadedefaultbgm
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_BestOfFive, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_BestOfZero, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_SomeoneElse, MSGBOX_DEFAULT
+@ #86 rework, on both paths: Elm and Jenny take on Oak's two leftover
+@ starters (healed first, watched, they win); Elm asks for another round and
+@ Oak's Lv 50 ranch Pokémon flatten them (optional to watch); then you and
+@ Ivy may battle the leftover starters too (optional, healed first). Oak
+@ keeps the two starters and the lab's Slowpoke naps on the empty table.
+RR_Lab_EventScript_ElmChallengesOak::
 	closemessage
-RR_Lab_EventScript_OakSteps::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_OAKS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_LAB_JENNY, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Oak_Properly, MSGBOX_DEFAULT
-	goto_if_eq VAR_TEMP_5, 1, RR_Lab_EventScript_OakVsElm
-	@ --- optional double battle vs Oak (his two leftover starters) ---
-	switch VAR_RR_STARTER
-	case 0, RR_Lab_EventScript_OakPair0
-	case 1, RR_Lab_EventScript_OakPair1
-	case 2, RR_Lab_EventScript_OakPair2
-	case 3, RR_Lab_EventScript_OakPair3
-	case 4, RR_Lab_EventScript_OakPair4
-	case 5, RR_Lab_EventScript_OakPair5
+	msgbox RR_Lab_Text_Jenny_Protocol, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_Accepts, MSGBOX_DEFAULT
+	call RR_Lab_EventScript_HealElmJenny
+	call RR_Lab_EventScript_SetupPair
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_StartersGo, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Ivy_Popcorn, MSGBOX_DEFAULT
+	closemessage
+	@ round one: watched, Elm and Jenny (Lv 9) beat the leftover starters (Lv 6)
+	setvar VAR_0x8006, 9
+	call RR_Lab_EventScript_StartWatch
+	call RR_Lab_EventScript_OakStarterBattle
+	call RR_Lab_EventScript_EndWatch
+	@ (the story says they win; at these levels they do)
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_WeBeatOak, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Jenny_Noted, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_Invigorated, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_AnotherRound, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Jenny_LookAtHim, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_RanchTeam, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_Pidgeot, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Jenny_Incident, MSGBOX_DEFAULT
+	@ round two is optional to watch (#46): Oak's ranch Pokémon at Lv 50
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_WatchAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_RanchSkip
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_HealAgain, MSGBOX_DEFAULT
+	call RR_Lab_EventScript_HealElmJenny
+	closemessage
+	call RR_Lab_EventScript_SetupPair
+	setvar VAR_0x8006, 9
+	call RR_Lab_EventScript_StartWatch
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_RANCH, RR_Lab_Text_Oak_RanchDefeat
+	call RR_Lab_EventScript_EndWatch
+	goto RR_Lab_EventScript_RanchAftermath
 
-RR_Lab_EventScript_OakAsk::
+RR_Lab_EventScript_RanchSkip::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_BattleBlur, MSGBOX_DEFAULT
+RR_Lab_EventScript_RanchAftermath::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_RanchAftermath, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_Thesis, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_CalmsDown, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Jenny_OakFast, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_TaurosHaiku, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_Allergies, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Ivy_OakGlow, MSGBOX_DEFAULT
+	@ --- your turn, if you like: never forced, healed first ---
+	call RR_Lab_EventScript_SetupPair
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Challenge, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_OakBattleAsk, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_OakDeclined
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_LikeThis, MSGBOX_DEFAULT
+	playfanfare MUS_HEAL
+	special HealPlayerParty
+	message RR_Lab_Text_HealedYours
+	waitmessage
+	waitfanfare
 	closemessage
 	setflag FLAG_RR_NO_WHITEOUT
-	switch VAR_RR_STARTER
-	case 0, RR_Lab_EventScript_OakBattle0
-	case 1, RR_Lab_EventScript_OakBattle1
-	case 2, RR_Lab_EventScript_OakBattle2
-	case 3, RR_Lab_EventScript_OakBattle3
-	case 4, RR_Lab_EventScript_OakBattle4
-	case 5, RR_Lab_EventScript_OakBattle5
-
-@ Leftovers when the player picked Bulbasaur
-RR_Lab_EventScript_OakPair0::
-	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
-	bufferspeciesname STR_VAR_2, SPECIES_CHIKORITA
-	goto RR_Lab_EventScript_OakAsk
-
-RR_Lab_EventScript_OakBattle0::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_SQUIRTLE_CHIKORITA, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakResult
-
-@ Leftovers when the player picked Charmander
-RR_Lab_EventScript_OakPair1::
-	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
-	bufferspeciesname STR_VAR_2, SPECIES_CYNDAQUIL
-	goto RR_Lab_EventScript_OakAsk
-
-RR_Lab_EventScript_OakBattle1::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_BULBASAUR_CYNDAQUIL, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakResult
-
-@ Leftovers when the player picked Squirtle
-RR_Lab_EventScript_OakPair2::
-	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
-	bufferspeciesname STR_VAR_2, SPECIES_TOTODILE
-	goto RR_Lab_EventScript_OakAsk
-
-RR_Lab_EventScript_OakBattle2::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHARMANDER_TOTODILE, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakResult
-
-@ Leftovers when the player picked Chikorita
-RR_Lab_EventScript_OakPair3::
-	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
-	bufferspeciesname STR_VAR_2, SPECIES_BULBASAUR
-	goto RR_Lab_EventScript_OakAsk
-
-RR_Lab_EventScript_OakBattle3::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_TOTODILE_BULBASAUR, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakResult
-
-@ Leftovers when the player picked Cyndaquil
-RR_Lab_EventScript_OakPair4::
-	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
-	bufferspeciesname STR_VAR_2, SPECIES_CHARMANDER
-	goto RR_Lab_EventScript_OakAsk
-
-RR_Lab_EventScript_OakBattle4::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHIKORITA_CHARMANDER, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakResult
-
-@ Leftovers when the player picked Totodile
-RR_Lab_EventScript_OakPair5::
-	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
-	bufferspeciesname STR_VAR_2, SPECIES_SQUIRTLE
-	goto RR_Lab_EventScript_OakAsk
-
-RR_Lab_EventScript_OakBattle5::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakResult
-
-RR_Lab_EventScript_OakResult::
+	call RR_Lab_EventScript_OakStarterBattle
 	clearflag FLAG_RR_NO_WHITEOUT
 	special HealPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -515,12 +517,12 @@ RR_Lab_EventScript_OakResult::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_SweetThought, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_Haiku, MSGBOX_DEFAULT
-	goto RR_Lab_EventScript_Grant
+	goto RR_Lab_EventScript_TableNap
 
 RR_Lab_EventScript_OakBeaten::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_MoreInYou, MSGBOX_DEFAULT
-	goto RR_Lab_EventScript_Grant
+	goto RR_Lab_EventScript_TableNap
 
 RR_Lab_EventScript_OakDeclined::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -531,6 +533,30 @@ RR_Lab_EventScript_OakDeclined::
 	msgbox RR_Lab_Text_Elm_StillFunding, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_HaveItCovered, MSGBOX_DEFAULT
+@ Oak keeps the two leftover starters (they're in his rematch team); the
+@ table is empty, and the lab's Slowpoke claims it for naps from now on
+RR_Lab_EventScript_TableNap::
+	call RR_Lab_EventScript_SetupPair
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_KeepStarters, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_BULBASAUR_BALL
+	removeobject LOCALID_SQUIRTLE_BALL
+	removeobject LOCALID_CHARMANDER_BALL
+	removeobject LOCALID_LAB_CHIKORITA_BALL
+	removeobject LOCALID_LAB_CYNDAQUIL_BALL
+	removeobject LOCALID_LAB_TOTODILE_BALL
+	call RR_Lab_EventScript_SlowpokeOnTable
+	setobjectxy LOCALID_LAB_SLOWPOKE, RR_LAB_NAP_X, RR_LAB_NAP_Y
+	turnobject LOCALID_LAB_SLOWPOKE, DIR_SOUTH
+	fadescreen FADE_FROM_BLACK
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_SlowpokeTable, MSGBOX_DEFAULT
+	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
+	waitmoncry
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_GoodTable, MSGBOX_DEFAULT
 RR_Lab_EventScript_Grant::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	@ --- research grant ---
@@ -1031,16 +1057,12 @@ RR_Lab_Text_Jenny_BestOfZero::
     .string "Jenny: Best of zero.\n"
     .string "We're in a lab, dear.$"
 
-RR_Lab_Text_Oak_Properly::
-    .string "Oak: Hmm. If you're going to do\n"
-    .string "this unorthodox thing, do it\l"
-    .string "properly.$"
-
 RR_Lab_Text_Oak_Challenge::
-    .string "Oak: {PLAYER}. Ivy. The two of\n"
-    .string "you, against me. Two on two.\p"
-    .string "{STR_VAR_1} and {STR_VAR_2} have\n"
-    .string "been restless anyway.$"
+    .string "Oak: Now then! {PLAYER}. Ivy.\n"
+    .string "{STR_VAR_1} and {STR_VAR_2} are\l"
+    .string "still raring to go.\p"
+    .string "Fancy a round? No pressure. I'll\n"
+    .string "heal your team first.$"
 
 RR_Lab_Text_OakBattleAsk::
     .string "Battle Prof. Oak?$"
@@ -1165,111 +1187,236 @@ RR_Lab_Text_IvyMonJoins::
 @ Elm and Jenny won, so they face Oak; the player watches (AI vs AI).
 @ Placeholder dialogue until the owner's scene spec.
 @ ---------------------------------------------------------------
-RR_Lab_EventScript_OakVsElm::
-	msgbox RR_Lab_Text_Oak_ElmJennyYouWon, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Elm_HoldMyNotebook, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Jenny_Accept, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Ivy_Popcorn, MSGBOX_DEFAULT
-	msgbox RR_Lab_Text_Oak_RanchTeam, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Elm_Pidgeot, MSGBOX_DEFAULT
-	@ Watching is optional (#46); Oak wins either way (#86)
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_WatchAsk, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_OakVsElmSkip
-	closemessage
-	switch VAR_RR_STARTER
-	case 0, RR_Lab_EventScript_ElmTeam0
-	case 1, RR_Lab_EventScript_ElmTeam1
-	case 2, RR_Lab_EventScript_ElmTeam2
-	case 3, RR_Lab_EventScript_ElmTeam3
-	case 4, RR_Lab_EventScript_ElmTeam4
-	case 5, RR_Lab_EventScript_ElmTeam5
+@ Oak heals Elm and Jenny's Pokémon (a fanfare and a line)
+RR_Lab_EventScript_HealElmJenny::
+	playfanfare MUS_HEAL
+	message RR_Lab_Text_HealedElmJenny
+	waitmessage
+	waitfanfare
+	return
 
-@ #86: Oak faces Elm and Jenny's starters with his ranch Pokémon, Pidgeot
-@ and Tauros. The battle plays itself and Oak always wins.
-RR_Lab_EventScript_OakVsElmBattle::
+@ The two starters Oak has left (STR_VAR_1, STR_VAR_2) and Elm and Jenny's
+@ picks (VAR_0x8004, VAR_0x8005) for the starter the player chose
+RR_Lab_EventScript_SetupPair::
+	switch VAR_RR_STARTER
+	case 0, RR_Lab_EventScript_Pair0
+	case 1, RR_Lab_EventScript_Pair1
+	case 2, RR_Lab_EventScript_Pair2
+	case 3, RR_Lab_EventScript_Pair3
+	case 4, RR_Lab_EventScript_Pair4
+	case 5, RR_Lab_EventScript_Pair5
+	return
+
+@ Player picked Bulbasaur
+RR_Lab_EventScript_Pair0::
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	bufferspeciesname STR_VAR_2, SPECIES_CHIKORITA
+	setvar VAR_0x8004, SPECIES_CYNDAQUIL
+	setvar VAR_0x8005, SPECIES_TOTODILE
+	return
+
+@ Player picked Charmander
+RR_Lab_EventScript_Pair1::
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	bufferspeciesname STR_VAR_2, SPECIES_CYNDAQUIL
+	setvar VAR_0x8004, SPECIES_TOTODILE
+	setvar VAR_0x8005, SPECIES_CHIKORITA
+	return
+
+@ Player picked Squirtle
+RR_Lab_EventScript_Pair2::
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	bufferspeciesname STR_VAR_2, SPECIES_TOTODILE
+	setvar VAR_0x8004, SPECIES_CHIKORITA
+	setvar VAR_0x8005, SPECIES_CYNDAQUIL
+	return
+
+@ Player picked Chikorita
+RR_Lab_EventScript_Pair3::
+	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
+	bufferspeciesname STR_VAR_2, SPECIES_BULBASAUR
+	setvar VAR_0x8004, SPECIES_CHARMANDER
+	setvar VAR_0x8005, SPECIES_SQUIRTLE
+	return
+
+@ Player picked Cyndaquil
+RR_Lab_EventScript_Pair4::
+	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
+	bufferspeciesname STR_VAR_2, SPECIES_CHARMANDER
+	setvar VAR_0x8004, SPECIES_SQUIRTLE
+	setvar VAR_0x8005, SPECIES_BULBASAUR
+	return
+
+@ Player picked Totodile
+RR_Lab_EventScript_Pair5::
+	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
+	bufferspeciesname STR_VAR_2, SPECIES_SQUIRTLE
+	setvar VAR_0x8004, SPECIES_BULBASAUR
+	setvar VAR_0x8005, SPECIES_CHARMANDER
+	return
+
+@ Oak's two leftover starters as a double battle (the player's optional
+@ battle, or Elm and Jenny's watched one)
+RR_Lab_EventScript_OakStarterBattle::
+	switch VAR_RR_STARTER
+	case 0, RR_Lab_EventScript_OakBattle0
+	case 1, RR_Lab_EventScript_OakBattle1
+	case 2, RR_Lab_EventScript_OakBattle2
+	case 3, RR_Lab_EventScript_OakBattle3
+	case 4, RR_Lab_EventScript_OakBattle4
+	case 5, RR_Lab_EventScript_OakBattle5
+	return
+
+RR_Lab_EventScript_OakBattle0::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_SQUIRTLE_CHIKORITA, RR_Lab_Text_Oak_Defeat
+	return
+
+RR_Lab_EventScript_OakBattle1::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_BULBASAUR_CYNDAQUIL, RR_Lab_Text_Oak_Defeat
+	return
+
+RR_Lab_EventScript_OakBattle2::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHARMANDER_TOTODILE, RR_Lab_Text_Oak_Defeat
+	return
+
+RR_Lab_EventScript_OakBattle3::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_TOTODILE_BULBASAUR, RR_Lab_Text_Oak_Defeat
+	return
+
+RR_Lab_EventScript_OakBattle4::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHIKORITA_CHARMANDER, RR_Lab_Text_Oak_Defeat
+	return
+
+RR_Lab_EventScript_OakBattle5::
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE, RR_Lab_Text_Oak_Defeat
+	return
+
+@ A watched battle (AI vs AI, #86): Elm and Jenny's picks (VAR_0x8004/5, at
+@ level VAR_0x8006) stand in for the player's party; Elm shows on your side
+RR_Lab_EventScript_StartWatch::
 	callnative RR_ScriptBorrowRivalTeam
 	setflag FLAG_RR_AI_VS_AI
 	setflag FLAG_RR_NO_WHITEOUT
-	@ #7: Elm on your side of the screen, not a "?"
-	setvar VAR_0x8004, TRAINER_PIC_RR_ELM
+	setvar VAR_0x8004, TRAINER_PIC_RR_ELM @ #7: Elm on your side, not a "?"
 	callnative RR_ScriptSetWatchPic
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_RANCH, RR_Lab_Text_Oak_RanchDefeat
-	goto RR_Lab_EventScript_OakVsElmResult
+	return
 
-RR_Lab_EventScript_ElmTeam0::
-	setvar VAR_0x8004, SPECIES_CYNDAQUIL
-	setvar VAR_0x8005, SPECIES_TOTODILE
-	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_ElmTeam1::
-	setvar VAR_0x8004, SPECIES_TOTODILE
-	setvar VAR_0x8005, SPECIES_CHIKORITA
-	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_ElmTeam2::
-	setvar VAR_0x8004, SPECIES_CHIKORITA
-	setvar VAR_0x8005, SPECIES_CYNDAQUIL
-	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_ElmTeam3::
-	setvar VAR_0x8004, SPECIES_CHARMANDER
-	setvar VAR_0x8005, SPECIES_SQUIRTLE
-	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_ElmTeam4::
-	setvar VAR_0x8004, SPECIES_SQUIRTLE
-	setvar VAR_0x8005, SPECIES_BULBASAUR
-	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_ElmTeam5::
-	setvar VAR_0x8004, SPECIES_BULBASAUR
-	setvar VAR_0x8005, SPECIES_CHARMANDER
-	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_OakVsElmResult::
+RR_Lab_EventScript_EndWatch::
 	setvar VAR_0x8004, 0
 	callnative RR_ScriptSetWatchPic
-	specialvar VAR_RESULT, GetBattleOutcome
 	clearflag FLAG_RR_AI_VS_AI
 	clearflag FLAG_RR_NO_WHITEOUT
 	callnative RR_ScriptReturnPlayerTeam
 	special HealPlayerParty
-	@ #86: Oak always wins (if the dice ever say otherwise, he still does)
-RR_Lab_EventScript_OakBeatElm::
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Oak_BeatElm, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Elm_Rematch, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Jenny_OakFast, MSGBOX_DEFAULT
-	msgbox RR_Lab_Text_Oak_Invigorated, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Ivy_OakGlow, MSGBOX_DEFAULT
-	goto RR_Lab_EventScript_Grant
+	return
 
-@ (unused since #86: Oak always wins; kept for the lines)
-RR_Lab_EventScript_OakLostToElm::
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Oak_ElmWon, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Elm_Science, MSGBOX_DEFAULT
-	goto RR_Lab_EventScript_Grant
+@ After the lab scene the lab's Slowpoke naps on the empty starter table
+@ (called from the lab's map script when the story is past the lab, too)
+RR_Lab_EventScript_SlowpokeOnTable::
+	setobjectxyperm LOCALID_LAB_SLOWPOKE, RR_LAB_NAP_X, RR_LAB_NAP_Y
+	setobjectmovementtype LOCALID_LAB_SLOWPOKE, MOVEMENT_TYPE_FACE_DOWN
+	return
 
-@ Skipped the Elm and Jenny vs Oak battle: a coin flip decides it
-RR_Lab_EventScript_OakVsElmSkip::
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_BattleBlur, MSGBOX_DEFAULT
-	special HealPlayerParty
-	goto RR_Lab_EventScript_OakBeatElm
+@ --- #86 rework: Elm and Jenny vs Oak, then the table nap (drafts) ---
+RR_Lab_Text_Elm_OnARoll::
+    .string "Elm: We're on a roll, Jenny! Who's\n"
+    .string "next? Professor Oak!$"
+
+RR_Lab_Text_Elm_SomeoneElse::
+    .string "Elm: Fine! Then we battle someone\n"
+    .string "else. Professor Oak!$"
+
+RR_Lab_Text_Jenny_Protocol::
+    .string "Jenny: By protocol, dear, you ask\n"
+    .string "before you challenge a legend.\p"
+    .string "Jenny: Professor, would you battle\n"
+    .string "us? Your two starters, our two.$"
+
+RR_Lab_Text_Oak_Accepts::
+    .string "Oak: Ho ho! A challenge in my own\n"
+    .string "lab? Gladly!\p"
+    .string "But a professor looks after his\n"
+    .string "opponents. Let me heal yours.$"
+
+RR_Lab_Text_HealedElmJenny::
+    .string "Oak healed Elm and Jenny's\n"
+    .string "Pokémon.$"
+
+RR_Lab_Text_Oak_StartersGo::
+    .string "Oak: {STR_VAR_1}! {STR_VAR_2}!\n"
+    .string "Show them how it's done!$"
+
+RR_Lab_Text_Elm_WeBeatOak::
+    .string "Elm: We won! We beat Professor\n"
+    .string "Oak! In his own lab!\p"
+    .string "Jenny, call the papers! Call my\n"
+    .string "mother! Call everyone!\p"
+    .string "I'm going to frame this moment.\n"
+    .string "I'm going to frame the floor!$"
+
+RR_Lab_Text_Jenny_Noted::
+    .string "Jenny: Noted, dear. The floor goes\n"
+    .string "in the report.$"
+
+RR_Lab_Text_Elm_AnotherRound::
+    .string "Elm: Then let's go again! Same\n"
+    .string "time, same place! Best of three!$"
+
+RR_Lab_Text_Jenny_LookAtHim::
+    .string "Jenny: Dear. Look at his face.$"
+
+RR_Lab_Text_Jenny_Incident::
+    .string "Jenny: I'll start the incident\n"
+    .string "report now, dear.$"
+
+RR_Lab_Text_Oak_HealAgain::
+    .string "Oak: Fair's fair. A quick heal\n"
+    .string "first. Again!$"
+
+RR_Lab_Text_RanchAftermath::
+    .string "Tauros snorts. Pidgeot's gust\n"
+    .string "sends Elm's notes everywhere.$"
+
+RR_Lab_Text_Elm_Thesis::
+    .string "Elm: I saw my whole thesis flash\n"
+    .string "before my eyes. It had typos.$"
+
+RR_Lab_Text_Oak_CalmsDown::
+    .string "Oak: Ho ho… oh dear. I got a\n"
+    .string "little carried away there.\p"
+    .string "Pidgeot, Tauros, back to the\n"
+    .string "ranch. Thank you, old friends.$"
+
+RR_Lab_Text_Oak_TaurosHaiku::
+    .string "Oak: Two upstarts rose up…\n"
+    .string "The old Tauros was hungry…\p"
+    .string "Please stop crying, Elm.$"
+
+RR_Lab_Text_Elm_Allergies::
+    .string "Elm: It's allergies! Tauros shed\n"
+    .string "on me!$"
+
+RR_Lab_Text_HealedYours::
+    .string "Oak healed your Pokémon.$"
+
+RR_Lab_Text_Oak_KeepStarters::
+    .string "Oak: {STR_VAR_1} and {STR_VAR_2}\n"
+    .string "will stay with me. Someone has to\l"
+    .string "keep this old man on his toes!$"
+
+RR_Lab_Text_SlowpokeTable::
+    .string "The lab's Slowpoke shuffles over\n"
+    .string "to the empty table… very slowly.\p"
+    .string "It climbs up and falls asleep.$"
+
+RR_Lab_Text_Oak_GoodTable::
+    .string "Oak: Ho ho! Well, it is a very\n"
+    .string "good table.$"
+
 
 RR_Lab_Text_WatchAsk::
-    .string "Watch Elm and Jenny battle\n"
-    .string "Prof. Oak?$"
+    .string "Watch Elm and Jenny's second\n"
+    .string "round?$"
 
 RR_Lab_Text_BattleBlur::
     .string "Pidgeot's wings, Tauros's hooves,\n"
@@ -1278,10 +1425,32 @@ RR_Lab_Text_BattleBlur::
 @ The lab's Slowpoke (the one from the intro call, still on the line)
 RR_Lab_EventScript_Slowpoke::
 	lock
+	goto_if_ge VAR_0x40FE, 3, RR_Lab_EventScript_SlowpokeNap
 	faceplayer
 	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Slowpoke, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+@ #86: after the lab scene it naps on the empty starter table (it doesn't
+@ turn to face you; it's asleep)
+RR_Lab_EventScript_SlowpokeNap::
+	playmoncry SPECIES_SLOWPOKE, CRY_MODE_WEAK
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_SlowpokeNap, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+@ Daisy's Rattata, by her side when she visits for the rematch (#86)
+RR_Lab_EventScript_Muffin::
+	lock
+	faceplayer
+	playmoncry SPECIES_RATTATA, CRY_MODE_NORMAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Muffin, MSGBOX_DEFAULT
 	waitmoncry
 	release
 	end
@@ -1291,37 +1460,20 @@ RR_Lab_Text_Slowpoke::
     .string "It's still holding the phone from\n"
     .string "this morning's call.$"
 
+RR_Lab_Text_SlowpokeNap::
+    .string "Slowpoke: …Zzz… …Slow?\p"
+    .string "It's fast asleep on the starter\n"
+    .string "table. Prof. Oak doesn't mind.$"
+
+RR_Lab_Text_Muffin::
+    .string "Muffin: Rat! Tat tat!\p"
+    .string "Daisy's Rattata eyes the napping\n"
+    .string "Slowpoke. It wants the table too.$"
+
 @ --- Oak scene variants (placeholder dialogue) ---
-RR_Lab_Text_Oak_ElmJennyYouWon::
-    .string "Oak: Elm. Jenny. You won, so you\n"
-    .string "face me. Two on two.$"
-
-RR_Lab_Text_Elm_HoldMyNotebook::
-    .string "Elm: Us? Against you?\n"
-    .string "Jenny, hold my notebook.$"
-
-RR_Lab_Text_Jenny_Accept::
-    .string "Jenny: Holding it. And accepting.$"
-
 RR_Lab_Text_Ivy_Popcorn::
     .string "Ivy: Sweetie, we get front row\n"
     .string "seats. Somebody find popcorn.$"
-
-RR_Lab_Text_Oak_BeatElm::
-    .string "Oak: Ho ho! Not bad. Not bad at\n"
-    .string "all. Still mine, though.$"
-
-RR_Lab_Text_Elm_Rematch::
-    .string "Elm: Best of thr- No. Good\n"
-    .string "battle, Professor. Really.$"
-
-RR_Lab_Text_Oak_ElmWon::
-    .string "Oak: Well! Beaten in my own lab.\n"
-    .string "Gary will never let me hear it.$"
-
-RR_Lab_Text_Elm_Science::
-    .string "Elm: For science! And for\n"
-    .string "bragging rights! Mostly that.$"
 
 RR_Lab_Text_Oak_CantFund::
     .string "Oak: Well. I suppose we can't\n"
@@ -1346,8 +1498,8 @@ RR_Lab_Text_Oak_HaveItCovered::
     .string "I have it covered.$"
 
 RR_Lab_Text_Oak_RanchTeam::
-    .string "Oak: But not with starters. Let an\n"
-    .string "old man stretch his legs.\p"
+    .string "Oak: Another round? Oh, I'd love\n"
+    .string "to. But not with the starters.\p"
     .string "Pidgeot! Tauros! Out you come!$"
 
 RR_Lab_Text_Elm_Pidgeot::
@@ -1362,10 +1514,8 @@ RR_Lab_Text_Jenny_OakFast::
     .string "that was very fast, sir.$"
 
 RR_Lab_Text_Oak_Invigorated::
-    .string "Oak: Ho ho! I haven't battled like\n"
-    .string "that in years! It's invigorating!\p"
-    .string "Come back and battle me anytime.\n"
-    .string "This old man needs the practice.$"
+    .string "Oak: Ho ho ho! Marvellous!\n"
+    .string "I feel thirty years younger!$"
 
 RR_Lab_Text_Ivy_OakGlow::
     .string "Ivy: Look at him, sweetie. He's\n"

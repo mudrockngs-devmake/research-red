@@ -222,22 +222,30 @@ RR_RanchPager_EventScript_OakGyarados::
 RR_RanchPager_Text_OakPikachu:
 	.string "Pikachu: Pika pika!\p"
 	.string "Prof. Oak's Pikachu. It lights up\n"
-	.string "the dark for Flash. And the room.$"
+	.string "the dark for Flash. And the room.\p"
+	.string "It dims its cheeks so it won't\n"
+	.string "wake the Slowpoke on the table.$"
 
 RR_RanchPager_Text_OakFarfetchd:
 	.string "Farfetch'd: Kwaa!\p"
 	.string "Prof. Oak's Farfetch'd. Its leek\n"
-	.string "is sharp enough to Cut trees.$"
+	.string "is sharp enough to Cut trees.\p"
+	.string "It keeps the leek well away from\n"
+	.string "the napping Slowpoke.$"
 
 RR_RanchPager_Text_OakAbra:
 	.string "Abra: …Abra.\p"
 	.string "Prof. Oak's Abra. It's asleep. It\n"
-	.string "Teleports in its sleep, too.$"
+	.string "Teleports in its sleep, too.\p"
+	.string "It and the Slowpoke are having a\n"
+	.string "napping contest. Nobody's winning.$"
 
 RR_RanchPager_Text_OakMachop:
 	.string "Machop: Macho!\p"
 	.string "Prof. Oak's Machop. It practices\n"
-	.string "Rock Smash on the lab's walnuts.$"
+	.string "Rock Smash on the lab's walnuts.\p"
+	.string "Quietly, though. Slowpoke is\n"
+	.string "napping on the table.$"
 
 RR_RanchPager_Text_OakTauros:
 	.string "Tauros: Mooo!\p"

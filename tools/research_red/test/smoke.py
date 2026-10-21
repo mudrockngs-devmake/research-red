@@ -154,16 +154,38 @@ def sc_grass():
             + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=2))
 
 
+def table_nap():
+    """#86 rework: after the lab the starter table is empty and the lab's
+    Slowpoke naps on it at (9,4) (its saved position, object 16 of the map)."""
+    slowpoke = T.G.const("offsetof(struct SaveBlock1, objectEventTemplates[15].x)")
+    return (check("table_empty", " && ".join(T.G.flag_set(f) for f in (
+                "FLAG_HIDE_BULBASAUR_BALL", "FLAG_HIDE_SQUIRTLE_BALL", "FLAG_HIDE_CHARMANDER_BALL")))
+            + check("slowpoke_on_table", f"{T.G._sb1(slowpoke, 2)} == 9 && {T.G._sb1(slowpoke + 2, 2)} == 4"))
+
+
 def sc_lab():
+    # #86 rework: A answers Yes everywhere: after the Elm and Jenny battle
+    # they beat Oak's leftover starters (watched), you watch round two (Oak's
+    # Lv 50 ranch Pokémon) and battle Oak's starters yourself (test mode plays it)
     return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_LAB)
             + ["shot s000"] + step("UP") + play_until("lab", scene_end(3), 60000)
-            + expect(story=3, party=1))
+            + expect(story=3, party=1) + table_nap())
+
+
+def sc_lab_skip():
+    # #86 rework: B answers No to both optional parts (watching round two and
+    # battling Oak), once the starter is picked; Elm and Jenny's round one
+    # against Oak's starters still plays
+    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_LAB)
+            + step("UP") + play_until("starter", T.G.party_count(1), 20000, key="A", every=120)
+            + play_until("lab_skip", scene_end(3), 60000, key="B", every=60)
+            + expect(story=3, party=1) + table_nap())
 
 
 def sc_lab_loss():
     # #86: lose the lab battle (both your Pokémon at 1 HP, memory poke once you
-    # have them): Oak steps in with Pidgeot and Tauros against Elm and Jenny
-    # (watch: Yes), the battle plays itself, Oak wins, the scene goes on.
+    # have them): Elm and Jenny gloat, then the same Oak rounds as a win
+    # (A: Yes to watching and to battling Oak); the scene goes on.
     party = T.G.sym("gPlayerParty")
     hp = T.G.const("offsetof(struct Pokemon, hp)")
     size = T.G.const("sizeof(struct Pokemon)")
@@ -172,7 +194,7 @@ def sc_lab_loss():
             + play_until("two_mons", T.G.party_count(2), 40000, key="A", every=200)
             + low_hp
             + play_until("lab_lost", scene_end(3), 60000, key="A", every=120)
-            + expect(story=3, party=2))
+            + expect(story=3, party=2) + table_nap())
 
 
 def sc_daisy():
@@ -818,8 +840,9 @@ SCENARIOS = {
     "grass": (sc_grass, "Outside after breakfast: Elm and Jenny at the grass, Oak, the walk to the lab (#83)"),
     "portraits": (sc_portraits, "Portraits stay up while a finished line waits for a button (#76)"),
     "starter_menu": (sc_starter_menu, "Lab: the starter list on the left, no portrait over it (#76)"),
-    "lab": (sc_lab, "Lab scene (test mode: the AI fights)"),
-    "lab_loss": (sc_lab_loss, "Lab scene, battle lost on purpose: Oak steps in with Pidgeot and Tauros and wins (#86)"),
+    "lab": (sc_lab, "Lab scene (test mode: the AI fights); Yes to watching Oak's ranch Pokémon and to battling Oak; Slowpoke naps on the table (#86)"),
+    "lab_loss": (sc_lab_loss, "Lab scene, battle lost on purpose: Elm and Jenny gloat, then the Oak rounds; Slowpoke naps on the table (#86)"),
+    "lab_skip": (sc_lab_skip, "Lab scene saying No to watching Oak's ranch Pokémon and to battling Oak; Slowpoke naps on the table (#86)"),
     "daisy": (sc_daisy, "Daisy's house: Muffin, the Town Map, the bet"),
     "route1": (sc_route1, "Route 1: Elm and Jenny, the Mewtwo fly-by"),
     "route22": (sc_route22, "Route 22: the 6v6 double (test mode)"),

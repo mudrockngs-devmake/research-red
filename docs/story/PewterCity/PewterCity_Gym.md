@@ -40,14 +40,14 @@ Script `PewterCity_Gym_EventScript_Brock`
 > Brock: Rock-hard defense.
 > Let's see you crack it!
 
-**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, faces Elm and Jenny with his own ranch Pokémon. The battle plays itself Lv?,  Lv?
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?
 
-**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, faces Elm and Jenny with his own ranch Pokémon. The battle plays itself Lv?,  Lv?
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?
 
 > Brock: Cracked again!
 > You really have grown.
 
-**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, faces Elm and Jenny with his own ranch Pokémon. The battle plays itself Lv?,  Lv?
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?
 
 > Brock: Come back anytime. My
 > team keeps training too.

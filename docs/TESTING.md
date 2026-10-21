@@ -36,8 +36,9 @@ What the results mean:
 | grass | After breakfast, out of the door: the grass scene to the lab door; Jenny diagonally behind Elm, trailing him to the lab (#83) |
 | portraits | Breakfast, slowly: each finished line still has its portrait (memory check, #76) |
 | starter_menu | Lab: stops on the starter list (left, picture box, no portrait over it, #76) |
-| lab | Debug 9 (test mode) + debug 1, then the lab scene and battles |
-| lab_loss | Lab scene, both your Pokémon set to 1 HP (memory poke): you lose, Oak steps in with Pidgeot and Tauros against Elm and Jenny and wins (#86) |
+| lab | Debug 9 (test mode) + debug 1, then the lab scene and battles; Yes to watching Oak's Lv 50 ranch Pokémon and to battling Oak; the table is empty and Slowpoke naps on it (memory) (#86) |
+| lab_loss | Lab scene, both your Pokémon set to 1 HP (memory poke): you lose, Elm and Jenny gloat, then the same Oak rounds; table and Slowpoke checked (#86) |
+| lab_skip | Lab scene answering No to watching round two and to battling Oak (never forced); table and Slowpoke checked (#86) |
 | daisy | Debug 2, steps into Daisy's house, the whole scene |
 | route1 | Debug 8, the Route 1 scene and the Mewtwo fly-by |
 | route22 | Debug 4 + test mode, the 6v6 double and its banter |

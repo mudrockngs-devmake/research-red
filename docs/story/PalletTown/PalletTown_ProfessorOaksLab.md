@@ -528,6 +528,11 @@ Script `PalletTown_ProfessorOaksLab_EventScript_LastPokeBall`
 ### Lab Slowpoke (Species(Slowpoke)) at 10,11
 Script `RR_Lab_EventScript_Slowpoke`
 
+> Slowpoke: …Zzz… …Slow?
+>
+> It's fast asleep on the starter
+> table. Prof. Oak doesn't mind.
+
 > Slowpoke: …Slooow?
 >
 > It's still holding the phone from
@@ -541,6 +546,9 @@ Script `RR_RanchPager_EventScript_OakPikachu`
 >
 > Prof. Oak's Pikachu. It lights up
 > the dark for Flash. And the room.
+>
+> It dims its cheeks so it won't
+> wake the Slowpoke on the table.
 
 ### Lab Oak Farfetchd (Species(Farfetchd)) at 12,6
 *hidden by `FLAG_TEMP_3`*
@@ -550,6 +558,9 @@ Script `RR_RanchPager_EventScript_OakFarfetchd`
 >
 > Prof. Oak's Farfetch'd. Its leek
 > is sharp enough to Cut trees.
+>
+> It keeps the leek well away from
+> the napping Slowpoke.
 
 ### Lab Oak Abra (Species(Abra)) at 0,5
 *hidden by `FLAG_TEMP_3`*
@@ -559,6 +570,9 @@ Script `RR_RanchPager_EventScript_OakAbra`
 >
 > Prof. Oak's Abra. It's asleep. It
 > Teleports in its sleep, too.
+>
+> It and the Slowpoke are having a
+> napping contest. Nobody's winning.
 
 ### Lab Oak Machop (Species(Machop)) at 12,9
 *hidden by `FLAG_TEMP_3`*
@@ -568,6 +582,9 @@ Script `RR_RanchPager_EventScript_OakMachop`
 >
 > Prof. Oak's Machop. It practices
 > Rock Smash on the lab's walnuts.
+>
+> Quietly, though. Slowpoke is
+> napping on the table.
 
 ### Lab Daisy (Daisy) at 5,3
 *hidden by `FLAG_TEMP_4`*
@@ -615,6 +632,15 @@ Script `RR_Lab_EventScript_DaisyRematch`
 > hear that? We won!
 
 > Oak: Ho ho! Come back anytime.
+
+### Lab Muffin (Species(Rattata)) at 4,3
+*hidden by `FLAG_TEMP_4`*
+Script `RR_Lab_EventScript_Muffin`
+
+> Muffin: Rat! Tat tat!
+>
+> Daisy's Rattata eyes the napping
+> Slowpoke. It wants the table too.
 
 ## Signs
 

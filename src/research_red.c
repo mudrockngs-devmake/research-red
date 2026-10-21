@@ -58,16 +58,18 @@ void RR_ScriptIvyFollowerToObject(struct ScriptContext *ctx)
     gSpecialVar_Result = TRUE;
 }
 
-// Elm and Jenny fight Oak while the player watches (lab scene, if the player
-// lost to them). Their two Pokemon (species in VAR_0x8004 / VAR_0x8005) briefly
+// Elm and Jenny fight Oak while the player watches (lab scene). Their two
+// Pokemon (species in VAR_0x8004 / VAR_0x8005, level in VAR_0x8006) briefly
 // replace the player's party; created directly so they are not added to the
 // player's Pokedex. RR_ScriptReturnPlayerTeam puts the player's party back.
 void RR_ScriptBorrowRivalTeam(struct ScriptContext *ctx)
 {
+    u32 level = VarGet(VAR_0x8006);
+
     SavePlayerParty();
     ZeroPlayerPartyMons();
-    CreateRandomMon(&gPlayerParty[0], VarGet(VAR_0x8004), 6);
-    CreateRandomMon(&gPlayerParty[1], VarGet(VAR_0x8005), 6);
+    CreateRandomMon(&gPlayerParty[0], VarGet(VAR_0x8004), level);
+    CreateRandomMon(&gPlayerParty[1], VarGet(VAR_0x8005), level);
     CalculatePlayerPartyCount();
 }
 

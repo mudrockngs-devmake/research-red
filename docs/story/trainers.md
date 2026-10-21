@@ -216,12 +216,12 @@
 - Omanyte Lv20
 - Rhyhorn Lv20
 - Onix Lv21
-- faces Elm and Jenny with his own ranch Pokémon. The battle plays itself Lv?
--  Lv?
+- his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?
+- Lv 50 Lv?
 
 ## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_RANCH`, double)
-- Pidgeot Lv18
-- Tauros Lv18
+- Pidgeot Lv50
+- Tauros Lv50
 - only hardens. He asks everyone if they're from Pallet Town. */ Lv?
 
 ## Pkmn Trainer 1 Samurai (`TRAINER_RR_SAMURAI`, single)

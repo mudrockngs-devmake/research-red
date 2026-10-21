@@ -15353,9 +15353,9 @@ Onix
 Level: 21
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 
-/* Research Red (#86): Prof. Oak steps in after you lose the lab battle and
-   faces Elm and Jenny with his own ranch Pokémon. The battle plays itself
-   (test mode style); the levels make sure Oak wins. */
+/* Research Red (#86 rework): Elm asks Oak for a second round after beating
+   his leftover starters, and Oak brings out his ranch and ride Pokémon at
+   Lv 50 (slapstick; watched, optional). Never fought by the player. */
 === TRAINER_RR_OAK_LAB_RANCH ===
 Name: Oak
 Class: Pkmn Prof
@@ -15366,11 +15366,11 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pidgeot
-Level: 18
+Level: 50
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 
 Tauros
-Level: 18
+Level: 50
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 
 /* Research Red (#9): the Samurai, a homage to the anime's Viridian Forest

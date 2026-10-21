@@ -16,6 +16,7 @@ PalletTown_ProfessorOaksLab_OnTransition::
 	@ Research Red (#29): Oak's Ranch Pager Pokemon stay out of the way until the lab scene is over
 	call_if_lt VAR_0x40FE, 3, RR_RanchPager_EventScript_HideLabPokemon
 	call_if_lt VAR_0x40FE, 6, RR_Lab_EventScript_HideDaisy @ Research Red (#53)
+	call_if_ge VAR_0x40FE, 3, RR_Lab_EventScript_SlowpokeOnTable @ Research Red (#86): Slowpoke naps on the empty starter table
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1, PalletTown_ProfessorOaksLab_EventScript_ReadyOakForStarterScene
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 7, PalletTown_ProfessorOaksLab_EventScript_ReadyOakForNationalDexScene
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 8, PalletTown_ProfessorOaksLab_EventScript_SetNationalDexSceneFinished

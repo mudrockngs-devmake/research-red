@@ -598,6 +598,9 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Elm: Nobody let anybody win!
 > That was pure science!
 
+> Elm: We're on a roll, Jenny! Who's
+> next? Professor Oak!
+
 ### RR_Lab_EventScript_AfterBattle
 
 > Elm: Again! Best of three!
@@ -606,61 +609,113 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Jenny: Best of zero.
 > We're in a lab, dear.
 
-### RR_Lab_EventScript_OakSteps
+> Elm: Fine! Then we battle someone
+> else. Professor Oak!
 
-> Oak: Hmm. If you're going to do
-> this unorthodox thing, do it
-> properly.
+### RR_Lab_EventScript_ElmChallengesOak
 
-### RR_Lab_EventScript_OakAsk
-
-> Oak: {PLAYER}. Ivy. The two of
-> you, against me. Two on two.
+> Jenny: By protocol, dear, you ask
+> before you challenge a legend.
 >
-> {STR_VAR_1} and {STR_VAR_2} have
-> been restless anyway.
+> Jenny: Professor, would you battle
+> us? Your two starters, our two.
+
+> Oak: Ho ho! A challenge in my own
+> lab? Gladly!
+>
+> But a professor looks after his
+> opponents. Let me heal yours.
+
+> Oak: {STR_VAR_1}! {STR_VAR_2}!
+> Show them how it's done!
+
+> Ivy: Sweetie, we get front row
+> seats. Somebody find popcorn.
+
+> Elm: We won! We beat Professor
+> Oak! In his own lab!
+>
+> Jenny, call the papers! Call my
+> mother! Call everyone!
+>
+> I'm going to frame this moment.
+> I'm going to frame the floor!
+
+> Jenny: Noted, dear. The floor goes
+> in the report.
+
+> Oak: Ho ho ho! Marvellous!
+> I feel thirty years younger!
+
+> Elm: Then let's go again! Same
+> time, same place! Best of three!
+
+> Jenny: Dear. Look at his face.
+
+> Oak: Another round? Oh, I'd love
+> to. But not with the starters.
+>
+> Pidgeot! Tauros! Out you come!
+
+> Elm: His ranch team?! Jenny, those
+> are fully evolved!
+
+> Jenny: I'll start the incident
+> report now, dear.
+
+> Watch Elm and Jenny's second
+> round?
+
+> Oak: Fair's fair. A quick heal
+> first. Again!
+
+*[trainerbattle_no_intro Pkmn Prof Oak (Pidgeot, Tauros, only hardens. He asks everyone if they're from Pallet Town. */)]*
+
+### RR_Lab_EventScript_RanchSkip
+
+> Pidgeot's wings, Tauros's hooves,
+> and Elm shouting. It's over fast.
+
+### RR_Lab_EventScript_RanchAftermath
+
+> Tauros snorts. Pidgeot's gust
+> sends Elm's notes everywhere.
+
+> Elm: I saw my whole thesis flash
+> before my eyes. It had typos.
+
+> Oak: Ho ho… oh dear. I got a
+> little carried away there.
+>
+> Pidgeot, Tauros, back to the
+> ranch. Thank you, old friends.
+
+> Jenny: In my professional opinion,
+> that was very fast, sir.
+
+> Oak: Two upstarts rose up…
+> The old Tauros was hungry…
+>
+> Please stop crying, Elm.
+
+> Elm: It's allergies! Tauros shed
+> on me!
+
+> Ivy: Look at him, sweetie. He's
+> glowing.
+
+> Oak: Now then! {PLAYER}. Ivy.
+> {STR_VAR_1} and {STR_VAR_2} are
+> still raring to go.
+>
+> Fancy a round? No pressure. I'll
+> heal your team first.
 
 > Battle Prof. Oak?
 
 > Ivy: Oh, I like this.
 
-### RR_Lab_EventScript_OakPair0
-
-### RR_Lab_EventScript_OakBattle0
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Squirtle, Chikorita)]*
-
-### RR_Lab_EventScript_OakPair1
-
-### RR_Lab_EventScript_OakBattle1
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Bulbasaur, Cyndaquil)]*
-
-### RR_Lab_EventScript_OakPair2
-
-### RR_Lab_EventScript_OakBattle2
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Charmander, Totodile)]*
-
-### RR_Lab_EventScript_OakPair3
-
-### RR_Lab_EventScript_OakBattle3
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Totodile, Bulbasaur)]*
-
-### RR_Lab_EventScript_OakPair4
-
-### RR_Lab_EventScript_OakBattle4
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Chikorita, Charmander)]*
-
-### RR_Lab_EventScript_OakPair5
-
-### RR_Lab_EventScript_OakBattle5
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle, starter Elm/Jenny can have from the lab chain; Elm names his catches after, desserts)]*
-
-### RR_Lab_EventScript_OakResult
+> Oak healed your Pokémon.
 
 > Oak: Well. I suppose we can't
 > really fund it now. Not after a
@@ -699,6 +754,20 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Oak: Don't worry, Elm.
 > I have it covered.
+
+### RR_Lab_EventScript_TableNap
+
+> Oak: {STR_VAR_1} and {STR_VAR_2}
+> will stay with me. Someone has to
+> keep this old man on his toes!
+
+> The lab's Slowpoke shuffles over
+> to the empty table… very slowly.
+>
+> It climbs up and falls asleep.
+
+> Oak: Ho ho! Well, it is a very
+> good table.
 
 ### RR_Lab_EventScript_Grant
 
@@ -1014,80 +1083,56 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 *[additem ITEM_TM100]*
 
-### RR_Lab_EventScript_OakVsElm
+### RR_Lab_EventScript_HealElmJenny
 
-> Oak: Elm. Jenny. You won, so you
-> face me. Two on two.
+> Oak healed Elm and Jenny's
+> Pokémon.
 
-> Elm: Us? Against you?
-> Jenny, hold my notebook.
+### RR_Lab_EventScript_SetupPair
 
-> Jenny: Holding it. And accepting.
+### RR_Lab_EventScript_Pair0
 
-> Ivy: Sweetie, we get front row
-> seats. Somebody find popcorn.
+### RR_Lab_EventScript_Pair1
 
-> Oak: But not with starters. Let an
-> old man stretch his legs.
->
-> Pidgeot! Tauros! Out you come!
+### RR_Lab_EventScript_Pair2
 
-> Elm: His ranch team?! Jenny, those
-> are fully evolved!
+### RR_Lab_EventScript_Pair3
 
-> Watch Elm and Jenny battle
-> Prof. Oak?
+### RR_Lab_EventScript_Pair4
 
-### RR_Lab_EventScript_OakVsElmBattle
+### RR_Lab_EventScript_Pair5
 
-*[trainerbattle_no_intro Pkmn Prof Oak (Pidgeot, Tauros, only hardens. He asks everyone if they're from Pallet Town. */)]*
+### RR_Lab_EventScript_OakStarterBattle
 
-### RR_Lab_EventScript_ElmTeam0
+### RR_Lab_EventScript_OakBattle0
 
-### RR_Lab_EventScript_ElmTeam1
+*[trainerbattle_no_intro Pkmn Prof Oak (Squirtle, Chikorita)]*
 
-### RR_Lab_EventScript_ElmTeam2
+### RR_Lab_EventScript_OakBattle1
 
-### RR_Lab_EventScript_ElmTeam3
+*[trainerbattle_no_intro Pkmn Prof Oak (Bulbasaur, Cyndaquil)]*
 
-### RR_Lab_EventScript_ElmTeam4
+### RR_Lab_EventScript_OakBattle2
 
-### RR_Lab_EventScript_ElmTeam5
+*[trainerbattle_no_intro Pkmn Prof Oak (Charmander, Totodile)]*
 
-### RR_Lab_EventScript_OakVsElmResult
+### RR_Lab_EventScript_OakBattle3
 
-### RR_Lab_EventScript_OakBeatElm
+*[trainerbattle_no_intro Pkmn Prof Oak (Totodile, Bulbasaur)]*
 
-> Oak: Ho ho! Not bad. Not bad at
-> all. Still mine, though.
+### RR_Lab_EventScript_OakBattle4
 
-> Elm: Best of thr- No. Good
-> battle, Professor. Really.
+*[trainerbattle_no_intro Pkmn Prof Oak (Chikorita, Charmander)]*
 
-> Jenny: In my professional opinion,
-> that was very fast, sir.
+### RR_Lab_EventScript_OakBattle5
 
-> Oak: Ho ho! I haven't battled like
-> that in years! It's invigorating!
->
-> Come back and battle me anytime.
-> This old man needs the practice.
+*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle, starter Elm/Jenny can have from the lab chain; Elm names his catches after, desserts)]*
 
-> Ivy: Look at him, sweetie. He's
-> glowing.
+### RR_Lab_EventScript_StartWatch
 
-### RR_Lab_EventScript_OakLostToElm
+### RR_Lab_EventScript_EndWatch
 
-> Oak: Well! Beaten in my own lab.
-> Gary will never let me hear it.
-
-> Elm: For science! And for
-> bragging rights! Mostly that.
-
-### RR_Lab_EventScript_OakVsElmSkip
-
-> Pidgeot's wings, Tauros's hooves,
-> and Elm shouting. It's over fast.
+### RR_Lab_EventScript_SlowpokeOnTable
 
 ### RR_Lab_EventScript_Slowpoke
 
@@ -1095,6 +1140,20 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 >
 > It's still holding the phone from
 > this morning's call.
+
+### RR_Lab_EventScript_SlowpokeNap
+
+> Slowpoke: …Zzz… …Slow?
+>
+> It's fast asleep on the starter
+> table. Prof. Oak doesn't mind.
+
+### RR_Lab_EventScript_Muffin
+
+> Muffin: Rat! Tat tat!
+>
+> Daisy's Rattata eyes the napping
+> Slowpoke. It wants the table too.
 
 
 ## 04 · rr_daisy
