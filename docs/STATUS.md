@@ -79,6 +79,8 @@ save. Same rules as part 1: commit after each item, one wait, **stop before inst
    (json in `tools/research_red/whats_new/`, include the #90 TM list and the portrait/full-body comparison),
    CREDITS, close finished issues with a note, STATUS. NO install/tag.
 
+Session cost (v0.0.19 part 1, the long session that ended 2026-10-21): last status-line reading $110.10 (`session-cost`; the reading may lag behind the session's end).
+
 ### Capacity (measured 2026-10-21)
 | Space | Used | Notes |
 | --- | --- | --- |
