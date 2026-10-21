@@ -25,6 +25,30 @@ static const u32 sPortraitGfx_pokemon_slowpoke[] = INCBIN_U32("graphics/research
 static const u16 sPortraitPal_pokemon_slowpoke[] = INCBIN_U16("graphics/research_red/pokemon/slowpoke/portrait.gbapal");
 static const u32 sPortraitGfx_pokemon_growlithe[] = INCBIN_U32("graphics/research_red/pokemon/growlithe/portrait.4bpp");
 static const u16 sPortraitPal_pokemon_growlithe[] = INCBIN_U16("graphics/research_red/pokemon/growlithe/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_tentacool[] = INCBIN_U32("graphics/research_red/pokemon/tentacool/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_tentacool[] = INCBIN_U16("graphics/research_red/pokemon/tentacool/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_diglett[] = INCBIN_U32("graphics/research_red/pokemon/diglett/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_diglett[] = INCBIN_U16("graphics/research_red/pokemon/diglett/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_dugtrio[] = INCBIN_U32("graphics/research_red/pokemon/dugtrio/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_dugtrio[] = INCBIN_U16("graphics/research_red/pokemon/dugtrio/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_pikachu[] = INCBIN_U32("graphics/research_red/pokemon/pikachu/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_pikachu[] = INCBIN_U16("graphics/research_red/pokemon/pikachu/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_farfetchd[] = INCBIN_U32("graphics/research_red/pokemon/farfetchd/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_farfetchd[] = INCBIN_U16("graphics/research_red/pokemon/farfetchd/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_abra[] = INCBIN_U32("graphics/research_red/pokemon/abra/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_abra[] = INCBIN_U16("graphics/research_red/pokemon/abra/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_machop[] = INCBIN_U32("graphics/research_red/pokemon/machop/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_machop[] = INCBIN_U16("graphics/research_red/pokemon/machop/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_tauros[] = INCBIN_U32("graphics/research_red/pokemon/tauros/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_tauros[] = INCBIN_U16("graphics/research_red/pokemon/tauros/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_pidgeot[] = INCBIN_U32("graphics/research_red/pokemon/pidgeot/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_pidgeot[] = INCBIN_U16("graphics/research_red/pokemon/pidgeot/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_lapras[] = INCBIN_U32("graphics/research_red/pokemon/lapras/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_lapras[] = INCBIN_U16("graphics/research_red/pokemon/lapras/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_gyarados[] = INCBIN_U32("graphics/research_red/pokemon/gyarados/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_gyarados[] = INCBIN_U16("graphics/research_red/pokemon/gyarados/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_jigglypuff[] = INCBIN_U32("graphics/research_red/pokemon/jigglypuff/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_jigglypuff[] = INCBIN_U16("graphics/research_red/pokemon/jigglypuff/portrait.gbapal");
 static const u32 sPortraitGfx_cast_player_m[] = INCBIN_U32("graphics/research_red/cast/player_m/portrait.4bpp");
 static const u16 sPortraitPal_cast_player_m[] = INCBIN_U16("graphics/research_red/cast/player_m/portrait.gbapal");
 static const u32 sPortraitGfx_cast_player_f[] = INCBIN_U32("graphics/research_red/cast/player_f/portrait.4bpp");
@@ -41,6 +65,18 @@ static const u8 sSpeakerName_7[] = _("Mimey");
 static const u8 sSpeakerName_8[] = _("Muffin");
 static const u8 sSpeakerName_9[] = _("Slowpoke");
 static const u8 sSpeakerName_10[] = _("Cruller");
+static const u8 sSpeakerName_11[] = _("Gerald");
+static const u8 sSpeakerName_12[] = _("Diglett");
+static const u8 sSpeakerName_13[] = _("Dugtrio");
+static const u8 sSpeakerName_14[] = _("Pikachu");
+static const u8 sSpeakerName_15[] = _("Farfetch'd");
+static const u8 sSpeakerName_16[] = _("Abra");
+static const u8 sSpeakerName_17[] = _("Machop");
+static const u8 sSpeakerName_18[] = _("Tauros");
+static const u8 sSpeakerName_19[] = _("Pidgeot");
+static const u8 sSpeakerName_20[] = _("Lapras");
+static const u8 sSpeakerName_21[] = _("Gyarados");
+static const u8 sSpeakerName_22[] = _("Jigglypuff");
 
 static const struct RRSpeaker sSpeakers[] =
 {
@@ -55,4 +91,16 @@ static const struct RRSpeaker sSpeakers[] =
     { sSpeakerName_8, sPortraitGfx_pokemon_rattata, sPortraitPal_pokemon_rattata, RR_NAME_PURPLE, NULL, NULL, 0 },
     { sSpeakerName_9, sPortraitGfx_pokemon_slowpoke, sPortraitPal_pokemon_slowpoke, RR_NAME_PINK, NULL, NULL, 0 },
     { sSpeakerName_10, sPortraitGfx_pokemon_growlithe, sPortraitPal_pokemon_growlithe, RR_NAME_ORANGE, NULL, NULL, 0 },
+    { sSpeakerName_11, sPortraitGfx_pokemon_tentacool, sPortraitPal_pokemon_tentacool, RR_NAME_TEAL, NULL, NULL, 0 },
+    { sSpeakerName_12, sPortraitGfx_pokemon_diglett, sPortraitPal_pokemon_diglett, RR_NAME_BROWN, NULL, NULL, 0 },
+    { sSpeakerName_13, sPortraitGfx_pokemon_dugtrio, sPortraitPal_pokemon_dugtrio, RR_NAME_BROWN, NULL, NULL, 0 },
+    { sSpeakerName_14, sPortraitGfx_pokemon_pikachu, sPortraitPal_pokemon_pikachu, RR_NAME_ORANGE, NULL, NULL, 0 },
+    { sSpeakerName_15, sPortraitGfx_pokemon_farfetchd, sPortraitPal_pokemon_farfetchd, RR_NAME_BROWN, NULL, NULL, 0 },
+    { sSpeakerName_16, sPortraitGfx_pokemon_abra, sPortraitPal_pokemon_abra, RR_NAME_ORANGE, NULL, NULL, 0 },
+    { sSpeakerName_17, sPortraitGfx_pokemon_machop, sPortraitPal_pokemon_machop, RR_NAME_GRAY, NULL, NULL, 0 },
+    { sSpeakerName_18, sPortraitGfx_pokemon_tauros, sPortraitPal_pokemon_tauros, RR_NAME_BROWN, NULL, NULL, 0 },
+    { sSpeakerName_19, sPortraitGfx_pokemon_pidgeot, sPortraitPal_pokemon_pidgeot, RR_NAME_BROWN, NULL, NULL, 0 },
+    { sSpeakerName_20, sPortraitGfx_pokemon_lapras, sPortraitPal_pokemon_lapras, RR_NAME_BLUE, NULL, NULL, 0 },
+    { sSpeakerName_21, sPortraitGfx_pokemon_gyarados, sPortraitPal_pokemon_gyarados, RR_NAME_BLUE, NULL, NULL, 0 },
+    { sSpeakerName_22, sPortraitGfx_pokemon_jigglypuff, sPortraitPal_pokemon_jigglypuff, RR_NAME_PINK, NULL, NULL, 0 },
 };

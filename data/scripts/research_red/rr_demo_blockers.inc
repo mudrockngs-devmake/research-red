@@ -90,8 +90,9 @@ RR_Demo_Movement_BackNorth:
 	step_end
 
 RR_Pallet_Text_GeraldBlocks::
+    .string "Gerald: Tenta! Cool!\p"
     .string "Gerald the Tentacool is floating\n"
-    .string "right in the way. Tenta! Cool!$"
+    .string "right in the way.$"
 
 RR_Pallet_Text_Ivy_Gerald::
     .string "Ivy: Gerald! You followed us\n"
@@ -133,7 +134,7 @@ RR_DiglettsCave_EventScript_Dugtrio::
 
 @ Placeholder lines: the owner will write the final ones
 RR_DiglettsCave_Text_Diglett::
-    .string "Diglett dig, Diglett dig…$"
+    .string "Diglett: Diglett dig, Diglett dig…$"
 
 RR_DiglettsCave_Text_Dugtrio::
     .string "Dugtrio: Trio, trio, trio!\p"

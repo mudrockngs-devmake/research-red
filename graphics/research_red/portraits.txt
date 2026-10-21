@@ -27,3 +27,15 @@ Mimey         | pokemon/mr_mime   | pink
 Muffin        | pokemon/rattata   | purple
 Slowpoke      | pokemon/slowpoke  | pink
 Cruller       | pokemon/growlithe | orange
+Gerald        | pokemon/tentacool | teal
+Diglett       | pokemon/diglett   | brown
+Dugtrio       | pokemon/dugtrio   | brown
+Pikachu       | pokemon/pikachu   | orange
+Farfetch'd    | pokemon/farfetchd | brown
+Abra          | pokemon/abra      | orange
+Machop        | pokemon/machop    | gray
+Tauros        | pokemon/tauros    | brown
+Pidgeot       | pokemon/pidgeot   | brown
+Lapras        | pokemon/lapras    | blue
+Gyarados      | pokemon/gyarados  | blue
+Jigglypuff    | pokemon/jigglypuff | pink
