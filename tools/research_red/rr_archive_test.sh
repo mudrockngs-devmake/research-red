@@ -82,12 +82,12 @@ ${LOG:-(none)}
 ## Observed (bugs, notes)
 
 ## Issues filed
-(GitHub issue numbers for each problem found, labeled `playtest`)
+(GitHub issue numbers for each problem found, labeled \`playtest\`)
 
 ## Follow-ups
 
 ## Session usage
-(Claude Code session costs: run `session-cost --all-days` and copy the sessions since the last round)
+(Claude Code session costs: run \`session-cost --all-days\` and copy the sessions since the last round)
 EOF
 
 mkdir -p "$ARCHIVE"

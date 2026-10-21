@@ -11,15 +11,15 @@ _Last updated: 2026-10-20 evening (test tools #18, playtest form in the report)_
 - **v0.0.16** (2026-10-20, pre-release on GitHub): the big systems build, see [CHANGELOG.md](CHANGELOG.md).
 - **Reports for the testers:** `E:\Workspace\romhacks\research-red\whats-new\v0.0.16\report.html` (33 items, everything new since v0.0.15) and `...\whats-new\v0.0.17\report.html` (the new look). Rebuild with `python3 tools/research_red/rr_whats_new.py <version>`.
 - Interface colours: `tools/research_red/ui_theme.py notebook` is applied in the source (`--restore` returns to FireRed's). Mock-ups: `E:\Workspace\romhacks\research-red\mockups\`.
-- Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
+- Last playtest archived: `test-archive/2026-10-20_v0.0.18_playtest/` (owner, 9 bug cards -> issues #76-#95 + comments; NOTES.md has the session costs).
 
 ## Waiting on the owner
-- [ ] Playtest **v0.0.18** with the three reports (v0.0.16, v0.0.17, v0.0.18); the v0.0.18 report has the new "Your playtest" form at the end. "Save my notes" files go in `E:\Workspace\romhacks\_emu\notes\` (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
 - [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
-- [ ] Log in the next round's NOTES.md (`session-cost` lines since v0.0.12): 2026-10-18/19 build + hub setup $121.56 (2h36m API); `2026-10-19 03:56  $63.85  1h42m API`; `2026-10-20 04:06  $49.62  1h22m API` (dialogue pass, Step 2 menus/battles/evolution); `2026-10-20 07:18  $48.48  0h58m API  2h44m total` (this session: 100 TMs, Ranch Pager, Rest, calls, rematches, v0.0.16-18 releases, as of the wrap-up).
-- [ ] Optional: phone emulator / real hardware (#16).
+- [ ] Optional: phone emulator / real hardware (#16) (v0.0.18 was played on Android RetroArch).
+- [ ] Workshop the report's playtest form when wanted.
 
 ## Next up: v0.0.19
+- Owner wants all remaining demo items in v0.0.19, portraits (#76) first, using the upgraded tester. New issues from the playtest: #76-#95.
 - Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
 - Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
 
