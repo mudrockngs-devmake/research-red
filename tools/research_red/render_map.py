@@ -1,111 +1,168 @@
 #!/usr/bin/env python3
-"""Research Red: render a map layout to a PNG (no third-party modules).
+"""Research Red: draw a map (or one tileset's metatiles) as a PNG, from the
+decomp's own data, for planning scenes and map edits.
 
-Usage: render_map.py LAYOUT_ID OUT.png [--grid]
-  LAYOUT_ID  e.g. LAYOUT_PALLET_TOWN_PROFESSOR_OAKS_LAB (see data/layouts/layouts.json)
-  --grid     draw a coordinate grid every 16 px (labels every 2 tiles are not drawn;
-             count from the top-left, which is (0,0))
+  python3 tools/research_red/render_map.py MAP_PALLET_TOWN_RIVALS_HOUSE out.png [--grid] [--objects]
+  python3 tools/research_red/render_map.py --metatiles gTileset_GenericBuilding2 out.png
 
-Reads built tileset data (tiles.4bpp, .gbapal), so run `make` first.
+--grid writes each tile's x,y; --objects marks the map's people (local id
+initials). --metatiles draws every metatile of a tileset with its number (hex),
+to find a tile to place (e.g. a chair facing up).
+FireRed layout: 640 primary tiles / metatiles, 7 primary palettes; metatiles are
+8 tile entries (bottom layer 4, top layer 4).
 """
+import glob
 import json
 import os
 import re
 import struct
 import sys
-import zlib
+
+from PIL import Image, ImageDraw
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-NUM_TILES_IN_PRIMARY = 640
-NUM_METATILES_IN_PRIMARY = 640
-NUM_PALS_IN_PRIMARY = 7
+NUM_PRIMARY_TILES = 640
+NUM_PRIMARY_METATILES = 640
+NUM_PRIMARY_PALS = 7
 
 
 def tileset_dir(symbol):
-    """Map gTileset_X to its data folder via src/data/tilesets/metatiles.h."""
-    name = symbol.replace("gTileset_", "")
-    text = open(os.path.join(REPO, "src/data/tilesets/metatiles.h")).read()
-    m = re.search(r"gMetatiles_%s\[\] = INCBIN_U16\(\"([^\"]+)/metatiles.bin\"\)" % name, text)
-    return os.path.join(REPO, m.group(1))
+    """gTileset_GenericBuilding2 -> data/tilesets/secondary/generic_building_2"""
+    headers = open(os.path.join(REPO, "src/data/tilesets/headers.h")).read()
+    m = re.search(r"const struct Tileset %s =\s*\{(.*?)\};" % re.escape(symbol), headers, re.S)
+    tiles_sym = re.search(r"\.tiles = (\w+)", m.group(1)).group(1)
+    graphics = open(os.path.join(REPO, "src/data/tilesets/graphics.h")).read()
+    path = re.search(r"%s\[\] = INCBIN_U32\(\"(data/tilesets/[^\"]+)/tiles" % re.escape(tiles_sym), graphics).group(1)
+    return os.path.join(REPO, path)
 
 
-def load_palettes(folder):
+def load_tileset(symbol):
+    d = tileset_dir(symbol)
+    tiles = Image.open(os.path.join(d, "tiles.png"))
     pals = []
     for i in range(16):
-        path = os.path.join(folder, "palettes", "%02d.gbapal" % i)
-        raw = open(path, "rb").read() if os.path.exists(path) else bytes(32)
+        p = os.path.join(d, "palettes", f"{i:02d}.pal")
         cols = []
-        for c in struct.unpack("<16H", raw[:32]):
-            cols.append(((c & 31) * 255 // 31, ((c >> 5) & 31) * 255 // 31, ((c >> 10) & 31) * 255 // 31))
-        pals.append(cols)
-    return pals
+        if os.path.exists(p):
+            lines = open(p).read().split("\n")[3:19]
+            cols = [tuple(int(v) for v in ln.split()) for ln in lines if ln.strip()]
+        pals.append(cols + [(0, 0, 0)] * (16 - len(cols)))
+    metatiles = open(os.path.join(d, "metatiles.bin"), "rb").read()
+    return tiles, pals, metatiles
 
 
-def load_tiles(folder):
-    raw = open(os.path.join(folder, "tiles.4bpp"), "rb").read()
-    tiles = []
-    for t in range(len(raw) // 32):
-        px = []
-        for b in raw[t * 32:(t + 1) * 32]:
-            px += [b & 15, b >> 4]
-        tiles.append(px)
-    return tiles
+def tile_pixels(tiles_img, index):
+    """8x8 colour indices of tile `index` from an indexed tiles.png"""
+    per_row = tiles_img.width // 8
+    x, y = (index % per_row) * 8, (index // per_row) * 8
+    if y >= tiles_img.height:
+        return [[0] * 8 for _ in range(8)]
+    px = tiles_img.load()
+    return [[px[x + i, y + j] % 16 for i in range(8)] for j in range(8)]
 
 
-def write_png(path, w, h, rgb_rows):
-    raw = b"".join(b"\x00" + bytes(r) for r in rgb_rows)
+class Renderer:
+    def __init__(self, primary, secondary):
+        self.p = load_tileset(primary)
+        self.s = load_tileset(secondary) if secondary else None
 
-    def chunk(t, b):
-        return struct.pack(">I", len(b)) + t + b + struct.pack(">I", zlib.crc32(t + b))
-    png = b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 2, 0, 0, 0))
-    png += chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b"")
-    open(path, "wb").write(png)
+    def metatile(self, mid):
+        img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+        src = self.p if mid < NUM_PRIMARY_METATILES or not self.s else self.s
+        local = mid if src is self.p else mid - NUM_PRIMARY_METATILES
+        data = src[2][local * 16:(local + 1) * 16]
+        if len(data) < 16:
+            return img
+        px = img.load()
+        for layer in range(2):
+            for k in range(4):
+                e = struct.unpack_from("<H", data, (layer * 4 + k) * 2)[0]
+                tid, hf, vf, pal = e & 0x3FF, (e >> 10) & 1, (e >> 11) & 1, e >> 12
+                tset = self.p if tid < NUM_PRIMARY_TILES or not self.s else self.s
+                t = tile_pixels(tset[0], tid if tset is self.p else tid - NUM_PRIMARY_TILES)
+                pal_src = self.p if pal < NUM_PRIMARY_PALS or not self.s else self.s
+                colors = pal_src[1][pal]
+                ox, oy = (k % 2) * 8, (k // 2) * 8
+                for j in range(8):
+                    for i in range(8):
+                        c = t[7 - j if vf else j][7 - i if hf else i]
+                        if c == 0 and (layer == 1 or True):
+                            if layer == 0:
+                                px[ox + i, oy + j] = colors[0] + (255,)
+                            continue
+                        px[ox + i, oy + j] = colors[c] + (255,)
+        return img
 
 
-def main():
-    layout_id, out = sys.argv[1], sys.argv[2]
-    grid = "--grid" in sys.argv
+def find_map(map_const):
+    for p in glob.glob(os.path.join(REPO, "data/maps/*/map.json")):
+        m = json.load(open(p))
+        if m.get("id") == map_const:
+            return m
+    sys.exit(f"{map_const} not found")
+
+
+def render_map(map_const, out, grid=False, objects=False):
+    m = find_map(map_const)
     layouts = json.load(open(os.path.join(REPO, "data/layouts/layouts.json")))["layouts"]
-    lay = next(l for l in layouts if l.get("id") == layout_id)
+    lay = next(l for l in layouts if l.get("id") == m["layout"])
     w, h = lay["width"], lay["height"]
-    blocks = struct.unpack("<%dH" % (w * h), open(os.path.join(REPO, lay["blockdata_filepath"]), "rb").read())
-    pdir, sdir = tileset_dir(lay["primary_tileset"]), tileset_dir(lay["secondary_tileset"])
-    ptiles, stiles = load_tiles(pdir), load_tiles(sdir)
-    ppals, spals = load_palettes(pdir), load_palettes(sdir)
-    pmeta = struct.unpack("<%dH" % (os.path.getsize(os.path.join(pdir, "metatiles.bin")) // 2), open(os.path.join(pdir, "metatiles.bin"), "rb").read())
-    smeta = struct.unpack("<%dH" % (os.path.getsize(os.path.join(sdir, "metatiles.bin")) // 2), open(os.path.join(sdir, "metatiles.bin"), "rb").read())
-
-    img = [[(0, 0, 0)] * (w * 16) for _ in range(h * 16)]
-    for my in range(h):
-        for mx in range(w):
-            mid = blocks[my * w + mx] & 0x3FF
-            meta = pmeta[mid * 8:mid * 8 + 8] if mid < NUM_METATILES_IN_PRIMARY else smeta[(mid - NUM_METATILES_IN_PRIMARY) * 8:(mid - NUM_METATILES_IN_PRIMARY) * 8 + 8]
-            for layer in range(2):
-                for i in range(4):
-                    if len(meta) < 8:
-                        continue
-                    e = meta[layer * 4 + i]
-                    tid, hf, vf, pal = e & 0x3FF, (e >> 10) & 1, (e >> 11) & 1, e >> 12
-                    tiles = ptiles if tid < NUM_TILES_IN_PRIMARY else stiles
-                    tid = tid if tid < NUM_TILES_IN_PRIMARY else tid - NUM_TILES_IN_PRIMARY
-                    if tid >= len(tiles):
-                        continue
-                    cols = ppals[pal] if pal < NUM_PALS_IN_PRIMARY else spals[pal]
-                    ox, oy = mx * 16 + (i & 1) * 8, my * 16 + (i >> 1) * 8
-                    for py in range(8):
-                        for pxx in range(8):
-                            sx, sy = (7 - pxx) if hf else pxx, (7 - py) if vf else py
-                            c = tiles[tid][sy * 8 + sx]
-                            if c or layer == 0:
-                                img[oy + py][ox + pxx] = cols[c]
+    blocks = open(os.path.join(REPO, lay["blockdata_filepath"]), "rb").read()
+    r = Renderer(lay["primary_tileset"], lay["secondary_tileset"])
+    img = Image.new("RGBA", (w * 16, h * 16))
+    cache = {}
+    for y in range(h):
+        for x in range(w):
+            mid = struct.unpack_from("<H", blocks, (y * w + x) * 2)[0] & 0x3FF
+            if mid not in cache:
+                cache[mid] = r.metatile(mid)
+            img.paste(cache[mid], (x * 16, y * 16))
+    img = img.resize((w * 32, h * 32), Image.NEAREST)
+    d = ImageDraw.Draw(img)
     if grid:
-        for y in range(h * 16):
-            for x in range(w * 16):
-                if x % 16 == 0 or y % 16 == 0:
-                    r, g, b = img[y][x]
-                    img[y][x] = (255, g // 2, b // 2)
-    write_png(out, w * 16, h * 16, [sum((list(p) for p in row), []) for row in img])
+        for y in range(h):
+            for x in range(w):
+                d.text((x * 32 + 2, y * 32 + 1), f"{x},{y}", fill=(255, 255, 255, 255))
+    if objects:
+        for o in m.get("object_events", []):
+            x, y = o["x"] * 32, o["y"] * 32
+            d.rectangle((x + 2, y + 2, x + 29, y + 29), outline=(255, 0, 0, 255), width=2)
+            label = o.get("local_id", "?").replace("LOCALID_", "")[-6:]
+            d.text((x + 3, y + 18), label, fill=(255, 255, 0, 255))
+    img.save(out)
+    print(f"{out}: {w}x{h} tiles")
+
+
+def render_metatiles(tileset, out):
+    secondary = None
+    r = Renderer(tileset, None)
+    primary = re.search(r"isSecondary = TRUE", open(os.path.join(REPO, "src/data/tilesets/headers.h")).read()
+                        .split(f"const struct Tileset {tileset} =")[1].split("};")[0])
+    if primary:
+        # draw a secondary tileset over the building primary set (any primary works for its own tiles)
+        r = Renderer("gTileset_Building", tileset)
+        base = NUM_PRIMARY_METATILES
+        count = len(r.s[2]) // 16
+    else:
+        base, count = 0, len(r.p[2]) // 16
+    cols = 16
+    rows = (count + cols - 1) // cols
+    img = Image.new("RGBA", (cols * 48, rows * 48), (40, 40, 40, 255))
+    d = ImageDraw.Draw(img)
+    for i in range(count):
+        t = r.metatile(base + i).resize((32, 32), Image.NEAREST)
+        x, y = (i % cols) * 48, (i // cols) * 48
+        img.paste(t, (x + 8, y + 2), t)
+        d.text((x + 8, y + 35), f"{base + i:03x}", fill=(255, 255, 255, 255))
+    img.save(out)
+    print(f"{out}: {count} metatiles from {base:#x}")
 
 
 if __name__ == "__main__":
-    main()
+    a = sys.argv[1:]
+    if not a or a[0] in ("-h", "--help"):
+        print(__doc__)
+    elif a[0] == "--metatiles":
+        render_metatiles(a[1], a[2])
+    else:
+        render_map(a[0], a[1], grid="--grid" in a, objects="--objects" in a)

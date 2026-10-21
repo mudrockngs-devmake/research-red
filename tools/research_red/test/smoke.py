@@ -116,7 +116,8 @@ def sc_daisy():
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + ["shot s000"] + step("UP")
             + play_until("daisy", scene_end(4), 12000, key="B", every=30)
             + expect("MAP_PALLET_TOWN_RIVALS_HOUSE", story=4)
-            # then talk to Daisy at (5,4) from (4,4): her own lines, with portrait
+            # then talk to Daisy at the head of the table (6,3) from (5,3): you
+            # end the scene in your chair (5,5) (#84); her own lines, with portrait
             + step("UP", 2) + ["press RIGHT 2", "wait 10", "press A", "wait 40", "shot t001",
                                "press A", "wait 60", "shot t002", "mash B 120", "shot t003"])
 

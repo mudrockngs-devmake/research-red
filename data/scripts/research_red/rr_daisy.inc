@@ -9,16 +9,18 @@
 RR_Daisy_EventScript_Scene::
 	lockall
 	rr_ivy_to_scene LOCALID_RIVALS_HOUSE_IVY
-	applymovement LOCALID_PLAYER, RR_Daisy_Movement_Up2
-	applymovement LOCALID_RIVALS_HOUSE_IVY, RR_Daisy_Movement_Up2
-	waitmovement 0
+	@ #84: everyone sits down for tea. You take the lower left chair, Ivy the
+	@ upper one; Daisy at the head of the table, Elm and Jenny on the right.
+	applymovement LOCALID_PLAYER, RR_Daisy_Movement_PlayerToSeat
+	applymovement LOCALID_RIVALS_HOUSE_IVY, RR_Daisy_Movement_IvyToSeat
+	waitmovement LOCALID_RIVALS_HOUSE_IVY
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_ElmOnChair, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Elm_Help, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_MuffinSits, MSGBOX_DEFAULT
-	applymovement LOCALID_DAISY, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_DAISY, RR_Daisy_Movement_LookDown
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Daisy_Muffin, MSGBOX_DEFAULT
@@ -38,7 +40,7 @@ RR_Daisy_EventScript_Scene::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Jenny_Toothbrush, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_DAISY, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_DAISY, RR_Daisy_Movement_LookDown
 	waitmovement 0
 	removeobject LOCALID_TOWN_MAP
 	delay 15
@@ -131,12 +133,12 @@ RR_Daisy_EventScript_Scene::
 	msgbox RR_Daisy_Text_Jenny_GroupHug, MSGBOX_DEFAULT
 	msgbox RR_Daisy_Text_Elm_SeeYou, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_RIVALS_HOUSE_ELM, RR_Daisy_Movement_ElmExit
-	waitmovement 0
+	@ They leave together, Jenny trailing Elm (#83)
+	rr_move_pair LOCALID_RIVALS_HOUSE_ELM, LOCALID_RIVALS_HOUSE_JENNY, RR_Daisy_Movement_ElmExit
+	waitmovement LOCALID_RIVALS_HOUSE_JENNY
 	removeobject LOCALID_RIVALS_HOUSE_ELM
 	playse SE_EXIT
-	applymovement LOCALID_RIVALS_HOUSE_JENNY, RR_Daisy_Movement_JennyExit
-	waitmovement 0
+	delay 8
 	removeobject LOCALID_RIVALS_HOUSE_JENNY
 	playse SE_EXIT
 	rr_ivy_follow LOCALID_RIVALS_HOUSE_IVY
@@ -145,9 +147,26 @@ RR_Daisy_EventScript_Scene::
 	releaseall
 	end
 
-RR_Daisy_Movement_Up2:
+@ From the doormat (4,8) to the lower left chair (5,5)
+RR_Daisy_Movement_PlayerToSeat:
 	walk_up
 	walk_up
+	walk_up
+	walk_right
+	step_end
+
+@ From (5,8) to the upper left chair (5,4), facing the table
+RR_Daisy_Movement_IvyToSeat:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_right
+	step_end
+
+@ Daisy, at the head of the table, looks down at Muffin / the Town Map
+RR_Daisy_Movement_LookDown:
+	walk_in_place_faster_down
 	step_end
 
 RR_Daisy_Movement_JumpRight:
@@ -181,17 +200,6 @@ RR_Daisy_Movement_ElmExit:
 	walk_down
 	step_end
 
-@ Jenny holds the chair from its right side (9,5)
-RR_Daisy_Movement_JennyExit:
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	step_end
 
 RR_Daisy_Text_Daisy_ComeHere::
     .string "Daisy: Muffin. Here, sweetheart.$"
@@ -391,6 +399,8 @@ RR_Daisy_Text_Elm_SeeYou::
 
 @ Daisy waits at the table facing the door when you arrive for the scene
 RR_Daisy_EventScript_SetupScene::
+	@ #84: Daisy hosts from the head of the table (the chairs at 6-7,3)
+	setobjectxyperm LOCALID_DAISY, 6, 3
 	setobjectmovementtype LOCALID_DAISY, MOVEMENT_TYPE_FACE_DOWN
 	return
 
