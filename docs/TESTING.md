@@ -47,6 +47,12 @@ What the results mean:
 | catch | Debug 11 (Poké Balls, wild Pidgey): throw until caught; the banter plays over the new entry, then the nickname; nothing replays on the map (#5) |
 | pokedex | Debug 2, Start > Pokédex, every page of Bulbasaur both ways (the Evo page crashed before v0.0.15) |
 | dex_replay | SELECT on Bulbasaur's entry replays the banter with both portraits; the entry comes back (#4) |
+| banter_looks | The banter cutscene (#5/#4): slide in, the ink stamp, hops, B skips, slide out; portraits, then full-body (debug 13) |
+| banter_female | The same with the female player, both looks |
+| banter_family | Elm, then Jenny, call in for their family's lines (VAR_RR_STARTER poked) |
+| banter_long | Rattata's long line fits the box; Krabby's question pops a ? bubble (memory) |
+| banter_default | Catch a Treecko (debug 11 + VAR_TEMP_F poke): the default lines play after the catch |
+| battle_lines, battle_lines_full | Route 22: when you or Ivy speak in battle, your picture stands over the message box; portraits, then full-body (#95) |
 | dex_numbers | Marks Magikarp, Cyndaquil, Totodile caught (memory), scrolls the Kanto list to its end: 155 Cyndaquil, 158 Totodile (#77) |
 | dex_area | Magikarp caught (memory): its Area page by day, evening, night (#20) |
 | pewter | Test mode + debug 10, into the Pewter Pokémon Center: Elm and Jenny's rematch (story 8); then Yes to "Want to come watch?": the scripted Brock scene in the Gym, three rounds, ends with VAR_RR_BROCK_WATCH 2 (#69) |
@@ -104,7 +110,7 @@ Paths: `python3 tools/research_red/test/route_plan.py MAP_FROM x y MAP_TO [x y]`
 Scenarios are short functions in `smoke.py` that return script lines. Building blocks (from `tester.py`):
 - `play_until(label, scene_end(step), max_frames, key="A")`: press a key until the scene sets story progress to `step` and hands control back; screenshots every 60 frames
 - `expect(map_name="MAP_ROUTE1", story=5, party=1)`: check where the scene left us
-- `check(label, G.flag_set("FLAG_X"))`: any other fact. `G` (`game_memory.py`) has `var_is`, `flag_set`, `flag_clear`, `on_map`, `party_count`, `field_free`, `textbox_closed`, `in_battle`; join conditions with `" && "`
+- `check(label, G.flag_set("FLAG_X"))`: any other fact. `G` (`game_memory.py`) has `var_is`, `flag_set`, `flag_clear`, `on_map`, `party_count`, `field_free`, `textbox_closed`, `in_battle`; join conditions with `" && "`, and groups of those with `" || "` (any group)
 - `debug_script(n)`: Start > DEBUG > Scripts > n
 - `step("UP", 3)`: walk 3 tiles
 - `not_black("p001")`: FAIL if that screenshot came out all black (a menu that should show over the map)

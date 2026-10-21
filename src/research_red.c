@@ -215,6 +215,17 @@ void RR_ScriptDebugSetPartyLevel(struct ScriptContext *ctx)
     }
 }
 
+// Debug 11 (catch test): the smoke tests may poke a species into VAR_TEMP_F
+// to meet that one instead of the Pidgey (e.g. one with only the default
+// banter lines, #5)
+void RR_ScriptDebugWildSpecies(struct ScriptContext *ctx)
+{
+    u32 species = VarGet(VAR_TEMP_F);
+
+    if (species != SPECIES_NONE && species < NUM_SPECIES)
+        CreateRandomMon(&gEnemyParty[0], species, 3);
+}
+
 // ---------------------------------------------------------------------------
 // rr_move_pair (#83): the leader walks a movement script, the follower trails
 // one step behind (Jenny behind Elm, the way Ivy follows the player).

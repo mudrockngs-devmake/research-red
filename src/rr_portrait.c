@@ -29,6 +29,8 @@
 #include "util.h"
 #include "event_object_movement.h"
 #include "constants/flags.h"
+#include "constants/songs.h"
+#include "sound.h"
 
 #define TAG_RR_PORTRAIT   0x5A10
 #define TAG_RR_NAMEPLATE  0x5A11
@@ -76,6 +78,10 @@ struct RRSpeaker
     const u32 *altGfx; // outfit shown while altFlag is set
     const u16 *altPal;
     u16 altFlag;
+    const u32 *fullGfx; // the full-body look (64x64 battle.png), NULL for Pokémon
+    const u16 *fullPal;
+    const u32 *altFullGfx;
+    const u16 *altFullPal;
 };
 
 #include "data/research_red/portraits.h"
@@ -390,38 +396,76 @@ void RR_ScriptPortraitHide(struct ScriptContext *ctx)
 }
 
 // ---------------------------------------------------------------------------
-// Standalone portraits for other screens (the Pokédex banter, #5): no name
-// plate, no box tracking. Up to two at once, each with its own tile/palette tag.
+// Standalone portraits for other screens (the Pokédex banter, #5; battle
+// lines, #95): no name plate, no box tracking. Up to three at once, each with
+// its own tile/palette tag. They bob, can slide in and out, and hop when they
+// speak.
+//
+// The banter look (#5, #95): portraits (head and shoulders, the default) or
+// the full-body pictures (cast/*/battle.png, 64x64) while
+// FLAG_RR_BANTER_FULL_BODY is set (Debug > Scripts > 13 switches it). Pokémon
+// speakers always use their portrait.
 // ---------------------------------------------------------------------------
-#define TAG_RR_STANDALONE 0x5A12   // + 0 or 1
+#define TAG_RR_STANDALONE 0x5A12   // + 0, 1 or 2
+#define TAG_RR_EMOTE      0x5A15
+#define TAG_RR_STAMP      0x5A16
+#define STANDALONE_SLOTS  3
+#define SLIDE_SPEED       8     // pixels per frame
+#define HOP_FRAMES        12
+#define HOP_HEIGHT        6
 
-static EWRAM_DATA const u16 *sStandalonePal[2] = {NULL};
+// sprite data
+#define sBobPhase data[0]
+#define sTargetX  data[3]
+#define sHopTimer data[4]
+
+static EWRAM_DATA const u16 *sStandalonePal[STANDALONE_SLOTS] = {NULL};
+
+bool32 RR_BanterFullBody(void)
+{
+    return FlagGet(FLAG_RR_BANTER_FULL_BODY);
+}
 
 static void SpriteCB_StandalonePortrait(struct Sprite *sprite)
 {
-    sprite->data[0] = (sprite->data[0] + 1) % BOB_PERIOD;
-    sprite->y2 = (Cos(sprite->data[0] * 256 / BOB_PERIOD, 2) - 2) / 2;
+    s32 hop = 0;
+
+    sprite->sBobPhase = (sprite->sBobPhase + 1) % BOB_PERIOD;
+    if (sprite->x < sprite->sTargetX)
+        sprite->x = min(sprite->x + SLIDE_SPEED, sprite->sTargetX);
+    else if (sprite->x > sprite->sTargetX)
+        sprite->x = max(sprite->x - SLIDE_SPEED, sprite->sTargetX);
+    if (sprite->sHopTimer > 0)
+    {
+        sprite->sHopTimer--;
+        hop = Sin(sprite->sHopTimer * 128 / HOP_FRAMES, HOP_HEIGHT); // up and back down
+    }
+    sprite->y2 = (Cos(sprite->sBobPhase * 256 / BOB_PERIOD, 2) - 2) / 2 - hop;
 }
 
 // (sprites keep a pointer to their template, so these must not be on the stack)
-static const struct SpriteTemplate sSpriteTemplate_StandalonePortrait[2] =
+// slot 2 is Elm's or Jenny's call face (32x32), see RR_CreateStandaloneCallFace
+static const struct OamData sOam_CallFace =
 {
-    {
-        .tileTag = TAG_RR_STANDALONE,
-        .paletteTag = TAG_RR_STANDALONE,
-        .oam = &sOam_Portrait,
-        .anims = gDummySpriteAnimTable,
-        .affineAnims = gDummySpriteAffineAnimTable,
-        .callback = SpriteCB_StandalonePortrait,
-    },
-    {
-        .tileTag = TAG_RR_STANDALONE + 1,
-        .paletteTag = TAG_RR_STANDALONE + 1,
-        .oam = &sOam_Portrait,
-        .anims = gDummySpriteAnimTable,
-        .affineAnims = gDummySpriteAffineAnimTable,
-        .callback = SpriteCB_StandalonePortrait,
-    },
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0,
+};
+
+#define STANDALONE_TEMPLATE(n, _oam)                    \
+    {                                                   \
+        .tileTag = TAG_RR_STANDALONE + (n),             \
+        .paletteTag = TAG_RR_STANDALONE + (n),          \
+        .oam = _oam,                                    \
+        .anims = gDummySpriteAnimTable,                 \
+        .affineAnims = gDummySpriteAffineAnimTable,     \
+        .callback = SpriteCB_StandalonePortrait,        \
+    }
+static const struct SpriteTemplate sSpriteTemplate_StandalonePortrait[STANDALONE_SLOTS] =
+{
+    STANDALONE_TEMPLATE(0, &sOam_Portrait),
+    STANDALONE_TEMPLATE(1, &sOam_Portrait),
+    STANDALONE_TEMPLATE(2, &sOam_CallFace),
 };
 
 // Who speaks a line: RR_LINE_PLAYER, RR_LINE_IVY, RR_LINE_OTHER (someone else
@@ -440,42 +484,62 @@ u32 RR_GetLineSpeaker(const u8 *text)
     return RR_LINE_OTHER;
 }
 
-// slot 0 or 1; who: RR_LINE_PLAYER or RR_LINE_IVY. Returns the sprite id, or
-// MAX_SPRITES if there was no room (the scene just plays without it).
-u8 RR_CreateStandalonePortrait(u32 slot, u32 who, s16 x, s16 y, bool32 hFlip)
+static u32 FindSpeaker(const u8 *name)
 {
-    static const u8 sIvy[] = _("Ivy");
-    struct SpriteSheet sheet = {.size = 64 * 64 / 2, .tag = TAG_RR_STANDALONE + slot};
-    struct SpritePalette palette = {.tag = TAG_RR_STANDALONE + slot};
     u32 i;
-    u8 spriteId;
 
-    if (who == RR_LINE_PLAYER)
+    for (i = 0; i < ARRAY_COUNT(sSpeakers); i++)
+    {
+        if (StringCompare(sSpeakers[i].name, name) == 0)
+            return i;
+    }
+    return SPEAKER_NONE;
+}
+
+// The picture for a speaker (an index into sSpeakers, or SPEAKER_PLAYER) in
+// the current banter look and outfit
+static bool32 GetSpeakerPicture(u32 speaker, const u32 **gfx, const u16 **pal)
+{
+    bool32 full = RR_BanterFullBody();
+
+    if (speaker == SPEAKER_PLAYER)
     {
         bool32 male = gSaveBlock2Ptr->playerGender == MALE;
-        sheet.data = male ? sPortraitGfx_cast_player_m : sPortraitGfx_cast_player_f;
-        palette.data = male ? sPortraitPal_cast_player_m : sPortraitPal_cast_player_f;
-    }
-    else
-    {
-        for (i = 0; i < ARRAY_COUNT(sSpeakers); i++)
+        if (full)
         {
-            if (StringCompare(sSpeakers[i].name, sIvy) == 0)
-                break;
-        }
-        if (i == ARRAY_COUNT(sSpeakers))
-            return MAX_SPRITES;
-        if (sSpeakers[i].altFlag != 0 && FlagGet(sSpeakers[i].altFlag))
-        {
-            sheet.data = sSpeakers[i].altGfx;
-            palette.data = sSpeakers[i].altPal;
+            *gfx = male ? sFullBodyGfx_cast_player_m : sFullBodyGfx_cast_player_f;
+            *pal = male ? sFullBodyPal_cast_player_m : sFullBodyPal_cast_player_f;
         }
         else
         {
-            sheet.data = sSpeakers[i].gfx;
-            palette.data = sSpeakers[i].pal;
+            *gfx = male ? sPortraitGfx_cast_player_m : sPortraitGfx_cast_player_f;
+            *pal = male ? sPortraitPal_cast_player_m : sPortraitPal_cast_player_f;
         }
+        return TRUE;
     }
+    if (speaker >= ARRAY_COUNT(sSpeakers))
+        return FALSE;
+    if (sSpeakers[speaker].altFlag != 0 && FlagGet(sSpeakers[speaker].altFlag))
+    {
+        *gfx = (full && sSpeakers[speaker].altFullGfx != NULL) ? sSpeakers[speaker].altFullGfx : sSpeakers[speaker].altGfx;
+        *pal = (full && sSpeakers[speaker].altFullGfx != NULL) ? sSpeakers[speaker].altFullPal : sSpeakers[speaker].altPal;
+    }
+    else
+    {
+        *gfx = (full && sSpeakers[speaker].fullGfx != NULL) ? sSpeakers[speaker].fullGfx : sSpeakers[speaker].gfx;
+        *pal = (full && sSpeakers[speaker].fullGfx != NULL) ? sSpeakers[speaker].fullPal : sSpeakers[speaker].pal;
+    }
+    return TRUE;
+}
+
+static u8 CreateStandalone(u32 slot, const u32 *gfx, const u16 *pal, u32 size, s16 x, s16 y, bool32 hFlip)
+{
+    struct SpriteSheet sheet = {.data = gfx, .size = size, .tag = TAG_RR_STANDALONE + slot};
+    struct SpritePalette palette = {.data = pal, .tag = TAG_RR_STANDALONE + slot};
+    u8 spriteId;
+
+    // no free sprite tiles or colour slot (a busy screen, especially a
+    // battle): the line just plays without the picture
     LoadSpriteSheet(&sheet);
     if (GetSpriteTileStartByTag(sheet.tag) == TAG_NONE)
         return MAX_SPRITES;
@@ -492,8 +556,38 @@ u8 RR_CreateStandalonePortrait(u32 slot, u32 who, s16 x, s16 y, bool32 hFlip)
         return MAX_SPRITES;
     }
     gSprites[spriteId].hFlip = hFlip;
-    sStandalonePal[slot] = palette.data;
+    gSprites[spriteId].sTargetX = x;
+    sStandalonePal[slot] = pal;
     return spriteId;
+}
+
+// slot 0-2; who: RR_LINE_PLAYER or RR_LINE_IVY. Returns the sprite id, or
+// MAX_SPRITES if there was no room (the scene just plays without it).
+u8 RR_CreateStandalonePortrait(u32 slot, u32 who, s16 x, s16 y, bool32 hFlip)
+{
+    static const u8 sIvy[] = _("Ivy");
+    const u32 *gfx;
+    const u16 *pal;
+
+    if (!GetSpeakerPicture(who == RR_LINE_PLAYER ? SPEAKER_PLAYER : FindSpeaker(sIvy), &gfx, &pal))
+        return MAX_SPRITES;
+    if (slot >= 2)
+        return MAX_SPRITES;
+    return CreateStandalone(slot, gfx, pal, 64 * 64 / 2, x, y, hFlip);
+}
+
+// Elm's and Jenny's small video-call faces (32x32, cast/*/call.png): they
+// "call in" for their family's banter lines
+static const u32 sCallGfx_Elm[] = INCBIN_U32("graphics/research_red/cast/elm/call.4bpp");
+static const u16 sCallPal_Elm[] = INCBIN_U16("graphics/research_red/cast/elm/call.gbapal");
+static const u32 sCallGfx_Jenny[] = INCBIN_U32("graphics/research_red/cast/jenny/call.4bpp");
+static const u16 sCallPal_Jenny[] = INCBIN_U16("graphics/research_red/cast/jenny/call.gbapal");
+
+// always slot 2
+u8 RR_CreateStandaloneCallFace(bool32 elm, s16 x, s16 y)
+{
+    return CreateStandalone(2, elm ? sCallGfx_Elm : sCallGfx_Jenny, elm ? sCallPal_Elm : sCallPal_Jenny,
+                            32 * 32 / 2, x, y, FALSE);
 }
 
 // Dim the one who isn't speaking, so it's clear who's talking
@@ -508,13 +602,257 @@ void RR_SetStandalonePortraitDim(u32 slot, bool32 dim)
         BlendPalette(OBJ_PLTT_ID(palSlot), 16, 7, RGB(2, 2, 6));
 }
 
+static bool32 IsStandalone(u32 slot, u8 spriteId)
+{
+    return spriteId < MAX_SPRITES && gSprites[spriteId].inUse
+        && gSprites[spriteId].template == &sSpriteTemplate_StandalonePortrait[slot];
+}
+
+// Start off-screen at fromX and slide to where it was created
+void RR_StandalonePortraitSlideIn(u32 slot, u8 spriteId, s16 fromX)
+{
+    if (!IsStandalone(slot, spriteId))
+        return;
+    gSprites[spriteId].sTargetX = gSprites[spriteId].x;
+    gSprites[spriteId].x = fromX;
+}
+
+void RR_StandalonePortraitSlideTo(u32 slot, u8 spriteId, s16 x)
+{
+    if (IsStandalone(slot, spriteId))
+        gSprites[spriteId].sTargetX = x;
+}
+
+bool32 RR_StandalonePortraitSliding(u32 slot, u8 spriteId)
+{
+    return IsStandalone(slot, spriteId) && gSprites[spriteId].x != gSprites[spriteId].sTargetX;
+}
+
+// A little hop, when their line starts
+void RR_StandalonePortraitHop(u32 slot, u8 spriteId)
+{
+    if (IsStandalone(slot, spriteId))
+        gSprites[spriteId].sHopTimer = HOP_FRAMES;
+}
+
 void RR_DestroyStandalonePortrait(u32 slot, u8 spriteId)
 {
-    if (spriteId < MAX_SPRITES && gSprites[spriteId].inUse && gSprites[spriteId].template->tileTag == TAG_RR_STANDALONE + slot)
+    if (IsStandalone(slot, spriteId))
         DestroySprite(&gSprites[spriteId]);
     FreeSpriteTilesByTag(TAG_RR_STANDALONE + slot);
     FreeSpritePaletteByTag(TAG_RR_STANDALONE + slot);
     sStandalonePal[slot] = NULL;
+}
+
+// ---------------------------------------------------------------------------
+// Emote bubbles (#5): ! ? or a music note pops up above a speaker on some
+// lines, rises a little and goes. One at a time.
+// graphics/research_red/banter/emotes.png (tools/research_red/build_banter_fx.py)
+// ---------------------------------------------------------------------------
+static const u32 sEmoteGfx[] = INCBIN_U32("graphics/research_red/banter/emotes.4bpp");
+static const u16 sEmotePal[] = INCBIN_U16("graphics/research_red/banter/emotes.gbapal");
+
+static const struct OamData sOam_Emote =
+{
+    .shape = SPRITE_SHAPE(16x16),
+    .size = SPRITE_SIZE(16x16),
+    .priority = 0,
+};
+
+#define EMOTE_FRAMES 50
+
+static void SpriteCB_Emote(struct Sprite *sprite)
+{
+    if (++sprite->data[0] % 4 == 0 && sprite->data[0] < 24)
+        sprite->y2--;
+    if (sprite->data[0] >= EMOTE_FRAMES)
+        RR_HideEmote();
+}
+
+static const struct SpriteTemplate sSpriteTemplate_Emote =
+{
+    .tileTag = TAG_RR_EMOTE,
+    .paletteTag = TAG_RR_EMOTE,
+    .oam = &sOam_Emote,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Emote,
+};
+
+static EWRAM_DATA u8 sEmoteIdPlus1 = 0;
+
+void RR_HideEmote(void)
+{
+    if (sEmoteIdPlus1 != 0 && gSprites[sEmoteIdPlus1 - 1].inUse
+     && gSprites[sEmoteIdPlus1 - 1].template == &sSpriteTemplate_Emote)
+        DestroySprite(&gSprites[sEmoteIdPlus1 - 1]);
+    sEmoteIdPlus1 = 0;
+    FreeSpriteTilesByTag(TAG_RR_EMOTE);
+    FreeSpritePaletteByTag(TAG_RR_EMOTE);
+}
+
+// Which bubble a line gets: a question (ends in ?), a song (has a music
+// note), or an exclamation (two or more !); most lines get none
+u32 RR_GetLineEmote(const u8 *text)
+{
+    const u8 *c, *last = NULL;
+    u32 bangs = 0;
+
+    for (c = text; *c != EOS; c++)
+    {
+        if (*c == CHAR_EXTRA_SYMBOL && c[1] == 0xE9) // EMOJI_NOTE (charmap.txt)
+            return RR_EMOTE_NOTE;
+        if (*c == CHAR_EXCL_MARK)
+            bangs++;
+        if (*c != CHAR_SPACE && *c != CHAR_NEWLINE && *c != CHAR_PROMPT_SCROLL && *c != CHAR_PROMPT_CLEAR)
+            last = c;
+    }
+    if (last != NULL && *last == CHAR_QUESTION_MARK)
+        return RR_EMOTE_QUESTION;
+    if (bangs >= 2)
+        return RR_EMOTE_EXCLAIM;
+    return RR_EMOTE_NONE;
+}
+
+void RR_ShowEmote(u32 emote, s16 x, s16 y)
+{
+    struct SpriteSheet sheet = {.data = sEmoteGfx, .size = 16 * 48 / 2, .tag = TAG_RR_EMOTE};
+    struct SpritePalette palette = {.data = sEmotePal, .tag = TAG_RR_EMOTE};
+    u8 spriteId;
+
+    RR_HideEmote();
+    if (emote == RR_EMOTE_NONE)
+        return;
+    LoadSpriteSheet(&sheet);
+    if (GetSpriteTileStartByTag(TAG_RR_EMOTE) == TAG_NONE)
+        return;
+    if (LoadSpritePalette(&palette) == 0xFF)
+    {
+        FreeSpriteTilesByTag(TAG_RR_EMOTE);
+        return;
+    }
+    spriteId = CreateSprite(&sSpriteTemplate_Emote, x, y, 0);
+    if (spriteId == MAX_SPRITES)
+    {
+        RR_HideEmote();
+        return;
+    }
+    gSprites[spriteId].oam.tileNum += (emote - RR_EMOTE_EXCLAIM) * 4; // frames stacked top to bottom
+    sEmoteIdPlus1 = spriteId + 1;
+}
+
+// ---------------------------------------------------------------------------
+// The dex number stamped on like an ink stamp (#5): it drops onto the page
+// from twice its size with a thump, slightly crooked, and stays for the banter
+// ---------------------------------------------------------------------------
+static const union AffineAnimCmd sAffineAnim_Stamp[] =
+{
+    AFFINEANIMCMD_FRAME(0x200, 0x200, -6, 0),
+    AFFINEANIMCMD_FRAME(-0x20, -0x20, 0, 8),
+    AFFINEANIMCMD_FRAME(0, 0, 0, 1),
+    AFFINEANIMCMD_END,
+};
+static const union AffineAnimCmd *const sAffineAnims_Stamp[] = {sAffineAnim_Stamp};
+
+static const struct OamData sOam_Stamp =
+{
+    .affineMode = ST_OAM_AFFINE_DOUBLE,
+    .shape = SPRITE_SHAPE(64x32),
+    .size = SPRITE_SIZE(64x32),
+    .priority = 0,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_Stamp =
+{
+    .tileTag = TAG_RR_STAMP,
+    .paletteTag = TAG_RR_STAMP,
+    .oam = &sOam_Stamp,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = sAffineAnims_Stamp,
+    .callback = SpriteCallbackDummy,
+};
+
+static EWRAM_DATA u8 sStampIdPlus1 = 0;
+
+void RR_HideDexStamp(void)
+{
+    if (sStampIdPlus1 != 0 && gSprites[sStampIdPlus1 - 1].inUse
+     && gSprites[sStampIdPlus1 - 1].template == &sSpriteTemplate_Stamp)
+    {
+        FreeOamMatrix(gSprites[sStampIdPlus1 - 1].oam.matrixNum);
+        DestroySprite(&gSprites[sStampIdPlus1 - 1]);
+    }
+    sStampIdPlus1 = 0;
+    FreeSpriteTilesByTag(TAG_RR_STAMP);
+    FreeSpritePaletteByTag(TAG_RR_STAMP);
+}
+
+void RR_ShowDexStamp(u32 dexNum, s16 x, s16 y)
+{
+    static const u8 sTextColors[3] = {0, 2, 3}; // clear background, ink, faded ink
+    static const u8 sStampText[] = _("Nº{STR_VAR_1}");
+    struct WindowTemplate template = {.bg = 0, .tilemapLeft = 0, .tilemapTop = 0, .width = 8, .height = 2, .paletteNum = 0, .baseBlock = 0};
+    struct SpriteSheet sheet;
+    struct SpritePalette palette;
+    u16 pal[16] = {0};
+    u8 text[16];
+    u8 *tiles;
+    u32 windowId, width, x0, xx, yy;
+    u8 spriteId;
+
+    RR_HideDexStamp();
+    pal[2] = RGB(25, 5, 5);   // red ink
+    pal[3] = RGB(29, 16, 14); // where the ink is thin
+    windowId = AddWindow(&template);
+    if (windowId == WINDOW_NONE)
+        return;
+    tiles = AllocZeroed(64 * 32 / 2);
+    if (tiles == NULL)
+    {
+        RemoveWindow(windowId);
+        return;
+    }
+    ConvertIntToDecimalStringN(gStringVar1, dexNum, STR_CONV_MODE_LEADING_ZEROS, dexNum >= 1000 ? 4 : 3); // Nº001, as in the Pokédex
+    StringExpandPlaceholders(text, sStampText);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
+    width = GetStringWidth(FONT_NORMAL, text, 0);
+    x0 = (64 - width) / 2;
+    AddTextPrinterParameterized3(windowId, FONT_NORMAL, x0, 1, sTextColors, TEXT_SKIP_DRAW, text);
+    memcpy(tiles, gWindows[windowId].tileData, 64 * 16 / 2);
+    RemoveWindow(windowId);
+    // a rubber-stamp frame around the number
+    for (xx = x0 - 4; xx < x0 + width + 4 && xx < 64; xx++)
+    {
+        SetPlatePixel(tiles, xx, 0, 2);
+        SetPlatePixel(tiles, xx, 15, 2);
+    }
+    for (yy = 0; yy < 16; yy++)
+    {
+        SetPlatePixel(tiles, x0 - 4, yy, 2);
+        SetPlatePixel(tiles, min(x0 + width + 3, 63), yy, 2);
+    }
+    sheet.data = tiles;
+    sheet.size = 64 * 32 / 2;
+    sheet.tag = TAG_RR_STAMP;
+    LoadSpriteSheet(&sheet);
+    Free(tiles);
+    if (GetSpriteTileStartByTag(TAG_RR_STAMP) == TAG_NONE)
+        return;
+    palette.data = pal;
+    palette.tag = TAG_RR_STAMP;
+    if (LoadSpritePalette(&palette) == 0xFF)
+    {
+        FreeSpriteTilesByTag(TAG_RR_STAMP);
+        return;
+    }
+    spriteId = CreateSprite(&sSpriteTemplate_Stamp, x, y + 8, 0); // the plate is the top half of the 64x32
+    if (spriteId == MAX_SPRITES)
+    {
+        RR_HideDexStamp();
+        return;
+    }
+    sStampIdPlus1 = spriteId + 1;
+    PlaySE(SE_BALL_BOUNCE_1);
 }
 
 // ---------------------------------------------------------------------------
@@ -566,7 +904,10 @@ void RR_UpdateBattleSpeakerPortrait(const u8 *text)
         return;
     sBattleSpeakerIdPlus1 = RR_CreateStandalonePortrait(0, who, BATTLE_PORTRAIT_X, BATTLE_PORTRAIT_Y, FALSE) + 1;
     if (sBattleSpeakerIdPlus1 - 1 < MAX_SPRITES)
+    {
         sBattleSpeaker = who;
+        RR_StandalonePortraitHop(0, sBattleSpeakerIdPlus1 - 1);
+    }
     else
         sBattleSpeakerIdPlus1 = 0;
 }

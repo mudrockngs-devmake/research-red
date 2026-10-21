@@ -21,7 +21,7 @@ Documentation index: `docs/README.md`.
 - Keep `docs/FLAGS_VARS.md` (registry) and `CREDITS.md` (with the Permission column) up to date with every change.
 - Generated files (encounters, banter, portraits table, player docs): edit the source and rerun the tool; `rr_check.py` fails if they're stale (`docs/DEV_GUIDE.md`). It also fails on ALL-CAPS game text: `tools/research_red/proper_case.py` fixes it (#11).
 - The animatic (`docs/animatic/`) is the scene spec; `docs/scenes/*.md` scene specs from the owner override it.
-- Debug menu stays ON for test builds (Start > Debug > Scripts, named skips 1-11). Turn OFF before any public release.
+- Debug menu stays ON for test builds (Start > Debug > Scripts, named skips 1-12, 13 switches the banter look). Turn OFF before any public release.
 
 ## Where things are
 - Story scenes: one file each in `data/scripts/research_red/rr_*.inc`; FireRed maps keep only their hooks. Layout and conventions: `docs/DEV_GUIDE.md`.

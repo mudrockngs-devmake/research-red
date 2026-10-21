@@ -211,7 +211,7 @@
 #define FLAG_RR_DEXNAV_SEARCHING 0x0C1 // Research Red: was FLAG_0x0C1. DexNav is searching
 #define FLAG_RR_DEXNAV_DETECTOR  0x0C2 // Research Red: was FLAG_0x0C2. DexNav spots hidden Pokemon
 #define FLAG_RR_NO_ENCOUNTERS    0x0C3 // Research Red: was FLAG_0x0C3. OW_FLAG_NO_ENCOUNTER: no wild encounters (tests, debug)
-#define FLAG_0x0C4               0x0C4
+#define FLAG_RR_BANTER_FULL_BODY 0x0C4 // Research Red: was FLAG_0x0C4. Banter look: full-body pictures instead of portraits (#5, #95); off by default
 #define FLAG_0x0C5               0x0C5
 #define FLAG_0x0C6               0x0C6
 #define FLAG_0x0C7               0x0C7

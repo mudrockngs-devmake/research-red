@@ -198,6 +198,17 @@ const u8 *RR_DexBanterNext(void)
     return line;
 }
 
+// Whose family line the last line from RR_DexBanterNext was: Elm's or
+// Jenny's starter family (#5: they "call in" on the dex page), or neither
+u32 RR_DexBanterCaller(void)
+{
+    if (sStage == STAGE_ELM)
+        return RR_BANTER_CALLER_ELM;
+    if (sStage == STAGE_JENNY)
+        return RR_BANTER_CALLER_JENNY;
+    return RR_BANTER_CALLER_NONE;
+}
+
 // callnative: puts the next line in gStringVar1 (VAR_RESULT TRUE), or finishes
 // this species (VAR_RESULT FALSE)
 void RR_ScriptDexBanterNextLine(struct ScriptContext *ctx)

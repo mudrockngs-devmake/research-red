@@ -37,4 +37,7 @@ How to use it for Research Red: [docs/TESTING.md](../../../docs/TESTING.md).
 - conditions from `tester.G` (a `GameMemory`): `var_is`, `flag_set`, `flag_clear`,
   `on_map`, `party_count`, `party_nickname_is`, `field_free`, `textbox_closed`, `in_battle`
 
-Raw runner commands are listed at the top of `rr_run.c`.
+Raw runner commands are listed at the top of `rr_run.c`. Conditions join with `&&`
+(all) and `||` (any group). Each scene's folder gets the runner's own output as
+`runner.log` (checks, peeks, `oam`/`pal` dumps). `G.all_symbols[name]` lists every
+address of a name that several files use for a static function.

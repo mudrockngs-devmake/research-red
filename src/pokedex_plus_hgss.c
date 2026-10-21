@@ -508,6 +508,7 @@ static void Task_RR_InfoScreenBanter(u8); // Research Red (#4)
 static bool32 RR_StartDexBanterOverlay(enum Species species, u8 monSpriteId); // Research Red (#5, #4)
 static bool32 RR_DexBanterOverlayNextLine(void);
 static void RR_EndDexBanterOverlay(u8 monSpriteId, bool32 restoreMon);
+static bool32 RR_DexBanterOverlayUpdate(void);
 static void Task_SwitchScreensFromInfoScreen(u8);
 static void Task_LoadInfoScreenWaitForFade(u8);
 static void Task_ExitInfoScreen(u8);
@@ -3942,7 +3943,7 @@ static void Task_HandleInfoScreenInput(u8 taskId)
 // Research Red (#4): the replayed banter; at the end the entry comes back
 static void Task_RR_InfoScreenBanter(u8 taskId)
 {
-    if (!JOY_NEW(A_BUTTON | B_BUTTON) || RR_DexBanterOverlayNextLine())
+    if (RR_DexBanterOverlayUpdate())
         return;
     RR_EndDexBanterOverlay(gTasks[taskId].tMonSpriteId, TRUE);
     FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
@@ -4122,15 +4123,36 @@ static void UNUSED HighlightScreenSelectBarItem(u8 selectedScreen, u16 unused)
 }
 
 // ---------------------------------------------------------------------------
-// Research Red (#5, #4): the player's and Ivy's banter over an entry page.
-// Ivy's portrait on the left, the player's on the right (facing each other),
-// the Pokémon moves to the middle, and each line replaces the entry text; the
-// one not speaking is dimmed. After a catch it plays when you press A on the
-// new entry; SELECT on an entry replays it. Lines: src/rr_dex_banter.c.
+// Research Red (#5, #4): the player's and Ivy's banter over an entry page, as
+// a little cutscene. Ivy slides in on the left, the player on the right
+// (facing each other), the Pokémon moves to the middle, cries and hops, and
+// its dex number is stamped on like an ink stamp. Each line replaces the entry
+// text with a pencil scribble; the speaker hops (the other is dimmed), some
+// lines pop a bubble (! ? or a note), and on their family's lines Elm or Jenny
+// call in (a small video-call face). A: next line, B: skip to the end; then
+// everyone slides out. After a catch it plays when you press A on the new
+// entry; SELECT on an entry replays it. Lines: src/rr_dex_banter.c; pictures,
+// bubbles and the stamp: src/rr_portrait.c. Portraits or full-body pictures:
+// FLAG_RR_BANTER_FULL_BODY.
 // ---------------------------------------------------------------------------
 #define RR_BANTER_TEXT_TOP 91
+#define RR_BANTER_IVY_X    40
+#define RR_BANTER_P_X      200
+#define RR_BANTER_PIC_Y    50
+#define RR_BANTER_CALL_X   92
+#define RR_BANTER_CALL_Y   36
+#define RR_BANTER_STAMP_X  120
+#define RR_BANTER_STAMP_Y  80
+#define RR_BANTER_OFFSCREEN 48 // how far past the edge they slide in from / out to
+// bubbles: right of Ivy's face; left of the player's, under the name header
+#define RR_BANTER_IVY_EMOTE_X 80
+#define RR_BANTER_IVY_EMOTE_Y 30
+#define RR_BANTER_P_EMOTE_X   168
+#define RR_BANTER_P_EMOTE_Y   54
 
-static EWRAM_DATA u8 sRRBanterPortraitIds[2] = {0};
+static EWRAM_DATA u8 sRRBanterPortraitIds[3] = {0};
+static EWRAM_DATA u8 sRRBanterCaller = 0;    // RR_BANTER_CALLER_*: whose call face is up
+static EWRAM_DATA bool8 sRRBanterExiting = FALSE;
 static EWRAM_DATA s16 sRRBanterMonOldX = 0;
 
 static void RR_SetTypeIconsInvisible(bool32 invisible)
@@ -4144,9 +4166,41 @@ static void RR_SetTypeIconsInvisible(bool32 invisible)
     }
 }
 
+// The Pokémon's hop at the start (a task moving its sprite up and down)
+static void Task_RR_BanterMonHop(u8 taskId)
+{
+    struct Sprite *mon = &gSprites[gTasks[taskId].data[0]];
+
+    if (++gTasks[taskId].data[1] >= 16 || !mon->inUse)
+    {
+        mon->y2 = 0;
+        DestroyTask(taskId);
+        return;
+    }
+    mon->y2 = -Sin(gTasks[taskId].data[1] * 8, 8); // half a sine: up and back down
+}
+
+// Elm or Jenny calls in for their family's lines, and hangs up after
+static void RR_UpdateBanterCaller(void)
+{
+    u32 caller = RR_DexBanterCaller();
+
+    if (caller == sRRBanterCaller)
+        return;
+    RR_DestroyStandalonePortrait(2, sRRBanterPortraitIds[2]);
+    sRRBanterPortraitIds[2] = MAX_SPRITES;
+    sRRBanterCaller = caller;
+    if (caller == RR_BANTER_CALLER_NONE)
+        return;
+    sRRBanterPortraitIds[2] = RR_CreateStandaloneCallFace(caller == RR_BANTER_CALLER_ELM, RR_BANTER_CALL_X, RR_BANTER_CALL_Y);
+    RR_StandalonePortraitSlideIn(2, sRRBanterPortraitIds[2], -RR_BANTER_OFFSCREEN);
+    PlaySE(SE_POKENAV_CALL);
+}
+
 static void RR_PrintBanterLine(const u8 *line)
 {
     u8 *c;
+    u32 emote;
 
     StringExpandPlaceholders(gStringVar4, line);
     // one page in the entry box: \l and \p become plain line breaks
@@ -4158,19 +4212,26 @@ static void RR_PrintBanterLine(const u8 *line)
     FillWindowPixelRect(WIN_INFO, PIXEL_FILL(0), 0, RR_BANTER_TEXT_TOP, 240, 160 - RR_BANTER_TEXT_TOP);
     PrintInfoScreenText(gStringVar4, 12, RR_BANTER_TEXT_TOP + 2);
     CopyWindowToVram(WIN_INFO, COPYWIN_GFX);
+    RR_UpdateBanterCaller();
+    emote = RR_GetLineEmote(gStringVar4);
     switch (RR_GetLineSpeaker(gStringVar4))
     {
     case RR_LINE_IVY:
         RR_SetStandalonePortraitDim(0, FALSE);
         RR_SetStandalonePortraitDim(1, TRUE);
+        RR_StandalonePortraitHop(0, sRRBanterPortraitIds[0]);
+        RR_ShowEmote(emote, RR_BANTER_IVY_EMOTE_X, RR_BANTER_IVY_EMOTE_Y);
         break;
     case RR_LINE_PLAYER:
         RR_SetStandalonePortraitDim(0, TRUE);
         RR_SetStandalonePortraitDim(1, FALSE);
+        RR_StandalonePortraitHop(1, sRRBanterPortraitIds[1]);
+        RR_ShowEmote(emote, RR_BANTER_P_EMOTE_X, RR_BANTER_P_EMOTE_Y);
         break;
     default:
         RR_SetStandalonePortraitDim(0, TRUE);
         RR_SetStandalonePortraitDim(1, TRUE);
+        RR_HideEmote();
         break;
     }
 }
@@ -4183,31 +4244,90 @@ static bool32 RR_DexBanterOverlayNextLine(void)
     if (line == NULL)
         return FALSE;
     RR_PrintBanterLine(line);
-    PlaySE(SE_SELECT);
+    PlaySE(SE_M_SKETCH); // a soft pencil scribble
     return TRUE;
 }
 
 static bool32 RR_StartDexBanterOverlay(enum Species species, u8 monSpriteId)
 {
+    u8 taskId;
+
     if (!RR_DexBanterAvailable())
         return FALSE;
     RR_DexBanterBegin(species);
-    sRRBanterPortraitIds[0] = RR_CreateStandalonePortrait(0, RR_LINE_IVY, 40, 50, FALSE);
-    sRRBanterPortraitIds[1] = RR_CreateStandalonePortrait(1, RR_LINE_PLAYER, 200, 50, TRUE);
+    // every sprite colour slot is taken on this page; the type icons' three
+    // are free while they're hidden, so the cutscene borrows them (they come
+    // back in RR_EndDexBanterOverlay)
+    RR_SetTypeIconsInvisible(TRUE);
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_1);
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_2);
+    FreeSpritePaletteByTag(TAG_MOVE_TYPES_3);
+    sRRBanterExiting = FALSE;
+    sRRBanterCaller = RR_BANTER_CALLER_NONE;
+    sRRBanterPortraitIds[2] = MAX_SPRITES;
+    sRRBanterPortraitIds[0] = RR_CreateStandalonePortrait(0, RR_LINE_IVY, RR_BANTER_IVY_X, RR_BANTER_PIC_Y, FALSE);
+    sRRBanterPortraitIds[1] = RR_CreateStandalonePortrait(1, RR_LINE_PLAYER, RR_BANTER_P_X, RR_BANTER_PIC_Y, TRUE);
+    RR_StandalonePortraitSlideIn(0, sRRBanterPortraitIds[0], -RR_BANTER_OFFSCREEN);
+    RR_StandalonePortraitSlideIn(1, sRRBanterPortraitIds[1], DISPLAY_WIDTH + RR_BANTER_OFFSCREEN);
     sRRBanterMonOldX = gSprites[monSpriteId].x;
     gSprites[monSpriteId].x = 120;
     RR_SetTypeIconsInvisible(TRUE); // they sit under the player's portrait
+    PlayCry_Normal(species, 0);
+    taskId = CreateTask(Task_RR_BanterMonHop, 1);
+    gTasks[taskId].data[0] = monSpriteId;
+    RR_ShowDexStamp(SpeciesToNationalPokedexNum(species), RR_BANTER_STAMP_X, RR_BANTER_STAMP_Y);
     return RR_DexBanterOverlayNextLine();
+}
+
+// The lines are done (or B): bubbles, stamp and call face go, and Ivy and the
+// player slide out; RR_DexBanterOverlayExited says when they're gone
+static void RR_BeginDexBanterOverlayExit(void)
+{
+    sRRBanterExiting = TRUE;
+    RR_HideEmote();
+    RR_HideDexStamp();
+    RR_DestroyStandalonePortrait(2, sRRBanterPortraitIds[2]);
+    sRRBanterCaller = RR_BANTER_CALLER_NONE;
+    RR_SetStandalonePortraitDim(0, FALSE);
+    RR_SetStandalonePortraitDim(1, FALSE);
+    RR_StandalonePortraitSlideTo(0, sRRBanterPortraitIds[0], -RR_BANTER_OFFSCREEN);
+    RR_StandalonePortraitSlideTo(1, sRRBanterPortraitIds[1], DISPLAY_WIDTH + RR_BANTER_OFFSCREEN);
+}
+
+static bool32 RR_DexBanterOverlayExited(void)
+{
+    return !RR_StandalonePortraitSliding(0, sRRBanterPortraitIds[0])
+        && !RR_StandalonePortraitSliding(1, sRRBanterPortraitIds[1]);
+}
+
+// One frame of the banter: TRUE while it's still going (or sliding out)
+static bool32 RR_DexBanterOverlayUpdate(void)
+{
+    if (sRRBanterExiting)
+        return !RR_DexBanterOverlayExited();
+    if (JOY_NEW(B_BUTTON) || (JOY_NEW(A_BUTTON) && !RR_DexBanterOverlayNextLine()))
+        RR_BeginDexBanterOverlayExit();
+    return TRUE;
 }
 
 static void RR_EndDexBanterOverlay(u8 monSpriteId, bool32 restoreMon)
 {
+    u8 taskId = FindTaskIdByFunc(Task_RR_BanterMonHop);
+
+    if (taskId != TASK_NONE)
+        DestroyTask(taskId);
+    gSprites[monSpriteId].y2 = 0;
+    RR_HideEmote();
+    RR_HideDexStamp();
     RR_DestroyStandalonePortrait(0, sRRBanterPortraitIds[0]);
     RR_DestroyStandalonePortrait(1, sRRBanterPortraitIds[1]);
+    RR_DestroyStandalonePortrait(2, sRRBanterPortraitIds[2]);
+    sRRBanterExiting = FALSE;
+    LoadTypeIconPalettes(); // the borrowed colour slots go back to the type icons
     if (restoreMon)
     {
         gSprites[monSpriteId].x = sRRBanterMonOldX;
-        RR_SetTypeIconsInvisible(FALSE);
+        // (PrintMonInfo, called next, shows the type icons again in their new colour slots)
     }
 }
 
@@ -4322,7 +4442,7 @@ void Task_DisplayCaughtMonDexPageHGSS(u8 taskId)
 // Research Red (#5): the banter over the new entry, one line per A, then on
 static void Task_RR_CaughtMonBanter(u8 taskId)
 {
-    if (!JOY_NEW(A_BUTTON | B_BUTTON) || RR_DexBanterOverlayNextLine())
+    if (RR_DexBanterOverlayUpdate())
         return;
     RR_EndDexBanterOverlay(gTasks[taskId].tMonSpriteId, FALSE);
     RR_DexBanterForget(gTasks[taskId].tSpecies); // played here, not again on the map

@@ -349,6 +349,7 @@ Debug_EventScript_Script_10::
 Debug_EventScript_Script_11::
 	additem ITEM_POKE_BALL, 10
 	setwildbattle SPECIES_PIDGEY, 3
+	callnative RR_ScriptDebugWildSpecies @ smoke tests: VAR_TEMP_F picks another species
 	dowildbattle
 	release
 	end
@@ -359,6 +360,27 @@ Debug_EventScript_Script_12::
 	callnative RR_ScriptDebugMountBike
 	release
 	end
+
+@ Research Red (#5, #95): switch the banter look (dex banter and battle
+@ lines) between portraits and full-body pictures, for the playtest
+Debug_EventScript_Script_13::
+	goto_if_set FLAG_RR_BANTER_FULL_BODY, RR_Debug_BanterPortraits
+	setflag FLAG_RR_BANTER_FULL_BODY
+	msgbox RR_Debug_Text_BanterFullBody, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Debug_BanterPortraits::
+	clearflag FLAG_RR_BANTER_FULL_BODY
+	msgbox RR_Debug_Text_BanterPortraits, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Debug_Text_BanterFullBody:
+	.string "Banter look: full-body pictures.$"
+
+RR_Debug_Text_BanterPortraits:
+	.string "Banter look: portraits.$"
 
 RR_Debug_TestModeOff::
 	clearflag FLAG_RR_AI_VS_AI

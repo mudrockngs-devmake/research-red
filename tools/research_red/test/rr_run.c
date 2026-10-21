@@ -35,7 +35,8 @@
 // Addresses: 0x0203A000 reads there; *0x03004F70+0x2F62 reads the pointer at
 // 0x03004F70 and adds the offset. Add :1 :2 or :4 for the size (default 1).
 // COND: ADDR OP VALUE, OP one of == != < > <= >= & (any of these bits set)
-// !& (none set); join several with && (all must hold).
+// !& (none set); join several with && (all must hold), and groups of those
+// with || (any group may hold; && binds tighter).
 //
 // Clock: the game's clock is fake, not the computer's. Every run starts at
 // 2026-10-20 10:00 (morning) and the clock moves with the emulated frames, so
@@ -76,7 +77,7 @@ static int sAutoShot;                // "until" screenshot interval (0 = off)
 static char sAutoPrefix[64] = "s";
 static int sAutoCount;
 
-#define MAX_TERMS 6
+#define MAX_TERMS 10
 #define MAX_IDLE 8
 struct Term
 {
@@ -84,6 +85,7 @@ struct Term
     int size;
     char op[3];
     uint32_t value;
+    int orBefore;      // a "||" came before this term: it starts a new group
 };
 struct Cond
 {
@@ -156,25 +158,35 @@ static int termHolds(const struct Term *t)
 
 static int condHolds(const struct Cond *c)
 {
+    int group = 1; // the current && group holds so far
     for (int i = 0; i < c->n; i++)
-        if (!termHolds(&c->t[i]))
-            return 0;
-    return 1;
+    {
+        if (c->t[i].orBefore)
+        {
+            if (group)
+                return 1;
+            group = 1;
+        }
+        if (group && !termHolds(&c->t[i]))
+            group = 0;
+    }
+    return group;
 }
 
-// tok[0..] = ADDR OP VALUE [&& ADDR OP VALUE ...]
+// tok[0..] = ADDR OP VALUE [&&|"||" ADDR OP VALUE ...]
 static int parseCond(char **tok, int ntok, struct Cond *c)
 {
     c->n = 0;
     for (int i = 0; i + 2 < ntok && c->n < MAX_TERMS; i += 4)
     {
         struct Term *t = &c->t[c->n++];
+        t->orBefore = i > 0 && !strcmp(tok[i - 1], "||");
         if (!parseAddr(tok[i], t))
             return 0;
         strncpy(t->op, tok[i + 1], 2);
         t->op[2] = 0;
         t->value = strtoul(tok[i + 2], NULL, 0);
-        if (i + 3 < ntok && strcmp(tok[i + 3], "&&"))
+        if (i + 3 < ntok && strcmp(tok[i + 3], "&&") && strcmp(tok[i + 3], "||"))
             return 0;
     }
     return c->n > 0;

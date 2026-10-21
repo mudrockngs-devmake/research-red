@@ -30,6 +30,8 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 |---|---|
 | `FLAG_HIDE_PEWTER_CITY_GYM_GUIDE` | Cleared on entering Pewter after Brock, so the guide stays as the demo blocker (`rr_demo_blockers.inc`) |
 | `FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY` | Set on entering Pewter after Brock: the aide never appears (#62; Running Shoes are given from the start) |
+| `VAR_TEMP_F` (debug 11 only) | Smoke tests poke a species here before debug 11 (catch test) to meet it instead of the Pidgey (`RR_ScriptDebugWildSpecies`); 0 in normal play |
+| `FLAG_TEMP_4` (Oak's Lab) | Hides Daisy and Muffin until the rematch is open (story 6+) |
 | `FLAG_TEMP_13`, `FLAG_TEMP_14` (Pewter City) | Hide Elm and Jenny unless their rematch is pending (story 7 + after Brock) (`rr_pewter.inc`) |
 | `VAR_TEMP_3` (Pallet Town) | Always 0 there: keeps Gerald's water triggers (7-10, 18) active (#36) |
 
@@ -46,6 +48,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `FLAG_RR_EXP_SHARE` (0x021, was `FLAG_0x021`) | `I_EXP_SHARE_FLAG`: Exp. Share key item on/off. Set by the research grant |
 | `FLAG_RR_LEVEL_CAPS_OFF` (0x027, was `FLAG_0x027`) | Research Rules: level caps off (on by default; caps in `src/caps.c`) |
 | `FLAG_0x077` (was `FLAG_RR_HARD_LEVEL_CAPS`) | Free again (the soft/hard cap choice was removed in v0.0.16). Old saves may have it set: clear it before reusing |
+| `FLAG_RR_BANTER_FULL_BODY` (0x0C4, was `FLAG_0x0C4`) | Banter look (#5, #95): full-body pictures (`cast/*/battle.png`) instead of portraits in the dex banter and battle lines. Off by default; Debug > Scripts > 13 switches it (playtest comparison) |
 | `FLAG_RR_NO_ENCOUNTERS` (0x0C3, was `FLAG_0x0C3`) | `OW_FLAG_NO_ENCOUNTER`: no wild encounters while set. Only the smoke tests set it (memory poke); never set in normal play |
 | `FLAG_RR_DEXNAV_GET` (0x0C0, was `FLAG_0x0C0`) | DexNav in the Start menu. Jenny gives it after the Route 22 battle, win or lose (debug skips 6+ set it) |
 | `FLAG_RR_DEXNAV_SEARCHING` (0x0C1, was `FLAG_0x0C1`) | DexNav: a search is running (`DN_FLAG_SEARCHING`) |

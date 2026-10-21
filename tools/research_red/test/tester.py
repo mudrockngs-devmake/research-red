@@ -191,6 +191,7 @@ def run(suite, rom, name, lines, workdir, timeout):
         return name, "FAIL", ["timed out"], ""
     except subprocess.CalledProcessError as e:
         return name, "FAIL", [f"runner exited {e.returncode}"], ""
+    open(os.path.join(sdir, "runner.log"), "w").write(out)   # peeks, checks, oam/pal dumps
     shots = sorted(f for f in os.listdir(sdir) if f.endswith(".png"))
     if not shots:
         return name, "FAIL", ["no screenshots"], ""

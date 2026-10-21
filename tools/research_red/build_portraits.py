@@ -85,14 +85,24 @@ def main():
     for f in folders + ["cast/player_m", "cast/player_f"]:
         lines.append(f'static const u32 sPortraitGfx_{ident(f)}[] = INCBIN_U32("graphics/research_red/{f}/portrait.4bpp");')
         lines.append(f'static const u16 sPortraitPal_{ident(f)}[] = INCBIN_U16("graphics/research_red/{f}/portrait.gbapal");')
+    # #5/#95: the full-body look (64x64 battle.png) for people, behind the
+    # banter look switch (FLAG_RR_BANTER_FULL_BODY); Pokémon keep their portrait
+    def full(f):
+        return f and os.path.exists(os.path.join(GFX, f, "battle.png"))
+    for f in folders + ["cast/player_m", "cast/player_f"]:
+        if full(f):
+            lines.append(f'static const u32 sFullBodyGfx_{ident(f)}[] = INCBIN_U32("graphics/research_red/{f}/battle.4bpp");')
+            lines.append(f'static const u16 sFullBodyPal_{ident(f)}[] = INCBIN_U16("graphics/research_red/{f}/battle.gbapal");')
     lines.append("")
     for i, s in enumerate(speakers):
         lines.append(f'static const u8 sSpeakerName_{i}[] = _("{s["name"]}");')
     lines += ["", "static const struct RRSpeaker sSpeakers[] =", "{"]
     for i, s in enumerate(speakers):
         alt = f'sPortraitGfx_{ident(s["alt"])}, sPortraitPal_{ident(s["alt"])}, {s["flag"]}' if s["alt"] else "NULL, NULL, 0"
+        body = f'sFullBodyGfx_{ident(s["folder"])}, sFullBodyPal_{ident(s["folder"])}' if full(s["folder"]) else "NULL, NULL"
+        altbody = f'sFullBodyGfx_{ident(s["alt"])}, sFullBodyPal_{ident(s["alt"])}' if full(s["alt"]) else "NULL, NULL"
         lines.append(f'    {{ sSpeakerName_{i}, sPortraitGfx_{ident(s["folder"])}, sPortraitPal_{ident(s["folder"])}, '
-                     f'RR_NAME_{s["color"].upper()}, {alt} }},')
+                     f'RR_NAME_{s["color"].upper()}, {alt}, {body}, {altbody} }},')
     lines += ["};", ""]
     os.makedirs(os.path.dirname(HEADER), exist_ok=True)
     open(HEADER, "w").write("\n".join(lines))

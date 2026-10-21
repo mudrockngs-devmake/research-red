@@ -10,5 +10,7 @@ bool32 RR_DexBanterAvailable(void);
 void RR_DexBanterBegin(u16 species);
 const u8 *RR_DexBanterNext(void);
 void RR_DexBanterForget(u16 species);
+enum { RR_BANTER_CALLER_NONE, RR_BANTER_CALLER_ELM, RR_BANTER_CALLER_JENNY };
+u32 RR_DexBanterCaller(void);
 
 #endif // GUARD_RR_DEX_BANTER_H

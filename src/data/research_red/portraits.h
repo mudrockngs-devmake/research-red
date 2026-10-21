@@ -61,6 +61,28 @@ static const u32 sPortraitGfx_cast_player_m[] = INCBIN_U32("graphics/research_re
 static const u16 sPortraitPal_cast_player_m[] = INCBIN_U16("graphics/research_red/cast/player_m/portrait.gbapal");
 static const u32 sPortraitGfx_cast_player_f[] = INCBIN_U32("graphics/research_red/cast/player_f/portrait.4bpp");
 static const u16 sPortraitPal_cast_player_f[] = INCBIN_U16("graphics/research_red/cast/player_f/portrait.gbapal");
+static const u32 sFullBodyGfx_cast_elm[] = INCBIN_U32("graphics/research_red/cast/elm/battle.4bpp");
+static const u16 sFullBodyPal_cast_elm[] = INCBIN_U16("graphics/research_red/cast/elm/battle.gbapal");
+static const u32 sFullBodyGfx_cast_ivy[] = INCBIN_U32("graphics/research_red/cast/ivy/battle.4bpp");
+static const u16 sFullBodyPal_cast_ivy[] = INCBIN_U16("graphics/research_red/cast/ivy/battle.gbapal");
+static const u32 sFullBodyGfx_cast_ivy_swimsuit[] = INCBIN_U32("graphics/research_red/cast/ivy_swimsuit/battle.4bpp");
+static const u16 sFullBodyPal_cast_ivy_swimsuit[] = INCBIN_U16("graphics/research_red/cast/ivy_swimsuit/battle.gbapal");
+static const u32 sFullBodyGfx_cast_jenny_police[] = INCBIN_U32("graphics/research_red/cast/jenny_police/battle.4bpp");
+static const u16 sFullBodyPal_cast_jenny_police[] = INCBIN_U16("graphics/research_red/cast/jenny_police/battle.gbapal");
+static const u32 sFullBodyGfx_cast_jenny[] = INCBIN_U32("graphics/research_red/cast/jenny/battle.4bpp");
+static const u16 sFullBodyPal_cast_jenny[] = INCBIN_U16("graphics/research_red/cast/jenny/battle.gbapal");
+static const u32 sFullBodyGfx_cast_oak[] = INCBIN_U32("graphics/research_red/cast/oak/battle.4bpp");
+static const u16 sFullBodyPal_cast_oak[] = INCBIN_U16("graphics/research_red/cast/oak/battle.gbapal");
+static const u32 sFullBodyGfx_cast_delia[] = INCBIN_U32("graphics/research_red/cast/delia/battle.4bpp");
+static const u16 sFullBodyPal_cast_delia[] = INCBIN_U16("graphics/research_red/cast/delia/battle.gbapal");
+static const u32 sFullBodyGfx_cast_daisy[] = INCBIN_U32("graphics/research_red/cast/daisy/battle.4bpp");
+static const u16 sFullBodyPal_cast_daisy[] = INCBIN_U16("graphics/research_red/cast/daisy/battle.gbapal");
+static const u32 sFullBodyGfx_cast_brock[] = INCBIN_U32("graphics/research_red/cast/brock/battle.4bpp");
+static const u16 sFullBodyPal_cast_brock[] = INCBIN_U16("graphics/research_red/cast/brock/battle.gbapal");
+static const u32 sFullBodyGfx_cast_player_m[] = INCBIN_U32("graphics/research_red/cast/player_m/battle.4bpp");
+static const u16 sFullBodyPal_cast_player_m[] = INCBIN_U16("graphics/research_red/cast/player_m/battle.gbapal");
+static const u32 sFullBodyGfx_cast_player_f[] = INCBIN_U32("graphics/research_red/cast/player_f/battle.4bpp");
+static const u16 sFullBodyPal_cast_player_f[] = INCBIN_U16("graphics/research_red/cast/player_f/battle.gbapal");
 
 static const u8 sSpeakerName_0[] = _("Elm");
 static const u8 sSpeakerName_1[] = _("Ivy");
@@ -92,31 +114,31 @@ static const u8 sSpeakerName_26[] = _("Fearow");
 
 static const struct RRSpeaker sSpeakers[] =
 {
-    { sSpeakerName_0, sPortraitGfx_cast_elm, sPortraitPal_cast_elm, RR_NAME_ORANGE, NULL, NULL, 0 },
-    { sSpeakerName_1, sPortraitGfx_cast_ivy, sPortraitPal_cast_ivy, RR_NAME_GREEN, sPortraitGfx_cast_ivy_swimsuit, sPortraitPal_cast_ivy_swimsuit, FLAG_RR_IVY_SWIMSUIT },
-    { sSpeakerName_2, sPortraitGfx_cast_jenny_police, sPortraitPal_cast_jenny_police, RR_NAME_BLUE, NULL, NULL, 0 },
-    { sSpeakerName_3, sPortraitGfx_cast_jenny, sPortraitPal_cast_jenny, RR_NAME_BLUE, sPortraitGfx_cast_jenny_police, sPortraitPal_cast_jenny_police, FLAG_RR_JENNY_UNIFORM },
-    { sSpeakerName_4, sPortraitGfx_cast_oak, sPortraitPal_cast_oak, RR_NAME_BROWN, NULL, NULL, 0 },
-    { sSpeakerName_5, sPortraitGfx_cast_delia, sPortraitPal_cast_delia, RR_NAME_PINK, NULL, NULL, 0 },
-    { sSpeakerName_6, sPortraitGfx_cast_daisy, sPortraitPal_cast_daisy, RR_NAME_PINK, NULL, NULL, 0 },
-    { sSpeakerName_7, sPortraitGfx_pokemon_mr_mime, sPortraitPal_pokemon_mr_mime, RR_NAME_PINK, NULL, NULL, 0 },
-    { sSpeakerName_8, sPortraitGfx_pokemon_rattata, sPortraitPal_pokemon_rattata, RR_NAME_PURPLE, NULL, NULL, 0 },
-    { sSpeakerName_9, sPortraitGfx_pokemon_slowpoke, sPortraitPal_pokemon_slowpoke, RR_NAME_PINK, NULL, NULL, 0 },
-    { sSpeakerName_10, sPortraitGfx_pokemon_growlithe, sPortraitPal_pokemon_growlithe, RR_NAME_ORANGE, NULL, NULL, 0 },
-    { sSpeakerName_11, sPortraitGfx_pokemon_tentacool, sPortraitPal_pokemon_tentacool, RR_NAME_TEAL, NULL, NULL, 0 },
-    { sSpeakerName_12, sPortraitGfx_pokemon_diglett, sPortraitPal_pokemon_diglett, RR_NAME_BROWN, NULL, NULL, 0 },
-    { sSpeakerName_13, sPortraitGfx_pokemon_dugtrio, sPortraitPal_pokemon_dugtrio, RR_NAME_BROWN, NULL, NULL, 0 },
-    { sSpeakerName_14, sPortraitGfx_pokemon_pikachu, sPortraitPal_pokemon_pikachu, RR_NAME_ORANGE, NULL, NULL, 0 },
-    { sSpeakerName_15, sPortraitGfx_pokemon_farfetchd, sPortraitPal_pokemon_farfetchd, RR_NAME_BROWN, NULL, NULL, 0 },
-    { sSpeakerName_16, sPortraitGfx_pokemon_abra, sPortraitPal_pokemon_abra, RR_NAME_ORANGE, NULL, NULL, 0 },
-    { sSpeakerName_17, sPortraitGfx_pokemon_machop, sPortraitPal_pokemon_machop, RR_NAME_GRAY, NULL, NULL, 0 },
-    { sSpeakerName_18, sPortraitGfx_pokemon_tauros, sPortraitPal_pokemon_tauros, RR_NAME_BROWN, NULL, NULL, 0 },
-    { sSpeakerName_19, sPortraitGfx_pokemon_pidgeot, sPortraitPal_pokemon_pidgeot, RR_NAME_BROWN, NULL, NULL, 0 },
-    { sSpeakerName_20, sPortraitGfx_pokemon_lapras, sPortraitPal_pokemon_lapras, RR_NAME_BLUE, NULL, NULL, 0 },
-    { sSpeakerName_21, sPortraitGfx_pokemon_gyarados, sPortraitPal_pokemon_gyarados, RR_NAME_BLUE, NULL, NULL, 0 },
-    { sSpeakerName_22, sPortraitGfx_pokemon_jigglypuff, sPortraitPal_pokemon_jigglypuff, RR_NAME_PINK, NULL, NULL, 0 },
-    { sSpeakerName_23, sPortraitGfx_cast_brock, sPortraitPal_cast_brock, RR_NAME_BROWN, NULL, NULL, 0 },
-    { sSpeakerName_24, sPortraitGfx_pokemon_dodrio, sPortraitPal_pokemon_dodrio, RR_NAME_BROWN, NULL, NULL, 0 },
-    { sSpeakerName_25, sPortraitGfx_pokemon_chansey, sPortraitPal_pokemon_chansey, RR_NAME_PINK, NULL, NULL, 0 },
-    { sSpeakerName_26, sPortraitGfx_pokemon_fearow, sPortraitPal_pokemon_fearow, RR_NAME_BROWN, NULL, NULL, 0 },
+    { sSpeakerName_0, sPortraitGfx_cast_elm, sPortraitPal_cast_elm, RR_NAME_ORANGE, NULL, NULL, 0, sFullBodyGfx_cast_elm, sFullBodyPal_cast_elm, NULL, NULL },
+    { sSpeakerName_1, sPortraitGfx_cast_ivy, sPortraitPal_cast_ivy, RR_NAME_GREEN, sPortraitGfx_cast_ivy_swimsuit, sPortraitPal_cast_ivy_swimsuit, FLAG_RR_IVY_SWIMSUIT, sFullBodyGfx_cast_ivy, sFullBodyPal_cast_ivy, sFullBodyGfx_cast_ivy_swimsuit, sFullBodyPal_cast_ivy_swimsuit },
+    { sSpeakerName_2, sPortraitGfx_cast_jenny_police, sPortraitPal_cast_jenny_police, RR_NAME_BLUE, NULL, NULL, 0, sFullBodyGfx_cast_jenny_police, sFullBodyPal_cast_jenny_police, NULL, NULL },
+    { sSpeakerName_3, sPortraitGfx_cast_jenny, sPortraitPal_cast_jenny, RR_NAME_BLUE, sPortraitGfx_cast_jenny_police, sPortraitPal_cast_jenny_police, FLAG_RR_JENNY_UNIFORM, sFullBodyGfx_cast_jenny, sFullBodyPal_cast_jenny, sFullBodyGfx_cast_jenny_police, sFullBodyPal_cast_jenny_police },
+    { sSpeakerName_4, sPortraitGfx_cast_oak, sPortraitPal_cast_oak, RR_NAME_BROWN, NULL, NULL, 0, sFullBodyGfx_cast_oak, sFullBodyPal_cast_oak, NULL, NULL },
+    { sSpeakerName_5, sPortraitGfx_cast_delia, sPortraitPal_cast_delia, RR_NAME_PINK, NULL, NULL, 0, sFullBodyGfx_cast_delia, sFullBodyPal_cast_delia, NULL, NULL },
+    { sSpeakerName_6, sPortraitGfx_cast_daisy, sPortraitPal_cast_daisy, RR_NAME_PINK, NULL, NULL, 0, sFullBodyGfx_cast_daisy, sFullBodyPal_cast_daisy, NULL, NULL },
+    { sSpeakerName_7, sPortraitGfx_pokemon_mr_mime, sPortraitPal_pokemon_mr_mime, RR_NAME_PINK, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_8, sPortraitGfx_pokemon_rattata, sPortraitPal_pokemon_rattata, RR_NAME_PURPLE, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_9, sPortraitGfx_pokemon_slowpoke, sPortraitPal_pokemon_slowpoke, RR_NAME_PINK, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_10, sPortraitGfx_pokemon_growlithe, sPortraitPal_pokemon_growlithe, RR_NAME_ORANGE, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_11, sPortraitGfx_pokemon_tentacool, sPortraitPal_pokemon_tentacool, RR_NAME_TEAL, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_12, sPortraitGfx_pokemon_diglett, sPortraitPal_pokemon_diglett, RR_NAME_BROWN, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_13, sPortraitGfx_pokemon_dugtrio, sPortraitPal_pokemon_dugtrio, RR_NAME_BROWN, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_14, sPortraitGfx_pokemon_pikachu, sPortraitPal_pokemon_pikachu, RR_NAME_ORANGE, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_15, sPortraitGfx_pokemon_farfetchd, sPortraitPal_pokemon_farfetchd, RR_NAME_BROWN, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_16, sPortraitGfx_pokemon_abra, sPortraitPal_pokemon_abra, RR_NAME_ORANGE, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_17, sPortraitGfx_pokemon_machop, sPortraitPal_pokemon_machop, RR_NAME_GRAY, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_18, sPortraitGfx_pokemon_tauros, sPortraitPal_pokemon_tauros, RR_NAME_BROWN, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_19, sPortraitGfx_pokemon_pidgeot, sPortraitPal_pokemon_pidgeot, RR_NAME_BROWN, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_20, sPortraitGfx_pokemon_lapras, sPortraitPal_pokemon_lapras, RR_NAME_BLUE, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_21, sPortraitGfx_pokemon_gyarados, sPortraitPal_pokemon_gyarados, RR_NAME_BLUE, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_22, sPortraitGfx_pokemon_jigglypuff, sPortraitPal_pokemon_jigglypuff, RR_NAME_PINK, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_23, sPortraitGfx_cast_brock, sPortraitPal_cast_brock, RR_NAME_BROWN, NULL, NULL, 0, sFullBodyGfx_cast_brock, sFullBodyPal_cast_brock, NULL, NULL },
+    { sSpeakerName_24, sPortraitGfx_pokemon_dodrio, sPortraitPal_pokemon_dodrio, RR_NAME_BROWN, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_25, sPortraitGfx_pokemon_chansey, sPortraitPal_pokemon_chansey, RR_NAME_PINK, NULL, NULL, 0, NULL, NULL, NULL, NULL },
+    { sSpeakerName_26, sPortraitGfx_pokemon_fearow, sPortraitPal_pokemon_fearow, RR_NAME_BROWN, NULL, NULL, 0, NULL, NULL, NULL, NULL },
 };

@@ -35,7 +35,8 @@ STORY = "VAR_0x40FE"  # story progress, see CLAUDE.md
 
 # Debug menu (Start > DEBUG > Scripts): see data/scripts/debug.inc
 SCRIPT_LAB, SCRIPT_AFTER_LAB, SCRIPT_ROUTE1, SCRIPT_ROUTE22, SCRIPT_TEAM, \
-    SCRIPT_LUNCH, SCRIPT_BANTER, SCRIPT_ROUTE1_ELM, SCRIPT_TEST_MODE, SCRIPT_AFTER_BROCK, SCRIPT_CATCH, SCRIPT_BIKE = range(1, 13)
+    SCRIPT_LUNCH, SCRIPT_BANTER, SCRIPT_ROUTE1_ELM, SCRIPT_TEST_MODE, SCRIPT_AFTER_BROCK, SCRIPT_CATCH, SCRIPT_BIKE, \
+    SCRIPT_BANTER_LOOK = range(1, 14)
 
 
 def debug_script(n):
@@ -242,6 +243,127 @@ def sc_dex_replay():
     for i in range(2, 6):
         lines += ["press A", "wait 40", f"shot r{i:02d}"]
     return lines + play_until("dex_closed", T.G.field_free(), 2000, key="B", every=30)
+
+# --- #5 / #4 / #95: the banter cutscene, both looks ---------------------------
+
+def banter_shots(tag, lines=3):
+    """The banter just started (SELECT or A): shots while they slide in, the
+    stamp lands, then each line (mid-hop and settled), B to skip the rest and
+    the slide-out."""
+    out = ["wait 2", f"shot {tag}_in1", "wait 6", f"shot {tag}_in2", "wait 30", f"shot {tag}_l1"]
+    for i in range(2, lines + 1):
+        out += ["press A", "wait 3", f"shot {tag}_l{i}hop", "wait 30", f"shot {tag}_l{i}"]
+    return out + ["press B", "wait 4", f"shot {tag}_out", "wait 40", f"shot {tag}_end"]
+
+
+def dex_replay(tag, downs=0, lines=3):
+    """Start > Pokédex, the entry `downs` below the first, SELECT replays its
+    banter; then back to the map."""
+    return (start_menu_item(1) + ["wait 90"] + ["press DOWN", "wait 8"] * downs
+            + ["press A", "wait 120", "press SELECT"] + banter_shots(tag, lines)
+            + play_until(f"{tag}_closed", T.G.field_free(), 2000, key="B", every=30)
+            # the Start menu remembers its cursor: back to the top for the next menu
+            + ["wait 30", f"poke {T.G.sym('sStartMenuCursorPos'):#x}:1 0"])
+
+
+def poke_sb2(field, value):
+    off = T.G.const(f"offsetof(struct SaveBlock2, {field})")
+    return [f"poke *{T.G.sym('gSaveBlock2Ptr'):#x}+{off:#x}:1 {value}"]
+
+
+def poke_var(var, value):
+    return [f"poke {T.G.var_addr(var)} {value}"]
+
+
+def full_body():
+    """Debug 13: the full-body look (then the message box closes)."""
+    return debug_script(SCRIPT_BANTER_LOOK) + ["mash B 60", "wait 20"] + check("full_body", T.G.flag_set("FLAG_RR_BANTER_FULL_BODY"))
+
+
+def sc_banter_looks():
+    # #5/#4: Bulbasaur's banter replayed with portraits, then full-body (male)
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + dex_replay("p") + full_body() + dex_replay("f"))
+
+
+def sc_banter_female():
+    # #5: the same with the female player (her portrait and full-body picture)
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + poke_sb2("playerGender", 1)
+            + dex_replay("p") + full_body() + dex_replay("f"))
+
+
+def sc_banter_family():
+    # #5: Elm and Jenny call in for their family's lines. With Totodile as
+    # your pick (VAR_RR_STARTER 5) Elm's starter is Bulbasaur; with Cyndaquil
+    # (4) Jenny's is. Five lines: the species' three, then the family's two.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + poke_var("VAR_RR_STARTER", 5) + dex_replay("elm", lines=5)
+            + poke_var("VAR_RR_STARTER", 4) + dex_replay("jenny", lines=5))
+
+
+def own(dex_num):
+    """Mark a national dex number seen and caught (memory poke)."""
+    byte, bit = (dex_num - 1) // 8, 1 << ((dex_num - 1) % 8)
+    return [f"poke {T.G._sb1(T.G.const(f'offsetof(struct SaveBlock1, {f}[{byte}])'), 1)} |{bit}"
+            for f in ("dexCaught", "dexSeen")]
+
+
+def sc_banter_long():
+    # #5: Rattata (#19, caught by memory poke) has one of the longest lines;
+    # Krabby (#98) opens with a question: a ? bubble pops above the player
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + own(19) + own(98)
+            + dex_replay("rat", downs=18, lines=4)
+            + ["poke {:#x}:1 0".format(T.G.sym("sStartMenuCursorPos"))]
+            + start_menu_item(1) + ["wait 90"] + ["press DOWN", "wait 8"] * 97
+            + ["press A", "wait 120", "press SELECT", "wait 10", "shot krabby_q1", "wait 20", "shot krabby_q2"]
+            + check("question_bubble", f"{T.G.sym('sEmoteIdPlus1'):#x}:1 != 0")
+            + play_until("krabby_closed", T.G.field_free(), 2000, key="B", every=30))
+
+
+def sc_banter_default():
+    # #5: a species with no lines of its own (Treecko) gets a default pair,
+    # after a catch: debug 11 meets the species poked into VAR_TEMP_F
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + poke_var("VAR_TEMP_F", T.G.const("SPECIES_TREECKO"))
+            + debug_script(SCRIPT_CATCH)
+            + play_until("battle", T.G.in_battle(), 2000, key="B", every=60) + ["wait 300"]
+            # R throws a ball; B through the messages until the new entry's
+            # banter starts (B on the entry page starts it; the stamp shows),
+            # or the battle asks again (it broke free): throw again
+            + sum([["press R", "wait 30", f"until throw_{i} 4000 B {stamp_up()} || {choosing_action()}"]
+                   for i in range(6)], [])
+            + check("banter_started", stamp_up()) + banter_shots("d", lines=2)
+            + play_until("back_on_map", T.G.field_free(), 3000, key="B", every=40) + expect(party=2))
+
+
+def stamp_up():
+    return f"{T.G.sym('sStampIdPlus1'):#x}:1 != 0"
+
+
+def choosing_action():
+    """In battle, waiting for you to pick Fight / Bag / Pokémon / Run."""
+    funcs = T.G.sym("gBattlerControllerFuncs")
+    # several battle controllers have a static function of that name: any of them
+    return " || ".join(f"{funcs:#x}:4 == {a | 1:#x}" for a in T.G.all_symbols["HandleInputChooseAction"])
+
+
+def battle_lines(look):
+    """#95: Route 22 (test mode): when you or Ivy speak in the battle, your
+    picture stands over the message box; wait for one and take shots."""
+    up = f"{T.G.sym('sBattleSpeakerIdPlus1'):#x}:1 != 0"
+    return (["load @bedroom"] + debug_script(SCRIPT_ROUTE22) + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"]
+            + look + step("LEFT")
+            + ["autoshot 120 s", f"until speaker_up 40000 A {up}", "autoshot 0", "wait 2", "shot b001", "wait 8",
+               "shot b002", "wait 40", "shot b003"]
+            + play_until("route22", scene_end(6), 60000))
+
+
+def sc_battle_lines():
+    return battle_lines([])
+
+
+def sc_battle_lines_full():
+    return battle_lines(full_body())
+
 
 def sc_pokedex():
     # Start menu after the lab: DEBUG, POKEDEX, GUIDE. Open Bulbasaur and flip through
@@ -850,6 +972,13 @@ SCENARIOS = {
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
     "catch": (sc_catch, "A catch: the banter over the new Pokédex entry, then the nickname (#5)"),
     "dex_replay": (sc_dex_replay, "Pokédex: SELECT on an entry replays its banter (#4)"),
+    "banter_looks": (sc_banter_looks, "Banter cutscene (#5/#4): slide in, stamp, hops, slide out; portraits, then full-body (debug 13)"),
+    "banter_female": (sc_banter_female, "Banter cutscene with the female player, both looks (#5)"),
+    "banter_family": (sc_banter_family, "Banter: Elm, then Jenny, call in for their family's lines (#5)"),
+    "banter_long": (sc_banter_long, "Banter: Rattata's long line fits the entry box (#5)"),
+    "banter_default": (sc_banter_default, "Banter after catching a species with no lines of its own (default pair) (#5)"),
+    "battle_lines": (sc_battle_lines, "Route 22: you or Ivy speak in battle, your portrait over the message box (#95)"),
+    "battle_lines_full": (sc_battle_lines_full, "Route 22 battle lines in the full-body look (#95)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
     "dex_area": (sc_dex_area, "Pokédex Area page: Magikarp in Pallet's sea by day and evening (#20)"),
     "dex_numbers": (sc_dex_numbers, "Pokédex list: the 151 in order, then Johto by national number (#77)"),

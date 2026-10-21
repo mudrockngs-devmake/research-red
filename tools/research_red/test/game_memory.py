@@ -36,10 +36,12 @@ class GameMemory:
         self.define = game_define
         out = subprocess.run(["arm-none-eabi-nm", elf], capture_output=True, text=True, check=True).stdout
         self.symbols = {}
+        self.all_symbols = {}   # name -> every address (static functions can share a name)
         for line in out.splitlines():
             parts = line.split()
             if len(parts) == 3:
                 self.symbols[parts[2]] = int(parts[0], 16)
+                self.all_symbols.setdefault(parts[2], []).append(int(parts[0], 16))
         self._consts = {}
         self._resolve(OFFSETS)
 
