@@ -79,7 +79,7 @@ save. Same rules as part 1: commit after each item, one wait, **stop before inst
    (json in `tools/research_red/whats_new/`, include the #90 TM list and the portrait/full-body comparison),
    CREDITS, close finished issues with a note, STATUS. NO install/tag.
 
-Session cost (v0.0.19 part 1, the long session that ended 2026-10-21): last status-line reading $110.10 (`session-cost`; the reading may lag behind the session's end).
+Session cost (v0.0.19 part 1, the long session that ended 2026-10-21): last status-line reading $110.41 (`session-cost`; the reading may lag behind the session's end).
 
 ### Capacity (measured 2026-10-21)
 | Space | Used | Notes |
@@ -129,7 +129,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [ ] Final: full smoke run, rr_check, CHANGELOG, what's-new report, CREDITS list of art used; NO install/tag
 
 ## Half-finished / open threads
-- Nothing half-done: everything is committed and pushed.
+- Nothing half-done: everything is committed and pushed. v0.0.19 part 2 is planned but not started (see "NEXT SESSION START HERE").
 - Rematch rules (owner, 2026-10-20) are on #52: build on each character's existing team, separate tiers for 7 and 8 badges, a post-game tier with regional forms and exchange-program visitors (Mimey, Muffin stay home), Megas in the post-game tier (to add).
 - Still needs the owner's eyes: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile evolution under the cap).
 - The League gate block (Route 22) has no automatic test; check by hand (#2).
