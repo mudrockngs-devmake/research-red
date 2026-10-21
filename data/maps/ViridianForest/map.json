@@ -183,6 +183,34 @@
       "script": "RR_Forest_EventScript_Samurai",
       "flag": "0",
       "local_id": "LOCALID_VIRIDIAN_FOREST_SAMURAI"
+    },
+    {
+      "type": "object",
+      "elevation": 3,
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "flag": "0",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(FEAROW)",
+      "x": 48,
+      "y": 6,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "script": "RR_Ambient_EventScript_Fearow"
+    },
+    {
+      "type": "object",
+      "elevation": 3,
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "flag": "0",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEOT)",
+      "x": 50,
+      "y": 6,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "script": "RR_Ambient_EventScript_ForestPidgeot"
     }
   ],
   "warp_events": [

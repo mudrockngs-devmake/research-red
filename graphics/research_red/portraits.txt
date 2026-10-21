@@ -40,3 +40,6 @@ Lapras        | pokemon/lapras    | blue
 Gyarados      | pokemon/gyarados  | blue
 Jigglypuff    | pokemon/jigglypuff | pink
 Brock         | cast/brock        | brown
+Dodrio        | pokemon/dodrio    | brown
+Chansey       | pokemon/chansey   | pink
+Fearow        | pokemon/fearow    | brown

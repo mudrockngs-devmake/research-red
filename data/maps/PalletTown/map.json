@@ -190,6 +190,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RR_RanchPager_EventScript_OakGyarados",
       "flag": "0"
+    },
+    {
+      "type": "object",
+      "elevation": 3,
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "flag": "0",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO)",
+      "x": 3,
+      "y": 14,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "script": "RR_Ambient_EventScript_Dodrio"
+    },
+    {
+      "type": "object",
+      "elevation": 3,
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "flag": "0",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DIGLETT)",
+      "x": 21,
+      "y": 14,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "script": "RR_Ambient_EventScript_Diglett"
     }
   ],
   "warp_events": [

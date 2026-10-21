@@ -50,7 +50,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [ ] #74 landscape battle backgrounds
 - [x] #9 Forest exchanges + Samurai
 - [x] #69 watch Brock (scripted scene, Yes now or later)
-- [ ] #64 ambient Pokémon (demo areas)
+- [x] #64 ambient Pokémon: Pallet Dodrio and Oak's Diglett, Chansey in the Viridian and Pewter Centers, Forest Pidgeot vs Fearow
 - [ ] #89 move relearner; #90 TM swaps
 - [ ] v0.0.16 placeholder lines polished
 - [ ] #12 title screen, Mareep splash, Slowking disclaimer

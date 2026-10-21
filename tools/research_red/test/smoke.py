@@ -601,6 +601,24 @@ def sc_oak_mons():
             + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=3))
 
 
+def sc_ambient():
+    # #64: ambient Pokémon. Pallet's Dodrio (3,14): talk from below, its cry,
+    # a line, and Dodrio is marked seen in the Pokédex. Then after Brock, the
+    # Chansey beside Nurse Joy in Pewter's Pokémon Center (talk across the counter).
+    dodrio = T.G.const("NATIONAL_DEX_DODRIO")
+    seen_off = T.G.const("offsetof(struct SaveBlock1, dexSeen)") + (dodrio - 1) // 8
+    seen = f"{T.G._sb1(seen_off, 1)} & {1 << ((dodrio - 1) % 8)}"
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + step("LEFT", 4) + step("DOWN") + step("LEFT", 7) + step("DOWN", 6) + step("LEFT")
+            + ["press UP 6", "wait 20", "press A", "wait 90", "shot a001", "press A", "wait 60", "shot a002"]
+            + play_until("dodrio_done", T.G.field_free(), 2000, key="B", every=40)
+            + check("dodrio_seen", seen)
+            + ["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK)
+            + step("UP") + ready("center") + step("UP") + step("RIGHT") + step("UP", 3)
+            + ["press UP 6", "wait 20", "press A", "wait 90", "shot a003"]
+            + play_until("chansey_done", T.G.field_free(), 2000, key="B", every=40))
+
+
 def sc_guide():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60", "shot s000"]
             # Start > POKEDEX, then the Pokédex's START menu: BACK TO LIST, LIST TOP,
@@ -759,6 +777,7 @@ SCENARIOS = {
     "route2_wild": (sc_route2_wild, "Diagnosis: wild battle on Route 2 after Brock, no test mode"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
+    "ambient": (sc_ambient, "Ambient Pokémon: Pallet's Dodrio (seen in the Pokédex), Pewter's Chansey (#64)"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1, then Start > GUIDE (#91)"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
 }
