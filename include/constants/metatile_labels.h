@@ -396,4 +396,12 @@
 #define METATILE_RSCave_CrackedFloor                     0x22F
 #define METATILE_RSCave_CrackedFloor_Hole                0x206
 
+// Research Red (#8): the Viridian lunch picnic blanket (2x2) and the grass/path it covers
+#define METATILE_RR_PicnicBlanket_TopLeft        0x2DF
+#define METATILE_RR_PicnicBlanket_TopRight       0x2E0
+#define METATILE_RR_PicnicBlanket_BottomLeft     0x2E1
+#define METATILE_RR_PicnicBlanket_BottomRight    0x2E2
+#define METATILE_General_RR_GrassEdge            0x16D
+#define METATILE_General_RR_PathEdge             0x16E
+
 #endif // GUARD_METATILE_LABELS_H

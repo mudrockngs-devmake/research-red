@@ -44,9 +44,9 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #92 battle boxes in notebook colours; #11 proper case
 - [x] #93 female overworld; #80 bike; #28 surf/Pager sprites
 - [x] #7 battle back sprites + Elm in watched battles; #95 portraits in battle dialogue
-- [ ] #24 Trainer Card
+- [x] #24 Trainer Card
 - [x] #32 Pokémon portraits from game sprites
-- [ ] #40 Jenny sprites; #8 picnic blanket
+- [x] #40 Jenny sprites (Hex Maniac stand-in), Officer Jenny in uniform; #8 picnic blanket
 - [ ] #74 landscape battle backgrounds
 - [ ] #9 Forest exchanges + Samurai; #69 watch Brock
 - [ ] #64 ambient Pokémon (demo areas)

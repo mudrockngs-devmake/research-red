@@ -54,8 +54,20 @@ RR_Lunch_EventScript_Start::
 	msgbox RR_Lunch_Text_Elm_SeventeenCousins, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Jenny_Eighteen, MSGBOX_DEFAULT
 	closemessage
-	@ --- the picnic ---
+	@ --- the picnic (#8): a blanket on the grass right of the Pokémon
+	@ Center; Elm and Jenny on its left, you on its right ---
 	fadescreen FADE_TO_BLACK
+	setmetatile 30, 25, METATILE_RR_PicnicBlanket_TopLeft, TRUE
+	setmetatile 31, 25, METATILE_RR_PicnicBlanket_TopRight, TRUE
+	setmetatile 30, 26, METATILE_RR_PicnicBlanket_BottomLeft, TRUE
+	setmetatile 31, 26, METATILE_RR_PicnicBlanket_BottomRight, TRUE
+	special DrawWholeMapView
+	applymovement LOCALID_VIRIDIAN_ELM, RR_Lunch_Movement_FaceRight
+	applymovement LOCALID_VIRIDIAN_JENNY, RR_Lunch_Movement_FaceRight
+	rr_walk_to LOCALID_PLAYER, 32, 26, FALSE, 0
+	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, RR_Lunch_Movement_FaceLeft
+	waitmovement 0
 	msgbox RR_Lunch_Text_Picnic, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_FROM_BLACK
@@ -71,6 +83,12 @@ RR_Lunch_EventScript_Start::
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_VIRIDIAN_ELM
 	removeobject LOCALID_VIRIDIAN_JENNY
+	@ the blanket is packed away
+	setmetatile 30, 25, METATILE_General_RR_GrassEdge, FALSE
+	setmetatile 31, 25, METATILE_General_RR_PathEdge, FALSE
+	setmetatile 30, 26, METATILE_General_RR_GrassEdge, FALSE
+	setmetatile 31, 26, METATILE_General_RR_PathEdge, FALSE
+	special DrawWholeMapView
 	fadescreen FADE_FROM_BLACK
 	@ The old man has finished his nap: the road north is open
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
@@ -90,6 +108,14 @@ RR_Lunch_Movement_OfficerArrives::
 	walk_left
 	walk_left
 	walk_left
+	face_left
+	step_end
+
+RR_Lunch_Movement_FaceRight:
+	face_right
+	step_end
+
+RR_Lunch_Movement_FaceLeft:
 	face_left
 	step_end
 
