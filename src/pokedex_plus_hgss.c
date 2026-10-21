@@ -4138,7 +4138,8 @@ static void UNUSED HighlightScreenSelectBarItem(u8 selectedScreen, u16 unused)
 #define RR_BANTER_TEXT_TOP 91
 #define RR_BANTER_IVY_X    40
 #define RR_BANTER_P_X      200
-#define RR_BANTER_PIC_Y    58 // bottom edge on the text box (y 90), so they stand on it
+#define RR_BANTER_PIC_Y    64 // bottom 6 rows tucked behind the text box, so the bob and the hop
+                           // never open a gap above it (the boxes' layer is in front, see below)
 #define RR_BANTER_CALL_X   92
 #define RR_BANTER_CALL_Y   36
 #define RR_BANTER_STAMP_X  120
@@ -4251,6 +4252,7 @@ static bool32 RR_DexBanterOverlayNextLine(void)
 static bool32 RR_StartDexBanterOverlay(enum Species species, u8 monSpriteId)
 {
     u8 taskId;
+    u32 i;
 
     if (!RR_DexBanterAvailable())
         return FALSE;
@@ -4269,6 +4271,12 @@ static bool32 RR_StartDexBanterOverlay(enum Species species, u8 monSpriteId)
     sRRBanterPortraitIds[1] = RR_CreateStandalonePortrait(1, RR_LINE_PLAYER, RR_BANTER_P_X, RR_BANTER_PIC_Y, TRUE);
     RR_StandalonePortraitSlideIn(0, sRRBanterPortraitIds[0], -RR_BANTER_OFFSCREEN);
     RR_StandalonePortraitSlideIn(1, sRRBanterPortraitIds[1], DISPLAY_WIDTH + RR_BANTER_OFFSCREEN);
+    // behind the page's boxes (BG1, priority 0): the text box hides their bottom edge
+    for (i = 0; i < 2; i++)
+    {
+        if (sRRBanterPortraitIds[i] < MAX_SPRITES)
+            gSprites[sRRBanterPortraitIds[i]].oam.priority = 1;
+    }
     sRRBanterMonOldX = gSprites[monSpriteId].x;
     gSprites[monSpriteId].x = 120;
     RR_SetTypeIconsInvisible(TRUE); // they sit under the player's portrait
