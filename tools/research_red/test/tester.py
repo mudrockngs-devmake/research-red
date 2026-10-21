@@ -180,6 +180,7 @@ def with_states(lines, workdir):
 def run(suite, rom, name, lines, workdir, timeout):
     """Play one scenario. Returns (name, status, notes, state)."""
     sdir = os.path.join(suite.out_dir, name)
+    shutil.rmtree(sdir, ignore_errors=True)   # a rerun in the same minute shares the folder
     os.makedirs(sdir, exist_ok=True)
     script = os.path.join(workdir, name + ".txt")
     open(script, "w").write("\n".join(with_states(prelude() + lines + epilogue(), workdir)) + "\n")

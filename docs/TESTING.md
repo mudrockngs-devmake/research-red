@@ -31,6 +31,7 @@ What the results mean:
 |---|---|
 | intro | New game, the whole call, ends in the bedroom (saved as the starting point for the rest) |
 | breakfast | Walks downstairs |
+| grass | After breakfast, out of the door: the grass scene to the lab door; Jenny diagonally behind Elm, trailing him to the lab (#83) |
 | portraits | Breakfast, slowly: each finished line still has its portrait (memory check, #76) |
 | starter_menu | Lab: stops on the starter list (left, picture box, no portrait over it, #76) |
 | lab | Debug 9 (test mode) + debug 1, then the lab scene and battles |

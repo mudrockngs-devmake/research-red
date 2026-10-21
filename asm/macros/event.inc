@@ -2515,3 +2515,19 @@
 	.macro rr_ivy_create_follower
 	createfollowernpc OBJ_EVENT_GFX_RR_IVY, RR_IVY_FOLLOWER_FLAGS, RR_EventScript_IvyTalk
 	.endm
+
+@ ===================================================================
+@ Research Red: two characters walking together (#83)
+@ ===================================================================
+
+	@ The leader walks `movement`; the follower trails one step behind, the
+	@ way Ivy trails the player: first onto the leader's tile (if it starts
+	@ next to the leader), then along the leader's path, ending on the tile
+	@ the leader left. Jumps and turns are the leader's own; delays are kept
+	@ so the two stay in step. Wait with waitmovement <follower> (not 0).
+	.macro rr_move_pair leader:req, follower:req, movement:req
+	callnative RR_ScriptMovePair
+	.2byte \leader
+	.2byte \follower
+	.4byte \movement
+	.endm

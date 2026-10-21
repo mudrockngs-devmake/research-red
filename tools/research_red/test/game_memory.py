@@ -93,6 +93,13 @@ class GameMemory:
         """itemId of slot `index` in a Bag pocket (e.g. "TMsHMs"), 2 bytes."""
         return self._sb1(self.const(f"offsetof(struct SaveBlock1, bag.{pocket}[{index}].itemId)"), 2)
 
+    def player_xy_addrs(self):
+        """The player's map x and y (2 bytes each, plain map coordinates as in
+        route_plan.py). For peek, e.g. to find where a scene left you."""
+        base = f"{self.sym('gSaveBlock1Ptr'):#x}"
+        off = self.const("offsetof(struct SaveBlock1, pos)")
+        return f"*{base}+{off:#x}:2", f"*{base}+{off + 2:#x}:2"
+
     def party_addr(self):
         return f"{self.sym('gPlayerPartyCount'):#x}:1"
 

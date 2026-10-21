@@ -95,6 +95,16 @@ def sc_starter_menu():
                f"check no_portrait {portrait_up.replace('!=', '==')}", "press DOWN", "wait 30", "shot m002"])
 
 
+def sc_grass():
+    # The grass scene outside the house (story 1 -> 2): Elm and Jenny at the
+    # grass, Oak, then everyone walks to the lab; Jenny trails Elm (#83).
+    # Breakfast leaves you at (7,6) in the house (route_plan.py to the door).
+    # down first, then along the bottom row: Ivy, following, can block a step left
+    return (sc_breakfast() + step("DOWN", 2) + step("LEFT", 3) + step("DOWN")   # turning eats a step; DOWN on the mat (4-5,8) leaves
+            + play_until("grass", scene_end(2), 20000, key="B", every=40)
+            + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=2))
+
+
 def sc_lab():
     return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_LAB)
             + ["shot s000"] + step("UP") + play_until("lab", scene_end(3), 60000)
@@ -601,6 +611,7 @@ MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_
 SCENARIOS = {
     "intro": (sc_intro, "New game: the video call, ending in the bedroom"),
     "breakfast": (sc_breakfast, "Downstairs: breakfast with Delia, Ivy and Mimey"),
+    "grass": (sc_grass, "Outside after breakfast: Elm and Jenny at the grass, Oak, the walk to the lab (#83)"),
     "portraits": (sc_portraits, "Portraits stay up while a finished line waits for a button (#76)"),
     "starter_menu": (sc_starter_menu, "Lab: the starter list on the left, no portrait over it (#76)"),
     "lab": (sc_lab, "Lab scene (test mode: the AI fights)"),

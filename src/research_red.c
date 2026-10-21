@@ -11,6 +11,7 @@
 #include "constants/region_map_sections.h"
 #include "constants/species.h"
 #include "script.h"
+#include "script_movement.h"
 #include "constants/event_objects.h"
 
 // rr_ivy_to_scene localId: Ivy stops following and becomes a cutscene object.
@@ -191,4 +192,91 @@ void RR_ScriptDebugSetPartyLevel(struct ScriptContext *ctx)
         SetMonData(mon, MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][level]);
         CalculateMonStats(mon);
     }
+}
+
+// ---------------------------------------------------------------------------
+// rr_move_pair (#83): the leader walks a movement script, the follower trails
+// one step behind (Jenny behind Elm, the way Ivy follows the player).
+// ---------------------------------------------------------------------------
+#define RR_TRAIL_MAX 64
+static EWRAM_DATA u8 sRRTrailMovement[RR_TRAIL_MAX] = {0};
+
+// Walk actions come in groups of four (down, up, left, right)
+static const u8 sRRWalkBases[] =
+{
+    MOVEMENT_ACTION_WALK_SLOW_DOWN,
+    MOVEMENT_ACTION_WALK_NORMAL_DOWN,
+    MOVEMENT_ACTION_WALK_FAST_DOWN,
+    MOVEMENT_ACTION_WALK_FASTER_DOWN,
+};
+
+// The walk group of an action (or -1), and its direction (0 down 1 up 2 left 3 right)
+static s32 RR_WalkBase(u8 action, u32 *dir)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sRRWalkBases); i++)
+    {
+        if (action >= sRRWalkBases[i] && action < sRRWalkBases[i] + 4)
+        {
+            *dir = action - sRRWalkBases[i];
+            return sRRWalkBases[i];
+        }
+    }
+    return -1;
+}
+
+static bool32 RR_IsDelay(u8 action)
+{
+    return action >= MOVEMENT_ACTION_DELAY_1 && action <= MOVEMENT_ACTION_DELAY_16;
+}
+
+void RR_ScriptMovePair(struct ScriptContext *ctx)
+{
+    u16 leaderId = VarGet(ScriptReadHalfword(ctx));
+    u16 followerId = VarGet(ScriptReadHalfword(ctx));
+    const u8 *movement = (const u8 *)ScriptReadWord(ctx);
+    u8 mapNum = gSaveBlock1Ptr->location.mapNum, mapGroup = gSaveBlock1Ptr->location.mapGroup;
+    struct ObjectEvent *leader = &gObjectEvents[GetObjectEventIdByLocalId(leaderId)];
+    struct ObjectEvent *follower = &gObjectEvents[GetObjectEventIdByLocalId(followerId)];
+    s32 dx = leader->currentCoords.x - follower->currentCoords.x;
+    s32 dy = leader->currentCoords.y - follower->currentCoords.y;
+    u32 n = 0, i, dir, walks = 0, walksSeen = 0;
+    s32 firstBase = MOVEMENT_ACTION_WALK_NORMAL_DOWN;
+
+    for (i = 0; movement[i] != MOVEMENT_ACTION_STEP_END; i++)
+    {
+        s32 base = RR_WalkBase(movement[i], &dir);
+        if (base >= 0)
+        {
+            if (walks == 0)
+                firstBase = base;
+            walks++;
+        }
+    }
+    // Step onto the leader's tile first, if the follower starts next to it
+    if (walks != 0 && (dx * dx + dy * dy) == 1)
+    {
+        u32 toLeader = dy > 0 ? 0 : dy < 0 ? 1 : dx < 0 ? 2 : 3;
+        sRRTrailMovement[n++] = firstBase + toLeader;
+        walks--; // the follower ends one step short of the leader
+    }
+    for (i = 0; movement[i] != MOVEMENT_ACTION_STEP_END && n < RR_TRAIL_MAX - 1; i++)
+    {
+        if (RR_WalkBase(movement[i], &dir) >= 0)
+        {
+            if (walksSeen++ < walks)
+                sRRTrailMovement[n++] = movement[i];
+        }
+        else if (RR_IsDelay(movement[i]))
+        {
+            sRRTrailMovement[n++] = movement[i];
+        }
+    }
+    sRRTrailMovement[n] = MOVEMENT_ACTION_STEP_END;
+
+    leader->directionOverwrite = DIR_NONE;
+    follower->directionOverwrite = DIR_NONE;
+    ScriptMovement_StartObjectMovementScript(leaderId, mapNum, mapGroup, movement);
+    ScriptMovement_StartObjectMovementScript(followerId, mapNum, mapGroup, sRRTrailMovement);
 }

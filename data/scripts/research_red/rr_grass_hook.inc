@@ -57,9 +57,10 @@ PalletTown_EventScript_GrassHook::
 	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_IvyToGrass
 	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_PlayerToGrass
 	waitmovement 0
+	@ #83: Jenny stands diagonally behind Elm, mirroring Ivy behind you
 	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_FaceRight
 	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_FaceDown
-	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_FaceLeft
+	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_FaceDown
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Elm_JustInTime, MSGBOX_DEFAULT
@@ -125,12 +126,13 @@ PalletTown_EventScript_GrassHook::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PalletTown_Text_RR_Oak_ComeToLab, MSGBOX_DEFAULT
 	closemessage
-	@ Everyone heads to the lab. Jenny trails Elm.
+	@ Everyone heads to the lab. Jenny steps in behind Elm and trails him (#83).
+	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_WalkLeft
+	waitmovement LOCALID_PALLET_JENNY
 	applymovement LOCALID_PALLET_PROF_OAK, PalletTown_RR_Movement_OakToLab
 	applymovement LOCALID_PALLET_IVY, PalletTown_RR_Movement_IvyToLab
 	applymovement LOCALID_PLAYER, PalletTown_RR_Movement_PlayerToLab
-	applymovement LOCALID_PALLET_ELM, PalletTown_RR_Movement_ElmToLab
-	applymovement LOCALID_PALLET_JENNY, PalletTown_RR_Movement_JennyToLab
+	rr_move_pair LOCALID_PALLET_ELM, LOCALID_PALLET_JENNY, PalletTown_RR_Movement_ElmToLab
 	waitmovement LOCALID_PALLET_JENNY
 	opendoor 16, 13
 	waitdooranim
@@ -383,29 +385,8 @@ PalletTown_RR_Movement_ElmToLab:
 	walk_right
 	step_end
 
-PalletTown_RR_Movement_JennyToLab:
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
+PalletTown_RR_Movement_WalkLeft:
 	walk_left
-	walk_down
-	walk_down
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
 	step_end
 
 PalletTown_RR_Movement_OakIntoLab:
