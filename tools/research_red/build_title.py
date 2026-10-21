@@ -4,7 +4,8 @@
 One full-screen picture (240x160, up to 224 colours, 8 bits per pixel) drawn
 here from the game's own art: notebook paper (the interface's notebook theme),
 the Research Red logo, and Slowpoke wrapped in a lab coat like a blanket
-(Slowpoke's front sprite with a coat drawn over its back). "Press Start" and
+(Slowpoke's front sprite with a coat over its back and a sleeve tucked
+around the front). "Press Start" and
 the version are printed by the game on top (src/rr_title.c).
 
 Writes graphics/research_red/title/title.png (indexed, 8bpp; make turns it into
@@ -105,22 +106,26 @@ def slowpoke_in_coat():
                 px[x, y] = (0, 0, 0, 0)
     coat = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
     d = ImageDraw.Draw(coat)
-    # the coat, draped from the neck to the start of the tail
-    body = [(27, 26), (30, 22), (38, 21), (44, 24), (48, 27), (50, 31),
-            (50, 44), (46, 46), (40, 45), (34, 46), (28, 45), (25, 41), (25, 31)]
+    # the coat sits low on the back, behind the ear, so the face and ear show;
+    # it follows the curve of the back down to the start of the tail
+    body = [(39, 26), (44, 27), (50, 29), (55, 31), (58, 34), (59, 38),
+            (58, 42), (53, 43), (47, 43), (41, 44), (37, 44), (37, 33)]
     d.polygon(body, fill=COAT, outline=COAT_LINE)
-    d.polygon([(26, 39), (49, 39), (49, 43), (46, 45), (40, 44), (34, 45), (28, 44), (26, 41)], fill=COAT_SHADE)
-    d.line([(49, 31), (49, 43)], fill=COAT_SHADE)
-    # collar and lapels by the neck
-    d.line([(28, 25), (31, 31)], fill=COAT_LINE)
-    d.line([(34, 22), (31, 31)], fill=COAT_LINE)
-    d.line([(31, 31), (31, 38)], fill=COAT_SHADE)
+    d.polygon([(38, 40), (58, 40), (57, 42), (53, 42), (47, 42), (41, 43), (38, 43)], fill=COAT_SHADE)
+    d.line([(58, 35), (58, 40)], fill=COAT_SHADE)
+    # the turned-down collar behind the ear
+    d.polygon([(39, 26), (44, 27), (42, 31), (39, 30)], fill=COAT_SHADE, outline=COAT_LINE)
     # a pocket with a pen
-    d.rectangle((38, 33, 43, 37), outline=COAT_LINE)
-    d.line([(40, 30), (40, 34)], fill=PEN)
+    d.rectangle((47, 33, 52, 37), outline=COAT_LINE)
+    d.line([(49, 30), (49, 34)], fill=PEN)
+    # a sleeve tucked around the front, like an arm hugging Slowpoke
+    sleeve = [(39, 35), (41, 38), (36, 42), (31, 44), (27, 44), (26, 41), (30, 39), (35, 37)]
+    d.polygon(sleeve, fill=COAT, outline=COAT_LINE)
+    d.line([(29, 43), (35, 41)], fill=COAT_SHADE)
+    d.line([(29, 39), (29, 44)], fill=COAT_LINE)     # the cuff
     # buttons
-    for y in (33, 36):
-        d.point((33, y), fill=COAT_LINE)
+    for y in (36, 39):
+        d.point((42, y), fill=COAT_LINE)
     src.alpha_composite(coat)
     src = src.crop((8, 18, 64, 50))
     return src.resize((src.width * 2, src.height * 2), Image.NEAREST)
