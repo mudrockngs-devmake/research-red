@@ -8,19 +8,19 @@ Map `MAP_VIRIDIAN_FOREST` · music `MUS_VIRIDIAN_FOREST` · weather `WEATHER_SHA
 Script `ViridianForest_EventScript_Youngster`
 
 > I came here with some friends to
-> catch us some BUG POKéMON!
+> catch us some Bug Pokémon!
 >
 > They're all itching to get into
-> some POKéMON battles!
+> some Pokémon battles!
 
 ### Boy (Boy) at 45,58
 Script `ViridianForest_EventScript_Boy`
 
-> I was throwing POKé BALLS to
-> catch POKéMON, and I ran out.
+> I was throwing Poké Balls to
+> catch Pokémon, and I ran out.
 >
 > That's why you can never have too
-> many POKé BALLS.
+> many Poké Balls.
 
 ### Bug Catcher (Bug Catcher) at 47,45
 *trainer, sight 5*
@@ -28,12 +28,20 @@ Script `ViridianForest_EventScript_Rick`
 
 **Battle:** Bug Catcher Rick (single): Weedle Lv6, Caterpie Lv6
 
-> Hey! You have POKéMON!
+> Hey! You have Pokémon!
 > Come on!
 > Let's battle 'em!
 
 > No!
-> CATERPIE can't hack it!
+> Caterpie can't hack it!
+
+> Ivy: Bug Catchers always have the
+> best snacks. Learned that in the
+> field.
+
+> {PLAYER}: I learned it in the field
+> too. From a Bug Catcher.
+> Who wouldn't share.
 
 > Ssh! You'll scare the bugs away.
 > Another time, okay?
@@ -46,10 +54,19 @@ Script `ViridianForest_EventScript_Doug`
 
 > Yo!
 > You can't jam out if you're a
-> POKéMON TRAINER!
+> Pokémon Trainer!
 
 > Huh?
-> I ran out of POKéMON!
+> I ran out of Pokémon!
+
+> Ivy: Patience is a research
+> skill, sweetie.
+
+> {PLAYER}: I'm very patient. I've
+> waited years for you to admit
+> I'm funny.
+
+> Ivy: Keep waiting.
 
 > That totally stinks! I'm going to
 > catch some stronger ones!
@@ -65,6 +82,13 @@ Script `ViridianForest_EventScript_Sammy`
 
 > I give!
 > You're good at this!
+
+> Ivy: A forest Pikachu. The ones
+> by the Power Plant are bigger,
+> did you know?
+
+> {PLAYER}: I didn't. Tell me more
+> on the way.
 
 > Sometimes, you can find stuff on
 > the ground.
@@ -96,6 +120,13 @@ Script `ViridianForest_EventScript_Anthony`
 > Oh, boo.
 > Nothing went right.
 
+> Ivy: We should name ours like
+> that. Cater and Pie.
+
+> {PLAYER}: Squirtle and… Le.
+
+> Ivy: I regret everything.
+
 > I lost some of my allowance…
 
 ### Bug Catcher (Bug Catcher) at 16,5
@@ -104,26 +135,74 @@ Script `ViridianForest_EventScript_Charlie`
 
 **Battle:** Bug Catcher Charlie (single): Metapod Lv7, Caterpie Lv7, Metapod Lv7
 
-> Did you know that POKéMON evolve?
+> Did you know that Pokémon evolve?
 
 > Oh!
 > I lost!
 
-> BUG POKéMON evolve quickly.
+> {PLAYER}: Two Metapod using Harden.
+> Most relaxing battle of my life.
+
+> Ivy: Like watching very
+> determined rocks.
+
+> Bug Pokémon evolve quickly.
 > They're a lot of fun!
 
 ### Item Ball (Item Ball) at 49,60
 *hidden by `FLAG_HIDE_VIRIDIAN_FOREST_POTION_2`*
 Script `ViridianForest_EventScript_ItemPotion2`
 
+### Viridian Forest Samurai (Bug Catcher) at 30,23
+*trainer, sight 4*
+Script `RR_Forest_EventScript_Samurai`
+
+**Battle:** Pkmn Trainer 1 Samurai (single): Metapod Lv8, Pinsir Lv9
+
+> Halt! Are you from Pallet Town?
+>
+> …You are?! Then draw your
+> Poké Balls!
+
+> My Metapod hardened its heart.
+> It was not enough.
+
+> Ivy: Technically we're from
+> Pallet this week, sweetie.
+
+> {PLAYER}: Technically we're from a
+> lab. Spiritually, a picnic.
+
+> I ask everyone who passes if
+> they're from Pallet Town.
+>
+> Some day, a trainer from Pallet
+> will give me a real duel!
+
+### Species(Fearow) (Species(Fearow)) at 48,6
+Script `RR_Ambient_EventScript_Fearow`
+
+> Fearow: Fearrr!
+>
+> It stares at Pidgeot. Neither of
+> them blinks.
+
+### Species(Pidgeot) (Species(Pidgeot)) at 50,6
+Script `RR_Ambient_EventScript_ForestPidgeot`
+
+> Pidgeot: Pijooo!
+>
+> The forest's guardian. It's
+> keeping an eye on that Fearow.
+
 ## Signs
 
-- at 39,59: TRAINER TIPS  If your POKéMON are weak and you want to avoid battles, stay away from grassy areas!
-- at 43,26: TRAINER TIPS  Contact PROF. OAK via a PC to get your POKéDEX evaluated!
-- at 9,29: TRAINER TIPS  You can't catch a POKéMON that belongs to someone else.  Throw POKé BALLS only at wild POKéMON to catch them!
-- at 6,12: LEAVING VIRIDIAN FOREST PEWTER CITY AHEAD
-- at 28,44: For poison, use ANTIDOTE! Get it at POKéMON MARTS!
-- at 31,60: TRAINER TIPS  Weaken POKéMON before attempting capture!  When healthy, they may escape!
+- at 39,59: Trainer Tips  If your Pokémon are weak and you want to avoid battles, stay away from grassy areas!
+- at 43,26: Trainer Tips  Contact Prof. Oak via a PC to get your Pokédex evaluated!
+- at 9,29: Trainer Tips  You can't catch a Pokémon that belongs to someone else.  Throw Poké Balls only at wild Pokémon to catch them!
+- at 6,12: Leaving Viridian Forest Pewter City Ahead
+- at 28,44: For poison, use Antidote! Get it at Pokémon Marts!
+- at 31,60: Trainer Tips  Weaken Pokémon before attempting capture!  When healthy, they may escape!
 
 ## Wild Pokemon
 

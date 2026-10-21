@@ -26,7 +26,9 @@ EventScript_PCMainMenu::
 	end
 
 EventScript_ChoosePCMenu::
+	callnative RR_ScriptPCMenuAction @ Research Red: Lab Supplies entry (src/script_menu.c)
 	switch VAR_RESULT
+	case 5, RR_EventScript_LabSupplies @ Research Red
 	case 0, EventScript_AccessPokemonStorage
 	case 1, EventScript_AccessPlayersPC
 	case 2, EventScript_AccessProfOaksPC
@@ -107,3 +109,17 @@ EventScript_AccessPokemonBoxLink::
 	waitstate
 	goto EventScript_TurnOffPC
 	end
+
+@ Research Red: Lab Supplies, the research grant's free shop (src/shop.c)
+RR_EventScript_LabSupplies::
+	playse SE_PC_LOGIN
+	msgbox RR_Text_AccessedLabSupplies
+	callnative RR_ScriptOpenLabSupplies
+	waitstate
+	goto EventScript_PCMainMenu
+	end
+
+RR_Text_AccessedLabSupplies::
+	.string "Accessed Lab Supplies.\p"
+	.string "Everything here is paid for by\n"
+	.string "the research fund!$"

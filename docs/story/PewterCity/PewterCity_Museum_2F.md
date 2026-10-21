@@ -13,7 +13,7 @@ Script `PewterCity_Museum_2F_EventScript_Scientist`
 ### Man (Man) at 4,9
 Script `PewterCity_Museum_2F_EventScript_Man`
 
-> MOON STONE, huh?
+> Moon Stone, huh?
 >
 > What's so special about it?
 > Looks like an ordinary rock to me.
@@ -32,7 +32,7 @@ Script `PewterCity_Museum_2F_EventScript_OldMan`
 ### Little Girl (Little Girl) at 15,8
 Script `PewterCity_Museum_2F_EventScript_LittleGirl`
 
-> I want a PIKACHU!
+> I want a Pikachu!
 > It's so cute!
 >
 > I asked my daddy to catch me one!
@@ -40,18 +40,18 @@ Script `PewterCity_Museum_2F_EventScript_LittleGirl`
 ### Balding Man (Balding Man) at 16,8
 Script `PewterCity_Museum_2F_EventScript_BaldingMan`
 
-> Yeah, a PIKACHU soon, I promise!
+> Yeah, a Pikachu soon, I promise!
 
 ## Signs
 
-- at 3,6: A meteorite that fell on MT. MOON. It is thought to be a MOON STONE.
+- at 3,6: A meteorite that fell on Mt. Moon. It is thought to be a Moon Stone.
 - at 15,5: Space Shuttle
 - at 14,5: Space Shuttle
 - at 16,5: Space Shuttle
 - at 14,4: Space Shuttle
 - at 15,4: Space Shuttle
 - at 16,4: Space Shuttle
-- at 3,5: A meteorite that fell on MT. MOON. It is thought to be a MOON STONE.
+- at 3,5: A meteorite that fell on Mt. Moon. It is thought to be a Moon Stone.
 
 ## Exits
 

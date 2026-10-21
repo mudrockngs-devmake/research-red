@@ -50,6 +50,21 @@ static u8 CreateWindowFromRect(u8 left, u8 top, u8 width, u8 height);
 static u8 GetMCWindowHeight(u8 count);
 static u8 GetMenuWidthFromList(const struct MenuAction *items, u8 count);
 static void ClearToTransparentAndRemoveWindow(u8 windowId);
+// Research Red: Lab Supplies in the PC menu (see CreatePCMultichoice)
+static const u8 sText_RRLabSupplies[] = _("Lab Supplies");
+
+#define RR_PC_CHOICE_LAB_SUPPLIES 5 // after FireRed's 0-4 (storage, your PC, Oak's PC, Hall of Fame, log off)
+
+void RR_ScriptPCMenuAction(struct ScriptContext *ctx)
+{
+    if (!FlagGet(FLAG_SYS_POKEDEX_GET) || gSpecialVar_Result == MULTI_B_PRESSED || gSpecialVar_Result < 2)
+        return;
+    if (gSpecialVar_Result == 2)
+        gSpecialVar_Result = RR_PC_CHOICE_LAB_SUPPLIES;
+    else
+        gSpecialVar_Result--;
+}
+
 static void CreatePCMultichoice(void);
 static void DrawLinkServicesMultichoiceMenu(enum MultichoiceID mcId);
 static void DrawMultichoiceMenu(u8 left, u8 top, enum MultichoiceID mcId, u8 ignoreBpress, u8 initPos);
@@ -1490,26 +1505,34 @@ static void CreatePCMultichoice(void)
         break;
     }
 
+    // Research Red: Lab Supplies (the research grant's free shop) is the third
+    // entry once you have the grant, which comes with the Pokédex;
+    // RR_ScriptPCMenuAction turns the cursor position back into FireRed's
+    // choice numbers for data/scripts/pc.inc
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
     {
-        numItems = 5;
-        windowId = CreateWindowFromRect(0, 0, windowWidth, 10);
+        numItems = 6;
+        windowId = CreateWindowFromRect(0, 0, windowWidth, 12);
         SetStandardWindowBorderStyle(windowId, FALSE);
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_ProfOaksPc, cursorWidth, 34, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_HallOfFame, cursorWidth, 50, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_LogOff, cursorWidth, 66, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_RRLabSupplies, cursorWidth, 34, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_ProfOaksPc, cursorWidth, 50, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_HallOfFame, cursorWidth, 66, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_LogOff, cursorWidth, 82, TEXT_SKIP_DRAW, NULL);
     }
     else
     {
         if (FlagGet(FLAG_SYS_POKEDEX_GET))
-            numItems = 4;
+            numItems = 5;
         else
             numItems = 3;
 
         windowId = CreateWindowFromRect(0, 0, windowWidth, numItems * 2);
         SetStandardWindowBorderStyle(windowId, FALSE);
         if (FlagGet(FLAG_SYS_POKEDEX_GET))
-            AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_ProfOaksPc, cursorWidth, 34, TEXT_SKIP_DRAW, NULL);
+        {
+            AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_RRLabSupplies, cursorWidth, 34, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_ProfOaksPc, cursorWidth, 50, TEXT_SKIP_DRAW, NULL);
+        }
 
         AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_LogOff, cursorWidth, 2 + 16 * (numItems - 1), TEXT_SKIP_DRAW, NULL);
     }

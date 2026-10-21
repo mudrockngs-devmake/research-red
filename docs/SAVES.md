@@ -32,3 +32,4 @@ Adding new flags/vars from the free list, new scenes, text, art, encounters or t
 | 1 | v0.0.14 | version added; layout as of v0.0.10 (bigger Items pocket, follower data in SaveBlock3) |
 | 2 | v0.0.19 | pocket sizes rebalanced in the same space: PC item storage 64, Items pocket 30, Berry Pouch 19 (#96); new games only |
 | 3 | v0.0.19 | first-time item descriptions: SaveBlock3 gains the "seen this item" flags (110 bytes, taken from its padding; same total size); new games only |
+| 4 | v0.0.19 | grant rework: supplies come from Lab Supplies (a free shop on the PC), so the pockets go back to FireRed's sizes (PC item storage 30, Items pocket 42, Berry Pouch 43; SaveBlock1 is now exactly 15872 of 15872 bytes); new games only |

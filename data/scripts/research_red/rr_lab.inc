@@ -551,13 +551,15 @@ RR_Lab_EventScript_Grant::
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_P_LotOfBalls, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_P_NoBalls, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Ivy_BuyOutMart, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_LabSupplies, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Oak_CarriedAway, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Ivy_Cupboard, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Jenny_Trust, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Jenny_MasterBalls, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_NotThose, MSGBOX_DEFAULT
 	@ Research Red (#29): the Ranch Pager and the PC (tutorial lines, owner to rework)
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_RanchPager, MSGBOX_DEFAULT
@@ -594,37 +596,10 @@ RR_Lab_EventScript_Grant::
 	releaseall
 	end
 
-@ The grant: 100 of each of 13 Poke Balls (FireRed's ball pocket holds 13 kinds),
-@ medicine, repels, TM Case and TM01-TM50.
+@ The grant: only reusable things (key items, HMs, every TM). Poké Balls,
+@ medicine and held items come free from Lab Supplies on every PC
+@ (data/scripts/pc.inc, src/shop.c, gRRLabSupplies in src/research_red.c).
 RR_Lab_EventScript_GiveGrant::
-	@ #98: 150 of every Poké Ball, in the Bag
-	additem ITEM_POKE_BALL, 150
-	additem ITEM_GREAT_BALL, 150
-	additem ITEM_ULTRA_BALL, 150
-	additem ITEM_PREMIER_BALL, 150
-	additem ITEM_HEAL_BALL, 150
-	additem ITEM_NET_BALL, 150
-	additem ITEM_NEST_BALL, 150
-	additem ITEM_DIVE_BALL, 150
-	additem ITEM_DUSK_BALL, 150
-	additem ITEM_TIMER_BALL, 150
-	additem ITEM_QUICK_BALL, 150
-	additem ITEM_REPEAT_BALL, 150
-	additem ITEM_LUXURY_BALL, 150
-	additem ITEM_MASTER_BALL, 150
-	additem ITEM_FAST_BALL, 150
-	additem ITEM_LEVEL_BALL, 150
-	additem ITEM_LURE_BALL, 150
-	additem ITEM_HEAVY_BALL, 150
-	additem ITEM_LOVE_BALL, 150
-	additem ITEM_FRIEND_BALL, 150
-	additem ITEM_MOON_BALL, 150
-	additem ITEM_SPORT_BALL, 150
-	additem ITEM_DREAM_BALL, 150
-	additem ITEM_BEAST_BALL, 150
-	@ #96, #99, #100: medicine, X items and 6 of every held item go to the
-	@ PC's item storage (src/research_red.c, sRRGrantToPC)
-	callnative RR_ScriptGrantToPC
 	@ key items (story items like the Town Map stay in their scenes)
 	additem ITEM_EXP_SHARE, 1
 	additem ITEM_BICYCLE, 1
@@ -634,11 +609,6 @@ RR_Lab_EventScript_GiveGrant::
 	additem ITEM_BERRY_POUCH, 1
 	additem ITEM_RANCH_PAGER, 1 @ Research Red (#29)
 	setflag FLAG_RR_EXP_SHARE
-	@ berries (Berry Pouch above)
-	additem ITEM_ORAN_BERRY, 20
-	additem ITEM_SITRUS_BERRY, 20
-	additem ITEM_LUM_BERRY, 10
-	additem ITEM_CHESTO_BERRY, 10
 	@ HMs (reusable; field moves need no badge)
 	additem ITEM_HM01, 1
 	additem ITEM_HM02, 1
@@ -1113,32 +1083,40 @@ RR_Lab_Text_Oak_Grant::
 
 RR_Lab_Text_ReceivedGrant::
     .string "{PLAYER} received the\n"
-    .string "Research Grant supplies!$"
+    .string "Research Grant!$"
 
 RR_Lab_Text_GrantContents::
-    .string "Every Poké Ball, Master Balls too,\n"
-    .string "medicine, held items, key items,\l"
-    .string "and every TM and HM went in!$"
+    .string "Key items, every HM, and all 100\n"
+    .string "TMs. TMs never run out!$"
 
 RR_Lab_Text_ReceivedPokedex::
     .string "{PLAYER} received a Pokédex\n"
     .string "from Prof. Oak!$"
 
-RR_Lab_Text_P_LotOfBalls::
-    .string "{PLAYER}: That is… a lot\n"
-    .string "of Poké Balls.$"
+RR_Lab_Text_P_NoBalls::
+    .string "{PLAYER}: Fieldwork… with no\n"
+    .string "Poké Balls?$"
 
-RR_Lab_Text_Ivy_BuyOutMart::
-    .string "Ivy: Professor, did you buy out\n"
-    .string "the whole Poké Mart?$"
+RR_Lab_Text_Oak_LabSupplies::
+    .string "Oak: Ho ho! Something better:\n"
+    .string "Lab Supplies, on every PC!\p"
+    .string "Poké Balls, medicine, held items.\n"
+    .string "Take whatever your research needs.\p"
+    .string "The fund pays. You never do!$"
 
-RR_Lab_Text_Oak_CarriedAway::
-    .string "Oak: I may have got carried away.\n"
-    .string "The clerk sent me a card.$"
+RR_Lab_Text_Ivy_Cupboard::
+    .string "Ivy: A free supply cupboard? Oh,\n"
+    .string "sweetie, we're never coming home.$"
 
-RR_Lab_Text_Jenny_Trust::
-    .string "Jenny: Master Balls. Plural.\n"
-    .string "That's a lot of trust, sir.$"
+RR_Lab_Text_Jenny_MasterBalls::
+    .string "Jenny: Master Balls too, sir? In\n"
+    .string "my professional opinion… risky.$"
+
+RR_Lab_Text_Oak_NotThose::
+    .string "Oak: Not those! The Master Ball\n"
+    .string "waits for a special occasion.\p"
+    .string "As they say, a patient Slowpoke\n"
+    .string "catches the biggest fish. Ho ho!$"
 
 RR_Lab_Text_Oak_RanchPager::
     .string "Oak: And the best part: a Ranch\n"

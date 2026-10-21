@@ -11,30 +11,30 @@ Script `ViridianCity_EventScript_DreamEaterTutor`
 > I must have dozed off in the sun.
 >
 > I had this weird dream about
-> a DROWZEE eating my dream.
+> a Drowzee eating my dream.
 >
 > And…
 > I learned how to eat dreams…
 >
 > Oogh, this is too spooky!
 >
-> Let me teach it to a POKéMON so
+> Let me teach it to a Pokémon so
 > I can forget about it!
 
-> Which POKéMON wants to learn
-> DREAM EATER?
+> Which Pokémon wants to learn
+> Dream Eater?
 
 ### Cut Tree (Cut Tree) at 11,24
 *hidden by `FLAG_TEMP_11`*
 Script `EventScript_CutTree`
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 >
-> Would you like to CUT it?
+> Would you like to Cut it?
 
 > {STR_VAR_1} used {STR_VAR_2}!
 
@@ -166,13 +166,13 @@ Script `ViridianCity_EventScript_Boy`
 *hidden by `FLAG_TEMP_12`*
 Script `EventScript_CutTree`
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 >
-> Would you like to CUT it?
+> Would you like to Cut it?
 
 > {STR_VAR_1} used {STR_VAR_2}!
 
@@ -262,7 +262,7 @@ Script `RR_Lunch_EventScript_Start`
 
 > {PLAYER}: I am the patience.
 
-### Viridian Jenny (Rr Jenny) at 30,26
+### Viridian Jenny (Rr Jenny) at 29,25
 *hidden by `FLAG_TEMP_14`*
 Script `RR_Lunch_EventScript_Start`
 
@@ -344,7 +344,7 @@ Script `RR_Lunch_EventScript_Start`
 
 > {PLAYER}: I am the patience.
 
-### Viridian Officer Jenny (Rr Jenny) at 37,27
+### Viridian Officer Jenny (Rr Officer Jenny) at 37,27
 *hidden by `FLAG_TEMP_15`*
 (no talk script; used in cutscenes)
 
@@ -358,8 +358,8 @@ Script `RR_Lunch_EventScript_Start`
 
 ## Wild Pokemon
 
-**Surfing:** Psyduck 60% (Lv 4-7), Poliwag 30% (Lv 4-7), Goldeen 5% (Lv 4-7), Wooper 4% (Lv 4-7), Marill 1% (Lv 4-7)
-**Fishing:** Magikarp 170% (Lv 4-7), Goldeen 90% (Lv 4-7), Marill 35% (Lv 4-7), Wooper 4% (Lv 4-7), Slowpoke 1% (Lv 5-7)
+**Surfing:** Wooper 60% (Lv 4-7), Poliwag 30% (Lv 4-7), Psyduck 5% (Lv 4-7), Slowpoke 4% (Lv 5-7), Marill 1% (Lv 4-7)
+**Fishing:** Magikarp 170% (Lv 4-7), Goldeen 90% (Lv 4-7), Wooper 35% (Lv 4-7), Slowpoke 4% (Lv 5-7), Marill 1% (Lv 4-7)
 
 ## Exits
 

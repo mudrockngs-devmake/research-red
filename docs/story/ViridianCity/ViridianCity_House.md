@@ -16,16 +16,16 @@ Script `ViridianCity_House_EventScript_BaldingMan`
 ### Little Girl (Little Girl) at 2,5
 Script `ViridianCity_House_EventScript_LittleGirl`
 
-> My daddy loves POKéMON, too.
+> My daddy loves Pokémon, too.
 
 ### Spearow (Spearow) at 6,6
 Script `ViridianCity_House_EventScript_Speary`
 
-> SPEARY: Tetweet!
+> Speary: Tetweet!
 
 ## Signs
 
-- at 7,1: SPEAROW Name: SPEARY
+- at 7,1: Spearow Name: Speary
 
 ## Exits
 

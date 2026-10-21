@@ -37,6 +37,9 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 
+extern const u16 gRRLabSupplies[]; // Research Red: src/research_red.c
+static EWRAM_DATA bool8 sRRFreeShop = FALSE; // Research Red: Lab Supplies, every price 0
+
 #define tItemCount data[1]
 #define tItemId data[5]
 #define tListTaskId data[7]
@@ -96,6 +99,11 @@ static const u8 sText_NoMoreRoomForThis[] = _("You have no more room for this\ni
 static const u8 sText_AnythingElseICanHelp[] = _("Is there anything else I can do?");
 static const u8 sText_ThrowInPremierBall[] = _("I'll throw in a Premier Ball, too.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_ThrowInPremierBalls[] = _("I'll throw in {STR_VAR_1} Premier Balls, too.{PAUSE_UNTIL_PRESS}");
+// Research Red: Lab Supplies (free, paid by the research fund)
+static const u8 sText_RRFree[] = _("Free");
+static const u8 sText_RRHowMany[] = _("{STR_VAR_1}? How many?");
+static const u8 sText_RRConfirm[] = _("{STR_VAR_1} ×{STR_VAR_2}, on the\nresearch fund. Okay?");
+static const u8 sText_RRHereYouGo[] = _("Signed out to your Bag!");
 
 static EWRAM_DATA s16 sViewportObjectEvents[OBJECT_EVENTS_COUNT][4] = {0};
 static EWRAM_DATA struct ShopData sShopData = {0};
@@ -852,12 +860,24 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
     }
 }
 
+// Research Red: Lab Supplies costs nothing
+static u32 RR_ShopItemPrice(u32 item)
+{
+    if (sRRFreeShop)
+        return 0;
+    return GetItemPrice(item);
+}
+
 static void BuyMenuPrintPriceInList(u8 windowId, u32 item, u8 y)
 {
     s32 x;
     u8 *loc;
 
-    if (item != INDEX_CANCEL)
+    if (item != INDEX_CANCEL && sRRFreeShop) // Research Red
+    {
+        BuyMenuPrint(windowId, FONT_SMALL, sText_RRFree, 0x61, y, 0, 0, TEXT_SKIP_DRAW, 1);
+    }
+    else if (item != INDEX_CANCEL)
     {
         ConvertIntToDecimalStringN(gStringVar1, GetItemPrice(item), 0, MAX_MONEY_DIGITS);
         x = 6 - StringLength(gStringVar1);
@@ -1149,7 +1169,7 @@ static void Task_BuyMenu(u8 taskId)
             BuyMenuRemoveScrollIndicatorArrows();
             BuyMenuPrintCursor(tListTaskId, 2);
             RecolorItemDescriptionBox(1);
-            sShopData.itemPrice = GetItemPrice(itemId);
+            sShopData.itemPrice = RR_ShopItemPrice(itemId); // Research Red
             if (!IsEnoughMoney(&gSaveBlock1Ptr->money, sShopData.itemPrice))
             {
                 BuyMenuDisplayMessage(taskId, sText_YouDontHaveMoney, BuyMenuReturnToItemList);
@@ -1157,7 +1177,7 @@ static void Task_BuyMenu(u8 taskId)
             else
             {
                 CopyItemName(itemId, gStringVar1);
-                BuyMenuDisplayMessage(taskId, sText_Var1CertainlyHowMany, Task_BuyHowManyDialogueInit);
+                BuyMenuDisplayMessage(taskId, sRRFreeShop ? sText_RRHowMany : sText_Var1CertainlyHowMany, Task_BuyHowManyDialogueInit); // Research Red
             }
             break;
         }
@@ -1201,7 +1221,7 @@ static void Task_BuyHowManyDialogueHandleInput(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, sShopData.maxQuantity) == TRUE)
     {
-        sShopData.itemPrice = GetItemPrice(tItemId) * tItemCount;
+        sShopData.itemPrice = RR_ShopItemPrice(tItemId) * tItemCount; // Research Red
         BuyMenuPrintItemQuantityAndPrice(taskId);
     }
     else
@@ -1218,7 +1238,7 @@ static void Task_BuyHowManyDialogueHandleInput(u8 taskId)
             CopyItemName(tItemId, gStringVar1);
             ConvertIntToDecimalStringN(gStringVar2, tItemCount, STR_CONV_MODE_LEFT_ALIGN, 2);
             ConvertIntToDecimalStringN(gStringVar3, sShopData.itemPrice, STR_CONV_MODE_LEFT_ALIGN, 8);
-            BuyMenuDisplayMessage(taskId, sText_Var1AndYouWantedVar2, CreateBuyMenuConfirmPurchaseWindow);
+            BuyMenuDisplayMessage(taskId, sRRFreeShop ? sText_RRConfirm : sText_Var1AndYouWantedVar2, CreateBuyMenuConfirmPurchaseWindow); // Research Red
         }
         else if (JOY_NEW(B_BUTTON))
         {
@@ -1246,7 +1266,7 @@ static void BuyMenuTryMakePurchase(u8 taskId)
     if (AddBagItem(tItemId, tItemCount) == TRUE)
     {
         GetSetItemObtained(tItemId, FLAG_SET_ITEM_OBTAINED);
-        BuyMenuDisplayMessage(taskId, sText_HereYouGoThankYou, BuyMenuSubtractMoney);
+        BuyMenuDisplayMessage(taskId, sRRFreeShop ? sText_RRHereYouGo : sText_HereYouGoThankYou, BuyMenuSubtractMoney); // Research Red
         DebugFunc_PrintPurchaseDetails(taskId);
         RecordItemTransaction(tItemId, tItemCount, QL_EVENT_BOUGHT_ITEM - QL_EVENT_USED_POKEMART);
     }
@@ -1271,7 +1291,7 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
     if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
     {
         u16 premierBallsToAdd = tItemCount / 10;
-        if (premierBallsToAdd >= 1
+        if (premierBallsToAdd >= 1 && !sRRFreeShop // Research Red: no bonus balls from Lab Supplies
          && ((I_PREMIER_BALL_BONUS <= GEN_7 && tItemId == ITEM_POKE_BALL)
           || (I_PREMIER_BALL_BONUS >= GEN_8 && (GetItemPocket(tItemId) == POCKET_POKE_BALLS))))
         {
@@ -1315,9 +1335,28 @@ static void BuyMenuReturnToItemList(u8 taskId)
     gTasks[taskId].func = Task_BuyMenu;
 }
 
+// Research Red: leaving Lab Supplies goes straight back to the PC menu
+static void Task_RR_LeaveLabSupplies(u8 taskId)
+{
+    if (IsWeatherNotFadingIn() != TRUE)
+        return;
+    sRRFreeShop = FALSE;
+    DestroyTask(taskId);
+    if (sShopData.callback != NULL)
+        sShopData.callback();
+}
+
+static void MapPostLoadHook_RR_LeaveLabSupplies(void)
+{
+    FadeInFromBlack();
+    CreateTask(Task_RR_LeaveLabSupplies, 8);
+}
+
 static void ExitBuyMenu(u8 taskId)
 {
     gFieldCallback = MapPostLoadHook_ReturnToShopMenu;
+    if (sRRFreeShop) // Research Red
+        gFieldCallback = MapPostLoadHook_RR_LeaveLabSupplies;
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_ExitBuyMenu;
 }
@@ -1430,6 +1469,7 @@ static const enum Item *GetShopItems(enum ShopID shopId)
 
 void CreatePokemartMenu(enum ShopID shopId)
 {
+    sRRFreeShop = FALSE; // Research Red
     SetShopItemsForSale(GetShopItems(shopId));
     CreateShopMenu(MART_TYPE_REGULAR);
     SetShopMenuCallback(ScriptContext_Enable);
@@ -1466,4 +1506,20 @@ static bool32 IsTwoIslandMartExpanded2(void)
 static bool32 IsTwoIslandMartExpanded3(void)
 {
     return VarGet(VAR_MAP_SCENE_TWO_ISLAND) > 3;
+}
+
+// Research Red: Lab Supplies, the research grant's free shop on every PC
+// (data/scripts/pc.inc). Opens straight on the Buy list; every price is 0
+// and nothing is taken; leaving returns to the PC menu. Items: gRRLabSupplies
+// in src/research_red.c.
+void RR_ScriptOpenLabSupplies(struct ScriptContext *ctx)
+{
+    SetShopItemsForSale(gRRLabSupplies);
+    sShopData.martType = MART_TYPE_REGULAR;
+    sShopData.selectedRow = 0;
+    sShopData.scrollOffset = 0;
+    sShopData.fontId = FONT_NORMAL;
+    sRRFreeShop = TRUE;
+    SetShopMenuCallback(ScriptContext_Enable);
+    Task_HandleShopMenuBuy(CreateTask(TaskDummy, 8));
 }

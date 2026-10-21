@@ -21,11 +21,11 @@ Script `PalletTown_EventScript_SignLady`
 > Look, look!
 >
 > I copied what it said on one of
-> those TRAINER TIPS signs!
+> those Trainer Tips signs!
 
-> TRAINER TIPS!
+> Trainer Tips!
 >
-> Press START to open the MENU!
+> Press Start to open the Menu!
 
 > Read it, read it!
 
@@ -55,15 +55,17 @@ Script `PalletTown_EventScript_FatMan`
 *hidden by `FLAG_TEMP_3`*
 (no talk script; used in cutscenes)
 
-### Pallet Jenny (Rr Jenny) at 13,1
+### Pallet Jenny (Rr Jenny) at 13,0
 *hidden by `FLAG_TEMP_3`*
 (no talk script; used in cutscenes)
 
 ### Pallet Gerald (Species(Tentacool)) at 8,19
 Script `RR_Pallet_EventScript_Gerald`
 
+> Gerald: Tenta! Cool!
+>
 > Gerald the Tentacool is floating
-> right in the way. Tenta! Cool!
+> right in the way.
 
 > Gerald holds up a tiny sign:
 >
@@ -73,18 +75,66 @@ Script `RR_Pallet_EventScript_Gerald`
 > Cinnabar and beyond come later.
 > Thanks for playing!”
 
+### Pallet Oak Tauros (Species(Tauros)) at 21,10
+Script `RR_RanchPager_EventScript_OakTauros`
+
+> Tauros: Mooo!
+>
+> Prof. Oak's Tauros. Strength? It
+> has plenty, and it knows it.
+
+### Pallet Oak Pidgeot (Species(Pidgeot)) at 21,12
+Script `RR_RanchPager_EventScript_OakPidgeot`
+
+> Pidgeot: Pijooo!
+>
+> Prof. Oak's Pidgeot. It knows the
+> way to every town. Fly anytime!
+
+### Pallet Oak Lapras (Species(Lapras)) at 7,17
+Script `RR_RanchPager_EventScript_OakLapras`
+
+> Lapras: Laaa…
+>
+> Prof. Oak's Lapras. It hums while
+> it Surfs. Rather beautifully.
+
+### Pallet Oak Gyarados (Species(Gyarados)) at 10,17
+Script `RR_RanchPager_EventScript_OakGyarados`
+
+> Gyarados: Gyaaa!
+>
+> Prof. Oak's Gyarados. It climbs
+> Waterfalls. It was a Magikarp!
+
+### Species(Dodrio) (Species(Dodrio)) at 3,14
+Script `RR_Ambient_EventScript_Dodrio`
+
+> Dodrio: Do-dodo-DRIO!
+>
+> Three heads, three opinions. It
+> crows at the morning anyway.
+
+### Species(Diglett) (Species(Diglett)) at 21,14
+Script `RR_Ambient_EventScript_Diglett`
+
+> Diglett: Dig dig!
+>
+> It's Prof. Oak's Diglett. It's on
+> call for Dig.
+
 ## Signs
 
 - at 16,16: Oak Pokémon Research Lab
 - at 4,7: {PLAYER}'s house
 - at 13,7: {RIVAL}'s house
 - at 9,11: Pallet Town Shades of your journey await!
-- at 5,14: TRAINER TIPS  Press START to open the MENU!
+- at 5,14: Trainer Tips  Press Start to open the Menu!
 
 ## Wild Pokemon
 
-**Surfing:** Tentacool 60% (Lv 3-6), Magikarp 30% (Lv 3-6), Horsea 5% (Lv 3-6), Chinchou 4% (Lv 3-6), Qwilfish 1% (Lv 4-6)
-**Fishing:** Krabby 170% (Lv 3-6), Staryu 90% (Lv 3-6), Shellder 35% (Lv 3-6), Remoraid 4% (Lv 4-6), Dratini 1% (Lv 4-6)
+**Surfing:** Tentacool 60% (Lv 3-6), Chinchou 30% (Lv 3-6), Staryu 5% (Lv 3-6), Horsea 4% (Lv 3-6), Qwilfish 1% (Lv 4-6)
+**Fishing:** Staryu 170% (Lv 3-6), Krabby 90% (Lv 3-6), Shellder 35% (Lv 3-6), Chinchou 4% (Lv 3-6), Dratini 1% (Lv 4-6)
 
 ## Exits
 

@@ -12,25 +12,25 @@ Map `MAP_PEWTER_CITY` · music `MUS_PEWTER` · weather `WEATHER_SUNNY`
 ### Lass (Lass) at 6,15
 Script `PewterCity_EventScript_Lass`
 
-> CLEFAIRY came from the moon.
+> Clefairy came from the moon.
 > That's what the rumor is.
 >
-> They appeared after MOON STONES
-> fell on MT. MOON.
+> They appeared after Moon Stones
+> fell on Mt. Moon.
 
 ### Pewter Museum Guide (Man) at 33,17
 *hidden by `FLAG_HIDE_PEWTER_MUSEUM_GUIDE`*
 Script `PewterCity_EventScript_MuseumGuide`
 
-> Did you check out the MUSEUM?
+> Did you check out the Museum?
 
-> Weren't those fossils from MT. MOON
+> Weren't those fossils from Mt. Moon
 > amazing?
 
 > Really?
 > You absolutely have to go!
 
-> This is it, the MUSEUM.
+> This is it, the Museum.
 >
 > You have to pay to get in, but it's
 > worth it. See you around!
@@ -38,13 +38,13 @@ Script `PewterCity_EventScript_MuseumGuide`
 ### Fat Man (Fat Man) at 21,28
 Script `PewterCity_EventScript_FatMan`
 
-> There aren't many serious POKéMON
-> TRAINERS here.
+> There aren't many serious Pokémon
+> Trainers here.
 >
-> They're all like BUG CATCHERS,
+> They're all like Bug Catchers,
 > you know, just hobbyists.
 >
-> But PEWTER GYM's BROCK isn't like
+> But Pewter Gym's Brock isn't like
 > that, not one bit.
 
 ### Bug Catcher (Bug Catcher) at 33,27
@@ -56,8 +56,8 @@ Script `PewterCity_EventScript_BugCatcher`
 > That's right!
 > It's hard work!
 
-> I'm spraying REPEL to keep wild
-> POKéMON out of my garden!
+> I'm spraying Repel to keep wild
+> Pokémon out of my garden!
 
 ### Pewter Gym Guide (Boy) at 42,20
 *hidden by `FLAG_HIDE_PEWTER_CITY_GYM_GUIDE`*
@@ -72,25 +72,25 @@ Script `PewterCity_EventScript_GymGuide`
 > We'll open the way in a future
 > update. Please understand!
 
-> You're a TRAINER, right?
+> You're a Trainer, right?
 >
-> BROCK's looking for new
+> Brock's looking for new
 > challengers. Follow me!
 
 > If you have the right stuff,
-> go take on BROCK!
+> go take on Brock!
 
 ### Cut Tree (Cut Tree) at 30,5
 *hidden by `FLAG_TEMP_12`*
 Script `EventScript_CutTree`
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 >
-> Would you like to CUT it?
+> Would you like to Cut it?
 
 > {STR_VAR_1} used {STR_VAR_2}!
 
@@ -101,22 +101,22 @@ Script `PewterCity_EventScript_RunningShoesAide`
 > Oh, {PLAYER}{KUN}!
 
 > I'm glad I caught up to you.
-> I'm PROF. OAK's AIDE.
+> I'm Prof. Oak's Aide.
 >
 > I've been asked to deliver this,
 > so here you go.
 
 > {PLAYER} received the
-> RUNNING SHOES from the AIDE.
+> Running Shoes from the Aide.
 
 > {PLAYER} switched shoes with the
-> RUNNING SHOES.
+> Running Shoes.
 
 > Press the B Button to run.
 > But only where there's room to run!
 
 > Well, I must be going back to
-> the LAB.
+> the Lab.
 >
 > Bye-bye!
 
@@ -124,7 +124,7 @@ Script `PewterCity_EventScript_RunningShoesAide`
 >
 > Dear {PLAYER},
 >
-> Here is a pair of RUNNING SHOES
+> Here is a pair of Running Shoes
 > for my beloved challenger.
 >
 > Remember, I'll always cheer for
@@ -132,7 +132,7 @@ Script `PewterCity_EventScript_RunningShoesAide`
 >
 > From Mom
 
-### Pewter Elm (Rr Elm) at 15,27
+### Pewter Elm (Rr Elm) at 16,27
 *hidden by `FLAG_TEMP_13`*
 Script `RR_Pewter_EventScript_Rematch`
 
@@ -156,7 +156,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Cinnamon Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Biscotti Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Biscotti Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15, set from your badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -188,6 +188,12 @@ Script `RR_Pewter_EventScript_Rematch`
 > Elm: See you down the road, you
 > two! We always catch up!
 
+> Elm: We're challenging Brock next.
+> Want to come watch?
+
+> {PLAYER}: Front row. Ivy brought
+> snacks.
+
 > Elm and Jenny head for the Gym,
 > arguing happily about strategy.
 
@@ -202,7 +208,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Biscotti Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Matcha Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Matcha Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -212,7 +218,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Matcha Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Cinnamon Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Cinnamon Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -222,7 +228,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Toffee Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Cream Puff Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Cream Puff Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -232,7 +238,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Cream Puff Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Pistachio Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Pistachio Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -242,7 +248,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Pistachio Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Toffee Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Toffee Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -250,7 +256,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-### Pewter Jenny (Rr Jenny) at 16,27
+### Pewter Jenny (Rr Jenny) at 16,28
 *hidden by `FLAG_TEMP_14`*
 Script `RR_Pewter_EventScript_Rematch`
 
@@ -274,7 +280,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Cinnamon Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Biscotti Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Biscotti Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15, set from your badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -306,6 +312,12 @@ Script `RR_Pewter_EventScript_Rematch`
 > Elm: See you down the road, you
 > two! We always catch up!
 
+> Elm: We're challenging Brock next.
+> Want to come watch?
+
+> {PLAYER}: Front row. Ivy brought
+> snacks.
+
 > Elm and Jenny head for the Gym,
 > arguing happily about strategy.
 
@@ -320,7 +332,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Biscotti Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Matcha Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Matcha Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -330,7 +342,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Matcha Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Cinnamon Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Cinnamon Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -340,7 +352,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Toffee Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Cream Puff Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Cream Puff Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -350,7 +362,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Cream Puff Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Pistachio Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Pistachio Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -360,7 +372,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 **Battle:** Rival Early Elm (single): Pistachio Lv15, Pudding Lv14, Churro Lv14
 
-**Battle:** RR Officer Jenny (single): Toffee Lv15, Licorice Lv14, Macaron Lv14
+**Battle:** RR Officer Jenny (single): Toffee Lv15, Licorice Lv14, Macaron Lv14, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -370,11 +382,11 @@ Script `RR_Pewter_EventScript_Rematch`
 
 ## Signs
 
-- at 19,7: PEWTER MUSEUM OF SCIENCE
-- at 39,19: NOTICE!  Thieves have been stealing POKéMON fossils from MT. MOON.  Please call the PEWTER POLICE if you have any information.
-- at 11,16: PEWTER CITY POKéMON GYM LEADER: BROCK The Rock-Solid POKéMON TRAINER!
-- at 20,30: TRAINER TIPS  All POKéMON that appear in battle, however briefly, earn EXP Points.
-- at 31,25: PEWTER CITY A Stone Gray City
+- at 19,7: Pewter Museum Of Science
+- at 39,19: Notice!  Thieves have been stealing Pokémon fossils from Mt. Moon.  Please call the Pewter Police if you have any information.
+- at 11,16: Pewter City Pokémon Gym Leader: Brock The Rock-Solid Pokémon Trainer!
+- at 20,30: Trainer Tips  All Pokémon that appear in battle, however briefly, earn Exp Points.
+- at 31,25: Pewter City A Stone Gray City
 
 ## Exits
 

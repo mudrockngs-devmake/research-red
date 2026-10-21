@@ -8,13 +8,13 @@ Map `MAP_ROUTE2` · music `MUS_ROUTE1` · weather `WEATHER_SUNNY`
 *hidden by `FLAG_TEMP_14`*
 Script `EventScript_CutTree`
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 >
-> Would you like to CUT it?
+> Would you like to Cut it?
 
 > {STR_VAR_1} used {STR_VAR_2}!
 
@@ -22,13 +22,13 @@ Script `EventScript_CutTree`
 *hidden by `FLAG_TEMP_13`*
 Script `EventScript_CutTree`
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 >
-> Would you like to CUT it?
+> Would you like to Cut it?
 
 > {STR_VAR_1} used {STR_VAR_2}!
 
@@ -36,13 +36,13 @@ Script `EventScript_CutTree`
 *hidden by `FLAG_TEMP_15`*
 Script `EventScript_CutTree`
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 >
-> Would you like to CUT it?
+> Would you like to Cut it?
 
 > {STR_VAR_1} used {STR_VAR_2}!
 
@@ -50,13 +50,13 @@ Script `EventScript_CutTree`
 *hidden by `FLAG_TEMP_16`*
 Script `EventScript_CutTree`
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 
-> This tree looks like it can be CUT
+> This tree looks like it can be Cut
 > down!
 >
-> Would you like to CUT it?
+> Would you like to Cut it?
 
 > {STR_VAR_1} used {STR_VAR_2}!
 
@@ -73,8 +73,8 @@ Script `Route2_EventScript_ItemParalyzeHeal`
 
 ## Signs
 
-- at 14,12: DIGLETT'S CAVE
-- at 7,73: ROUTE 2 VIRIDIAN CITY - PEWTER CITY
+- at 14,12: Diglett's Cave
+- at 7,73: Route 2 Viridian City - Pewter City
 
 ## Wild Pokemon
 

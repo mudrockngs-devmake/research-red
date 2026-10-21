@@ -11,19 +11,19 @@ Script `PewterCity_Museum_1F_EventScript_Scientist1`
 > Nice try, kid, but no.
 >
 > Oh, whatever!
-> Do you know what AMBER is?
+> Do you know what Amber is?
 
-> AMBER contains the genetic matter
-> of ancient POKéMON.
+> Amber contains the genetic matter
+> of ancient Pokémon.
 >
-> There's a LAB somewhere trying to
-> resurrect POKéMON from AMBER.
+> There's a Lab somewhere trying to
+> resurrect Pokémon from Amber.
 
-> AMBER is actually sap, that gooey
+> Amber is actually sap, that gooey
 > stuff that oozes from trees.
 >
 > The ancient sap fossilized over
-> time to become rock-hard AMBER.
+> time to become rock-hard Amber.
 
 > Please enjoy yourself.
 
@@ -40,16 +40,16 @@ Script `PewterCity_Museum_1F_EventScript_OldMan`
 Script `PewterCity_Museum_1F_EventScript_OldAmberScientist`
 
 > Ssh!
-> Get the OLD AMBER checked!
+> Get the Old Amber checked!
 
 > Ssh! Listen, I need to share a
 > secret with someone.
 >
-> I think that this chunk of AMBER
-> contains POKéMON DNA!
+> I think that this chunk of Amber
+> contains Pokémon DNA!
 >
 > It would be a shattering scientific
-> breakthrough if POKéMON could be
+> breakthrough if Pokémon could be
 > resurrected from it.
 >
 > But, my colleagues just ignore
@@ -58,11 +58,11 @@ Script `PewterCity_Museum_1F_EventScript_OldAmberScientist`
 > So, I have a favor to ask!
 >
 > I want you to get this examined at
-> a POKéMON LAB somewhere.
+> a Pokémon Lab somewhere.
 
 > You don't have space for this.
 
-> {PLAYER} received the OLD AMBER
+> {PLAYER} received the Old Amber
 > from the man.
 
 ### Old Amber (Old Amber) at 22,3
@@ -70,13 +70,13 @@ Script `PewterCity_Museum_1F_EventScript_OldAmberScientist`
 Script `PewterCity_Museum_1F_EventScript_OldAmber`
 
 > There is a beautiful piece of
-> AMBER in a clear gold color.
+> Amber in a clear gold color.
 
 ### Scientist (Scientist) at 26,4
 Script `PewterCity_Museum_1F_EventScript_Scientist2`
 
 > We have two fossils of rare,
-> prehistoric POKéMON on exhibit.
+> prehistoric Pokémon on exhibit.
 
 ### Scientist (Scientist) at 26,7
 Script `PewterCity_Museum_1F_EventScript_SeismicTossTutor`
@@ -92,18 +92,18 @@ Script `PewterCity_Museum_1F_EventScript_SeismicTossTutor`
 >
 > The only thing you should toss…
 >
-> Well, how about SEISMIC TOSS?
-> Should I teach that to a POKéMON?
+> Well, how about Seismic Toss?
+> Should I teach that to a Pokémon?
 
-> Which POKéMON wants to learn
-> SEISMIC TOSS?
+> Which Pokémon wants to learn
+> Seismic Toss?
 
 ## Signs
 
-- at 4,4: AERODACTYL Fossil A primitive and rare POKéMON.
-- at 4,7: KABUTOPS Fossil A primitive and rare POKéMON.
-- at 27,1: POKéMON JOURNAL  Special Feature: PEWTER GYM LEADER BROCK!  BROCK rarely laughs, but is said to be unable to stop if he starts.
-- at 26,1: POKéMON JOURNAL  Special Feature: PEWTER GYM LEADER BROCK!  BROCK rarely laughs, but is said to be unable to stop if he starts.
+- at 4,4: Aerodactyl Fossil A primitive and rare Pokémon.
+- at 4,7: Kabutops Fossil A primitive and rare Pokémon.
+- at 27,1: Pokémon Journal  Special Feature: Pewter Gym Leader Brock!  Brock rarely laughs, but is said to be unable to stop if he starts.
+- at 26,1: Pokémon Journal  Special Feature: Pewter Gym Leader Brock!  Brock rarely laughs, but is said to be unable to stop if he starts.
 
 ## Exits
 

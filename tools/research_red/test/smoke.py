@@ -349,15 +349,22 @@ def sc_pc():
             + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
 
 
-def sc_pc_items():
-    # #96: the research grant's medicine and held items wait in the PC's item
-    # storage (62 kinds: slot 61 filled). Start > PC > your PC > Withdraw Item.
-    slot = T.G.const("offsetof(struct SaveBlock1, pcItems[61].itemId)")
+def sc_lab_supplies():
+    # #96 rework: the grant gives only reusable things (no balls in the Bag,
+    # only FireRed's Potion in the PC); Lab Supplies on the PC is a free shop.
+    # Start > PC > Lab Supplies (third entry) > Poké Ball (first) > 1 > Yes,
+    # then back out through the PC menu.
+    ball_slot = T.G.bag_slot_addr("pokeBalls", 0)
+    pc_slot = T.G._sb1(T.G.const("offsetof(struct SaveBlock1, pcItems[1].itemId)"), 2)  # slot 0: FireRed's new-game Potion
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
-            + check("pc_slot_61", f"{T.G._sb1(slot, 2)} != 0")
-            + start_menu_item(4) + ["wait 60", "press DOWN", "wait 10", "press A", "wait 90", "shot i001",
-                                    "press A", "wait 60", "press A", "wait 60", "shot i002",     # Item Storage
-                                    "press A", "wait 120", "shot i003", "hold DOWN 300", "wait 20", "shot i004"]  # Withdraw Item
+            + check("no_grant_balls", f"{ball_slot} == 0") + check("pc_storage_only_potion", f"{pc_slot} == 0")
+            + start_menu_item(4) + ["wait 60", "press DOWN", "wait 10", "press DOWN", "wait 10", "shot l001",
+                                    "press A", "wait 90", "shot l002", "press A", "wait 60", "press A", "wait 150",
+                                    "shot l003",                                                    # the Buy list
+                                    "press A", "wait 60", "shot l004", "press A", "wait 60", "shot l005",  # how many? 1
+                                    "press A", "wait 60", "shot l006", "press A", "wait 90", "shot l007"]  # Yes: signed out
+            + check("got_poke_ball", f"{ball_slot} == {T.G.const('ITEM_POKE_BALL')}")
+            # B: past the message (if still up), out of the list, back through the PC menu
             + play_until("pc_closed", T.G.field_free(), 3000, key="B", every=40))
 
 
@@ -834,7 +841,7 @@ SCENARIOS = {
     "wild": (sc_wild, "A wild single battle on Route 1: types while choosing a move (engine default, #78), then run away"),
     "relearn": (sc_relearn, "Move relearner: TM list with numbers, teach one, the list stays open (#89)"),
     "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
-    "pc_items": (sc_pc_items, "The research grant's supplies in the PC's item storage (#96, #99, #100)"),
+    "lab_supplies": (sc_lab_supplies, "Lab Supplies: the grant's free shop on the PC; a free Poké Ball (#96, #98-#100)"),
     "trainer_card": (sc_trainer_card, "The Trainer Card shows your own picture (#24)"),
     "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
     "pager_fly": (sc_pager_fly, "Ranch Pager > Fly: the Fly map, Oak's Pidgeot flies to Pallet (#29)"),

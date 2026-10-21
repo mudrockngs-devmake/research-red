@@ -131,8 +131,11 @@ RR_LabAide_Text_AboutPager:
 
 RR_LabAide_Text_AboutPC:
 	.string "Aide: The PC is on the Start menu\n"
-	.string "wherever you go: Pokémon storage\l"
-	.string "and your item box.$"
+	.string "wherever you go: Pokémon storage,\l"
+	.string "your item box and Lab Supplies.\p"
+	.string "Lab Supplies is free: Poké Balls,\n"
+	.string "medicine, held items, vitamins.\l"
+	.string "The research fund pays!$"
 
 RR_LabAide_Text_AboutDexNav:
 	.string "Aide: Officer Jenny gives you the\n"

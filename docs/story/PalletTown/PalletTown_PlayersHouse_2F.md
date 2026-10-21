@@ -4,9 +4,9 @@ Map `MAP_PALLET_TOWN_PLAYERS_HOUSE_2F` · music `MUS_PALLET` · weather `WEATHER
 
 ## Signs
 
-- at 6,5: {PLAYER} played with the NES.  …Okay! It's time to go!
+- at 6,5: {PLAYER} played with the Nes.  …Okay! It's time to go!
 - at 1,1: `PalletTown_PlayersHouse_2F_EventScript_PC`
-- at 11,1: It's a posted notice…  If you're confused, ask for HELP! Press the L or R Button!
+- at 11,1: It's a posted notice…  If you're confused, ask for Help! Press the L or R Button!
 
 ## Exits
 

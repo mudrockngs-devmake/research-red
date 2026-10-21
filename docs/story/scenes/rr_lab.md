@@ -93,7 +93,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Kanto on top, Johto below.
 > Which one will you study?
 
-*[dynmultichoice 10]*
+*[dynmultichoice 1]*
 
 ### RR_Lab_EventScript_PickBulbasaur
 
@@ -406,26 +406,54 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > your fieldwork in full!
 
 > {PLAYER} received the
-> Research Grant supplies!
+> Research Grant!
 
-> Every Poké Ball, Master Balls too,
-> medicine, held items, key items,
-> and every TM and HM went in!
+> Key items, every HM, and all 100
+> TMs. TMs never run out!
 
 > {PLAYER} received a Pokédex
 > from Prof. Oak!
 
-> {PLAYER}: That is… a lot
-> of Poké Balls.
+> {PLAYER}: Fieldwork… with no
+> Poké Balls?
 
-> Ivy: Professor, did you buy out
-> the whole Poké Mart?
+> Oak: Ho ho! Something better:
+> Lab Supplies, on every PC!
+>
+> Poké Balls, medicine, held items.
+> Take whatever your research needs.
+>
+> The fund pays. You never do!
 
-> Oak: I may have got carried away.
-> The clerk sent me a card.
+> Ivy: A free supply cupboard? Oh,
+> sweetie, we're never coming home.
 
-> Jenny: Master Balls. Plural.
-> That's a lot of trust, sir.
+> Jenny: Master Balls too, sir? In
+> my professional opinion… risky.
+
+> Oak: Not those! The Master Ball
+> waits for a special occasion.
+>
+> As they say, a patient Slowpoke
+> catches the biggest fish. Ho ho!
+
+> Oak: And the best part: a Ranch
+> Pager! Page my ranch, and one of
+> my Pokémon comes to Fly, Flash,
+> Teleport or Dig for you.
+>
+> If nobody on your team can Cut or
+> Surf, mine will step in too!
+>
+> Anything you don't carry waits in
+> your PC. Open it from the Start
+> menu, anywhere.
+
+> Ivy: So your Pidgeot is on call
+> now?
+
+> Oak: Pidgeot, Lapras, Tauros…
+> They love the exercise!
 
 > Elm: Can I get a grant?
 
@@ -449,158 +477,6 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 ### RR_Lab_EventScript_GiveGrant
 
-*[additem ITEM_POKE_BALL]*
-
-*[additem ITEM_GREAT_BALL]*
-
-*[additem ITEM_ULTRA_BALL]*
-
-*[additem ITEM_PREMIER_BALL]*
-
-*[additem ITEM_HEAL_BALL]*
-
-*[additem ITEM_NET_BALL]*
-
-*[additem ITEM_NEST_BALL]*
-
-*[additem ITEM_DIVE_BALL]*
-
-*[additem ITEM_DUSK_BALL]*
-
-*[additem ITEM_TIMER_BALL]*
-
-*[additem ITEM_QUICK_BALL]*
-
-*[additem ITEM_REPEAT_BALL]*
-
-*[additem ITEM_LUXURY_BALL]*
-
-*[additem ITEM_MASTER_BALL]*
-
-*[additem ITEM_FAST_BALL]*
-
-*[additem ITEM_LEVEL_BALL]*
-
-*[additem ITEM_LURE_BALL]*
-
-*[additem ITEM_HEAVY_BALL]*
-
-*[additem ITEM_LOVE_BALL]*
-
-*[additem ITEM_FRIEND_BALL]*
-
-*[additem ITEM_MOON_BALL]*
-
-*[additem ITEM_SPORT_BALL]*
-
-*[additem ITEM_DREAM_BALL]*
-
-*[additem ITEM_BEAST_BALL]*
-
-*[additem ITEM_SUPER_POTION]*
-
-*[additem ITEM_HYPER_POTION]*
-
-*[additem ITEM_FULL_RESTORE]*
-
-*[additem ITEM_REVIVE]*
-
-*[additem ITEM_MAX_REVIVE]*
-
-*[additem ITEM_FULL_HEAL]*
-
-*[additem ITEM_ETHER]*
-
-*[additem ITEM_MAX_ETHER]*
-
-*[additem ITEM_MAX_REPEL]*
-
-*[additem ITEM_ESCAPE_ROPE]*
-
-*[additem ITEM_MAX_POTION]*
-
-*[additem ITEM_ELIXIR]*
-
-*[additem ITEM_MAX_ELIXIR]*
-
-*[additem ITEM_PP_UP]*
-
-*[additem ITEM_X_ATTACK]*
-
-*[additem ITEM_X_DEFENSE]*
-
-*[additem ITEM_X_SP_ATK]*
-
-*[additem ITEM_X_SP_DEF]*
-
-*[additem ITEM_X_SPEED]*
-
-*[additem ITEM_X_ACCURACY]*
-
-*[additem ITEM_DIRE_HIT]*
-
-*[additem ITEM_GUARD_SPEC]*
-
-*[additem ITEM_LEFTOVERS]*
-
-*[additem ITEM_LIFE_ORB]*
-
-*[additem ITEM_CHOICE_BAND]*
-
-*[additem ITEM_CHOICE_SPECS]*
-
-*[additem ITEM_CHOICE_SCARF]*
-
-*[additem ITEM_FOCUS_SASH]*
-
-*[additem ITEM_ASSAULT_VEST]*
-
-*[additem ITEM_ROCKY_HELMET]*
-
-*[additem ITEM_EVIOLITE]*
-
-*[additem ITEM_EXPERT_BELT]*
-
-*[additem ITEM_LIGHT_CLAY]*
-
-*[additem ITEM_WEAKNESS_POLICY]*
-
-*[additem ITEM_AIR_BALLOON]*
-
-*[additem ITEM_HEAVY_DUTY_BOOTS]*
-
-*[additem ITEM_AMULET_COIN]*
-
-*[additem ITEM_LUCKY_EGG]*
-
-*[additem ITEM_SOOTHE_BELL]*
-
-*[additem ITEM_QUICK_CLAW]*
-
-*[additem ITEM_SCOPE_LENS]*
-
-*[additem ITEM_KINGS_ROCK]*
-
-*[additem ITEM_BLACK_SLUDGE]*
-
-*[additem ITEM_FLAME_ORB]*
-
-*[additem ITEM_TOXIC_ORB]*
-
-*[additem ITEM_SHELL_BELL]*
-
-*[additem ITEM_WIDE_LENS]*
-
-*[additem ITEM_MUSCLE_BAND]*
-
-*[additem ITEM_WISE_GLASSES]*
-
-*[additem ITEM_FOCUS_BAND]*
-
-*[additem ITEM_RED_CARD]*
-
-*[additem ITEM_EJECT_BUTTON]*
-
 *[additem ITEM_EXP_SHARE]*
 
 *[additem ITEM_BICYCLE]*
@@ -613,13 +489,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 *[additem ITEM_BERRY_POUCH]*
 
-*[additem ITEM_ORAN_BERRY]*
-
-*[additem ITEM_SITRUS_BERRY]*
-
-*[additem ITEM_LUM_BERRY]*
-
-*[additem ITEM_CHESTO_BERRY]*
+*[additem ITEM_RANCH_PAGER]*
 
 *[additem ITEM_HM01]*
 
@@ -739,6 +609,108 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 *[additem ITEM_TM50]*
 
+### RR_EventScript_GiveTM51To100
+
+*[additem ITEM_TM51]*
+
+*[additem ITEM_TM52]*
+
+*[additem ITEM_TM53]*
+
+*[additem ITEM_TM54]*
+
+*[additem ITEM_TM55]*
+
+*[additem ITEM_TM56]*
+
+*[additem ITEM_TM57]*
+
+*[additem ITEM_TM58]*
+
+*[additem ITEM_TM59]*
+
+*[additem ITEM_TM60]*
+
+*[additem ITEM_TM61]*
+
+*[additem ITEM_TM62]*
+
+*[additem ITEM_TM63]*
+
+*[additem ITEM_TM64]*
+
+*[additem ITEM_TM65]*
+
+*[additem ITEM_TM66]*
+
+*[additem ITEM_TM67]*
+
+*[additem ITEM_TM68]*
+
+*[additem ITEM_TM69]*
+
+*[additem ITEM_TM70]*
+
+*[additem ITEM_TM71]*
+
+*[additem ITEM_TM72]*
+
+*[additem ITEM_TM73]*
+
+*[additem ITEM_TM74]*
+
+*[additem ITEM_TM75]*
+
+*[additem ITEM_TM76]*
+
+*[additem ITEM_TM77]*
+
+*[additem ITEM_TM78]*
+
+*[additem ITEM_TM79]*
+
+*[additem ITEM_TM80]*
+
+*[additem ITEM_TM81]*
+
+*[additem ITEM_TM82]*
+
+*[additem ITEM_TM83]*
+
+*[additem ITEM_TM84]*
+
+*[additem ITEM_TM85]*
+
+*[additem ITEM_TM86]*
+
+*[additem ITEM_TM87]*
+
+*[additem ITEM_TM88]*
+
+*[additem ITEM_TM89]*
+
+*[additem ITEM_TM90]*
+
+*[additem ITEM_TM91]*
+
+*[additem ITEM_TM92]*
+
+*[additem ITEM_TM93]*
+
+*[additem ITEM_TM94]*
+
+*[additem ITEM_TM95]*
+
+*[additem ITEM_TM96]*
+
+*[additem ITEM_TM97]*
+
+*[additem ITEM_TM98]*
+
+*[additem ITEM_TM99]*
+
+*[additem ITEM_TM100]*
+
 ### RR_Lab_EventScript_OakVsElm
 
 > Oak: Elm. Jenny. You won, so you
@@ -752,46 +724,32 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Ivy: Sweetie, we get front row
 > seats. Somebody find popcorn.
 
+> Oak: But not with starters. Let an
+> old man stretch his legs.
+>
+> Pidgeot! Tauros! Out you come!
+
+> Elm: His ranch team?! Jenny, those
+> are fully evolved!
+
 > Watch Elm and Jenny battle
 > Prof. Oak?
 
 ### RR_Lab_EventScript_OakVsElmBattle
 
+*[trainerbattle_no_intro Pkmn Prof Oak (Pidgeot, Tauros, only hardens. He asks everyone if they're from Pallet Town. */)]*
+
 ### RR_Lab_EventScript_ElmTeam0
-
-### RR_Lab_EventScript_OakBattleWatch0
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Squirtle, Chikorita)]*
 
 ### RR_Lab_EventScript_ElmTeam1
 
-### RR_Lab_EventScript_OakBattleWatch1
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Bulbasaur, Cyndaquil)]*
-
 ### RR_Lab_EventScript_ElmTeam2
-
-### RR_Lab_EventScript_OakBattleWatch2
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Charmander, Totodile)]*
 
 ### RR_Lab_EventScript_ElmTeam3
 
-### RR_Lab_EventScript_OakBattleWatch3
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Totodile, Bulbasaur)]*
-
 ### RR_Lab_EventScript_ElmTeam4
 
-### RR_Lab_EventScript_OakBattleWatch4
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Chikorita, Charmander)]*
-
 ### RR_Lab_EventScript_ElmTeam5
-
-### RR_Lab_EventScript_OakBattleWatch5
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle, starter Elm/Jenny can have from the lab chain; Elm names his catches after, desserts)]*
 
 ### RR_Lab_EventScript_OakVsElmResult
 
@@ -803,6 +761,18 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Elm: Best of thr- No. Good
 > battle, Professor. Really.
 
+> Jenny: In my professional opinion,
+> that was very fast, sir.
+
+> Oak: Ho ho! I haven't battled like
+> that in years! It's invigorating!
+>
+> Come back and battle me anytime.
+> This old man needs the practice.
+
+> Ivy: Look at him, sweetie. He's
+> glowing.
+
 ### RR_Lab_EventScript_OakLostToElm
 
 > Oak: Well! Beaten in my own lab.
@@ -813,8 +783,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 ### RR_Lab_EventScript_OakVsElmSkip
 
-> The battle is a blur of flashes,
-> cries and Elm shouting.
+> Pidgeot's wings, Tauros's hooves,
+> and Elm shouting. It's over fast.
 
 ### RR_Lab_EventScript_Slowpoke
 

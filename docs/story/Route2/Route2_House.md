@@ -7,16 +7,16 @@ Map `MAP_ROUTE2_HOUSE` · music `MUS_PEWTER` · weather `WEATHER_NONE`
 ### Scientist (Scientist) at 4,5
 Script `Route2_House_EventScript_Scientist`
 
-> A fainted POKéMON just has no
+> A fainted Pokémon just has no
 > energy left to battle.
 >
-> It can still use moves like CUT
+> It can still use moves like Cut
 > outside of battle.
 
 ### Gba Kid (Gba Kid) at 7,2
 Script `Route2_House_EventScript_Reyley`
 
-> I'm looking for the POKéMON
+> I'm looking for the Pokémon
 > {STR_VAR_1}!
 >
 > Wanna trade one for my

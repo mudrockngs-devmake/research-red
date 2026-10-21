@@ -105,3 +105,11 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 > you at the Pokémon Center!
 
 *[setvar VAR_0x40FE ]*
+
+### RR_Route22_EventScript_PairApproach
+
+### RR_Route22_EventScript_PairApproachBottom
+
+### RR_Route22_EventScript_PairExit
+
+### RR_Route22_EventScript_PairExitBottom

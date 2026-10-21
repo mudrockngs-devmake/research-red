@@ -28,8 +28,10 @@ Research Red: demo boundaries (#35, #36, #62)
 
 ### RR_Pallet_EventScript_GeraldBlock
 
+> Gerald: Tenta! Cool!
+>
 > Gerald the Tentacool is floating
-> right in the way. Tenta! Cool!
+> right in the way.
 
 > Ivy: Gerald! You followed us
 > all the way from the ferry?
@@ -50,8 +52,10 @@ Research Red: demo boundaries (#35, #36, #62)
 
 ### RR_Pallet_EventScript_Gerald
 
+> Gerald: Tenta! Cool!
+>
 > Gerald the Tentacool is floating
-> right in the way. Tenta! Cool!
+> right in the way.
 
 > Gerald holds up a tiny sign:
 >
@@ -63,7 +67,7 @@ Research Red: demo boundaries (#35, #36, #62)
 
 ### RR_DiglettsCave_EventScript_Diglett
 
-> Diglett dig, Diglett dig…
+> Diglett: Diglett dig, Diglett dig…
 
 ### RR_DiglettsCave_EventScript_Dugtrio
 

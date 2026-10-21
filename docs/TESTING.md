@@ -53,7 +53,7 @@ What the results mean:
 | bike | Debug 12: on the Bicycle with your own sprite, Ivy out of view; off again, she is back behind you (#80) |
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | pc | Debug 2, Start > PC, into Pokémon storage and back out |
-| pc_items | The research grant waits in the PC: slot 61 of item storage filled (memory), the Withdraw Item list (#96, #99, #100) |
+| lab_supplies | The grant gives no balls and nothing goes to the PC (memory); Start > PC > Lab Supplies: take a free Poké Ball, it's in the Bag (memory), back out (#96, #98-#100) |
 | ambient | Ambient Pokémon: talk to Pallet's Dodrio (marked seen in the Pokédex, memory check), then Pewter's Chansey across the counter (#64) |
 | extras | Emerald extras: the first Potion picked up in Viridian shows its description (memory check: the Potion's seen flag), and walking from Pewter onto Route 2 shows the map name pop-up |
 | guide | Route 1: Pokédex > START > FIELD GUIDE, then Start > GUIDE (#91), both over the map |

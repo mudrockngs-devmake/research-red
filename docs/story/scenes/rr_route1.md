@@ -16,6 +16,9 @@ Research Red: First walk up Route 1 (Route1)
 > Jenny: And a wife.
 > I'm right here, dear.
 
+> Elm: Viridian's this way! Walk
+> with us! It's a beautiful day!
+
 > Elm starts singing. {PLAYER} joins
 > in on the second word.
 
@@ -68,6 +71,9 @@ Research Red: First walk up Route 1 (Route1)
 > Jenny: We do. You just don't hear
 > me over the singing.
 
+> Elm: Up we go! Viridian's just
+> over the hill!
+
 > Elm: Did you see that?!
 > Something purple! Flying!
 >
@@ -80,14 +86,14 @@ Research Red: First walk up Route 1 (Route1)
 
 > Elm: It had a tail!
 
-> {PLAYER}: (I believe him about
-> seventy percent.)
+> {PLAYER}: I saw a tail too.
+> Mostly. I'm writing it down.
 
-> Ivy: (Sixty. But I love him
-> for it.)
+> Ivy: Whatever it was, it came
+> from Viridian, sweetie. Look.
 
-> Elm: It flew toward Viridian!
-> Jenny! After it!
+> Elm: It came out of Viridian and
+> turned west! Jenny! After it!
 
 > Jenny: Dear, by protocol we stay
 > together. Dear? …Dear!
@@ -95,11 +101,11 @@ Research Red: First walk up Route 1 (Route1)
 > Elm and Jenny dashed ahead
 > toward Viridian City.
 
-> Ivy: And they're off. Lunch is
-> going to be very quiet, sweetie.
+> Ivy: And they're off. Will they
+> remember lunch, sweetie?
 
-> {PLAYER}: Lunch is going to be
-> wonderful.
+> {PLAYER}: Elm never forgets a meal.
+> And Jenny packed it anyway.
 
 *[rr_ivy_follow LOCALID_ROUTE1_IVY]*
 
@@ -125,8 +131,8 @@ Research Red: First walk up Route 1 (Route1)
 
 ### RR_Route1_EventScript_NoCatches
 
-> Elm: Nothing caught yet? Ha!
-> There's still time!
+> Elm: No catches yet? That's fine!
+> The best research takes time!
 
 ### RR_Route1_EventScript_ReactDefault
 
@@ -161,8 +167,8 @@ Research Red: First walk up Route 1 (Route1)
 
 ### RR_Route1_EventScript_ReactNidoranM
 
-> Elm: A Nidoran! Poisonous AND
-> adorable!
+> Elm: A Nidoran! The male one.
+> Big horn, even bigger ears!
 
 > Jenny: Mind the horn, everyone.
 > Protocol.
@@ -177,17 +183,19 @@ Research Red: First walk up Route 1 (Route1)
 
 ### RR_Route1_EventScript_ReactNidoranF
 
-> Elm: The other Nidoran! Is that
-> even allowed?
+> Elm: A Nidoran! The female one.
+> Smaller horn, same spirit!
 
 > {PLAYER}: Two species, one name.
 > I have a forum thread on it.
 
 ### RR_Route1_EventScript_ReactOddish
 
-> Elm: It's a weed. With feet.
+> Elm: An Oddish! It's a little
+> garden that goes for walks!
 
-> Jenny: Dear, it can hear you.
+> Jenny: Only at night. Like you
+> before a deadline, dear.
 
 ### RR_Route1_EventScript_ReactSentret
 
@@ -275,20 +283,103 @@ Research Red: First walk up Route 1 (Route1)
 > Jenny: Known for petty theft.
 > I'll keep an eye on it.
 
+### RR_Route1_EventScript_ReactTentacool
+
+> Elm: A Tentacool! Is it… related
+> to Gerald? Should we tell him?
+
+> Jenny: In my professional opinion,
+> there is only one Gerald.
+
+### RR_Route1_EventScript_ReactMagikarp
+
+> Elm: A Magikarp! Don't laugh.
+> They become Gyarados one day!
+
+> Ivy: Patience and a lot of
+> splashing. Like a PhD, sweetie.
+
+### RR_Route1_EventScript_ReactHorsea
+
+> Elm: A Horsea! It squirts ink
+> when it's startled!
+
+> Jenny: Noted. Don't startle it,
+> dear. Protocol.
+
+### RR_Route1_EventScript_ReactChinchou
+
+> Elm: A Chinchou! It lights up
+> the whole sea at night!
+
+> Jenny: Good. A witness that
+> brings its own flashlight.
+
+### RR_Route1_EventScript_ReactQwilfish
+
+> Elm: A Qwilfish! Don't hug it.
+> Trust me. Don't hug it.
+
+> Jenny: He hugged one. I filed
+> the report. Twice.
+
+### RR_Route1_EventScript_ReactKrabby
+
+> Elm: A Krabby! Strong pincers!
+> Great for research! Ow!
+
+> Ivy: Keep it away from the
+> sandwiches, sweetie. Again.
+
+### RR_Route1_EventScript_ReactStaryu
+
+> Elm: A Staryu! Its core glows
+> at night like a little star!
+
+> Jenny: It regrows lost arms.
+> Very useful on stakeouts.
+
+### RR_Route1_EventScript_ReactShellder
+
+> Elm: A Shellder! It sticks its
+> tongue out at everyone!
+
+> {PLAYER}: Same, Shellder.
+> Same.
+
+### RR_Route1_EventScript_ReactRemoraid
+
+> Elm: A Remoraid! It's a water
+> pistol with fins!
+
+> Jenny: Point it elsewhere,
+> please. Protocol.
+
+### RR_Route1_EventScript_ReactDratini
+
+> Elm: A D-Dratini?! People
+> search their whole lives!
+
+> Ivy: It's perfect. Breathe, Elm.
+> Don't cry on it.
+
 ### RR_Route1_EventScript_Jealous1
 
-> Elm: Beginner's luck.
+> Elm: A fine start! I'm not
+> counting. Jenny's counting.
 
 ### RR_Route1_EventScript_Jealous2
 
-> Elm: …Two? Two already?
+> Elm: Two already? Inspiring!
+> Terrifying, but inspiring!
 
 ### RR_Route1_EventScript_Jealous3
 
-> Elm: Three. Okay. Three is fine.
-> I am fine.
+> Elm: Three! Jenny, we have to
+> catch up! For science!
 
 ### RR_Route1_EventScript_Jealous4
 
-> Elm: Four?! Jenny, they have
-> four!
+> Elm: Four?! A whole research
+> team! I'm so proud of you!
+> …And a little nervous.

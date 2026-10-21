@@ -8,7 +8,7 @@ Map `MAP_VIRIDIAN_CITY_MART` · music `MUS_POKE_CENTER` · weather `WEATHER_NONE
 Script `ViridianCity_Mart_EventScript_Clerk`
 
 > Okay, thanks! Please say hi to
-> PROF. OAK for me, too.
+> Prof. Oak for me, too.
 
 > Hi, there!
 > May I help you?
@@ -16,16 +16,16 @@ Script `ViridianCity_Mart_EventScript_Clerk`
 ### Youngster (Youngster) at 6,2
 Script `ViridianCity_Mart_EventScript_Youngster`
 
-> I've got to buy some POTIONS.
+> I've got to buy some Potions.
 >
-> You never know when your POKéMON
+> You never know when your Pokémon
 > will need quick healing.
 
 ### Woman 1 (Woman 1) at 9,5
 Script `ViridianCity_Mart_EventScript_Woman`
 
 > This shop does good business in
-> ANTIDOTES, I've heard.
+> Antidotes, I've heard.
 
 ## Exits
 

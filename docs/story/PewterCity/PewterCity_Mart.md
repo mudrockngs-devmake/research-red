@@ -8,7 +8,7 @@ Map `MAP_PEWTER_CITY_MART` · music `MUS_POKE_CENTER` · weather `WEATHER_NONE`
 Script `PewterCity_Mart_EventScript_Youngster`
 
 > A shady old guy sucked me into
-> buying this weird fish POKéMON!
+> buying this weird fish Pokémon!
 >
 > It's totally weak and it cost ¥500!
 
@@ -16,7 +16,7 @@ Script `PewterCity_Mart_EventScript_Youngster`
 Script `PewterCity_Mart_EventScript_Boy`
 
 > Good things can happen if you raise
-> POKéMON diligently.
+> Pokémon diligently.
 >
 > Even the weak ones can surprise
 > you if you don't give up on them.

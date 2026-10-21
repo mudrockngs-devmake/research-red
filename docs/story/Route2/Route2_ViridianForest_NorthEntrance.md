@@ -7,7 +7,7 @@ Map `MAP_ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE` · music `MUS_PEWTER` · weather
 ### Youngster (Youngster) at 5,4
 Script `Route2_ViridianForest_NorthEntrance_EventScript_Youngster`
 
-> Many POKéMON live only in forests 
+> Many Pokémon live only in forests 
 > and caves.
 >
 > You need to be persistent and look
@@ -20,7 +20,7 @@ Script `Route2_ViridianForest_NorthEntrance_EventScript_OldMan`
 > on the roadside?
 >
 > They can be cut down by a special
-> POKéMON move, I hear.
+> Pokémon move, I hear.
 
 ### Cooltrainer F (Cooltrainer F) at 10,5
 Script `Route2_ViridianForest_NorthEntrance_EventScript_CooltrainerF`
@@ -28,11 +28,11 @@ Script `Route2_ViridianForest_NorthEntrance_EventScript_CooltrainerF`
 > Do you know the evolution-cancel
 > technique?
 >
-> When a POKéMON is evolving, you
+> When a Pokémon is evolving, you
 > can stop the process.
 >
 > It's a technique for raising
-> POKéMON the way they are.
+> Pokémon the way they are.
 
 ## Exits
 

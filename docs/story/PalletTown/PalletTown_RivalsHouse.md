@@ -7,17 +7,17 @@ Map `MAP_PALLET_TOWN_RIVALS_HOUSE` · music `MUS_PALLET` · weather `WEATHER_NON
 ### Daisy (Daisy) at 10,6
 Script `PalletTown_RivalsHouse_EventScript_Daisy`
 
-> DAISY: Your POKéMON grow to love
+> Daisy: Your Pokémon grow to love
 > you if you raise them with love.
 >
 > For example, {PLAYER}, may I see
-> your first POKéMON?
+> your first Pokémon?
 
 > …Um, it's not easy for me to say
 > this, but…
 >
 > Is there some reason why your
-> POKéMON would hate you so much?
+> Pokémon would hate you so much?
 
 > {PLAYER}, I don't like the way it
 > glares at you.
@@ -28,7 +28,7 @@ Script `PalletTown_RivalsHouse_EventScript_Daisy`
 > It's not quite familiar with you
 > yet.
 >
-> POKéMON are all quite wary when
+> Pokémon are all quite wary when
 > you first get them.
 
 > It's warming up to you.
@@ -45,17 +45,17 @@ Script `PalletTown_RivalsHouse_EventScript_Daisy`
 > It couldn't possibly love you
 > any more than it does now.
 >
-> Your POKéMON is happy beyond
+> Your Pokémon is happy beyond
 > words.
 
-> DAISY: Hi, {PLAYER}!
+> Daisy: Hi, {PLAYER}!
 > Good timing.
 >
 > I'm about to have some tea.
 > Would you like to join me?
 >
 > Oh, but look.
-> Your POKéMON are a little dirty.
+> Your Pokémon are a little dirty.
 >
 > Would you like me to groom one?
 
@@ -65,9 +65,9 @@ Script `PalletTown_RivalsHouse_EventScript_Daisy`
 > Which one should I groom?
 
 > Oh, sorry. I honestly can't
-> groom an EGG.
+> groom an Egg.
 
-> DAISY: Okay, I'll get it looking
+> Daisy: Okay, I'll get it looking
 > nice in no time.
 
 > Daisy: Muffin has claimed the
@@ -83,33 +83,33 @@ Script `PalletTown_RivalsHouse_EventScript_Daisy`
 > Here, this will help you.
 
 > You don't have space for this in
-> your BAG.
+> your Bag.
 
-> {PLAYER} received a TOWN MAP
-> from DAISY.
+> {PLAYER} received a Town Map
+> from Daisy.
 
-> DAISY: {PLAYER}, I heard you had
+> Daisy: {PLAYER}, I heard you had
 > a battle against {RIVAL}.
 >
 > I wish I'd seen that!
 
-> DAISY: Hi, {PLAYER}!
+> Daisy: Hi, {PLAYER}!
 >
 > My brother, {RIVAL}, is out at
-> Grandpa's LAB.
+> Grandpa's Lab.
 
 ### Town Map (Town Map) at 6,4
 *hidden by `FLAG_HIDE_TOWN_MAP`*
 Script `PalletTown_RivalsHouse_EventScript_TownMap`
 
-> It's a big map of the KANTO region.
+> It's a big map of the Kanto region.
 > Now this would be useful!
 
 ### Rivals House Elm (Rr Elm) at 8,5
 *hidden by `FLAG_HIDE_TOWN_MAP`*
 (no talk script; used in cutscenes)
 
-### Rivals House Jenny (Rr Jenny) at 9,5
+### Rivals House Jenny (Rr Jenny) at 8,4
 *hidden by `FLAG_HIDE_TOWN_MAP`*
 (no talk script; used in cutscenes)
 
@@ -125,11 +125,18 @@ Script `RR_Daisy_EventScript_Muffin`
 > She looks extremely pleased with
 > herself.
 
+### Rivals House Cruller (Species(Growlithe)) at 9,4
+*hidden by `FLAG_HIDE_TOWN_MAP`*
+Script `RR_Daisy_EventScript_Cruller`
+
+> Cruller: Woof! (He sits. Very
+> properly.)
+
 ## Signs
 
-- at 12,1: The shelves are crammed full of books on POKéMON.
-- at 11,1: The shelves are crammed full of books on POKéMON.
-- at 9,1: “The lovely and sweet CLEFAIRY”
+- at 12,1: The shelves are crammed full of books on Pokémon.
+- at 11,1: The shelves are crammed full of books on Pokémon.
+- at 9,1: “The lovely and sweet Clefairy”
 
 ## Exits
 

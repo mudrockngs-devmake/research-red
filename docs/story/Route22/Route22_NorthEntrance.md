@@ -19,7 +19,7 @@ Script `Route22_NorthEntrance_EventScript_BoulderBadgeGuard`
 > Oh! That is the {STR_VAR_1}!
 > Go right ahead.
 
-> Only truly skilled TRAINERS are
+> Only truly skilled Trainers are
 > allowed through.
 >
 > You don't have the {STR_VAR_1}
@@ -43,7 +43,7 @@ Script `Route22_NorthEntrance_EventScript_BoulderBadgeGuard`
 > yet.
 >
 > You have to have it to get to
-> the POKéMON LEAGUE.
+> the Pokémon League.
 
 ## Exits
 

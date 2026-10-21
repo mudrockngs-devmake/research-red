@@ -24,6 +24,21 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > Jenny: Muffin has the eyes of a
 > Rattata, dear. Come down.
 
+> Cruller, Jenny's Growlithe, sits
+> by her chair. Perfectly still.
+
+> Ivy: Cruller's so well behaved.
+> Better than some professors.
+
+> Jenny: Police training. I wanted
+> to give him a proper police name.
+
+> Elm: Cruller IS a proper police
+> name! I gave a whole lecture!
+
+> Jenny: His lecture had citations.
+> I lost.
+
 > {PLAYER}: Daisy? Your grandpa says
 > you have Town Maps for us.
 
@@ -183,3 +198,8 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 >
 > She looks extremely pleased with
 > herself.
+
+### RR_Daisy_EventScript_Cruller
+
+> Cruller: Woof! (He sits. Very
+> properly.)

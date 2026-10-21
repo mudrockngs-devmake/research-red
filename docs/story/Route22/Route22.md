@@ -14,13 +14,13 @@ Map `MAP_ROUTE22` · music `MUS_ROUTE3` · weather `WEATHER_SUNNY`
 
 ## Signs
 
-- at 7,12: POKéMON LEAGUE Front Gate
+- at 7,12: Pokémon League Front Gate
 
 ## Wild Pokemon
 
 **Grass:** Rattata 20% (Lv 3-5), Ekans 20% (Lv 3-5), Zubat 10% (Lv 3-5), Poliwag 10% (Lv 3-5), Nidoran_M 10% (Lv 3-5), Nidoran_F 10% (Lv 3-5), Murkrow 5% (Lv 4-5), Spinarak 5% (Lv 3-5), Hoothoot 4% (Lv 3-5), Snubbull 4% (Lv 3-5), Houndour 1% (Lv 4-5), Teddiursa 1% (Lv 4-5)
-**Surfing:** Poliwag 60% (Lv 4-7), Goldeen 30% (Lv 4-7), Psyduck 5% (Lv 4-7), Marill 4% (Lv 4-7), Wooper 1% (Lv 4-7)
-**Fishing:** Magikarp 170% (Lv 4-7), Poliwag 90% (Lv 4-7), Krabby 35% (Lv 4-7), Goldeen 4% (Lv 4-7), Wooper 1% (Lv 4-7)
+**Surfing:** Poliwag 60% (Lv 4-7), Wooper 30% (Lv 4-7), Psyduck 5% (Lv 4-7), Marill 4% (Lv 4-7), Goldeen 1% (Lv 4-7)
+**Fishing:** Poliwag 170% (Lv 4-7), Magikarp 90% (Lv 4-7), Wooper 35% (Lv 4-7), Krabby 4% (Lv 4-7), Goldeen 1% (Lv 4-7)
 
 ## Exits
 

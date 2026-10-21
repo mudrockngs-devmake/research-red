@@ -4,27 +4,75 @@ Map `MAP_PEWTER_CITY_GYM` · music `MUS_GYM` · weather `WEATHER_NONE`
 
 ## People and objects
 
-### Brock (Brock) at 6,5
+### Pewter Gym Brock (Brock) at 6,5
 Script `PewterCity_Gym_EventScript_Brock`
+
+> Brock: You already have my Boulder
+> Badge. Here for a rematch?
+>
+> Brock: My Pokémon have been
+> training. Pick how hard I go.
+
+> Brock: Which challenge?
+
+> 1 badge: Lv. 21
+
+> 2 badges: Lv. 24
+
+> 3 badges: Lv. 29
+
+> 4 badges: Lv. 43
+
+> 5 badges: Lv. 43
+
+> 6 badges: Lv. 47
+
+> 7 badges: Lv. 50
+
+> 8 badges: Lv. 63
+
+> Champion: Lv. 75
+
+> Cancel
+
+> Brock: Anytime you're ready.
+
+> Brock: Rock-hard defense.
+> Let's see you crack it!
+
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, faces Elm and Jenny with his own ranch Pokémon. The battle plays itself Lv?,  Lv?
+
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, faces Elm and Jenny with his own ranch Pokémon. The battle plays itself Lv?,  Lv?
+
+> Brock: Cracked again!
+> You really have grown.
+
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, faces Elm and Jenny with his own ranch Pokémon. The battle plays itself Lv?,  Lv?
+
+> Brock: Come back anytime. My
+> team keeps training too.
+
+> Brock: Solid as a rock! Train up
+> and try again.
 
 **Battle:** Leader Brock (single): Geodude Lv12, Sandshrew Lv12, Kabuto Lv13, Omanyte Lv13, Rhyhorn Lv13, Onix Lv14
 
-> So, you're here. I'm BROCK.
-> I'm PEWTER's GYM LEADER.
+> So, you're here. I'm Brock.
+> I'm Pewter's Gym Leader.
 >
 > My rock-hard willpower is evident
-> even in my POKéMON.
+> even in my Pokémon.
 >
-> My POKéMON are all rock hard, and
+> My Pokémon are all rock hard, and
 > have true-grit determination.
 >
-> That's right - my POKéMON are all
-> the ROCK type!
+> That's right - my Pokémon are all
+> the Rock type!
 >
 > Fuhaha! You're going to challenge
 > me knowing that you'll lose?
 >
-> That's the TRAINER's honor that
+> That's the Trainer's honor that
 > compels you to challenge me.
 >
 > Fine, then!
@@ -34,20 +82,20 @@ Script `PewterCity_Gym_EventScript_Brock`
 > I lost.
 >
 > As proof of your victory, I confer
-> on you this…the official POKéMON
-> LEAGUE BOULDERBADGE.
+> on you this…the official Pokémon
+> League Boulderbadge.
 >
-> {FONT_NORMAL}{PLAYER} received the BOULDERBADGE
-> from BROCK!{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}
+> {FONT_NORMAL}{PLAYER} received the Boulderbadge
+> from Brock!{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}
 >
-> {FONT_MALE}Just having the BOULDERBADGE makes
-> your POKéMON more powerful.
+> {FONT_MALE}Just having the Boulderbadge makes
+> your Pokémon more powerful.
 >
 > It also enables the use of the
-> move FLASH outside of battle.
+> move Flash outside of battle.
 >
-> Of course, a POKéMON must know the
-> move FLASH to use it.
+> Of course, a Pokémon must know the
+> move Flash to use it.
 
 > Wait!
 > Take this with you.
@@ -55,34 +103,34 @@ Script `PewterCity_Gym_EventScript_Brock`
 > You don't have room for this.
 
 > {PLAYER} received TM39
-> from BROCK.
+> from Brock.
 
 > A TM, Technical Machine, contains a
-> technique for POKéMON.
+> technique for Pokémon.
 >
 > Using a TM teaches the move it
-> contains to a POKéMON.
+> contains to a Pokémon.
 >
 > A TM is good for only one use.
 >
 > So, when you use one, pick the
-> POKéMON carefully.
+> Pokémon carefully.
 >
 > Anyways…
-> TM39 contains ROCK TOMB.
+> TM39 contains Rock Tomb.
 >
 > It hurls boulders at the foe and
-> lowers its SPEED.
+> lowers its Speed.
 
-> There are all kinds of TRAINERS in
+> There are all kinds of Trainers in
 > this huge world of ours.
 >
 > You appear to be very gifted as a
-> POKéMON TRAINER.
+> Pokémon Trainer.
 >
 > So let me make a suggestion.
 >
-> Go to the GYM in CERULEAN and test
+> Go to the Gym in Cerulean and test
 > your abilities.
 
 ### Camper (Camper) at 3,8
@@ -94,7 +142,7 @@ Script `PewterCity_Gym_EventScript_Liam`
 > Stop right there, kid!
 >
 > You're ten thousand light-years 
-> from facing BROCK!
+> from facing Brock!
 
 > Darn!
 >
@@ -102,21 +150,21 @@ Script `PewterCity_Gym_EventScript_Liam`
 > It measures distance!
 
 > You're pretty hot.
-> …But not as hot as BROCK!
+> …But not as hot as Brock!
 
 ### Gym Guy (Gym Guy) at 7,12
 Script `PewterCity_Gym_EventScript_GymGuy`
 
 > Just as I thought!
-> You're POKéMON champ material!
+> You're Pokémon champ material!
 
 > Hiya!
 > Do you want to dream big?
 >
 > Do you dare to dream of becoming
-> the POKéMON champ?
+> the Pokémon champ?
 >
-> I'm no TRAINER, but I can advise
+> I'm no Trainer, but I can advise
 > you on how to win.
 >
 > Let me take you to the top!
@@ -124,10 +172,10 @@ Script `PewterCity_Gym_EventScript_GymGuy`
 > All right!
 > Let's get happening!
 
-> The first POKéMON out in a match is
-> at the left of the POKéMON LIST.
+> The first Pokémon out in a match is
+> at the left of the Pokémon List.
 >
-> By changing the order of POKéMON,
+> By changing the order of Pokémon,
 > you may gain an advantage.
 >
 > Try different orders to suit your
@@ -136,10 +184,38 @@ Script `PewterCity_Gym_EventScript_GymGuy`
 > It's a free service!
 > Let's get happening!
 
+### Pewter Gym Elm (Rr Elm) at 5,10
+*hidden by `FLAG_TEMP_11`*
+(no talk script; used in cutscenes)
+
+### Pewter Gym Jenny (Rr Jenny) at 7,10
+*hidden by `FLAG_TEMP_12`*
+(no talk script; used in cutscenes)
+
+### Pewter Gym Ivy (Rr Ivy) at 2,10
+*hidden by `FLAG_TEMP_13`*
+(no talk script; used in cutscenes)
+
+### Pewter Gym Mon 0 (Var 0) at 5,6
+*hidden by `FLAG_TEMP_14`*
+(no talk script; used in cutscenes)
+
+### Pewter Gym Mon 1 (Var 1) at 7,6
+*hidden by `FLAG_TEMP_15`*
+(no talk script; used in cutscenes)
+
+### Pewter Gym Mon 2 (Var 2) at 5,8
+*hidden by `FLAG_TEMP_16`*
+(no talk script; used in cutscenes)
+
+### Pewter Gym Mon 3 (Var 3) at 7,8
+*hidden by `FLAG_TEMP_17`*
+(no talk script; used in cutscenes)
+
 ## Signs
 
-- at 4,12: PEWTER POKéMON GYM LEADER: BROCK  WINNING TRAINERS: {RIVAL}, {PLAYER} / PEWTER POKéMON GYM LEADER: BROCK  WINNING TRAINERS: {RIVAL}
-- at 8,12: PEWTER POKéMON GYM LEADER: BROCK  WINNING TRAINERS: {RIVAL}, {PLAYER} / PEWTER POKéMON GYM LEADER: BROCK  WINNING TRAINERS: {RIVAL}
+- at 4,12: Pewter Pokémon Gym Leader: Brock  Winning Trainers: {RIVAL}, {PLAYER} / Pewter Pokémon Gym Leader: Brock  Winning Trainers: {RIVAL}
+- at 8,12: Pewter Pokémon Gym Leader: Brock  Winning Trainers: {RIVAL}, {PLAYER} / Pewter Pokémon Gym Leader: Brock  Winning Trainers: {RIVAL}
 
 ## Exits
 

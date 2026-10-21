@@ -156,28 +156,74 @@
 - Pistachio Lv15
 - Licorice Lv14
 - Macaron Lv14
+- Cruller Lv15
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CHARMANDER`, single)
 - Toffee Lv15
 - Licorice Lv14
 - Macaron Lv14
+- Cruller Lv15
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_SQUIRTLE`, single)
 - Cream Puff Lv15
 - Licorice Lv14
 - Macaron Lv14
+- Cruller Lv15
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CHIKORITA`, single)
 - Matcha Lv15
 - Licorice Lv14
 - Macaron Lv14
+- Cruller Lv15
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_CYNDAQUIL`, single)
 - Cinnamon Lv15
 - Licorice Lv14
 - Macaron Lv14
+- Cruller Lv15
 
 ## RR Officer Jenny (`TRAINER_RR_JENNY_PEWTER_TOTODILE`, single)
 - Biscotti Lv15
 - Licorice Lv14
 - Macaron Lv14
+- Cruller Lv15
+- set from your badges and lab pick when the battle starts Lv?
+- No money, 1.5x EXP. */ Lv?
+
+## Pkmn Prof Oak (`TRAINER_RR_OAK_REMATCH`, double)
+- Squirtle Lv14
+- Chikorita Lv14
+- Slowpoke Lv13
+
+## Pkmn Trainer 1 Daisy (`TRAINER_RR_DAISY_REMATCH`, double)
+- Muffin Lv13
+- Clefairy Lv13
+- Vulpix Lv13
+
+## Pkmn Trainer 1 Delia (`TRAINER_RR_DELIA_REMATCH`, double)
+- Mimey Lv14
+- Oddish Lv13
+- Grimer Lv13
+- Miltank Lv13
+- Butterfree Lv13
+- Munchlax Lv13
+- pick in the Gym Lv?
+
+## Leader Brock (`TRAINER_RR_BROCK_REMATCH`, single)
+- Geodude Lv20
+- Sandshrew Lv20
+- Kabuto Lv20
+- Omanyte Lv20
+- Rhyhorn Lv20
+- Onix Lv21
+- faces Elm and Jenny with his own ranch Pokémon. The battle plays itself Lv?
+-  Lv?
+
+## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_RANCH`, double)
+- Pidgeot Lv18
+- Tauros Lv18
+- only hardens. He asks everyone if they're from Pallet Town. */ Lv?
+
+## Pkmn Trainer 1 Samurai (`TRAINER_RR_SAMURAI`, single)
+- Metapod Lv8: Harden
+- Pinsir Lv9

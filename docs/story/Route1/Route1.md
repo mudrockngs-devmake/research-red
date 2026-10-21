@@ -12,26 +12,26 @@ Map `MAP_ROUTE1` · music `MUS_ROUTE1` · weather `WEATHER_SUNNY`
 Script `Route1_EventScript_MartClerk`
 
 > Please come see us if you need
-> POKé BALLS for catching POKéMON.
+> Poké Balls for catching Pokémon.
 
 > Hi!
-> I work at a POKéMON MART.
+> I work at a Pokémon Mart.
 >
 > It's part of a convenient chain
 > selling all sorts of items.
 >
-> Please, visit us in VIRIDIAN CITY.
+> Please, visit us in Viridian City.
 >
 > I know, I'll give you a sample.
 > Here you go!
 
 > Too bad!
-> The BAG is full…
+> The Bag is full…
 
 > Obtained the {STR_VAR_2}!
 
-> {PLAYER} put the POTION away in
-> the BAG's ITEMS POCKET.
+> {PLAYER} put the Potion away in
+> the Bag's Items Pocket.
 
 ### Boy (Boy) at 19,16
 Script `Route1_EventScript_Boy`
@@ -41,7 +41,7 @@ Script `Route1_EventScript_Boy`
 > It's a bit scary, but you can jump
 > from them.
 >
-> You can get back to PALLET TOWN
+> You can get back to Pallet Town
 > quicker that way.
 
 ### Route1 Ivy (Rr Ivy) at 12,34
@@ -52,13 +52,13 @@ Script `Route1_EventScript_Boy`
 *hidden by `FLAG_TEMP_11`*
 (no talk script; used in cutscenes)
 
-### Route1 Jenny (Rr Jenny) at 17,3
+### Route1 Jenny (Rr Jenny) at 17,2
 *hidden by `FLAG_TEMP_12`*
 (no talk script; used in cutscenes)
 
 ## Signs
 
-- at 9,31: ROUTE 1 PALLET TOWN - VIRIDIAN CITY
+- at 9,31: Route 1 Pallet Town - Viridian City
 
 ## Wild Pokemon
 

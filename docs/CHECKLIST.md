@@ -15,6 +15,7 @@ Tick items as they ship. Each milestone ends with an owner playtest.
 - [x] Elm and Jenny trainer entries in `trainers.party`; Elm's battle pic from `graphics/research_red/portrait_elm.png` (no Gary) (v0.0.8; Jenny's pic from her portrait too)
 - [x] Optional Oak double battle (v0.0.10; yes/no prompt, Lv 6) (his 2 remaining Kanto starters); loss branch: haiku "A student falls down... / Old man forgot to hold back... / The grant still goes through." then Elm offers his own funding
 - [x] Full research grant: larger Bag pockets; every Poke Ball x100; all TMs and HMs; held and battle items; medicine (v0.0.10; Items pocket 42 -> 60, PC item storage 30 -> 10)
+- [x] Grant rework (v0.0.19): the grant is reusable things only (key items, HMs, all TMs); Lab Supplies on the PC is a free shop for balls (no Master Ball), medicine, held items, vitamins, Rare Candy; pockets back to FireRed's sizes
 - [x] HMs usable as battle moves and forgettable; field moves work with no HM or badge (v0.0.10)
 - [ ] Cell Phone key item: registered numbers (Elm, Jenny, Oak, Delia); calling Elm opens the Research Rules menu (see v0.2)
 - [x] Ivy as NPC follower from the end of breakfast (v0.0.11; cutscenes hand off with `rr_ivy_to_scene` / `rr_ivy_follow`, data/scripts/rr_ivy.inc) (`include/config/follower_npc.h`); remove duplicate scene Ivys (including the lab)

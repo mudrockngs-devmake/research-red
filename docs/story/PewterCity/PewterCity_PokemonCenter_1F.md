@@ -7,14 +7,14 @@ Map `MAP_PEWTER_CITY_POKEMON_CENTER_1F` · music `MUS_POKE_CENTER` · weather `W
 ### Jigglypuff (Jigglypuff) at 2,2
 Script `PewterCity_PokemonCenter_1F_EventScript_Jigglypuff`
 
-> JIGGLYPUFF: Puu pupuu!
+> Jigglypuff: Puu pupuu!
 
 ### Gentleman (Gentleman) at 4,8
 Script `PewterCity_PokemonCenter_1F_EventScript_Gentleman`
 
 > What!?
 >
-> TEAM ROCKET is at MT. MOON?
+> Team Rocket is at Mt. Moon?
 > Huh?
 >
 > I'm on the phone!
@@ -23,16 +23,35 @@ Script `PewterCity_PokemonCenter_1F_EventScript_Gentleman`
 ### Pewter Nurse (Nurse) at 7,2
 Script `PewterCity_PokemonCenter_1F_EventScript_Nurse`
 
+> Heal
+
+> Rest till morning
+
+> No thanks
+
+> Heal
+
+> Rest till night
+
+> No thanks
+
 > It appears as if {STR_VAR_1} is playing
 > right now.
 > Go for it!
+
+> Of course. Rest here as long as
+> you like. I'll look after them.
+
+> {PLAYER} rested until night.
+
+> {PLAYER} rested until morning.
 
 ### Youngster (Youngster) at 1,2
 Script `PewterCity_PokemonCenter_1F_EventScript_Youngster`
 
 > Yawn!
 >
-> When JIGGLYPUFF sings, POKéMON get
+> When Jigglypuff sings, Pokémon get
 > drowsy…
 >
 > …Me, too…
@@ -125,17 +144,25 @@ Script `MysteryEventClub_EventScript_Woman`
 ### Gba Kid (Gba Kid) at 10,7
 Script `PewterCity_PokemonCenter_1F_EventScript_GBAKid1`
 
-> I really want a PIKACHU, so I'm
-> trading my CLEFAIRY for one.
+> I really want a Pikachu, so I'm
+> trading my Clefairy for one.
 
 ### Gba Kid (Gba Kid) at 14,6
 Script `PewterCity_PokemonCenter_1F_EventScript_GBAKid2`
 
-> I'm trading POKéMON with that kid
+> I'm trading Pokémon with that kid
 > there.
 >
-> I had two PIKACHU, so I figured
+> I had two Pikachu, so I figured
 > I might as well trade one.
+
+### Species(Chansey) (Species(Chansey)) at 8,2
+Script `RR_Ambient_EventScript_Chansey`
+
+> Chansey: Chaaan-sey!
+>
+> Nurse Joy's helper. It's checking
+> your Poké Balls are polished.
 
 ## Exits
 

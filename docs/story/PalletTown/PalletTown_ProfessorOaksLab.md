@@ -9,58 +9,98 @@ Map `MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB` · music `MUS_OAK_LAB` · weather `WEAT
 ## People and objects
 
 ### Scientist (Scientist) at 3,11
-Script `PalletTown_ProfessorOaksLab_EventScript_Aide1`
+Script `RR_Lab_EventScript_FeatureAide`
 
-> PROF. OAK is going to have his own
-> radio show soon.
+> Aide: Hello, Professor! I keep the
+> lab's research tools in order.
 >
-> The program will be called PROF.
-> OAK's POKéMON SEMINAR.
-
-> I study POKéMON as PROF. OAK's
-> AIDE.
+> Ask me about any of them, as often
+> as you like.
 
 ### Worker F (Worker F) at 2,10
 Script `PalletTown_ProfessorOaksLab_EventScript_Aide3`
 
-> PROF. OAK may not look like much,
-> but he's the authority on POKéMON.
+> Prof. Oak may not look like much,
+> but he's the authority on Pokémon.
 >
-> Many POKéMON TRAINERS hold him in
+> Many Pokémon Trainers hold him in
 > high regard.
 
 ### Scientist (Scientist) at 11,10
 Script `PalletTown_ProfessorOaksLab_EventScript_Aide2`
 
 > Hi, {PLAYER}. I bet you've become
-> good friends with your POKéMON.
+> good friends with your Pokémon.
 >
 > By the way, did you know about
-> DAISY?
+> Daisy?
 >
-> If you show DAISY your POKéMON,
+> If you show Daisy your Pokémon,
 > she can tell how much it likes you.
 >
 > Occasionally, she will even groom
-> a POKéMON for you.
+> a Pokémon for you.
 >
 > This is a secret, so please don't
 > tell anyone.
 
-> I study POKéMON as PROF. OAK's
-> AIDE.
+> I study Pokémon as Prof. Oak's
+> Aide.
 
 ### Oaks Lab Prof Oak (Prof Oak) at 6,3
 *hidden by `FLAG_HIDE_OAK_IN_HIS_LAB`*
 Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 
+> Oak: {PLAYER}! Daisy dropped by
+> with Muffin. Fancy a battle?
+>
+> Oak: No prize money, mind. You've
+> had the grant! But plenty of EXP.
+
+> Oak: Shall we?
+
+> Oak: Anytime! The lab door is
+> always open.
+
+> Daisy: Muffin's been training.
+> She's not evolving. She's perfect.
+
+**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
+
+**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+
+**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
+
+**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+
+> Oak: Ho ho! Splendid! A haiku:
+>
+> “Bright young researcher,
+> my Slowpoke still hasn't noticed
+> the battle is done.”
+
+> Daisy: Oh, Muffin. You were still
+> the cutest one out there.
+
+**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
+
+**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+
+> Oak: You've grown, {PLAYER}. My
+> team will have to grow too!
+
+> Daisy: We won! Muffin, did you
+> hear that? We won!
+
+> Oak: Ho ho! Come back anytime.
+
 > Thank you, {PLAYER}!
 > Sincerely, thank you!
 > You've made my dream a reality!
 
-> OAK: Ah, welcome!
+> Oak: Ah, welcome!
 >
-> Tell me, how is your POKéDEX
+> Tell me, how is your Pokédex
 > coming along?
 >
 > Wahaha!
@@ -70,31 +110,31 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 >
 > Let's see…
 
-> OAK: Good to see you!
-> How is your POKéDEX coming along?
+> Oak: Ho ho! Back already? Let's
+> see that Pokédex of yours!
 >
-> Here, let me take a look.
+> Hmm, hmm. Let me take a look.
 
 > The amount of progress you've made
-> on your POKéDEX is:
+> on your Pokédex is:
 >
-> {STR_VAR_1} POKéMON seen and
-> {STR_VAR_2} POKéMON owned.
+> {STR_VAR_1} Pokémon seen and
+> {STR_VAR_2} Pokémon owned.
 >
-> {FONT_NORMAL}PROF. OAK's rating:
+> {FONT_NORMAL}Prof. Oak's rating:
 
-> And your NATIONAL POKéDEX is:
+> And your National Pokédex is:
 >
-> {STR_VAR_1} POKéMON seen and
-> {STR_VAR_2} POKéMON owned.
+> {STR_VAR_1} Pokémon seen and
+> {STR_VAR_2} Pokémon owned.
 
 > I'll be looking forward to seeing
-> you fill the NATIONAL POKéDEX!
+> you fill the National Pokédex!
 
 > Finally…
 >
 > You've finally completed the
-> POKéDEX!
+> Pokédex!
 >
 > It's magnificent!
 > Truly, this is a fantastic feat!
@@ -105,7 +145,7 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > Sincerely, thank you!
 > You've made my dream a reality!
 
-> POKéMON around the world wait for
+> Pokémon around the world wait for
 > you, {PLAYER}!
 
 > Ah, now this is excellent!
@@ -116,10 +156,10 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > I need you to listen closely.
 
 > Recently, there have been sightings
-> of many rare POKéMON species.
+> of many rare Pokémon species.
 >
-> I'm talking about POKéMON that
-> have never been seen in KANTO.
+> I'm talking about Pokémon that
+> have never been seen in Kanto.
 >
 > I would love to go see things for
 > myself, but I'm much too old.
@@ -132,19 +172,19 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > Gramps, what's with favoring
 > {PLAYER} over me all the time?
 >
-> I went and collected more POKéMON,
+> I went and collected more Pokémon,
 > and faster, too.
 >
 > You should just let me handle
 > everything.
 
-> OAK: I know, I know.
+> Oak: I know, I know.
 > Of course I need your help, too.
 >
 > Now, I need to see both your
-> POKéDEXES.
+> Pokédexes.
 
-> PROF. OAK took both POKéDEX
+> Prof. Oak took both Pokédex
 > units.
 
 > … … …  … … …
@@ -154,45 +194,45 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > …And that's done!
 >
 > Now these units can record data on
-> a lot more POKéMON.
+> a lot more Pokémon.
 
-> {PLAYER}'s POKéDEX was upgraded!
+> {PLAYER}'s Pokédex was upgraded!
 
 > Now, {PLAYER} and {RIVAL}!
 >
 > This time, you really must work
-> towards filling your POKéDEXES.
+> towards filling your Pokédexes.
 >
 > I urge you to make them the best
 > and the most complete of all time!
 >
 > Truly, this is a monumentally great
-> undertaking in POKéMON history!
+> undertaking in Pokémon history!
 
 > {RIVAL}: Gramps, calm down.
 > Don't get so excited.
 >
-> I'll get the POKéDEX completed,
+> I'll get the Pokédex completed,
 > don't you worry about a thing.
 >
 > I think I'll try looking around
-> ONE ISLAND first…
+> One Island first…
 >
 > Anyways, I'm outta here!
 
-> OAK: Come see me sometime.
+> Oak: Come see me sometime.
 >
 > After all, I want to know how your
-> POKéDEX is coming along.
+> Pokédex is coming along.
 
 > Ah, {PLAYER}!
-> How is your POKéDEX shaping up?
+> How is your Pokédex shaping up?
 >
 > {RIVAL} has already caught some
-> POKéMON and added to the data.
+> Pokémon and added to the data.
 >
 > So, {PLAYER}, let's have a look at
-> your POKéDEX.
+> your Pokédex.
 >
 > …What's the matter?
 > You've added no new data at all.
@@ -200,24 +240,24 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > I'll give you these, so do try a
 > little harder.
 
-> {PLAYER} received five POKé BALLS.
+> {PLAYER} received five Poké Balls.
 
-> OAK: Oh, {PLAYER}!
-> How is my old POKéMON?
+> Oak: Oh, {PLAYER}!
+> How is my old Pokémon?
 >
 > Well, it seems to be growing more
 > attached to you.
 >
-> You must be talented as a POKéMON
-> TRAINER.
+> You must be talented as a Pokémon
+> Trainer.
 >
 > What's that?
 > You have something for me?
 
-> {PLAYER} delivered OAK'S PARCEL.
+> {PLAYER} delivered Oak's Parcel.
 
 > Ah! 
-> It's the custom POKé BALL!
+> It's the custom Poké Ball!
 >
 > I had it on order.
 > Thank you!
@@ -227,47 +267,47 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > {RIVAL}: I almost forgot!
 > What did you call me for?
 
-> OAK: Oh, right!
+> Oak: Oh, right!
 > I have a request for you two.
 
 > On the desk there is my invention,
-> the POKéDEX!
+> the Pokédex!
 >
 > It automatically records data on
-> POKéMON you've seen or caught.
+> Pokémon you've seen or caught.
 >
 > It's a high-tech encyclopedia!
 
-> OAK: {PLAYER} and {RIVAL}.
+> Oak: {PLAYER} and {RIVAL}.
 > Take these with you.
 
-> {PLAYER} received the POKéDEX
-> from PROF. OAK.
+> {PLAYER} received the Pokédex
+> from Prof. Oak.
 
-> OAK: You can't get detailed data
-> on POKéMON by just seeing them.
+> Oak: You can't get detailed data
+> on Pokémon by just seeing them.
 >
 > You must catch them to obtain
 > complete data.
 >
 > So, here are some tools for
-> catching wild POKéMON.
+> catching wild Pokémon.
 
-> {PLAYER} received five POKé BALLS.
+> {PLAYER} received five Poké Balls.
 
-> When a wild POKéMON appears,
+> When a wild Pokémon appears,
 > it's fair game.
 >
-> Just throw a POKé BALL at it and
+> Just throw a Poké Ball at it and
 > try to catch it!
 >
 > This won't always work, however.
 >
-> A healthy POKéMON can escape.
+> A healthy Pokémon can escape.
 > You have to be lucky!
 
 > To make a complete guide on all
-> the POKéMON in the world…
+> the Pokémon in the world…
 >
 > That was my dream!
 >
@@ -280,7 +320,7 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > Get moving, you two.
 >
 > This is a great undertaking in
-> POKéMON history!
+> Pokémon history!
 
 > {RIVAL}: All right, Gramps!
 > Leave it all to me!
@@ -288,7 +328,7 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > {PLAYER}, I hate to say it, but you
 > won't be necessary for this.
 >
-> I know! I'll borrow a TOWN MAP
+> I know! I'll borrow a Town Map
 > from my sis!
 >
 > I'll tell her not to lend you one,
@@ -297,21 +337,21 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > Don't bother coming around to
 > my place after this!
 
-> OAK: {PLAYER}, raise your young
-> POKéMON by making it battle.
+> Oak: {PLAYER}, raise your young
+> Pokémon by making it battle.
 >
 > It has to battle for it to grow.
 
-> OAK: If a wild POKéMON appears,
-> your POKéMON can battle it.
+> Oak: If a wild Pokémon appears,
+> your Pokémon can battle it.
 >
 > With it at your side, you should be
 > able to reach the next town.
 
-> OAK: Now, {PLAYER}.
+> Oak: Now, {PLAYER}.
 >
-> Inside those three POKé BALLS are
-> POKéMON.
+> Inside those three Poké Balls are
+> Pokémon.
 >
 > Which one will you choose for
 > yourself?
@@ -320,121 +360,121 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 *hidden by `FLAG_HIDE_BULBASAUR_BALL`*
 Script `PalletTown_ProfessorOaksLab_EventScript_BulbasaurBall`
 
-> That's PROF. OAK's last POKéMON.
+> That's Prof. Oak's last Pokémon.
 
-> I see! BULBASAUR is your choice.
+> I see! Bulbasaur is your choice.
 > It's very easy to raise.
 >
 > So, {PLAYER}, you want to go with
-> the GRASS POKéMON BULBASAUR?
+> the Grass Pokémon Bulbasaur?
 
-> This POKéMON is really quite
+> This Pokémon is really quite
 > energetic!
 
 > {PLAYER} received the {STR_VAR_1}
-> from PROF. OAK!
+> from Prof. Oak!
 
 > {RIVAL}: I'll take this one, then!
 
 > {RIVAL} received the {STR_VAR_1}
-> from PROF. OAK!
+> from Prof. Oak!
 
-> Hm! SQUIRTLE is your choice.
+> Hm! Squirtle is your choice.
 > It's one worth raising.
 >
 > So, {PLAYER}, you've decided on the
-> WATER POKéMON SQUIRTLE?
+> Water Pokémon Squirtle?
 
-> Ah! CHARMANDER is your choice.
+> Ah! Charmander is your choice.
 > You should raise it patiently.
 >
 > So, {PLAYER}, you're claiming the
-> FIRE POKéMON CHARMANDER?
+> Fire Pokémon Charmander?
 
-> Those are POKé BALLS.
-> They contain POKéMON!
+> Those are Poké Balls.
+> They contain Pokémon!
 
 ### Squirtle Ball (Item Ball) at 9,4
 *hidden by `FLAG_HIDE_SQUIRTLE_BALL`*
 Script `PalletTown_ProfessorOaksLab_EventScript_SquirtleBall`
 
-> That's PROF. OAK's last POKéMON.
+> That's Prof. Oak's last Pokémon.
 
-> I see! BULBASAUR is your choice.
+> I see! Bulbasaur is your choice.
 > It's very easy to raise.
 >
 > So, {PLAYER}, you want to go with
-> the GRASS POKéMON BULBASAUR?
+> the Grass Pokémon Bulbasaur?
 
-> This POKéMON is really quite
+> This Pokémon is really quite
 > energetic!
 
 > {PLAYER} received the {STR_VAR_1}
-> from PROF. OAK!
+> from Prof. Oak!
 
 > {RIVAL}: I'll take this one, then!
 
 > {RIVAL} received the {STR_VAR_1}
-> from PROF. OAK!
+> from Prof. Oak!
 
-> Hm! SQUIRTLE is your choice.
+> Hm! Squirtle is your choice.
 > It's one worth raising.
 >
 > So, {PLAYER}, you've decided on the
-> WATER POKéMON SQUIRTLE?
+> Water Pokémon Squirtle?
 
-> Ah! CHARMANDER is your choice.
+> Ah! Charmander is your choice.
 > You should raise it patiently.
 >
 > So, {PLAYER}, you're claiming the
-> FIRE POKéMON CHARMANDER?
+> Fire Pokémon Charmander?
 
-> Those are POKé BALLS.
-> They contain POKéMON!
+> Those are Poké Balls.
+> They contain Pokémon!
 
 ### Charmander Ball (Item Ball) at 10,4
 *hidden by `FLAG_HIDE_CHARMANDER_BALL`*
 Script `PalletTown_ProfessorOaksLab_EventScript_CharmanderBall`
 
-> That's PROF. OAK's last POKéMON.
+> That's Prof. Oak's last Pokémon.
 
-> I see! BULBASAUR is your choice.
+> I see! Bulbasaur is your choice.
 > It's very easy to raise.
 >
 > So, {PLAYER}, you want to go with
-> the GRASS POKéMON BULBASAUR?
+> the Grass Pokémon Bulbasaur?
 
-> This POKéMON is really quite
+> This Pokémon is really quite
 > energetic!
 
 > {PLAYER} received the {STR_VAR_1}
-> from PROF. OAK!
+> from Prof. Oak!
 
 > {RIVAL}: I'll take this one, then!
 
 > {RIVAL} received the {STR_VAR_1}
-> from PROF. OAK!
+> from Prof. Oak!
 
-> Hm! SQUIRTLE is your choice.
+> Hm! Squirtle is your choice.
 > It's one worth raising.
 >
 > So, {PLAYER}, you've decided on the
-> WATER POKéMON SQUIRTLE?
+> Water Pokémon Squirtle?
 
-> Ah! CHARMANDER is your choice.
+> Ah! Charmander is your choice.
 > You should raise it patiently.
 >
 > So, {PLAYER}, you're claiming the
-> FIRE POKéMON CHARMANDER?
+> Fire Pokémon Charmander?
 
-> Those are POKé BALLS.
-> They contain POKéMON!
+> Those are Poké Balls.
+> They contain Pokémon!
 
 ### Oaks Lab Rival (Scientist) at 7,12
 *hidden by `FLAG_HIDE_RIVAL_IN_LAB`*
 Script `PalletTown_ProfessorOaksLab_EventScript_Rival`
 
-> {RIVAL}: My POKéMON looks a lot
+> {RIVAL}: My Pokémon looks a lot
 > tougher than yours.
 
 > {RIVAL}: Heh, I don't need to be
@@ -471,19 +511,19 @@ Script `PalletTown_ProfessorOaksLab_EventScript_Pokedex`
 *hidden by `FLAG_HIDE_RIVAL_IN_LAB`*
 Script `PalletTown_ProfessorOaksLab_EventScript_LastPokeBall`
 
-> That's PROF. OAK's last POKéMON.
+> That's Prof. Oak's last Pokémon.
 
 ### Lab Cyndaquil Ball (Item Ball) at 9,5
 *hidden by `FLAG_HIDE_RIVAL_IN_LAB`*
 Script `PalletTown_ProfessorOaksLab_EventScript_LastPokeBall`
 
-> That's PROF. OAK's last POKéMON.
+> That's Prof. Oak's last Pokémon.
 
 ### Lab Totodile Ball (Item Ball) at 10,5
 *hidden by `FLAG_HIDE_RIVAL_IN_LAB`*
 Script `PalletTown_ProfessorOaksLab_EventScript_LastPokeBall`
 
-> That's PROF. OAK's last POKéMON.
+> That's Prof. Oak's last Pokémon.
 
 ### Lab Slowpoke (Species(Slowpoke)) at 10,11
 Script `RR_Lab_EventScript_Slowpoke`
@@ -493,12 +533,95 @@ Script `RR_Lab_EventScript_Slowpoke`
 > It's still holding the phone from
 > this morning's call.
 
+### Lab Oak Pikachu (Species(Pikachu)) at 12,3
+*hidden by `FLAG_TEMP_3`*
+Script `RR_RanchPager_EventScript_OakPikachu`
+
+> Pikachu: Pika pika!
+>
+> Prof. Oak's Pikachu. It lights up
+> the dark for Flash. And the room.
+
+### Lab Oak Farfetchd (Species(Farfetchd)) at 12,6
+*hidden by `FLAG_TEMP_3`*
+Script `RR_RanchPager_EventScript_OakFarfetchd`
+
+> Farfetch'd: Kwaa!
+>
+> Prof. Oak's Farfetch'd. Its leek
+> is sharp enough to Cut trees.
+
+### Lab Oak Abra (Species(Abra)) at 0,5
+*hidden by `FLAG_TEMP_3`*
+Script `RR_RanchPager_EventScript_OakAbra`
+
+> Abra: …Abra.
+>
+> Prof. Oak's Abra. It's asleep. It
+> Teleports in its sleep, too.
+
+### Lab Oak Machop (Species(Machop)) at 12,9
+*hidden by `FLAG_TEMP_3`*
+Script `RR_RanchPager_EventScript_OakMachop`
+
+> Machop: Macho!
+>
+> Prof. Oak's Machop. It practices
+> Rock Smash on the lab's walnuts.
+
+### Lab Daisy (Daisy) at 5,3
+*hidden by `FLAG_TEMP_4`*
+Script `RR_Lab_EventScript_DaisyRematch`
+
+> Oak: {PLAYER}! Daisy dropped by
+> with Muffin. Fancy a battle?
+>
+> Oak: No prize money, mind. You've
+> had the grant! But plenty of EXP.
+
+> Oak: Shall we?
+
+> Oak: Anytime! The lab door is
+> always open.
+
+> Daisy: Muffin's been training.
+> She's not evolving. She's perfect.
+
+**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
+
+**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+
+**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
+
+**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+
+> Oak: Ho ho! Splendid! A haiku:
+>
+> “Bright young researcher,
+> my Slowpoke still hasn't noticed
+> the battle is done.”
+
+> Daisy: Oh, Muffin. You were still
+> the cutest one out there.
+
+**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
+
+**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+
+> Oak: You've grown, {PLAYER}. My
+> team will have to grow too!
+
+> Daisy: We won! Muffin, did you
+> hear that? We won!
+
+> Oak: Ho ho! Come back anytime.
+
 ## Signs
 
-- at 2,1: There's an e-mail message here.  …  Finally! The ultimate TRAINERS of the POKéMON LEAGUE are ready to take on all comers!  Bring your best POKéMON and see how you rate as a TRAINER!  POKéMON LEAGUE HQ INDIGO PLATEAU  PROF. OAK, please visit us! …
-- at 3,1: There's an e-mail message here.  …  Finally! The ultimate TRAINERS of the POKéMON LEAGUE are ready to take on all comers!  Bring your best POKéMON and see how you rate as a TRAINER!  POKéMON LEAGUE HQ INDIGO PLATEAU  PROF. OAK, please visit us! …
-- at 6,1: Press START to open the MENU!
-- at 7,1: All POKéMON types have strong and weak points against others. / The SAVE option is on the MENU. Use it regularly.
+- at 2,1: There's an e-mail message here.  …  Finally! The ultimate Trainers of the Pokémon League are ready to take on all comers!  Bring your best Pokémon and see how you rate as a Trainer!  Pokémon League Hq Indigo Plateau  Prof. Oak, please visit us! …
+- at 3,1: There's an e-mail message here.  …  Finally! The ultimate Trainers of the Pokémon League are ready to take on all comers!  Bring your best Pokémon and see how you rate as a Trainer!  Pokémon League Hq Indigo Plateau  Prof. Oak, please visit us! …
+- at 6,1: Press Start to open the Menu!
+- at 7,1: All Pokémon types have strong and weak points against others. / The Save option is on the Menu. Use it regularly.
 
 ## Exits
 

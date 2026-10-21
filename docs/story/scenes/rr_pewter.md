@@ -28,27 +28,27 @@ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 
 ### RR_Pewter_EventScript_BattleAfterBulbasaur
 
-*[trainerbattle_two_trainers Rival Early Elm (Cinnamon, Pudding, Churro) + RR Officer Jenny (Biscotti, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Cinnamon, Pudding, Churro) + RR Officer Jenny (Biscotti, Licorice, Macaron, Cruller, set from your badges and lab pick when the battle starts, No money, 1.5x EXP. */)]*
 
 ### RR_Pewter_EventScript_BattleAfterCharmander
 
-*[trainerbattle_two_trainers Rival Early Elm (Biscotti, Pudding, Churro) + RR Officer Jenny (Matcha, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Biscotti, Pudding, Churro) + RR Officer Jenny (Matcha, Licorice, Macaron, Cruller)]*
 
 ### RR_Pewter_EventScript_BattleAfterSquirtle
 
-*[trainerbattle_two_trainers Rival Early Elm (Matcha, Pudding, Churro) + RR Officer Jenny (Cinnamon, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Matcha, Pudding, Churro) + RR Officer Jenny (Cinnamon, Licorice, Macaron, Cruller)]*
 
 ### RR_Pewter_EventScript_BattleAfterChikorita
 
-*[trainerbattle_two_trainers Rival Early Elm (Toffee, Pudding, Churro) + RR Officer Jenny (Cream Puff, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Toffee, Pudding, Churro) + RR Officer Jenny (Cream Puff, Licorice, Macaron, Cruller)]*
 
 ### RR_Pewter_EventScript_BattleAfterCyndaquil
 
-*[trainerbattle_two_trainers Rival Early Elm (Cream Puff, Pudding, Churro) + RR Officer Jenny (Pistachio, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Cream Puff, Pudding, Churro) + RR Officer Jenny (Pistachio, Licorice, Macaron, Cruller)]*
 
 ### RR_Pewter_EventScript_BattleAfterTotodile
 
-*[trainerbattle_two_trainers Rival Early Elm (Pistachio, Pudding, Churro) + RR Officer Jenny (Toffee, Licorice, Macaron)]*
+*[trainerbattle_two_trainers Rival Early Elm (Pistachio, Pudding, Churro) + RR Officer Jenny (Toffee, Licorice, Macaron, Cruller)]*
 
 ### RR_Pewter_EventScript_AfterBattle
 
@@ -80,6 +80,9 @@ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 > Elm: See you down the road, you
 > two! We always catch up!
 
+> Elm: We're challenging Brock next.
+> Want to come watch?
+
 > Elm and Jenny head for the Gym,
 > arguing happily about strategy.
 
@@ -93,3 +96,12 @@ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 > {PLAYER}: And one very big dinner.
 
 *[setvar VAR_0x40FE ]*
+
+### RR_Pewter_EventScript_GoWatch
+
+> {PLAYER}: Front row. Ivy brought
+> snacks.
+
+*[setvar VAR_0x40FE ]*
+
+*[warp MAP_PEWTER_CITY_GYM]*

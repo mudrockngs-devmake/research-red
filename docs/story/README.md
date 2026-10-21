@@ -7,16 +7,23 @@ these files are rebuilt from the game data.
 
 ## Scenes
 
+- [rr_ambient](scenes/rr_ambient.md)
 - [rr_breakfast](scenes/rr_breakfast.md)
+- [rr_brock_watch](scenes/rr_brock_watch.md)
 - [rr_daisy](scenes/rr_daisy.md)
 - [rr_demo_blockers](scenes/rr_demo_blockers.md)
 - [rr_dex_banter](scenes/rr_dex_banter.md)
 - [rr_field_guide](scenes/rr_field_guide.md)
+- [rr_forest](scenes/rr_forest.md)
 - [rr_grass_hook](scenes/rr_grass_hook.md)
 - [rr_ivy](scenes/rr_ivy.md)
 - [rr_lab](scenes/rr_lab.md)
+- [rr_lab_aide](scenes/rr_lab_aide.md)
 - [rr_lunch](scenes/rr_lunch.md)
 - [rr_pewter](scenes/rr_pewter.md)
+- [rr_ranch_pager](scenes/rr_ranch_pager.md)
+- [rr_rematch](scenes/rr_rematch.md)
+- [rr_rest](scenes/rr_rest.md)
 - [rr_route1](scenes/rr_route1.md)
 - [rr_route22](scenes/rr_route22.md)
 
