@@ -11,6 +11,7 @@
 #include "constants/region_map_sections.h"
 #include "constants/species.h"
 #include "script.h"
+#include "bike.h"
 #include "script_movement.h"
 #include "fieldmap.h"
 #include "constants/event_objects.h"
@@ -335,4 +336,11 @@ void RR_ScriptWalkTo(struct ScriptContext *ctx)
     buf[n] = MOVEMENT_ACTION_STEP_END;
     obj->directionOverwrite = DIR_NONE;
     ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, buf);
+}
+
+// Debug Script 12 (bike test): get on the Bicycle, as using it from the Bag does
+void RR_ScriptDebugMountBike(struct ScriptContext *ctx)
+{
+    GetOnOffBike(PLAYER_AVATAR_STATE_MACH_BIKE);
+    FollowerNPC_HandleBike();
 }

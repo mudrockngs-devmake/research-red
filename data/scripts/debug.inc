@@ -156,6 +156,7 @@ Debug_EventScript_Text_DefensiveIVs:
 @ Script 9: Test mode on/off (the AI fights your battles; team to Lv 30)
 @ Script 10: After Brock (badge 1, in Pewter)
 @ Script 11: Catch test (Poké Balls and a wild Pidgey)
+@ Script 12: Bike test (a Bicycle, and on it: Ivy steps out of view, #80)
 @ Remove or empty these before a public release.
 @ ===================================================================
 Debug_EventScript_Script_1::
@@ -349,6 +350,13 @@ Debug_EventScript_Script_11::
 	additem ITEM_POKE_BALL, 10
 	setwildbattle SPECIES_PIDGEY, 3
 	dowildbattle
+	release
+	end
+
+@ Bike test: a Bicycle, and straight onto it (smoke test "bike")
+Debug_EventScript_Script_12::
+	additem ITEM_BICYCLE, 1
+	callnative RR_ScriptDebugMountBike
 	release
 	end
 

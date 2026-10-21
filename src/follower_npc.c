@@ -1233,7 +1233,7 @@ void NPCFollow(struct ObjectEvent *npc, u32 state, bool32 ignoreScriptActive)
             return;
         }
 
-        follower->invisible = FALSE;
+        follower->invisible = IsPlayerBiking(); // Research Red (#80): stays out of view on the bike
         MoveObjectEventToMapCoords(follower, player->currentCoords.x, player->currentCoords.y);
         // The follower should be facing the same direction as the player when it comes out of hiding.
         ObjectEventTurn(follower, player->facingDirection);
@@ -1351,6 +1351,8 @@ void CreateFollowerNPCAvatar(void)
     gObjectEvents[GetFollowerNPCData(FNPC_DATA_OBJ_ID)].invisible = TRUE;
 }
 
+static void RR_HideFollowerWhileBiking(void); // Research Red (#80)
+
 void FollowerNPC_HandleSprite(void)
 {
     if (IsPlayerBiking() && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_BIKE))
@@ -1364,6 +1366,7 @@ void FollowerNPC_HandleSprite(void)
     {
         SetFollowerNPCSprite(FOLLOWER_NPC_SPRITE_INDEX_NORMAL);
     }
+    RR_HideFollowerWhileBiking(); // Research Red (#80)
 }
 
 enum Direction DetermineFollowerNPCDirection(struct ObjectEvent *player, struct ObjectEvent *follower)
@@ -1485,6 +1488,15 @@ bool32 FollowerNPCCanBike(void)
         return FALSE;
 }
 
+// Research Red (#80): Ivy doesn't ride along (no bike sprite for her yet):
+// she steps out of view while you're on the bike, still keeping up, and is
+// right behind you again when you get off.
+static void RR_HideFollowerWhileBiking(void)
+{
+    if (PlayerHasFollowerNPC())
+        gObjectEvents[GetFollowerNPCObjectId()].invisible = IsPlayerBiking();
+}
+
 void FollowerNPC_HandleBike(void)
 {
     // Wait until after get off surf blob to start biking.
@@ -1506,6 +1518,7 @@ void FollowerNPC_HandleBike(void)
         if (GetFollowerNPCData(FNPC_DATA_DELAYED_STATE) == MOVEMENT_ACTION_JUMP_DOWN)
             SetFollowerNPCData(FNPC_DATA_DELAYED_STATE, 0);
     }
+    RR_HideFollowerWhileBiking(); // Research Red (#80)
 }
 
 void FollowerNPC_FollowerToWater(void)
@@ -1637,7 +1650,7 @@ void FollowerNPCReappearAfterLeaveMap(struct ObjectEvent *follower, struct Objec
 {
     if (PlayerHasFollowerNPC())
     {
-        follower->invisible = FALSE;
+        follower->invisible = IsPlayerBiking(); // Research Red (#80): stays out of view on the bike
         MoveObjectEventToMapCoords(follower, player->currentCoords.x, player->currentCoords.y);
         ObjectEventTurn(follower, DIR_SOUTH);
         follower->singleMovementActive = FALSE;

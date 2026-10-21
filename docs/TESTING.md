@@ -48,6 +48,7 @@ What the results mean:
 | dex_area | Magikarp caught (memory): its Area page by day, evening, night (#20) |
 | pewter | Test mode + debug 10, into the Pewter Pokémon Center: Elm and Jenny's rematch (story 8) |
 | demo_end | Debug 10 (after Brock), walks to the east exit: the Gym guide turns you back (demo) |
+| bike | Debug 12: on the Bicycle with your own sprite, Ivy out of view; off again, she is back behind you (#80) |
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | pc | Debug 2, Start > PC, into Pokémon storage and back out |
 | guide | Route 1: Pokédex > START > FIELD GUIDE, then Start > GUIDE (#91), both over the map |

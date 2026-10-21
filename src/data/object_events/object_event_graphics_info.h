@@ -59,7 +59,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedSurf = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_RED,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-    .size = 256,
+    .size = 512,
     .width = 16,
     .height = 32,
     .paletteSlot = PALSLOT_PLAYER,
@@ -70,7 +70,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedSurf = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_RedGreenSurf,
-    .images = sPicTable_RedSurf,
+    .images = sPicTable_RedNormal, // Research Red (#28): our own player sheet, this state's animations
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
@@ -78,7 +78,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedFieldMove = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_RED,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
-    .size = 256,
+    .size = 512,
     .width = 16,
     .height = 32,
     .paletteSlot = PALSLOT_PLAYER,
@@ -89,7 +89,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedFieldMove = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_RedGreenFieldMove,
-    .images = sPicTable_RedItem,
+    .images = sPicTable_RedNormal, // Research Red (#28): our own player sheet, this state's animations
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
@@ -1465,7 +1465,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenSurf = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_GREEN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-    .size = 256,
+    .size = 512,
     .width = 16,
     .height = 32,
     .paletteSlot = PALSLOT_PLAYER,
@@ -1476,7 +1476,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenSurf = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_RedGreenSurf,
-    .images = sPicTable_GreenSurf,
+    .images = sPicTable_GreenNormal, // Research Red (#28): our own player sheet, this state's animations
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
@@ -1484,7 +1484,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenFieldMove = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_GREEN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
-    .size = 256,
+    .size = 512,
     .width = 16,
     .height = 32,
     .paletteSlot = PALSLOT_PLAYER,
@@ -1495,7 +1495,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreenFieldMove = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_RedGreenFieldMove,
-    .images = sPicTable_GreenItem,
+    .images = sPicTable_GreenNormal, // Research Red (#28): our own player sheet, this state's animations
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 

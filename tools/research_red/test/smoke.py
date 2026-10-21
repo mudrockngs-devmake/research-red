@@ -35,7 +35,7 @@ STORY = "VAR_0x40FE"  # story progress, see CLAUDE.md
 
 # Debug menu (Start > DEBUG > Scripts): see data/scripts/debug.inc
 SCRIPT_LAB, SCRIPT_AFTER_LAB, SCRIPT_ROUTE1, SCRIPT_ROUTE22, SCRIPT_TEAM, \
-    SCRIPT_LUNCH, SCRIPT_BANTER, SCRIPT_ROUTE1_ELM, SCRIPT_TEST_MODE, SCRIPT_AFTER_BROCK, SCRIPT_CATCH = range(1, 12)
+    SCRIPT_LUNCH, SCRIPT_BANTER, SCRIPT_ROUTE1_ELM, SCRIPT_TEST_MODE, SCRIPT_AFTER_BROCK, SCRIPT_CATCH, SCRIPT_BIKE = range(1, 13)
 
 
 def debug_script(n):
@@ -225,6 +225,16 @@ def sc_catch():
             + ["wait 300", "shot c001"] + throws
             + play_until("back_on_map", T.G.field_free(), 3000, key="B", every=60)
             + ["wait 120"] + check("no_map_banter", T.G.field_free()) + expect(party=2))
+
+def sc_bike():
+    # #80: on the bike the player keeps their own sprite and Ivy steps out of
+    # view (still keeping up); getting off (debug 12 again), she's back behind you.
+    # #28 too: no Red sprite in any state. Debug 2 leaves us at (15,8) in Pallet.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT") + ["wait 30", "shot b001"]
+            + debug_script(SCRIPT_BIKE) + ["wait 30", "shot b002"]
+            + ["hold DOWN 24", "wait 10", "hold LEFT 40", "wait 20", "shot b003", "hold UP 24", "wait 20", "shot b004"]
+            + debug_script(SCRIPT_BIKE) + ["wait 30", "shot b005"] + step("RIGHT", 2) + ["wait 20", "shot b006"]
+            + check("back_on_foot", T.G.field_free()))
 
 def sc_pewter():
     # After Brock: Elm and Jenny's rematch outside the Pokemon Center (#10).
@@ -647,6 +657,7 @@ SCENARIOS = {
     "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch outside the Pokémon Center (test mode)"),
     "digletts": (sc_digletts, "After Brock: Diglett's Cave is closed by the Diglett crew (demo)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
+    "bike": (sc_bike, "On the bike: your own sprite, Ivy out of view; off again, she's back (#80, #28)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),

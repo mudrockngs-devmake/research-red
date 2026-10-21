@@ -1137,48 +1137,22 @@ void StopPlayerAvatar(void)
     }
 }
 
+// Research Red (#80, #28): the player is a professor, not Red: walking, the
+// bike, surfing and the field-move pose (Fly, Cut...) all show our own sheet
+// until they get their own art.
 static const enum ObjectEventGfx sPlayerAvatarGfxIds[PLAYER_AVATAR_STATE_COUNT][GENDER_COUNT] =
 {
-    [PLAYER_AVATAR_STATE_NORMAL] =
-    {
-        [MALE]   = OBJ_EVENT_GFX_RED_NORMAL,
-        [FEMALE] = OBJ_EVENT_GFX_GREEN_NORMAL,
-    },
-    [PLAYER_AVATAR_STATE_MACH_BIKE] =
-    {
-        [MALE]   = OBJ_EVENT_GFX_RED_BIKE,
-        [FEMALE] = OBJ_EVENT_GFX_GREEN_BIKE,
-    },
-    [PLAYER_AVATAR_STATE_ACRO_BIKE] =
-    {
-        [MALE]   = OBJ_EVENT_GFX_RED_BIKE,
-        [FEMALE] = OBJ_EVENT_GFX_GREEN_BIKE,
-    },
-    [PLAYER_AVATAR_STATE_SURFING] =
-    {
-        [MALE]   = OBJ_EVENT_GFX_RED_SURF,
-        [FEMALE] = OBJ_EVENT_GFX_GREEN_SURF,
-    },
-    [PLAYER_AVATAR_STATE_FIELD_MOVE] =
-    {
-        [MALE]   = OBJ_EVENT_GFX_RED_FIELD_MOVE,
-        [FEMALE] = OBJ_EVENT_GFX_GREEN_FIELD_MOVE,
-    },
-    [PLAYER_AVATAR_STATE_FISHING] =
-    {
-        [MALE]   = OBJ_EVENT_GFX_RED_FISH,
-        [FEMALE] = OBJ_EVENT_GFX_GREEN_FISH,
-    },
-    [PLAYER_AVATAR_STATE_VSSEEKER] =
-    {
-        [MALE]   = OBJ_EVENT_GFX_RED_VS_SEEKER,
-        [FEMALE] = OBJ_EVENT_GFX_GREEN_VS_SEEKER,
-    },
-    [PLAYER_AVATAR_STATE_WATERING] =
-    {
-        [MALE]   = OBJ_EVENT_GFX_RED_WATERING,
-        [FEMALE] = OBJ_EVENT_GFX_GREEN_WATERING,
-    },
+    [PLAYER_AVATAR_STATE_NORMAL]     = { [MALE] = OBJ_EVENT_GFX_RED_NORMAL, [FEMALE] = OBJ_EVENT_GFX_GREEN_NORMAL },
+    [PLAYER_AVATAR_STATE_MACH_BIKE]  = { [MALE] = OBJ_EVENT_GFX_RED_NORMAL, [FEMALE] = OBJ_EVENT_GFX_GREEN_NORMAL },
+    [PLAYER_AVATAR_STATE_ACRO_BIKE]  = { [MALE] = OBJ_EVENT_GFX_RED_NORMAL, [FEMALE] = OBJ_EVENT_GFX_GREEN_NORMAL },
+    // surfing and the field-move pose need their own animations: those entries
+    // keep them but draw our sheet (object_event_graphics_info.h)
+    [PLAYER_AVATAR_STATE_SURFING]    = { [MALE] = OBJ_EVENT_GFX_RED_SURF, [FEMALE] = OBJ_EVENT_GFX_GREEN_SURF },
+    [PLAYER_AVATAR_STATE_FIELD_MOVE] = { [MALE] = OBJ_EVENT_GFX_RED_FIELD_MOVE, [FEMALE] = OBJ_EVENT_GFX_GREEN_FIELD_MOVE },
+    // still FireRed's (32x32 frames with the rod / Vs. Seeker / watering can)
+    [PLAYER_AVATAR_STATE_FISHING]    = { [MALE] = OBJ_EVENT_GFX_RED_FISH, [FEMALE] = OBJ_EVENT_GFX_GREEN_FISH },
+    [PLAYER_AVATAR_STATE_VSSEEKER]   = { [MALE] = OBJ_EVENT_GFX_RED_VS_SEEKER, [FEMALE] = OBJ_EVENT_GFX_GREEN_VS_SEEKER },
+    [PLAYER_AVATAR_STATE_WATERING]   = { [MALE] = OBJ_EVENT_GFX_RED_WATERING, [FEMALE] = OBJ_EVENT_GFX_GREEN_WATERING },
 };
 
 static inline enum ObjectEventGfx GetHoennPlayerAvatarGfx(enum Gender gender)
