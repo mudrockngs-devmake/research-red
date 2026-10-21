@@ -15,7 +15,8 @@ that include them; `make` then rebuilds everything that changed.
 
 Palette slots (FireRed's layout): 1 window background, 2 text, 3 text shadow,
 4-9 coloured text (left alone), 10-15 the window frame. Battle text box: 15 the
-box, 13-14 its trim, 1/5 the text.
+box, 13-14 its trim, 10 the text and 12 its shadow (src/battle_message.c, #92;
+the original white 1 / grey 6 are also used by the action menu).
 """
 import os
 import struct
@@ -27,10 +28,13 @@ REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 # (slots 10-15: light to dark), battle box, battle trim (dark, light).
 THEMES = {
     "notebook": {
-        "about": "Field notebook: cream paper, brown ink, tan frames, a leather battle box with brass trim",
+        "about": "Field notebook: cream paper, brown ink, tan frames; the battle text box matches the dialogue box (#92)",
         "paper": "#f8f0d8", "ink": "#584030", "shadow": "#d8c8a8",
         "frame": ["#f8f0d8", "#e8d8b0", "#d0b888", "#f0e4c4", "#b09060", "#806040"],
-        "battle": "#5a4632", "trim": ["#a07838", "#d8b868"],
+        # battle message / "What will X do?" box: cream paper and brown ink
+        # like the dialogue box (was a dark leather box with white text)
+        "battle": "#f8f0d8", "trim": ["#b09060", "#d0b888"],
+        "battletext": {1: "#f8f8f8", 6: "#685870", 10: "#584030", 12: "#d8c8a8"},
         # HP boxes (healthbox.pal): paper, shading and brass instead of teal;
         # the HP bar and status colours (9-15) stay as they are
         "healthbox": {2: "#f8f0d8", 3: "#e0cfa8", 4: "#c8a868", 5: "#a08a6a", 6: "#6e5a44", 7: "#3b2f25", 8: "#5a4632"},
@@ -153,6 +157,8 @@ def apply(theme):
         c = read(path)
         c[15] = to555(t["battle"])
         c[13], c[14] = to555(t["trim"][0]), to555(t["trim"][1])
+        for slot, col in t.get("battletext", {}).items():
+            c[slot] = to555(col)
         write(path, c)
     for key, rel in EXTRA_PALETTES.items():
         if key in t:

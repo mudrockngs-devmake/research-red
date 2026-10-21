@@ -1542,10 +1542,10 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] = {
         .letterSpacing = 0,
         .lineSpacing = 2,
         .speed = 1,
-        .color.foreground = 1,
-        .color.background = 15,
-        .color.accent = 15,
-        .color.shadow = 6,
+        .color.foreground = 10, // Research Red (#92): ink and shadow get their own slots (10, 12),
+        .color.background = 15, // set by tools/research_red/ui_theme.py; slot 1 (white) is also
+        .color.accent = 15,     // used by the action menu, so it stays white
+        .color.shadow = 12,
     },
     [B_WIN_ACTION_PROMPT] = {
         .fillValue = PIXEL_FILL(0xf),
@@ -1555,10 +1555,10 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] = {
         .letterSpacing = 0,
         .lineSpacing = 2,
         .speed = 0,
-        .color.foreground = 1,
+        .color.foreground = 10, // Research Red (#92), as above
         .color.background = 15,
         .color.accent = 15,
-        .color.shadow = 6,
+        .color.shadow = 12,
     },
     [B_WIN_ACTION_MENU] = {
         .fillValue = PIXEL_FILL(0xe),
