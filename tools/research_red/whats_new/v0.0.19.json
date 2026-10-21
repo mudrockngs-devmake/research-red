@@ -1,0 +1,264 @@
+{
+ "version": "v0.0.19",
+ "intro": "v0.0.19 is the big build after the v0.0.18 playtest: everything from issues #76-#100, a new title screen, new scenes, Lab Supplies, and the Pokédex banter as a little cutscene. Start a new game. Tick each change once you've seen it, and use the notes box for anything that feels off. One choice is yours this round: portraits or full-body pictures for the banter (see \"Your pick\" at the end).",
+ "save": "Save: start a new game (the save layout changed).",
+ "sections": [
+  {
+   "title": "First impressions",
+   "items": [
+    {
+     "id": "splash-title",
+     "title": "Mareep splash and a new title screen (#12)",
+     "what": "At power-on a little Mareep walks in and sparks, then \"A fan project by MudrockNGS\". The title is notebook paper with the logo and Slowpoke in a lab coat, worn low so its face and ear show, a sleeve tucked around the front.",
+     "try": "Turn the game on and wait at the title.",
+     "shots": ["title/t003.png", "title/t007.png"]
+    },
+    {
+     "id": "slowking-welcome",
+     "title": "Slowking's notices and welcome",
+     "what": "On a new game, Slowking shows the fan-project notice, a short spoiler-free welcome to the story, and the demo notice.",
+     "try": "New Game; read each page (A turns it).",
+     "shots": ["title/t009.png", "title/t010.png", "title/t010b.png"]
+    },
+    {
+     "id": "map-popups",
+     "title": "Emerald-style map names, first-time item descriptions",
+     "what": "Map names pop up in Emerald's style. An item's description shows only the first time you find it.",
+     "try": "Walk between towns and routes; pick up an item twice.",
+     "shots": ["extras/x001.png", "extras/x002.png"]
+    }
+   ]
+  },
+  {
+   "title": "Story and scenes",
+   "items": [
+    {
+     "id": "seated",
+     "title": "Everyone sits for breakfast and tea (#84)",
+     "what": "Breakfast at home and tea at Daisy's are seated, everyone facing the right way.",
+     "try": "Play breakfast and Daisy's scene.",
+     "shots": ["daisy/t001.png", "portraits/p03.png"]
+    },
+    {
+     "id": "jenny-follows",
+     "title": "Jenny walks beside Elm (#83), Cruller joins the cast",
+     "what": "Jenny follows Elm the way Ivy follows you. Jenny's Growlithe is Cruller.",
+     "try": "Watch Elm and Jenny arrive and leave in scenes.",
+     "shots": []
+    },
+    {
+     "id": "route1",
+     "title": "Route 1 reworked (#85, #88)",
+     "what": "You walk together, there's a song, Elm's catch review is tighter, and something flies over from Viridian.",
+     "try": "Catch a few Pokémon on Route 1 before walking north with the group.",
+     "shots": ["route1/t005.png", "route1/t012.png"]
+    },
+    {
+     "id": "lab-oak",
+     "title": "The lab: Elm and Jenny take on Oak (#86)",
+     "what": "Win or lose against Elm and Jenny, they challenge Oak's two leftover starters (Oak heals them first) and win. Elm pushes his luck; Oak's Lv 50 Pidgeot and Tauros flatten them (watching is optional). Then you and Ivy may battle the starters too (optional, healed first).",
+     "try": "Play the lab scene once winning and once losing; try Yes and No on both questions.",
+     "shots": []
+    },
+    {
+     "id": "slowpoke-nap",
+     "title": "Slowpoke naps on the empty starter table",
+     "what": "Oak keeps the two starters; the lab's Slowpoke sleeps on the table from then on. Talk to it, to Oak's Pokémon, and (when Daisy visits) to Muffin.",
+     "try": "Visit the lab after the scene.",
+     "shots": []
+    },
+    {
+     "id": "forest",
+     "title": "Viridian Forest: talks and a Samurai (#9)",
+     "what": "You and Ivy talk after each Bug Catcher; a Samurai waits in the clearing.",
+     "try": "Beat the Bug Catchers; find the Samurai.",
+     "shots": ["forest_charlie/f101.png", "samurai/m101.png"]
+    },
+    {
+     "id": "brock-watch",
+     "title": "Watch Elm and Jenny take on Brock (#69)",
+     "what": "After the Pewter rematch Elm asks if you want to come. Three rounds, you and Ivy commentating.",
+     "try": "Beat Brock, do the Pewter rematch, say Yes.",
+     "shots": []
+    },
+    {
+     "id": "ambient",
+     "title": "Pokémon out in the world (#64)",
+     "what": "Pallet's Dodrio, Oak's Diglett, a Chansey beside Nurse Joy, the Forest's Pidgeot and Fearow. Talk to them.",
+     "try": "Look around Pallet, the Pokémon Centers and the Forest.",
+     "shots": ["ambient/a001.png", "ambient/a002.png", "ambient/a003.png"]
+    },
+    {
+     "id": "dialogue-polish",
+     "title": "Dialogue polish",
+     "what": "Oak's Pokémon, his Ranch Pager tutorial, the Rules call, Delia's Rest offer, Oak's rematch haiku. New: Oak's grant and Lab Supplies lines, the aide's PC topic (drafts for you to rework).",
+     "try": "Read the lab scene and talk to the aide.",
+     "shots": ["oak_mons/o002.png"]
+    }
+   ]
+  },
+  {
+   "title": "Pokédex and banter",
+   "items": [
+    {
+     "id": "banter-cutscene",
+     "title": "The banter is a little cutscene (#5, #4)",
+     "what": "After a catch (or SELECT on an entry): Ivy and you slide in, the speaker hops, the Pokémon cries and hops, its number is stamped on like an ink stamp, a pencil scribble per line, a ! ? or ♪ bubble on some lines. A: next line, B: skip.",
+     "try": "Catch something new; press SELECT on an entry you own.",
+     "shots": ["banter_looks/p_in1.png", "banter_looks/p_l2hop.png", "banter_long/krabby_q1.png", "banter_looks/p_out.png"]
+    },
+    {
+     "id": "banter-calls",
+     "title": "Elm and Jenny call in",
+     "what": "For a Pokémon in Elm's or Jenny's starter family, their video-call face pops in for those lines.",
+     "try": "Register a Pokémon from Elm's or Jenny's starter family.",
+     "shots": ["banter_family/elm_l4.png", "banter_family/jenny_l4.png"]
+    },
+    {
+     "id": "battle-portraits",
+     "title": "Your and Ivy's lines in battle (#95, #7)",
+     "what": "When you or Ivy speak in battle, your picture stands over the message box (and hops). Your side shows you and Ivy together; Elm appears in watched battles.",
+     "try": "The Route 22 double against Elm and Jenny.",
+     "shots": ["battle_lines/b001.png"]
+    },
+    {
+     "id": "dex-numbers",
+     "title": "Pokédex numbers and the Area page (#77, #20)",
+     "what": "Kanto's 151 in order, then Johto, with national numbers. The Area page matches the wild Pokémon and the time of day.",
+     "try": "Scroll the list; open Area on Pidgey.",
+     "shots": ["dex_numbers/d02.png", "dex_area/a02.png"]
+    },
+    {
+     "id": "field-guide",
+     "title": "Field Guide in the Start menu (#91)",
+     "what": "Under the Pokédex: what lives where you stand, by day and by night.",
+     "try": "Start > Guide on a route.",
+     "shots": ["guide/s003.png"]
+    }
+   ]
+  },
+  {
+   "title": "Research tools and items",
+   "items": [
+    {
+     "id": "grant",
+     "title": "The research grant: reusable things only (#96)",
+     "what": "Oak's grant is every TM and HM and the key items (Bicycle, Ranch Pager, Exp. Share, the rod...). No balls or medicine in the Bag or the PC any more.",
+     "try": "Look in your Bag after the lab.",
+     "shots": []
+    },
+    {
+     "id": "lab-supplies",
+     "title": "Lab Supplies: a free shop on every PC (#98-#100)",
+     "what": "Start > PC (or any PC) > Lab Supplies: every Poké Ball except the Master Ball, medicine and status heals, Repels, X items, held battle items and berries, Rare Candy (stops at the level cap), PP Up/Max and vitamins. Everything shows \"Free\".",
+     "try": "Take some Poké Balls and a held item.",
+     "shots": ["lab_supplies/l001.png", "lab_supplies/l003.png", "lab_supplies/l005.png", "lab_supplies/l007.png"]
+    },
+    {
+     "id": "change-ball",
+     "title": "Change a Ball (#97)",
+     "what": "The lab aide moves any party Pokémon into the Poké Ball you pick, free.",
+     "try": "Talk to the aide by the bookshelves > Change a Ball.",
+     "shots": ["lab_aide/l1003.png"]
+    },
+    {
+     "id": "start-pc",
+     "title": "The Start menu PC works properly (#79)",
+     "what": "The PC's menus show on the map, no fade to black.",
+     "try": "Start > PC.",
+     "shots": ["pc/p001.png", "pc/p002.png"]
+    },
+    {
+     "id": "rename",
+     "title": "Rename from the Summary (#71)",
+     "what": "Summary > info page > A renames; erase it all and OK to get the species name back.",
+     "try": "Rename a Pokémon, then clear its name.",
+     "shots": ["rename/n1a.png", "rename/n2b.png"]
+    }
+   ]
+  },
+  {
+   "title": "Pokémon and moves",
+   "items": [
+    {
+     "id": "starter-moves",
+     "title": "Fair starter moves (#87)",
+     "what": "All six starters begin with a Normal move, a status move and an early move of their type.",
+     "try": "Check your starter's moves after the lab.",
+     "shots": []
+    },
+    {
+     "id": "relearner",
+     "title": "Move relearner polish (#89)",
+     "what": "Normal ink, you stay in the list after teaching, and the TM list shows TM numbers.",
+     "try": "Party > Learn Moves > TM Moves; teach two.",
+     "shots": ["relearn/r003.png", "relearn/r006.png"]
+    },
+    {
+     "id": "tm-swaps",
+     "title": "19 new TMs (#90)",
+     "what": "TMs that repeated a free tutor move now teach new ones. In: TM51-65 Low Kick, Knock Off, Foul Play, Nasty Plot, Agility, Roost, Heat Wave, Mud Shot, Drill Run, Power Gem, Smart Strike, Iron Defense, Body Press, Charge Beam, Grass Knot; TM68 Fire Fang, TM75 Thunder Fang, TM76 Ice Fang, TM77 Pounce. Out (still in Learn Moves > Tutor Moves): Mega Punch, Mega Kick, Swords Dance, Body Slam, Double-Edge, Counter, Seismic Toss, Mimic, Metronome, Soft-Boiled, Dream Eater, Thunder Wave, Explosion, Rock Slide, Substitute, Fire/Thunder/Ice Punch, Icy Wind.",
+     "try": "Open the TM Case and Learn Moves > Tutor Moves.",
+     "shots": ["tms/t051.png", "tms/t065.png"]
+    }
+   ]
+  },
+  {
+   "title": "Look",
+   "items": [
+    {
+     "id": "proper-case",
+     "title": "Proper case everywhere (#11)",
+     "what": "\"Pokémon\", \"Save\", \"Pallet Town\" instead of ALL CAPS.",
+     "try": "Open menus, read signs.",
+     "shots": ["pc/p001.png"]
+    },
+    {
+     "id": "battle-boxes",
+     "title": "Battle boxes in the notebook colours (#92), the engine's type display (#78)",
+     "what": "Battle text and action boxes match the notebook look; the opponent's types display as the engine does.",
+     "try": "Any battle.",
+     "shots": ["wild/w001.png", "wild/w004.png"]
+    },
+    {
+     "id": "player-sprites",
+     "title": "Your own sprites (#93, #80, #28, #24)",
+     "what": "The female player walks as herself; your own sprite on the bike, surfing and using field moves (Ivy steps aside while you ride); the Trainer Card shows your picture.",
+     "try": "Ride the bike, surf, open the Trainer Card.",
+     "shots": ["bike/b002.png", "bike/b003.png", "trainer_card/c001.png"]
+    }
+   ]
+  },
+  {
+   "title": "Fixes",
+   "items": [
+    {
+     "id": "fixes",
+     "title": "Fixed",
+     "what": "Portraits vanishing on a message's last page (#76); the intro call keeping your name after you hang up (#81); the Move Info screen being almost black (#82); Sumac is now Sequoia (#94).",
+     "try": "Play through a few scenes; press L in battle for Move Info.",
+     "shots": ["portraits/p06.png"]
+    }
+   ]
+  },
+  {
+   "title": "Your pick: portraits or full-body?",
+   "items": [
+    {
+     "id": "pick-dex",
+     "title": "The dex banter: portraits (left) or full-body (right)",
+     "what": "Portraits are the default (Claude's pick: the faces read clearly at GBA size; the full-body pictures are about 20 pixels wide). Debug > Scripts > 13 switches the look so you can compare in game. Tell us which you prefer in the notes.",
+     "try": "Start > Debug > Scripts > 13, then replay a banter with SELECT; 13 again switches back.",
+     "shots": ["banter_looks/p_l2.png", "banter_looks/f_l2.png", "banter_female/p_l2.png", "banter_female/f_l2.png"]
+    },
+    {
+     "id": "pick-battle",
+     "title": "Battle lines: portraits (left) or full-body (right)",
+     "what": "The same switch changes the picture over the battle message box.",
+     "try": "Switch the look, then the Route 22 double.",
+     "shots": ["battle_lines/b002.png", "battle_lines_full/b002.png"]
+    }
+   ]
+  }
+ ]
+}

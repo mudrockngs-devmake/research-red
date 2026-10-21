@@ -329,8 +329,11 @@ def sc_banter_default():
             # R throws a ball; B through the messages until the new entry's
             # banter starts (B on the entry page starts it; the stamp shows),
             # or the battle asks again (it broke free): throw again
+            # the wild one at 1 HP (memory poke), so a ball usually holds
+            + ["poke {:#x}:2 1".format(T.G.sym("gBattleMons") + T.G.const("sizeof(struct BattlePokemon)")
+                                         + T.G.const("offsetof(struct BattlePokemon, hp)"))]
             + sum([["press R", "wait 30", f"until throw_{i} 4000 B {stamp_up()} || {choosing_action()}"]
-                   for i in range(6)], [])
+                   for i in range(9)], [])
             + check("banter_started", stamp_up()) + banter_shots("d", lines=2)
             + play_until("back_on_map", T.G.field_free(), 3000, key="B", every=40) + expect(party=2))
 
@@ -342,8 +345,11 @@ def stamp_up():
 def choosing_action():
     """In battle, waiting for you to pick Fight / Bag / Pokémon / Run."""
     funcs = T.G.sym("gBattlerControllerFuncs")
+    # (the pointer stays set after the battle is decided: only count it while
+    # nothing has been caught yet)
+    undecided = f"{T.G.sym('gBattleOutcome'):#x}:1 == 0"
     # several battle controllers have a static function of that name: any of them
-    return " || ".join(f"{funcs:#x}:4 == {a | 1:#x}" for a in T.G.all_symbols["HandleInputChooseAction"])
+    return " || ".join(f"{funcs:#x}:4 == {a | 1:#x} && {undecided}" for a in T.G.all_symbols["HandleInputChooseAction"])
 
 
 def battle_lines(look):
@@ -782,11 +788,13 @@ def sc_oak_mons():
     # east to the lab yard (Tauros 21,10 and Pidgeot 21,12), talk to Tauros,
     # west along the shore (Lapras 7,17, Gyarados 10,17), into the lab
     # (Pikachu, Farfetch'd, Abra, Machop; hidden until the lab scene is over).
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("RIGHT", 5) + step("DOWN", 2)
+    # (waypoints, so the wandering Pallet woman can't throw the walk off)
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + walk_via("to_tauros", (15, 8), (20, 8), (20, 10))
             + ["wait 30", "shot o001", "press RIGHT", "wait 10", "press A", "wait 60", "shot o002", "press A", "wait 60",
                "shot o003", "mash B 120", "wait 30"]
-            + step("DOWN", 5) + step("LEFT", 11) + ["wait 30", "shot o004"]
-            + step("RIGHT", 7) + step("UP", 2) + ready("lab") + ["shot o005"] + step("UP", 4) + ["wait 30", "shot o006"]
+            + walk_via("to_shore", (20, 10), (20, 15), (9, 15)) + ["wait 30", "shot o004"]
+            + walk_via("to_lab", (9, 15), (16, 15)) + step("UP", 2) + ready("lab") + ["shot o005"]
+            + step("UP", 4) + ["wait 30", "shot o006"]
             + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=3))
 
 
