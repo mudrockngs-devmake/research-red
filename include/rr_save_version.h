@@ -5,7 +5,7 @@
 // docs/SAVES.md) whenever a change makes older saves unsafe to keep playing:
 // anything that changes the size or order of the save blocks, or reuses a
 // flag/var an old save might have set. See docs/SAVES.md.
-#define RR_SAVE_VERSION 2
+#define RR_SAVE_VERSION 3
 
 void RR_CheckSaveVersion(void);
 bool32 RR_TryStartSaveVersionWarning(void);

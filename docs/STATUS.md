@@ -55,7 +55,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #90 TM swaps: 19 TMs that repeated a free tutor move replaced. Out: Mega Punch, Mega Kick, Swords Dance, Body Slam, Double-Edge, Counter, Seismic Toss, Mimic, Metronome, Soft-Boiled, Dream Eater, Thunder Wave, Explosion, Rock Slide, Substitute, Fire/Thunder/Ice Punch, Icy Wind (all still in the relearner's Tutor Moves). In: TM51-65 Low Kick, Knock Off, Foul Play, Nasty Plot, Agility, Roost, Heat Wave, Mud Shot, Drill Run, Power Gem, Smart Strike, Iron Defense, Body Press, Charge Beam, Grass Knot; TM68 Fire Fang, TM75 Thunder Fang, TM76 Ice Fang, TM77 Pounce (for the what's-new report)
 - [x] v0.0.16 placeholder lines polished: Oak's Pokémon, Oak's Pager tutorial (with a proverb), the Rules call (Jenny's professional opinion), Delia's Rest offer, Oak's rematch haiku; the aide's Field Guide and TM facts corrected
 - [x] #12 title screen (notebook paper, logo, Slowpoke in a lab coat), Mareep splash, Slowking notices; mock-ups in `E:\Workspace\romhacks\research-red\art\generated\title\` for the owner to review
-- [ ] Emerald map pop-ups, first-time item descriptions (RR_SAVE_VERSION bump)
+- [x] Emerald map pop-ups, first-time item descriptions (RR_SAVE_VERSION 3)
 - [x] Owner's 2026-10-21 ideas: grant to PC, 150 balls, more consumables, 6 battle items (#96, #98-100), Change a Ball (#97), START skips the intro call (test builds), banter forms fallback
 - [ ] Final: full smoke run, rr_check, CHANGELOG, what's-new report, CREDITS list of art used; NO install/tag
 

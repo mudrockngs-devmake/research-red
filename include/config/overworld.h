@@ -18,7 +18,7 @@
 #define OW_ITEM_DESCRIPTIONS_OFF        0   // never show descriptions
 #define OW_ITEM_DESCRIPTIONS_FIRST_TIME 1   // show first time (** SAVE-BREAKING - see struct SaveBlock3 **)
 #define OW_ITEM_DESCRIPTIONS_ALWAYS     2   // always show description
-#define OW_SHOW_ITEM_DESCRIPTIONS       OW_ITEM_DESCRIPTIONS_ALWAYS // Research Red (v0.0.17): item description on pickup (FIRST_TIME would break saves). If enabled, item descriptions/images will be shown when finding items.
+#define OW_SHOW_ITEM_DESCRIPTIONS       OW_ITEM_DESCRIPTIONS_FIRST_TIME // Research Red (v0.0.19): item description the first time you find an item (was ALWAYS; save-breaking, RR_SAVE_VERSION 3). If enabled, item descriptions/images will be shown when finding items.
 
 // These generational defines only make a distinction for Berries and the OW_PC_MOVE_ORDER
 #define GEN_6_XY GEN_6
@@ -136,6 +136,6 @@
 #define OW_FIELD_MOVES_WITHOUT_HMS  TRUE    // If TRUE, field moves can be used without having a Pokémon with the required move.
 #define OW_BATTLE_FRONTIER          FALSE    // If TRUE, enables the Battle Frontier.
 #define OW_HOF_EVENT_TICKETS        FALSE   // If TRUE, enables event tickets after hall of fame.
-#define OW_MAP_POPUP_EMERALD        FALSE   // If TRUE, emerald-style map popups are used.
+#define OW_MAP_POPUP_EMERALD        TRUE    // Research Red (v0.0.19): Emerald-style map name pop-ups. If TRUE, emerald-style map popups are used.
 
 #endif // GUARD_CONFIG_OVERWORLD_H

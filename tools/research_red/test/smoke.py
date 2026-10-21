@@ -643,6 +643,25 @@ def sc_ambient():
             + play_until("chansey_done", T.G.field_free(), 2000, key="B", every=40))
 
 
+def sc_extras():
+    # Emerald extras (v0.0.19): the first Potion you pick up shows its
+    # description (and marks the Potion as seen in the save), and walking from
+    # Pewter onto Route 2 shows the Emerald-style map name pop-up.
+    potion = T.G.const("ITEM_POTION")
+    flag_off = T.G.const("offsetof(struct SaveBlock3, itemFlags)") + potion // 8
+    seen = f"*{T.G.sym('gSaveBlock3Ptr'):#x}+{flag_off:#x}:1 & {1 << (potion % 8)}"
+    return (["load @bedroom"] + debug_script(SCRIPT_LUNCH)
+            + step("LEFT", 12) + step("UP", 3) + step("LEFT", 3) + step("UP", 2) + step("LEFT", 3) + step("UP")
+            + step("LEFT", 3) + step("UP", 17) + step("RIGHT", 8)
+            + ["press RIGHT 6", "wait 20", "press A", "wait 120", "shot x001", "press A", "wait 90", "shot x002"]
+            + play_until("potion", T.G.field_free(), 1500, key="B", every=40)
+            + check("potion_seen", seen)
+            + ["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK)
+            + step("DOWN", 9) + step("RIGHT", 4) + step("DOWN", 5) + step("DOWN", 3)
+            + ["wait 10", "shot x003", "wait 40", "shot x004"]
+            + check("on_route2", T.G.on_map("MAP_ROUTE2")))
+
+
 def sc_guide():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 4) + ["wait 60", "shot s000"]
             # Start > POKEDEX, then the Pokédex's START menu: BACK TO LIST, LIST TOP,
@@ -817,6 +836,7 @@ SCENARIOS = {
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
     "ambient": (sc_ambient, "Ambient Pokémon: Pallet's Dodrio (seen in the Pokédex), Pewter's Chansey (#64)"),
+    "extras": (sc_extras, "Emerald extras: first-time item description (Viridian Potion, memory check), Route 2 map pop-up"),
     "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1, then Start > GUIDE (#91)"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
 }

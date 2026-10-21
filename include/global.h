@@ -287,10 +287,17 @@ struct SaveBlock3
 #endif //FREE_LINK_BATTLE_RECORDS
 
     u16 rrSaveVersion; // Research Red: save layout version (src/rr_save_version.c)
-#if FNPC_ENABLE_NPC_FOLLOWERS
-    u8 unused[812 - sizeof(struct NPCFollower) - sizeof(u16)]; // Research Red: padding shrinks so SaveBlock3 stays the same size
+    // Research Red: padding shrinks so SaveBlock3 stays the same size (v0.0.19:
+    // also by the first-time item description flags)
+#if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
+#define RR_SB3_ITEM_FLAGS_SIZE ((ITEM_FLAGS_COUNT + 3) & ~3) // rounded up: the compiler aligns to 4 bytes
 #else
-    u8 unused[812 - sizeof(u16)];
+#define RR_SB3_ITEM_FLAGS_SIZE 0
+#endif
+#if FNPC_ENABLE_NPC_FOLLOWERS
+    u8 unused[812 - sizeof(struct NPCFollower) - sizeof(u16) - RR_SB3_ITEM_FLAGS_SIZE];
+#else
+    u8 unused[812 - sizeof(u16) - RR_SB3_ITEM_FLAGS_SIZE];
 #endif
 };
 
