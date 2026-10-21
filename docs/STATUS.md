@@ -3,7 +3,7 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-20 (v0.0.18 released; session wrapped up)_
+_Last updated: 2026-10-20 evening (test tools #18, playtest form in the report)_
 
 ## Current build
 - **v0.0.18** (2026-10-20): v0.0.17 + battle backgrounds per place in cozier colours (#74, `tools/research_red/battle_bg_theme.py`), the test-mode wild battle freeze fix. Installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke tests 35/35 (`test-runs/2026-10-20_0952_v0.0.18_*`). **Save: old saves work.**
@@ -14,14 +14,14 @@ _Last updated: 2026-10-20 (v0.0.18 released; session wrapped up)_
 - Last playtest archived: `test-archive/2026-10-18_v0.0.12_portraits-playtest/`.
 
 ## Waiting on the owner
-- [ ] Playtest **v0.0.18** with the three reports (v0.0.16, v0.0.17, v0.0.18) (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
+- [ ] Playtest **v0.0.18** with the three reports (v0.0.16, v0.0.17, v0.0.18); the v0.0.18 report has the new "Your playtest" form at the end. "Save my notes" files go in `E:\Workspace\romhacks\_emu\notes\` (and hand it to the v0.0.13 testers). Afterwards: `tools/research_red/rr_archive_test.sh <name>`, file issues, NOTES.md.
 - [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
 - [ ] Log in the next round's NOTES.md (`session-cost` lines since v0.0.12): 2026-10-18/19 build + hub setup $121.56 (2h36m API); `2026-10-19 03:56  $63.85  1h42m API`; `2026-10-20 04:06  $49.62  1h22m API` (dialogue pass, Step 2 menus/battles/evolution); `2026-10-20 07:18  $48.48  0h58m API  2h44m total` (this session: 100 TMs, Ranch Pager, Rest, calls, rematches, v0.0.16-18 releases, as of the wrap-up).
 - [ ] Optional: phone emulator / real hardware (#16).
 
 ## Next up: v0.0.19
 - Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
-- Test tools (#18): done this session: route planner (`tools/research_red/test/route_plan.py`), memory pokes (`poke`, `T.set_flag`/`T.clear_flag`, `FLAG_RR_NO_ENCOUNTERS`). Still open: wait-until-ready, the engine's battle tests. Then a smaller patch (#17).
+- Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
 
 ## Half-finished / open threads
 - Nothing half-done: everything is committed and pushed.
