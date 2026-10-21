@@ -52,6 +52,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #69 watch Brock (scripted scene, Yes now or later)
 - [x] #64 ambient Pokémon: Pallet Dodrio and Oak's Diglett, Chansey in the Viridian and Pewter Centers, Forest Pidgeot vs Fearow
 - [x] #89 move relearner: normal ink, stays in the list after teaching, TM numbers
+- [x] #90 TM swaps: 19 TMs that repeated a free tutor move replaced. Out: Mega Punch, Mega Kick, Swords Dance, Body Slam, Double-Edge, Counter, Seismic Toss, Mimic, Metronome, Soft-Boiled, Dream Eater, Thunder Wave, Explosion, Rock Slide, Substitute, Fire/Thunder/Ice Punch, Icy Wind (all still in the relearner's Tutor Moves). In: TM51-65 Low Kick, Knock Off, Foul Play, Nasty Plot, Agility, Roost, Heat Wave, Mud Shot, Drill Run, Power Gem, Smart Strike, Iron Defense, Body Press, Charge Beam, Grass Knot; TM68 Fire Fang, TM75 Thunder Fang, TM76 Ice Fang, TM77 Pounce (for the what's-new report)
 - [ ] v0.0.16 placeholder lines polished
 - [ ] #12 title screen, Mareep splash, Slowking disclaimer
 - [ ] Emerald map pop-ups, first-time item descriptions (RR_SAVE_VERSION bump)
