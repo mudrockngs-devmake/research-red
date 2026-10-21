@@ -3,9 +3,10 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-21 (v0.0.19 parts 1 and 2 done and tested; ready for install/tag once the owner OKs it)_
+_Last updated: 2026-10-21 (v0.0.19 released for the playtest)_
 
 ## Current build
+- **v0.0.19** (2026-10-21): parts 1 and 2 (see CHANGELOG.md). Installed as `ResearchRed_local.gba`, tagged `v0.0.19`, pre-release on GitHub. Smoke 61/61 (`test-runs/2026-10-21_0234_v0.0.19_c883da619`). What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.19\report.html`. **Save: start a new game.**
 - **v0.0.18** (2026-10-20): v0.0.17 + battle backgrounds per place in cozier colours (#74, `tools/research_red/battle_bg_theme.py`), the test-mode wild battle freeze fix. Installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke tests 35/35 (`test-runs/2026-10-20_0952_v0.0.18_*`). **Save: old saves work.**
 - **v0.0.17** (2026-10-20, pre-release): the Field notebook look (#73) + item descriptions on pickup, snappier battle text, B to RUN.
 - **v0.0.16** (2026-10-20, pre-release on GitHub): the big systems build, see [CHANGELOG.md](CHANGELOG.md).
@@ -14,7 +15,7 @@ _Last updated: 2026-10-21 (v0.0.19 parts 1 and 2 done and tested; ready for inst
 - Last playtest archived: `test-archive/2026-10-20_v0.0.18_playtest/` (owner, 9 bug cards -> issues #76-#95 + comments; NOTES.md has the session costs).
 
 ## Waiting on the owner
-- [ ] v0.0.19: OK to install, tag and release; playtest with the what's-new report (pick portraits or full-body there).
+- [ ] v0.0.19 playtest with the what's-new report (pick portraits or full-body there; Debug > Scripts > 13 switches).
 - [ ] Rework the draft lines from part 2: Oak's grant / Lab Supplies lines, the lab's Oak rounds (#86), the aide's PC topic, Slowking's pages.
 - [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
 - [ ] Optional: phone emulator / real hardware (#16) (v0.0.18 was played on Android RetroArch).
@@ -25,10 +26,10 @@ _Last updated: 2026-10-21 (v0.0.19 parts 1 and 2 done and tested; ready for inst
 - Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
 - Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
 
-## NEXT SESSION START HERE: v0.0.19 is built, waiting for the owner's OK to install and tag
+## NEXT SESSION START HERE: v0.0.19 is out for the owner's playtest
 Parts 1 and 2 are done, committed and tested (smoke 61/61, `test-runs/2026-10-21_0234_v0.0.19_c883da619`; `make check`: only the known Explosion timeout;
-rr_check clean). Not done on purpose (owner's rule): `rr_install_rom.sh`, the v0.0.19 tag, the release.
-To ship: `tools/research_red/rr_install_rom.sh`, then tag `v0.0.19` and push the tag (docs/RELEASING.md).
+rr_check clean). Installed and tagged 2026-10-21 with the owner's OK. After the playtest:
+`tools/research_red/rr_archive_test.sh <test-name>`, then turn the notes into issues.
 
 Part 2, all done (2026-10-21):
 1. Title: Slowpoke's coat lower and further back, a sleeve around the front (mock-up `art/generated/title/2b_title_screen_coat_v2.png`).
