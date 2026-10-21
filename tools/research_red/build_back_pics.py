@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+"""Research Red: the player's battle back sprites (#7).
+
+Until there are real back sprites, your side of a battle shows the player and
+Ivy together, made from their dialogue portraits (facing the camera, which the
+owner is fine with for now): Ivy a little behind on the left, the player in
+front on the right, in one 64x64 picture with 16 colours.
+
+FireRed's Red / Leaf back pics are 5 frames (the ball throw); all five get the
+same picture, so the throw is just a slide. Writes over
+  graphics/trainers/back_pics/{red,leaf}_back_pic.png and
+  graphics/trainers/palettes/{red,leaf}_back_pic.pal
+(male player -> Red's slot, female -> Leaf's).
+
+  python3 tools/research_red/build_back_pics.py [--preview OUT.png]
+"""
+import os
+import sys
+
+from PIL import Image
+
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CAST = os.path.join(REPO, "graphics/research_red/cast")
+KEY = (0, 255, 0)  # the portraits' transparent green
+FRAMES = 5
+
+
+def cutout(name, scale):
+    """A portrait with its green background made transparent, scaled."""
+    im = Image.open(os.path.join(CAST, name, "portrait.png")).convert("RGBA")
+    px = im.load()
+    for y in range(im.height):
+        for x in range(im.width):
+            r, g, b, a = px[x, y]
+            if (r, g, b) == KEY or (g > 200 and r < 60 and b < 60):
+                px[x, y] = (0, 0, 0, 0)
+    size = int(64 * scale)
+    return im.resize((size, size), Image.NEAREST)
+
+
+def duo(player):
+    canvas = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+    ivy = cutout("ivy", 0.80)        # behind, left
+    you = cutout(player, 0.86)       # in front, right
+    canvas.alpha_composite(ivy, (-4, 64 - ivy.height))
+    canvas.alpha_composite(you, (64 - you.width + 6, 64 - you.height))
+    return canvas
+
+
+def to_indexed(rgba):
+    """16 colours, index 0 transparent (FireRed's backdrop green)."""
+    opaque = Image.new("RGB", rgba.size, (0, 0, 0))
+    opaque.paste(rgba, mask=rgba.split()[3])
+    q = opaque.quantize(colors=15, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    pal = q.getpalette()[:15 * 3]
+    out = Image.new("P", rgba.size, 0)
+    src, alpha = q.load(), rgba.split()[3].load()
+    dst = out.load()
+    for y in range(rgba.height):
+        for x in range(rgba.width):
+            dst[x, y] = 0 if alpha[x, y] < 128 else src[x, y] + 1
+    out.putpalette([115, 197, 164] + pal + [0, 0, 0] * (256 - 16))
+    return out
+
+
+def write_pal(path, img):
+    p = img.getpalette()[:48]
+    lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % tuple(p[i:i + 3]) for i in range(0, 48, 3)]
+    open(path, "w", newline="\r\n").write("\n".join(lines) + "\n")
+
+
+def main():
+    previews = []
+    for player, slot in (("player_m", "red"), ("player_f", "leaf")):
+        frame = to_indexed(duo(player))
+        sheet = Image.new("P", (64, 64 * FRAMES), 0)
+        sheet.putpalette(frame.getpalette())
+        for i in range(FRAMES):
+            sheet.paste(frame, (0, 64 * i))
+        sheet.save(os.path.join(REPO, f"graphics/trainers/back_pics/{slot}_back_pic.png"))
+        write_pal(os.path.join(REPO, f"graphics/trainers/palettes/{slot}_back_pic.pal"), frame)
+        for gen in (f"graphics/trainers/back_pics/{slot}_back_pic.4bpp", f"graphics/trainers/palettes/{slot}_back_pic.gbapal"):
+            if os.path.exists(os.path.join(REPO, gen)):
+                os.remove(os.path.join(REPO, gen))  # generated: make rebuilds them
+        previews.append(frame.convert("RGB"))
+    if "--preview" in sys.argv:
+        out = sys.argv[sys.argv.index("--preview") + 1]
+        sheet = Image.new("RGB", (64 * len(previews) + 8, 64), (60, 60, 60))
+        for i, p in enumerate(previews):
+            sheet.paste(p, (i * 72, 0))
+        sheet.resize((sheet.width * 4, sheet.height * 4), Image.NEAREST).save(out)
+    print("back pics written (red = male player + Ivy, leaf = female player + Ivy)")
+
+
+if __name__ == "__main__":
+    main()

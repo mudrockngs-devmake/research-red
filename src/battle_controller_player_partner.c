@@ -37,6 +37,8 @@
 #include "test/battle.h"
 #include "test/test_runner_battle.h"
 
+u16 RR_GetWatchTrainerPic(void); // Research Red (#7, src/research_red.c)
+
 static void PlayerPartnerHandleDrawTrainerPic(enum BattlerId battler);
 static void PlayerPartnerHandleTrainerSlide(enum BattlerId battler);
 static void PlayerPartnerHandleTrainerSlideBack(enum BattlerId battler);
@@ -234,11 +236,19 @@ static void PlayerPartnerHandleDrawTrainerPic(enum BattlerId battler)
         xPos = 90;
         yPos = (8 - GetTrainerBackPicCoords(trainerPicId)->size) * 4 + 80;
     }
-    else if (IsAiVsAiBattle())
+    else if (IsAiVsAiBattle() && RR_GetWatchTrainerPic() != TRAINER_PIC_NONE)
     {
-        trainerPicId = GetTrainerPicFromId(gPartnerTrainerId);
+        // Research Red (#7): the person we're watching (e.g. Elm against Oak)
+        trainerPicId = RR_GetWatchTrainerPic();
         xPos = 60;
         yPos = 80;
+    }
+    else if (IsAiVsAiBattle())
+    {
+        // Research Red (#7): our own picture (you and Ivy), not a "?"
+        trainerPicId = GetPlayerTrainerPic(gSaveBlock2Ptr->playerGender, GAME_VERSION);
+        xPos = 80;
+        yPos = (8 - GetTrainerBackPicCoords(trainerPicId)->size) * 4 + 80;
     }
     else
     {
@@ -250,6 +260,8 @@ static void PlayerPartnerHandleDrawTrainerPic(enum BattlerId battler)
     // Use back pic only if the partner Steven or is custom.
     if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
         isFrontPic = FALSE;
+    else if (IsAiVsAiBattle() && RR_GetWatchTrainerPic() == TRAINER_PIC_NONE)
+        isFrontPic = FALSE; // Research Red (#7): our own back picture
     else
         isFrontPic = TRUE;
 
@@ -359,8 +371,10 @@ static void PlayerPartnerHandleIntroTrainerBallThrow(enum BattlerId battler)
 
     if (gPartnerTrainerId > TRAINER_PARTNER(PARTNER_NONE))
         trainerPal = GetTrainerBackPicPalette(gBattlePartners[difficulty][gPartnerTrainerId - TRAINER_PARTNER(PARTNER_NONE)].trainerPic);
+    else if (IsAiVsAiBattle() && RR_GetWatchTrainerPic() != TRAINER_PIC_NONE)
+        trainerPal = GetTrainerFrontPicPalette(RR_GetWatchTrainerPic()); // Research Red (#7)
     else if (IsAiVsAiBattle())
-        trainerPal = GetTrainerFrontPicPalette(GetTrainerPicFromId(gPartnerTrainerId));
+        trainerPal = GetTrainerBackPicPalette(GetPlayerTrainerPic(gSaveBlock2Ptr->playerGender, GAME_VERSION)); // Research Red (#7)
     else
         trainerPal = GetTrainerFrontPicPalette(GetFrontierTrainerFrontSpriteId(gPartnerTrainerId)); // 2 vs 2 multi battle in Battle Frontier, load front sprite and pal.
 

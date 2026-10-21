@@ -1267,6 +1267,9 @@ RR_Lab_EventScript_OakVsElmBattle::
 	callnative RR_ScriptBorrowRivalTeam
 	setflag FLAG_RR_AI_VS_AI
 	setflag FLAG_RR_NO_WHITEOUT
+	@ #7: Elm on your side of the screen, not a "?"
+	setvar VAR_0x8004, TRAINER_PIC_RR_ELM
+	callnative RR_ScriptSetWatchPic
 	trainerbattle_no_intro TRAINER_RR_OAK_LAB_RANCH, RR_Lab_Text_Oak_RanchDefeat
 	goto RR_Lab_EventScript_OakVsElmResult
 
@@ -1301,6 +1304,8 @@ RR_Lab_EventScript_ElmTeam5::
 	goto RR_Lab_EventScript_OakVsElmBattle
 
 RR_Lab_EventScript_OakVsElmResult::
+	setvar VAR_0x8004, 0
+	callnative RR_ScriptSetWatchPic
 	specialvar VAR_RESULT, GetBattleOutcome
 	clearflag FLAG_RR_AI_VS_AI
 	clearflag FLAG_RR_NO_WHITEOUT

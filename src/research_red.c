@@ -344,3 +344,22 @@ void RR_ScriptDebugMountBike(struct ScriptContext *ctx)
     GetOnOffBike(PLAYER_AVATAR_STATE_MACH_BIKE);
     FollowerNPC_HandleBike();
 }
+
+// ---------------------------------------------------------------------------
+// The picture on your side of a battle that plays itself (#7): who you're
+// watching, e.g. Elm while he and Jenny face Oak. Set before the battle with
+// callnative RR_ScriptSetWatchPic (VAR_0x8004 = TRAINER_PIC_*, 0 = nobody:
+// your own picture); the scene sets it back to 0 afterwards.
+// ---------------------------------------------------------------------------
+static EWRAM_DATA u16 sRRWatchPic = 0;
+
+void RR_ScriptSetWatchPic(struct ScriptContext *ctx)
+{
+    sRRWatchPic = gSpecialVar_0x8004;
+}
+
+// The front pic of whoever is being watched, or TRAINER_PIC_NONE for your own
+u16 RR_GetWatchTrainerPic(void)
+{
+    return sRRWatchPic;
+}
