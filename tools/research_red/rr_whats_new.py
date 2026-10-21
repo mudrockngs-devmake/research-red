@@ -54,6 +54,7 @@ h2 {{ margin: 36px 0 8px; font-size: 1.25rem; border-bottom: 2px solid var(--lin
 .lead {{ color: var(--muted); margin: 0 0 12px; }}
 .save {{ display:inline-block; background:var(--card); border:1px solid var(--line); border-radius:8px; padding:6px 10px; font-weight:600; }}
 .bar {{ position: sticky; top: 0; background: var(--paper); padding: 10px 0; border-bottom: 1px solid var(--line); display:flex; gap:12px; align-items:center; flex-wrap:wrap; z-index:2; }}
+.bar button + button {{ background: none; color: var(--accent); border: 1px solid var(--accent); }}
 .bar button {{ background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 8px 14px; font-weight: 600; cursor: pointer; }}
 .bar input {{ border:1px solid var(--line); border-radius:8px; padding:7px 10px; background:var(--card); color:var(--ink); }}
 .item {{ background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 14px 0; }}
@@ -85,7 +86,7 @@ textarea {{ width: calc(100% - 32px); margin: 10px 0 0 32px; min-height: 52px; b
 <p class="lead">{intro}</p>
 <p><span class="save">{save}</span></p>
 <div class="bar"><input id="who" placeholder="Your name"><span id="count"></span>
-<a href="#playtest">Your playtest</a><button id="export">Save my notes</button></div>
+<a href="#playtest">Your playtest</a><button id="export">Save my notes</button><button id="backup" title="Everything any Research Red report saved in this browser, as one file">Backup everything</button></div>
 {sections}
 {general}
 </main>
@@ -156,9 +157,30 @@ document.getElementById("export").addEventListener("click", () => {{
     out += "    How often: " + (b.again || "-") + " | How bad: " + (b.how_bad || "-")
          + (b.shot ? " | Screenshot: " + b.shot : "") + "\\n";
   }});
+  // anything saved under a name this page doesn't show (e.g. a change renamed since)
+  const shown = new Set([...document.querySelectorAll(".item")].map(i => i.dataset.id).concat(["who", "general", "bugs"]));
+  const extra = Object.keys(state).filter(k => !shown.has(k) && (state[k].notes || state[k].ok));
+  if (extra.length) {{
+    out += "\\n== Other saved notes ==\\n";
+    extra.forEach(k => {{ out += k + (state[k].ok ? " [x]" : "") + "\\n" + (state[k].notes ? indent(state[k].notes) + "\\n" : ""); }});
+  }}
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([out], {{type: "text/plain"}}));
   a.download = "research-red-{version}-notes" + (state.who ? "-" + state.who.replace(/\\W+/g, "-") : "") + ".txt";
+  a.click();
+}});
+// Backup: every report's saved answers in this browser (all versions), as JSON
+document.getElementById("backup").addEventListener("click", () => {{
+  const all = {{}};
+  try {{
+    for (let i = 0; i < localStorage.length; i++) {{
+      const k = localStorage.key(i);
+      if (k.startsWith("rr-whats-new-")) all[k] = JSON.parse(localStorage.getItem(k) || "{{}}");
+    }}
+  }} catch (e) {{ alert("This browser won't let the page read its saved notes: " + e); return; }}
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(all, null, 2)], {{type: "application/json"}}));
+  a.download = "research-red-notes-backup.json";
   a.click();
 }});
 count();
