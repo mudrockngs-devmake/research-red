@@ -191,7 +191,7 @@
     },
     {
       "local_id": "LOCALID_VIRIDIAN_OFFICER_JENNY",
-      "graphics_id": "OBJ_EVENT_GFX_RR_JENNY",
+      "graphics_id": "OBJ_EVENT_GFX_RR_OFFICER_JENNY",
       "x": 37,
       "y": 27,
       "elevation": 3,
