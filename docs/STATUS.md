@@ -3,7 +3,7 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-20 evening (test tools #18, playtest form in the report)_
+_Last updated: 2026-10-21 (v0.0.19 part 1 done and tested; part 2 planned below, start a new chat for it)_
 
 ## Current build
 - **v0.0.18** (2026-10-20): v0.0.17 + battle backgrounds per place in cozier colours (#74, `tools/research_red/battle_bg_theme.py`), the test-mode wild battle freeze fix. Installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke tests 35/35 (`test-runs/2026-10-20_0952_v0.0.18_*`). **Save: old saves work.**
@@ -22,6 +22,73 @@ _Last updated: 2026-10-20 evening (test tools #18, playtest form in the report)_
 - Owner wants all remaining demo items in v0.0.19, portraits (#76) first, using the upgraded tester. New issues from the playtest: #76-#95.
 - Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
 - Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
+
+## NEXT SESSION START HERE: v0.0.19 part 2 (owner-approved plan, 2026-10-21)
+Part 1 (everything ticked in the list below) is done, committed and tested: smoke 53/53 after the ambient
+fix, `make check` only the known Explosion timeout (the 13 AI "failures" were test wording after #11; fixed).
+Stamp is already v0.0.19 and the CHANGELOG v0.0.19 section exists (extend it). The owner will start a fresh
+save. Same rules as part 1: commit after each item, one wait, **stop before install/tag/release**.
+
+1. **Slowpoke in the lab coat** (title, `tools/research_red/build_title.py`): wrap it better, show more of the face
+   and ear (coat lower and further back, a sleeve tucked around the front). New mock-ups to `art/generated/title/`.
+2. **Slowking's welcome page** (`src/rr_title.c`), a middle page between the two notices, cozy and spoiler-free:
+   "You and Ivy, two Pokémon professors, set out across Kanto with Elm and Jenny. There's one big research paper
+   to write, and a friendly race to eight badges. Take your time: catch what you love, take notes, and enjoy the
+   road." (wrap to the window; owner liked the wording).
+3. **Nickname smoke test** (#71 feature exists: Summary > info page > A): rename, check the name in memory,
+   erase it all + OK, check it's the species name again.
+4. **Grant rework** (#96 #98 #99 #100; keep #97 Change a Ball as is):
+   - Grant gives only reusable things: all TMs/HMs and the key items (Bicycle, Ranch Pager, Exp. Share, rods...).
+   - **Lab Supplies**: a free shop in the **PC menu** (FireRed's Poké Mart screen, every price 0, no money taken):
+     every Poké Ball **except the Master Ball**, all medicine and status heals, Repels, X items, held battle items,
+     Rare Candy, PP Up/Max and vitamins (Rare Candy stops at the cap; Master Ball held back for a later reward).
+   - Undo part 1's version cleanly: no grant items in the PC, no 150 balls, pocket sizes back to FireRed's,
+     RR_SAVE_VERSION 4, SAVES.md, tests (pc_items etc.) and docs.
+   - Rewrite Oak's grant lines and the lab aide's explanations in their voices (drafts; owner reviews).
+5. **Oak lab rework** (replaces #86's "Oak steps in with Pidgeot/Tauros Lv18 and always wins"). On **both** paths:
+   - Win or lose against Elm & Jenny, they ask Oak for a match with the **two leftover starters**. Oak **heals
+     them first**. Watched (AI vs AI); **Elm & Jenny win**.
+   - Elm's over-the-top victory (style guide voice) invigorates Oak; Elm foolishly asks for another round.
+   - **Optional** "watch?" (Yes/No): Oak **heals them again**, then his own Tauros and Pidgeot at **Lv 50** (his
+     ranch/ride Pokémon, never fought again) flatten them, slapstick. Funny banter, Oak calms down, a funny moment.
+   - **Optional for the player**: you and Ivy may battle Oak's two leftover starters too; Oak **heals your team
+     first**. Never forced (no back-to-back battle without healing this early).
+   - The starter table is then **empty**; Oak keeps the two starters (they're already in his rematch team).
+     From then on **Slowpoke naps on the table** like a cozy bed; Oak doesn't mind; the Pager Pokémon (and Muffin
+     when Daisy is there) react when talked to. Leads into the later Oak + Daisy rematches.
+   - Update smoke tests (lab, lab_loss) and add one for the optional watch.
+6. **Banter cutscenes + full-body art** (#5 #4 #95):
+   - Build **both** looks behind a switch: portraits (current) and the full-body `cast/*/battle.png` (64x64) standing
+     behind the dialogue, in the dex banter (after a catch, SELECT replay) and when you/Ivy speak in battle; both
+     genders. Ship with Claude's recommendation; put portrait-vs-full-body screenshots of each place in the
+     what's-new report so the owner picks during the playtest.
+   - Cutscene feel: slide in at the start/out at the end; the speaker hops when their line starts (other dimmed);
+     the Pokémon cries and hops at the start; a soft pencil-scribble sound per line; emote bubbles (! ? ♪) on some
+     lines; Elm or Jenny appear for their family lines; the dex number stamped on like an ink stamp.
+   - Safety: no free colour/sprite slot (especially in battle) -> skip that picture; clean up on end and on B.
+   - Smoke tests with screenshots: after a catch, SELECT replay, battle dialogue, both genders, a long line, a
+     default-lines species, an Elm/Jenny family species.
+7. **GitHub front page** (README): what the game is, the spoiler-free story setup, what makes it different
+   (Ranch Pager, banter, Research Rules, evolve when you want, Lab Supplies, rematches...), screenshots. Public:
+   game only, nothing personal (see the private memories). **Show the owner the draft before pushing it.**
+8. **Save-space groundwork** (see "Capacity" below): set the unused `FREE_*` options in `include/config/save.h`
+   (Mystery Event, Mystery Gift, record-mixing hall records, union room chat, link battle records, Enigma Berry,
+   Battle Tower e-Reader, Pokémon Jump; keep Trainer Tower and Match Call for now), measure, record in SAVES.md;
+   move `sRRTMNames` (1.4 KB of permanent RAM) to the relearner's own allocation.
+9. **Final**: full smoke run, rr_check, `make check`, extend CHANGELOG (Save: new game), what's-new report v0.0.19
+   (json in `tools/research_red/whats_new/`, include the #90 TM list and the portrait/full-body comparison),
+   CREDITS, close finished issues with a note, STATUS. NO install/tag.
+
+### Capacity (measured 2026-10-21)
+| Space | Used | Notes |
+| --- | --- | --- |
+| Cartridge (ROM) | 24.6 of 32 MB | ~7 MB free; maps, scripts, text and our art are small. Biggest users are the expansion's sprites for every species |
+| Save: SaveBlock1 | 15864 of 15872 bytes | **Full.** The `FREE_*` options free ~3-4 KB of link/e-Reader/Mystery Gift data we never use |
+| Save: SaveBlock2 | 3968 of 3968 | full, engine data |
+| Save: SaveBlock3 | 950 used + 674 spare | Research Red's own save room: put new saved data here |
+| Save: PC boxes | 34144 of 35712 | 1.5 KB spare |
+| Flags / vars | 2304 / 256 | ~570 flags and ~90 vars still unused (FireRed/Emerald leftovers); keep FLAGS_VARS.md current |
+| RAM (EWRAM, permanent) | 249 of 256 KB | ~7 KB free; new screens should allocate while open, not keep permanent buffers |
 
 ## v0.0.19 run (in progress, started 2026-10-20 evening)
 Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, commit after each, keep this updated. Stop before install/tag/release.
