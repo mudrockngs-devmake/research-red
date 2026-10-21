@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_title.h" // Research Red (#12)
 
 #include "bg.h"
 #include "gpu_regs.h"
@@ -350,6 +351,10 @@ static const u32 *const sUnused_Tilemaps[] = {
 
 void CB2_InitTitleScreen(void)
 {
+    // Research Red (#12): our own title screen (src/rr_title.c)
+    SetMainCallback2(CB2_RR_InitTitleScreen);
+    return;
+
     switch (gMain.state)
     {
     default:

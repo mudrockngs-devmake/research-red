@@ -30,6 +30,7 @@ What the results mean:
 | Scenario | How it gets there |
 |---|---|
 | intro | New game, the whole call, ends in the bedroom (saved as the starting point for the rest) |
+| title | The Mareep splash (walks in, credit fades in), the title screen, then New Game: Slowking's fan-project and demo notices, then the intro call (#12). New-game tests reach the title with `boot_to_title()` |
 | intro_skip | Test builds: START during the new-game call skips it as Maple, straight to the bedroom |
 | breakfast | Walks downstairs |
 | grass | After breakfast, out of the door: the grass scene to the lab door; Jenny diagonally behind Elm, trailing him to the lab (#83) |

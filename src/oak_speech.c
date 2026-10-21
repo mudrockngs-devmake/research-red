@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_title.h" // Research Red (#12)
 #include "bg.h"
 #include "data.h"
 #include "decompress.h"
@@ -743,7 +744,7 @@ void StartNewGameScene(void)
     // Research Red: the intro is the Discord-style video call in
     // src/rr_intro_call.c; the controls guide, Pikachu intro and Oak speech
     // below are no longer used.
-    RR_StartIntroCall();
+    RR_StartNewGameNotice(); // Research Red (#12): Slowking's notices, then the call
     return;
 
     gPlttBufferUnfaded[0] = RGB_BLACK;

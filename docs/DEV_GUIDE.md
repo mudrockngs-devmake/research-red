@@ -22,6 +22,7 @@ How the project is laid out and how work moves through it.
 | Wild Pokemon | `data/research_red/encounters/<area>.txt` -> `tools/research_red/build_encounters.py`; day/night tables (`OW_TIME_OF_DAY_ENCOUNTERS`) |
 | Field Guide / Research Rules | `src/rr_field_guide.c` (Pokédex > START > FIELD GUIDE; the menu entry is in `src/pokedex_plus_hgss.c`, its words in `graphics/pokedex/hgss/tileset_menu_list.png`), `src/rr_rules.c` (Options > Research Rules, from Daisy's house on; the row is in `src/option_menu.c`) |
 | Pokedex banter | `data/research_red/dex_banter.txt` -> `tools/research_red/build_dex_banter.py`; `src/rr_dex_banter.c` (queued on new species, played back on the map) |
+| Title screen, splash, notices (#12) | `src/rr_title.c` (FireRed's `CB2_InitTitleScreen` hands over to it); picture from `tools/research_red/build_title.py` -> `graphics/research_red/title/`. The version shown comes from the stamp in `src/rr_intro_call.c` |
 | TMs | List: `include/constants/tms_hms.h` (TM51-100 are ours, #57/#90). Descriptions: `data/research_red/tm_descriptions.txt` -> `tools/research_red/build_tm_descriptions.py`. Moves the relearner teaches as tutor moves (`src/data/tutor_moves.h`) should not also be TMs |
 | Mid-battle lines | `src/data/research_red/trainer_slides.h` (adds slide types RR_TWO_DOWN / RR_FOUR_DOWN) |
 | Tools | `tools/research_red/` |

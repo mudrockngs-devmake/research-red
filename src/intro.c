@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_title.h" // Research Red (#12)
 #include "bg.h"
 #include "decompress.h"
 #include "gpu_regs.h"
@@ -986,7 +987,9 @@ static bool8 SetUpCopyrightScreen(void)
         break;
     case 142:
         ResetSerial();
-        SetMainCallback2(CB2_WaitFadeBeforeSetUpIntro);
+        // Research Red (#12): the creator splash, once per power-on
+        if (!RR_StartSplashOnce(CB2_WaitFadeBeforeSetUpIntro))
+            SetMainCallback2(CB2_WaitFadeBeforeSetUpIntro);
         break;
     }
     return TRUE;

@@ -721,6 +721,35 @@ static void CB2_SetUpCall(void)
     }
 }
 
+// #12: the second line of the version stamp ("v0.0.19 test build"), for the
+// title screen and the demo notice, so the stamp stays the one place to bump
+const u8 *RR_GetVersionLine(void)
+{
+    const u8 *str = NULL;
+    u32 i;
+
+    for (i = 0; sCallScript[i].type != STEP_END; i++)
+    {
+        if (sCallScript[i].type == STEP_LINE)
+        {
+            str = sCallScript[i].text;
+            break;
+        }
+    }
+    gStringVar3[0] = EOS;
+    if (str == NULL)
+        return gStringVar3;
+    while (*str != CHAR_NEWLINE && *str != EOS)
+        str++;
+    if (*str == CHAR_NEWLINE)
+        str++;
+    // copy up to the page break
+    for (i = 0; str[i] != EOS && str[i] != CHAR_PROMPT_CLEAR && i < 40; i++)
+        gStringVar3[i] = str[i];
+    gStringVar3[i] = EOS;
+    return gStringVar3;
+}
+
 void RR_StartIntroCall(void)
 {
     sCall = AllocZeroed(sizeof(*sCall));
