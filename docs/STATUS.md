@@ -51,7 +51,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #9 Forest exchanges + Samurai
 - [x] #69 watch Brock (scripted scene, Yes now or later)
 - [x] #64 ambient Pokémon: Pallet Dodrio and Oak's Diglett, Chansey in the Viridian and Pewter Centers, Forest Pidgeot vs Fearow
-- [ ] #89 move relearner; #90 TM swaps
+- [x] #89 move relearner: normal ink, stays in the list after teaching, TM numbers
 - [ ] v0.0.16 placeholder lines polished
 - [ ] #12 title screen, Mareep splash, Slowking disclaimer
 - [ ] Emerald map pop-ups, first-time item descriptions (RR_SAVE_VERSION bump)

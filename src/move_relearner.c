@@ -145,6 +145,11 @@ static void InitMoveRelearnerBackgroundLayers(void);
 static void CreateLearnableMovesList(void);
 static void HandleInput(void);
 static void MoveLearnerInitListMenu(void);
+
+// Research Red (#89): gSpecialVar_0x8004 is both "which Pokémon" and, on
+// the way out, "was a move learned". Staying in the list after teaching keeps
+// it as the Pokémon and remembers the answer here until we leave.
+static EWRAM_DATA bool8 sRRLearnedAny = FALSE;
 static void LoadMoveInfoUI(void);
 static void PrintMoveInfoHandleCancel_CopyToVram(void);
 static void MoveRelearnerMenu_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
@@ -601,7 +606,8 @@ static void DoMoveRelearnerMain(void)
         switch (YesNoMenuProcessInput())
         {
         case 0:
-            gSpecialVar_0x8004 = FALSE;
+            gSpecialVar_0x8004 = sRRLearnedAny; // Research Red (#89): was FALSE
+            sRRLearnedAny = FALSE;
             sMoveRelearnerStruct->state = MENU_STATE_FADE_AND_RETURN;
             break;
         case 1:
@@ -772,7 +778,29 @@ static void DoMoveRelearnerMain(void)
         if (JOY_NEW(A_BUTTON))
         {
             PlaySE(SE_SELECT);
-            sMoveRelearnerStruct->state = MENU_STATE_FADE_AND_RETURN;
+            // Research Red (#89): stay in this list to teach another (e.g. several
+            // Egg moves in a row); leave only when nothing is left to learn
+            DestroyListMenuTask(sMoveRelearnerStruct->listMenuTaskId, &sMoveRelearnerStruct->listOffset, &sMoveRelearnerStruct->listRow);
+            gSpecialVar_0x8004 = sMoveRelearnerStruct->partyMon; // back to "which Pokémon"
+            CreateLearnableMovesList();
+            if (sMoveRelearnerStruct->numMenuChoices <= 1) // only Cancel
+            {
+                gSpecialVar_0x8004 = TRUE;
+                sRRLearnedAny = FALSE;
+                sMoveRelearnerStruct->state = MENU_STATE_FADE_AND_RETURN;
+                break;
+            }
+            sRRLearnedAny = TRUE;
+            if (sMoveRelearnerStruct->listOffset + sMoveRelearnerStruct->listRow >= sMoveRelearnerStruct->numMenuChoices)
+            {
+                sMoveRelearnerStruct->listOffset = 0;
+                sMoveRelearnerStruct->listRow = 0;
+            }
+            if (sMoveRelearnerStruct->listOffset > sMoveRelearnerStruct->numMenuChoices - sMoveRelearnerStruct->numToShowAtOnce)
+                sMoveRelearnerStruct->listOffset = sMoveRelearnerStruct->numMenuChoices - sMoveRelearnerStruct->numToShowAtOnce;
+            FillWindowPixelBuffer(RELEARNER_WIN_MOVE_LIST, PIXEL_FILL(1));
+            MoveLearnerInitListMenu();
+            sMoveRelearnerStruct->state = MENU_STATE_SETUP_BATTLE_MODE;
         }
         break;
     }
@@ -806,6 +834,29 @@ static u8 LoadMoveRelearnerMovesList(const struct ListMenuItem *items, u16 numCh
     return gMultiuseListMenuTemplate.maxShowed;
 }
 
+// Research Red (#89): the TM list shows each move's TM number ("51 Dazzling
+// Gleam") in the narrow font, so it's easy to find when teaching several Pokémon
+static EWRAM_DATA u8 sRRTMNames[MAX_RELEARNER_MOVES][24] = {0};
+
+static const u8 *RR_TMListName(u32 i, enum Move move)
+{
+    enum Item item = GetTMHMItemIdFromMoveId(move);
+    u8 *str = sRRTMNames[i];
+    u8 *end = str;
+
+    if (item >= ITEM_TM01 && item < ITEM_HM01)
+        end = ConvertIntToDecimalStringN(str, item - ITEM_TM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
+    else if (item >= ITEM_HM01)
+    {
+        *end++ = CHAR_H;
+        end = ConvertIntToDecimalStringN(end, item - ITEM_HM01 + 1, STR_CONV_MODE_LEFT_ALIGN, 1);
+    }
+    if (end != str)
+        *end++ = CHAR_SPACE;
+    StringCopy(end, GetMoveName(move));
+    return str;
+}
+
 static void CreateLearnableMovesList(void)
 {
     int i;
@@ -831,13 +882,17 @@ static void CreateLearnableMovesList(void)
 
     for (i = 0; i < sMoveRelearnerStruct->numMenuChoices; i++)
     {
-        sMoveRelearnerStruct->menuItems[i].name = GetMoveName(sMoveRelearnerStruct->movesToLearn[i]);
+        if (gMoveRelearnerState == MOVE_RELEARNER_TM_MOVES) // Research Red (#89)
+            sMoveRelearnerStruct->menuItems[i].name = RR_TMListName(i, sMoveRelearnerStruct->movesToLearn[i]);
+        else
+            sMoveRelearnerStruct->menuItems[i].name = GetMoveName(sMoveRelearnerStruct->movesToLearn[i]);
         sMoveRelearnerStruct->menuItems[i].id = sMoveRelearnerStruct->movesToLearn[i];
     }
     sMoveRelearnerStruct->menuItems[i].name = gText_Cancel;
     sMoveRelearnerStruct->menuItems[i].id = LIST_CANCEL;
     sMoveRelearnerStruct->numMenuChoices++;
     sMoveRelearnerStruct->numToShowAtOnce = LoadMoveRelearnerMovesList(sMoveRelearnerStruct->menuItems, sMoveRelearnerStruct->numMenuChoices);
+    gMultiuseListMenuTemplate.fontId = (gMoveRelearnerState == MOVE_RELEARNER_TM_MOVES) ? FONT_NARROW : FONT_NORMAL; // Research Red (#89)
 }
 
 static void HandleInput(void)

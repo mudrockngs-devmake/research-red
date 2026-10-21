@@ -705,6 +705,19 @@ def sc_wild():
             # keep choosing RUN (the cursor stays on it) until the escape works
             + play_until("ran_away", T.G.field_free(), 6000, key="A", every=40))
 
+def sc_relearn():
+    # #89: Start > POKEMON > first Pokémon > Learn Moves > TM Moves: the list
+    # shows TM numbers; teach the first one (it has a free move slot), and
+    # the list stays open for the next; then back out.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(3)
+            + ["wait 90", "press A", "wait 30", "shot r001", "press DOWN", "wait 10", "press A", "wait 30", "shot r002",
+               "press DOWN", "wait 10", "press A", "wait 150", "shot r003",   # TM Moves
+               "press A", "wait 60", "shot r004", "press A", "wait 90", "shot r005",                  # teach? Yes
+               "wait 120", "press A", "wait 60", "shot r006", "wait 60", "shot r007"]                 # learned: still in the list
+            + ["press B", "wait 60", "press A", "wait 90"]                                              # Cancel, "give up?" Yes
+            + play_until("closed", T.G.field_free(), 4000, key="B", every=60))
+
+
 def sc_evolve():
     # #50: no automatic evolution; EVOLVE in the party menu when ready. Test
     # mode raises the team to Lv 30 (no evolving), so Squirtle can become
@@ -757,6 +770,7 @@ SCENARIOS = {
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),
     "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
     "wild": (sc_wild, "A wild single battle on Route 1: types while choosing a move (engine default, #78), then run away"),
+    "relearn": (sc_relearn, "Move relearner: TM list with numbers, teach one, the list stays open (#89)"),
     "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
     "pc_items": (sc_pc_items, "The research grant's supplies in the PC's item storage (#96, #99, #100)"),
     "trainer_card": (sc_trainer_card, "The Trainer Card shows your own picture (#24)"),

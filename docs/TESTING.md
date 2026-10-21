@@ -60,6 +60,7 @@ What the results mean:
 | ivy | Talk to Ivy in Pallet and on Route 1 (area lines) |
 | rename | Summary > A: rename to one letter, then to an empty name (the species name comes back) |
 | wild | Pace in Route 1 grass until a wild battle, look at the opponent's type icon, run away |
+| relearn | Move relearner: Learn Moves > TM Moves shows TM numbers; teach one, the list stays open on the same Pokémon without it; normal-ink sub-menu (#89) |
 | evolve | Test mode (Lv 30): Squirtle shows EVOLVE in the party menu; evolves into Wartortle; LEARN MOVES > LEVEL MOVES lists Squirtle's moves at any level |
 | pager_fly | Bag > Ranch Pager > Fly: the Fly map opens with no flyer in the team; Oak's Pidgeot flies to Pallet Town |
 | pager_other | Ranch Pager > Flash outside a cave (not needed), then Teleport: Yes, Oak's Abra takes you back |

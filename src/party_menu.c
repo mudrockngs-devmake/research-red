@@ -2812,7 +2812,7 @@ static u8 DisplaySelectionWindow(u8 windowType)
         if (sPartyMenuInternal->actions[i] >= CURSOR_OPTION_FIELD_MOVES)
             fontColorsId = 4;
         if (sPartyMenuInternal->actions[i] >= MENU_LEVEL_UP_MOVES && sPartyMenuInternal->actions[i] <= MENU_SUB_MOVES)
-            fontColorsId = 6;
+            fontColorsId = 3; // Research Red (#89): normal ink like the other entries (was 6, red)
 
         if (sPartyMenuInternal->actions[i] >= CURSOR_OPTION_FIELD_MOVES)
             text = gMovesInfo[gFieldMovesInfo[sPartyMenuInternal->actions[i] - CURSOR_OPTION_FIELD_MOVES].moveId].name;
