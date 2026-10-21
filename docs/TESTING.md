@@ -72,6 +72,7 @@ What the results mean:
 | brock_rematch | After Brock: into the Gym (the Camper first), Brock offers a rematch: tier menu (1 badge: Lv. 21), his team at Lv 20-21 |
 | delia_battle | After Brock: Fly to Pallet, home, Delia asks for a battle (Yes): Mimey and Gloom lead (1 badge, Lv 21) |
 | oak_rematch | After Brock: Ranch Pager > Fly to Pallet, into the lab, Oak + Daisy double (1 badge: middle-stage starters, Lv 21) |
+| trainer_card | Start > your name: the Trainer Card shows your own picture (#24) |
 | tms | After the lab: the TM Case holds all 108 TMs and HMs (memory check); one screenshot per TM51-TM100 (names fit their rows, descriptions their box) and the longest name selected |
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.

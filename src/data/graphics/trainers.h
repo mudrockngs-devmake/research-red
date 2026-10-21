@@ -6,14 +6,15 @@ static const u32 gTrainerFrontPic_None[] = INCBIN_U32("graphics/trainers/front_p
 static const u8 gTrainerBackPic_None[] = INCBIN_U8("graphics/trainers/back_pics/none.4bpp");
 static const u16 gTrainerPalette_None[] = INCBIN_U16("graphics/trainers/palettes/none.gbapal");
 
-static const u32 gTrainerFrontPic_Red[] = INCBIN_U32("graphics/trainers/front_pics/red_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_Red[] = INCBIN_U16("graphics/trainers/palettes/red.gbapal");
+// Research Red (#24): the player's own picture (Trainer Card, Hall of Fame...) instead of Red / Leaf
+static const u32 gTrainerFrontPic_Red[] = INCBIN_U32("graphics/research_red/cast/player_m/battle.4bpp.smol");
+static const u16 gTrainerPalette_Red[] = INCBIN_U16("graphics/research_red/cast/player_m/battle.gbapal");
 static const u8 gTrainerBackPic_Red[] = INCBIN_U8("graphics/trainers/back_pics/red_back_pic.4bpp");
 static const u16 gTrainerPalette_RedBackPic[] = INCBIN_U16("graphics/trainers/palettes/red_back_pic.gbapal");
 
-static const u32 gTrainerFrontPic_Leaf[] = INCBIN_U32("graphics/trainers/front_pics/leaf_front_pic.4bpp.smol");
+static const u32 gTrainerFrontPic_Leaf[] = INCBIN_U32("graphics/research_red/cast/player_f/battle.4bpp.smol"); // Research Red (#24)
 static const u8 gTrainerBackPic_Leaf[] = INCBIN_U8("graphics/trainers/back_pics/leaf_back_pic.4bpp");
-static const u16 gTrainerPalette_Leaf[] = INCBIN_U16("graphics/trainers/palettes/leaf.gbapal");
+static const u16 gTrainerPalette_Leaf[] = INCBIN_U16("graphics/research_red/cast/player_f/battle.gbapal"); // Research Red (#24)
 static const u16 gTrainerPalette_LeafBackPic[] = INCBIN_U16("graphics/trainers/palettes/leaf_back_pic.gbapal");
 
 static const u32 gTrainerFrontPic_RSBrendan[] = INCBIN_U32("graphics/trainers/front_pics/ruby_sapphire_brendan_front_pic.4bpp.smol");

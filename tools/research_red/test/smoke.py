@@ -321,6 +321,13 @@ def sc_pc_items():
             + play_until("pc_closed", T.G.field_free(), 3000, key="B", every=40))
 
 
+def sc_trainer_card():
+    # #24: Start > (your name): the Trainer Card shows your picture, not Red's
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(6)
+            + ["wait 150", "shot c001", "press A", "wait 120", "shot c002"]
+            + play_until("card_closed", T.G.field_free(), 2000, key="B", every=40))
+
+
 def sc_tms():
     # #57: the grant fills the TM Case: 8 HMs + TM01-TM100 = all 108 slots,
     # so the last slot holds something. Then look: Start > BAG (after the
@@ -699,6 +706,7 @@ SCENARIOS = {
     "wild": (sc_wild, "A wild single battle on Route 1: types while choosing a move (engine default, #78), then run away"),
     "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
     "pc_items": (sc_pc_items, "The research grant's supplies in the PC's item storage (#96, #99, #100)"),
+    "trainer_card": (sc_trainer_card, "The Trainer Card shows your own picture (#24)"),
     "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
     "pager_fly": (sc_pager_fly, "Ranch Pager > Fly: the Fly map, Oak's Pidgeot flies to Pallet (#29)"),
     "pager_other": (sc_pager_other, "Ranch Pager > Flash (not dark), then Teleport with Oak's Abra (#29)"),
