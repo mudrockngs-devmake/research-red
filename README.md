@@ -91,7 +91,7 @@ trainers, items): [docs/player/](docs/player/).
 ## A first project
 This is our first real attempt at scripting, story and dialogue writing, software
 planning and making a game. It will make mistakes, and we'll try our best to learn
-from them, stay kind and professional, and share what we learn along the way: the
+from them, we will be kind and professional, and will share what we learn along the way: the
 systems, tools and ideas that come out of it.
 
 ## Feedback
