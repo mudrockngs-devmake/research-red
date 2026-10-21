@@ -110,6 +110,14 @@ Every decision is on its issue; the character sheets are in `docs/characters/`, 
 **Shipped in v0.0.18 (2026-10-20):** battle backgrounds per place in cozier colours (#74, `tools/research_red/battle_bg_theme.py`; Viridian Forest uses the long-grass background), the test-mode wild battle freeze fix, the route planner and memory pokes for tests (#18, part).
 
 ## Next build: v0.0.19 (moved from v0.0.16-18 on 2026-10-20)
+**Owner decision (2026-10-20, after the v0.0.18 playtest): one big v0.0.19** with everything below, in this order:
+1. Quick fixes: portraits stay on the last page (#76), type display back to the engine's (#78), Start menu PC (#79), intro call name (#81), Move Info black (#82), Sumac -> Sequoia (#94), starter movesets (#87).
+2. Pokédex: national numbers (#77), Area tab (#20), banter over the dex page + replay (#5, #4), Field Guide in the Start menu (#91).
+3. Scenes: Jenny follows Elm (#83) first, then the Daisy tea scene (#84), Route 1 rework (#85), Elm's dialogue (#88), Oak steps in after a lab loss (#86), Cruller.
+4. Look: battle boxes in notebook colours (#92), proper case (#11), female overworld (#93), bike (#80), Pager/surf sprites (#28), battle back sprites (#7), portraits in battle dialogue (#95), Trainer Card (#24), Jenny (#40), portraits (#32), picnic blanket (#8).
+5. Bigger extras: landscape battle backgrounds (#74), Forest exchanges (#9), watch the Gym battles (#69), rematches (#52), ambient Pokémon (#64), move relearner (#89), TMs vs tutors (#90).
+
+Older notes for this build:
 - Battle backgrounds, round 2 (#74, optional): new art (not just colours) for places that deserve it, e.g. the lab, the sea, Brock's Gym; mock-ups first, within the palette and tile limits.
 - **Waiting on the owner:** title screen + boot splash mock-ups (#12).
 - Rematches: post-game Mega Evolutions, the other Gym leaders as their Gyms are reworked (#52); watch Elm and Jenny vs Brock (#69); dex banter cutscene and replay with field notes (#5, #4).
