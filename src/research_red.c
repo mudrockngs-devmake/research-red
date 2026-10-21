@@ -11,6 +11,7 @@
 #include "constants/region_map_sections.h"
 #include "constants/species.h"
 #include "script.h"
+#include "item.h"
 #include "bike.h"
 #include "script_movement.h"
 #include "fieldmap.h"
@@ -362,4 +363,37 @@ void RR_ScriptSetWatchPic(struct ScriptContext *ctx)
 u16 RR_GetWatchTrainerPic(void)
 {
     return sRRWatchPic;
+}
+
+// ---------------------------------------------------------------------------
+// The research grant's supplies go to the PC's item storage (#96): withdraw
+// what you want. Medicine and status items (#99), X items, and 6 of every
+// held battle item (#100). The Poké Balls (#98) and key items go to the Bag.
+// ---------------------------------------------------------------------------
+static const u16 sRRGrantToPC[][2] =
+{
+    {ITEM_POTION, 30}, {ITEM_SUPER_POTION, 30}, {ITEM_HYPER_POTION, 20}, {ITEM_MAX_POTION, 10},
+    {ITEM_FULL_RESTORE, 10}, {ITEM_REVIVE, 15}, {ITEM_MAX_REVIVE, 5}, {ITEM_SACRED_ASH, 2},
+    {ITEM_FULL_HEAL, 20}, {ITEM_ANTIDOTE, 15}, {ITEM_PARALYZE_HEAL, 15}, {ITEM_AWAKENING, 15},
+    {ITEM_BURN_HEAL, 15}, {ITEM_ICE_HEAL, 15}, {ITEM_FRESH_WATER, 20}, {ITEM_LEMONADE, 10},
+    {ITEM_MOOMOO_MILK, 10}, {ITEM_ETHER, 10}, {ITEM_MAX_ETHER, 5}, {ITEM_ELIXIR, 10},
+    {ITEM_MAX_ELIXIR, 5}, {ITEM_PP_UP, 10}, {ITEM_MAX_REPEL, 30}, {ITEM_ESCAPE_ROPE, 10},
+    {ITEM_X_ATTACK, 10}, {ITEM_X_DEFENSE, 10}, {ITEM_X_SP_ATK, 10}, {ITEM_X_SP_DEF, 10},
+    {ITEM_X_SPEED, 10}, {ITEM_X_ACCURACY, 10}, {ITEM_DIRE_HIT, 10}, {ITEM_GUARD_SPEC, 10},
+    {ITEM_LEFTOVERS, 6}, {ITEM_LIFE_ORB, 6}, {ITEM_CHOICE_BAND, 6}, {ITEM_CHOICE_SPECS, 6},
+    {ITEM_CHOICE_SCARF, 6}, {ITEM_FOCUS_SASH, 6}, {ITEM_ASSAULT_VEST, 6}, {ITEM_ROCKY_HELMET, 6},
+    {ITEM_EVIOLITE, 6}, {ITEM_EXPERT_BELT, 6}, {ITEM_LIGHT_CLAY, 6}, {ITEM_WEAKNESS_POLICY, 6},
+    {ITEM_AIR_BALLOON, 6}, {ITEM_HEAVY_DUTY_BOOTS, 6}, {ITEM_AMULET_COIN, 6}, {ITEM_LUCKY_EGG, 6},
+    {ITEM_SOOTHE_BELL, 6}, {ITEM_QUICK_CLAW, 6}, {ITEM_SCOPE_LENS, 6}, {ITEM_KINGS_ROCK, 6},
+    {ITEM_BLACK_SLUDGE, 6}, {ITEM_FLAME_ORB, 6}, {ITEM_TOXIC_ORB, 6}, {ITEM_SHELL_BELL, 6},
+    {ITEM_WIDE_LENS, 6}, {ITEM_MUSCLE_BAND, 6}, {ITEM_WISE_GLASSES, 6}, {ITEM_FOCUS_BAND, 6},
+    {ITEM_RED_CARD, 6}, {ITEM_EJECT_BUTTON, 6},
+};
+
+void RR_ScriptGrantToPC(struct ScriptContext *ctx)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sRRGrantToPC); i++)
+        AddPCItem(sRRGrantToPC[i][0], sRRGrantToPC[i][1]);
 }

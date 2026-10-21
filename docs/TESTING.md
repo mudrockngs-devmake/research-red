@@ -51,6 +51,7 @@ What the results mean:
 | bike | Debug 12: on the Bicycle with your own sprite, Ivy out of view; off again, she is back behind you (#80) |
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | pc | Debug 2, Start > PC, into Pokémon storage and back out |
+| pc_items | The research grant waits in the PC: slot 61 of item storage filled (memory), the Withdraw Item list (#96, #99, #100) |
 | guide | Route 1: Pokédex > START > FIELD GUIDE, then Start > GUIDE (#91), both over the map |
 | rules | The lunch, then Options > Research Rules: change a rule, close, the call with Elm and Jenny plays (#45); reopen and close unchanged: no call |
 | dexnav | Route 22: the 6v6, Jenny gives the DexNav, then Start > DexNav there |

@@ -22,7 +22,7 @@ Adding new flags/vars from the free list, new scenes, text, art, encounters or t
 ## Space left in the save
 | Block | Free | Notes |
 |---|---|---|
-| SaveBlock1 | about 84 bytes | after the bigger Items pocket (v0.0.10) |
+| SaveBlock1 | 8 bytes | 15864 of 15872 (test/save.c checks the size: `make check`) |
 | SaveBlock3 | its `unused[]` padding | shrink the padding when adding a field (as `rrSaveVersion` did) |
 
 ## Versions
@@ -30,3 +30,4 @@ Adding new flags/vars from the free list, new scenes, text, art, encounters or t
 |---|---|---|
 | 0 | before v0.0.14 | no version stored (these saves get the message once) |
 | 1 | v0.0.14 | version added; layout as of v0.0.10 (bigger Items pocket, follower data in SaveBlock3) |
+| 2 | v0.0.19 | pocket sizes rebalanced in the same space: PC item storage 64, Items pocket 30, Berry Pouch 19 (#96); new games only |

@@ -298,6 +298,18 @@ def sc_pc():
             + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
 
 
+def sc_pc_items():
+    # #96: the research grant's medicine and held items wait in the PC's item
+    # storage (62 kinds: slot 61 filled). Start > PC > your PC > Withdraw Item.
+    slot = T.G.const("offsetof(struct SaveBlock1, pcItems[61].itemId)")
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + check("pc_slot_61", f"{T.G._sb1(slot, 2)} != 0")
+            + start_menu_item(4) + ["wait 60", "press DOWN", "wait 10", "press A", "wait 90", "shot i001",
+                                    "press A", "wait 60", "press A", "wait 60", "shot i002",     # Item Storage
+                                    "press A", "wait 120", "shot i003", "hold DOWN 300", "wait 20", "shot i004"]  # Withdraw Item
+            + play_until("pc_closed", T.G.field_free(), 3000, key="B", every=40))
+
+
 def sc_tms():
     # #57: the grant fills the TM Case: 8 HMs + TM01-TM100 = all 108 slots,
     # so the last slot holds something. Then look: Start > BAG (after the
@@ -664,6 +676,7 @@ SCENARIOS = {
     "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
     "wild": (sc_wild, "A wild single battle on Route 1: types while choosing a move (engine default, #78), then run away"),
     "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
+    "pc_items": (sc_pc_items, "The research grant's supplies in the PC's item storage (#96, #99, #100)"),
     "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
     "pager_fly": (sc_pager_fly, "Ranch Pager > Fly: the Fly map, Oak's Pidgeot flies to Pallet (#29)"),
     "pager_other": (sc_pager_other, "Ranch Pager > Flash (not dark), then Teleport with Oak's Abra (#29)"),

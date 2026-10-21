@@ -597,84 +597,34 @@ RR_Lab_EventScript_Grant::
 @ The grant: 100 of each of 13 Poke Balls (FireRed's ball pocket holds 13 kinds),
 @ medicine, repels, TM Case and TM01-TM50.
 RR_Lab_EventScript_GiveGrant::
-	additem ITEM_POKE_BALL, 100
-	additem ITEM_GREAT_BALL, 100
-	additem ITEM_ULTRA_BALL, 100
-	additem ITEM_PREMIER_BALL, 100
-	additem ITEM_HEAL_BALL, 100
-	additem ITEM_NET_BALL, 100
-	additem ITEM_NEST_BALL, 100
-	additem ITEM_DIVE_BALL, 100
-	additem ITEM_DUSK_BALL, 100
-	additem ITEM_TIMER_BALL, 100
-	additem ITEM_QUICK_BALL, 100
-	additem ITEM_REPEAT_BALL, 100
-	additem ITEM_LUXURY_BALL, 100
-	additem ITEM_MASTER_BALL, 100
-	additem ITEM_FAST_BALL, 100
-	additem ITEM_LEVEL_BALL, 100
-	additem ITEM_LURE_BALL, 100
-	additem ITEM_HEAVY_BALL, 100
-	additem ITEM_LOVE_BALL, 100
-	additem ITEM_FRIEND_BALL, 100
-	additem ITEM_MOON_BALL, 100
-	additem ITEM_SPORT_BALL, 100
-	additem ITEM_DREAM_BALL, 100
-	additem ITEM_BEAST_BALL, 100
-	additem ITEM_SUPER_POTION, 30
-	additem ITEM_HYPER_POTION, 20
-	additem ITEM_FULL_RESTORE, 10
-	additem ITEM_REVIVE, 15
-	additem ITEM_MAX_REVIVE, 5
-	additem ITEM_FULL_HEAL, 20
-	additem ITEM_ETHER, 10
-	additem ITEM_MAX_ETHER, 5
-	additem ITEM_MAX_REPEL, 30
-	additem ITEM_ESCAPE_ROPE, 10
-	@ Research Red: medicine and battle items
-	additem ITEM_MAX_POTION, 10
-	additem ITEM_ELIXIR, 10
-	additem ITEM_MAX_ELIXIR, 5
-	additem ITEM_PP_UP, 10
-	additem ITEM_X_ATTACK, 10
-	additem ITEM_X_DEFENSE, 10
-	additem ITEM_X_SP_ATK, 10
-	additem ITEM_X_SP_DEF, 10
-	additem ITEM_X_SPEED, 10
-	additem ITEM_X_ACCURACY, 10
-	additem ITEM_DIRE_HIT, 10
-	additem ITEM_GUARD_SPEC, 10
-	@ held items (one each; Items pocket is 60 slots)
-	additem ITEM_LEFTOVERS, 1
-	additem ITEM_LIFE_ORB, 1
-	additem ITEM_CHOICE_BAND, 1
-	additem ITEM_CHOICE_SPECS, 1
-	additem ITEM_CHOICE_SCARF, 1
-	additem ITEM_FOCUS_SASH, 1
-	additem ITEM_ASSAULT_VEST, 1
-	additem ITEM_ROCKY_HELMET, 1
-	additem ITEM_EVIOLITE, 1
-	additem ITEM_EXPERT_BELT, 1
-	additem ITEM_LIGHT_CLAY, 1
-	additem ITEM_WEAKNESS_POLICY, 1
-	additem ITEM_AIR_BALLOON, 1
-	additem ITEM_HEAVY_DUTY_BOOTS, 1
-	additem ITEM_AMULET_COIN, 1
-	additem ITEM_LUCKY_EGG, 1
-	additem ITEM_SOOTHE_BELL, 1
-	additem ITEM_QUICK_CLAW, 1
-	additem ITEM_SCOPE_LENS, 1
-	additem ITEM_KINGS_ROCK, 1
-	additem ITEM_BLACK_SLUDGE, 1
-	additem ITEM_FLAME_ORB, 1
-	additem ITEM_TOXIC_ORB, 1
-	additem ITEM_SHELL_BELL, 1
-	additem ITEM_WIDE_LENS, 1
-	additem ITEM_MUSCLE_BAND, 1
-	additem ITEM_WISE_GLASSES, 1
-	additem ITEM_FOCUS_BAND, 1
-	additem ITEM_RED_CARD, 1
-	additem ITEM_EJECT_BUTTON, 1
+	@ #98: 150 of every Poké Ball, in the Bag
+	additem ITEM_POKE_BALL, 150
+	additem ITEM_GREAT_BALL, 150
+	additem ITEM_ULTRA_BALL, 150
+	additem ITEM_PREMIER_BALL, 150
+	additem ITEM_HEAL_BALL, 150
+	additem ITEM_NET_BALL, 150
+	additem ITEM_NEST_BALL, 150
+	additem ITEM_DIVE_BALL, 150
+	additem ITEM_DUSK_BALL, 150
+	additem ITEM_TIMER_BALL, 150
+	additem ITEM_QUICK_BALL, 150
+	additem ITEM_REPEAT_BALL, 150
+	additem ITEM_LUXURY_BALL, 150
+	additem ITEM_MASTER_BALL, 150
+	additem ITEM_FAST_BALL, 150
+	additem ITEM_LEVEL_BALL, 150
+	additem ITEM_LURE_BALL, 150
+	additem ITEM_HEAVY_BALL, 150
+	additem ITEM_LOVE_BALL, 150
+	additem ITEM_FRIEND_BALL, 150
+	additem ITEM_MOON_BALL, 150
+	additem ITEM_SPORT_BALL, 150
+	additem ITEM_DREAM_BALL, 150
+	additem ITEM_BEAST_BALL, 150
+	@ #96, #99, #100: medicine, X items and 6 of every held item go to the
+	@ PC's item storage (src/research_red.c, sRRGrantToPC)
+	callnative RR_ScriptGrantToPC
 	@ key items (story items like the Town Map stay in their scenes)
 	additem ITEM_EXP_SHARE, 1
 	additem ITEM_BICYCLE, 1
