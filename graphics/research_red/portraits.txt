@@ -26,3 +26,4 @@ Daisy         | cast/daisy        | pink
 Mimey         | pokemon/mr_mime   | pink
 Muffin        | pokemon/rattata   | purple
 Slowpoke      | pokemon/slowpoke  | pink
+Cruller       | pokemon/growlithe | orange

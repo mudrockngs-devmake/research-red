@@ -23,6 +23,8 @@ static const u32 sPortraitGfx_pokemon_rattata[] = INCBIN_U32("graphics/research_
 static const u16 sPortraitPal_pokemon_rattata[] = INCBIN_U16("graphics/research_red/pokemon/rattata/portrait.gbapal");
 static const u32 sPortraitGfx_pokemon_slowpoke[] = INCBIN_U32("graphics/research_red/pokemon/slowpoke/portrait.4bpp");
 static const u16 sPortraitPal_pokemon_slowpoke[] = INCBIN_U16("graphics/research_red/pokemon/slowpoke/portrait.gbapal");
+static const u32 sPortraitGfx_pokemon_growlithe[] = INCBIN_U32("graphics/research_red/pokemon/growlithe/portrait.4bpp");
+static const u16 sPortraitPal_pokemon_growlithe[] = INCBIN_U16("graphics/research_red/pokemon/growlithe/portrait.gbapal");
 static const u32 sPortraitGfx_cast_player_m[] = INCBIN_U32("graphics/research_red/cast/player_m/portrait.4bpp");
 static const u16 sPortraitPal_cast_player_m[] = INCBIN_U16("graphics/research_red/cast/player_m/portrait.gbapal");
 static const u32 sPortraitGfx_cast_player_f[] = INCBIN_U32("graphics/research_red/cast/player_f/portrait.4bpp");
@@ -38,6 +40,7 @@ static const u8 sSpeakerName_6[] = _("Daisy");
 static const u8 sSpeakerName_7[] = _("Mimey");
 static const u8 sSpeakerName_8[] = _("Muffin");
 static const u8 sSpeakerName_9[] = _("Slowpoke");
+static const u8 sSpeakerName_10[] = _("Cruller");
 
 static const struct RRSpeaker sSpeakers[] =
 {
@@ -51,4 +54,5 @@ static const struct RRSpeaker sSpeakers[] =
     { sSpeakerName_7, sPortraitGfx_pokemon_mr_mime, sPortraitPal_pokemon_mr_mime, RR_NAME_PINK, NULL, NULL, 0 },
     { sSpeakerName_8, sPortraitGfx_pokemon_rattata, sPortraitPal_pokemon_rattata, RR_NAME_PURPLE, NULL, NULL, 0 },
     { sSpeakerName_9, sPortraitGfx_pokemon_slowpoke, sPortraitPal_pokemon_slowpoke, RR_NAME_PINK, NULL, NULL, 0 },
+    { sSpeakerName_10, sPortraitGfx_pokemon_growlithe, sPortraitPal_pokemon_growlithe, RR_NAME_ORANGE, NULL, NULL, 0 },
 };

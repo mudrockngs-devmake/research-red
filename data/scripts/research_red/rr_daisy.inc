@@ -29,6 +29,20 @@ RR_Daisy_EventScript_Scene::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Jenny_ComeDown, MSGBOX_DEFAULT
 	closemessage
+	@ Cruller, Jenny's Growlithe, sits by her chair (Jenny's sheet: the name)
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+	waitmoncry
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_CrullerSits, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_Ivy_Cruller, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_Jenny_PoliceName, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_Elm_Lecture, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_Jenny_Citations, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_DAISY, Common_Movement_FacePlayer
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -140,6 +154,10 @@ RR_Daisy_EventScript_Scene::
 	playse SE_EXIT
 	delay 8
 	removeobject LOCALID_RIVALS_HOUSE_JENNY
+	@ Cruller trots after them
+	rr_walk_to LOCALID_RIVALS_HOUSE_CRULLER, 4, 8, TRUE
+	waitmovement LOCALID_RIVALS_HOUSE_CRULLER
+	removeobject LOCALID_RIVALS_HOUSE_CRULLER
 	playse SE_EXIT
 	rr_ivy_follow LOCALID_RIVALS_HOUSE_IVY
 	setvar VAR_RR_ROUTE1_CATCHES, 0
@@ -432,3 +450,38 @@ RR_Daisy_Text_Muffin::
     .string "Muffin: Rat! Tat tat!\p"
     .string "She looks extremely pleased with\n"
     .string "herself.$"
+
+@ Cruller, Jenny's Growlithe (only here during the scene)
+RR_Daisy_EventScript_Cruller::
+	lock
+	faceplayer
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+	waitmoncry
+	textcolor NPC_TEXT_COLOR_MON
+	msgbox RR_Daisy_Text_Cruller, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Daisy_Text_CrullerSits::
+    .string "Cruller, Jenny's Growlithe, sits\n"
+    .string "by her chair. Perfectly still.$"
+
+RR_Daisy_Text_Ivy_Cruller::
+    .string "Ivy: Cruller's so well behaved.\n"
+    .string "Better than some professors.$"
+
+RR_Daisy_Text_Jenny_PoliceName::
+    .string "Jenny: Police training. I wanted\n"
+    .string "to give him a proper police name.$"
+
+RR_Daisy_Text_Elm_Lecture::
+    .string "Elm: Cruller IS a proper police\n"
+    .string "name! I gave a whole lecture!$"
+
+RR_Daisy_Text_Jenny_Citations::
+    .string "Jenny: His lecture had citations.\n"
+    .string "I lost.$"
+
+RR_Daisy_Text_Cruller::
+    .string "Cruller: Woof! (He sits. Very\n"
+    .string "properly.)$"
