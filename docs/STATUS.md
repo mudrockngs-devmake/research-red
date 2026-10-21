@@ -23,6 +23,37 @@ _Last updated: 2026-10-20 evening (test tools #18, playtest form in the report)_
 - Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
 - Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
 
+## v0.0.19 run (in progress, started 2026-10-20 evening)
+Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, commit after each, keep this updated. Stop before install/tag/release.
+- [x] #76 portraits stay on the last page; starter list on the left
+- [ ] #78 type display back to the engine's
+- [ ] #79 Start menu PC
+- [ ] #81 intro call name
+- [ ] #82 Move Info black
+- [ ] #94 Sumac -> Sequoia
+- [ ] #87 starter moves
+- [ ] #77 dex numbering
+- [ ] #20 Area tab (demo areas)
+- [ ] #5 / #4 banter over the dex page, SELECT replay
+- [ ] #91 Field Guide in the Start menu
+- [ ] #83 Jenny follows Elm
+- [ ] #84 Daisy tea scene seated; breakfast seated; other positioning passes
+- [ ] #85 Route 1 rework; #88 Elm's dialogue
+- [ ] #86 Oak steps in after a lab loss
+- [ ] Cruller (Jenny's Growlithe)
+- [ ] #92 battle boxes in notebook colours; #11 proper case
+- [ ] #93 female overworld; #80 bike; #28 surf/Pager sprites
+- [ ] #7 battle back sprites + Elm/Jenny pictures; #95 portraits in battle dialogue; #24 Trainer Card
+- [ ] #40 Jenny sprites; #32 portraits; #8 picnic blanket
+- [ ] #74 landscape battle backgrounds
+- [ ] #9 Forest exchanges + Samurai; #69 watch Brock
+- [ ] #64 ambient Pokémon (demo areas)
+- [ ] #89 move relearner; #90 TM swaps
+- [ ] v0.0.16 placeholder lines polished
+- [ ] #12 title screen, Mareep splash, Slowking disclaimer
+- [ ] Emerald map pop-ups, first-time item descriptions (RR_SAVE_VERSION bump)
+- [ ] Final: full smoke run, rr_check, CHANGELOG, what's-new report, CREDITS list of art used; NO install/tag
+
 ## Half-finished / open threads
 - Nothing half-done: everything is committed and pushed.
 - Rematch rules (owner, 2026-10-20) are on #52: build on each character's existing team, separate tiers for 7 and 8 badges, a post-game tier with regional forms and exchange-program visitors (Mimey, Muffin stay home), Megas in the post-game tier (to add).
