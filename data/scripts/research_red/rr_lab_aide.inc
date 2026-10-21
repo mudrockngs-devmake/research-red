@@ -9,7 +9,7 @@ RR_Lab_EventScript_FeatureAide::
 RR_Lab_EventScript_FeatureAideMenu::
 	message RR_LabAide_Text_Which
 	waitmessage
-	dynmultichoice 16, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, RR_LabAide_Text_Pager, RR_LabAide_Text_PC, RR_LabAide_Text_DexNav, RR_LabAide_Text_Guide, RR_LabAide_Text_Rules, RR_LabAide_Text_Evolve, RR_LabAide_Text_TMs, RR_LabAide_Text_Rest, RR_LabAide_Text_Rematch, RR_LabAide_Text_Done
+	dynmultichoice 16, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, RR_LabAide_Text_Pager, RR_LabAide_Text_PC, RR_LabAide_Text_DexNav, RR_LabAide_Text_Guide, RR_LabAide_Text_Rules, RR_LabAide_Text_Evolve, RR_LabAide_Text_TMs, RR_LabAide_Text_Rest, RR_LabAide_Text_Rematch, RR_LabAide_Text_Ball, RR_LabAide_Text_Done
 	closemessage
 	switch VAR_RESULT
 	case 0, RR_Lab_EventScript_AidePager
@@ -21,6 +21,7 @@ RR_Lab_EventScript_FeatureAideMenu::
 	case 6, RR_Lab_EventScript_AideTMs
 	case 7, RR_Lab_EventScript_AideRest
 	case 8, RR_Lab_EventScript_AideRematch
+	case 9, RR_Lab_EventScript_AideBall
 	msgbox RR_LabAide_Text_Bye, MSGBOX_DEFAULT
 	release
 	end
@@ -59,6 +60,23 @@ RR_Lab_EventScript_AideRest::
 
 RR_Lab_EventScript_AideRematch::
 	msgbox RR_LabAide_Text_AboutRematch, MSGBOX_DEFAULT
+	goto RR_Lab_EventScript_FeatureAideMenu
+
+@ #97: move any party Pokémon into the Poké Ball type you like (free)
+RR_Lab_EventScript_AideBall::
+	msgbox RR_LabAide_Text_BallWhich, MSGBOX_DEFAULT
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, RR_Lab_EventScript_FeatureAideMenu
+	copyvar VAR_0x8005, VAR_0x8004
+	message RR_LabAide_Text_BallPick
+	waitmessage
+	dynmultichoice 16, 0, TRUE, 6, 0, DYN_MULTICHOICE_CB_NONE, RR_LabAide_Text_BallPoke, RR_LabAide_Text_BallGreat, RR_LabAide_Text_BallUltra, RR_LabAide_Text_BallPremier, RR_LabAide_Text_BallHeal, RR_LabAide_Text_BallNet, RR_LabAide_Text_BallNest, RR_LabAide_Text_BallDive, RR_LabAide_Text_BallDusk, RR_LabAide_Text_BallTimer, RR_LabAide_Text_BallQuick, RR_LabAide_Text_BallRepeat, RR_LabAide_Text_BallLuxury, RR_LabAide_Text_BallMaster, RR_LabAide_Text_BallFast, RR_LabAide_Text_BallLevel, RR_LabAide_Text_BallLure, RR_LabAide_Text_BallHeavy, RR_LabAide_Text_BallLove, RR_LabAide_Text_BallFriend, RR_LabAide_Text_BallMoon, RR_LabAide_Text_BallSport, RR_LabAide_Text_BallDream, RR_LabAide_Text_BallBeast
+	closemessage
+	goto_if_ge VAR_RESULT, 24, RR_Lab_EventScript_FeatureAideMenu
+	callnative RR_ScriptSetMonBall
+	playse SE_BALL
+	msgbox RR_LabAide_Text_BallDone, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_FeatureAideMenu
 
 RR_LabAide_Text_Hello:
@@ -169,3 +187,89 @@ RR_LabAide_Text_AboutRematch:
 RR_LabAide_Text_Bye:
 	.string "Aide: Good luck with the research,\n"
 	.string "Professor!$"
+
+RR_LabAide_Text_Ball:
+	.string "Change a Ball$"
+
+RR_LabAide_Text_BallWhich:
+	.string "Aide: A new Poké Ball? Sure! It's\n"
+	.string "quick and painless. Which Pokémon?$"
+
+RR_LabAide_Text_BallPick:
+	.string "Aide: And which Poké Ball?$"
+
+RR_LabAide_Text_BallDone:
+	.string "Aide: All done! {STR_VAR_1} is in\n"
+	.string "its new {STR_VAR_2}.$"
+
+RR_LabAide_Text_BallPoke:
+	.string "Poké Ball$"
+
+RR_LabAide_Text_BallGreat:
+	.string "Great Ball$"
+
+RR_LabAide_Text_BallUltra:
+	.string "Ultra Ball$"
+
+RR_LabAide_Text_BallPremier:
+	.string "Premier Ball$"
+
+RR_LabAide_Text_BallHeal:
+	.string "Heal Ball$"
+
+RR_LabAide_Text_BallNet:
+	.string "Net Ball$"
+
+RR_LabAide_Text_BallNest:
+	.string "Nest Ball$"
+
+RR_LabAide_Text_BallDive:
+	.string "Dive Ball$"
+
+RR_LabAide_Text_BallDusk:
+	.string "Dusk Ball$"
+
+RR_LabAide_Text_BallTimer:
+	.string "Timer Ball$"
+
+RR_LabAide_Text_BallQuick:
+	.string "Quick Ball$"
+
+RR_LabAide_Text_BallRepeat:
+	.string "Repeat Ball$"
+
+RR_LabAide_Text_BallLuxury:
+	.string "Luxury Ball$"
+
+RR_LabAide_Text_BallMaster:
+	.string "Master Ball$"
+
+RR_LabAide_Text_BallFast:
+	.string "Fast Ball$"
+
+RR_LabAide_Text_BallLevel:
+	.string "Level Ball$"
+
+RR_LabAide_Text_BallLure:
+	.string "Lure Ball$"
+
+RR_LabAide_Text_BallHeavy:
+	.string "Heavy Ball$"
+
+RR_LabAide_Text_BallLove:
+	.string "Love Ball$"
+
+RR_LabAide_Text_BallFriend:
+	.string "Friend Ball$"
+
+RR_LabAide_Text_BallMoon:
+	.string "Moon Ball$"
+
+RR_LabAide_Text_BallSport:
+	.string "Sport Ball$"
+
+RR_LabAide_Text_BallDream:
+	.string "Dream Ball$"
+
+RR_LabAide_Text_BallBeast:
+	.string "Beast Ball$"

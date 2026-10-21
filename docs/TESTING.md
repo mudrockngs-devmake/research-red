@@ -63,7 +63,7 @@ What the results mean:
 | pager_other | Ranch Pager > Flash outside a cave (not needed), then Teleport: Yes, Oak's Abra takes you back |
 | pager_select | Register the Ranch Pager in the Bag; SELECT on the map opens its menu, B closes it |
 | pager_dig | After Brock, inside Diglett's Cave: Ranch Pager > Dig > Yes, Oak's Diglett digs you out to Route 2 |
-| lab_aide | After the lab: walk into the lab, the aide's topic menu, the Ranch Pager explanation, close |
+| lab_aide | After the lab: walk into the lab, the aide's topic menu, the Ranch Pager explanation, close; then Change a Ball: your first Pokémon into a Great Ball (#97) |
 | forest | After Brock: walk (no wild encounters on the way) into Viridian Forest, wander until a battle: the forest background |
 | oak_mons | Oak's Pager Pokémon: talk to Tauros in the lab yard, pass Lapras and Gyarados on the shore, Pikachu, Farfetch'd, Abra and Machop in the lab |
 | rest | At home: Delia > Rest till night (clock 20:00, Start menu "Night 20:00"), then Rest till morning (7:00, "Day 7:00") |

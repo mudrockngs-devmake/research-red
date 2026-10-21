@@ -492,7 +492,17 @@ def sc_lab_aide():
                                                "press A", "wait 90", "shot l003"]    # Ranch Pager
             + advance(4, key="A", every=90, prefix="l1")
             + ["shot l004", "press B", "wait 60", "shot l005"]
-            + play_until("aide_done", T.G.field_free(), 2000, key="B", every=60))
+            + play_until("aide_done", T.G.field_free(), 2000, key="B", every=60)
+            # #97: Change a Ball (10th topic): your first Pokémon into a Great Ball (2nd)
+            + ["press LEFT 6", "wait 20", "press A", "wait 120", "press A", "wait 90", "press A", "wait 150", "shot l199"]  # greeting: 2 pages
+            + ["press DOWN", "wait 10"] * 9 + ["shot l200", "press A", "wait 90",   # "Which Pokémon?"
+                                              "press A", "wait 120", "shot l201",     # the party screen
+                                              "press A", "wait 150", "shot l202",     # first Pokémon -> the ball list
+                                              "press DOWN", "wait 10", "press A", "wait 90", "shot l203",   # Great Ball: "All done!"
+                                              "press A", "wait 150", "shot l204"]
+            # back in the aide's menu: "That's all" is the 11th topic (B doesn't close it)
+            + ["press DOWN", "wait 10"] * 10 + ["press A", "wait 60"]
+            + play_until("aide_done_2", T.G.field_free(), 3000, key="B", every=60))
 
 
 def sc_forest():

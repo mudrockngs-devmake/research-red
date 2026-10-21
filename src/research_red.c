@@ -11,6 +11,8 @@
 #include "constants/region_map_sections.h"
 #include "constants/species.h"
 #include "script.h"
+#include "pokeball.h"
+#include "party_menu.h"
 #include "item.h"
 #include "bike.h"
 #include "script_movement.h"
@@ -396,4 +398,46 @@ void RR_ScriptGrantToPC(struct ScriptContext *ctx)
 
     for (i = 0; i < ARRAY_COUNT(sRRGrantToPC); i++)
         AddPCItem(sRRGrantToPC[i][0], sRRGrantToPC[i][1]);
+}
+
+// Lab aide (#97): put party Pokémon VAR_0x8005 into ball VAR_RESULT of the
+// aide's list (same order as RR_Lab_EventScript_AideBall). STR_VAR_1 = its
+// name, STR_VAR_2 = the ball's.
+static const u16 sRRAideBalls[] =
+{
+    ITEM_POKE_BALL,
+    ITEM_GREAT_BALL,
+    ITEM_ULTRA_BALL,
+    ITEM_PREMIER_BALL,
+    ITEM_HEAL_BALL,
+    ITEM_NET_BALL,
+    ITEM_NEST_BALL,
+    ITEM_DIVE_BALL,
+    ITEM_DUSK_BALL,
+    ITEM_TIMER_BALL,
+    ITEM_QUICK_BALL,
+    ITEM_REPEAT_BALL,
+    ITEM_LUXURY_BALL,
+    ITEM_MASTER_BALL,
+    ITEM_FAST_BALL,
+    ITEM_LEVEL_BALL,
+    ITEM_LURE_BALL,
+    ITEM_HEAVY_BALL,
+    ITEM_LOVE_BALL,
+    ITEM_FRIEND_BALL,
+    ITEM_MOON_BALL,
+    ITEM_SPORT_BALL,
+    ITEM_DREAM_BALL,
+    ITEM_BEAST_BALL,
+};
+
+void RR_ScriptSetMonBall(struct ScriptContext *ctx)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8005 % PARTY_SIZE];
+    u16 item = sRRAideBalls[gSpecialVar_Result % ARRAY_COUNT(sRRAideBalls)];
+    u32 ball = ItemIdToBallId(item);
+
+    SetMonData(mon, MON_DATA_POKEBALL, &ball);
+    GetMonNickname(mon, gStringVar1);
+    CopyItemName(item, gStringVar2);
 }
