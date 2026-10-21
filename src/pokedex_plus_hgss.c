@@ -26,6 +26,8 @@
 #include "pokedex_emerald.h"
 #include "pokedex_plus_hgss.h"
 #include "rr_field_guide.h" // Research Red
+#include "rr_dex_banter.h" // Research Red
+#include "rr_portrait.h" // Research Red
 #include "pokedex_emerald_area_screen.h"
 #include "pokedex_emerald_cry_screen.h"
 #include "pokemon_icon.h"
@@ -502,6 +504,10 @@ static bool8 IsInfoScreenScrolling(u8);
 static u8 StartInfoScreenScroll(struct PokedexListItem *, u8);
 static void Task_LoadInfoScreen(u8);
 static void Task_HandleInfoScreenInput(u8);
+static void Task_RR_InfoScreenBanter(u8); // Research Red (#4)
+static bool32 RR_StartDexBanterOverlay(enum Species species, u8 monSpriteId); // Research Red (#5, #4)
+static bool32 RR_DexBanterOverlayNextLine(void);
+static void RR_EndDexBanterOverlay(u8 monSpriteId, bool32 restoreMon);
 static void Task_SwitchScreensFromInfoScreen(u8);
 static void Task_LoadInfoScreenWaitForFade(u8);
 static void Task_ExitInfoScreen(u8);
@@ -575,6 +581,7 @@ static void PrintStatsScreen_Moves_BottomText(u8 taskId);
 static void PrintStatsScreen_Moves_Bottom(u8 taskId);
 static void PrintStatsScreen_Left(u8 taskId);
 static void PrintStatsScreen_Abilities(u8 taskId);
+static void PrintInfoScreenText(const u8 *str, u8 left, u8 top); // Research Red: used before its definition
 static void PrintInfoScreenTextWhite(const u8* str, u8 left, u8 top);
 static void PrintInfoScreenTextSmall(const u8* str, u8 fontId, u8 left, u8 top);
 static void PrintInfoScreenTextSmallWhite(const u8* str, u8 left, u8 top);
@@ -3913,6 +3920,13 @@ static void Task_HandleInfoScreenInput(u8 taskId)
         PlaySE(SE_PC_OFF);
         return;
     }
+    // Research Red (#4): SELECT replays the banter for a caught species
+    if (JOY_NEW(SELECT_BUTTON) && sPokedexListItem->owned
+     && RR_StartDexBanterOverlay(NationalPokedexNumToSpeciesHGSS(sPokedexListItem->dexNum), gTasks[taskId].tMonSpriteId))
+    {
+        gTasks[taskId].func = Task_RR_InfoScreenBanter;
+        return;
+    }
 
     if ((JOY_NEW(DPAD_RIGHT) || (JOY_NEW(R_BUTTON) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR)))
     {
@@ -3923,6 +3937,18 @@ static void Task_HandleInfoScreenInput(u8 taskId)
         PlaySE(SE_PIN);
     }
 
+}
+
+// Research Red (#4): the replayed banter; at the end the entry comes back
+static void Task_RR_InfoScreenBanter(u8 taskId)
+{
+    if (!JOY_NEW(A_BUTTON | B_BUTTON) || RR_DexBanterOverlayNextLine())
+        return;
+    RR_EndDexBanterOverlay(gTasks[taskId].tMonSpriteId, TRUE);
+    FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
+    PrintMonInfo(sPokedexListItem->dexNum, sPokedexView->dexMode == DEX_MODE_KANTO ? FALSE : TRUE, sPokedexListItem->owned, 0);
+    CopyWindowToVram(WIN_INFO, COPYWIN_GFX);
+    gTasks[taskId].func = Task_HandleInfoScreenInput;
 }
 
 static void Task_SwitchScreensFromInfoScreen(u8 taskId)
@@ -4095,6 +4121,96 @@ static void UNUSED HighlightScreenSelectBarItem(u8 selectedScreen, u16 unused)
     CopyBgTilemapBufferToVram(1);
 }
 
+// ---------------------------------------------------------------------------
+// Research Red (#5, #4): the player's and Ivy's banter over an entry page.
+// Ivy's portrait on the left, the player's on the right (facing each other),
+// the Pokémon moves to the middle, and each line replaces the entry text; the
+// one not speaking is dimmed. After a catch it plays when you press A on the
+// new entry; SELECT on an entry replays it. Lines: src/rr_dex_banter.c.
+// ---------------------------------------------------------------------------
+#define RR_BANTER_TEXT_TOP 91
+
+static EWRAM_DATA u8 sRRBanterPortraitIds[2] = {0};
+static EWRAM_DATA s16 sRRBanterMonOldX = 0;
+
+static void RR_SetTypeIconsInvisible(bool32 invisible)
+{
+    u32 i;
+
+    for (i = 0; i < 2; i++)
+    {
+        if (sPokedexView->typeIconSpriteIds[i] < MAX_SPRITES)
+            gSprites[sPokedexView->typeIconSpriteIds[i]].invisible = invisible;
+    }
+}
+
+static void RR_PrintBanterLine(const u8 *line)
+{
+    u8 *c;
+
+    StringExpandPlaceholders(gStringVar4, line);
+    // one page in the entry box: \l and \p become plain line breaks
+    for (c = gStringVar4; *c != EOS; c++)
+    {
+        if (*c == CHAR_PROMPT_SCROLL || *c == CHAR_PROMPT_CLEAR)
+            *c = CHAR_NEWLINE;
+    }
+    FillWindowPixelRect(WIN_INFO, PIXEL_FILL(0), 0, RR_BANTER_TEXT_TOP, 240, 160 - RR_BANTER_TEXT_TOP);
+    PrintInfoScreenText(gStringVar4, 12, RR_BANTER_TEXT_TOP + 2);
+    CopyWindowToVram(WIN_INFO, COPYWIN_GFX);
+    switch (RR_GetLineSpeaker(gStringVar4))
+    {
+    case RR_LINE_IVY:
+        RR_SetStandalonePortraitDim(0, FALSE);
+        RR_SetStandalonePortraitDim(1, TRUE);
+        break;
+    case RR_LINE_PLAYER:
+        RR_SetStandalonePortraitDim(0, TRUE);
+        RR_SetStandalonePortraitDim(1, FALSE);
+        break;
+    default:
+        RR_SetStandalonePortraitDim(0, TRUE);
+        RR_SetStandalonePortraitDim(1, TRUE);
+        break;
+    }
+}
+
+// FALSE when the lines are done
+static bool32 RR_DexBanterOverlayNextLine(void)
+{
+    const u8 *line = RR_DexBanterNext();
+
+    if (line == NULL)
+        return FALSE;
+    RR_PrintBanterLine(line);
+    PlaySE(SE_SELECT);
+    return TRUE;
+}
+
+static bool32 RR_StartDexBanterOverlay(enum Species species, u8 monSpriteId)
+{
+    if (!RR_DexBanterAvailable())
+        return FALSE;
+    RR_DexBanterBegin(species);
+    sRRBanterPortraitIds[0] = RR_CreateStandalonePortrait(0, RR_LINE_IVY, 40, 50, FALSE);
+    sRRBanterPortraitIds[1] = RR_CreateStandalonePortrait(1, RR_LINE_PLAYER, 200, 50, TRUE);
+    sRRBanterMonOldX = gSprites[monSpriteId].x;
+    gSprites[monSpriteId].x = 120;
+    RR_SetTypeIconsInvisible(TRUE); // they sit under the player's portrait
+    return RR_DexBanterOverlayNextLine();
+}
+
+static void RR_EndDexBanterOverlay(u8 monSpriteId, bool32 restoreMon)
+{
+    RR_DestroyStandalonePortrait(0, sRRBanterPortraitIds[0]);
+    RR_DestroyStandalonePortrait(1, sRRBanterPortraitIds[1]);
+    if (restoreMon)
+    {
+        gSprites[monSpriteId].x = sRRBanterMonOldX;
+        RR_SetTypeIconsInvisible(FALSE);
+    }
+}
+
 //************************************
 //*                                  *
 //*        CAUGHT MON                *
@@ -4203,9 +4319,25 @@ void Task_DisplayCaughtMonDexPageHGSS(u8 taskId)
     }
 }
 
+// Research Red (#5): the banter over the new entry, one line per A, then on
+static void Task_RR_CaughtMonBanter(u8 taskId)
+{
+    if (!JOY_NEW(A_BUTTON | B_BUTTON) || RR_DexBanterOverlayNextLine())
+        return;
+    RR_EndDexBanterOverlay(gTasks[taskId].tMonSpriteId, FALSE);
+    RR_DexBanterForget(gTasks[taskId].tSpecies); // played here, not again on the map
+    BeginNormalPaletteFade(PALETTES_BG, 0, 0, 16, RGB_BLACK);
+    gSprites[gTasks[taskId].tMonSpriteId].callback = SpriteCB_SlideCaughtMonToCenter;
+    gTasks[taskId].func = Task_ExitCaughtMonPage;
+}
+
 static void Task_HandleCaughtMonPageInput(u8 taskId)
 {
-    if (JOY_NEW(A_BUTTON | B_BUTTON))
+    if (JOY_NEW(A_BUTTON | B_BUTTON) && RR_StartDexBanterOverlay(gTasks[taskId].tSpecies, gTasks[taskId].tMonSpriteId))
+    {
+        gTasks[taskId].func = Task_RR_CaughtMonBanter; // Research Red (#5)
+    }
+    else if (JOY_NEW(A_BUTTON | B_BUTTON))
     {
         BeginNormalPaletteFade(PALETTES_BG, 0, 0, 16, RGB_BLACK);
         SetSpriteInvisibility(0, TRUE);

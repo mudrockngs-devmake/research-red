@@ -35,7 +35,7 @@ STORY = "VAR_0x40FE"  # story progress, see CLAUDE.md
 
 # Debug menu (Start > DEBUG > Scripts): see data/scripts/debug.inc
 SCRIPT_LAB, SCRIPT_AFTER_LAB, SCRIPT_ROUTE1, SCRIPT_ROUTE22, SCRIPT_TEAM, \
-    SCRIPT_LUNCH, SCRIPT_BANTER, SCRIPT_ROUTE1_ELM, SCRIPT_TEST_MODE, SCRIPT_AFTER_BROCK = range(1, 11)
+    SCRIPT_LUNCH, SCRIPT_BANTER, SCRIPT_ROUTE1_ELM, SCRIPT_TEST_MODE, SCRIPT_AFTER_BROCK, SCRIPT_CATCH = range(1, 12)
 
 
 def debug_script(n):
@@ -137,6 +137,14 @@ def sc_banter():
             + advance(26, every=50) + expect(story=3, party=1))
 
 
+def sc_dex_replay():
+    # #4: SELECT on Bulbasaur's entry replays its banter; then the entry is back
+    lines = ["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(1)
+    lines += ["wait 90", "press A", "wait 120", "shot r00", "press SELECT", "wait 40", "shot r01"]
+    for i in range(2, 6):
+        lines += ["press A", "wait 40", f"shot r{i:02d}"]
+    return lines + play_until("dex_closed", T.G.field_free(), 2000, key="B", every=30)
+
 def sc_pokedex():
     # Start menu after the lab: DEBUG, POKEDEX. Open Bulbasaur and flip through
     # every page both ways (the Evo page used to crash, #19), then an unseen entry.
@@ -176,6 +184,20 @@ def sc_dex_area():
                                     "press DOWN", "wait 60", "shot a03"]
             + play_until("dex_closed", T.G.field_free(), 2000, key="B", every=30))
 
+
+def sc_catch():
+    # #5: after a catch, the banter plays over the new Pokédex entry (Ivy and
+    # the player facing each other), then the nickname question; nothing is
+    # left to play on the map afterwards. Debug 11: Poké Balls, wild Pidgey;
+    # R throws the last used ball (a Poké Ball): throw until it's caught.
+    throws = []
+    for i in range(5):      # throw, then B through the messages (and, once caught, the banter)
+        throws += ["press R", "wait 30"] + sum([["press B", "wait 70", f"shot c{i}{j:02d}"] for j in range(10)], [])
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + debug_script(SCRIPT_CATCH)
+            + play_until("battle", T.G.in_battle(), 2000, key="B", every=60)
+            + ["wait 300", "shot c001"] + throws
+            + play_until("back_on_map", T.G.field_free(), 3000, key="B", every=60)
+            + ["wait 120"] + check("no_map_banter", T.G.field_free()) + expect(party=2))
 
 def sc_pewter():
     # After Brock: Elm and Jenny's rematch outside the Pokemon Center (#10).
@@ -582,6 +604,8 @@ SCENARIOS = {
     "route22": (sc_route22, "Route 22: the 6v6 double (test mode)"),
     "lunch": (sc_lunch, "Viridian lunch by the Pokémon Center, Officer Jenny"),
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
+    "catch": (sc_catch, "A catch: the banter over the new Pokédex entry, then the nickname (#5)"),
+    "dex_replay": (sc_dex_replay, "Pokédex: SELECT on an entry replays its banter (#4)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
     "dex_area": (sc_dex_area, "Pokédex Area page: Magikarp in Pallet's sea by day and evening (#20)"),
     "dex_numbers": (sc_dex_numbers, "Pokédex list: the 151 in order, then Johto by national number (#77)"),

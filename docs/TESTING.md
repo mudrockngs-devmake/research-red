@@ -39,7 +39,9 @@ What the results mean:
 | route22 | Debug 4 + test mode, the 6v6 double and its banter |
 | lunch | Debug 6, talks to Elm by the Pokémon Center: the lunch and Officer Jenny |
 | banter | Debug 2 + 7, the Pokédex banter preview |
+| catch | Debug 11 (Poké Balls, wild Pidgey): throw until caught; the banter plays over the new entry, then the nickname; nothing replays on the map (#5) |
 | pokedex | Debug 2, Start > Pokédex, every page of Bulbasaur both ways (the Evo page crashed before v0.0.15) |
+| dex_replay | SELECT on Bulbasaur's entry replays the banter with both portraits; the entry comes back (#4) |
 | dex_numbers | Marks Magikarp, Cyndaquil, Totodile caught (memory), scrolls the Kanto list to its end: 155 Cyndaquil, 158 Totodile (#77) |
 | dex_area | Magikarp caught (memory): its Area page by day, evening, night (#20) |
 | pewter | Test mode + debug 10, into the Pewter Pokémon Center: Elm and Jenny's rematch (story 8) |

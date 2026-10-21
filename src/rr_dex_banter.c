@@ -1,9 +1,11 @@
 // Research Red: Pokédex banter.
 //
-// When a new species is registered as caught (a catch, or an evolution into
-// something new), it's queued here. Once you're back on the map with control,
-// RR_EventScript_DexBanter plays the player's and Ivy's lines about it, one
-// message per line so the portraits switch with the speaker:
+// After a catch, the lines play over the new Pokédex entry page, with Ivy's
+// and the player's portraits facing each other (pokedex_plus_hgss.c, #5);
+// SELECT on an entry replays them (#4). A new species from evolving (no entry
+// page) is queued instead, and once you're back on the map with control,
+// RR_EventScript_DexBanter plays the lines, one message per line so the
+// portrait follows the speaker. For each species:
 //   1. the species' own lines (or a random [DEFAULT] pair)
 //   2. [ELM FAMILY] / [JENNY FAMILY] lines if it shares a family with Elm's or
 //      Jenny's lab starter
@@ -52,6 +54,7 @@ static EWRAM_DATA u8 sQueueCount = 0;
 static EWRAM_DATA u8 sStage = 0;
 static EWRAM_DATA u8 sLine = 0;
 static EWRAM_DATA u8 sDefaultPair = 0;
+static EWRAM_DATA u16 sCurSpecies = 0;   // the species whose lines are playing
 
 void RR_DexBanterQueue(u16 species)
 {
@@ -72,11 +75,39 @@ bool32 RR_TryStartDexBanter(void)
     // Ivy travels with you from the lab on (story progress 3+)
     if (sQueueCount == 0 || VarGet(VAR_0x40FE) < 3)
         return FALSE;
+    RR_DexBanterBegin(sQueue[0]);
+    ScriptContext_SetupScript(RR_EventScript_DexBanter);
+    return TRUE;
+}
+
+// Ivy is with you (story progress 3+), so there's someone to banter with
+bool32 RR_DexBanterAvailable(void)
+{
+    return VarGet(VAR_0x40FE) >= 3;
+}
+
+void RR_DexBanterBegin(u16 species)
+{
+    sCurSpecies = species;
     sStage = STAGE_SPECIES;
     sLine = 0;
     sDefaultPair = Random() % (ARRAY_COUNT(sDexBanter_Default) / 2);
-    ScriptContext_SetupScript(RR_EventScript_DexBanter);
-    return TRUE;
+}
+
+// Drop a species from the map queue (its lines already played over the dex page)
+void RR_DexBanterForget(u16 species)
+{
+    u32 i, j;
+
+    for (i = 0; i < sQueueCount; i++)
+    {
+        if (sQueue[i] != species)
+            continue;
+        for (j = i + 1; j < sQueueCount; j++)
+            sQueue[j - 1] = sQueue[j];
+        sQueueCount--;
+        return;
+    }
 }
 
 static const u8 *const *GetSpeciesLines(u16 species)
@@ -114,14 +145,13 @@ static bool32 InStarterFamily(u16 species, u16 starter)
     return FALSE;
 }
 
-// callnative: puts the next line in gStringVar1 (VAR_RESULT TRUE), or finishes
-// this species (VAR_RESULT FALSE)
-void RR_ScriptDexBanterNextLine(struct ScriptContext *ctx)
+// The next line for sCurSpecies (placeholders not yet expanded: {PLAYER},
+// STR_VAR_2 = the rival's starter, STR_VAR_3 = the species), or NULL when done
+const u8 *RR_DexBanterNext(void)
 {
-    u16 species = sQueue[0];
+    u16 species = sCurSpecies;
     const u8 *line = NULL;
     const u8 *const *lines;
-    u32 i;
 
     StringCopy(gStringVar3, GetSpeciesName(species));
     while (line == NULL && sStage != STAGE_DONE)
@@ -155,17 +185,24 @@ void RR_ScriptDexBanterNextLine(struct ScriptContext *ctx)
     }
 
     if (line != NULL)
+        sLine++;
+    return line;
+}
+
+// callnative: puts the next line in gStringVar1 (VAR_RESULT TRUE), or finishes
+// this species (VAR_RESULT FALSE)
+void RR_ScriptDexBanterNextLine(struct ScriptContext *ctx)
+{
+    const u8 *line = RR_DexBanterNext();
+
+    if (line != NULL)
     {
         StringCopy(gStringVar1, line);
-        sLine++;
         gSpecialVar_Result = TRUE;
         return;
     }
-
     // This species is done: drop it from the queue
-    for (i = 1; i < sQueueCount; i++)
-        sQueue[i - 1] = sQueue[i];
-    sQueueCount--;
+    RR_DexBanterForget(sCurSpecies);
     gSpecialVar_Result = FALSE;
 }
 

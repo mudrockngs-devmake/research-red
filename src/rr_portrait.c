@@ -25,6 +25,8 @@
 #include "text.h"
 #include "trig.h"
 #include "window.h"
+#include "palette.h"
+#include "util.h"
 #include "event_object_movement.h"
 #include "constants/flags.h"
 
@@ -385,4 +387,132 @@ void RR_PortraitOnMessage(const u8 *text)
 void RR_ScriptPortraitHide(struct ScriptContext *ctx)
 {
     RR_PortraitHide();
+}
+
+// ---------------------------------------------------------------------------
+// Standalone portraits for other screens (the Pokédex banter, #5): no name
+// plate, no box tracking. Up to two at once, each with its own tile/palette tag.
+// ---------------------------------------------------------------------------
+#define TAG_RR_STANDALONE 0x5A12   // + 0 or 1
+
+static EWRAM_DATA const u16 *sStandalonePal[2] = {NULL};
+
+static void SpriteCB_StandalonePortrait(struct Sprite *sprite)
+{
+    sprite->data[0] = (sprite->data[0] + 1) % BOB_PERIOD;
+    sprite->y2 = (Cos(sprite->data[0] * 256 / BOB_PERIOD, 2) - 2) / 2;
+}
+
+// (sprites keep a pointer to their template, so these must not be on the stack)
+static const struct SpriteTemplate sSpriteTemplate_StandalonePortrait[2] =
+{
+    {
+        .tileTag = TAG_RR_STANDALONE,
+        .paletteTag = TAG_RR_STANDALONE,
+        .oam = &sOam_Portrait,
+        .anims = gDummySpriteAnimTable,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCB_StandalonePortrait,
+    },
+    {
+        .tileTag = TAG_RR_STANDALONE + 1,
+        .paletteTag = TAG_RR_STANDALONE + 1,
+        .oam = &sOam_Portrait,
+        .anims = gDummySpriteAnimTable,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCB_StandalonePortrait,
+    },
+};
+
+// Who speaks a line: RR_LINE_PLAYER, RR_LINE_IVY, RR_LINE_OTHER (someone else
+// with a portrait) or RR_LINE_NARRATION
+u32 RR_GetLineSpeaker(const u8 *text)
+{
+    u32 speaker = GetSpeaker(text);
+    static const u8 sIvy[] = _("Ivy");
+
+    if (speaker == SPEAKER_PLAYER)
+        return RR_LINE_PLAYER;
+    if (speaker == SPEAKER_NONE)
+        return RR_LINE_NARRATION;
+    if (StringCompare(sSpeakers[speaker].name, sIvy) == 0)
+        return RR_LINE_IVY;
+    return RR_LINE_OTHER;
+}
+
+// slot 0 or 1; who: RR_LINE_PLAYER or RR_LINE_IVY. Returns the sprite id, or
+// MAX_SPRITES if there was no room (the scene just plays without it).
+u8 RR_CreateStandalonePortrait(u32 slot, u32 who, s16 x, s16 y, bool32 hFlip)
+{
+    static const u8 sIvy[] = _("Ivy");
+    struct SpriteSheet sheet = {.size = 64 * 64 / 2, .tag = TAG_RR_STANDALONE + slot};
+    struct SpritePalette palette = {.tag = TAG_RR_STANDALONE + slot};
+    u32 i;
+    u8 spriteId;
+
+    if (who == RR_LINE_PLAYER)
+    {
+        bool32 male = gSaveBlock2Ptr->playerGender == MALE;
+        sheet.data = male ? sPortraitGfx_cast_player_m : sPortraitGfx_cast_player_f;
+        palette.data = male ? sPortraitPal_cast_player_m : sPortraitPal_cast_player_f;
+    }
+    else
+    {
+        for (i = 0; i < ARRAY_COUNT(sSpeakers); i++)
+        {
+            if (StringCompare(sSpeakers[i].name, sIvy) == 0)
+                break;
+        }
+        if (i == ARRAY_COUNT(sSpeakers))
+            return MAX_SPRITES;
+        if (sSpeakers[i].altFlag != 0 && FlagGet(sSpeakers[i].altFlag))
+        {
+            sheet.data = sSpeakers[i].altGfx;
+            palette.data = sSpeakers[i].altPal;
+        }
+        else
+        {
+            sheet.data = sSpeakers[i].gfx;
+            palette.data = sSpeakers[i].pal;
+        }
+    }
+    LoadSpriteSheet(&sheet);
+    if (GetSpriteTileStartByTag(sheet.tag) == TAG_NONE)
+        return MAX_SPRITES;
+    if (LoadSpritePalette(&palette) == 0xFF)
+    {
+        FreeSpriteTilesByTag(sheet.tag);
+        return MAX_SPRITES;
+    }
+    spriteId = CreateSprite(&sSpriteTemplate_StandalonePortrait[slot], x, y, 1);
+    if (spriteId == MAX_SPRITES)
+    {
+        FreeSpriteTilesByTag(sheet.tag);
+        FreeSpritePaletteByTag(sheet.tag);
+        return MAX_SPRITES;
+    }
+    gSprites[spriteId].hFlip = hFlip;
+    sStandalonePal[slot] = palette.data;
+    return spriteId;
+}
+
+// Dim the one who isn't speaking, so it's clear who's talking
+void RR_SetStandalonePortraitDim(u32 slot, bool32 dim)
+{
+    u8 palSlot = IndexOfSpritePaletteTag(TAG_RR_STANDALONE + slot);
+
+    if (palSlot == 0xFF || sStandalonePal[slot] == NULL)
+        return;
+    LoadPalette(sStandalonePal[slot], OBJ_PLTT_ID(palSlot), PLTT_SIZE_4BPP);
+    if (dim)
+        BlendPalette(OBJ_PLTT_ID(palSlot), 16, 7, RGB(2, 2, 6));
+}
+
+void RR_DestroyStandalonePortrait(u32 slot, u8 spriteId)
+{
+    if (spriteId < MAX_SPRITES && gSprites[spriteId].inUse && gSprites[spriteId].template->tileTag == TAG_RR_STANDALONE + slot)
+        DestroySprite(&gSprites[spriteId]);
+    FreeSpriteTilesByTag(TAG_RR_STANDALONE + slot);
+    FreeSpritePaletteByTag(TAG_RR_STANDALONE + slot);
+    sStandalonePal[slot] = NULL;
 }

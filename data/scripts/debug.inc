@@ -154,6 +154,8 @@ Debug_EventScript_Text_DefensiveIVs:
 @ Script 7: Preview Pokédex banter (Tentacool, Slowpoke, Quilava)
 @ Script 8: Route 1 scene (Daisy done, just above Elm and Jenny's trigger)
 @ Script 9: Test mode on/off (the AI fights your battles; team to Lv 30)
+@ Script 10: After Brock (badge 1, in Pewter)
+@ Script 11: Catch test (Poké Balls and a wild Pidgey)
 @ Remove or empty these before a public release.
 @ ===================================================================
 Debug_EventScript_Script_1::
@@ -337,6 +339,15 @@ Debug_EventScript_Script_10::
 	rr_ivy_create_follower
 	warp MAP_PEWTER_CITY, 17, 26
 	waitstate
+	release
+	end
+
+@ Catch test: 10 Poké Balls and a wild Pidgey, for checking what happens
+@ after a catch (the new Pokédex entry and its banter, #5). Smoke test "catch".
+Debug_EventScript_Script_11::
+	additem ITEM_POKE_BALL, 10
+	setwildbattle SPECIES_PIDGEY, 3
+	dowildbattle
 	release
 	end
 

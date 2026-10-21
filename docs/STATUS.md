@@ -34,7 +34,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #87 starter moves
 - [x] #77 dex numbering
 - [x] #20 Area tab (demo areas)
-- [ ] #5 / #4 banter over the dex page, SELECT replay
+- [x] #5 / #4 banter over the dex page, SELECT replay
 - [ ] #91 Field Guide in the Start menu
 - [ ] #83 Jenny follows Elm
 - [ ] #84 Daisy tea scene seated; breakfast seated; other positioning passes
