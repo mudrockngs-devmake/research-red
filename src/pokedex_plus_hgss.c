@@ -4138,7 +4138,7 @@ static void UNUSED HighlightScreenSelectBarItem(u8 selectedScreen, u16 unused)
 #define RR_BANTER_TEXT_TOP 91
 #define RR_BANTER_IVY_X    40
 #define RR_BANTER_P_X      200
-#define RR_BANTER_PIC_Y    50
+#define RR_BANTER_PIC_Y    58 // bottom edge on the text box (y 90), so they stand on it
 #define RR_BANTER_CALL_X   92
 #define RR_BANTER_CALL_Y   36
 #define RR_BANTER_STAMP_X  120
