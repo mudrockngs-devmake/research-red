@@ -47,7 +47,7 @@ What the results mean:
 | dex_replay | SELECT on Bulbasaur's entry replays the banter with both portraits; the entry comes back (#4) |
 | dex_numbers | Marks Magikarp, Cyndaquil, Totodile caught (memory), scrolls the Kanto list to its end: 155 Cyndaquil, 158 Totodile (#77) |
 | dex_area | Magikarp caught (memory): its Area page by day, evening, night (#20) |
-| pewter | Test mode + debug 10, into the Pewter Pokémon Center: Elm and Jenny's rematch (story 8) |
+| pewter | Test mode + debug 10, into the Pewter Pokémon Center: Elm and Jenny's rematch (story 8); then Yes to "Want to come watch?": the scripted Brock scene in the Gym, three rounds, ends with VAR_RR_BROCK_WATCH 2 (#69) |
 | demo_end | Debug 10 (after Brock), walks to the east exit: the Gym guide turns you back (demo) |
 | bike | Debug 12: on the Bicycle with your own sprite, Ivy out of view; off again, she is back behind you (#80) |
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |

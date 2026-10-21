@@ -254,7 +254,9 @@ def sc_pewter():
     return (["load @bedroom"] + after_brock_test_mode() + ["shot s000"]
             + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20", "shot s001", "press A", "wait 30"]
             + play_until("pewter", scene_end(8), 45000)  # the autopilot battle can run long
-            + expect("MAP_PEWTER_CITY", story=8, party=1))
+            # A says Yes to "Want to come watch?": the Brock scene plays in the Gym (#69)
+            + play_until("watched", T.G.var_is("VAR_RR_BROCK_WATCH", 2) + " && " + T.G.field_free(), 20000, key="A", every=60)
+            + expect("MAP_PEWTER_CITY_GYM", story=8, party=1))
 
 
 def sc_demo_end():
@@ -728,7 +730,7 @@ SCENARIOS = {
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
     "dex_area": (sc_dex_area, "Pokédex Area page: Magikarp in Pallet's sea by day and evening (#20)"),
     "dex_numbers": (sc_dex_numbers, "Pokédex list: the 151 in order, then Johto by national number (#77)"),
-    "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch outside the Pokémon Center (test mode)"),
+    "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch outside the Pokémon Center (test mode), then watching them take on Brock (#69)"),
     "digletts": (sc_digletts, "After Brock: Diglett's Cave is closed by the Diglett crew (demo)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
     "bike": (sc_bike, "On the bike: your own sprite, Ivy out of view; off again, she's back (#80, #28)"),

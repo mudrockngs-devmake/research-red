@@ -86,6 +86,10 @@ RR_Pewter_EventScript_ToTheGym::
 	msgbox RR_Pewter_Text_Ivy_Stew, MSGBOX_DEFAULT
 	msgbox RR_Pewter_Text_Jenny_Motivated, MSGBOX_DEFAULT
 	msgbox RR_Pewter_Text_Elm_CatchUp, MSGBOX_DEFAULT
+	@ #69: watching their Gym battle is optional; it waits for you either way
+	setvar VAR_RR_BROCK_WATCH, 1
+	msgbox RR_Pewter_Text_Elm_WatchAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RR_Pewter_EventScript_GoWatch
 	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_PEWTER_ELM
@@ -102,6 +106,27 @@ RR_Pewter_EventScript_ToTheGym::
 	setvar VAR_0x40FE, 8
 	releaseall
 	end
+
+@ #69: yes, let's watch: straight into the Gym, where the scene plays
+RR_Pewter_EventScript_GoWatch::
+	msgbox RR_Pewter_Text_P_Watch, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_PEWTER_ELM
+	removeobject LOCALID_PEWTER_JENNY
+	setvar VAR_0x40FE, 8
+	warp MAP_PEWTER_CITY_GYM, 6, 13
+	waitstate
+	releaseall
+	end
+
+RR_Pewter_Text_Elm_WatchAsk:
+	.string "Elm: We're challenging Brock next.\n"
+	.string "Want to come watch?$"
+
+RR_Pewter_Text_P_Watch:
+	.string "{PLAYER}: Front row. Ivy brought\n"
+	.string "snacks.$"
 
 RR_Pewter_Text_Elm_Badge::
     .string "Elm: {PLAYER}! We saw the whole\n"

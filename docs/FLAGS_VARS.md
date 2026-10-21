@@ -11,6 +11,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `VAR_RR_ROUTE1_CATCH_0`, `VAR_RR_ROUTE1_CATCH_1`, `VAR_RR_ROUTE1_CATCH_2`, `VAR_RR_ROUTE1_CATCH_3` (0x40F3-0x40F6) | Species of the first four of those catches, for Elm and Jenny's reactions | species |
 | `VAR_RR_DEXNAV_SPECIES` (0x40F7, was `VAR_0x40F7`) | DexNav: the registered species (`DN_VAR_SPECIES`, `include/config/dexnav.h`) | species |
 | `VAR_RR_DEXNAV_STEPS` (0x40F8, was `VAR_0x40F8`) | DexNav: step counter for hidden Pokémon (`DN_VAR_STEP_COUNTER`) | steps |
+| `VAR_RR_BROCK_WATCH` (0x40F9, was `VAR_0x40F9`) | Watching Elm and Jenny take on Brock (#69, `rr_brock_watch.inc`) | 0 not yet, 1 waiting (plays when you enter the Gym), 2 seen |
 | `VAR_0x40FE` | Overall story progress (used by the debug skips) | 0 none, 1 breakfast, 2 grass, 3 lab, 4 Daisy, 5 Route 1, 6 Route 22 battle done (lunch pending), 7 lunch done (Options > Research Rules works from 4, after Daisy's house), 8 Elm and Jenny's rematch outside the Pewter Pokémon Center done (after Brock) |
 
 ## Repurposed vanilla scene vars

@@ -49,7 +49,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #40 Jenny sprites (Hex Maniac stand-in), Officer Jenny in uniform; #8 picnic blanket
 - [ ] #74 landscape battle backgrounds
 - [x] #9 Forest exchanges + Samurai
-- [ ] #69 watch Brock
+- [x] #69 watch Brock (scripted scene, Yes now or later)
 - [ ] #64 ambient Pokémon (demo areas)
 - [ ] #89 move relearner; #90 TM swaps
 - [ ] v0.0.16 placeholder lines polished

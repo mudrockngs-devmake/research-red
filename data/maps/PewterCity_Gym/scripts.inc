@@ -1,4 +1,6 @@
 PewterCity_Gym_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, RR_BrockWatch_OnTransition @ Research Red (#69)
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, RR_BrockWatch_OnFrame @ Research Red (#69)
 	.byte 0
 
 PewterCity_Gym_EventScript_Brock::

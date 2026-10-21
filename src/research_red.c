@@ -11,6 +11,7 @@
 #include "constants/region_map_sections.h"
 #include "constants/species.h"
 #include "script.h"
+#include "string_util.h"
 #include "pokeball.h"
 #include "party_menu.h"
 #include "item.h"
@@ -440,4 +441,41 @@ void RR_ScriptSetMonBall(struct ScriptContext *ctx)
     SetMonData(mon, MON_DATA_POKEBALL, &ball);
     GetMonNickname(mon, gStringVar1);
     CopyItemName(item, gStringVar2);
+}
+
+// ---------------------------------------------------------------------------
+// Watching Elm and Jenny take on Brock (#69): the four Pokémon on the field in
+// round VAR_0x8004 (1-3), as overworld sprites through VAR_OBJ_GFX_ID_0-3
+// (Brock's left, right; Elm's, Jenny's). Elm's and Jenny's starters follow the
+// lab pick; the rest is their Pewter team.
+// ---------------------------------------------------------------------------
+static const u16 sRRStarters[6] = {SPECIES_BULBASAUR, SPECIES_CHARMANDER, SPECIES_SQUIRTLE, SPECIES_CHIKORITA, SPECIES_CYNDAQUIL, SPECIES_TOTODILE};
+
+static u16 RR_RivalStarterSpecies(bool32 forElm)
+{
+    u32 pick = VarGet(VAR_RR_STARTER) % 6;
+    u32 region = pick / 3, type = pick % 3;
+    return sRRStarters[(1 - region) * 3 + (type + (forElm ? 1 : 2)) % 3];
+}
+
+void RR_ScriptBrockWatchRound(struct ScriptContext *ctx)
+{
+    static const u16 sBrock[3][2] = {
+        {SPECIES_GEODUDE, SPECIES_SANDSHREW}, {SPECIES_KABUTO, SPECIES_OMANYTE}, {SPECIES_RHYHORN, SPECIES_ONIX},
+    };
+    u32 round = (gSpecialVar_0x8004 - 1) % 3;
+    u16 elm, jenny;
+
+    switch (round)
+    {
+    case 0:  elm = RR_RivalStarterSpecies(TRUE); jenny = RR_RivalStarterSpecies(FALSE); break;
+    case 1:  elm = SPECIES_PIDGEOTTO; jenny = SPECIES_NIDORINA; break;   // Pudding, Macaron
+    default: elm = SPECIES_SANDSHREW; jenny = SPECIES_GROWLITHE; break;  // Churro, Cruller
+    }
+    VarSet(VAR_OBJ_GFX_ID_0, OBJ_EVENT_MON + sBrock[round][0]);
+    VarSet(VAR_OBJ_GFX_ID_1, OBJ_EVENT_MON + sBrock[round][1]);
+    VarSet(VAR_OBJ_GFX_ID_2, OBJ_EVENT_MON + elm);
+    VarSet(VAR_OBJ_GFX_ID_3, OBJ_EVENT_MON + jenny);
+    StringCopy(gStringVar1, GetSpeciesName(elm));
+    StringCopy(gStringVar2, GetSpeciesName(jenny));
 }

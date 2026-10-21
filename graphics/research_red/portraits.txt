@@ -39,3 +39,4 @@ Pidgeot       | pokemon/pidgeot   | brown
 Lapras        | pokemon/lapras    | blue
 Gyarados      | pokemon/gyarados  | blue
 Jigglypuff    | pokemon/jigglypuff | pink
+Brock         | cast/brock        | brown
