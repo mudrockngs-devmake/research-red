@@ -48,7 +48,7 @@ What the results mean:
 | demo_end | Debug 10 (after Brock), walks to the east exit: the Gym guide turns you back (demo) |
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |
 | pc | Debug 2, Start > PC, into Pokémon storage and back out |
-| guide | Debug 3, walks onto Route 1, Pokédex > START > FIELD GUIDE |
+| guide | Route 1: Pokédex > START > FIELD GUIDE, then Start > GUIDE (#91), both over the map |
 | rules | The lunch, then Options > Research Rules: change a rule, close, the call with Elm and Jenny plays (#45); reopen and close unchanged: no call |
 | dexnav | Route 22: the 6v6, Jenny gives the DexNav, then Start > DexNav there |
 | ivy | Talk to Ivy in Pallet and on Route 1 (area lines) |

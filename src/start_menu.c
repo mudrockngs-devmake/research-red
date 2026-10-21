@@ -66,6 +66,7 @@ enum StartMenuOption
     MENU_ACTION_DEBUG,
     MENU_ACTION_DEXNAV,
     MENU_ACTION_RR_PC, // Research Red: the PC from anywhere (#34)
+    MENU_ACTION_RR_FIELD_GUIDE, // Research Red: the Field Guide (#91)
     MAX_STARTMENU_ITEMS
 };
 
@@ -117,6 +118,7 @@ static bool8 StartMenuBattlePyramidBagCallback(void);
 static bool8 StartMenuDebugCallback(void);
 static bool8 StartMenuDexNavCallback(void);
 static bool8 StartMenuPCCallback(void); // Research Red
+static bool8 StartMenuFieldGuideCallback(void); // Research Red (#91)
 
 static bool8 BattlePyramidRetireStartCallback(void);
 static bool8 BattlePyramidRetireReturnCallback(void);
@@ -161,6 +163,7 @@ static const u8 sStartMenuDesc_Exit[] = _("Close this MENU window.");
 static const u8 sStartMenuDesc_Retire[] = _("Retire from the SAFARI GAME and return to\nthe registration counter.");
 static const u8 sStartMenuDesc_Debug[] = _("Debug Menu.");
 static const u8 sStartMenuDesc_PC[] = _("Use the PC from anywhere: Pokémon\nstorage and items."); // Research Red
+static const u8 sStartMenuDesc_FieldGuide[] = _("The wild Pokémon living where\nyou stand, and what's left to find."); // Research Red (#91)
 static const u8 sText_SaveError_PleaseExchangeBackupMemory[] = _("Save error.\pPlease exchange the\nbackup memory.");
 static const u8 sText_MenuSafariStats[] = _("{STR_VAR_1}/{STR_VAR_2}\nBALLS  {STR_VAR_3}");
 static const u8 sText_MenuTime[] = _("{STR_VAR_3} {STR_VAR_1}:{STR_VAR_2}"); // Research Red (#56): "Night 20:00"
@@ -183,6 +186,7 @@ static const struct MenuAction sStartMenuActionTable[] = {
     [MENU_ACTION_DEBUG]             = {COMPOUND_STRING("DEBUG"),   {.u8_void = StartMenuDebugCallback}},
     [MENU_ACTION_DEXNAV]            = {COMPOUND_STRING("DEXNAV"),  {.u8_void = StartMenuDexNavCallback}},
     [MENU_ACTION_RR_PC]             = {COMPOUND_STRING("PC"),      {.u8_void = StartMenuPCCallback}}, // Research Red
+    [MENU_ACTION_RR_FIELD_GUIDE]    = {COMPOUND_STRING("GUIDE"),   {.u8_void = StartMenuFieldGuideCallback}}, // Research Red (#91)
 };
 
 static const struct WindowTemplate sTimeWindowTemplate = {
@@ -257,6 +261,7 @@ static const u8 *const sStartMenuDescPointers[MAX_STARTMENU_ITEMS] = {
     [MENU_ACTION_DEBUG]           = sStartMenuDesc_Debug,
     [MENU_ACTION_DEXNAV]          = sStartMenuDesc_Pokedex,
     [MENU_ACTION_RR_PC]           = sStartMenuDesc_PC,
+    [MENU_ACTION_RR_FIELD_GUIDE]  = sStartMenuDesc_FieldGuide,
 };
 
 static const struct BgTemplate sBGTemplates_AfterLinkSaveMessage[] = {
@@ -328,7 +333,10 @@ static void BuildDebugStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_DEBUG);
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+    {
         AddStartMenuAction(MENU_ACTION_POKEDEX);
+        AddStartMenuAction(MENU_ACTION_RR_FIELD_GUIDE); // Research Red (#91)
+    }
     if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET)) // Research Red: test builds too
         AddStartMenuAction(MENU_ACTION_DEXNAV);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
@@ -339,13 +347,17 @@ static void BuildDebugStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
+    // Research Red (#91): no EXIT in test builds (B closes the menu): with
+    // DEBUG and GUIDE an 11th row would run off the screen
 }
 
 static void BuildNormalStartMenu(void)
 {
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+    {
         AddStartMenuAction(MENU_ACTION_POKEDEX);
+        AddStartMenuAction(MENU_ACTION_RR_FIELD_GUIDE); // Research Red (#91)
+    }
     if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET))
         AddStartMenuAction(MENU_ACTION_DEXNAV);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
@@ -707,6 +719,7 @@ static void StartMenu_FadeScreenIfLeavingOverworld(void)
      && gMenuCallback != StartMenuExitCallback
      && gMenuCallback != StartMenuDebugCallback
      && gMenuCallback != StartMenuPCCallback // Research Red: the PC menus play on the map, no fade to black (#79)
+     && gMenuCallback != StartMenuFieldGuideCallback // Research Red: so does the Field Guide (#91)
      && gMenuCallback != StartMenuSafariZoneRetireCallback
      && gMenuCallback != StartMenuBattlePyramidRetireCallback)
     {
@@ -1458,6 +1471,15 @@ static bool8 StartMenuPCCallback(void)
     RemoveExtraStartMenuWindows();
     HideStartMenuDebug(); // hide the menu, keep the player still
     ScriptContext_SetupScript(RR_EventScript_StartMenuPC);
+    return TRUE;
+}
+
+// Research Red (#91): the Field Guide, a window on the map
+static bool8 StartMenuFieldGuideCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenuDebug(); // hide the menu, keep the player still
+    ScriptContext_SetupScript(RR_EventScript_FieldGuide);
     return TRUE;
 }
 

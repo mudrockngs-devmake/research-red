@@ -120,7 +120,7 @@ def sc_route1():
 
 def sc_route22():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE22) + debug_script(SCRIPT_TEST_MODE) + ["mash B 40", "shot s000"]
-            + step("LEFT") + play_until("route22", scene_end(6), 30000)
+            + step("LEFT") + play_until("route22", scene_end(6), 60000)   # a 6v6 double fought by the AI: long
             + expect("MAP_ROUTE22", story=6, party=1))
 
 
@@ -146,7 +146,7 @@ def sc_dex_replay():
     return lines + play_until("dex_closed", T.G.field_free(), 2000, key="B", every=30)
 
 def sc_pokedex():
-    # Start menu after the lab: DEBUG, POKEDEX. Open Bulbasaur and flip through
+    # Start menu after the lab: DEBUG, POKEDEX, GUIDE. Open Bulbasaur and flip through
     # every page both ways (the Evo page used to crash, #19), then an unseen entry.
     pages = []
     for i, key in enumerate(["A"] + ["RIGHT"] * 7 + ["LEFT"] * 7 + ["B", "DOWN", "A", "RIGHT", "B", "B"], 1):
@@ -250,10 +250,10 @@ def sc_gerald():
 
 def sc_pc():
     # Start > PC from anywhere (#34). After the lab (story 3) the menu is
-    # DEBUG, POKEDEX, POKEMON, PC: open it, enter Pokemon storage, back out.
+    # DEBUG, POKEDEX, GUIDE, POKEMON, PC: open it, enter Pokemon storage, back out.
     # #79: the PC's menus show on the map (it used to fade to black first):
     # p001 must show "Which PC should be accessed?" over the town
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(3)
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(4)
             + ["wait 60", "shot p001"] + T.not_black("p001") + ["press A", "wait 60", "mash A 60", "wait 90", "shot p002",
                "press A", "wait 90", "shot p003"]
             + play_until("closed", T.G.field_free(), 1500, key="B", every=30)
@@ -263,12 +263,12 @@ def sc_pc():
 def sc_tms():
     # #57: the grant fills the TM Case: 8 HMs + TM01-TM100 = all 108 slots,
     # so the last slot holds something. Then look: Start > BAG (after the
-    # lab: DEBUG, POKEDEX, POKEMON, PC, BAG), Key Items, the TM Case (9th
+    # lab: DEBUG, POKEDEX, GUIDE, POKEMON, PC, BAG), Key Items, the TM Case (9th
     # key item, below the Ranch Pager), OPEN, then one screenshot per new TM
     # (TM51-TM100: name fits the row, description fits the box) and the HMs.
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
             + check("tm_case_full", T.G.bag_slot_filled("TMsHMs", 107))
-            + start_menu_item(4) + ["wait 90", "shot t001", "press RIGHT", "wait 30"]
+            + start_menu_item(5) + ["wait 90", "shot t001", "press RIGHT", "wait 30"]
             + ["press DOWN", "wait 8"] * 8 + ["shot t002", "press A", "wait 20", "shot t003", "press A", "wait 90",
                                               "shot t004"]
             + ["press DOWN", "wait 6"] * 49
@@ -284,7 +284,7 @@ def open_ranch_pager(choice, prefix):
     below the Berry Pouch) > USE, then pick menu entry `choice` (0 Fly,
     1 Flash, 2 Teleport, 3 Dig)."""
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
-            + start_menu_item(4) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
             + [f"shot {prefix}001", "press A", "wait 20", "press A", "wait 150", f"shot {prefix}002"]
             + ["press DOWN", "wait 8"] * choice + [f"shot {prefix}003", "press A", "wait 60"])
 
@@ -312,7 +312,7 @@ def sc_pager_select():
     # #29: register the Ranch Pager (Bag > Key Items > Ranch Pager > REGISTER),
     # close the Bag, then SELECT opens the Pager's menu on the map; B cancels
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
-            + start_menu_item(4) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
             + ["press A", "wait 20", "press DOWN", "wait 10", "shot r001", "press A", "wait 30", "shot r002"]
             + play_until("bag_closed", T.G.field_free(), 1500, key="B", every=30)
             + ["wait 30", "press SELECT", "wait 150", "shot r003", "press B", "wait 60", "shot r004"]
@@ -328,8 +328,8 @@ def sc_pager_dig():
             + play_until("cut", T.G.field_free(), 1500, key="A", every=30)
             + step("DOWN", 2) + step("RIGHT", 6) + step("UP", 3) + ready("cave")
             + check("in_entrance", T.G.on_map("MAP_DIGLETTS_CAVE_NORTH_ENTRANCE"))
-            # after Brock the Start menu has DEXNAV too: BAG is the 6th entry
-            + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            # after Brock the Start menu has DEXNAV too: BAG is the 7th entry
+            + start_menu_item(6) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
             + ["shot d001", "press A", "wait 20", "press A", "wait 150"] + ["press DOWN", "wait 8"] * 3
             + ["shot d002", "press A", "wait 90", "shot d003", "press A", "wait 60", "shot d004"]
             + play_until("dug_out", T.G.field_free(), 3000, key="B", every=20)
@@ -371,7 +371,7 @@ def fly_to_pallet_after_brock():
     """Debug 10 (after Brock, test mode), then Ranch Pager > Fly to Pallet.
     Lands at (6,8), in front of home."""
     return (["load @bedroom"] + after_brock_test_mode()
-            + ["press START", "wait 20", "press B", "wait 20"] + start_menu_item(5)
+            + ["press START", "wait 20", "press B", "wait 20"] + start_menu_item(6)
             + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
             + ["press A", "wait 20", "press A", "wait 150", "press A", "wait 150"]
             + ["press DOWN", "wait 30"] * 7 + ["wait 30", "press A", "wait 90"]
@@ -412,7 +412,7 @@ def sc_oak_rematch():
     # #53: after Brock (story 7, 1 badge, test mode), Ranch Pager > Fly to
     # Pallet, into the lab, talk to Oak: the Oak + Daisy double (tier 1:
     # middle-stage starters at Lv 21). Daisy stands by Oak.
-    fly = (["press START", "wait 20"] + ["press B", "wait 20"] + start_menu_item(5)
+    fly = (["press START", "wait 20"] + ["press B", "wait 20"] + start_menu_item(6)
            + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
            + ["press A", "wait 20", "press A", "wait 150", "press A", "wait 150", "shot k001"]
            + sum([["press DOWN", "wait 30", f"shot k1{i:02d}"] for i in range(7)], [])
@@ -497,14 +497,19 @@ def sc_guide():
                                     "press A", "wait 180", "shot s003", "press RIGHT", "wait 20", "shot s004",
                                     "press B", "wait 40", "shot s005"]
             + check("guide_closed", T.G.field_free())
+            # #91: Start > GUIDE opens it straight from the Start menu, over the map
+            # (the menu remembers its cursor: still on POKEDEX, GUIDE is one down)
+            + start_menu_item(1) + ["wait 120", "shot s006"] + T.not_black("s006")
+            + check("guide_open", f"{T.G.sym('sGlobalScriptContextStatus'):#x}:1 != 2")
+            + play_until("guide_closed_2", T.G.field_free(), 1500, key="B", every=30)
             + expect("MAP_ROUTE1"))
 
 
 def sc_rules():
-    # after the lunch: Start menu DEBUG, POKEDEX, DEXNAV, POKEMON, PC, BAG,
+    # after the lunch: Start menu DEBUG, POKEDEX, GUIDE, DEXNAV, POKEMON, PC, BAG,
     # PLAYER, SAVE, OPTION. Options row 3 is Research Rules: A leaves Options
     # and opens Elm's Rules window on the map (#45).
-    return (sc_lunch() + ["mash B 200", "wait 60"] + start_menu_item(8)
+    return (sc_lunch() + ["mash B 200", "wait 60"] + start_menu_item(9)
             + ["wait 60", "shot t001", "press DOWN", "wait 10", "press DOWN", "wait 10", "shot t002",
                "press A", "wait 120", "shot t003", "press DOWN", "wait 10", "press RIGHT", "wait 10", "shot t004",
                "press B", "wait 30", "shot t005"]
@@ -535,9 +540,9 @@ def sc_ivy():
 
 def sc_dexnav():
     # Route 22: after the 6v6 Jenny gives you the DexNav (win or lose). Then
-    # Start (DEBUG, POKEDEX, DEXNAV, ...) > DEXNAV on Route 22 itself.
+    # Start (DEBUG, POKEDEX, GUIDE, DEXNAV, ...) > DEXNAV on Route 22 itself.
     return (sc_route22() + ["mash B 200", "wait 60"] + check("dexnav_flag", T.G.flag_set("FLAG_RR_DEXNAV_GET"))
-            + start_menu_item(2) + ["wait 120", "shot d001", "press RIGHT", "wait 20", "shot d002",
+            + start_menu_item(3) + ["wait 120", "shot d001", "press RIGHT", "wait 20", "shot d002",
                                     "press DOWN", "wait 20", "shot d003", "press B", "wait 120", "shot d004"]
             + play_until("dexnav_closed", T.G.field_free(), 1500, key="B", every=30)
             + expect("MAP_ROUTE22"))
@@ -551,7 +556,7 @@ def sc_rename():
                 "wait 20", "shot {}c", "press START", "wait 40", "press A", "wait 150", "shot {}b"]
     one = [l.format("n1") if "{}" in l else l for l in rename(["press A", "wait 10"])]
     empty = [l.format("n2") if "{}" in l else l for l in rename([])]
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(2)
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(3)
             + ["wait 90", "press A", "wait 30", "shot s001", "press A", "wait 120", "shot s002"]
             + one + empty + ["mash B 120", "wait 30", "shot s003"]
             + play_until("rename_closed", T.G.field_free(), 2000, key="B", every=30))
@@ -574,7 +579,7 @@ def sc_evolve():
     # mode raises the team to Lv 30 (no evolving), so Squirtle can become
     # Wartortle: Start > POKEMON > Squirtle > EVOLVE (second entry).
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + debug_script(SCRIPT_TEST_MODE) + ["mash B 60"]
-            + start_menu_item(2) + ["wait 90", "press A", "wait 30", "shot e001", "press DOWN", "wait 10", "shot e002",
+            + start_menu_item(3) + ["wait 90", "press A", "wait 30", "shot e001", "press DOWN", "wait 10", "shot e002",
                                     "press A", "wait 120", "shot e003"]
             + advance(12, key="A", every=90, prefix="v")
             + play_until("evolved", T.G.field_free(), 4000, key="B", every=60)
@@ -633,7 +638,7 @@ SCENARIOS = {
     "route2_wild": (sc_route2_wild, "Diagnosis: wild battle on Route 2 after Brock, no test mode"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
-    "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1"),
+    "guide": (sc_guide, "Pokédex > START > FIELD GUIDE on Route 1, then Start > GUIDE (#91)"),
     "rules": (sc_rules, "Options > Research Rules after the lunch (opens Elm's Rules on the map)"),
 }
 
