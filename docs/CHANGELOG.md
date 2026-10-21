@@ -2,6 +2,27 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
+## v0.0.19
+The big one after the v0.0.18 playtest (issues #76-#100).
+- New: a title screen of our own (#12): notebook paper, the Research Red logo and Slowpoke wrapped in a lab coat like a blanket. At power-on a little Mareep walks in, sparks, and "A fan project by MudrockNGS" fades in (A skips). On a new game, a Slowking presents the fan-project notice and the demo notice before the intro call.
+- New: watch Elm and Jenny take on Brock (#69). After the Pewter rematch Elm asks if you want to come; Yes takes you straight into the Gym, No leaves it for when you walk in. Three rounds, you and Ivy commentating.
+- New: Viridian Forest: you and Ivy talk after each Bug Catcher, and a Samurai waits in the clearing (#9).
+- New: ambient Pokémon (#64): Pallet's Dodrio, Oak's Diglett, a Chansey beside Nurse Joy in Viridian and Pewter, and the Forest's guardian Pidgeot in a standoff with a Fearow. Talk to them: a cry, a line, and they're marked as seen in the Pokédex.
+- New: Pokédex banter now plays over the new entry after a catch, with both portraits (#5); press SELECT on an entry to replay it (#4).
+- New: in battle, your and Ivy's lines show your portraits (#95). Your side of the battle shows you and Ivy together (#7); the Trainer Card uses your own picture (#24).
+- New: your own sprite on the bike, surfing and using field moves (#80, #28); Ivy steps aside while you ride. The female player has her own walking sprite (#93).
+- Changed: scenes re-staged (#83-#85): everyone sits at breakfast and at Daisy's tea, Jenny walks beside Elm everywhere, Route 1 is reworked (#85, #88), a picnic blanket for the Viridian lunch (#8). After a lab loss Oak steps in with his own Pokémon (#86). Jenny's Growlithe, Cruller, joins the cast.
+- Changed: proper case for all of FireRed's text (#11): "Pokémon", "Save", "Pallet Town" instead of ALL CAPS. Battle text boxes in the notebook colours (#92).
+- Changed: the Pokédex lists Kanto's 151 in order, then Johto (#77); the Area page matches the time of day (#20). The Field Guide is back in the Start menu, below the Pokédex (#91).
+- Changed: Oak's research grant: 150 of every Poké Ball; medicine, status items, X items and 6 of every held battle item go to the PC's item storage (#96, #98-#100). The lab aide can move a Pokémon into a different Poké Ball (#97).
+- Changed: the move relearner (#89): you stay in the list after teaching a move, the TM list shows TM numbers, and the menu isn't red any more. 19 TMs that repeated a free tutor move now teach new moves (#90): Low Kick, Knock Off, Foul Play, Nasty Plot, Agility, Roost, Heat Wave, Mud Shot, Drill Run, Power Gem, Smart Strike, Iron Defense, Body Press, Charge Beam, Grass Knot (TM51-65), Fire Fang, Thunder Fang, Ice Fang and Pounce. Mega Punch, Body Slam, Swords Dance and the rest are still in LEARN MOVES > Tutor Moves.
+- Changed: Emerald-style map name pop-ups; item descriptions only the first time you find an item.
+- Changed: dialogue polish: Oak's Pokémon, his Ranch Pager tutorial, the Rules call, Delia's Rest offer, Oak's rematch haiku.
+- Fixed: portraits vanishing on a message's last page (#76); the type display (#78); the Start menu PC fading to black (#79); the intro call keeping the name after you hang up (#81); SELECT opening the battle debug menu (#82); Sumac is now Sequoia (#94); starters get sensible moves (#87).
+- Test builds: START skips the new-game call (as Maple).
+- Not yet: landscape art behind battles (#74) waits for the background art.
+- **Save:** start a new game (the save layout changed twice: item pockets and the first-time item flags).
+
 ## v0.0.18
 - New: battle backgrounds that match where you are (#74), in cozier colours: warmer, sunnier grass on routes; a shaded forest in Viridian Forest (every battle there); a sandy platform under a soft sky in towns and on paths; a warm wooden floor in Oak's Lab and homes; Pewter stone for Gym leaders; a richer sea and richer cave earth. Same art, new colours only, so nothing changes size.
 - Fixed (test builds): with the debug test mode on (Debug > Scripts > 9), a wild battle froze ("TRAINER None sent out..."). Test mode now only plays trainer battles for you; wild battles are yours.
