@@ -71,35 +71,35 @@ static void Task_HandleMultichoiceInput(u8 taskId);
 static void Task_HandleScrollingMultichoiceInput(u8 taskId);
 static void Task_HandleYesNoInput(u8 taskId);
 
-static const u8 sText_MultiLink[] = _("MULTI-LINK");
-static const u8 sText_Opponent[] = _("OPPONENT");
-static const u8 sText_Tourney_Tree[] = _("TOURNEY TREE");
-static const u8 sText_ReadyToStart[] = _("READY TO START");
-static const u8 sText_Eggs[] = _("EGGS");
-static const u8 sText_Victories[] = _("VICTORIES");
-static const u8 sText_TradeCenter[] = _("TRADE CENTER");
-static const u8 sText_Colosseum[] = _("COLOSSEUM");
-static const u8 sText_GoOn[] = _("GO ON");
-static const u8 sText_HelixFossil[] = _("HELIX FOSSIL");
-static const u8 sText_DomeFossil[] = _("DOME FOSSIL");
-static const u8 sText_OldAmber[] = _("OLD AMBER");
-static const u8 sText_FreshWater[] = _("FRESH WATER");
-static const u8 sText_SodaPop[] = _("SODA POP");
-static const u8 sText_Lemonade[] = _("LEMONADE");
-static const u8 sText_Vermilion[] = _("VERMILION");
-static const u8 sText_OneIsland[] = _("ONE ISLAND");
-static const u8 sText_TwoIsland[] = _("TWO ISLAND");
-static const u8 sText_ThreeIsland[] = _("THREE ISLAND");
-static const u8 sText_SeviiIslands[] = _("SEVII ISLANDS");
-static const u8 sText_NavelRock[] = _("NAVEL ROCK");
-static const u8 sText_BirthIsland[] = _("BIRTH ISLAND");
-static const u8 sText_NoThanks[] = _("NO THANKS");
-static const u8 sText_Quit[] = _("QUIT");
-static const u8 sText_SomeoneSPc[] = _("SOMEONE'S PC");
-static const u8 sText_BillsPc[] = _("BILL'S PC");
+static const u8 sText_MultiLink[] = _("Multi-Link");
+static const u8 sText_Opponent[] = _("Opponent");
+static const u8 sText_Tourney_Tree[] = _("Tourney Tree");
+static const u8 sText_ReadyToStart[] = _("Ready To Start");
+static const u8 sText_Eggs[] = _("Eggs");
+static const u8 sText_Victories[] = _("Victories");
+static const u8 sText_TradeCenter[] = _("Trade Center");
+static const u8 sText_Colosseum[] = _("Colosseum");
+static const u8 sText_GoOn[] = _("Go On");
+static const u8 sText_HelixFossil[] = _("Helix Fossil");
+static const u8 sText_DomeFossil[] = _("Dome Fossil");
+static const u8 sText_OldAmber[] = _("Old Amber");
+static const u8 sText_FreshWater[] = _("Fresh Water");
+static const u8 sText_SodaPop[] = _("Soda Pop");
+static const u8 sText_Lemonade[] = _("Lemonade");
+static const u8 sText_Vermilion[] = _("Vermilion");
+static const u8 sText_OneIsland[] = _("One Island");
+static const u8 sText_TwoIsland[] = _("Two Island");
+static const u8 sText_ThreeIsland[] = _("Three Island");
+static const u8 sText_SeviiIslands[] = _("Sevii Islands");
+static const u8 sText_NavelRock[] = _("Navel Rock");
+static const u8 sText_BirthIsland[] = _("Birth Island");
+static const u8 sText_NoThanks[] = _("No Thanks");
+static const u8 sText_Quit[] = _("Quit");
+static const u8 sText_SomeoneSPc[] = _("Someone's PC");
+static const u8 sText_BillsPc[] = _("Bill's PC");
 static const u8 sText_PlayersPc[] = _("{PLAYER}'s PC");
-static const u8 sText_LogOff[] = _("LOG OFF");
-static const u8 sText_ProfOaksPc[] = _("PROF. OAK's PC");
+static const u8 sText_LogOff[] = _("Log Off");
+static const u8 sText_ProfOaksPc[] = _("Prof. Oak's PC");
 
 static const struct DynamicListMenuEventCollection sDynamicListMenuEventCollections[] =
 {
@@ -141,10 +141,10 @@ static const struct MenuAction sMultichoiceList_YesNo[] = {
 };
 
 static const struct MenuAction sMultichoiceList_TrainerCardIconTint[] = {
-    { COMPOUND_STRING("NORMAL") },
-    { COMPOUND_STRING("BLACK") },
+    { COMPOUND_STRING("Normal") },
+    { COMPOUND_STRING("Black") },
     { gText_Pink },
-    { COMPOUND_STRING("SEPIA") }
+    { COMPOUND_STRING("Sepia") }
 };
 
 static const struct MenuAction sMultichoiceList_HOF_Quit[] = {
@@ -189,11 +189,11 @@ static const struct MenuAction sMultichoiceList_HOF_Eggs_Victories_Quit[] = {
 
 
 static const struct MenuAction sMultichoiceList_TrainerSchoolWhiteboard[] = {
-    { COMPOUND_STRING("SLP") },
-    { COMPOUND_STRING("PSN") },
-    { COMPOUND_STRING("PAR") },
-    { COMPOUND_STRING("BRN") },
-    { COMPOUND_STRING("FRZ") },
+    { COMPOUND_STRING("Slp") },
+    { COMPOUND_STRING("Psn") },
+    { COMPOUND_STRING("Par") },
+    { COMPOUND_STRING("Brn") },
+    { COMPOUND_STRING("Frz") },
     { gText_Exit }
 };
 
@@ -251,33 +251,33 @@ static const struct MenuAction sMultichoiceList_DomeAmber[] = {
 };
 
 static const struct MenuAction sMultichoiceList_CeladonVendingMachine[] = {
-    { COMPOUND_STRING("FRESH WATER{CLEAR_TO 0x57}{FONT_SMALL}¥200") },
-    { COMPOUND_STRING("SODA POP{CLEAR_TO 0x57}{FONT_SMALL}¥300") },
-    { COMPOUND_STRING("LEMONADE{CLEAR_TO 0x57}{FONT_SMALL}¥350") },
+    { COMPOUND_STRING("Fresh Water{CLEAR_TO 0x57}{FONT_SMALL}¥200") },
+    { COMPOUND_STRING("Soda Pop{CLEAR_TO 0x57}{FONT_SMALL}¥300") },
+    { COMPOUND_STRING("Lemonade{CLEAR_TO 0x57}{FONT_SMALL}¥350") },
     { gText_Exit }
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerTMPrizes[] = {
-    { COMPOUND_STRING("TM13{CLEAR_TO 0x48}{FONT_SMALL}4,000 COINS") },
-    { COMPOUND_STRING("TM23{CLEAR_TO 0x48}{FONT_SMALL}3,500 COINS") },
-    { COMPOUND_STRING("TM24{CLEAR_TO 0x48}{FONT_SMALL}4,000 COINS") },
-    { COMPOUND_STRING("TM30{CLEAR_TO 0x48}{FONT_SMALL}4,500 COINS") },
-    { COMPOUND_STRING("TM35{CLEAR_TO 0x48}{FONT_SMALL}4,000 COINS") },
+    { COMPOUND_STRING("TM13{CLEAR_TO 0x48}{FONT_SMALL}4,000 Coins") },
+    { COMPOUND_STRING("TM23{CLEAR_TO 0x48}{FONT_SMALL}3,500 Coins") },
+    { COMPOUND_STRING("TM24{CLEAR_TO 0x48}{FONT_SMALL}4,000 Coins") },
+    { COMPOUND_STRING("TM30{CLEAR_TO 0x48}{FONT_SMALL}4,500 Coins") },
+    { COMPOUND_STRING("TM35{CLEAR_TO 0x48}{FONT_SMALL}4,000 Coins") },
     { sText_NoThanks }
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerBattleItemPrizes[] = {
-    { COMPOUND_STRING("SMOKE BALL{CLEAR_TO 0x5A}{FONT_SMALL}800 COINS") },
-    { COMPOUND_STRING("MIRACLE SEED{CLEAR_TO 0x50}{FONT_SMALL}1,000 COINS") },
-    { COMPOUND_STRING("CHARCOAL{CLEAR_TO 0x50}{FONT_SMALL}1,000 COINS") },
-    { COMPOUND_STRING("MYSTIC WATER{CLEAR_TO 0x50}{FONT_SMALL}1,000 COINS") },
-    { COMPOUND_STRING("YELLOW FLUTE{CLEAR_TO 0x50}{FONT_SMALL}1,600 COINS") },
+    { COMPOUND_STRING("Smoke Ball{CLEAR_TO 0x5A}{FONT_SMALL}800 Coins") },
+    { COMPOUND_STRING("Miracle Seed{CLEAR_TO 0x50}{FONT_SMALL}1,000 Coins") },
+    { COMPOUND_STRING("Charcoal{CLEAR_TO 0x50}{FONT_SMALL}1,000 Coins") },
+    { COMPOUND_STRING("Mystic Water{CLEAR_TO 0x50}{FONT_SMALL}1,000 Coins") },
+    { COMPOUND_STRING("Yellow Flute{CLEAR_TO 0x50}{FONT_SMALL}1,600 Coins") },
     { sText_NoThanks }
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerCoinPurchaseCounter[] = {
-    { COMPOUND_STRING("{FONT_SMALL} 50 COINS{CLEAR_TO 0x45}¥1,000") },
-    { COMPOUND_STRING("{FONT_SMALL}500 COINS{CLEAR_TO 0x40}¥10,000") },
+    { COMPOUND_STRING("{FONT_SMALL} 50 Coins{CLEAR_TO 0x45}¥1,000") },
+    { COMPOUND_STRING("{FONT_SMALL}500 Coins{CLEAR_TO 0x40}¥10,000") },
     { gText_Exit }
 };
 
@@ -331,31 +331,31 @@ static const struct MenuAction sMultichoiceList_ThirstyGirlFreshWaterSodaPopLemo
 };
 
 static const struct MenuAction sMultichoiceList_Eeveelutions[] = {
-    { COMPOUND_STRING("EEVEE") },
-    { COMPOUND_STRING("FLAREON") },
-    { COMPOUND_STRING("JOLTEON") },
-    { COMPOUND_STRING("VAPOREON") },
+    { COMPOUND_STRING("Eevee") },
+    { COMPOUND_STRING("Flareon") },
+    { COMPOUND_STRING("Jolteon") },
+    { COMPOUND_STRING("Vaporeon") },
     { COMPOUND_STRING("Quit looking.") }
 };
 
 static const struct MenuAction sMultichoiceList_BikeShop[] = {
-    { COMPOUND_STRING("BICYCLE{CLEAR_TO 0x49}{FONT_SMALL}¥1,000,000") },
+    { COMPOUND_STRING("Bicycle{CLEAR_TO 0x49}{FONT_SMALL}¥1,000,000") },
     { sText_NoThanks }
 };
 
 static const struct MenuAction sMultichoiceList_GameCornerPokemonPrizes[] = {
 #if defined(FIRERED)
-    { COMPOUND_STRING("ABRA{CLEAR_TO 0x55}{FONT_SMALL} 180 COINS") },
-    { COMPOUND_STRING("CLEFAIRY{CLEAR_TO 0x55}{FONT_SMALL} 500 COINS") },
-    { COMPOUND_STRING("DRATINI{CLEAR_TO 0x4B}{FONT_SMALL} 2,800 COINS") },
-    { COMPOUND_STRING("SCYTHER{CLEAR_TO 0x4B}{FONT_SMALL} 5,500 COINS") },
-    { COMPOUND_STRING("PORYGON{CLEAR_TO 0x4B}{FONT_SMALL} 9,999 COINS") },
+    { COMPOUND_STRING("Abra{CLEAR_TO 0x55}{FONT_SMALL} 180 Coins") },
+    { COMPOUND_STRING("Clefairy{CLEAR_TO 0x55}{FONT_SMALL} 500 Coins") },
+    { COMPOUND_STRING("Dratini{CLEAR_TO 0x4B}{FONT_SMALL} 2,800 Coins") },
+    { COMPOUND_STRING("Scyther{CLEAR_TO 0x4B}{FONT_SMALL} 5,500 Coins") },
+    { COMPOUND_STRING("Porygon{CLEAR_TO 0x4B}{FONT_SMALL} 9,999 Coins") },
 #elif defined(LEAFGREEN)
-    { COMPOUND_STRING("ABRA{CLEAR_TO 0x55}{FONT_SMALL} 120 COINS") },
-    { COMPOUND_STRING("CLEFAIRY{CLEAR_TO 0x55}{FONT_SMALL} 750 COINS") },
-    { COMPOUND_STRING("PINSIR{CLEAR_TO 0x4B}{FONT_SMALL} 2,500 COINS") },
-    { COMPOUND_STRING("DRATINI{CLEAR_TO 0x4B}{FONT_SMALL} 4,600 COINS") },
-    { COMPOUND_STRING("PORYGON{CLEAR_TO 0x4B}{FONT_SMALL} 6,500 COINS") },
+    { COMPOUND_STRING("Abra{CLEAR_TO 0x55}{FONT_SMALL} 120 Coins") },
+    { COMPOUND_STRING("Clefairy{CLEAR_TO 0x55}{FONT_SMALL} 750 Coins") },
+    { COMPOUND_STRING("Pinsir{CLEAR_TO 0x4B}{FONT_SMALL} 2,500 Coins") },
+    { COMPOUND_STRING("Dratini{CLEAR_TO 0x4B}{FONT_SMALL} 4,600 Coins") },
+    { COMPOUND_STRING("Porygon{CLEAR_TO 0x4B}{FONT_SMALL} 6,500 Coins") },
 #endif
     { sText_NoThanks }
 };
@@ -374,9 +374,9 @@ static const struct MenuAction sMultichoiceList_RocketHideoutElevator[] = {
 };
 
 static const struct MenuAction sMultichoiceList_LinkedDirectUnion[] = {
-    { COMPOUND_STRING("LINKED GAME PLAY") },
-    { COMPOUND_STRING("DIRECT CORNER") },
-    { COMPOUND_STRING("UNION ROOM") },
+    { COMPOUND_STRING("Linked Game Play") },
+    { COMPOUND_STRING("Direct Corner") },
+    { COMPOUND_STRING("Union Room") },
     { sText_Quit }
 };
 
@@ -413,13 +413,13 @@ static const struct MenuAction sMultichoiceList_TradeColosseum_2[] = {
 
 static const struct MenuAction sMultichoiceList_PokejumpDodrio[] = {
     { gText_PokemonJump },
-    { COMPOUND_STRING("DODRIO BERRY-PICKING") },
+    { COMPOUND_STRING("Dodrio Berry-Picking") },
     { gText_Exit }
 };
 
 static const struct MenuAction sMultichoiceList_Mushrooms[] = {
-    {COMPOUND_STRING("2 TINYMUSHROOMS")},
-    {COMPOUND_STRING("1 BIG MUSHROOM")},
+    {COMPOUND_STRING("2 Tinymushrooms")},
+    {COMPOUND_STRING("1 Big Mushroom")},
 };
 
 static const struct MenuAction sMultichoiceList_SeviiNavel[] = {
@@ -475,8 +475,8 @@ static const struct MenuAction sMultichoiceList_SeagallopVermilion[] = {
 };
 
 static const struct MenuAction sMultichoiceList_JoinOrLead[] = {
-    {COMPOUND_STRING("JOIN GROUP")},
-    {COMPOUND_STRING("BECOME LEADER")},
+    {COMPOUND_STRING("Join Group")},
+    {COMPOUND_STRING("Become Leader")},
     {gText_Exit}
 };
 
@@ -490,27 +490,27 @@ static const struct MenuAction sMultichoiceList_TrainerTowerMode[] = {
 
 static const struct MenuAction sMultichoiceList_FrontierRules[] =
 {
-    {COMPOUND_STRING("TWO STYLES")},
+    {COMPOUND_STRING("Two Styles")},
     {gText_Lv50},
     {gText_OpenLevel},
-    {COMPOUND_STRING("{PKMN} TYPE & NO.")},
-    {COMPOUND_STRING("HOLD ITEMS")},
+    {COMPOUND_STRING("{PKMN} Type & No.")},
+    {COMPOUND_STRING("Hold Items")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_FrontierPassInfo[] =
 {
-    {COMPOUND_STRING("SYMBOLS")},
-    {COMPOUND_STRING("RECORD")},
-    {COMPOUND_STRING("BATTLE PTS")},
+    {COMPOUND_STRING("Symbols")},
+    {COMPOUND_STRING("Record")},
+    {COMPOUND_STRING("Battle Pts")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_FrontierGamblerBet[] =
 {
-    {COMPOUND_STRING("  5BP")},
-    {COMPOUND_STRING("10BP")},
-    {COMPOUND_STRING("15BP")},
+    {COMPOUND_STRING("  5Bp")},
+    {COMPOUND_STRING("10Bp")},
+    {COMPOUND_STRING("15Bp")},
     {gText_Exit},
 };
 
@@ -523,10 +523,10 @@ static const struct MenuAction sMultichoiceList_LevelMode[] =
 
 static const struct MenuAction sMultichoiceList_BattleFactoryRules[] =
 {
-    {COMPOUND_STRING("BASIC RULES")},
-    {COMPOUND_STRING("SWAP: PARTNER")},
-    {COMPOUND_STRING("SWAP: NUMBER")},
-    {COMPOUND_STRING("SWAP: NOTES")},
+    {COMPOUND_STRING("Basic Rules")},
+    {COMPOUND_STRING("Swap: Partner")},
+    {COMPOUND_STRING("Swap: Number")},
+    {COMPOUND_STRING("Swap: Notes")},
     {gText_OpenLevel},
     {gText_Exit},
 };
@@ -561,18 +561,18 @@ static const struct MenuAction sMultichoiceList_GoOnRetire[] =
 
 static const struct MenuAction sMultichoiceList_BattleArenaRules[] =
 {
-    {COMPOUND_STRING("BATTLE RULES")},
-    {COMPOUND_STRING("JUDGE: MIND")},
-    {COMPOUND_STRING("JUDGE: SKILL")},
-    {COMPOUND_STRING("JUDGE: BODY")},
+    {COMPOUND_STRING("Battle Rules")},
+    {COMPOUND_STRING("Judge: Mind")},
+    {COMPOUND_STRING("Judge: Skill")},
+    {COMPOUND_STRING("Judge: Body")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_BattleDomeRules[] =
 {
-    {COMPOUND_STRING("MATCHUP")},
-    {COMPOUND_STRING("TOURNEY TREE")},
-    {COMPOUND_STRING("DOUBLE KO")},
+    {COMPOUND_STRING("Matchup")},
+    {COMPOUND_STRING("Tourney Tree")},
+    {COMPOUND_STRING("Double KO")},
     {gText_Exit},
 };
 
@@ -597,43 +597,43 @@ static const struct MenuAction sMultichoiceList_TourneyNoRecord[] =
 
 static const struct MenuAction sMultichoiceList_BattlePalaceRules[] =
 {
-    {COMPOUND_STRING("BATTLE BASICS")},
-    {COMPOUND_STRING("POKéMON NATURE")},
-    {COMPOUND_STRING("POKéMON MOVES")},
-    {COMPOUND_STRING("UNDERPOWERED")},
-    {COMPOUND_STRING("WHEN IN DANGER")},
+    {COMPOUND_STRING("Battle Basics")},
+    {COMPOUND_STRING("Pokémon Nature")},
+    {COMPOUND_STRING("Pokémon Moves")},
+    {COMPOUND_STRING("Underpowered")},
+    {COMPOUND_STRING("When In Danger")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_BattlePyramidRules[] =
 {
-    {COMPOUND_STRING("PYRAMID: POKéMON")},
-    {COMPOUND_STRING("PYRAMID: TRAINERS")},
-    {COMPOUND_STRING("PYRAMID: MAZE")},
-    {COMPOUND_STRING("BATTLE BAG")},
+    {COMPOUND_STRING("Pyramid: Pokémon")},
+    {COMPOUND_STRING("Pyramid: Trainers")},
+    {COMPOUND_STRING("Pyramid: Maze")},
+    {COMPOUND_STRING("Battle Bag")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_BattlePikeRules[] =
 {
-    {COMPOUND_STRING("POKéNAV AND BAG")},
-    {COMPOUND_STRING("HELD ITEMS")},
-    {COMPOUND_STRING("POKéMON ORDER")},
+    {COMPOUND_STRING("PokéNav And Bag")},
+    {COMPOUND_STRING("Held Items")},
+    {COMPOUND_STRING("Pokémon Order")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_FrontierItemChoose[] =
 {
-    {COMPOUND_STRING("BATTLE BAG")},
-    {COMPOUND_STRING("HELD ITEM")},
+    {COMPOUND_STRING("Battle Bag")},
+    {COMPOUND_STRING("Held Item")},
     {gText_Exit},
 };
 
 static const struct MenuAction sMultichoiceList_BattleTowerRules[] =
 {
-    {COMPOUND_STRING("TOWER INFO")},
-    {COMPOUND_STRING("BATTLE {PKMN}")},
-    {COMPOUND_STRING("BATTLE SALON")},
+    {COMPOUND_STRING("Tower Info")},
+    {COMPOUND_STRING("Battle {PKMN}")},
+    {COMPOUND_STRING("Battle Salon")},
     {sText_MultiLink},
     {gText_Exit},
 };
@@ -648,8 +648,8 @@ static const struct MenuAction sMultichoiceList_BattleTowerFeelings[] =
 
 static const struct MenuAction sMultichoiceList_LinkLeader[] =
 {
-    {COMPOUND_STRING("JOIN GROUP")},
-    {COMPOUND_STRING("BECOME LEADER")},
+    {COMPOUND_STRING("Join Group")},
+    {COMPOUND_STRING("Become Leader")},
     {gText_Exit},
 };
 
@@ -754,14 +754,14 @@ const u8 *const gStdStrings[] = {
     [STDSTRING_VOLCANO_BADGE]    = gText_VolcanoBadge,
     [STDSTRING_EARTH_BADGE]      = gText_EarthBadge,
     [STDSTRING_COINS]            = gText_Coins,
-    [STDSTRING_ITEMS_POCKET]     = COMPOUND_STRING("ITEMS POCKET"),
-    [STDSTRING_KEY_ITEMS_POCKET] = COMPOUND_STRING("KEY ITEMS POCKET"),
-    [STDSTRING_POKEBALLS_POCKET] = COMPOUND_STRING("POKé BALLS POCKET"),
+    [STDSTRING_ITEMS_POCKET]     = COMPOUND_STRING("Items Pocket"),
+    [STDSTRING_KEY_ITEMS_POCKET] = COMPOUND_STRING("Key Items Pocket"),
+    [STDSTRING_POKEBALLS_POCKET] = COMPOUND_STRING("Poké Balls Pocket"),
     [STDSTRING_TM_CASE]          = gText_TMCase,
     [STDSTRING_BERRY_POUCH]      = gText_BerryPouch,
     [STDSTRING_SINGLE]           = gText_Single,
     [STDSTRING_DOUBLE]           = gText_Double,
-    [STDSTRING_MULTI]            = COMPOUND_STRING("MULTI"),
+    [STDSTRING_MULTI]            = COMPOUND_STRING("Multi"),
     [STDSTRING_MULTI_LINK]       = sText_MultiLink,
     [STDSTRING_BATTLE_DOME]      = gText_BattleDome,
     [STDSTRING_BATTLE_FACTORY]   = gText_BattleFactory,
@@ -833,10 +833,10 @@ static const u8 *const sSeagallopDestStrings[] = {
     [SEAGALLOP_ONE_ISLAND]     = sText_OneIsland,
     [SEAGALLOP_TWO_ISLAND]     = sText_TwoIsland,
     [SEAGALLOP_THREE_ISLAND]   = sText_ThreeIsland,
-    [SEAGALLOP_FOUR_ISLAND]    = COMPOUND_STRING("FOUR ISLAND"),
-    [SEAGALLOP_FIVE_ISLAND]    = COMPOUND_STRING("FIVE ISLAND"),
-    [SEAGALLOP_SIX_ISLAND]     = COMPOUND_STRING("SIX ISLAND"),
-    [SEAGALLOP_SEVEN_ISLAND]   = COMPOUND_STRING("SEVEN ISLAND"),
+    [SEAGALLOP_FOUR_ISLAND]    = COMPOUND_STRING("Four Island"),
+    [SEAGALLOP_FIVE_ISLAND]    = COMPOUND_STRING("Five Island"),
+    [SEAGALLOP_SIX_ISLAND]     = COMPOUND_STRING("Six Island"),
+    [SEAGALLOP_SEVEN_ISLAND]   = COMPOUND_STRING("Seven Island"),
 };
 
 bool8 ScriptMenu_MultichoiceDynamic(u8 left, u8 top, u8 argc, struct ListMenuItem *items, bool8 ignoreBPress, u8 maxBeforeScroll, u32 initialRow, u32 callbackSet)

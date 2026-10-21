@@ -537,10 +537,10 @@ static const u8 *const sMessages[] =
 {
     [MSG_STANDBY]                    = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}Communication standby…\nPlease wait."),
     [MSG_CANCELED]                   = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}The trade has been canceled."),
-    [MSG_ONLY_MON1]                  = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}That's your only POKéMON\nfor battle."),
-    [MSG_ONLY_MON2]                  = COMPOUND_STRING("That's your only\nPOKéMON for battle."), // Same as above but without color formatting
+    [MSG_ONLY_MON1]                  = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}That's your only Pokémon\nfor battle."),
+    [MSG_ONLY_MON2]                  = COMPOUND_STRING("That's your only\nPokémon for battle."), // Same as above but without color formatting
     [MSG_WAITING_FOR_FRIEND]         = COMPOUND_STRING("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}Waiting for your friend\nto finish…"),
-    [MSG_FRIEND_WANTS_TO_TRADE]      = COMPOUND_STRING("Your friend wants\nto trade POKéMON."),
+    [MSG_FRIEND_WANTS_TO_TRADE]      = COMPOUND_STRING("Your friend wants\nto trade Pokémon."),
     [MSG_MON_CANT_BE_TRADED]         = gText_PkmnCantBeTradedNow,
     [MSG_EGG_CANT_BE_TRADED]         = gText_EggCantBeTradedNow,
     [MSG_FRIENDS_MON_CANT_BE_TRADED] = gText_OtherTrainersPkmnCantBeTraded
@@ -746,10 +746,10 @@ static const u8 sDebug_Messages[][13] = {
     _("かいめの そうしん"), // "xth communication sent"
     _("かいめの じゅしん"), // "xth communication received"
     _("ポケモンアイコンセット"), // "pokemon icon set"
-    _("OBJテキストセット"), // "OBJ text set"
+    _("Objテキストセット"), // "OBJ text set"
     _("セルセット"), // "cell set"
-    _("OBJテキストADD"), // "OBJ text ADD"
-    _("システムメッセージADD"), // "system message ADD"
+    _("ObjテキストAdd"), // "OBJ text ADD"
+    _("システムメッセージAdd"), // "system message ADD"
     _("はいけいセット"), // "background set"
 };
 

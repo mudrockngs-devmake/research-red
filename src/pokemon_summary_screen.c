@@ -2579,7 +2579,7 @@ static void PokeSum_DrawMoveTypeIcons(void)
         BlitMenuTypeIcon(sMonSummaryScreen->windowIds[5], sMonSummaryScreen->moveTypes[MAX_MON_MOVES], 3, GetMoveNamePrinterYpos(MAX_MON_MOVES));
 }
 
-static const u8 *const sText_PageRename = COMPOUND_STRING("{DPAD_RIGHT}PAGE {A_BUTTON}RENAME");
+static const u8 *const sText_PageRename = COMPOUND_STRING("{DPAD_RIGHT}Page {A_BUTTON}Rename");
 
 static void PrintControlsString(void)
 {

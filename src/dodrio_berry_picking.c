@@ -365,7 +365,7 @@ static bool32 IsGfxFuncActive(void);
 static u32 IncrementWithLimit(u32, u32);
 static u32 Min(u32, u32);
 
-static const u8 gText_BerryPickingResults[] = _("Announcing BERRY-PICKING results!");
+static const u8 gText_BerryPickingResults[] = _("Announcing Berry-Picking results!");
 static const u8 gText_10P30P50P50P[] = _("10P     30P     50P     {EMOJI_MINUS}50P");
 static const u8 gText_AnnouncingRankings[] = _("Announcing rankings!");
 static const u8 gText_AnnouncingPrizes[] = _("Announcing prizes!");
@@ -2939,10 +2939,10 @@ static const struct WindowTemplate sWindowTemplates_Records =
 
 static const u8 *const sRecordsTexts[NUM_RECORD_TYPES + 1] =
 {
-    COMPOUND_STRING("DODRIO BERRY-PICKING RECORDS"),
-    COMPOUND_STRING("BERRIES picked:"),
+    COMPOUND_STRING("Dodrio Berry-Picking Records"),
+    COMPOUND_STRING("Berries picked:"),
     COMPOUND_STRING("Best score:"),
-    COMPOUND_STRING("BERRIES picked in a row with\nfive players:"),
+    COMPOUND_STRING("Berries picked in a row with\nfive players:"),
 };
 
 static const u8 sRecordNumMaxDigits[NUM_RECORD_TYPES] = {4, 7, 4};
@@ -3052,7 +3052,7 @@ static const u16 sDebug_BerryResults[MAX_RFU_PLAYERS][4] =
 };
 
 static const u8 sJPText_Vowels[] = _("あいうえおかき");
-static const u8 sText_Letters[] = _("ABCDEFG");
+static const u8 sText_Letters[] = _("Abcdefg");
 static const u8 sText_Digits[] = _("0123456");
 
 static const u8 *const sPlaceholderPlayerNames[] =

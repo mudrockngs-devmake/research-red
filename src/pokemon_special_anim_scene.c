@@ -57,7 +57,7 @@ static void SpriteCB_LevelUpVertical(struct Sprite *sprite);
 
 static const u8 sText_WasUsedOn[] = _(" was used on\n");
 static const u8 sText_LevelRoseTo[] = _("'s level rose to\n");
-static const u8 sText_LevelUp_MaxHP[] = _("{FONT_SMALL}MAX.{FONT_NORMAL} HP");
+static const u8 sText_LevelUp_MaxHP[] = _("{FONT_SMALL}Max.{FONT_NORMAL} HP");
 static const u8 sText_LevelUp_Attack[] = _("Attack");
 static const u8 sText_LevelUp_Defense[] = _("Defense");
 static const u8 sText_LevelUp_Speed[] = _("Speed");

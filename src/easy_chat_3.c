@@ -154,7 +154,7 @@ static void UpdateStartSelectButtonSpriteVisibility(void);
 static void HideStartSelectButtonSprites(void);
 static void CreateFooterWindow(void);
 
-static const u8 sText_DelAllCancelOk[] = _("DEL. ALL{CLEAR_TO 0x57}CANCEL{CLEAR_TO 0xA4}OK");
+static const u8 sText_DelAllCancelOk[] = _("Del. All{CLEAR_TO 0x57}Cancel{CLEAR_TO 0xA4}OK");
 
 static const u16 sTriangleCursor_Pal[] = INCBIN_U16("graphics/easy_chat/triangle_cursor.gbapal");
 static const u16 sRectangleCursor_Pal[] = INCBIN_U16("graphics/easy_chat/rectangle_cursor.gbapal");

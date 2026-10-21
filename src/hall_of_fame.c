@@ -87,16 +87,16 @@ static void SpriteCB_Confetti(struct Sprite *sprite);
 static bool8 Hof_SpawnConfetti(void);
 static void Task_DoDomeConfetti(u8 taskId);
 
-static const u8 sText_UPDOWNPick_ABUTTONNext_BBUTTONBack[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}NEXT {B_BUTTON}CANCEL");
-static const u8 sText_UPDOWNPick_ABUTTONBBUTTONCancel[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}{B_BUTTON}CANCEL");
-static const u8 sText_ABUTTONExit[] = _("{A_BUTTON}EXIT");
-static const u8 sText_WelcomeToHOF[] = _("Welcome to the HALL OF FAME!");
-static const u8 sText_HOFCorrupted[] = _("The HALL OF FAME data is\ncorrupted.");
-static const u8 sText_HOFNumber[] = _("HALL OF FAME No. {STR_VAR_1}");
-static const u8 sText_LeagueChamp[] = _("LEAGUE CHAMPION!\nCONGRATULATIONS!");
+static const u8 sText_UPDOWNPick_ABUTTONNext_BBUTTONBack[] = _("{DPAD_UPDOWN}Pick {A_BUTTON}Next {B_BUTTON}Cancel");
+static const u8 sText_UPDOWNPick_ABUTTONBBUTTONCancel[] = _("{DPAD_UPDOWN}Pick {A_BUTTON}{B_BUTTON}Cancel");
+static const u8 sText_ABUTTONExit[] = _("{A_BUTTON}Exit");
+static const u8 sText_WelcomeToHOF[] = _("Welcome to the Hall Of Fame!");
+static const u8 sText_HOFCorrupted[] = _("The Hall Of Fame data is\ncorrupted.");
+static const u8 sText_HOFNumber[] = _("Hall Of Fame No. {STR_VAR_1}");
+static const u8 sText_LeagueChamp[] = _("League Champion!\nCongratulations!");
 static const u8 sText_Number[] = _("No. ");
 static const u8 sText_Level[] = _("Lv. ");
-static const u8 sText_Name[] = _("NAME");
+static const u8 sText_Name[] = _("Name");
 static const u8 sText_IDNumber[] = _("IDNo.");
 
 static const struct BgTemplate sHof_BgTemplates[] = {

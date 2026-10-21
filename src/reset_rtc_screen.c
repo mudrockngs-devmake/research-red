@@ -75,7 +75,7 @@ static void VBlankCB(void);
 static void Task_ResetRtcScreen(u8 taskId);
 static void InitResetRtcScreenBgAndWindows(void);
 
-static const u8 sText_ResetRTCConfirmCancel[] = _("Reset RTC?\nA: Confirm, B: Cancel");
+static const u8 sText_ResetRTCConfirmCancel[] = _("Reset Rtc?\nA: Confirm, B: Cancel");
 static const u8 sText_PresentTime[] = _("Present time in game");
 static const u8 sText_PreviousTime[] = _("Previous time in game");
 static const u8 sText_PleaseResetTime[] = _("Please reset the time.");
@@ -83,8 +83,8 @@ static const u8 sText_ClockHasBeenReset[] = _("The clock has been reset.\nData w
 static const u8 sText_SaveCompleted[] = _("Save completed.");
 static const u8 sText_NoSaveFileCantSetTime[] = _("There is no save file, so the time\ncan't be set.");
 static const u8 sText_SaveFailed[] = _("Save failed…");
-static const u8 sText_Confirm[] = _("CONFIRM");
-static const u8 sText_Day[] = _("DAY");
+static const u8 sText_Confirm[] = _("Confirm");
+static const u8 sText_Day[] = _("Day");
 
 static const struct BgTemplate sBgTemplates[] =
 {

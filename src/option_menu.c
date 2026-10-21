@@ -70,7 +70,7 @@ static void DrawOptionMenuBg(void);
 static void LoadOptionMenuItemNames(void);
 static void UpdateSettingSelectionDisplay(u16 selection);
 
-static const u8 sText_PickSwitchCancel[] = _("{DPAD_UPDOWN}PICK {DPAD_LEFTRIGHT}SWITCH {A_BUTTON}{B_BUTTON}CANCEL");
+static const u8 sText_PickSwitchCancel[] = _("{DPAD_UPDOWN}Pick {DPAD_LEFTRIGHT}Switch {A_BUTTON}{B_BUTTON}Cancel");
 
 // Data Definitions
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -141,19 +141,19 @@ static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {3, 2, 0, 2, 3, 10, 0};
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
-    [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("TEXT SPEED"),
-    [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE"),
-    [MENUITEM_RR_RULES]    = COMPOUND_STRING("RESEARCH RULES"), // Research Red
-    [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
-    [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
-    [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
+    [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("Text Speed"),
+    [MENUITEM_BATTLESCENE] = COMPOUND_STRING("Battle Scene"),
+    [MENUITEM_RR_RULES]    = COMPOUND_STRING("Research Rules"), // Research Red
+    [MENUITEM_SOUND]       = COMPOUND_STRING("Sound"),
+    [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("Button Mode"),
+    [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("Frame"),
     [MENUITEM_CANCEL]      = gText_Cancel,
 };
 
 static const u8 *const sTextSpeedOptions[] =
 {
-    COMPOUND_STRING("SLOW"),
-    COMPOUND_STRING("MID"),
+    COMPOUND_STRING("Slow"),
+    COMPOUND_STRING("Mid"),
     gText_Fast,
 };
 
@@ -165,14 +165,14 @@ static const u8 *const sBattleSceneOptions[] =
 
 static const u8 *const sSoundOptions[] =
 {
-    COMPOUND_STRING("MONO"),
-    COMPOUND_STRING("STEREO"),
+    COMPOUND_STRING("Mono"),
+    COMPOUND_STRING("Stereo"),
 };
 
 static const u8 *const sButtonTypeOptions[] =
 {
     gText_Help,
-	COMPOUND_STRING("LR"),
+	COMPOUND_STRING("Lr"),
 	COMPOUND_STRING("L=A"),
 };
 
@@ -493,7 +493,7 @@ static void BufferOptionMenuString(u8 selection)
         AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBattleSceneOptions[sOptionMenuPtr->option[selection]]);
         break;
     case MENUITEM_RR_RULES: // Research Red
-        AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, RR_CanOpenRulesFromOptions() ? COMPOUND_STRING("{A_BUTTON} OPEN") : COMPOUND_STRING("---"));
+        AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, RR_CanOpenRulesFromOptions() ? COMPOUND_STRING("{A_BUTTON} Open") : COMPOUND_STRING("---"));
         break;
     case MENUITEM_SOUND:
         AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sSoundOptions[sOptionMenuPtr->option[selection]]);

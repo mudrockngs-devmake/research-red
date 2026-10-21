@@ -30,9 +30,9 @@ static void RemoveBattleRecordsWindow(u8 windowId);
 EWRAM_DATA u8 gRecordsWindowId = 0;
 EWRAM_DATA static u16 *sTilemapBuffer = NULL;
 
-static const u8 sString_BattleRecords_PlayersBattleResults[] = _("{PLAYER}'s BATTLE RESULTS");
-static const u8 sString_BattleRecords_TotalRecord[] = _("TOTAL RECORD W:{STR_VAR_1} L:{STR_VAR_2} D:{STR_VAR_3}");
-static const u8 sString_BattleRecords_ColumnHeaders[] = _("WIN{CLEAR_TO 0x30}LOSE{CLEAR_TO 0x60}DRAW");
+static const u8 sString_BattleRecords_PlayersBattleResults[] = _("{PLAYER}'s Battle Results");
+static const u8 sString_BattleRecords_TotalRecord[] = _("Total Record W:{STR_VAR_1} L:{STR_VAR_2} D:{STR_VAR_3}");
+static const u8 sString_BattleRecords_ColumnHeaders[] = _("Win{CLEAR_TO 0x30}Lose{CLEAR_TO 0x60}Draw");
 static const u8 sString_BattleRecords_4Dashes[] = _("----");
 
 static const u16 sBattleRecordsWindowTiles[] = INCBIN_U16("graphics/battle_records/bg_tiles.4bpp");

@@ -393,34 +393,34 @@ static void FreeFlyMap(u8);
 static void SetFlyWarpDestination(u16);
 
 static const u8 sText_RegionMap_Space[] = _(" ");
-static const u8 sText_RegionMap_AButtonGuide[] = _("{A_BUTTON}GUIDE");
-static const u8 sText_RegionMap_AButtonCancel[] = _("{A_BUTTON}CANCEL");
-static const u8 sText_RegionMap_AButtonCancel2[] = _("{A_BUTTON}CANCEL");
-static const u8 sText_RegionMap_AButtonSwitch[] = _("{A_BUTTON}SWITCH");
+static const u8 sText_RegionMap_AButtonGuide[] = _("{A_BUTTON}Guide");
+static const u8 sText_RegionMap_AButtonCancel[] = _("{A_BUTTON}Cancel");
+static const u8 sText_RegionMap_AButtonCancel2[] = _("{A_BUTTON}Cancel");
+static const u8 sText_RegionMap_AButtonSwitch[] = _("{A_BUTTON}Switch");
 static const u8 sText_RegionMap_AButtonOK[] = _("{A_BUTTON}OK");
-static const u8 sText_RegionMap_DPadMove[] = _("{DPAD_ANY}MOVE");
-static const u8 sText_RegionMap_UpDownPick[] = _("{DPAD_UPDOWN}PICK");
+static const u8 sText_RegionMap_DPadMove[] = _("{DPAD_ANY}Move");
+static const u8 sText_RegionMap_UpDownPick[] = _("{DPAD_UPDOWN}Pick");
 static const u8 sText_RegionMap_NoData[] = _("No data");
-static const u8 sText_RegionMap_AreaDesc_ViridianForest[] = _("A deep and sprawling forest that\nextends around VIRIDIAN CITY.\nA natural maze, many people\nbecome lost inside.");
-static const u8 sText_RegionMap_AreaDesc_MtMoon[] = _("A mystical mountain that is known\nfor its frequent meteor falls.\nThe shards of stars that fall\nhere are known as MOON STONES.");
-static const u8 sText_RegionMap_AreaDesc_DiglettsCave[] = _("A seemingly plain tunnel that was\ndug by wild DIGLETT.\nIt is famous for connecting\nROUTES 2 and 11.");
-static const u8 sText_RegionMap_AreaDesc_VictoryRoad[] = _("A tunnel situated on ROUTE 23.\nIt earned its name because it\nmust be traveled by all TRAINERS\naiming for the top.");
-static const u8 sText_RegionMap_AreaDesc_PokemonMansion[] = _("A decrepit, burned-down mansion\non CINNABAR ISLAND.\nIt got its name because a famous\nPOKéMON researcher lived there.");
-static const u8 sText_RegionMap_AreaDesc_SafariZone[] = _("An amusement park outside FUCHSIA\nCITY where many rare POKéMON can\nbe observed in the wild.\nCatch them in a popular game!");
+static const u8 sText_RegionMap_AreaDesc_ViridianForest[] = _("A deep and sprawling forest that\nextends around Viridian City.\nA natural maze, many people\nbecome lost inside.");
+static const u8 sText_RegionMap_AreaDesc_MtMoon[] = _("A mystical mountain that is known\nfor its frequent meteor falls.\nThe shards of stars that fall\nhere are known as Moon Stones.");
+static const u8 sText_RegionMap_AreaDesc_DiglettsCave[] = _("A seemingly plain tunnel that was\ndug by wild Diglett.\nIt is famous for connecting\nRoutes 2 and 11.");
+static const u8 sText_RegionMap_AreaDesc_VictoryRoad[] = _("A tunnel situated on Route 23.\nIt earned its name because it\nmust be traveled by all Trainers\naiming for the top.");
+static const u8 sText_RegionMap_AreaDesc_PokemonMansion[] = _("A decrepit, burned-down mansion\non Cinnabar Island.\nIt got its name because a famous\nPokémon researcher lived there.");
+static const u8 sText_RegionMap_AreaDesc_SafariZone[] = _("An amusement park outside Fuchsia\nCity where many rare Pokémon can\nbe observed in the wild.\nCatch them in a popular game!");
 static const u8 sText_RegionMap_AreaDesc_RockTunnel[] = _("A naturally formed underground\ntunnel. Because it has not been\ndeveloped, it is inky dark inside.\nA light is needed to get through.");
-static const u8 sText_RegionMap_AreaDesc_SeafoamIslands[] = _("A pair of islands that is situated\non ROUTE 20.\nThe two islands are shaped the\nsame, as if they were twins.");
-static const u8 sText_RegionMap_AreaDesc_PokemonTower[] = _("A tower that houses the graves of\ncountless POKéMON.\nMany people visit it daily to pay\ntheir respects to the fallen.");
-static const u8 sText_RegionMap_AreaDesc_CeruleanCave[] = _("A mysterious cave that is filled\nwith terribly tough POKéMON.\nIt is so dangerous, the POKéMON\nLEAGUE is in charge of it.");
-static const u8 sText_RegionMap_AreaDesc_PowerPlant[] = _("A power plant that was abandoned\nyears ago, though some of the\nmachines still work. It is infested\nwith electric POKéMON.");
+static const u8 sText_RegionMap_AreaDesc_SeafoamIslands[] = _("A pair of islands that is situated\non Route 20.\nThe two islands are shaped the\nsame, as if they were twins.");
+static const u8 sText_RegionMap_AreaDesc_PokemonTower[] = _("A tower that houses the graves of\ncountless Pokémon.\nMany people visit it daily to pay\ntheir respects to the fallen.");
+static const u8 sText_RegionMap_AreaDesc_CeruleanCave[] = _("A mysterious cave that is filled\nwith terribly tough Pokémon.\nIt is so dangerous, the Pokémon\nLeague is in charge of it.");
+static const u8 sText_RegionMap_AreaDesc_PowerPlant[] = _("A power plant that was abandoned\nyears ago, though some of the\nmachines still work. It is infested\nwith electric Pokémon.");
 static const u8 sText_RegionMap_AreaDesc_MtEmber[] = _("Supposedly an inactive volcano.\nHowever, there are persistent\nreports that the peak blazes\nwith fire at night.");
-static const u8 sText_RegionMap_AreaDesc_BerryForest[] = _("A forest on a small islet off the\ncoast of THREE ISLAND. BERRIES\ngrow wildly in profusion, quickly\nreplenishing those that fall off.");
-static const u8 sText_RegionMap_AreaDesc_IcefallCave[] = _("A cave which is covered by water\nand ice on FOUR ISLAND.\nIt seems like the end of the cave\nis connected to the ocean.");
-static const u8 sText_RegionMap_AreaDesc_LostCave[] = _("A bewildering cave off the coast\nof RESORT GORGEOUS.\nSome curious thrill seekers have\nnever emerged from it.");
-static const u8 sText_RegionMap_AreaDesc_TanobyRuins[] = _("An ancient ruin that is rumored to\nbe home to a peculiar POKéMON.\nHowever, so far, the POKéMON\nremains an unconfirmed rumor.");
+static const u8 sText_RegionMap_AreaDesc_BerryForest[] = _("A forest on a small islet off the\ncoast of Three Island. Berries\ngrow wildly in profusion, quickly\nreplenishing those that fall off.");
+static const u8 sText_RegionMap_AreaDesc_IcefallCave[] = _("A cave which is covered by water\nand ice on Four Island.\nIt seems like the end of the cave\nis connected to the ocean.");
+static const u8 sText_RegionMap_AreaDesc_LostCave[] = _("A bewildering cave off the coast\nof Resort Gorgeous.\nSome curious thrill seekers have\nnever emerged from it.");
+static const u8 sText_RegionMap_AreaDesc_TanobyRuins[] = _("An ancient ruin that is rumored to\nbe home to a peculiar Pokémon.\nHowever, so far, the Pokémon\nremains an unconfirmed rumor.");
 static const u8 sText_RegionMap_AreaDesc_AlteringCave[] = _("This island has been known by this\nname since the distant past.\nNo one today knows where it got\nthis name, however.");
 static const u8 sText_RegionMap_AreaDesc_PatternBush[] = _("A lush and bush-like area. \nIn it are patterns where no grass\ngrows. Some study it in the belief\nthat a secret is concealed.");
 static const u8 sText_RegionMap_AreaDesc_DottedHole[] = _("A mysterious, just-discovered\nruin from an ancient time.\nIt got its name from the six dots\non its door.");
-static const u8 sText_RegionMap_AreaDesc_ArtisanCave[] = _("TODO.");
+static const u8 sText_RegionMap_AreaDesc_ArtisanCave[] = _("Todo.");
 
 const u32 gPlayerIcon_Red[] = INCBIN_U32("graphics/region_map/player_icon_red.4bpp");
 const u32 gPlayerIcon_Leaf[] = INCBIN_U32("graphics/region_map/player_icon_leaf.4bpp");
@@ -666,86 +666,88 @@ static const union AnimCmd *const sAnims_SwitchMapCursor[] = {
 
 #include "data/region_map/region_map_entries.h"
 
+// Research Red (#11): map names are proper case (region_map_sections.json), so
+// their generated sMapName_ symbols are spelled that way too
 static const struct DungeonMapInfo sDungeonInfo[] = {
     {
         .id = MAPSEC_VIRIDIAN_FOREST,
-        .name = sMapName_VIRIDIAN_FOREST,
+        .name = sMapName_Viridian_Forest,
         .desc = sText_RegionMap_AreaDesc_ViridianForest
     }, {
         .id = MAPSEC_MT_MOON,
-        .name = sMapName_MT__MOON,
+        .name = sMapName_Mt__Moon,
         .desc = sText_RegionMap_AreaDesc_MtMoon
     }, {
         .id = MAPSEC_DIGLETTS_CAVE,
-        .name = sMapName_DIGLETT_S_CAVE,
+        .name = sMapName_Diglett_s_Cave,
         .desc = sText_RegionMap_AreaDesc_DiglettsCave
     }, {
         .id = MAPSEC_KANTO_VICTORY_ROAD,
-        .name = sMapName_VICTORY_ROAD,
+        .name = sMapName_Victory_Road,
         .desc = sText_RegionMap_AreaDesc_VictoryRoad
     }, {
         .id = MAPSEC_POKEMON_MANSION,
-        .name = sMapName_POK__MON_MANSION,
+        .name = sMapName_Pok__mon_Mansion,
         .desc = sText_RegionMap_AreaDesc_PokemonMansion
     }, {
         .id = MAPSEC_KANTO_SAFARI_ZONE,
-        .name = sMapName_SAFARI_ZONE,
+        .name = sMapName_Safari_Zone,
         .desc = sText_RegionMap_AreaDesc_SafariZone
     }, {
         .id = MAPSEC_ROCK_TUNNEL,
-        .name = sMapName_ROCK_TUNNEL,
+        .name = sMapName_Rock_Tunnel,
         .desc = sText_RegionMap_AreaDesc_RockTunnel
     }, {
         .id = MAPSEC_SEAFOAM_ISLANDS,
-        .name = sMapName_SEAFOAM_ISLANDS,
+        .name = sMapName_Seafoam_Islands,
         .desc = sText_RegionMap_AreaDesc_SeafoamIslands
     }, {
         .id = MAPSEC_POKEMON_TOWER,
-        .name = sMapName_POK__MON_TOWER,
+        .name = sMapName_Pok__mon_Tower,
         .desc = sText_RegionMap_AreaDesc_PokemonTower
     }, {
         .id = MAPSEC_CERULEAN_CAVE,
-        .name = sMapName_CERULEAN_CAVE,
+        .name = sMapName_Cerulean_Cave,
         .desc = sText_RegionMap_AreaDesc_CeruleanCave
     }, {
         .id = MAPSEC_POWER_PLANT,
-        .name = sMapName_POWER_PLANT,
+        .name = sMapName_Power_Plant,
         .desc = sText_RegionMap_AreaDesc_PowerPlant
     }, {
         .id = MAPSEC_MT_EMBER,
-        .name = sMapName_MT__EMBER,
+        .name = sMapName_Mt__Ember,
         .desc = sText_RegionMap_AreaDesc_MtEmber
     }, {
         .id = MAPSEC_BERRY_FOREST,
-        .name = sMapName_BERRY_FOREST,
+        .name = sMapName_Berry_Forest,
         .desc = sText_RegionMap_AreaDesc_BerryForest
     }, {
         .id = MAPSEC_ICEFALL_CAVE,
-        .name = sMapName_ICEFALL_CAVE,
+        .name = sMapName_Icefall_Cave,
         .desc = sText_RegionMap_AreaDesc_IcefallCave
     }, {
         .id = MAPSEC_LOST_CAVE,
-        .name = sMapName_LOST_CAVE,
+        .name = sMapName_Lost_Cave,
         .desc = sText_RegionMap_AreaDesc_LostCave
     }, {
         .id = MAPSEC_TANOBY_CHAMBERS,
-        .name = sMapName_TANOBY_CHAMBERS,
+        .name = sMapName_Tanoby_Chambers,
         .desc = sText_RegionMap_AreaDesc_TanobyRuins
     }, {
         .id = MAPSEC_ALTERING_CAVE_FRLG,
-        .name = sMapName_ALTERING_CAVE,
+        .name = sMapName_Altering_Cave,
         .desc = sText_RegionMap_AreaDesc_AlteringCave
     }, {
         .id = MAPSEC_PATTERN_BUSH,
-        .name = sMapName_PATTERN_BUSH,
+        .name = sMapName_Pattern_Bush,
         .desc = sText_RegionMap_AreaDesc_PatternBush
     }, {
         .id = MAPSEC_DOTTED_HOLE,
-        .name = sMapName_DOTTED_HOLE,
+        .name = sMapName_Dotted_Hole,
         .desc = sText_RegionMap_AreaDesc_DottedHole
     }, {
         .id = MAPSEC_ARTISAN_CAVE,
-        .name = sMapName_ARTISAN_CAVE,
+        .name = sMapName_Artisan_Cave,
         .desc = sText_RegionMap_AreaDesc_ArtisanCave
     }
 };
@@ -3822,7 +3824,7 @@ u8 *GetMapName(u8 *dst0, u16 mapsec, u16 fill)
     if (mapsec < MAPSEC_NONE)
     {
         if (IsCeladonDeptStoreMapsec(mapsec) == TRUE)
-            dst = StringCopy(dst0, sMapName_CELADON_DEPT_);
+            dst = StringCopy(dst0, sMapName_Celadon_Dept_);
         else
             dst = StringCopy(dst0, gRegionMapEntries[mapsec].name);
     }

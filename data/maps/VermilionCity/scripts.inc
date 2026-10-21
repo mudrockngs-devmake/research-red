@@ -108,19 +108,19 @@ VermilionCity_AddAuroraTicket::
 	return
 
 Seagallop_SeviiIslands::
-	.string "SEVII ISLANDS$"
+	.string "Sevii Islands$"
 
 Seagallop_NavelRock::
-	.string "NAVEL ROCK$"
+	.string "Navel Rock$"
 
 Seagallop_BirthIsland::
-	.string "BIRTH ISLAND$"
+	.string "Birth Island$"
 
 Seagallop_BattleFrontier::
-	.string "BATTLE FRONTIER$"
+	.string "Battle Frontier$"
 
 Seagallop_Cancel::
-	.string "CANCEL$"
+	.string "Cancel$"
 
 VermilionCity_EventScript_ChooseSeagallopDestRainbowPass::
 	goto_if_questlog EventScript_ReleaseEnd

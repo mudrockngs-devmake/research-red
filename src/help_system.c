@@ -31,8 +31,8 @@ enum HelpSystemTopics
     TOPIC_COUNT
 };
 
-static const u8 sText_PickOkEnd[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}OK {B_BUTTON}END");
-static const u8 sText_AorBtoCancel[] = _("{A_BUTTON}{B_BUTTON}CANCEL");
+static const u8 sText_PickOkEnd[] = _("{DPAD_UPDOWN}Pick {A_BUTTON}OK {B_BUTTON}End");
+static const u8 sText_AorBtoCancel[] = _("{A_BUTTON}{B_BUTTON}Cancel");
 
 static EWRAM_DATA u16 sHelpSystemContextId = 0;
 static EWRAM_DATA u8 sSeenHelpSystemIntro = 0;

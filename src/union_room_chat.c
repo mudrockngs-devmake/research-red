@@ -113,8 +113,8 @@ static void Task_ReceiveChatMessage(u8 taskId);
 static const u8 sText_F700JoinedChat[] = _("{DYNAMIC 0x00} joined the chat!");
 static const u8 sText_F700LeftChat[] = _("{DYNAMIC 0x00} left the chat.");
 static const u8 sText_Ok[] = _("OK!");
-static const u8 sText_YaySmileEmoji[] = _("YAY{EMOJI_BIGSMILE}");
-static const u8 sText_ByeBye[] = _("BYE-BYE!");
+static const u8 sText_YaySmileEmoji[] = _("Yay{EMOJI_BIGSMILE}");
+static const u8 sText_ByeBye[] = _("Bye-Bye!");
 
 static void (*const sChatEntryRoutines[])(void) = {
     [CHATENTRYROUTINE_JOIN] = ChatEntryRoutine_Join,

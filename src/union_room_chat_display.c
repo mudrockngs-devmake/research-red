@@ -278,7 +278,7 @@ static const struct MessageWindowInfo sMessageWindowInfo[] = {
         .widerBox = FALSE
     },
     [STDMESSAGE_LEADER_LEFT] = {
-        .text = COMPOUND_STRING("The LEADER, {DYNAMIC 0x00}, has\nleft, ending the chat."),
+        .text = COMPOUND_STRING("The Leader, {DYNAMIC 0x00}, has\nleft, ending the chat."),
         .boxType = 2,
         .x = 0,
         .y = 0,
@@ -308,7 +308,7 @@ static const struct MessageWindowInfo sMessageWindowInfo[] = {
         .widerBox = TRUE
     },
     [STDMESSAGE_SAVING_NO_OFF] = {
-        .text = COMPOUND_STRING("SAVING‥\nDON'T TURN OFF THE POWER."),
+        .text = COMPOUND_STRING("Saving‥\nDon't Turn Off The Power."),
         .boxType = 2,
         .x = 0,
         .y = 0,
@@ -328,7 +328,7 @@ static const struct MessageWindowInfo sMessageWindowInfo[] = {
         .widerBox = TRUE
     },
     [STDMESSAGE_WARN_LEADER_LEAVE] = {
-        .text = COMPOUND_STRING("If the LEADER leaves, the chat\nwill end. Is that okay?"),
+        .text = COMPOUND_STRING("If the Leader leaves, the chat\nwill end. Is that okay?"),
         .boxType = 2,
         .x = 0,
         .y = 0,
@@ -340,9 +340,9 @@ static const struct MessageWindowInfo sMessageWindowInfo[] = {
 };
 
 static const struct MenuAction sKeyboardSwapTexts[] = {
-    {COMPOUND_STRING("UPPER")},
+    {COMPOUND_STRING("Upper")},
     {COMPOUND_STRING("lower")},
-    {COMPOUND_STRING("SYMBOLS")},
+    {COMPOUND_STRING("Symbols")},
     {gText_Register},
     {gText_Exit}
 };

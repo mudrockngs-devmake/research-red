@@ -452,16 +452,16 @@ enum {
 
 static const u8 sText_SpacePoints2[] = _(" points");
 static const u8 sText_SpaceTimes3[] = _(" time(s)");
-static const u8 sText_PkmnJumpRecords[] = _("POKéMON JUMP RECORDS");
+static const u8 sText_PkmnJumpRecords[] = _("Pokémon Jump Records");
 static const u8 sText_JumpsInARow[] = _("Jumps in a row:");
 static const u8 sText_BestScore2[] = _("Best score:");
-static const u8 sText_ExcellentsInARow[] = _("EXCELLENTS in a row:");
+static const u8 sText_ExcellentsInARow[] = _("Excellents in a row:");
 static const u8 sText_AwesomeWonF701F700[] = _("Awesome score! You've\nwon {DYNAMIC 01} {DYNAMIC 00}!");
 static const u8 sText_FilledStorageSpace2[] = _("There's no room left now.");
 static const u8 sText_CantHoldMore[] = _("You can't hold any more!");
 static const u8 sText_WantToPlayAgain2[] = _("Want to play again?");
 static const u8 sText_SomeoneDroppedOut2[] = _("Somebody dropped out.\nThe link will be canceled.");
-static const u8 sText_SavingDontTurnOffPower[] = _("SAVING…\nDON'T TURN OFF THE POWER.");
+static const u8 sText_SavingDontTurnOffPower[] = _("Saving…\nDon't Turn Off The Power.");
 
 static const u16 s321Start_Static_Pal[] = INCBIN_U16("graphics/link/321start.gbapal");
 static const u32 s321Start_Static_Gfx[] = INCBIN_U32("graphics/link/321start.4bpp.smol");

@@ -33,7 +33,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_NOTHING_TO_CUT,
         .description = COMPOUND_STRING("Cut a tree or grass."),
         .setUpFunc = FieldMove_SetUpCut,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nCUT here."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nCut here."),
     },
     [FIELD_MOVE_FLY] =
     {
@@ -43,7 +43,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Fly to a known town."),
         .setUpFunc = FieldMove_SetUpFly,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nFLY and flew to {STR_VAR_2}."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nFly and flew to {STR_VAR_2}."),
     },
     [FIELD_MOVE_SURF] =
     {
@@ -53,7 +53,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_SURF_HERE,
         .description = COMPOUND_STRING("Travel on water."),
         .setUpFunc = FieldMove_SetUpSurf,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nSURF and rode the waves."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nSurf and rode the waves."),
     },
     [FIELD_MOVE_STRENGTH] =
     {
@@ -63,7 +63,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Move heavy boulders."),
         .setUpFunc = FieldMove_SetUpStrength,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nSTRENGTH here."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nStrength here."),
     },
     [FIELD_MOVE_FLASH] =
     {
@@ -73,7 +73,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Light up darkness."),
         .setUpFunc = FieldMove_SetUpFlash,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nFLASH and illuminated a pitch-black\ncave."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nFlash and illuminated a pitch-black\ncave."),
     },
     [FIELD_MOVE_ROCK_SMASH] =
     {
@@ -83,7 +83,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Shatter a cracked rock."),
         .setUpFunc = FieldMove_SetUpRockSmash,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nROCK SMASH here."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nRock Smash here."),
     },
     [FIELD_MOVE_WATERFALL] =
     {
@@ -93,7 +93,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Climb a waterfall."),
         .setUpFunc = FieldMove_SetUpWaterfall,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nWATERFALL to scale a raging torrent."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nWaterfall to scale a raging torrent."),
     },
     [FIELD_MOVE_WHIRLPOOL] =
     {
@@ -124,7 +124,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Climb a cliff."),
         .setUpFunc = SetUpFieldMove_RockClimb,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nROCK CLIMB to climb a steep cliff."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nRock Climb to climb a steep cliff."),
 #endif
     },
     [FIELD_MOVE_TELEPORT] =
@@ -135,7 +135,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Return to a healing spot."),
         .setUpFunc = FieldMove_SetUpTeleport,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used TELEPORT, transporting\nthe party to {STR_VAR_2}'s\n{STR_VAR_3}."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used Teleport, transporting\nthe party to {STR_VAR_2}'s\n{STR_VAR_3}."),
     },
     [FIELD_MOVE_DIG] =
     {
@@ -145,7 +145,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Escape from here."),
         .setUpFunc = FieldMove_SetUpDig,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used DIG to escape from\n{STR_VAR_2}."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used Dig to escape from\n{STR_VAR_2}."),
     },
     [FIELD_MOVE_MILK_DRINK] =
     {
@@ -155,7 +155,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_NOT_ENOUGH_HP,
         .description = sText_ShareHp,
         .setUpFunc = FieldMove_SetUpSoftBoiled,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} shared its HP using the move\nMILK DRINK."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} shared its HP using the move\nMilk Drink."),
     },
     [FIELD_MOVE_SOFT_BOILED] =
     {
@@ -165,7 +165,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_NOT_ENOUGH_HP,
         .description = sText_ShareHp,
         .setUpFunc = FieldMove_SetUpSoftBoiled,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} shared its HP using the move\nSOFTBOILED."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} shared its HP using the move\nSoftboiled."),
     },
     [FIELD_MOVE_SWEET_SCENT] =
     {
@@ -173,9 +173,9 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .isUnlockedFunc = NULL,
         .moveId = MOVE_SWEET_SCENT,
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
-        .description = COMPOUND_STRING("Lure wild POKéMON."),
+        .description = COMPOUND_STRING("Lure wild Pokémon."),
         .setUpFunc = FieldMove_SetUpSweetScent,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used SWEET SCENT to attract\nwild POKéMON."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used Sweet Scent to attract\nwild Pokémon."),
     },
     [FIELD_MOVE_DEFOG] =
     {
@@ -186,7 +186,7 @@ const struct FieldMoveInfo gFieldMovesInfo[FIELD_MOVE_COUNT] =
         .partyMessageId = PARTY_MSG_CANT_USE_HERE,
         .description = COMPOUND_STRING("Clear the fog."),
         .setUpFunc = SetUpFieldMove_Defog,
-        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nDEFOG and cleared the fog."),
+        .questLogText = COMPOUND_STRING("{STR_VAR_1} used the Hidden Move\nDefog and cleared the fog."),
 #endif
     },
 };

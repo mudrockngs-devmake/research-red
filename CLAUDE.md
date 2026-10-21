@@ -19,7 +19,7 @@ Documentation index: `docs/README.md`.
 - Text: proper case, max 34 characters per line, story dialogue uses `NPC_TEXT_COLOR_NEUTRAL`, speakers start lines with `Name: ` (portraits). Voices: `docs/STYLE_GUIDE.md`.
 - Code: clear comments, `RR_` prefix for custom labels/files, `Research Red` comment on every edit to an engine file (`docs/UPSTREAM.md`).
 - Keep `docs/FLAGS_VARS.md` (registry) and `CREDITS.md` (with the Permission column) up to date with every change.
-- Generated files (encounters, banter, portraits table, player docs): edit the source and rerun the tool; `rr_check.py` fails if they're stale (`docs/DEV_GUIDE.md`).
+- Generated files (encounters, banter, portraits table, player docs): edit the source and rerun the tool; `rr_check.py` fails if they're stale (`docs/DEV_GUIDE.md`). It also fails on ALL-CAPS game text: `tools/research_red/proper_case.py` fixes it (#11).
 - The animatic (`docs/animatic/`) is the scene spec; `docs/scenes/*.md` scene specs from the owner override it.
 - Debug menu stays ON for test builds (Start > Debug > Scripts, named skips 1-11). Turn OFF before any public release.
 

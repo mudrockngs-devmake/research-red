@@ -49,7 +49,7 @@ static const u8 *const sRuleNames[NUM_RULES] =
 
 static const u8 *const sRuleHelp[NUM_RULES] =
 {
-    [RULE_LEVEL_CAPS] = COMPOUND_STRING("No EXP past the cap. Each badge\nraises it. Low levels catch up."),
+    [RULE_LEVEL_CAPS] = COMPOUND_STRING("No Exp past the cap. Each badge\nraises it. Low levels catch up."),
     [RULE_TRAINERS] = COMPOUND_STRING("Trainer battles as doubles\n(you and Ivy) or singles."),
     [RULE_WILD] = COMPOUND_STRING("Wild Pokémon one or two at a time."),
     [RULE_BATTLE_STYLE] = COMPOUND_STRING("Shift: switch after a faint.\nSet: no free switch."),

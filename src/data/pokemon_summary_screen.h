@@ -7,22 +7,22 @@ static const u8 sText_PokeSum_FatefulEncounterHatched[] = _("{DYNAMIC 0x00} natu
 static const u8 sText_PokeSum_ApparentlyFatefulEncounterHatched[] = _("{DYNAMIC 0x00} nature. Apparently met in\na fateful encounter (hatched:\n{DYNAMIC 0x02} at {LV_2} {DYNAMIC 0x01}).");
 static const u8 sText_PokeSum_ATrade[] = _("a trade");
 static const u8 gText_Somewhere[] = _("Somewhere");
-static const u8 sText_PokeSum_PageName_PokemonInfo[] = _("POKéMON INFO");
-static const u8 sText_PokeSum_PageName_PokemonSkills[] = _("POKéMON SKILLS");
-static const u8 sText_PokeSum_PageName_KnownMoves[] = _("KNOWN MOVES");
+static const u8 sText_PokeSum_PageName_PokemonInfo[] = _("Pokémon Info");
+static const u8 sText_PokeSum_PageName_PokemonSkills[] = _("Pokémon Skills");
+static const u8 sText_PokeSum_PageName_KnownMoves[] = _("Known Moves");
 static const u8 sText_PokeSum_NoData[] = _("No data");
-static const u8 sText_PokeSum_ExpPoints[] = _("EXP. POINTS");
-static const u8 sText_PokeSum_NextLv[] = _("NEXT LV.");
-static const u8 sText_PokeSum_Controls_PageCancel[] = _("{DPAD_RIGHT}PAGE {A_BUTTON}CANCEL");
-static const u8 sText_PokeSum_Controls_Cancel[] = _("{A_BUTTON}CANCEL");
-static const u8 sText_PokeSum_Controls_Page[] = _("{DPAD_LEFTRIGHT}PAGE");
-static const u8 sText_PokeSum_Controls_PageStats[] = _("{DPAD_LEFTRIGHT}PAGE {A_BUTTON}STATS");
-static const u8 sText_PokeSum_Controls_PageIVs[] = _("{DPAD_LEFTRIGHT}PAGE {A_BUTTON}IVs");
-static const u8 sText_PokeSum_Controls_PageEVs[] = _("{DPAD_LEFTRIGHT}PAGE {A_BUTTON}EVs");
-static const u8 sText_PokeSum_Controls_PageDetail[] = _("{DPAD_LEFT}PAGE {A_BUTTON}DETAIL");
-static const u8 sText_PokeSum_Controls_PickSwitch[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}SWITCH");
-static const u8 sText_PokeSum_Controls_Pick[] = _("{DPAD_UPDOWN}PICK");
-static const u8 sText_PokeSum_Controls_PickDelete[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}DELETE");
+static const u8 sText_PokeSum_ExpPoints[] = _("Exp. Points");
+static const u8 sText_PokeSum_NextLv[] = _("Next Lv.");
+static const u8 sText_PokeSum_Controls_PageCancel[] = _("{DPAD_RIGHT}Page {A_BUTTON}Cancel");
+static const u8 sText_PokeSum_Controls_Cancel[] = _("{A_BUTTON}Cancel");
+static const u8 sText_PokeSum_Controls_Page[] = _("{DPAD_LEFTRIGHT}Page");
+static const u8 sText_PokeSum_Controls_PageStats[] = _("{DPAD_LEFTRIGHT}Page {A_BUTTON}Stats");
+static const u8 sText_PokeSum_Controls_PageIVs[] = _("{DPAD_LEFTRIGHT}Page {A_BUTTON}IVs");
+static const u8 sText_PokeSum_Controls_PageEVs[] = _("{DPAD_LEFTRIGHT}Page {A_BUTTON}EVs");
+static const u8 sText_PokeSum_Controls_PageDetail[] = _("{DPAD_LEFT}Page {A_BUTTON}Detail");
+static const u8 sText_PokeSum_Controls_PickSwitch[] = _("{DPAD_UPDOWN}Pick {A_BUTTON}Switch");
+static const u8 sText_PokeSum_Controls_Pick[] = _("{DPAD_UPDOWN}Pick");
+static const u8 sText_PokeSum_Controls_PickDelete[] = _("{DPAD_UPDOWN}Pick {A_BUTTON}Delete");
 static const u8 sText_PokeSum_HmMovesCantBeForgotten[] = _("HM moves can't be\nforgotten now.");
 static const u8 sText_PokeSum_PP[] = _("{PP}");
 static const u8 sText_PokeSum_OneHyphen[] = _("-");
@@ -344,7 +344,7 @@ static const union AnimCmd *const sStarObjAnimTable[] =
 
 static const u8 *const sEggHatchTimeTexts[] =
 {
-    [EGG_HATCH_TIME_LONG]         = COMPOUND_STRING("It looks like this\nEGG will take a\nlong time to hatch."),
+    [EGG_HATCH_TIME_LONG]         = COMPOUND_STRING("It looks like this\nEgg will take a\nlong time to hatch."),
     [EGG_HATCH_TIME_SOME]         = COMPOUND_STRING("What will hatch\nfrom this? It will\ntake some time."),
     [EGG_HATCH_TIME_SOON]         = COMPOUND_STRING("It occasionally\nmoves. It should\nhatch soon."),
     [EGG_HATCH_TIME_ALMOST_READY] = COMPOUND_STRING("It's making sounds.\nIt's almost ready\nto hatch!"),
@@ -352,11 +352,11 @@ static const u8 *const sEggHatchTimeTexts[] =
 
 static const u8 *const sEggOriginTexts[] =
 {
-    [EGG_ORIGIN_DAYCARE]       = COMPOUND_STRING("An odd POKéMON EGG found by the\nDAY-CARE couple."),
-    [EGG_ORIGIN_TRADE]         = COMPOUND_STRING("A peculiar POKéMON EGG obtained\nin a trade."),
-    [EGG_ORIGIN_TRAVELING_MAN] = COMPOUND_STRING("An odd POKéMON EGG obtained from\nthe traveling man."),
-    [EGG_ORIGIN_NICE_PLACE]    = COMPOUND_STRING("A wondrously peculiar POKéMON EGG\nobtained at a nice place."),
-    [EGG_ORIGIN_SPA]           = COMPOUND_STRING("An odd POKéMON EGG obtained from\nan old woman at the SPA."),
+    [EGG_ORIGIN_DAYCARE]       = COMPOUND_STRING("An odd Pokémon Egg found by the\nDay-Care couple."),
+    [EGG_ORIGIN_TRADE]         = COMPOUND_STRING("A peculiar Pokémon Egg obtained\nin a trade."),
+    [EGG_ORIGIN_TRAVELING_MAN] = COMPOUND_STRING("An odd Pokémon Egg obtained from\nthe traveling man."),
+    [EGG_ORIGIN_NICE_PLACE]    = COMPOUND_STRING("A wondrously peculiar Pokémon Egg\nobtained at a nice place."),
+    [EGG_ORIGIN_SPA]           = COMPOUND_STRING("An odd Pokémon Egg obtained from\nan old woman at the Spa."),
 };
 
 static const u8 sPrintMoveTextColors[][3] =

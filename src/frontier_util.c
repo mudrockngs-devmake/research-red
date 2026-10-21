@@ -114,10 +114,10 @@ static const u8 sText_SetKOTourneyResults[] = _("{PLAYER}'s Set KO Tourney Resul
 static const u8 sText_BattleSwapSingleResults[] = _("{PLAYER}'s Battle Swap Single Results");
 static const u8 sText_BattleSwapDoubleResults[] = _("{PLAYER}'s Battle Swap Double Results");
 static const u8 sText_BattleQuestResults[] = _("{PLAYER}'s Battle Quest Results");
-static const u8 sText_OpenLv[] = _("OPEN LV.");
+static const u8 sText_OpenLv[] = _("Open Lv.");
 static const u8 sText_WinStreak[] = _("Win streak: {STR_VAR_1}");
-static const u8 sText_Current[] = _("CURRENT");
-static const u8 sText_Prev[] = _("PREV.");
+static const u8 sText_Current[] = _("Current");
+static const u8 sText_Prev[] = _("Prev.");
 static const u8 sText_RentalSwap[] = _("Rental/Swap");
 static const u8 sText_Total[] = _("Total");
 static const u8 sText_ClearStreak[] = _("Clear streak: {STR_VAR_1}");
@@ -127,11 +127,11 @@ static const u8 sText_TimesCleared[] = _("Times cleared:{CLEAR 0x05}{STR_VAR_1}"
 static const u8 sText_KOsInARow[] = _("KOs in a row: {STR_VAR_1}");
 static const u8 sText_TimesVar1[] = _("Times: {STR_VAR_1}");
 static const u8 sText_FloorsCleared[] = _("Floors cleared: {STR_VAR_1}");
-static const u8 sText_FacilitySingle[] = _("{STR_VAR_1} SINGLE");
+static const u8 sText_FacilitySingle[] = _("{STR_VAR_1} Single");
 static const u8 sText_Facility[] = _("{STR_VAR_1}");
 static const u8 sText_FrontierFacilityWinStreak[] = _("Win streak: {STR_VAR_2}");
 static const u8 sText_123Dot[][3] = {_("1."), _("2."), _("3.")};
-static const u8 sText_FrontierFacilityTotalCaughtSpeciesBanned[] = _(" and {STR_VAR_2} of the POKéMON species\nyou caught are inelegible");
+static const u8 sText_FrontierFacilityTotalCaughtSpeciesBanned[] = _(" and {STR_VAR_2} of the Pokémon species\nyou caught are inelegible");
 static const u8 sText_FrontierFacilityIncluding[] = _(".\pThese include ");
 static const u8 sText_FrontierFacilityAreInelegible[] = _(" are inelegible");
 static const u8 sText_SpaceAndSpace[] = _(" and ");
@@ -176,7 +176,7 @@ const struct FrontierBrain gFrontierBrainInfo[NUM_FRONTIER_FACILITIES] =
             COMPOUND_STRING(
                 "Ahahaha! Aren't you embarrassed?\n"
                 "Everyone's watching!"),                              //Silver
-            COMPOUND_STRING("My DOME ACE title isn't just for show!") //Gold
+            COMPOUND_STRING("My Dome Ace title isn't just for show!") //Gold
         },
         .battledBit = {1 << 2, 1 << 3},
         .streakAppearances = {1, 2, 5, 0},
@@ -798,15 +798,15 @@ static const struct WindowTemplate sRankingHallRecordsWindowTemplate =
 static const u8 *const sRecordsWindowChallengeTexts[][2] =
 {
     [RANKING_HALL_TOWER_SINGLES] = {gText_BattleTower,   sText_FacilitySingle},
-    [RANKING_HALL_TOWER_DOUBLES] = {gText_BattleTower,   COMPOUND_STRING("{STR_VAR_1} DOUBLE")},
-    [RANKING_HALL_TOWER_MULTIS]  = {gText_BattleTower,   COMPOUND_STRING("{STR_VAR_1} MULTI")},
+    [RANKING_HALL_TOWER_DOUBLES] = {gText_BattleTower,   COMPOUND_STRING("{STR_VAR_1} Double")},
+    [RANKING_HALL_TOWER_MULTIS]  = {gText_BattleTower,   COMPOUND_STRING("{STR_VAR_1} Multi")},
     [RANKING_HALL_DOME]          = {gText_BattleDome,    sText_FacilitySingle},
     [RANKING_HALL_PALACE]        = {gText_BattlePalace,  sText_FacilitySingle},
     [RANKING_HALL_ARENA]         = {gText_BattleArena,   sText_Facility},
     [RANKING_HALL_FACTORY]       = {gText_BattleFactory, sText_FacilitySingle},
     [RANKING_HALL_PIKE]          = {gText_BattlePike,    sText_Facility},
     [RANKING_HALL_PYRAMID]       = {gText_BattlePyramid, sText_Facility},
-    [RANKING_HALL_TOWER_LINK]    = {gText_BattleTower,   COMPOUND_STRING("{STR_VAR_1} LINK")},
+    [RANKING_HALL_TOWER_LINK]    = {gText_BattleTower,   COMPOUND_STRING("{STR_VAR_1} Link")},
 };
 
 static const u8 *const sLevelModeText[] =

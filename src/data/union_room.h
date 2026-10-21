@@ -22,8 +22,8 @@ static const u8 *const sLinkGroupActivityNameTexts[] = {
     [ACTIVITY_PLYRTALK]        = gText_EmptyString,
     [ACTIVITY_WONDER_CARD]     = gText_UR_WonderCards,
     [ACTIVITY_WONDER_NEWS]     = gText_UR_WonderNews,
-    [ACTIVITY_BATTLE_TOWER]      = COMPOUND_STRING("BATTLE TOWER LV. 50"),
-    [ACTIVITY_BATTLE_TOWER_OPEN] = COMPOUND_STRING("BATTLE TOWER OPEN LEVEL"),
+    [ACTIVITY_BATTLE_TOWER]      = COMPOUND_STRING("Battle Tower Lv. 50"),
+    [ACTIVITY_BATTLE_TOWER_OPEN] = COMPOUND_STRING("Battle Tower Open Level"),
 };
 
 static const struct WindowTemplate sWindowTemplate_BButtonCancel = {

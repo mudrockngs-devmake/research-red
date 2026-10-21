@@ -69,7 +69,7 @@ def check_registry(problems):
 def check_generated(problems):
     """Data files whose game version is generated: the generated copy must be current."""
     import subprocess
-    for tool in ("build_encounters.py", "build_dex_banter.py", "export_player_docs.py"):
+    for tool in ("build_encounters.py", "build_dex_banter.py", "export_player_docs.py", "proper_case.py"):
         r = subprocess.run([sys.executable, os.path.join(REPO, "tools/research_red", tool), "--check"],
                            capture_output=True, text=True)
         if r.returncode != 0:

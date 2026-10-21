@@ -57,7 +57,7 @@ static void Task_ReestablishLinkAwaitConfirmation(u8 taskId);
 #define tTimer      data[4]
 #define tWindowId   data[5]
 
-static const u8 sText_NumPlayerLink[] = _("{STR_VAR_1}P LINK");
+static const u8 sText_NumPlayerLink[] = _("{STR_VAR_1}P Link");
 
 static const struct WindowTemplate sWindowTemplate_LinkPlayerCount = {
     .bg = 0,
@@ -70,8 +70,8 @@ static const struct WindowTemplate sWindowTemplate_LinkPlayerCount = {
 };
 
 static const u8 *const sTrainerCardColorNames[] = {
-    COMPOUND_STRING("BRONZE"),
-    COMPOUND_STRING("COPPER"),
+    COMPOUND_STRING("Bronze"),
+    COMPOUND_STRING("Copper"),
     gText_SilverCard,
     gText_GoldCard
 };

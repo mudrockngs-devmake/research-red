@@ -12,7 +12,7 @@
 
 #define MAX_BERRY_POWDER 99999
 
-static const u8 sText_Powder[] = _("POWDER");
+static const u8 sText_Powder[] = _("Powder");
 
 static EWRAM_DATA u8 sBerryPowderVendorWindowId = 0;
 

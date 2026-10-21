@@ -41,7 +41,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #85 Route 1 rework; #88 Elm's dialogue
 - [x] #86 Oak steps in after a lab loss
 - [x] Cruller (Jenny's Growlithe)
-- [ ] #92 battle boxes in notebook colours; #11 proper case
+- [x] #92 battle boxes in notebook colours; #11 proper case
 - [ ] #93 female overworld; #80 bike; #28 surf/Pager sprites
 - [ ] #7 battle back sprites + Elm/Jenny pictures; #95 portraits in battle dialogue; #24 Trainer Card
 - [ ] #40 Jenny sprites; #32 portraits; #8 picnic blanket

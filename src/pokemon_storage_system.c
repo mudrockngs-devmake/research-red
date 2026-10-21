@@ -870,75 +870,75 @@ static void TilemapUtil_Update(u8 tilemapId);
 static void TilemapUtil_DrawPrev(u8 tilemapId);
 static void TilemapUtil_Draw(u8 tilemapId);
 
-static const u8 sPCText_Beach[] = _("BEACH");
-static const u8 sPCText_Cave[] = _("CAVE");
-static const u8 sPCText_City[] = _("CITY");
-static const u8 sPCText_Crag[] = _("CRAG");
-static const u8 sPCText_Desert[] = _("DESERT");
-static const u8 sPCText_Etcetera[] = _("ETCETERA");
-static const u8 sPCText_Forest[] = _("FOREST");
-static const u8 sPCText_Jump[] = _("JUMP");
-static const u8 sPCText_Machine[] = _("TILES");
-static const u8 sPCText_Mark[] = _("MARK");
-static const u8 sPCText_Move[] = _("MOVE");
-static const u8 sPCText_Name[] = _("NAME");
-static const u8 sPCText_Place[] = _("PLACE");
-static const u8 sPCText_Pokecenter[] = _("POKéCENTER");
-static const u8 sPCText_PolkaDot[] = _("STARS");
-static const u8 sPCText_Release[] = _("RELEASE");
-static const u8 sPCText_River[] = _("RIVER");
-static const u8 sPCText_Savanna[] = _("SAVANNA");
-static const u8 sPCText_Scenery1[] = _("SCENERY 1");
-static const u8 sPCText_Scenery2[] = _("SCENERY 2");
-static const u8 sPCText_Scenery3[] = _("SCENERY 3");
-static const u8 sPCText_Seafloor[] = _("SEAFLOOR");
-static const u8 sPCText_Simple[] = _("SIMPLE");
-static const u8 sPCText_Sky[] = _("SKY");
-static const u8 sPCText_Snow[] = _("SNOW");
-static const u8 sPCText_Volcano[] = _("VOLCANO");
-static const u8 sPCText_Wallpaper[] = _("WALLPAPER");
-static const u8 sText_BagIsFull2[] = _("The BAG is full.");
-static const u8 sText_Box[] = _("BOX");
-static const u8 sText_BoxIsFull2[] = _("The BOX is full.");
+static const u8 sPCText_Beach[] = _("Beach");
+static const u8 sPCText_Cave[] = _("Cave");
+static const u8 sPCText_City[] = _("City");
+static const u8 sPCText_Crag[] = _("Crag");
+static const u8 sPCText_Desert[] = _("Desert");
+static const u8 sPCText_Etcetera[] = _("Etcetera");
+static const u8 sPCText_Forest[] = _("Forest");
+static const u8 sPCText_Jump[] = _("Jump");
+static const u8 sPCText_Machine[] = _("Tiles");
+static const u8 sPCText_Mark[] = _("Mark");
+static const u8 sPCText_Move[] = _("Move");
+static const u8 sPCText_Name[] = _("Name");
+static const u8 sPCText_Place[] = _("Place");
+static const u8 sPCText_Pokecenter[] = _("Pokécenter");
+static const u8 sPCText_PolkaDot[] = _("Stars");
+static const u8 sPCText_Release[] = _("Release");
+static const u8 sPCText_River[] = _("River");
+static const u8 sPCText_Savanna[] = _("Savanna");
+static const u8 sPCText_Scenery1[] = _("Scenery 1");
+static const u8 sPCText_Scenery2[] = _("Scenery 2");
+static const u8 sPCText_Scenery3[] = _("Scenery 3");
+static const u8 sPCText_Seafloor[] = _("Seafloor");
+static const u8 sPCText_Simple[] = _("Simple");
+static const u8 sPCText_Sky[] = _("Sky");
+static const u8 sPCText_Snow[] = _("Snow");
+static const u8 sPCText_Volcano[] = _("Volcano");
+static const u8 sPCText_Wallpaper[] = _("Wallpaper");
+static const u8 sText_BagIsFull2[] = _("The Bag is full.");
+static const u8 sText_Box[] = _("Box");
+static const u8 sText_BoxIsFull2[] = _("The Box is full.");
 static const u8 sText_ByeByePkmn[] = _("Bye-bye, {DYNAMIC 0x00}!");
 static const u8 sText_ChangedToNewItem[] = _("Changed to {DYNAMIC 0x00}.");
-static const u8 sText_ContinueBoxOperations[] = _("Continue BOX operations?");
-static const u8 sText_DepositInWhichBox[] = _("Deposit in which BOX?");
-static const u8 sText_ExitFromBox[] = _("Exit from the BOX.");
+static const u8 sText_ContinueBoxOperations[] = _("Continue Box operations?");
+static const u8 sText_DepositInWhichBox[] = _("Deposit in which Box?");
+static const u8 sText_ExitFromBox[] = _("Exit from the Box.");
 static const u8 sText_FourEllipsesExclamation[] = _("‥ ‥ ‥ ‥ ‥!");
-static const u8 sText_GiveToAPkmn[] = _("GIVE to a POKéMON?");
+static const u8 sText_GiveToAPkmn[] = _("Give to a Pokémon?");
 static const u8 sText_ItemIsNowHeld[] = _("{DYNAMIC 0x00} is now held.");
-static const u8 sText_JumpToWhichBox[] = _("Jump to which BOX?");
-static const u8 sText_JustOnePkmn[] = _("Can't deposit the last POKéMON!");
-static const u8 sText_MailCantBeStored[] = _("MAIL can't be stored!");
-static const u8 sText_MarkYourPkmn[] = _("Mark your POKéMON.");
-static const u8 sText_PartyFull[] = _("Can't take any more POKéMON.");
+static const u8 sText_JumpToWhichBox[] = _("Jump to which Box?");
+static const u8 sText_JustOnePkmn[] = _("Can't deposit the last Pokémon!");
+static const u8 sText_MailCantBeStored[] = _("Mail can't be stored!");
+static const u8 sText_MarkYourPkmn[] = _("Mark your Pokémon.");
+static const u8 sText_PartyFull[] = _("Can't take any more Pokémon.");
 static const u8 sText_PickTheWallpaper[] = _("Pick the wallpaper.");
 static const u8 sText_PkmnCameBack[] = _("{DYNAMIC 0x00} came back!");
 static const u8 sText_PkmnIsSelected[] = _("{DYNAMIC 0x00} is selected.");
 static const u8 sText_PkmnWasDeposited[] = _("{DYNAMIC 0x00} was deposited.");
 static const u8 sText_PkmnWasReleased[] = _("{DYNAMIC 0x00} was released.");
-static const u8 sText_PlacedItemInBag[] = _("Placed item in the BAG.");
+static const u8 sText_PlacedItemInBag[] = _("Placed item in the Bag.");
 static const u8 sText_PleasePickATheme[] = _("Please pick a theme.");
-static const u8 sText_PleaseRemoveTheMail[] = _("Please remove the MAIL.");
-static const u8 sText_PutItemInBag[] = _("Put this item in the BAG?");
-static const u8 sText_ReleaseThisPokemon[] = _("Release this POKéMON?");
-static const u8 sText_ThatsYourLastPkmn[] = _("That's your last POKéMON!");
+static const u8 sText_PleaseRemoveTheMail[] = _("Please remove the Mail.");
+static const u8 sText_PutItemInBag[] = _("Put this item in the Bag?");
+static const u8 sText_ReleaseThisPokemon[] = _("Release this Pokémon?");
+static const u8 sText_ThatsYourLastPkmn[] = _("That's your last Pokémon!");
 static const u8 sText_WasItWorriedAboutYou[] = _("Was it worried about you?");
 static const u8 sText_WhatDoYouWantToDo[] = _("What do you want to do?");
 static const u8 sText_WhichOneWillYouTake[] = _("Which one will you take?");
-static const u8 sText_YouCantReleaseAnEgg[] = _("You can't release an EGG.");
-static const u8 sText_YoureHoldingAPkmn[] = _("You're holding a POKéMON!");
+static const u8 sText_YouCantReleaseAnEgg[] = _("You can't release an Egg.");
+static const u8 sText_YoureHoldingAPkmn[] = _("You're holding a Pokémon!");
 
 struct {
     const u8 *text;
     const u8 *desc;
 } static const sMainMenuTexts[OPTIONS_COUNT] = {
-    [OPTION_WITHDRAW]   = {COMPOUND_STRING("WITHDRAW POKéMON"), COMPOUND_STRING("You can withdraw a POKéMON if you\nhave any in a BOX.")},
-    [OPTION_DEPOSIT]    = {COMPOUND_STRING("DEPOSIT POKéMON"),  COMPOUND_STRING("You can deposit your party\nPOKéMON in any BOX.")},
-    [OPTION_MOVE_MONS]  = {COMPOUND_STRING("MOVE POKéMON"),     COMPOUND_STRING("You can move POKéMON that are\nstored in any BOX.")},
-    [OPTION_MOVE_ITEMS] = {COMPOUND_STRING("MOVE ITEMS"),       COMPOUND_STRING("You can move items held by any\nPOKéMON in a BOX or your party.")},
-    [OPTION_EXIT]       = {COMPOUND_STRING("SEE YA!"),          COMPOUND_STRING("See you later!")}
+    [OPTION_WITHDRAW]   = {COMPOUND_STRING("Withdraw Pokémon"), COMPOUND_STRING("You can withdraw a Pokémon if you\nhave any in a Box.")},
+    [OPTION_DEPOSIT]    = {COMPOUND_STRING("Deposit Pokémon"),  COMPOUND_STRING("You can deposit your party\nPokémon in any Box.")},
+    [OPTION_MOVE_MONS]  = {COMPOUND_STRING("Move Pokémon"),     COMPOUND_STRING("You can move Pokémon that are\nstored in any Box.")},
+    [OPTION_MOVE_ITEMS] = {COMPOUND_STRING("Move Items"),       COMPOUND_STRING("You can move items held by any\nPokémon in a Box or your party.")},
+    [OPTION_EXIT]       = {COMPOUND_STRING("See Ya!"),          COMPOUND_STRING("See you later!")}
 };
 
 static const struct WindowTemplate sWindowTemplate_MainMenu = {
@@ -7697,7 +7697,7 @@ static const u8 *const sMenuTexts[] = {
     [MENU_TEXT_POKECENTER] = sPCText_Pokecenter,
     [MENU_TEXT_MACHINE]    = sPCText_Machine,
     [MENU_TEXT_SIMPLE]     = sPCText_Simple,
-    [MENU_SELECT]          = COMPOUND_STRING("SELECT"),
+    [MENU_SELECT]          = COMPOUND_STRING("Select"),
 };
 
 static void SetMenuText(u8 textId)

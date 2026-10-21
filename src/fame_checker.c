@@ -120,13 +120,13 @@ static void Task_FCOpenOrCloseInfoBox(u8 taskId);
 static void UpdateInfoBoxTilemap(u8 bg, s16 state);
 static void PlaceListMenuCursor(bool8 isActive);
 
-static const u8 sFameCheckerText_MainScreenUI[] = _("{START_BUTTON}PICK {DPAD_UPDOWN}SELECT {A_BUTTON}OK");
-static const u8 sFameCheckerText_PickScreenUI[] = _("{START_BUTTON}PICK {DPAD_UPDOWN}SELECT {B_BUTTON}CANCEL");
-static const u8 sFameCheckerText_FlavorTextUI[] = _("{DPAD_ANY}PICK {A_BUTTON}READ {B_BUTTON}CANCEL");
-static const u8 sFameCheckerOakName[] = _("OAK");
-static const u8 sFameCheckerDaisyName[] = _("DAISY");
-static const u8 sFameCheckerMrFujiName[] = _("FUJI");
-static const u8 sFameCheckerText_FameCheckerWillBeClosed[] = _("The FAME CHECKER will be closed.");
+static const u8 sFameCheckerText_MainScreenUI[] = _("{START_BUTTON}Pick {DPAD_UPDOWN}Select {A_BUTTON}OK");
+static const u8 sFameCheckerText_PickScreenUI[] = _("{START_BUTTON}Pick {DPAD_UPDOWN}Select {B_BUTTON}Cancel");
+static const u8 sFameCheckerText_FlavorTextUI[] = _("{DPAD_ANY}Pick {A_BUTTON}Read {B_BUTTON}Cancel");
+static const u8 sFameCheckerOakName[] = _("Oak");
+static const u8 sFameCheckerDaisyName[] = _("Daisy");
+static const u8 sFameCheckerMrFujiName[] = _("Fuji");
+static const u8 sFameCheckerText_FameCheckerWillBeClosed[] = _("The Fame Checker will be closed.");
 static const u8 sFameCheckerText_ClearTextbox[] = _("\n                              ");
 
 static const u16 sFameCheckerTilemap[] = INCBIN_U16("graphics/fame_checker/tilemap1.bin");

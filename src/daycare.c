@@ -66,12 +66,12 @@ struct EggHatchData
     u8 textColor[3];
 };
 
-static const u8 sText_HatchedFromEgg[] = _("{STR_VAR_1} hatched from the EGG!");
+static const u8 sText_HatchedFromEgg[] = _("{STR_VAR_1} hatched from the Egg!");
 static const u8 sText_NickHatchPrompt[] = _("Would you like to nickname the newly\nhatched {STR_VAR_1}?");
 static const u8 sText_GetAlongVeryWell[] = _("The two seem to get along\nvery well.");
 static const u8 sText_GetAlong[] = _("The two seem to get along.");
 static const u8 sText_DontLikeOther[] = _("The two don't seem to like\neach other much.");
-static const u8 sText_PlayOther[] = _("The two prefer to play with other\nPOKéMON than each other.");
+static const u8 sText_PlayOther[] = _("The two prefer to play with other\nPokémon than each other.");
 
 // this file's functions
 static void ClearDaycareMonMail(struct DayCareMail *mail);

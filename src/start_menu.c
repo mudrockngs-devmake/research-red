@@ -153,19 +153,19 @@ static u8 BattlePyramidRetireYesNoCallback(void);
 static u8 BattlePyramidRetireInputCallback(void);
 
 // Start menu option descriptions
-static const u8 sStartMenuDesc_Pokedex[] = _("A device that records POKéMON secrets\nupon meeting or catching them.");
-static const u8 sStartMenuDesc_Pokemon[] = _("Check and organize POKéMON that are\ntraveling with you in your party.");
+static const u8 sStartMenuDesc_Pokedex[] = _("A device that records Pokémon secrets\nupon meeting or catching them.");
+static const u8 sStartMenuDesc_Pokemon[] = _("Check and organize Pokémon that are\ntraveling with you in your party.");
 static const u8 sStartMenuDesc_Bag[] = _("Equipped with pockets for storing items\nyou bought, received, or found.");
 static const u8 sStartMenuDesc_Player[] = _("Check your money and other game data.");
 static const u8 sStartMenuDesc_Save[] = _("Save your game with a complete record\nof your progress to take a break.");
 static const u8 sStartMenuDesc_Option[] = _("Adjust various game settings such as text\nspeed, game rules, etc.");
-static const u8 sStartMenuDesc_Exit[] = _("Close this MENU window.");
-static const u8 sStartMenuDesc_Retire[] = _("Retire from the SAFARI GAME and return to\nthe registration counter.");
+static const u8 sStartMenuDesc_Exit[] = _("Close this Menu window.");
+static const u8 sStartMenuDesc_Retire[] = _("Retire from the Safari Game and return to\nthe registration counter.");
 static const u8 sStartMenuDesc_Debug[] = _("Debug Menu.");
 static const u8 sStartMenuDesc_PC[] = _("Use the PC from anywhere: Pokémon\nstorage and items."); // Research Red
 static const u8 sStartMenuDesc_FieldGuide[] = _("The wild Pokémon living where\nyou stand, and what's left to find."); // Research Red (#91)
 static const u8 sText_SaveError_PleaseExchangeBackupMemory[] = _("Save error.\pPlease exchange the\nbackup memory.");
-static const u8 sText_MenuSafariStats[] = _("{STR_VAR_1}/{STR_VAR_2}\nBALLS  {STR_VAR_3}");
+static const u8 sText_MenuSafariStats[] = _("{STR_VAR_1}/{STR_VAR_2}\nBalls  {STR_VAR_3}");
 static const u8 sText_MenuTime[] = _("{STR_VAR_3} {STR_VAR_1}:{STR_VAR_2}"); // Research Red (#56): "Night 20:00"
 static const u8 sText_BattlePyramidFloor[] = _("Battle Pyramid\n{STR_VAR_1}");
 static const u8 sText_MenuPlayer[] = _("{PLAYER}");
@@ -175,7 +175,7 @@ static const struct MenuAction sStartMenuActionTable[] = {
     [MENU_ACTION_POKEMON]           = {gText_MenuPokemon,          {.u8_void = StartMenuPokemonCallback}},
     [MENU_ACTION_BAG]               = {gText_Bag,                  {.u8_void = StartMenuBagCallback}},
     [MENU_ACTION_PLAYER]            = {sText_MenuPlayer,           {.u8_void = StartMenuPlayerNameCallback}},
-    [MENU_ACTION_SAVE]              = {COMPOUND_STRING("SAVE"),    {.u8_void = StartMenuSaveCallback}},
+    [MENU_ACTION_SAVE]              = {COMPOUND_STRING("Save"),    {.u8_void = StartMenuSaveCallback}},
     [MENU_ACTION_OPTION]            = {gText_Option,               {.u8_void = StartMenuOptionCallback}},
     [MENU_ACTION_EXIT]              = {gText_Exit,                 {.u8_void = StartMenuExitCallback}},
     [MENU_ACTION_RETIRE_SAFARI]     = {gText_Retire,               {.u8_void = StartMenuSafariZoneRetireCallback}},
@@ -183,10 +183,10 @@ static const struct MenuAction sStartMenuActionTable[] = {
     [MENU_ACTION_REST_FRONTIER]     = {gText_Rest,                 {.u8_void = StartMenuSaveCallback}},
     [MENU_ACTION_RETIRE_FRONTIER]   = {gText_Retire,               {.u8_void = StartMenuBattlePyramidRetireCallback}},
     [MENU_ACTION_PYRAMID_BAG]       = {gText_Bag,                  {.u8_void = StartMenuBattlePyramidBagCallback}},
-    [MENU_ACTION_DEBUG]             = {COMPOUND_STRING("DEBUG"),   {.u8_void = StartMenuDebugCallback}},
-    [MENU_ACTION_DEXNAV]            = {COMPOUND_STRING("DEXNAV"),  {.u8_void = StartMenuDexNavCallback}},
+    [MENU_ACTION_DEBUG]             = {COMPOUND_STRING("Debug"),   {.u8_void = StartMenuDebugCallback}},
+    [MENU_ACTION_DEXNAV]            = {COMPOUND_STRING("Dexnav"),  {.u8_void = StartMenuDexNavCallback}},
     [MENU_ACTION_RR_PC]             = {COMPOUND_STRING("PC"),      {.u8_void = StartMenuPCCallback}}, // Research Red
-    [MENU_ACTION_RR_FIELD_GUIDE]    = {COMPOUND_STRING("GUIDE"),   {.u8_void = StartMenuFieldGuideCallback}}, // Research Red (#91)
+    [MENU_ACTION_RR_FIELD_GUIDE]    = {COMPOUND_STRING("Guide"),   {.u8_void = StartMenuFieldGuideCallback}}, // Research Red (#91)
 };
 
 static const struct WindowTemplate sTimeWindowTemplate = {

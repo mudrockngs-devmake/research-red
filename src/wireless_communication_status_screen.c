@@ -129,7 +129,7 @@ static const u8 *const sHeaderTexts[NUM_GROUPTYPES + 1] = {
     [0]                    = COMPOUND_STRING("Wireless Communication Status"),
     [GROUPTYPE_TRADE + 1]  = COMPOUND_STRING("People trading:"),
     [GROUPTYPE_BATTLE + 1] = COMPOUND_STRING("People battling:"),
-    [GROUPTYPE_UNION + 1]  = COMPOUND_STRING("People in the UNION ROOM:"),
+    [GROUPTYPE_UNION + 1]  = COMPOUND_STRING("People in the Union Room:"),
     [GROUPTYPE_TOTAL + 1]  = COMPOUND_STRING("People communicating:"),
 };
 

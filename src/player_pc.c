@@ -76,13 +76,13 @@ static void Task_Error_NoPokemon(u8 taskId);
 static void Task_PlayerPcExitMailSubmenu(u8 taskId);
 
 static const u8 sText_ThereAreNoItems[] = _("There are no items.{PAUSE_UNTIL_PRESS}");
-static const u8 sText_MoveToBag[] = _("MOVE TO BAG");
-static const u8 sText_TheresNoMailHere[] = _("There's no MAIL here.{PAUSE_UNTIL_PRESS}");
-static const u8 sText_WhatWouldYouLikeToDoWithPlayersMail[] = _("What would you like to do with\n{STR_VAR_1}'s MAIL?");
+static const u8 sText_MoveToBag[] = _("Move To Bag");
+static const u8 sText_TheresNoMailHere[] = _("There's no Mail here.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_WhatWouldYouLikeToDoWithPlayersMail[] = _("What would you like to do with\n{STR_VAR_1}'s Mail?");
 static const u8 sText_MessageWillBeLost[] = _("The message will be lost.\nIs that okay?");
-static const u8 sText_BagIsFull[] = _("The BAG is full.{PAUSE_UNTIL_PRESS}");
-static const u8 sText_MailReturnedToBagMessageErased[] = _("The MAIL was returned to the BAG\nwith its message erased.{PAUSE_UNTIL_PRESS}");
-static const u8 sText_Mailbox[] = _("MAILBOX");
+static const u8 sText_BagIsFull[] = _("The Bag is full.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_MailReturnedToBagMessageErased[] = _("The Mail was returned to the Bag\nwith its message erased.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_Mailbox[] = _("Mailbox");
 static const u8 sText_WhatWouldYouLikeToDo[] = _("What would you like to do?");
 
 static const u8 *const sItemStorageActionDescriptionPtrs[] =
@@ -94,16 +94,16 @@ static const u8 *const sItemStorageActionDescriptionPtrs[] =
 
 static const struct MenuAction sMenuActions_TopMenu[] =
 {
-    {COMPOUND_STRING("ITEM STORAGE"),   {Task_PlayerPcItemStorage}},
+    {COMPOUND_STRING("Item Storage"),   {Task_PlayerPcItemStorage}},
     {sText_Mailbox,                     {Task_PlayerPcMailbox}},
-    {COMPOUND_STRING("TURN OFF"),       {Task_PlayerPcTurnOff}}
+    {COMPOUND_STRING("Turn Off"),       {Task_PlayerPcTurnOff}}
 };
 
 static const u8 sItemOrder_BedroomPC[] = { 0, 1, 2 };
 static const u8 sItemOrder_PlayerPC[] = { 0, 1, 2 };
 
 static const struct MenuAction sMenuActions_ItemPc[] = {
-    {COMPOUND_STRING("WITHDRAW ITEM"), {Task_PlayerPcWithdrawItem}},
+    {COMPOUND_STRING("Withdraw Item"), {Task_PlayerPcWithdrawItem}},
     {gText_DepositItem, {Task_PlayerPcDepositItem}},
     {gText_Cancel, {Task_PlayerPcCancel}}
 };

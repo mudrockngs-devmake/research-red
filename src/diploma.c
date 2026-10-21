@@ -46,9 +46,9 @@ static const u32 sDiplomaGfx[] = INCBIN_U32("graphics/diploma/diploma.4bpp.smol"
 static const u32 sDiplomaTilemap[] = INCBIN_U32("graphics/diploma/diploma.bin.smolTM");
 static const u16 sDiplomaPal[] = INCBIN_U16("graphics/diploma/diploma.gbapal");
 
-static const u8 sText_Diploma_Player[] = _("PLAYER: {DYNAMIC 0x00}");
-static const u8 sText_Diploma_ThisDocument[] = _("This document is issued in\nrecognition of your magnificent\nachievement - the completion of\nthe {DYNAMIC 0x01} POKéDEX.");
-static const u8 sText_Diploma_GameFreak[] = _("GAME FREAK");
+static const u8 sText_Diploma_Player[] = _("Player: {DYNAMIC 0x00}");
+static const u8 sText_Diploma_ThisDocument[] = _("This document is issued in\nrecognition of your magnificent\nachievement - the completion of\nthe {DYNAMIC 0x01} Pokédex.");
+static const u8 sText_Diploma_GameFreak[] = _("Game Freak");
 
 static const ALIGNED(4) u8 sTextColors[3] = {0, 2, 3};
 

@@ -133,7 +133,7 @@ extern const u32 gPlayerIcon_Leaf[];
 extern const u16 gPlayerIcon_RedPal[];
 extern const u16 gPlayerIcon_LeafPal[];
 
-const u8 sText_FlyToWhere[] = _("FLY to where?");
+const u8 sText_FlyToWhere[] = _("Fly to where?");
 
 #include "data/region_map/region_map_layout.h"
 // #include "data/region_map/region_map_entries.h"

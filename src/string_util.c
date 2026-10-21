@@ -10,7 +10,7 @@ EWRAM_DATA u8 gStringVar3[256] = {};
 EWRAM_DATA u8 gStringVar4[1000] = {};
 EWRAM_DATA static u8 gUnknownStringVar[16] = {0};
 
-static const u8 sDigits[] = __("0123456789ABCDEF");
+static const u8 sDigits[] = __("0123456789Abcdef");
 
 static const s32 sPowersOfTen[] =
 {
@@ -26,16 +26,16 @@ static const s32 sPowersOfTen[] =
     1000000000,
 };
 
-static const u8 sExpandedPlaceholder_Sapphire[] = _("SAPPHIRE");
-static const u8 sExpandedPlaceholder_Ruby[] = _("RUBY");
-static const u8 sExpandedPlaceholder_Aqua[] = _("AQUA");
-static const u8 sExpandedPlaceholder_Magma[] = _("MAGMA");
-static const u8 sExpandedPlaceholder_Archie[] = _("ARCHIE");
-static const u8 sExpandedPlaceholder_Maxie[] = _("MAXIE");
-static const u8 sExpandedPlaceholder_Kyogre[] = _("KYOGRE");
-static const u8 sExpandedPlaceholder_Groudon[] = _("GROUDON");
-static const u8 sExpandedPlaceholder_Red[] = _("RED");
-static const u8 sExpandedPlaceholder_Green[] = _("GREEN");
+static const u8 sExpandedPlaceholder_Sapphire[] = _("Sapphire");
+static const u8 sExpandedPlaceholder_Ruby[] = _("Ruby");
+static const u8 sExpandedPlaceholder_Aqua[] = _("Aqua");
+static const u8 sExpandedPlaceholder_Magma[] = _("Magma");
+static const u8 sExpandedPlaceholder_Archie[] = _("Archie");
+static const u8 sExpandedPlaceholder_Maxie[] = _("Maxie");
+static const u8 sExpandedPlaceholder_Kyogre[] = _("Kyogre");
+static const u8 sExpandedPlaceholder_Groudon[] = _("Groudon");
+static const u8 sExpandedPlaceholder_Red[] = _("Red");
+static const u8 sExpandedPlaceholder_Green[] = _("Green");
 
 u8 *StringCopy_Nickname(u8 *dest, const u8 *src)
 {

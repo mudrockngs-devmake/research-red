@@ -430,7 +430,7 @@ static const u8 sText_Var1Percent[] = _("{STR_VAR_1}%");
 static const u8 sText_PressesRankings[] = _("No. of Presses Rankings");
 static const u8 sText_CrushingResults[] = _("Crushing Results");
 static const u8 sText_PressingSpeedRankings[] = _("Pressing-Speed Rankings");
-static const u8 sText_Var1Players[] = _("{STR_VAR_1} PLAYERS");
+static const u8 sText_Var1Players[] = _("{STR_VAR_1} Players");
 
 // Additional A presses are counted depending on the number of players
 // The bonus of 5 is unobtainable
@@ -455,14 +455,14 @@ const u8 sVibrationData[MAX_RFU_PLAYERS][4] = {
 };
 
 static const u8 *const sMessages[] = {
-    [MSG_PICK_BERRY]   = COMPOUND_STRING("Are you ready to BERRY-CRUSH?\nPlease pick a BERRY for use.\p"),
-    [MSG_WAIT_PICK]    = COMPOUND_STRING("Please wait while each member\nchooses a BERRY."),
-    [MSG_POWDER]       = COMPOUND_STRING("{PAUSE_MUSIC}{PLAY_BGM MUS_LEVEL_UP}You ended up with {STR_VAR_1} units of\nsilky-smooth BERRY POWDER.{RESUME_MUSIC}\pYour total amount of BERRY POWDER\nis {STR_VAR_2}.\p"),
+    [MSG_PICK_BERRY]   = COMPOUND_STRING("Are you ready to Berry-Crush?\nPlease pick a Berry for use.\p"),
+    [MSG_WAIT_PICK]    = COMPOUND_STRING("Please wait while each member\nchooses a Berry."),
+    [MSG_POWDER]       = COMPOUND_STRING("{PAUSE_MUSIC}{PLAY_BGM MUS_LEVEL_UP}You ended up with {STR_VAR_1} units of\nsilky-smooth Berry Powder.{RESUME_MUSIC}\pYour total amount of Berry Powder\nis {STR_VAR_2}.\p"),
     [MSG_SAVING]       = COMPOUND_STRING("Recording your game results in the\nsave file.\nPlease wait."),
-    [MSG_PLAY_AGAIN]   = COMPOUND_STRING("Want to play BERRY CRUSH again?"),
-    [MSG_NO_BERRIES]   = COMPOUND_STRING("You have no BERRIES.\nThe game will be canceled."),
+    [MSG_PLAY_AGAIN]   = COMPOUND_STRING("Want to play Berry Crush again?"),
+    [MSG_NO_BERRIES]   = COMPOUND_STRING("You have no Berries.\nThe game will be canceled."),
     [MSG_DROPPED]      = COMPOUND_STRING("A member dropped out.\nThe game will be canceled."),
-    [MSG_TIMES_UP]     = COMPOUND_STRING("Time's up.\pGood BERRY POWDER could not be\nmade…\p"),
+    [MSG_TIMES_UP]     = COMPOUND_STRING("Time's up.\pGood Berry Powder could not be\nmade…\p"),
     [MSG_COMM_STANDBY] = gText_CommunicationStandby,
 };
 
@@ -944,7 +944,7 @@ static const u8 *const sBCRankingHeaders[] =
 {
     [RESULTS_PAGE_PRESSES]  = COMPOUND_STRING(" times"),
     [RESULTS_PAGE_RANDOM]   = COMPOUND_STRING("{STR_VAR_1}.{STR_VAR_2}"),
-    [RESULTS_PAGE_CRUSHING] = COMPOUND_STRING("{STR_VAR_1} BERRY"),
+    [RESULTS_PAGE_CRUSHING] = COMPOUND_STRING("{STR_VAR_1} Berry"),
 
     [RESULTS_PAGE_NEATNESS + NUM_RESULTS_PAGES]    = COMPOUND_STRING("Neatness Rankings"),
     [RESULTS_PAGE_COOPERATIVE + NUM_RESULTS_PAGES] = COMPOUND_STRING("Cooperative Rankings"),

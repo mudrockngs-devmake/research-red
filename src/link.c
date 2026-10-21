@@ -48,7 +48,7 @@ struct LinkTestBGInfo
 
 #define SIO_MULTI_CNT ((struct SioMultiCnt *)REG_ADDR_SIOCNT)
 
-static const u8 sText_CommErrorCheckConnections[] = _("Communication error…\nPlease check all connections,\nthen turn the power OFF and ON.");
+static const u8 sText_CommErrorCheckConnections[] = _("Communication error…\nPlease check all connections,\nthen turn the power Off and On.");
 static const u8 sText_CommErrorEllipsis[] = _("Communication error…");
 static const u8 sText_MoveCloserToLinkPartner[] = _("Move closer to your link partner(s).\nAvoid obstacles between partners.");
 static const u8 sText_ABtnRegistrationCounter[] = _("A Button: Registration Counter");
