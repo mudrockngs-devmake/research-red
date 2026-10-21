@@ -27,7 +27,7 @@ _Last updated: 2026-10-21 (v0.0.19 parts 1 and 2 done and tested; ready for inst
 - Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
 
 ## NEXT SESSION START HERE: v0.0.19 is built, waiting for the owner's OK to install and tag
-Parts 1 and 2 are done, committed and tested (SMOKE_RESULT; `make check`: only the known Explosion timeout;
+Parts 1 and 2 are done, committed and tested (smoke 61/61, `test-runs/2026-10-21_0234_v0.0.19_c883da619`; `make check`: only the known Explosion timeout;
 rr_check clean). Not done on purpose (owner's rule): `rr_install_rom.sh`, the v0.0.19 tag, the release.
 To ship: `tools/research_red/rr_install_rom.sh`, then tag `v0.0.19` and push the tag (docs/RELEASING.md).
 
