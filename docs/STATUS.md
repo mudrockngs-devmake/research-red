@@ -32,8 +32,8 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #82 Move Info black
 - [x] #94 Sumac -> Sequoia
 - [x] #87 starter moves
-- [ ] #77 dex numbering
-- [ ] #20 Area tab (demo areas)
+- [x] #77 dex numbering
+- [x] #20 Area tab (demo areas)
 - [ ] #5 / #4 banter over the dex page, SELECT replay
 - [ ] #91 Field Guide in the Start menu
 - [ ] #83 Jenny follows Elm

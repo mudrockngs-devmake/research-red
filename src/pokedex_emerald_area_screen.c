@@ -118,8 +118,8 @@ static void BuildAreaGlowTilemap(void);
 static void SetAreaHasMon(u16, u16);
 static void SetSpecialMapHasMon(u16, u16);
 static mapsec_u16_t GetRegionMapSectionId(u8, u8);
-static bool8 MapHasSpecies(const struct WildEncounterTypes *info, enum Species species);
 static bool8 MonListHasSpecies(const struct WildPokemonInfo *info, enum Species species, u16 size);
+static bool8 RR_MapHasSpeciesAtTime(u32 headerId, enum Species species); // Research Red (#20)
 static void DoAreaGlow(void);
 static void Task_ShowPokedexAreaScreen(u8 taskId);
 static void Task_UpdatePokedexAreaScreen(u8 taskId);
@@ -338,7 +338,7 @@ static void FindMapsWithMon(enum Species species)
         if (GetRegionMapType(headerSectionId) != currentRegionMapType)
             continue;
 
-        if (MapHasSpecies(&gWildMonHeaders[i].encounterTypes[0][gAreaTimeOfDay], species))
+        if (RR_MapHasSpeciesAtTime(i, species)) // Research Red (#20): the table the game really uses at that time
         {
             switch (gWildMonHeaders[i].mapGroup)
             {
@@ -423,33 +423,39 @@ static mapsec_u16_t GetRegionMapSectionId(u8 mapGroup, u8 mapNum)
     return Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId;
 }
 
-static bool8 MapHasSpecies(const struct WildEncounterTypes *info, enum Species species)
-{
-    u32 headerId = GetCurrentMapWildMonHeaderId();
-    u8 currentMapGroup = gWildMonHeaders[headerId].mapGroup;
-    u8 currentMapNum = gWildMonHeaders[headerId].mapNum;
-    // If this is a header for Altering Cave, skip it if it's not the current Altering Cave encounter set
-    if (GetRegionMapSectionId(currentMapGroup, currentMapNum) == MAPSEC_ALTERING_CAVE_FRLG)
-    {
-        sPokedexAreaScreen->alteringCaveCounter++;
-        if (sPokedexAreaScreen->alteringCaveCounter != sPokedexAreaScreen->alteringCaveId + 1)
-            return FALSE;
-    }
+// Research Red (#20): MapHasSpecies (one time slot only) was replaced by RR_MapHasSpeciesAtTime below
 
-    if (MonListHasSpecies(info->landMonsInfo, species, LAND_WILD_COUNT))
-        return TRUE;
-    if (MonListHasSpecies(info->waterMonsInfo, species, WATER_WILD_COUNT))
-        return TRUE;
-// When searching the fishing encounters, this incorrectly uses the size of the land encounters.
-// As a result it's reading out of bounds of the fishing encounters tables.
-#ifdef BUGFIX
-    if (MonListHasSpecies(info->fishingMonsInfo, species, FISH_WILD_COUNT))
-#else
-    if (MonListHasSpecies(info->fishingMonsInfo, species, LAND_WILD_COUNT))
-#endif
-        return TRUE;
-    if (MonListHasSpecies(info->rockSmashMonsInfo, species, ROCK_WILD_COUNT))
-        return TRUE;
+// Research Red (#20): the Area page asks for the time shown (morning, day,
+// evening, night), but our tables store the daytime list once and the game
+// borrows it for the other daytime slots (GetSeasonAndTimeOfDayForEncounters).
+// Ask the same function, per kind of encounter, so the map matches what you
+// can really find. (The original also read fishing lists with the grass size.)
+static bool8 RR_MapHasSpeciesAtTime(u32 headerId, enum Species species)
+{
+    static const u8 sAreas[] = {WILD_AREA_LAND, WILD_AREA_WATER, WILD_AREA_FISHING, WILD_AREA_ROCKS};
+    static const u8 sSizes[] = {LAND_WILD_COUNT, WATER_WILD_COUNT, FISH_WILD_COUNT, ROCK_WILD_COUNT};
+    const struct WildEncounterTypes *types;
+    const struct WildPokemonInfo *info;
+    enum Season season;
+    enum TimeOfDay timeOfDay;
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sAreas); i++)
+    {
+        season = 0;
+        timeOfDay = gAreaTimeOfDay;
+        GetSeasonAndTimeOfDayForEncounters(headerId, sAreas[i], &season, &timeOfDay);
+        types = &gWildMonHeaders[headerId].encounterTypes[season][timeOfDay];
+        switch (sAreas[i])
+        {
+        case WILD_AREA_LAND:    info = types->landMonsInfo; break;
+        case WILD_AREA_WATER:   info = types->waterMonsInfo; break;
+        case WILD_AREA_FISHING: info = types->fishingMonsInfo; break;
+        default:                info = types->rockSmashMonsInfo; break;
+        }
+        if (MonListHasSpecies(info, species, sSizes[i]))
+            return TRUE;
+    }
     return FALSE;
 }
 

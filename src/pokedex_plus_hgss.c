@@ -2487,6 +2487,12 @@ static bool8 LoadPokedexListPage(u8 page)
     return FALSE;
 }
 
+// Research Red (#77): the Kanto view lists national numbers 1-251, the 151
+// in their usual order and then Johto's (only up to the last one seen shows),
+// numbered as in the National Pokédex. The game's own Kanto dex (Oak's
+// rating, the diploma) stays the 151.
+#define RR_KANTO_VIEW_LAST NATIONAL_DEX_CELEBI
+
 static void CreatePokedexList(u8 dexMode, u8 order)
 {
     u16 vars[3]; //I have no idea why three regular variables are stored in an array, but whatever.
@@ -2501,18 +2507,18 @@ static void CreatePokedexList(u8 dexMode, u8 order)
     {
     default:
     case DEX_MODE_KANTO:
-        temp_dexCount = KANTO_DEX_COUNT;
+        temp_dexCount = RR_KANTO_VIEW_LAST; // Research Red (#77)
         temp_isKantoDex = TRUE;
         break;
     case DEX_MODE_NATIONAL:
         if (IsNationalPokedexEnabled())
         {
-            temp_dexCount = KANTO_DEX_COUNT;
+            temp_dexCount = NATIONAL_DEX_COUNT; // Research Red (#77): was cut off after 151
             temp_isKantoDex = FALSE;
         }
         else
         {
-            temp_dexCount = KANTO_DEX_COUNT;
+            temp_dexCount = RR_KANTO_VIEW_LAST; // Research Red (#77)
             temp_isKantoDex = TRUE;
         }
         break;
@@ -2525,7 +2531,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             for (i = 0; i < temp_dexCount; i++)
             {
-                temp_dexNum = KantoToNationalDexNum(i + 1);
+                temp_dexNum = i + 1; // Research Red (#77): national numbers
                 sPokedexView->pokedexList[i].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[i].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
                 sPokedexView->pokedexList[i].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
@@ -2558,7 +2564,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Alphabetical[i];
 
-            if ((!temp_isKantoDex || NationalToKantoDexNum(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN))
+            if ((!temp_isKantoDex || temp_dexNum <= RR_KANTO_VIEW_LAST) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN))
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
@@ -2572,7 +2578,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Weight[i];
 
-            if ((!temp_isKantoDex || NationalToKantoDexNum(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
+            if ((!temp_isKantoDex || temp_dexNum <= RR_KANTO_VIEW_LAST) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
@@ -2586,7 +2592,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Weight[i];
 
-            if ((!temp_isKantoDex || NationalToKantoDexNum(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
+            if ((!temp_isKantoDex || temp_dexNum <= RR_KANTO_VIEW_LAST) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
@@ -2600,7 +2606,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Height[i];
 
-            if ((!temp_isKantoDex || NationalToKantoDexNum(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
+            if ((!temp_isKantoDex || temp_dexNum <= RR_KANTO_VIEW_LAST) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
@@ -2614,7 +2620,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Height[i];
 
-            if ((!temp_isKantoDex || NationalToKantoDexNum(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
+            if ((!temp_isKantoDex || temp_dexNum <= RR_KANTO_VIEW_LAST) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
@@ -2748,8 +2754,7 @@ static void CreateMonDexNum(u16 entryNum, u8 left, u8 top, u16 unused)
     u16 dexNum, offset = 0;
 
     dexNum = sPokedexView->pokedexList[entryNum].dexNum;
-    if (sPokedexView->dexMode == DEX_MODE_KANTO)
-        dexNum = NationalToKantoDexNum(dexNum);
+    // Research Red (#77): the Kanto view shows national numbers too
     memcpy(text, sText_No0000, ARRAY_COUNT(sText_No0000));
     if (NATIONAL_DEX_COUNT > 999 && sPokedexView->dexMode != DEX_MODE_KANTO)
     {
@@ -4430,10 +4435,7 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     const u8 *description;
     u8 digitCount = (NATIONAL_DEX_COUNT > 999 && value != 0) ? 4 : 3;
 
-    if (value == 0)
-        value = NationalToKantoDexNum(num);
-    else
-        value = num;
+    value = num; // Research Red (#77): national numbers in both views
     ConvertIntToDecimalStringN(StringCopy(str, gText_NumberClear01), value, STR_CONV_MODE_LEADING_ZEROS, digitCount);
     PrintInfoScreenTextWhite(str, 123, 17);
     species = NationalPokedexNumToSpeciesHGSS(num);
@@ -5394,10 +5396,7 @@ static void PrintStatsScreen_NameGender(u8 taskId, u32 num, u32 value)
     PrintStatsScreenTextSmall(WIN_STATS_NAME_GENDER, GetSpeciesName(species), base_x, base_y);
 
     //Number
-    if (value == 0)
-        value = NationalToKantoDexNum(num);
-    else
-        value = num;
+    value = num; // Research Red (#77): national numbers in both views
     ConvertIntToDecimalStringN(StringCopy(str, gText_NumberClear01), value, STR_CONV_MODE_LEADING_ZEROS, 4);
     PrintStatsScreenTextSmall(WIN_STATS_NAME_GENDER, str, base_x, base_y + 10);
 

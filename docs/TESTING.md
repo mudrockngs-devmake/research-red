@@ -40,6 +40,8 @@ What the results mean:
 | lunch | Debug 6, talks to Elm by the Pokémon Center: the lunch and Officer Jenny |
 | banter | Debug 2 + 7, the Pokédex banter preview |
 | pokedex | Debug 2, Start > Pokédex, every page of Bulbasaur both ways (the Evo page crashed before v0.0.15) |
+| dex_numbers | Marks Magikarp, Cyndaquil, Totodile caught (memory), scrolls the Kanto list to its end: 155 Cyndaquil, 158 Totodile (#77) |
+| dex_area | Magikarp caught (memory): its Area page by day, evening, night (#20) |
 | pewter | Test mode + debug 10, into the Pewter Pokémon Center: Elm and Jenny's rematch (story 8) |
 | demo_end | Debug 10 (after Brock), walks to the east exit: the Gym guide turns you back (demo) |
 | gerald | Debug 2, surfs south from Pallet: Gerald blocks the sea route (demo) |

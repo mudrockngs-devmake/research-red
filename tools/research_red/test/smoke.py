@@ -147,6 +147,36 @@ def sc_pokedex():
             + pages + expect(story=3))
 
 
+def mark_caught(national_num):
+    """Test setup: mark a species seen and caught in the Pokédex (memory poke)."""
+    lines = []
+    for field in ("dexSeen", "dexCaught"):
+        off = T.G.const(f"offsetof(struct SaveBlock1, {field})") + (national_num - 1) // 8
+        lines.append(f"poke {T.G._sb1(off, 1)} |{1 << ((national_num - 1) % 8)}")
+    return lines
+
+
+def sc_dex_numbers():
+    # #77: the Kanto list is the 151 in order, then Johto with national
+    # numbers (Magikarp 129, Cyndaquil 155, Totodile 158). Shots: the list's
+    # end (d02) and Totodile's entry (d03, "No158").
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + mark_caught(129) + mark_caught(155) + mark_caught(158)
+            + start_menu_item(1) + ["wait 90", "shot d01", "hold DOWN 1100", "wait 30", "shot d02",
+                                    "press A", "wait 120", "shot d03", "press B", "wait 60"]
+            + play_until("dex_closed", T.G.field_free(), 1500, key="B", every=30))
+
+
+def sc_dex_area():
+    # #20: Magikarp's Area page by day and evening shows Pallet's sea (the
+    # daytime table the game borrows), not "AREA UNKNOWN"; at night it isn't there.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + mark_caught(129)
+            + start_menu_item(1) + ["wait 90", "hold DOWN 900", "wait 30", "press A", "wait 120",
+                                    "press RIGHT", "wait 150", "shot a01", "press DOWN", "wait 60", "shot a02",
+                                    "press DOWN", "wait 60", "shot a03"]
+            + play_until("dex_closed", T.G.field_free(), 2000, key="B", every=30))
+
+
 def sc_pewter():
     # After Brock: Elm and Jenny's rematch outside the Pokemon Center (#10).
     # Debug 10 leaves us below the door at (17,26); they stand at (15-16, 27).
@@ -553,6 +583,8 @@ SCENARIOS = {
     "lunch": (sc_lunch, "Viridian lunch by the Pokémon Center, Officer Jenny"),
     "banter": (sc_banter, "Pokédex banter preview (debug 7)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
+    "dex_area": (sc_dex_area, "Pokédex Area page: Magikarp in Pallet's sea by day and evening (#20)"),
+    "dex_numbers": (sc_dex_numbers, "Pokédex list: the 151 in order, then Johto by national number (#77)"),
     "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch outside the Pokémon Center (test mode)"),
     "digletts": (sc_digletts, "After Brock: Diglett's Cave is closed by the Diglett crew (demo)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
