@@ -111,6 +111,21 @@ def sc_lab():
             + expect(story=3, party=1))
 
 
+def sc_lab_loss():
+    # #86: lose the lab battle (both your Pokémon at 1 HP, memory poke once you
+    # have them): Oak steps in with Pidgeot and Tauros against Elm and Jenny
+    # (watch: Yes), the battle plays itself, Oak wins, the scene goes on.
+    party = T.G.sym("gPlayerParty")
+    hp = T.G.const("offsetof(struct Pokemon, hp)")
+    size = T.G.const("sizeof(struct Pokemon)")
+    low_hp = [f"poke {party + i * size + hp:#x}:2 1" for i in range(2)]
+    return (["load @bedroom"] + debug_script(SCRIPT_LAB) + step("UP")
+            + play_until("two_mons", T.G.party_count(2), 40000, key="A", every=200)
+            + low_hp
+            + play_until("lab_lost", scene_end(3), 60000, key="A", every=120)
+            + expect(story=3, party=2))
+
+
 def sc_daisy():
     # Debug 2 leaves us below Daisy's door (story 3): step in, the scene plays
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + ["shot s000"] + step("UP")
@@ -618,6 +633,7 @@ SCENARIOS = {
     "portraits": (sc_portraits, "Portraits stay up while a finished line waits for a button (#76)"),
     "starter_menu": (sc_starter_menu, "Lab: the starter list on the left, no portrait over it (#76)"),
     "lab": (sc_lab, "Lab scene (test mode: the AI fights)"),
+    "lab_loss": (sc_lab_loss, "Lab scene, battle lost on purpose: Oak steps in with Pidgeot and Tauros and wins (#86)"),
     "daisy": (sc_daisy, "Daisy's house: Muffin, the Town Map, the bet"),
     "route1": (sc_route1, "Route 1: Elm and Jenny, the Mewtwo fly-by"),
     "route22": (sc_route22, "Route 22: the 6v6 double (test mode)"),

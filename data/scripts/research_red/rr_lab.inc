@@ -1245,7 +1245,10 @@ RR_Lab_EventScript_OakVsElm::
 	msgbox RR_Lab_Text_Jenny_Accept, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_Popcorn, MSGBOX_DEFAULT
-	@ Watching is optional (#46): skipping picks a winner at random
+	msgbox RR_Lab_Text_Oak_RanchTeam, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_Pidgeot, MSGBOX_DEFAULT
+	@ Watching is optional (#46); Oak wins either way (#86)
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_WatchAsk, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_OakVsElmSkip
@@ -1258,71 +1261,44 @@ RR_Lab_EventScript_OakVsElm::
 	case 4, RR_Lab_EventScript_ElmTeam4
 	case 5, RR_Lab_EventScript_ElmTeam5
 
+@ #86: Oak faces Elm and Jenny's starters with his ranch Pokémon, Pidgeot
+@ and Tauros. The battle plays itself and Oak always wins.
 RR_Lab_EventScript_OakVsElmBattle::
 	callnative RR_ScriptBorrowRivalTeam
 	setflag FLAG_RR_AI_VS_AI
 	setflag FLAG_RR_NO_WHITEOUT
-	switch VAR_RR_STARTER
-	case 0, RR_Lab_EventScript_OakBattleWatch0
-	case 1, RR_Lab_EventScript_OakBattleWatch1
-	case 2, RR_Lab_EventScript_OakBattleWatch2
-	case 3, RR_Lab_EventScript_OakBattleWatch3
-	case 4, RR_Lab_EventScript_OakBattleWatch4
-	case 5, RR_Lab_EventScript_OakBattleWatch5
+	trainerbattle_no_intro TRAINER_RR_OAK_LAB_RANCH, RR_Lab_Text_Oak_RanchDefeat
+	goto RR_Lab_EventScript_OakVsElmResult
 
 RR_Lab_EventScript_ElmTeam0::
 	setvar VAR_0x8004, SPECIES_CYNDAQUIL
 	setvar VAR_0x8005, SPECIES_TOTODILE
 	goto RR_Lab_EventScript_OakVsElmBattle
 
-RR_Lab_EventScript_OakBattleWatch0::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_SQUIRTLE_CHIKORITA, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakVsElmResult
-
 RR_Lab_EventScript_ElmTeam1::
 	setvar VAR_0x8004, SPECIES_TOTODILE
 	setvar VAR_0x8005, SPECIES_CHIKORITA
 	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_OakBattleWatch1::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_BULBASAUR_CYNDAQUIL, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakVsElmResult
 
 RR_Lab_EventScript_ElmTeam2::
 	setvar VAR_0x8004, SPECIES_CHIKORITA
 	setvar VAR_0x8005, SPECIES_CYNDAQUIL
 	goto RR_Lab_EventScript_OakVsElmBattle
 
-RR_Lab_EventScript_OakBattleWatch2::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHARMANDER_TOTODILE, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakVsElmResult
-
 RR_Lab_EventScript_ElmTeam3::
 	setvar VAR_0x8004, SPECIES_CHARMANDER
 	setvar VAR_0x8005, SPECIES_SQUIRTLE
 	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_OakBattleWatch3::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_TOTODILE_BULBASAUR, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakVsElmResult
 
 RR_Lab_EventScript_ElmTeam4::
 	setvar VAR_0x8004, SPECIES_SQUIRTLE
 	setvar VAR_0x8005, SPECIES_BULBASAUR
 	goto RR_Lab_EventScript_OakVsElmBattle
 
-RR_Lab_EventScript_OakBattleWatch4::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CHIKORITA_CHARMANDER, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakVsElmResult
-
 RR_Lab_EventScript_ElmTeam5::
 	setvar VAR_0x8004, SPECIES_BULBASAUR
 	setvar VAR_0x8005, SPECIES_CHARMANDER
 	goto RR_Lab_EventScript_OakVsElmBattle
-
-RR_Lab_EventScript_OakBattleWatch5::
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE, RR_Lab_Text_Oak_Defeat
-	goto RR_Lab_EventScript_OakVsElmResult
 
 RR_Lab_EventScript_OakVsElmResult::
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -1330,15 +1306,20 @@ RR_Lab_EventScript_OakVsElmResult::
 	clearflag FLAG_RR_NO_WHITEOUT
 	callnative RR_ScriptReturnPlayerTeam
 	special HealPlayerParty
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_OakLostToElm
+	@ #86: Oak always wins (if the dice ever say otherwise, he still does)
 RR_Lab_EventScript_OakBeatElm::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_BeatElm, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Rematch, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Jenny_OakFast, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_Invigorated, MSGBOX_DEFAULT
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Ivy_OakGlow, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_Grant
 
+@ (unused since #86: Oak always wins; kept for the lines)
 RR_Lab_EventScript_OakLostToElm::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_ElmWon, MSGBOX_DEFAULT
@@ -1351,8 +1332,6 @@ RR_Lab_EventScript_OakVsElmSkip::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_BattleBlur, MSGBOX_DEFAULT
 	special HealPlayerParty
-	random 2
-	goto_if_eq VAR_RESULT, 0, RR_Lab_EventScript_OakLostToElm
 	goto RR_Lab_EventScript_OakBeatElm
 
 RR_Lab_Text_WatchAsk::
@@ -1360,8 +1339,8 @@ RR_Lab_Text_WatchAsk::
     .string "Prof. Oak?$"
 
 RR_Lab_Text_BattleBlur::
-    .string "The battle is a blur of flashes,\n"
-    .string "cries and Elm shouting.$"
+    .string "Pidgeot's wings, Tauros's hooves,\n"
+    .string "and Elm shouting. It's over fast.$"
 
 @ The lab's Slowpoke (the one from the intro call, still on the line)
 RR_Lab_EventScript_Slowpoke::
@@ -1432,3 +1411,29 @@ RR_Lab_Text_Elm_StillFunding::
 RR_Lab_Text_Oak_HaveItCovered::
     .string "Oak: Don't worry, Elm.\n"
     .string "I have it covered.$"
+
+RR_Lab_Text_Oak_RanchTeam::
+    .string "Oak: But not with starters. Let an\n"
+    .string "old man stretch his legs.\p"
+    .string "Pidgeot! Tauros! Out you come!$"
+
+RR_Lab_Text_Elm_Pidgeot::
+    .string "Elm: His ranch team?! Jenny, those\n"
+    .string "are fully evolved!$"
+
+RR_Lab_Text_Oak_RanchDefeat::
+    .string "Oak: Ho ho! Well, I never.$"
+
+RR_Lab_Text_Jenny_OakFast::
+    .string "Jenny: In my professional opinion,\n"
+    .string "that was very fast, sir.$"
+
+RR_Lab_Text_Oak_Invigorated::
+    .string "Oak: Ho ho! I haven't battled like\n"
+    .string "that in years! It's invigorating!\p"
+    .string "Come back and battle me anytime.\n"
+    .string "This old man needs the practice.$"
+
+RR_Lab_Text_Ivy_OakGlow::
+    .string "Ivy: Look at him, sweetie. He's\n"
+    .string "glowing.$"

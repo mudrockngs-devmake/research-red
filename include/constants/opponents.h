@@ -719,6 +719,7 @@ enum TrainerID
     TRAINER_RR_DAISY_REMATCH,
     TRAINER_RR_DELIA_REMATCH, // Research Red (#70)
     TRAINER_RR_BROCK_REMATCH, // Research Red (#52)
+    TRAINER_RR_OAK_LAB_RANCH, // Research Red (#86): Oak's ranch team when he steps in after a lab loss
     TRAINERS_COUNT,
 
     // Special Trainer Ids.
