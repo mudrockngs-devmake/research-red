@@ -47,7 +47,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #24 Trainer Card
 - [x] #32 Pokémon portraits from game sprites
 - [x] #40 Jenny sprites (Hex Maniac stand-in), Officer Jenny in uniform; #8 picnic blanket
-- [ ] #74 landscape battle backgrounds
+- [~] #74 landscape battle backgrounds: moved past v0.0.19. No GBA game has scenery backgrounds; the DS rips are blocked for downloads, so the owner drops the HGSS sheet in `art/incoming/` (see the issue)
 - [x] #9 Forest exchanges + Samurai
 - [x] #69 watch Brock (scripted scene, Yes now or later)
 - [x] #64 ambient Pokémon: Pallet Dodrio and Oak's Diglett, Chansey in the Viridian and Pewter Centers, Forest Pidgeot vs Fearow
