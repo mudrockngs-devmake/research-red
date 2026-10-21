@@ -42,6 +42,15 @@ Part 2, all done (2026-10-21):
 8. Save room: unused link / e-Reader / Mystery Gift data freed (see Capacity); relearner TM names no longer permanent RAM.
 9. Final: CHANGELOG, what's-new report `E:\Workspace\romhacks\research-red\whats-new\v0.0.19\report.html` (with the portrait-vs-full-body comparison for the owner to pick), CREDITS, issues closed.
 
+Watch closely in the playtest (new or reworked code, most likely to break):
+- Lab Supplies: buying, a full Items pocket ("no more room"), leaving back to the PC menu, from Start > PC and from a real PC.
+- The lab scene after the Elm and Jenny battle, both win and loss, Yes and No to both questions; Slowpoke on the table on later visits; Muffin when Daisy visits.
+- The dex banter after a catch and with SELECT: B to skip, quickly mashing A or B, Elm/Jenny family species, switching the look (debug 13); the type icons coming back after.
+- Battles where you or Ivy speak (Route 22): pictures appearing and leaving.
+- The move relearner (its memory moved), the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
+
+Session costs (`session-cost`, readings may lag): v0.0.19 part 1 $110.87; part 2 (2026-10-21 from 01:41) $28.04; total $138.91. Log them in the round's NOTES.md when archiving the playtest.
+
 Test tooling added: `runner.log` per scene, `||` in conditions, `GameMemory.party_nickname_is` / `all_symbols`, debug 11 meets the species poked into VAR_TEMP_F.
 
 ### Capacity (measured 2026-10-21, after part 2)
