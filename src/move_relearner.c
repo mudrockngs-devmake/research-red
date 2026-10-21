@@ -200,6 +200,7 @@ static EWRAM_DATA struct
     u8 moveSlot;
     u8 partyMon;
     u8 typeIconSpriteId;
+    u8 rrTMNames[MAX_RELEARNER_MOVES][24]; // Research Red (#89): "51 Dazzling Gleam"; only while the screen is open
 } *sMoveRelearnerStruct = NULL;
 
 static const u8 sTextColors[][3] =
@@ -835,13 +836,13 @@ static u8 LoadMoveRelearnerMovesList(const struct ListMenuItem *items, u16 numCh
 }
 
 // Research Red (#89): the TM list shows each move's TM number ("51 Dazzling
-// Gleam") in the narrow font, so it's easy to find when teaching several Pokémon
-static EWRAM_DATA u8 sRRTMNames[MAX_RELEARNER_MOVES][24] = {0};
+// Gleam") in the narrow font, so it's easy to find when teaching several
+// Pokémon. The names live in the screen's own allocation, not permanent RAM.
 
 static const u8 *RR_TMListName(u32 i, enum Move move)
 {
     enum Item item = GetTMHMItemIdFromMoveId(move);
-    u8 *str = sRRTMNames[i];
+    u8 *str = sMoveRelearnerStruct->rrTMNames[i];
     u8 *end = str;
 
     if (item >= ITEM_TM01 && item < ITEM_HM01)

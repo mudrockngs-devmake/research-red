@@ -32,4 +32,24 @@ Adding new flags/vars from the free list, new scenes, text, art, encounters or t
 | 1 | v0.0.14 | version added; layout as of v0.0.10 (bigger Items pocket, follower data in SaveBlock3) |
 | 2 | v0.0.19 | pocket sizes rebalanced in the same space: PC item storage 64, Items pocket 30, Berry Pouch 19 (#96); new games only |
 | 3 | v0.0.19 | first-time item descriptions: SaveBlock3 gains the "seen this item" flags (110 bytes, taken from its padding; same total size); new games only |
-| 4 | v0.0.19 | grant rework: supplies come from Lab Supplies (a free shop on the PC), so the pockets go back to FireRed's sizes (PC item storage 30, Items pocket 42, Berry Pouch 43; SaveBlock1 is now exactly 15872 of 15872 bytes); new games only |
+| 4 | v0.0.19 | grant rework: supplies come from Lab Supplies (a free shop on the PC), so the pockets go back to FireRed's sizes (PC item storage 30, Items pocket 42, Berry Pouch 43); and the unused link / e-Reader / Mystery Gift data is freed (`include/config/save.h` `FREE_*`), see "Room left" below; new games only |
+
+## Room left (measured 2026-10-21, v0.0.19)
+`include/config/save.h` frees the parts of the save Research Red never uses:
+Mystery Event scripts, Mystery Gift, union room chat, link battle records, the
+Enigma Berry, Battle Tower e-Reader trainers, Pokémon Jump records and record
+mixing's hall records. Trainer Tower and Match Call (VS Seeker rematches) stay
+for now.
+
+| Save block | Before | After | Free |
+|---|---|---|---|
+| SaveBlock1 | 15872 of 15872 | 13732 of 15872 | 2140 bytes |
+| SaveBlock2 | 3968 of 3968 | 2732 of 3968 | 1236 bytes |
+| SaveBlock3 (Research Red's own) | 950 used | unchanged | 674 bytes spare |
+
+Permanent RAM (EWRAM): 250156 of 262144 bytes (11.7 KB free; the move
+relearner's TM names moved into the screen's own allocation, -1.4 KB). New
+screens should allocate while they're open rather than keep permanent buffers.
+Measure with `GameMemory.const("sizeof(struct SaveBlock1)")` (tools/research_red/test)
+and `arm-none-eabi-size -A pokefirered.elf` (`.ewram.sbss`).
+
