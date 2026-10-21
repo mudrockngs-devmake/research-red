@@ -45,7 +45,7 @@ for now.
 |---|---|---|---|
 | SaveBlock1 | 15872 of 15872 | 13732 of 15872 | 2140 bytes |
 | SaveBlock2 | 3968 of 3968 | 2732 of 3968 | 1236 bytes |
-| SaveBlock3 (Research Red's own) | 950 used | unchanged | 674 bytes spare |
+| SaveBlock3 (Research Red's own) | 1624 of 1624 (950 used + padding) | 1536 of 1624 (the link battle records were here) | 674 bytes of padding + 88 |
 
 Permanent RAM (EWRAM): 250156 of 262144 bytes (11.7 KB free; the move
 relearner's TM names moved into the screen's own allocation, -1.4 KB). New

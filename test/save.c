@@ -5,9 +5,12 @@
 
 // If you would like to ensure save compatibility, update the values below with those for your hack. You can find these through the debug menu.
 // Please note that this simple check is not 100% foolproof, but should be able to catch most unintended shifts.
-#define T_SAVEBLOCK1_SIZE 15864 // Research Red: our SaveBlock1 (v0.0.18). If this fails, the save layout moved: bump RR_SAVE_VERSION (docs/SAVES.md), then update this number
-#define T_SAVEBLOCK2_SIZE SAVEBLOCK2_SIZE
-#define T_SAVEBLOCK3_SIZE SAVEBLOCK3_SIZE
+// Research Red: our save blocks (v0.0.19, RR_SAVE_VERSION 4: FREE_* in
+// include/config/save.h). If one fails, the save layout moved: bump
+// RR_SAVE_VERSION (docs/SAVES.md), then update the number
+#define T_SAVEBLOCK1_SIZE 13732
+#define T_SAVEBLOCK2_SIZE 2732
+#define T_SAVEBLOCK3_SIZE 1536 // the freed link battle records were in SaveBlock3
 #define T_POKEMONSTORAGE_SIZE 34144
 
 TEST("SaveBlock1 is backwards compatible")
