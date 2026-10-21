@@ -43,8 +43,10 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] Cruller (Jenny's Growlithe)
 - [x] #92 battle boxes in notebook colours; #11 proper case
 - [x] #93 female overworld; #80 bike; #28 surf/Pager sprites
-- [~] #7 battle back sprites + Elm/Jenny pictures; #95 portraits in battle dialogue; #24 Trainer Card
-- [ ] #40 Jenny sprites; #32 portraits; #8 picnic blanket
+- [x] #7 battle back sprites + Elm in watched battles; #95 portraits in battle dialogue
+- [ ] #24 Trainer Card
+- [x] #32 Pokémon portraits from game sprites
+- [ ] #40 Jenny sprites; #8 picnic blanket
 - [ ] #74 landscape battle backgrounds
 - [ ] #9 Forest exchanges + Samurai; #69 watch Brock
 - [ ] #64 ambient Pokémon (demo areas)
@@ -52,6 +54,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [ ] v0.0.16 placeholder lines polished
 - [ ] #12 title screen, Mareep splash, Slowking disclaimer
 - [ ] Emerald map pop-ups, first-time item descriptions (RR_SAVE_VERSION bump)
+- [x] Owner's 2026-10-21 ideas: grant to PC, 150 balls, more consumables, 6 battle items (#96, #98-100), Change a Ball (#97), START skips the intro call (test builds), banter forms fallback
 - [ ] Final: full smoke run, rr_check, CHANGELOG, what's-new report, CREDITS list of art used; NO install/tag
 
 ## Half-finished / open threads
