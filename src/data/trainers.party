@@ -15372,3 +15372,24 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 Tauros
 Level: 18
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+
+/* Research Red (#9): the Samurai, a homage to the anime's Viridian Forest
+   episode: a young bug trainer in armour with Pinsir and a Metapod that
+   only hardens. He asks everyone if they're from Pallet Town. */
+=== TRAINER_RR_SAMURAI ===
+Name: Samurai
+Class: Pkmn Trainer 1
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Metapod
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Harden
+
+Pinsir
+Level: 9
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe

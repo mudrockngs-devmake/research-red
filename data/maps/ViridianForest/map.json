@@ -168,6 +168,21 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ViridianForest_EventScript_ItemPotion2",
       "flag": "FLAG_HIDE_VIRIDIAN_FOREST_POTION_2"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
+      "x": 30,
+      "y": 23,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "RR_Forest_EventScript_Samurai",
+      "flag": "0",
+      "local_id": "LOCALID_VIRIDIAN_FOREST_SAMURAI"
     }
   ],
   "warp_events": [
@@ -214,9 +229,7 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

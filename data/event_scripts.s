@@ -898,6 +898,7 @@
 	.include "data/scripts/research_red/rr_route22.inc"
 	.include "data/scripts/research_red/rr_field_guide.inc"
 	.include "data/scripts/research_red/rr_lunch.inc"
+	.include "data/scripts/research_red/rr_forest.inc"
 	.include "data/scripts/research_red/rr_dex_banter.inc"
 	.include "data/scripts/research_red/rr_demo_blockers.inc"
 	.include "data/scripts/research_red/rr_pewter.inc"

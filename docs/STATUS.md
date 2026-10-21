@@ -48,7 +48,8 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] #32 Pokémon portraits from game sprites
 - [x] #40 Jenny sprites (Hex Maniac stand-in), Officer Jenny in uniform; #8 picnic blanket
 - [ ] #74 landscape battle backgrounds
-- [ ] #9 Forest exchanges + Samurai; #69 watch Brock
+- [x] #9 Forest exchanges + Samurai
+- [ ] #69 watch Brock
 - [ ] #64 ambient Pokémon (demo areas)
 - [ ] #89 move relearner; #90 TM swaps
 - [ ] v0.0.16 placeholder lines polished

@@ -540,6 +540,39 @@ def sc_forest():
             + play_until("battle_over", T.G.field_free(), 30000, key="A", every=120))
 
 
+def sc_forest_charlie():
+    # #9: walking to Charlie, Bug Catcher Sammy spots you first (test mode
+    # wins): then you and Ivy talk about forest Pikachu. Path: route_plan.py.
+    return (["load @bedroom"] + after_brock_test_mode() + T.set_flag("FLAG_RR_NO_ENCOUNTERS")
+            + step("RIGHT", 2) + step("DOWN", 5) + step("RIGHT") + step("DOWN", 11) + step("LEFT", 2) + step("DOWN", 11)
+            + ready("gatehouse") + step("DOWN", 12) + ready("gate_exit") + step("DOWN", 2) + ready("forest")
+            + step("DOWN", 3) + step("RIGHT") + step("DOWN", 10) + step("RIGHT") + step("DOWN", 4) + step("RIGHT", 8)
+            + step("UP", 17) + step("RIGHT") + step("UP", 4)
+            + ["press UP 6", "wait 20", "shot f001", "press A", "wait 60"]
+            + play_until("battle", T.G.in_battle(), 1500, key="A", every=40)
+            + play_until("battle_over", f"{T.G.overworld()}", 30000, key="A", every=120)
+            + sum([["press B", "wait 70", f"shot f1{i:02d}"] for i in range(8)], [])   # B: A would talk to people
+            + play_until("talk_done", T.G.field_free(), 3000, key="B", every=60)
+            + T.clear_flag("FLAG_RR_NO_ENCOUNTERS"))
+
+
+def sc_samurai():
+    # #9: the Samurai in the forest clearing (30,23) spots you; test mode wins;
+    # then you and Ivy on being "from Pallet". The Bug Catchers on the way are
+    # marked beaten (memory poke) so only he battles. Path: route_plan.py.
+    beaten = sum([T.set_flag(f"TRAINER_FLAGS_START + TRAINER_BUG_CATCHER_{n}") for n in ("SAMMY", "CHARLIE", "ANTHONY", "DOUG", "RICK")], [])
+    return (["load @bedroom"] + after_brock_test_mode() + T.set_flag("FLAG_RR_NO_ENCOUNTERS") + beaten
+            + step("RIGHT", 2) + step("DOWN", 5) + step("RIGHT") + step("DOWN", 11) + step("LEFT", 2) + step("DOWN", 11)
+            + ready("gatehouse") + step("DOWN", 12) + ready("gate_exit") + step("DOWN", 2) + ready("forest")
+            + step("DOWN", 3) + step("RIGHT") + step("DOWN", 10) + step("RIGHT") + step("DOWN", 4) + step("RIGHT", 8)
+            + step("UP", 17) + step("RIGHT", 8) + step("DOWN", 13) + step("RIGHT", 4)
+            + play_until("battle", T.G.in_battle(), 1500, key="B", every=40)
+            + play_until("battle_over", T.G.overworld(), 30000, key="A", every=120)
+            + sum([["press B", "wait 70", f"shot m1{i:02d}"] for i in range(6)], [])
+            + play_until("talk_done", T.G.field_free(), 3000, key="B", every=60)
+            + T.clear_flag("FLAG_RR_NO_ENCOUNTERS"))
+
+
 def sc_route2_wild():
     # Diagnosis: a wild battle on Route 2 after Brock WITHOUT test mode
     wander = []
@@ -719,6 +752,8 @@ SCENARIOS = {
     "brock_rematch": (sc_brock_rematch, "Brock's rematch in the Gym, tier menu, his team at 1 badge (#52)"),
     "lab_aide": (sc_lab_aide, "The lab aide explains the research tools (#72)"),
     "forest": (sc_forest, "Viridian Forest: a battle there uses the forest background (#74)"),
+    "forest_charlie": (sc_forest_charlie, "Viridian Forest: beat a Bug Catcher (Sammy), then you and Ivy talk (#9)"),
+    "samurai": (sc_samurai, "Viridian Forest: the Samurai's battle, then you and Ivy (#9)"),
     "route2_wild": (sc_route2_wild, "Diagnosis: wild battle on Route 2 after Brock, no test mode"),
     "oak_mons": (sc_oak_mons, "Oak's Pager Pokemon: lab yard, shore, lab (#29)"),
     "ivy": (sc_ivy, "Talking to Ivy: her lines change with the area (Pallet, Route 1)"),
