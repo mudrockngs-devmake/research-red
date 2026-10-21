@@ -95,16 +95,16 @@ from them, we will be kind and professional, and will share what we learn along 
 systems, tools and ideas that come out of it.
 
 ## Feedback
-Bug reports and ideas are welcome on the [Issues](../../issues) tab (there are forms
-for each). This is a hobby project, so replies may be slow. Thank you for being kind.
+Research Red is playtested with a small group of friends for now, so we're not taking
+outside bug reports or requests yet. Thank you for playing, and for understanding!
 
 ## Credits
 - Built on [pokefirered-expansion](https://github.com/rh-hideout/pokefirered-expansion)
   (rh-hideout) and [pret's pokefirered](https://github.com/pret/pokefirered) disassembly.
   Their original README: [docs/ENGINE_README.md](docs/ENGINE_README.md).
 - Story, characters and creative direction: MudrockNGS.
-- Made with help from Claude, an AI assistant, for the programming, tools, testing and
-  draft text. The story, characters and creative direction are MudrockNGS's.
+- Made with help from Claude, an AI assistant, mainly for the programming, tools and
+  testing. The story, characters and creative direction are MudrockNGS's.
 - Everything else, asset by asset: [CREDITS.md](CREDITS.md).
 
 ## Thank you
