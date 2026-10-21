@@ -2,7 +2,8 @@
 """Research Red: the player's walking/running overworld sheets.
 
   Male   -> Professor Birch (pokeemerald, graphics/research_red/player_ow/src/prof_birch.png)
-  Female -> Reporter (FireRed's reporter_f)
+  Female -> Lorelei (FireRed's lorelei): red hair and glasses, her outfit
+            recoloured to a white lab coat (#93; was the Reporter)
 
 Both are re-indexed to FireRed's player palette (player.pal) so they share it
 with the untouched Red/Leaf bike, surf and fishing sheets. Each output sheet has
@@ -24,13 +25,15 @@ REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 OUT = os.path.join(REPO, "graphics/research_red/player_ow")
 
 # source index -> player.pal index (picked by hand: Birch's brown hair becomes
-# the player's red hair, his green shirt becomes blue; the Reporter's pink
-# outfit becomes red)
+# the player's red hair, his green shirt becomes blue; Lorelei's dark outfit
+# becomes the white lab coat)
 SOURCES = {
     "male": (os.path.join(OUT, "src/prof_birch.png"),
              [0, 2, 2, 3, 4, 10, 10, 6, 7, 5, 6, 11, 12, 8, 9, 15]),
-    "female": (os.path.join(REPO, "graphics/object_events/pics/people/reporter_f.png"),
-               [0, 2, 2, 3, 4, 7, 6, 15, 11, 12, 8, 10, 10, 6, 9, 15]),
+    # Lorelei: 1-4 skin, 7 eyes, 8-10 hair (light to dark), 11-13 outfit
+    # greys (light to dark) -> white coat with grey-blue shading, 14 glasses glint
+    "female": (os.path.join(REPO, "graphics/object_events/pics/people/lorelei.png"),
+               [0, 2, 2, 3, 4, 5, 6, 15, 11, 12, 8, 9, 10, 9, 9, 15]),
 }
 # frame order: walk 0-8, run south (9-11), north (12-14), west (15-17), spare
 FRAMES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 3, 4, 1, 5, 6, 2, 7, 8, 0, 0]
