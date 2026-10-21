@@ -10,7 +10,8 @@
 //    to clear the save, B+Select+Left to reset the clock, and after a while
 //    it goes back to the opening.
 //  - On a new game, before the intro call: a Slowking presents the fan
-//    project notice and the demo notice. A skips each page.
+//    project notice, a spoiler-free welcome to the story and the demo
+//    notice. A skips each page.
 #include "global.h"
 #include "bg.h"
 #include "clear_save_data_screen.h"
@@ -361,8 +362,15 @@ void CB2_RR_InitTitleScreen(void)
 
 static const struct WindowTemplate sNoticeWindows[] =
 {
-    [WIN_MAIN] = {.bg = 0, .tilemapLeft = 1, .tilemapTop = 10, .width = 28, .height = 9, .paletteNum = 15, .baseBlock = 1},
+    // tall enough for the six-line welcome page
+    [WIN_MAIN] = {.bg = 0, .tilemapLeft = 1, .tilemapTop = 9, .width = 28, .height = 11, .paletteNum = 15, .baseBlock = 1},
     DUMMY_WIN_TEMPLATE,
+};
+
+enum {
+    NOTICE_PAGE_FAN_PROJECT,
+    NOTICE_PAGE_WELCOME,
+    NOTICE_PAGE_DEMO,
 };
 
 static const u8 sText_Notice[] = _(
@@ -370,6 +378,14 @@ static const u8 sText_Notice[] = _(
     "It is not affiliated with Nintendo,\n"
     "Creatures, Game Freak or The Pokémon\n"
     "Company, and is not for sale.");
+// the story setup in a few cozy, spoiler-free lines (owner-approved wording)
+static const u8 sText_Welcome[] = _(
+    "You and Ivy, two Pokémon professors,\n"
+    "set out across Kanto with Elm and\n"
+    "Jenny. There's one big research paper\n"
+    "to write, and a friendly race to eight\n"
+    "badges. Take your time: catch what you\n"
+    "love, take notes, and enjoy the road.");
 static const u8 sText_DemoA[] = _("This is the ");
 static const u8 sText_DemoB[] = _(".\n"
     "This demo goes as far as Pewter City.\n"
@@ -380,9 +396,14 @@ static const u8 sText_DemoB[] = _(".\n"
 static void PrintNoticePage(void)
 {
     FillWindowPixelBuffer(WIN_MAIN, PIXEL_FILL(0));
-    if (sRR.page == 0)
+    if (sRR.page == NOTICE_PAGE_FAN_PROJECT)
     {
         AddTextPrinterParameterized3(WIN_MAIN, FONT_NORMAL, 4, 2, sTextColors, TEXT_SKIP_DRAW, sText_Notice);
+    }
+    else if (sRR.page == NOTICE_PAGE_WELCOME)
+    {
+        // the longest line is 218 pixels wide: start at 2 so it fits the 224
+        AddTextPrinterParameterized3(WIN_MAIN, FONT_NORMAL, 2, 2, sTextColors, TEXT_SKIP_DRAW, sText_Welcome);
     }
     else
     {
@@ -407,7 +428,7 @@ static void Task_Notice(u8 taskId)
         if (gPaletteFade.active || (sRR.timer < NOTICE_PAGE_FRAMES && !JOY_NEW(SKIP_KEYS)))
             break;
         PlaySE(SE_SELECT);
-        if (sRR.page == 0)
+        if (sRR.page != NOTICE_PAGE_DEMO)
         {
             sRR.page++;
             PrintNoticePage();
@@ -433,6 +454,6 @@ void RR_StartNewGameNotice(void)
 {
     SetUpScreen(sNoticeWindows);
     PrintNoticePage();
-    sRR.spriteId = CreateMonFrontPicSprite(SPECIES_SLOWKING, FALSE, 0, DISPLAY_WIDTH / 2, 44, 0, TAG_MON_PIC);
+    sRR.spriteId = CreateMonFrontPicSprite(SPECIES_SLOWKING, FALSE, 0, DISPLAY_WIDTH / 2, 38, 0, TAG_MON_PIC);
     CreateTask(Task_Notice, 0);
 }

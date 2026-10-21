@@ -84,14 +84,15 @@ def boot_to_title():
 
 def sc_title():
     # #12: the Mareep splash (no buttons: it walks in, sparks, the credit
-    # fades in), the title screen, then New Game: Slowking's two notices,
-    # then the intro call
+    # fades in), the title screen, then New Game: Slowking's three pages
+    # (fan project notice, the welcome, the demo notice), then the intro call
     cb2 = T.G.sym("gMain") + T.G.const("offsetof(struct Main, callback2)")
     in_call = f"{cb2:#x}:4 == {T.G.sym('CB2_Call') | 1:#x}"
     return (["wait 150", "shot t001", "wait 90", "shot t002", "wait 90", "shot t003", "wait 70", "shot t004",
              "wait 50", "shot t005", "wait 60", "shot t005b"]
             + boot_to_title() + ["shot t006", "wait 40", "shot t007", "press START", "wait 150", "shot t008",
-                                 "press A", "wait 120", "shot t009", "press A", "wait 40", "shot t010", "press A"]
+                                 "press A", "wait 120", "shot t009", "press A", "wait 40", "shot t010",
+                                 "press A", "wait 40", "shot t010b", "press A"]
             + [f"until call 600 - {in_call}", "wait 60", "shot t011"])
 
 
@@ -801,7 +802,7 @@ MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_
 
 SCENARIOS = {
     "intro": (sc_intro, "New game: the video call, ending in the bedroom"),
-    "title": (sc_title, "Mareep splash, title screen, Slowking's notices on New Game, then the call (#12)"),
+    "title": (sc_title, "Mareep splash, title screen, Slowking's notices and welcome on New Game, then the call (#12)"),
     "intro_skip": (sc_intro_skip, "Test builds: START skips the new-game call (as Maple)"),
     "breakfast": (sc_breakfast, "Downstairs: breakfast with Delia, Ivy and Mimey"),
     "grass": (sc_grass, "Outside after breakfast: Elm and Jenny at the grass, Oak, the walk to the lab (#83)"),
