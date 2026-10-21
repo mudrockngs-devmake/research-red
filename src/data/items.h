@@ -12889,9 +12889,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM51"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A strong punch thrown\n"
-            "with incredible\n"
-            "power."), // Research Red (#57)
+            "A low kick that does\n"
+            "more damage to\n"
+            "heavier foes."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -12903,9 +12903,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM52"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "An extremely powerful\n"
-            "kick with intense\n"
-            "force."), // Research Red (#57)
+            "Knocks away the foe's\n"
+            "held item, dealing\n"
+            "extra damage if so."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -12917,9 +12917,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM53"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A fighting dance that\n"
-            "sharply raises\n"
-            "Attack."), // Research Red (#57)
+            "Uses the foe's power.\n"
+            "The stronger the foe,\n"
+            "the more damage."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -12931,8 +12931,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM54"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A full-body slam that\n"
-            "may cause paralysis."), // Research Red (#57)
+            "Thinks bad thoughts to\n"
+            "sharply raise the\n"
+            "user's Sp. Atk."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -12944,9 +12945,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM55"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A life-risking tackle\n"
-            "that also hurts the\n"
-            "user."), // Research Red (#57)
+            "Relaxes the body to\n"
+            "sharply raise the\n"
+            "user's Speed."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -12958,9 +12959,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM56"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Returns a physical\n"
-            "hit with double the\n"
-            "power."), // Research Red (#57)
+            "Lands and rests to\n"
+            "restore half of the\n"
+            "user's max HP."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -12972,8 +12973,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM57"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Inflicts damage equal\n"
-            "to the user's level."), // Research Red (#57)
+            "Exhales a hot breath\n"
+            "on the foes. May\n"
+            "burn them."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -12985,9 +12987,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM58"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Copies the foe's last\n"
-            "move for the rest of\n"
-            "the battle."), // Research Red (#57)
+            "Hurls mud at the foe\n"
+            "and lowers its\n"
+            "Speed."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -12999,9 +13001,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM59"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Waggles a finger to\n"
-            "use any Pokémon move\n"
-            "at random."), // Research Red (#57)
+            "Spins like a drill to\n"
+            "hit the foe. Lands\n"
+            "critical hits easily."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13013,9 +13015,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM60"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Restores up to half\n"
-            "of the user's\n"
-            "maximum HP."), // Research Red (#57)
+            "Fires a ray of light\n"
+            "that sparkles like\n"
+            "gemstones."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13027,9 +13029,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM61"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Eats a sleeping foe's\n"
-            "dream. The user heals\n"
-            "half the damage."), // Research Red (#57)
+            "Stabs the foe with a\n"
+            "sharp horn. This\n"
+            "attack never misses."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13041,9 +13043,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM62"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A weak jolt of\n"
-            "electricity that\n"
-            "paralyzes the foe."), // Research Red (#57)
+            "Hardens the body like\n"
+            "iron to sharply raise\n"
+            "Defense."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13055,9 +13057,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM63"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Inflicts severe\n"
-            "damage but makes the\n"
-            "user faint."), // Research Red (#57)
+            "Slams into the foe.\n"
+            "Uses the user's\n"
+            "Defense, not Attack."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13069,9 +13071,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM64"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Large boulders are\n"
-            "hurled at the foes.\n"
-            "May cause flinching."), // Research Red (#57)
+            "Fires a beam of\n"
+            "electricity. May raise\n"
+            "the user's Sp. Atk."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13083,9 +13085,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM65"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Makes a decoy using\n"
-            "1/4 of the user's\n"
-            "maximum HP."), // Research Red (#57)
+            "Trips the foe with\n"
+            "grass. Heavier foes\n"
+            "take more damage."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13099,7 +13101,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A loud shout that\n"
             "uses sound waves to\n"
-            "hurt the foes."), // Research Red (#57)
+            "hurt the foes."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13113,7 +13115,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Shoots a sinister\n"
             "flame that burns the\n"
-            "foe."), // Research Red (#57)
+            "foe."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13125,8 +13127,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM68"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A fiery punch that\n"
-            "may burn the foe."), // Research Red (#57)
+            "Bites with fiery\n"
+            "fangs. May burn the\n"
+            "foe or make it flinch."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13140,7 +13143,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Shoots boiling water\n"
             "at the foe. May burn\n"
-            "it."), // Research Red (#57)
+            "it."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13154,7 +13157,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Slams the foe with\n"
             "water. May lower its\n"
-            "Defense."), // Research Red (#57)
+            "Defense."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13168,7 +13171,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Draws power from\n"
             "nature to attack. May\n"
-            "lower Sp. Def."), // Research Red (#57)
+            "lower Sp. Def."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13182,7 +13185,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A barrage of hard\n"
             "seeds is fired at the\n"
-            "foe."), // Research Red (#57)
+            "foe."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13196,7 +13199,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Attacks with electric\n"
             "power, then switches\n"
-            "with a party Pokémon."), // Research Red (#57)
+            "with a party Pokémon."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13210,7 +13213,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "An electrical tackle\n"
             "that also hurts the\n"
-            "user."), // Research Red (#57)
+            "user."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13222,9 +13225,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM75"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "An electrified punch\n"
-            "that may paralyze the\n"
-            "foe."), // Research Red (#57)
+            "Bites with electrified\n"
+            "fangs. May paralyze\n"
+            "or make it flinch."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13236,8 +13239,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM76"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "An icy punch that\n"
-            "may freeze the foe."), // Research Red (#57)
+            "Bites with icy fangs.\n"
+            "May freeze the foe\n"
+            "or make it flinch."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13249,9 +13253,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM77"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A chilling attack\n"
-            "that lowers the foes'\n"
-            "Speed."), // Research Red (#57)
+            "Pounces on the foe\n"
+            "and lowers its\n"
+            "Speed."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13265,7 +13269,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A punch that drains\n"
             "energy. The user heals\n"
-            "half the damage."), // Research Red (#57)
+            "half the damage."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13279,7 +13283,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Attacks with a blast\n"
             "of aura power. It\n"
-            "never misses."), // Research Red (#57)
+            "never misses."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13293,7 +13297,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A stabbing attack\n"
             "that may poison the\n"
-            "foe."), // Research Red (#57)
+            "foe."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13307,7 +13311,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Makes the ground\n"
             "erupt under the foe.\n"
-            "May lower Sp. Def."), // Research Red (#57)
+            "May lower Sp. Def."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13321,7 +13325,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Stomps on the ground\n"
             "to hit everyone and\n"
-            "lower their Speed."), // Research Red (#57)
+            "lower their Speed."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13335,7 +13339,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Attacks with a blade\n"
             "of air. May cause\n"
-            "flinching."), // Research Red (#57)
+            "flinching."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13349,7 +13353,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A psychic wave that\n"
             "hits the foe's Defense\n"
-            "instead of Sp. Def."), // Research Red (#57)
+            "instead of Sp. Def."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13363,7 +13367,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Hits with a strong\n"
             "headbutt. May cause\n"
-            "flinching."), // Research Red (#57)
+            "flinching."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13376,7 +13380,7 @@ const struct ItemInfo gItemsInfo[] =
         .price = 3000,
         .description = COMPOUND_STRING(
             "Slower Pokémon move\n"
-            "first for five turns."), // Research Red (#57)
+            "first for five turns."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13390,7 +13394,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Attacks, then rushes\n"
             "back to switch with a\n"
-            "party Pokémon."), // Research Red (#57)
+            "party Pokémon."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13404,7 +13408,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Slashes the foe with\n"
             "crossed scythes or\n"
-            "claws."), // Research Red (#57)
+            "claws."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13418,7 +13422,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A damaging sound wave\n"
             "that may lower the\n"
-            "foe's Sp. Def."), // Research Red (#57)
+            "foe's Sp. Def."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13432,7 +13436,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Stabs the foe with\n"
             "sharp stones. High\n"
-            "critical-hit ratio."), // Research Red (#57)
+            "critical-hit ratio."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13446,7 +13450,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Sets floating stones\n"
             "that hurt foes that\n"
-            "switch in."), // Research Red (#57)
+            "switch in."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13460,7 +13464,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Slashes with a claw\n"
             "of shadow. High\n"
-            "critical-hit ratio."), // Research Red (#57)
+            "critical-hit ratio."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13474,7 +13478,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Does double damage if\n"
             "the foe has a status\n"
-            "problem."), // Research Red (#57)
+            "problem."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13488,7 +13492,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Fires a shock wave\n"
             "from its mouth to\n"
-            "damage the foe."), // Research Red (#57)
+            "damage the foe."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13502,7 +13506,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Attacks with a\n"
             "horrible aura. May\n"
-            "cause flinching."), // Research Red (#57)
+            "cause flinching."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13516,7 +13520,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Crunches with sharp\n"
             "fangs. May lower the\n"
-            "foe's Defense."), // Research Red (#57)
+            "foe's Defense."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13530,7 +13534,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Releases a blast of\n"
             "light. May lower the\n"
-            "foe's Sp. Def."), // Research Red (#57)
+            "foe's Sp. Def."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13544,7 +13548,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Slams the foe with a\n"
             "hard head. May cause\n"
-            "flinching."), // Research Red (#57)
+            "flinching."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13558,7 +13562,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Damages the foes with\n"
             "a bright flash of\n"
-            "light."), // Research Red (#57)
+            "light."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13572,7 +13576,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Plays rough with the\n"
             "foe. May lower its\n"
-            "Attack."), // Research Red (#57)
+            "Attack."), // Research Red (#90, tools/research_red/build_tm_descriptions.py)
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,

@@ -1,0 +1,56 @@
+# Research Red (#90): descriptions for TM51-TM100 in the TM Case.
+# One line per move: MOVE | line 1 / line 2 / line 3  (at most 22 characters
+# per line, 3 lines). TM01-TM50 keep FireRed's own. After editing, or after
+# changing the TM list in include/constants/tms_hms.h, run
+#   python3 tools/research_red/build_tm_descriptions.py
+
+LOW_KICK      | A low kick that does / more damage to / heavier foes.   # TM51
+KNOCK_OFF     | Knocks away the foe's / held item, dealing / extra damage if so.   # TM52
+FOUL_PLAY     | Uses the foe's power. / The stronger the foe, / the more damage.   # TM53
+NASTY_PLOT    | Thinks bad thoughts to / sharply raise the / user's Sp. Atk.   # TM54
+AGILITY       | Relaxes the body to / sharply raise the / user's Speed.   # TM55
+ROOST         | Lands and rests to / restore half of the / user's max HP.   # TM56
+HEAT_WAVE     | Exhales a hot breath / on the foes. May / burn them.   # TM57
+MUD_SHOT      | Hurls mud at the foe / and lowers its / Speed.   # TM58
+DRILL_RUN     | Spins like a drill to / hit the foe. Lands / critical hits easily.   # TM59
+POWER_GEM     | Fires a ray of light / that sparkles like / gemstones.   # TM60
+SMART_STRIKE  | Stabs the foe with a / sharp horn. This / attack never misses.   # TM61
+IRON_DEFENSE  | Hardens the body like / iron to sharply raise / Defense.   # TM62
+BODY_PRESS    | Slams into the foe. / Uses the user's / Defense, not Attack.   # TM63
+CHARGE_BEAM   | Fires a beam of / electricity. May raise / the user's Sp. Atk.   # TM64
+GRASS_KNOT    | Trips the foe with / grass. Heavier foes / take more damage.   # TM65
+HYPER_VOICE   | A loud shout that / uses sound waves to / hurt the foes.   # TM66
+WILL_O_WISP   | Shoots a sinister / flame that burns the / foe.   # TM67
+FIRE_FANG     | Bites with fiery / fangs. May burn the / foe or make it flinch.   # TM68
+SCALD         | Shoots boiling water / at the foe. May burn / it.   # TM69
+LIQUIDATION   | Slams the foe with / water. May lower its / Defense.   # TM70
+ENERGY_BALL   | Draws power from / nature to attack. May / lower Sp. Def.   # TM71
+SEED_BOMB     | A barrage of hard / seeds is fired at the / foe.   # TM72
+VOLT_SWITCH   | Attacks with electric / power, then switches / with a party Pokémon.   # TM73
+WILD_CHARGE   | An electrical tackle / that also hurts the / user.   # TM74
+THUNDER_FANG  | Bites with electrified / fangs. May paralyze / or make it flinch.   # TM75
+ICE_FANG      | Bites with icy fangs. / May freeze the foe / or make it flinch.   # TM76
+POUNCE        | Pounces on the foe / and lowers its / Speed.   # TM77
+DRAIN_PUNCH   | A punch that drains / energy. The user heals / half the damage.   # TM78
+AURA_SPHERE   | Attacks with a blast / of aura power. It / never misses.   # TM79
+POISON_JAB    | A stabbing attack / that may poison the / foe.   # TM80
+EARTH_POWER   | Makes the ground / erupt under the foe. / May lower Sp. Def.   # TM81
+BULLDOZE      | Stomps on the ground / to hit everyone and / lower their Speed.   # TM82
+AIR_SLASH     | Attacks with a blade / of air. May cause / flinching.   # TM83
+PSYSHOCK      | A psychic wave that / hits the foe's Defense / instead of Sp. Def.   # TM84
+ZEN_HEADBUTT  | Hits with a strong / headbutt. May cause / flinching.   # TM85
+TRICK_ROOM    | Slower Pokémon move / first for five turns.   # TM86
+U_TURN        | Attacks, then rushes / back to switch with a / party Pokémon.   # TM87
+X_SCISSOR     | Slashes the foe with / crossed scythes or / claws.   # TM88
+BUG_BUZZ      | A damaging sound wave / that may lower the / foe's Sp. Def.   # TM89
+STONE_EDGE    | Stabs the foe with / sharp stones. High / critical-hit ratio.   # TM90
+STEALTH_ROCK  | Sets floating stones / that hurt foes that / switch in.   # TM91
+SHADOW_CLAW   | Slashes with a claw / of shadow. High / critical-hit ratio.   # TM92
+HEX           | Does double damage if / the foe has a status / problem.   # TM93
+DRAGON_PULSE  | Fires a shock wave / from its mouth to / damage the foe.   # TM94
+DARK_PULSE    | Attacks with a / horrible aura. May / cause flinching.   # TM95
+CRUNCH        | Crunches with sharp / fangs. May lower the / foe's Defense.   # TM96
+FLASH_CANNON  | Releases a blast of / light. May lower the / foe's Sp. Def.   # TM97
+IRON_HEAD     | Slams the foe with a / hard head. May cause / flinching.   # TM98
+DAZZLING_GLEAM| Damages the foes with / a bright flash of / light.   # TM99
+PLAY_ROUGH    | Plays rough with the / foe. May lower its / Attack.   # TM100

@@ -52,35 +52,37 @@
     F(SKILL_SWAP) \
     F(SNATCH) \
     F(OVERHEAT) \
-    /* Research Red (#57): TM51-65, FireRed's move tutors */ \
-    F(MEGA_PUNCH) \
-    F(MEGA_KICK) \
-    F(SWORDS_DANCE) \
-    F(BODY_SLAM) \
-    F(DOUBLE_EDGE) \
-    F(COUNTER) \
-    F(SEISMIC_TOSS) \
-    F(MIMIC) \
-    F(METRONOME) \
-    F(SOFT_BOILED) \
-    F(DREAM_EATER) \
-    F(THUNDER_WAVE) \
-    F(EXPLOSION) \
-    F(ROCK_SLIDE) \
-    F(SUBSTITUTE) \
+    /* Research Red (#90): TM51-65 were FireRed's move tutors (#57); the */ \
+    /* relearner's Tutor Moves teach those for free, so these slots hold */ \
+    /* moves you couldn't get otherwise */ \
+    F(LOW_KICK) \
+    F(KNOCK_OFF) \
+    F(FOUL_PLAY) \
+    F(NASTY_PLOT) \
+    F(AGILITY) \
+    F(ROOST) \
+    F(HEAT_WAVE) \
+    F(MUD_SHOT) \
+    F(DRILL_RUN) \
+    F(POWER_GEM) \
+    F(SMART_STRIKE) \
+    F(IRON_DEFENSE) \
+    F(BODY_PRESS) \
+    F(CHARGE_BEAM) \
+    F(GRASS_KNOT) \
     /* Research Red (#57): TM66-100, modern moves */ \
     F(HYPER_VOICE) \
     F(WILL_O_WISP) \
-    F(FIRE_PUNCH) \
+    F(FIRE_FANG) /* Research Red (#90): was Fire Punch (a tutor move) */ \
     F(SCALD) \
     F(LIQUIDATION) \
     F(ENERGY_BALL) \
     F(SEED_BOMB) \
     F(VOLT_SWITCH) \
     F(WILD_CHARGE) \
-    F(THUNDER_PUNCH) \
-    F(ICE_PUNCH) \
-    F(ICY_WIND) \
+    F(THUNDER_FANG) /* Research Red (#90): was Thunder Punch */ \
+    F(ICE_FANG) /* Research Red (#90): was Ice Punch */ \
+    F(POUNCE) /* Research Red (#90): was Icy Wind */ \
     F(DRAIN_PUNCH) \
     F(AURA_SPHERE) \
     F(POISON_JAB) \

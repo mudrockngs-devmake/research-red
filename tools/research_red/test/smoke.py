@@ -334,12 +334,12 @@ def sc_tms():
     # #57: the grant fills the TM Case: 8 HMs + TM01-TM100 = all 108 slots,
     # so the last slot holds something. Then look: Start > BAG (after the
     # lab: DEBUG, POKEDEX, GUIDE, POKEMON, PC, BAG), Key Items, the TM Case (9th
-    # key item, below the Ranch Pager), OPEN, then one screenshot per new TM
+    # key item, below the Ranch Pager, just above Cancel), OPEN, then one screenshot per new TM
     # (TM51-TM100: name fits the row, description fits the box) and the HMs.
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
             + check("tm_case_full", T.G.bag_slot_filled("TMsHMs", 107))
             + start_menu_item(5) + ["wait 90", "shot t001", "press RIGHT", "wait 30"]
-            + ["press DOWN", "wait 8"] * 8 + ["shot t002", "press A", "wait 20", "shot t003", "press A", "wait 90",
+            + ["press DOWN", "wait 8"] * 7 + ["shot t002", "press A", "wait 20", "shot t003", "press A", "wait 90",
                                               "shot t004"]
             + ["press DOWN", "wait 6"] * 49
             + sum([["press DOWN", "wait 10", f"shot t{n:03d}"] for n in range(51, 101)], [])
@@ -350,11 +350,11 @@ def sc_tms():
 
 
 def open_ranch_pager(choice, prefix):
-    """After the lab (debug 2): Start > BAG > Key Items > Ranch Pager (7th,
+    """After the lab (debug 2): Start > BAG > Key Items > Ranch Pager (7th from the top,
     below the Berry Pouch) > USE, then pick menu entry `choice` (0 Fly,
     1 Flash, 2 Teleport, 3 Dig)."""
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
-            + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 6
             + [f"shot {prefix}001", "press A", "wait 20", "press A", "wait 150", f"shot {prefix}002"]
             + ["press DOWN", "wait 8"] * choice + [f"shot {prefix}003", "press A", "wait 60"])
 
@@ -382,7 +382,7 @@ def sc_pager_select():
     # #29: register the Ranch Pager (Bag > Key Items > Ranch Pager > REGISTER),
     # close the Bag, then SELECT opens the Pager's menu on the map; B cancels
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
-            + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
+            + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 6
             + ["press A", "wait 20", "press DOWN", "wait 10", "shot r001", "press A", "wait 30", "shot r002"]
             + play_until("bag_closed", T.G.field_free(), 1500, key="B", every=30)
             + ["wait 30", "press SELECT", "wait 150", "shot r003", "press B", "wait 60", "shot r004"]
