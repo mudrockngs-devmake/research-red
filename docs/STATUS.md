@@ -15,7 +15,6 @@ _Last updated: 2026-10-21 (v0.0.19 parts 1 and 2 done and tested; ready for inst
 
 ## Waiting on the owner
 - [ ] v0.0.19: OK to install, tag and release; playtest with the what's-new report (pick portraits or full-body there).
-- [ ] The README draft (`readme-draft\preview.html`) before it goes on GitHub.
 - [ ] Rework the draft lines from part 2: Oak's grant / Lab Supplies lines, the lab's Oak rounds (#86), the aide's PC topic, Slowking's pages.
 - [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
 - [ ] Optional: phone emulator / real hardware (#16) (v0.0.18 was played on Android RetroArch).
@@ -38,7 +37,7 @@ Part 2, all done (2026-10-21):
 4. Grant rework (#96, #98-#100): the grant is TMs/HMs and key items only; **Lab Supplies** is a free shop on every PC (no Master Ball); pockets back to FireRed's; RR_SAVE_VERSION 4. Oak's/Ivy's/Jenny's/aide lines are drafts for the owner.
 5. Oak lab rework (#86): Elm and Jenny beat Oak's leftover starters (watched), Oak's Lv 50 Pidgeot and Tauros flatten them (optional), optional player battle, Slowpoke naps on the empty table; Muffin added by Daisy. Tests lab, lab_loss, lab_skip.
 6. Banter cutscene (#5 #4 #95): slide in/out, hops, cry, ink stamp, pencil sound, ! ? ♪ bubbles, Elm/Jenny call-ins, B skips; portraits by default (they stand on the text box, owner's request), full-body behind Debug > Scripts > 13. Tests banter_*, battle_lines(_full).
-7. README draft for the GitHub front page: **not pushed**, waiting for the owner: `E:\Workspace\romhacks\research-red\readme-draft\preview.html` (README.md + images). Once OK'd: copy README.md to the repo root and the images to `docs/images/readme/`, commit, push.
+7. README: the GitHub front page, reworked with the owner and published (2026-10-21), with screenshots in `docs/images/readme/`, a first-project note, thanks, and an AI-assistance line. Repo description updated.
 8. Save room: unused link / e-Reader / Mystery Gift data freed (see Capacity); relearner TM names no longer permanent RAM.
 9. Final: CHANGELOG, what's-new report `E:\Workspace\romhacks\research-red\whats-new\v0.0.19\report.html` (with the portrait-vs-full-body comparison for the owner to pick), CREDITS, issues closed.
 
@@ -92,7 +91,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] Final: full smoke run, rr_check, CHANGELOG, what's-new report, CREDITS list of art used; NO install/tag
 
 ## Half-finished / open threads
-- Nothing half-done: everything is committed and pushed, except the README draft (waiting for the owner, see above).
+- Nothing half-done: everything is committed and pushed.
 - Rematch rules (owner, 2026-10-20) are on #52: build on each character's existing team, separate tiers for 7 and 8 badges, a post-game tier with regional forms and exchange-program visitors (Mimey, Muffin stay home), Megas in the post-game tier (to add).
 - Still needs the owner's eyes: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile evolution under the cap).
 - The League gate block (Route 22) has no automatic test; check by hand (#2).
