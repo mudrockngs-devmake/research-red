@@ -43,7 +43,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] Cruller (Jenny's Growlithe)
 - [x] #92 battle boxes in notebook colours; #11 proper case
 - [x] #93 female overworld; #80 bike; #28 surf/Pager sprites
-- [ ] #7 battle back sprites + Elm/Jenny pictures; #95 portraits in battle dialogue; #24 Trainer Card
+- [~] #7 battle back sprites + Elm/Jenny pictures; #95 portraits in battle dialogue; #24 Trainer Card
 - [ ] #40 Jenny sprites; #32 portraits; #8 picnic blanket
 - [ ] #74 landscape battle backgrounds
 - [ ] #9 Forest exchanges + Samurai; #69 watch Brock

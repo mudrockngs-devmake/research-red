@@ -1,5 +1,6 @@
 #include "global.h"
 #include "rr_rematch.h" // Research Red
+#include "rr_portrait.h" // Research Red
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_ai_main.h"
@@ -1812,6 +1813,7 @@ void BattleMainCB2(void)
     RunTextPrinters();
     UpdatePaletteFade();
     RunTasks();
+    RR_UpdateBattleSpeakerPortrait(gDisplayedStringBattle); // Research Red (#95): the player's / Ivy's portrait when they speak
 
     if (JOY_HELD(B_BUTTON) && gBattleTypeFlags & BATTLE_TYPE_RECORDED && RecordedBattle_CanStopPlayback())
     {

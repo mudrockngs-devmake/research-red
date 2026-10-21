@@ -210,6 +210,7 @@ bool32 AddTextPrinter(struct TextPrinterTemplate *textSubPrinter, u8 speed, void
 void RunTextPrinters(void);
 bool32 IsTextPrinterActiveOnWindow(u32 windowId);
 bool32 IsTextPrinterActiveOnSprite(u32 spriteId);
+bool32 RR_GetWindowPrinterPos(u32 windowId, const u8 **currentChar, u8 *state); // Research Red (#95)
 void GenerateFontHalfRowLookupTable(union TextColor color);
 union TextColor SaveTextColors(void);
 void RestoreTextColors(union TextColor color);

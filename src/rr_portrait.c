@@ -516,3 +516,57 @@ void RR_DestroyStandalonePortrait(u32 slot, u8 spriteId)
     FreeSpritePaletteByTag(TAG_RR_STANDALONE + slot);
     sStandalonePal[slot] = NULL;
 }
+
+// ---------------------------------------------------------------------------
+// In battle (#95): when a page of the battle message is spoken by the player
+// or Ivy ("Ivy: That's the best kind, Elm."), their portrait stands above the
+// message box, over your Pokémon, until the page changes. Elm and Jenny have
+// their own pictures on screen in those moments. Called every frame from
+// BattleMainCB2.
+// ---------------------------------------------------------------------------
+#define BATTLE_PORTRAIT_X 40
+#define BATTLE_PORTRAIT_Y 80   // bottom edge on the message box (y 112)
+
+static EWRAM_DATA u8 sBattleSpeakerIdPlus1 = 0;   // sprite id + 1 (0: none)
+static EWRAM_DATA u8 sBattleSpeaker = RR_LINE_NARRATION;
+
+static bool32 IsBattlePortraitUp(void)
+{
+    u32 id = sBattleSpeakerIdPlus1 - 1;
+    return sBattleSpeakerIdPlus1 != 0 && gSprites[id].inUse
+        && gSprites[id].template == &sSpriteTemplate_StandalonePortrait[0];
+}
+
+void RR_UpdateBattleSpeakerPortrait(const u8 *text)
+{
+    const u8 *cur, *page;
+    u8 state;
+    u32 who = RR_LINE_NARRATION;
+
+    if (RR_GetWindowPrinterPos(0, &cur, &state) && cur > text) // window 0: the battle message box
+    {
+        page = cur;
+        if (state == RENDER_STATE_CLEAR && page[-1] == CHAR_PROMPT_CLEAR)
+            page--; // waiting at a page break: that page is still on screen
+        while (page > text && page[-1] != CHAR_PROMPT_CLEAR)
+            page--;
+        who = RR_GetLineSpeaker(page);
+        if (who != RR_LINE_PLAYER && who != RR_LINE_IVY)
+            who = RR_LINE_NARRATION;
+    }
+    if (!IsBattlePortraitUp())
+        sBattleSpeaker = RR_LINE_NARRATION;
+    if (who == sBattleSpeaker)
+        return;
+    if (IsBattlePortraitUp())
+        RR_DestroyStandalonePortrait(0, sBattleSpeakerIdPlus1 - 1);
+    sBattleSpeakerIdPlus1 = 0;
+    sBattleSpeaker = RR_LINE_NARRATION;
+    if (who == RR_LINE_NARRATION)
+        return;
+    sBattleSpeakerIdPlus1 = RR_CreateStandalonePortrait(0, who, BATTLE_PORTRAIT_X, BATTLE_PORTRAIT_Y, FALSE) + 1;
+    if (sBattleSpeakerIdPlus1 - 1 < MAX_SPRITES)
+        sBattleSpeaker = who;
+    else
+        sBattleSpeakerIdPlus1 = 0;
+}
