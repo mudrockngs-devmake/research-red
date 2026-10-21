@@ -199,8 +199,10 @@ def sc_gerald():
 def sc_pc():
     # Start > PC from anywhere (#34). After the lab (story 3) the menu is
     # DEBUG, POKEDEX, POKEMON, PC: open it, enter Pokemon storage, back out.
+    # #79: the PC's menus show on the map (it used to fade to black first):
+    # p001 must show "Which PC should be accessed?" over the town
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + start_menu_item(3)
-            + ["wait 60", "shot p001", "press A", "wait 60", "mash A 60", "wait 90", "shot p002",
+            + ["wait 60", "shot p001"] + T.not_black("p001") + ["press A", "wait 60", "mash A 60", "wait 90", "shot p002",
                "press A", "wait 90", "shot p003"]
             + play_until("closed", T.G.field_free(), 1500, key="B", every=30)
             + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
@@ -558,7 +560,7 @@ SCENARIOS = {
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),
     "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
-    "wild": (sc_wild, "A wild single battle on Route 1: opponent types, then run away (#25)"),
+    "wild": (sc_wild, "A wild single battle on Route 1: types while choosing a move (engine default, #78), then run away"),
     "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
     "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
     "pager_fly": (sc_pager_fly, "Ranch Pager > Fly: the Fly map, Oak's Pidgeot flies to Pallet (#29)"),

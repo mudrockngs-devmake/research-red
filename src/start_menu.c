@@ -706,6 +706,7 @@ static void StartMenu_FadeScreenIfLeavingOverworld(void)
     if (gMenuCallback != StartMenuSaveCallback
      && gMenuCallback != StartMenuExitCallback
      && gMenuCallback != StartMenuDebugCallback
+     && gMenuCallback != StartMenuPCCallback // Research Red: the PC menus play on the map, no fade to black (#79)
      && gMenuCallback != StartMenuSafariZoneRetireCallback
      && gMenuCallback != StartMenuBattlePyramidRetireCallback)
     {

@@ -26,12 +26,12 @@ _Last updated: 2026-10-20 evening (test tools #18, playtest form in the report)_
 ## v0.0.19 run (in progress, started 2026-10-20 evening)
 Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, commit after each, keep this updated. Stop before install/tag/release.
 - [x] #76 portraits stay on the last page; starter list on the left
-- [ ] #78 type display back to the engine's
-- [ ] #79 Start menu PC
-- [ ] #81 intro call name
-- [ ] #82 Move Info black
-- [ ] #94 Sumac -> Sequoia
-- [ ] #87 starter moves
+- [x] #78 type display back to the engine's
+- [x] #79 Start menu PC
+- [x] #81 intro call name
+- [x] #82 Move Info black
+- [x] #94 Sumac -> Sequoia
+- [x] #87 starter moves
 - [ ] #77 dex numbering
 - [ ] #20 Area tab (demo areas)
 - [ ] #5 / #4 banter over the dex page, SELECT replay

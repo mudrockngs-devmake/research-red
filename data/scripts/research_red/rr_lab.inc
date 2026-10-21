@@ -67,6 +67,8 @@ RR_Lab_EventScript_Scene::
 	closemessage
 	@ --- choose a starter (works for all three) ---
 RR_Lab_EventScript_ChooseLoop::
+	@ Every starter comes with a Normal move, a status move and its early
+	@ same-type move, so all six have a fair first battle (#87)
 	@ Six starters: Kanto table (top row) and Johto table (bottom row).
 	@ The list shows each Pokemon's picture as you scroll.
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -93,7 +95,7 @@ RR_Lab_EventScript_PickBulbasaur::
 	setvar VAR_RR_STARTER, 0
 	setvar VAR_STARTER_MON, 0
 	removeobject LOCALID_BULBASAUR_BALL
-	givemon SPECIES_BULBASAUR, 5
+	givemon SPECIES_BULBASAUR, 5, move1=MOVE_TACKLE, move2=MOVE_GROWL, move3=MOVE_VINE_WHIP
 	goto RR_Lab_EventScript_Received
 
 RR_Lab_EventScript_PickCharmander::
@@ -103,7 +105,7 @@ RR_Lab_EventScript_PickCharmander::
 	setvar VAR_RR_STARTER, 1
 	setvar VAR_STARTER_MON, 2
 	removeobject LOCALID_CHARMANDER_BALL
-	givemon SPECIES_CHARMANDER, 5
+	givemon SPECIES_CHARMANDER, 5, move1=MOVE_SCRATCH, move2=MOVE_GROWL, move3=MOVE_EMBER
 	goto RR_Lab_EventScript_Received
 
 RR_Lab_EventScript_PickSquirtle::
@@ -113,7 +115,7 @@ RR_Lab_EventScript_PickSquirtle::
 	setvar VAR_RR_STARTER, 2
 	setvar VAR_STARTER_MON, 1
 	removeobject LOCALID_SQUIRTLE_BALL
-	givemon SPECIES_SQUIRTLE, 5
+	givemon SPECIES_SQUIRTLE, 5, move1=MOVE_TACKLE, move2=MOVE_TAIL_WHIP, move3=MOVE_WATER_GUN
 	goto RR_Lab_EventScript_Received
 
 RR_Lab_EventScript_PickChikorita::
@@ -123,7 +125,7 @@ RR_Lab_EventScript_PickChikorita::
 	setvar VAR_RR_STARTER, 3
 	setvar VAR_STARTER_MON, 0
 	removeobject LOCALID_LAB_CHIKORITA_BALL
-	givemon SPECIES_CHIKORITA, 5
+	givemon SPECIES_CHIKORITA, 5, move1=MOVE_TACKLE, move2=MOVE_GROWL, move3=MOVE_RAZOR_LEAF
 	goto RR_Lab_EventScript_Received
 
 RR_Lab_EventScript_PickCyndaquil::
@@ -133,7 +135,7 @@ RR_Lab_EventScript_PickCyndaquil::
 	setvar VAR_RR_STARTER, 4
 	setvar VAR_STARTER_MON, 2
 	removeobject LOCALID_LAB_CYNDAQUIL_BALL
-	givemon SPECIES_CYNDAQUIL, 5
+	givemon SPECIES_CYNDAQUIL, 5, move1=MOVE_TACKLE, move2=MOVE_LEER, move3=MOVE_EMBER
 	goto RR_Lab_EventScript_Received
 
 RR_Lab_EventScript_PickTotodile::
@@ -143,7 +145,7 @@ RR_Lab_EventScript_PickTotodile::
 	setvar VAR_RR_STARTER, 5
 	setvar VAR_STARTER_MON, 1
 	removeobject LOCALID_LAB_TOTODILE_BALL
-	givemon SPECIES_TOTODILE, 5
+	givemon SPECIES_TOTODILE, 5, move1=MOVE_SCRATCH, move2=MOVE_LEER, move3=MOVE_WATER_GUN
 	goto RR_Lab_EventScript_Received
 
 RR_Lab_EventScript_Received::
@@ -176,7 +178,7 @@ RR_Lab_EventScript_ChainBulbasaur::
 	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_CHARMANDER_BALL
-	givemon SPECIES_CHARMANDER, 5
+	givemon SPECIES_CHARMANDER, 5, move1=MOVE_SCRATCH, move2=MOVE_GROWL, move3=MOVE_EMBER
 	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
 	call RR_Lab_EventScript_ElmLine
@@ -191,7 +193,7 @@ RR_Lab_EventScript_ChainCharmander::
 	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_SQUIRTLE_BALL
-	givemon SPECIES_SQUIRTLE, 5
+	givemon SPECIES_SQUIRTLE, 5, move1=MOVE_TACKLE, move2=MOVE_TAIL_WHIP, move3=MOVE_WATER_GUN
 	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
 	call RR_Lab_EventScript_ElmLine
@@ -206,7 +208,7 @@ RR_Lab_EventScript_ChainSquirtle::
 	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_BULBASAUR_BALL
-	givemon SPECIES_BULBASAUR, 5
+	givemon SPECIES_BULBASAUR, 5, move1=MOVE_TACKLE, move2=MOVE_GROWL, move3=MOVE_VINE_WHIP
 	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
 	call RR_Lab_EventScript_ElmLine
@@ -221,7 +223,7 @@ RR_Lab_EventScript_ChainChikorita::
 	bufferspeciesname STR_VAR_1, SPECIES_CYNDAQUIL
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_LAB_CYNDAQUIL_BALL
-	givemon SPECIES_CYNDAQUIL, 5
+	givemon SPECIES_CYNDAQUIL, 5, move1=MOVE_TACKLE, move2=MOVE_LEER, move3=MOVE_EMBER
 	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
 	call RR_Lab_EventScript_ElmLine
@@ -236,7 +238,7 @@ RR_Lab_EventScript_ChainCyndaquil::
 	bufferspeciesname STR_VAR_1, SPECIES_TOTODILE
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_LAB_TOTODILE_BALL
-	givemon SPECIES_TOTODILE, 5
+	givemon SPECIES_TOTODILE, 5, move1=MOVE_SCRATCH, move2=MOVE_LEER, move3=MOVE_WATER_GUN
 	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
 	call RR_Lab_EventScript_ElmLine
@@ -251,7 +253,7 @@ RR_Lab_EventScript_ChainTotodile::
 	bufferspeciesname STR_VAR_1, SPECIES_CHIKORITA
 	call RR_Lab_EventScript_IvyLine
 	removeobject LOCALID_LAB_CHIKORITA_BALL
-	givemon SPECIES_CHIKORITA, 5
+	givemon SPECIES_CHIKORITA, 5, move1=MOVE_TACKLE, move2=MOVE_GROWL, move3=MOVE_RAZOR_LEAF
 	call RR_Lab_EventScript_IvyMonJoins
 	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
 	call RR_Lab_EventScript_ElmLine

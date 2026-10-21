@@ -11,7 +11,7 @@
 #define DEBUG_OVERWORLD_IN_MENU         TRUE                // Research Red: adds a "Debug" entry to the Start menu (easier on a phone than B + Start).
 
 // Battle Debug Menu
-#define DEBUG_BATTLE_MENU               TRUE    // Research Red: press Select in battle for the battle debug menu.
+#define DEBUG_BATTLE_MENU               FALSE   // Research Red: off (#82): SELECT in battle opened it by accident (a dark list of Moves/Ability/Held Item...). Set TRUE to debug a battle.
 #define DEBUG_AI_DELAY_TIMER            FALSE   // If set to TRUE, displays the number of frames it takes for the AI to choose a move.
 
 // Pokémon Debug

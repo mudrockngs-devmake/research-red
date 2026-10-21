@@ -6,7 +6,6 @@
 #include "decompress.h"
 #include "graphics.h"
 #include "pokedex.h"
-#include "palette.h" // Research Red
 #include "sprite.h"
 #include "type_icons.h"
 
@@ -247,12 +246,7 @@ void LoadTypeIcons(enum BattlerId battler)
     LoadTypeSpritesAndPalettes();
 
     for (position = 0; position < gBattlersCount; ++position)
-    {
-        // Research Red (#25): the opponent's icons stay on all battle (RR_UpdateOpponentTypeIcons)
-        if (GetBattlerSide(GetBattlerAtPosition(position)) == B_SIDE_OPPONENT)
-            continue;
         LoadTypeIconsPerBattler(battler, position);
-    }
 }
 
 static void LoadTypeSpritesAndPalettes(void)
@@ -567,144 +561,4 @@ static s32 GetTypeIconBounceMovement(s32 originalY, u32 position)
 {
     struct Sprite *healthbox = &gSprites[gHealthboxSpriteIds[GetBattlerAtPosition(position)]];
     return originalY + healthbox->y2;
-}
-
-// ---------------------------------------------------------------------------
-// Research Red (#25): the opponent's types stay next to its health bar for the
-// whole battle (the player is a Pokémon professor). Called every frame from
-// BattleMainCB2: it keeps one or two icons per opponent in step with what's out
-// (switches, faints, type changes) and rebuilds them after the bag or party
-// screen. The player's own icons still slide in only while choosing a move.
-// ---------------------------------------------------------------------------
-static EWRAM_DATA u8 sRR_OppIconIds[MAX_BATTLERS_COUNT][2] = {0};
-static EWRAM_DATA u8 sRR_OppIconTypes[MAX_BATTLERS_COUNT][2] = {0};
-
-static void SpriteCB_RR_OpponentTypeIcon(struct Sprite *sprite)
-{
-    sprite->y = sprite->tVerticalPosition + gSprites[gHealthboxSpriteIds[sprite->tBattlerId]].y2;
-}
-
-static const struct SpriteTemplate sSpriteTemplate_RR_OpponentTypeIcons1 =
-{
-    .tileTag = TYPE_ICON_TAG,
-    .paletteTag = TYPE_ICON_TAG,
-    .oam = &sOamData_TypeIcons,
-    .anims = sSpriteAnimTable_TypeIcons,
-    .callback = SpriteCB_RR_OpponentTypeIcon
-};
-
-static const struct SpriteTemplate sSpriteTemplate_RR_OpponentTypeIcons2 =
-{
-    .tileTag = TYPE_ICON_TAG_2,
-    .paletteTag = TYPE_ICON_TAG_2,
-    .oam = &sOamData_TypeIcons,
-    .anims = sSpriteAnimTable_TypeIcons,
-    .callback = SpriteCB_RR_OpponentTypeIcon
-};
-
-static bool32 RR_IsOpponentTypeIcon(u32 spriteId, enum BattlerId battler)
-{
-    return spriteId < MAX_SPRITES
-        && gSprites[spriteId].inUse
-        && gSprites[spriteId].callback == SpriteCB_RR_OpponentTypeIcon
-        && gSprites[spriteId].tBattlerId == battler;
-}
-
-static void RR_DestroyOpponentTypeIcons(enum BattlerId battler)
-{
-    u32 i;
-
-    for (i = 0; i < 2; i++)
-    {
-        if (RR_IsOpponentTypeIcon(sRR_OppIconIds[battler][i], battler))
-            DestroyTypeIcon(&gSprites[sRR_OppIconIds[battler][i]]);
-        sRR_OppIconIds[battler][i] = MAX_SPRITES;
-    }
-}
-
-// Free sprite slots. Battles use most of the 64 (send-outs, party balls, move
-// animations), so the icons step aside whenever slots run low.
-#define RR_TYPE_ICON_FREE_SPRITES 12
-static u32 RR_CountFreeSprites(void)
-{
-    u32 i, count = 0;
-
-    for (i = 0; i < MAX_SPRITES; i++)
-        if (!gSprites[i].inUse)
-            count++;
-    return count;
-}
-
-static bool32 RR_ShouldShowOpponentTypes(enum BattlerId battler)
-{
-    u32 healthbox = gHealthboxSpriteIds[battler];
-
-    if (B_SHOW_TYPES == SHOW_TYPES_NEVER || (gBattleTypeFlags & BATTLE_TYPE_GHOST))
-        return FALSE;
-    if (gAnimScriptActive || gPaletteFade.active)
-        return FALSE; // a move animation or a fade: tuck the icons away
-    if (!IsBattlerAlive(battler))
-        return FALSE;
-    // only while its health bar is on screen (not during the intro or a switch)
-    return healthbox < MAX_SPRITES && gSprites[healthbox].inUse && !gSprites[healthbox].invisible;
-}
-
-void RR_UpdateOpponentTypeIcons(void)
-{
-    static const u8 sPositions[] = {B_POSITION_OPPONENT_LEFT, B_POSITION_OPPONENT_RIGHT};
-    u32 i, typeNum, position;
-    s32 x, y;
-    enum BattlerId battler;
-    enum Type types[2];
-    bool32 useDoubleBattleCoords;
-
-    for (i = 0; i < ARRAY_COUNT(sPositions); i++)
-    {
-        position = sPositions[i];
-        if (position >= gBattlersCount)
-            continue;
-        battler = GetBattlerAtPosition(position);
-        if (battler >= gBattlersCount || battler >= MAX_BATTLERS_COUNT)
-            continue; // nobody placed there yet (battle start)
-        if (!RR_ShouldShowOpponentTypes(battler))
-        {
-            RR_DestroyOpponentTypeIcons(battler);
-            continue;
-        }
-        for (typeNum = 0; typeNum < 2; typeNum++)
-            types[typeNum] = GetMonPublicType(battler, typeNum);
-        if (RR_IsOpponentTypeIcon(sRR_OppIconIds[battler][0], battler)
-         && sRR_OppIconTypes[battler][0] == types[0] && sRR_OppIconTypes[battler][1] == types[1])
-            continue; // already showing the right types
-
-        RR_DestroyOpponentTypeIcons(battler);
-        if (RR_CountFreeSprites() < RR_TYPE_ICON_FREE_SPRITES)
-            continue; // try again once the screen is calmer
-        LoadTypeSpritesAndPalettes();
-        useDoubleBattleCoords = UseDoubleBattleCoords(battler);
-        for (typeNum = 0; typeNum < 2; typeNum++)
-        {
-            const struct SpriteTemplate *template;
-            u32 spriteId;
-
-            if (ShouldSkipSecondType(types, typeNum))
-                continue;
-            // where the engine's sliding icons come to rest
-            SetTypeIconXY(&x, &y, position, useDoubleBattleCoords, typeNum);
-            x += useDoubleBattleCoords ? 10 : -10;
-            template = gTypesInfo[types[typeNum]].useSecondTypeIconPalette
-                     ? &sSpriteTemplate_RR_OpponentTypeIcons2 : &sSpriteTemplate_RR_OpponentTypeIcons1;
-            spriteId = CreateSpriteAtEnd(template, x, y, UCHAR_MAX);
-            if (spriteId == MAX_SPRITES)
-                continue;
-            gSprites[spriteId].tMonPosition = position;
-            gSprites[spriteId].tBattlerId = battler;
-            gSprites[spriteId].tVerticalPosition = y;
-            gSprites[spriteId].hFlip = ShouldFlipTypeIcon(useDoubleBattleCoords, position, types[typeNum]);
-            StartSpriteAnim(&gSprites[spriteId], types[typeNum]);
-            sRR_OppIconIds[battler][typeNum] = spriteId;
-        }
-        sRR_OppIconTypes[battler][0] = types[0];
-        sRR_OppIconTypes[battler][1] = types[1];
-    }
 }

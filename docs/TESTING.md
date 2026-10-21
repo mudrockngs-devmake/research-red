@@ -92,6 +92,7 @@ Scenarios are short functions in `smoke.py` that return script lines. Building b
 - `check(label, G.flag_set("FLAG_X"))`: any other fact. `G` (`game_memory.py`) has `var_is`, `flag_set`, `flag_clear`, `on_map`, `party_count`, `field_free`, `textbox_closed`, `in_battle`; join conditions with `" && "`
 - `debug_script(n)`: Start > DEBUG > Scripts > n
 - `step("UP", 3)`: walk 3 tiles
+- `not_black("p001")`: FAIL if that screenshot came out all black (a menu that should show over the map)
 - `ready("lab")`: after a door or warp, wait (pressing nothing) until the player can walk again; FAILs with `timeout_lab.png` if that never happens. Use it instead of a fixed `wait` after map changes
 - `advance(40, key="B")`: press B through text 40 times, screenshot each time
 - raw commands for `rr_run`: `wait N`, `press KEYS`, `hold KEYS N`, `mash KEYS N`, `shot NAME`, `save PATH` / `load PATH`, `check`, `until`, `peek`, `stuck`, `idle`, `autoshot` (see the top of `rr_run.c`)

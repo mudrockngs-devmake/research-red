@@ -253,8 +253,8 @@ static const u8 sText_NewName[] = _("New name");
 static const u8 sText_RivalName[] = _("Elm");
 static const u8 sNameChoice_Maple[] = _("Maple");
 static const u8 sNameChoice_Cedar[] = _("Cedar");
-static const u8 sNameChoice_Sumac[] = _("Sumac");
-static const u8 *const sNameChoices[] = {sNameChoice_Maple, sNameChoice_Cedar, sNameChoice_Sumac};
+static const u8 sNameChoice_Sequoia[] = _("Sequoia"); // was Sumac (#94)
+static const u8 *const sNameChoices[] = {sNameChoice_Maple, sNameChoice_Cedar, sNameChoice_Sequoia};
 
 // Speakers that light up a video or avatar
 enum
@@ -413,6 +413,7 @@ struct CallResources
     u8 circleSpriteIds[NUM_CIRCLES];
     u8 ringSpriteIds[NUM_CIRCLES];
     bool8 videoShown[NUM_VIDEOS];
+    bool8 playerLeft; // the player has hung up: their label goes blank (#81)
     bool8 circleShown[NUM_CIRCLES];
     bool8 elmZoom;
     bool8 named;
@@ -473,7 +474,10 @@ static void PrintLabels(void)
 {
     PrintLabel(WIN_TITLE, sCall->def->title);
     PrintLabel(WIN_LABEL_HOST, sCall->videoShown[VIDEO_HOST] ? sCall->def->hostName : sText_Empty);
-    PrintLabel(WIN_LABEL_PLAYER, sCall->named ? gSaveBlock2Ptr->playerName : sText_Unknown);
+    if (sCall->playerLeft)
+        PrintLabel(WIN_LABEL_PLAYER, sText_Empty); // left the call: no name under an empty frame (#81)
+    else
+        PrintLabel(WIN_LABEL_PLAYER, sCall->named ? gSaveBlock2Ptr->playerName : sText_Unknown);
 }
 
 // Gold border on whoever is speaking
@@ -941,7 +945,7 @@ static void Task_Call(u8 taskId)
     }
     case STEP_NAME:
     {
-        static const u8 *const sNames[] = {sNameChoice_Maple, sNameChoice_Cedar, sNameChoice_Sumac, sText_NewName};
+        static const u8 *const sNames[] = {sNameChoice_Maple, sNameChoice_Cedar, sNameChoice_Sequoia, sText_NewName};
         ShowMenu(&sWindow_Names, sNames, ARRAY_COUNT(sNames));
         sCall->state = STATE_NAME_MENU;
         break;
@@ -954,7 +958,9 @@ static void Task_Call(u8 taskId)
         break;
     case STEP_PLAYER_LEAVES:
         sCall->videoShown[VIDEO_PLAYER] = FALSE;
+        sCall->playerLeft = TRUE;
         StartSpriteAffineAnim(&gSprites[sCall->videoSpriteIds[VIDEO_PLAYER]], AFFINE_SHRINK);
+        PrintLabels();
         PlaySE(SE_WARP_IN);
         FadeOutBGM(4);
         break;

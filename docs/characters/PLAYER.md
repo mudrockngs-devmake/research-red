@@ -1,4 +1,4 @@
-# The player (Maple / Cedar / Sumac)
+# The player (Maple / Cedar / Sequoia)
 
 Character sheet for the player character, workshopped with the owner on
 2026-10-20. Male or female, same voice: either way the player is married to

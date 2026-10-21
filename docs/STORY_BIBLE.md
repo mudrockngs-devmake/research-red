@@ -3,7 +3,7 @@
 The animatic is the detailed script; this file holds the rules of the world. Scene specs in `docs/scenes/` override both.
 
 ## Premise and tone
-Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stopped loving Pokemon. You are an adult professor (Maple, Cedar or Sumac; male or female), one of Prof. Oak's two best former students (Elm is the other), visiting Pallet with your wife Ivy for a research stay.
+Warm, slapstick, kid-friendly early-anime Kanto about grown-ups who never stopped loving Pokemon. You are an adult professor (Maple, Cedar or Sequoia; male or female), one of Prof. Oak's two best former students (Elm is the other), visiting Pallet with your wife Ivy for a research stay.
 
 ## Cast
 | Character | Role | Voice |

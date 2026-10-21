@@ -2,7 +2,6 @@
 #define GUARD_TYPE_ICONS_H
 
 void LoadTypeIcons(enum BattlerId battler);
-void RR_UpdateOpponentTypeIcons(void); // Research Red (#25): opponent types all battle
 
 #define TYPE_ICON_TAG 0x2720
 #define TYPE_ICON_TAG_2 0x2721

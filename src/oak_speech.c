@@ -230,13 +230,13 @@ static const u8 *const sCallLines_AfterName[] =
 static const u8 sText_RivalName_Elm[] = _("Elm");
 static const u8 sNameChoice_Maple[] = _("Maple");
 static const u8 sNameChoice_Cedar[] = _("Cedar");
-static const u8 sNameChoice_Sumac[] = _("Sumac");
+static const u8 sNameChoice_Sequoia[] = _("Sequoia"); // Research Red: was Sumac (#94)
 
 static const u8 *const sPresetNameChoices[] =
 {
     sNameChoice_Maple,
     sNameChoice_Cedar,
-    sNameChoice_Sumac,
+    sNameChoice_Sequoia,
 };
 // ---------------------------------------------------------------
 
@@ -1412,7 +1412,7 @@ static void Task_OakSpeech_LoadPlayerPic(u8 taskId)
 }
 
 // Research Red: Oak asks the name, then the preset list slides in
-// (New name / Maple / Cedar / Sumac)
+// (New name / Maple / Cedar / Sequoia)
 static void Task_OakSpeech_YourNameWhatIsIt(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
@@ -1476,7 +1476,7 @@ static void Task_OakSpeech_HandleRivalNameInput(u8 taskId)
         break;
     case 1: // Maple
     case 2: // Cedar
-    case 3: // Sumac
+    case 3: // Sequoia
         PlaySE(SE_SELECT);
         ClearStdWindowAndFrameToTransparent(tMenuWindowId, TRUE);
         RemoveWindow(tMenuWindowId);
@@ -2117,7 +2117,7 @@ static void CreateFadeOutTask(u8 taskId, u8 delay)
         gTasks[taskId2].tPikachuPlatformSpriteId(i) = gTasks[taskId].tPikachuPlatformSpriteId(i);
 }
 
-// Research Red: the name list is New name + Maple / Cedar / Sumac
+// Research Red: the name list is New name + Maple / Cedar / Sequoia
 static void PrintNameChoiceOptions(u8 taskId, u8 hasPlayerBeenNamed)
 {
     s16 *data = gTasks[taskId].data;

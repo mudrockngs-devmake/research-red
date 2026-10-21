@@ -112,6 +112,12 @@ def clear_flag(flag):
     return [f"poke {addr} &~{bit}"]
 
 
+def not_black(shot):
+    """FAIL if screenshot `shot` (taken earlier in the script) is all black,
+    e.g. a menu that should show on the map (judged from the picture)."""
+    return [f"# expect-not-black {shot}"]
+
+
 def check(label, cond):
     return [f"check {label} {cond}"]
 
@@ -202,6 +208,9 @@ def run(suite, rom, name, lines, workdir, timeout):
             if os.environ.get("RR_SHOW_PEEKS"):    # debugging: RR_SHOW_PEEKS=1 smoke.py ...
                 print(f"    {name}: {p[1]} = {p[2]}")
     states = [(f, classify(os.path.join(sdir, f))) for f in shots]
+    for want in re.findall(r"^# expect-not-black (\S+)$", open(script).read(), re.M):
+        if dict(states).get(want + ".png") == "black":
+            fails.append(f"{want}.png is black (expected a picture)")
     crashes = [f for f, s in states if s == "crash"]
     if crashes:
         fails.insert(0, f"error screen from {crashes[0]}")
