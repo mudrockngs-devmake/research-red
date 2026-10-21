@@ -37,6 +37,11 @@
 // COND: ADDR OP VALUE, OP one of == != < > <= >= & (any of these bits set)
 // !& (none set); join several with && (all must hold).
 //
+// Clock: the game's clock is fake, not the computer's. Every run starts at
+// 2026-10-20 10:00 (morning) and the clock moves with the emulated frames, so
+// a run plays out the same at any time of day (the Rest menu, day/night and
+// anything random seeded from the clock). Save states keep their clock.
+//
 // Stuck detection: if the screen stays identical for N frames while buttons
 // are being pressed (and no idle case applies), it prints "STUCK line frame
 // lastshot" and saves stuck_LINE.png, once per frozen stretch.
@@ -49,6 +54,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
+#define FAKE_CLOCK_START 1792490400LL // 2026-10-20 10:00:00 UTC
 
 static struct mCore *core;
 static color_t *buf;
@@ -274,6 +282,10 @@ int main(int argc, char **argv)
     char sav[1024];
     snprintf(sav, sizeof sav, "%s/test.sav", argv[3]);
     mCoreLoadSaveFile(core, sav, false);
+    setenv("TZ", "UTC", 1);   // the fake clock reads the same on any machine
+    tzset();
+    core->rtc.override = RTC_FAKE_EPOCH;
+    core->rtc.value = FAKE_CLOCK_START * 1000;
     core->reset(core);
 
     sOutDir = argv[3];

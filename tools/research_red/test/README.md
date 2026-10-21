@@ -30,6 +30,7 @@ How to use it for Research Red: [docs/TESTING.md](../../../docs/TESTING.md).
 ## Building blocks (tester.py)
 - `step(dir, tiles)`, `advance(cycles, key, every)`, `start_menu_item(downs)`
 - `play_until(label, cond, max_frames, key)`: press a key until `cond` holds; FAIL at the limit
+- `ready(label)`: press nothing until the player can walk again (after a door, warp or fade); use it instead of a fixed `wait` after map changes
 - `scene_end(step)`: story variable == step and the player can walk
 - `expect(map_name=, story=, party=)`, `check(label, cond)`
 - conditions from `tester.G` (a `GameMemory`): `var_is`, `flag_set`, `flag_clear`,

@@ -14,7 +14,7 @@ Documentation index: `docs/README.md`.
 - Each test build: bump the stamp (first line of `sCallScript` in `src/rr_intro_call.c`), add a `docs/CHANGELOG.md` section ending in a **Save:** line, tag `v0.0.x` and push the tag (`docs/RELEASING.md`).
 - Saves: bump `RR_SAVE_VERSION` when a change breaks old saves (`docs/SAVES.md`).
 - Bugs and ideas live in GitHub Issues (labels: bug, crash, story, text, art, balance, feature, tooling, decision, playtest; milestones per version). Turn the owner's playtest notes into issues.
-- After each owner playtest round: `tools/research_red/rr_archive_test.sh <test-name>` (moves everything in the five `_emu` folders into the workspace `test-archive/` and copies the tested ROM, so `_emu` starts empty), then fill in its `NOTES.md` (issue numbers, `/cost`). mGBA screenshots (F12) land in `/mnt/e/Workspace/romhacks/_emu/screenshots/`.
+- After each owner playtest round: `tools/research_red/rr_archive_test.sh <test-name>` (moves everything in the six `_emu` folders into the workspace `test-archive/` and copies the tested ROM, so `_emu` starts empty), then fill in its `NOTES.md` (issue numbers, `/cost`). mGBA screenshots (F12) land in `/mnt/e/Workspace/romhacks/_emu/screenshots/`; testers' notes files from the what's-new report go in `_emu/notes/`.
 - Versioning: v0.0.x per test build; milestones v0.1 (Pallet), v0.2 (Viridian/Route 22/lunch), v0.3 (Route 2/Forest), v0.4 -> v1.0 (Pewter/Brock/finale).
 - Text: proper case, max 34 characters per line, story dialogue uses `NPC_TEXT_COLOR_NEUTRAL`, speakers start lines with `Name: ` (portraits). Voices: `docs/STYLE_GUIDE.md`.
 - Code: clear comments, `RR_` prefix for custom labels/files, `Research Red` comment on every edit to an engine file (`docs/UPSTREAM.md`).

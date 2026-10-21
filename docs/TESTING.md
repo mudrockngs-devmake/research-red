@@ -23,6 +23,7 @@ What the results mean:
 - **Wait-until**: a scene presses A (or B) until the game says it's over: story step set and the player free to walk (on the map, no script running, no text box). Longer dialogue just takes longer; a scene that never ends fails at its time limit instead of quietly passing.
 - **Memory checks**: after a scene, `expect(map, story, team)` reads the game's memory and compares.
 - **Stuck detector**: the runner fingerprints every frame. If the picture doesn't change for 1200 frames (20 seconds) while buttons are pressed, it reports "stuck". Standing still on an indoor map is normal, so that case is ignored.
+- **Fake clock**: the runner never reads the computer's clock. Every run starts at 2026-10-20 10:00 (morning) and time moves with the game, so a run plays out the same at 9 AM or 9 PM: day/night, the Rest menu and anything random come out identical each time. (Before this, the Rest tests failed in the evening and battles were won or lost by luck.)
 - `game_memory.py` turns names into addresses: RAM symbols come from `pokefirered.elf`, and struct offsets and constants (`FLAG_*`, `MAP_*`, `VAR_*`) come from compiling a tiny C file against the game's headers, so they stay right when the code changes. Nothing to update by hand.
 
 ## What's covered
@@ -64,6 +65,16 @@ What the results mean:
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.
 
+## The engine's own tests (`make check`)
+pokefirered-expansion ships ~5,200 small battle tests ("Burn deals 1/16 damage", "Mind Blown is blocked by Damp"...). `make check -j6` builds a separate test copy of the game (in `build/firered-test/`, the normal ROM isn't touched) and runs them all: about 30 minutes the first time, faster after. One test, or a group by name: `make check TESTS="Sunlight"`.
+
+Run it after changing battle code, move/ability/item data or the save layout. Expected today (2026-10-20): **4584 passed, 1 failed**:
+- *AI will consider using Explosion inversely proportional to its missing HP 2/2* times out. Upstream engine test on AI code Research Red hasn't touched; not investigated yet (#18).
+
+Research Red's adjustments to the engine tests (each marked `Research Red`):
+- `test/save.c`: our SaveBlock1 size (15864). If it fails, the save layout moved: bump `RR_SAVE_VERSION` (docs/SAVES.md), then the number.
+- `test/battle/exp.c`: two experience tests switch our level caps off (`FLAG_RR_LEVEL_CAPS_OFF`), otherwise the cap gives 0 exp.
+
 ## First-time setup (once per machine)
 ```
 tools/research_red/test/setup_mgba.sh
@@ -79,6 +90,7 @@ Scenarios are short functions in `smoke.py` that return script lines. Building b
 - `check(label, G.flag_set("FLAG_X"))`: any other fact. `G` (`game_memory.py`) has `var_is`, `flag_set`, `flag_clear`, `on_map`, `party_count`, `field_free`, `textbox_closed`, `in_battle`; join conditions with `" && "`
 - `debug_script(n)`: Start > DEBUG > Scripts > n
 - `step("UP", 3)`: walk 3 tiles
+- `ready("lab")`: after a door or warp, wait (pressing nothing) until the player can walk again; FAILs with `timeout_lab.png` if that never happens. Use it instead of a fixed `wait` after map changes
 - `advance(40, key="B")`: press B through text 40 times, screenshot each time
 - raw commands for `rr_run`: `wait N`, `press KEYS`, `hold KEYS N`, `mash KEYS N`, `shot NAME`, `save PATH` / `load PATH`, `check`, `until`, `peek`, `stuck`, `idle`, `autoshot` (see the top of `rr_run.c`)
 

@@ -2,8 +2,9 @@
 # Research Red: archive one playtest round.
 #   test-archive/<date>_<version>_<name>/
 #     rom/          the exact ROM that was tested
-#     screenshots/ saves/ states/ cheats/ patches/
-#                   everything in the five _emu folders, moved (not deleted)
+#     screenshots/ saves/ states/ cheats/ patches/ notes/
+#                   everything in the six _emu folders (notes/: the testers'
+#                   "Save my notes" files from the what's-new report), moved (not deleted)
 #                   so each round starts with them empty
 #     NOTES.md      build info, commits in this build, then test notes to fill in
 #   test-archive/INDEX.md gets one line per round.
@@ -26,7 +27,7 @@ ROMFILE="$(grep '^file=' "$INFO" | cut -d= -f2)"
 
 DIR="$ARCHIVE/$(date '+%Y-%m-%d')_${VERSION}_${NAME}"
 [ -e "$DIR" ] && { echo "$DIR already exists" >&2; exit 1; }
-EMU_FOLDERS="screenshots saves states cheats patches"
+EMU_FOLDERS="screenshots saves states cheats patches notes"
 mkdir -p "$DIR/rom"
 for f in $EMU_FOLDERS; do mkdir -p "$DIR/$f"; done
 
@@ -58,6 +59,7 @@ cat > "$DIR/NOTES.md" <<EOF
 | Archived | $(date '+%Y-%m-%d %H:%M') |
 | Screenshots | $(ls "$DIR/screenshots" | wc -l) |
 | Saves / states / cheats / patches | $(ls "$DIR/saves" | wc -l) / $(ls "$DIR/states" | wc -l) / $(ls "$DIR/cheats" | wc -l) / $(ls "$DIR/patches" | wc -l) |
+| Testers' notes | $(ls "$DIR/notes" | wc -l) (notes/, from the what's-new report) |
 
 ## Commits in this build
 \`\`\`

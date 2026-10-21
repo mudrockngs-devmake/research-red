@@ -85,6 +85,13 @@ def play_until(label, cond, max_frames, key="A", every=60):
     return [f"autoshot {every} s", f"until {label} {max_frames} {key} {cond}", "autoshot 0"]
 
 
+def ready(label, max_frames=900):
+    """Press nothing until the player can walk again (after a door, a warp or
+    a fade), instead of a fixed wait; FAIL if it takes more than max_frames.
+    The short wait first lets a warp that is about to start lock the controls."""
+    return ["wait 8", f"until {label} {max_frames} - {G.field_free()}"]
+
+
 def progress_is(value):
     return G.var_is(PROGRESS_VAR, value)
 

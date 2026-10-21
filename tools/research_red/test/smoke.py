@@ -27,7 +27,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 sys.path.insert(0, HERE)
 import tester as T  # noqa: E402
-from tester import advance, check, expect, play_until, scene_end, start_menu_item, step  # noqa: E402
+from tester import advance, check, expect, play_until, ready, scene_end, start_menu_item, step  # noqa: E402
 
 TOOLS = os.environ.get("RR_TOOLS", os.path.expanduser("~/romhacks/_tools"))
 WORKSPACE = "/mnt/e/Workspace/romhacks/research-red"
@@ -46,6 +46,13 @@ def debug_script(n):
     lines += ["press DOWN", "wait 6"] * (n - 1)
     lines += ["press A", "wait 240"]
     return lines
+
+
+def after_brock_test_mode():
+    """Debug 10 (after Brock), THEN test mode: debug 10 hands out a fresh
+    Lv 12 team, so test mode has to come second to raise it to Lv 30
+    (the other way round the AI fights at Lv 12 and can lose)."""
+    return debug_script(SCRIPT_AFTER_BROCK) + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"]
 
 
 # --- scenarios ------------------------------------------------------------
@@ -121,8 +128,7 @@ def sc_pokedex():
 def sc_pewter():
     # After Brock: Elm and Jenny's rematch outside the Pokemon Center (#10).
     # Debug 10 leaves us below the door at (17,26); they stand at (15-16, 27).
-    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"]
-            + debug_script(SCRIPT_AFTER_BROCK) + ["shot s000"]
+    return (["load @bedroom"] + after_brock_test_mode() + ["shot s000"]
             + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20", "shot s001", "press A", "wait 30"]
             + play_until("pewter", scene_end(8), 45000)  # the autopilot battle can run long
             + expect("MAP_PEWTER_CITY", story=8, party=1))
@@ -147,7 +153,7 @@ def sc_digletts():
             + step("DOWN", 12) + step("RIGHT", 2) + ["shot s001"]        # (11,12), tree below
             + ["press DOWN 6", "wait 20", "press A", "wait 60", "shot s002"]
             + play_until("cut", T.G.field_free(), 1500, key="A", every=30)
-            + step("DOWN", 2) + step("RIGHT", 6) + step("UP", 3) + ["wait 420", "shot s003"]  # past the area preview
+            + step("DOWN", 2) + step("RIGHT", 6) + step("UP", 3) + ready("cave") + ["shot s003"]
             + check("in_entrance", T.G.on_map("MAP_DIGLETTS_CAVE_NORTH_ENTRANCE"))
             + step("RIGHT", 2)  # from the doormat (4,5) to (6,5), below Dugtrio
             + ["press UP 6", "wait 20", "press A", "wait 60", "shot s004"]
@@ -244,7 +250,7 @@ def sc_pager_dig():
             + step("DOWN", 9) + step("RIGHT", 4) + step("DOWN", 5) + step("DOWN", 12) + step("RIGHT", 2)
             + ["press DOWN 6", "wait 20", "press A", "wait 60"]
             + play_until("cut", T.G.field_free(), 1500, key="A", every=30)
-            + step("DOWN", 2) + step("RIGHT", 6) + step("UP", 3) + ["wait 420"]
+            + step("DOWN", 2) + step("RIGHT", 6) + step("UP", 3) + ready("cave")
             + check("in_entrance", T.G.on_map("MAP_DIGLETTS_CAVE_NORTH_ENTRANCE"))
             # after Brock the Start menu has DEXNAV too: BAG is the 6th entry
             + start_menu_item(5) + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
@@ -265,7 +271,7 @@ def sc_rest():
         return (["press A", "wait 150", f"shot {prefix}1",
                  "press DOWN", "wait 10", f"shot {prefix}2", "press A", "wait 60"]
                 + play_until(f"rested_{prefix}", T.G.field_free(), 3000, key="A", every=60))
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT", 9) + step("UP") + ["wait 120"]
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT", 9) + step("UP") + ready("home")
             + step("UP", 5) + step("RIGHT", 4) + ["press DOWN 6", "wait 20", "shot r000"]
             + rest("a") + check("night_20h", f"{hour} == 20")
             + ["press START", "wait 40", "shot r001", "press B", "wait 30"]
@@ -278,7 +284,7 @@ def sc_rest_center():
     # #56: Nurse Joy in Pewter's Pokemon Center offers Heal / Rest / No thanks.
     # Debug 10 leaves us below the door at (17,26); the counter is straight up.
     hour = f"{T.G.sym('gLocalTime') + 2:#x}:1"
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK) + step("UP") + ["wait 120", "shot c000"]
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK) + step("UP") + ready("center") + ["shot c000"]
             + step("UP", 4) + ["press UP 6", "wait 20", "press A", "wait 200", "press A", "wait 120", "shot c001",
                                 "press DOWN", "wait 10", "shot c002", "press A", "wait 60"]
             + play_until("rested", T.G.field_free(), 4000, key="A", every=60)
@@ -288,7 +294,7 @@ def sc_rest_center():
 def fly_to_pallet_after_brock():
     """Debug 10 (after Brock, test mode), then Ranch Pager > Fly to Pallet.
     Lands at (6,8), in front of home."""
-    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_AFTER_BROCK)
+    return (["load @bedroom"] + after_brock_test_mode()
             + ["press START", "wait 20", "press B", "wait 20"] + start_menu_item(5)
             + ["wait 90", "press RIGHT", "wait 30"] + ["press DOWN", "wait 8"] * 7
             + ["press A", "wait 20", "press A", "wait 150", "press A", "wait 150"]
@@ -300,7 +306,7 @@ def fly_to_pallet_after_brock():
 def sc_delia_battle():
     # #70: after Brock, home: Delia asks for a battle first (Yes), a double
     # with Mimey leading (1 badge: Lv 21 Mimey, Gloom)
-    return (fly_to_pallet_after_brock() + step("UP") + ["wait 120"] + step("UP", 5) + step("RIGHT", 4)
+    return (fly_to_pallet_after_brock() + step("UP") + ready("home") + step("UP", 5) + step("RIGHT", 4)
             + ["press DOWN 6", "wait 20", "press A", "wait 90", "shot b001", "press A", "wait 60", "shot b002"]
             + play_until("battle", T.G.in_battle(), 1500, key="A", every=40)
             + ["wait 300", "shot b003"]
@@ -312,9 +318,9 @@ def sc_brock_rematch():
     # #52: after Brock (1 badge, test mode), back into the Gym: Brock offers a
     # rematch with a tier menu (1 badge: Lv. 21, Cancel); his Gym team, stronger.
     # Paths from a route search over the map data.
-    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_AFTER_BROCK)
+    return (["load @bedroom"] + after_brock_test_mode()
             + step("RIGHT", 5) + step("UP", 14) + step("LEFT", 14) + step("DOWN", 5) + step("RIGHT", 7) + step("UP")
-            + ["wait 120", "shot g001"] + check("in_gym", T.G.on_map("MAP_PEWTER_CITY_GYM"))
+            + ready("gym") + ["shot g001"] + check("in_gym", T.G.on_map("MAP_PEWTER_CITY_GYM"))
             # the Camper spots us on the way up: beat him first (autopilot)
             + step("UP", 8) + play_until("camper", T.G.in_battle(), 1500, key="A", every=40)
             + play_until("camper_over", T.G.field_free(), 30000, key="A", every=120)
@@ -339,14 +345,14 @@ def sc_oak_rematch():
            + check("in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
     # from the landing spot (6,8): around to the lab door (16,13), up to Oak (6,4)
     walk = (["shot k003"] + step("DOWN") + step("RIGHT", 6) + step("DOWN", 5) + step("RIGHT", 4) + step("UP")
-            + ["wait 120", "shot k004"] + check("in_lab", T.G.on_map("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB"))
+            + ready("lab") + ["shot k004"] + check("in_lab", T.G.on_map("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB"))
             + step("UP", 8) + ["press UP 6", "wait 20", "shot k005"])
     battle = (["press A", "wait 60", "shot k006"]
               + play_until("battle", T.G.in_battle(), 1500, key="A", every=40)
               + ["wait 300", "shot k007"]
               + play_until("rematch_over", T.G.field_free(), 40000, key="A", every=120)
               + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=7))
-    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_AFTER_BROCK)
+    return (["load @bedroom"] + after_brock_test_mode()
             + fly + walk + battle)
 
 
@@ -354,7 +360,7 @@ def sc_lab_aide():
     # #72: the lab aide explains the research tools. Debug 2 leaves us at
     # (15,8); route-searched path to the lab door, then to the aide at (3,11).
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT", 3) + step("DOWN", 6) + step("RIGHT", 4)
-            + step("UP") + ["wait 120"] + check("in_lab", T.G.on_map("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB"))
+            + step("UP") + ready("lab") + check("in_lab", T.G.on_map("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB"))
             + step("UP") + step("LEFT", 2) + ["press LEFT 6", "wait 20", "press A", "wait 90", "shot l001", "press A", "wait 90",
                                                "press A", "wait 90", "shot l002",   # the topic menu
                                                "press A", "wait 90", "shot l003"]    # Ranch Pager
@@ -370,10 +376,10 @@ def sc_forest():
     wander = []
     for _ in range(40):
         wander += ["hold DOWN 16", "wait 4", "hold UP 16", "wait 4", "hold RIGHT 16", "wait 4", "hold LEFT 16", "wait 4"]
-    return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_AFTER_BROCK)
+    return (["load @bedroom"] + after_brock_test_mode()
             + T.set_flag("FLAG_RR_NO_ENCOUNTERS")   # no wild battles on the way (Route 2 grass)
             + step("RIGHT", 2) + step("DOWN", 5) + step("RIGHT") + step("DOWN", 11) + step("LEFT", 2) + step("DOWN", 11)
-            + ["wait 90"] + step("DOWN", 12) + ["wait 150"] + step("DOWN", 2) + ["wait 150", "shot v001"]   # through the gatehouse
+            + ready("gatehouse") + step("DOWN", 12) + ready("gate_exit") + step("DOWN", 2) + ready("forest") + ["shot v001"]
             + check("in_forest", T.G.on_map("MAP_VIRIDIAN_FOREST"))
             + step("DOWN", 6) + T.clear_flag("FLAG_RR_NO_ENCOUNTERS") + wander + check("in_battle", T.G.in_battle())
             + ["wait 240", "shot v002", "wait 120", "shot v003"]
@@ -402,7 +408,7 @@ def sc_oak_mons():
             + ["wait 30", "shot o001", "press RIGHT", "wait 10", "press A", "wait 60", "shot o002", "press A", "wait 60",
                "shot o003", "mash B 120", "wait 30"]
             + step("DOWN", 5) + step("LEFT", 11) + ["wait 30", "shot o004"]
-            + step("RIGHT", 7) + step("UP", 2) + ["wait 120", "shot o005"] + step("UP", 4) + ["wait 30", "shot o006"]
+            + step("RIGHT", 7) + step("UP", 2) + ready("lab") + ["shot o005"] + step("UP", 4) + ["wait 30", "shot o006"]
             + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=3))
 
 

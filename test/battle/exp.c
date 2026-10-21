@@ -35,6 +35,7 @@ WILD_BATTLE_TEST("Higher leveled Pokemon give more exp", s32 exp)
     PARAMETRIZE { level = 10; }
 
     GIVEN {
+        FLAG_SET(FLAG_RR_LEVEL_CAPS_OFF); // Research Red: our hard level caps would stop the exp being measured
         PLAYER(SPECIES_WOBBUFFET) { Level(20); }
         OPPONENT(SPECIES_CATERPIE) { Level(level); HP(1); }
     } WHEN {
@@ -103,6 +104,7 @@ WILD_BATTLE_TEST("Large exp gains are supported", s32 exp) // #1455
     PARAMETRIZE { level = MAX_LEVEL; }
 
     GIVEN {
+        FLAG_SET(FLAG_RR_LEVEL_CAPS_OFF); // Research Red: our hard level caps would stop the exp being measured
         PLAYER(SPECIES_WOBBUFFET) { Level(1); Item(ITEM_LUCKY_EGG); OTName("Test"); } // OT Name is different so it gets more exp as a traded mon
         OPPONENT(SPECIES_BLISSEY) { Level(level); HP(1); }
     } WHEN {

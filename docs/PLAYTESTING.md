@@ -6,11 +6,11 @@ How a test round works, from a new build to an archived round.
 1. **Build and check** (Claude): `make firered -j6`, `python3 tools/research_red/rr_check.py`, then the smoke tests (`python3 tools/research_red/test/smoke.py`, see [TESTING.md](TESTING.md)). Only a build that passes goes to the owner.
 2. **Install** (Claude): `tools/research_red/rr_install_rom.sh` puts it at `E:\Workspace\romhacks\research-red\ResearchRed_local.gba` (a numbered copy stays in `builds/`).
 3. **Hand-off** (Claude): what changed, what to test, and the save note ("new game needed" or "old saves fine"), from [CHANGELOG.md](CHANGELOG.md).
-4. **Play** (owner): open `ResearchRed_local.gba` in mGBA. Press F12 for screenshots; they land in `_emu\screenshots`. Save states are fine.
+4. **Play** (owner): open `ResearchRed_local.gba` in mGBA. Press F12 for screenshots; they land in `_emu\screenshots`. Save states are fine. Notes go in the what's-new report (checklist + "Your playtest" at the end); "Save my notes" downloads a text file: put it in `_emu\notes`.
 5. **Report** (owner): tell Claude in chat, or use the issue form (below). Attach screenshots or a save state for anything weird.
 6. **File and archive** (Claude):
    - each problem becomes a GitHub issue labeled `playtest` (plus `bug`, `story`, `art`...) on a milestone
-   - `tools/research_red/rr_archive_test.sh <short-name>` moves everything out of the five `_emu` folders into `test-archive/<date>_<version>_<name>/`
+   - `tools/research_red/rr_archive_test.sh <short-name>` moves everything out of the six `_emu` folders (incl. `notes`) into `test-archive/<date>_<version>_<name>/`
    - fill in that round's `NOTES.md`: what was tested, what was found (with issue numbers), follow-ups, and the session cost (`session-cost --all-days` lists every session since the last round)
 7. **Update [STATUS.md](STATUS.md)** (Claude).
 
