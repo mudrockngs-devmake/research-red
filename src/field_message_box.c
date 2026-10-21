@@ -15,6 +15,7 @@ static void StartDrawFieldMessage(void);
 void InitFieldMessageBox(void)
 {
     sMessageBoxType = FIELD_MESSAGE_BOX_HIDDEN;
+    RR_PortraitBoxClosed(); // Research Red: a fresh map has no text box (#76)
     gTextFlags.canABSpeedUpPrint = FALSE;
     gTextFlags.useAlternateDownArrow = FALSE;
     gTextFlags.autoScroll = FALSE;

@@ -73,6 +73,28 @@ def sc_breakfast():
             + expect("MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", story=1))
 
 
+def sc_portraits():
+    # #76: the portrait stays while a finished line waits for a button (it
+    # used to vanish on every last page). Breakfast: the first six lines all
+    # have a speaker; let each finish printing, check, then press A.
+    portrait_up = f"{T.G.sym('sPortraitIdPlus1'):#x}:1 != 0"
+    box_open = f"{T.G.sym('sBoxOpen'):#x}:1 != 0"
+    lines = ["load @bedroom"] + step("RIGHT", 4) + step("UP", 5) + ["hold LEFT 20"]
+    lines += [f"until first_line 1200 - {box_open}"]
+    for i in range(1, 7):
+        lines += ["wait 200", f"shot p{i:02d}", f"check portrait_{i} {portrait_up}", "press A", "wait 10"]
+    return lines + play_until("breakfast", scene_end(1), 6000)
+
+def sc_starter_menu():
+    # #76: the starter list sits on the left with its picture box; the
+    # speaker's portrait steps aside while you choose. Stops on the menu.
+    menu_open = f"{T.G.sym('sDynamicMenuEventId'):#x}:1 == 2"   # DYN_MULTICHOICE_CB_RR_STARTER
+    portrait_up = f"{T.G.sym('sPortraitIdPlus1'):#x}:1 != 0"
+    return (["load @bedroom"] + debug_script(SCRIPT_LAB) + step("UP")
+            + [f"until starter_menu 40000 A {menu_open}", "wait 40", "shot m001",
+               f"check no_portrait {portrait_up.replace('!=', '==')}", "press DOWN", "wait 30", "shot m002"])
+
+
 def sc_lab():
     return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_LAB)
             + ["shot s000"] + step("UP") + play_until("lab", scene_end(3), 60000)
@@ -520,6 +542,8 @@ MAP_NAMES = ["MAP_PALLET_TOWN", "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", "MAP_PALLET_
 SCENARIOS = {
     "intro": (sc_intro, "New game: the video call, ending in the bedroom"),
     "breakfast": (sc_breakfast, "Downstairs: breakfast with Delia, Ivy and Mimey"),
+    "portraits": (sc_portraits, "Portraits stay up while a finished line waits for a button (#76)"),
+    "starter_menu": (sc_starter_menu, "Lab: the starter list on the left, no portrait over it (#76)"),
     "lab": (sc_lab, "Lab scene (test mode: the AI fights)"),
     "daisy": (sc_daisy, "Daisy's house: Muffin, the Town Map, the bet"),
     "route1": (sc_route1, "Route 1: Elm and Jenny, the Mewtwo fly-by"),

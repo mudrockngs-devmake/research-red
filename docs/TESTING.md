@@ -31,6 +31,8 @@ What the results mean:
 |---|---|
 | intro | New game, the whole call, ends in the bedroom (saved as the starting point for the rest) |
 | breakfast | Walks downstairs |
+| portraits | Breakfast, slowly: each finished line still has its portrait (memory check, #76) |
+| starter_menu | Lab: stops on the starter list (left, picture box, no portrait over it, #76) |
 | lab | Debug 9 (test mode) + debug 1, then the lab scene and battles |
 | daisy | Debug 2, steps into Daisy's house, the whole scene |
 | route1 | Debug 8, the Route 1 scene and the Mewtwo fly-by |

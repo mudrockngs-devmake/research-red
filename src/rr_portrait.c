@@ -6,7 +6,9 @@
 // box, with their name on a small plate between the portrait and the box.
 // The portrait bobs gently (like the animatic) and stays up for the rest of the
 // scene: it only changes when someone else speaks, and leaves on a narration
-// line, when the scene's script ends, or when a battle starts.
+// line, when the text box is cleared away (closemessage, release), when the
+// scene's script ends, when a battle starts, or for a choice menu that needs
+// the space (RR_ScriptPortraitHide, e.g. the starter pick).
 //
 // Speakers, portraits, name colors and outfit flags come from
 // graphics/research_red/portraits.txt (tools/research_red/build_portraits.py
@@ -122,6 +124,16 @@ static EWRAM_DATA u8 sPortraitIdPlus1 = 0;
 static EWRAM_DATA u8 sPlateIdPlus1 = 0;
 static EWRAM_DATA u8 sShownSpeaker = 0;   // speaker index + 1
 static EWRAM_DATA bool8 sShownAlt = FALSE;
+// The text box is on screen: set when a message starts, cleared when the
+// dialogue window is wiped. (The engine's own "box hidden" flag turns on as
+// soon as the text has finished printing, while the box still waits for a
+// button: trusting it made the portrait vanish on every last page, #76.)
+static EWRAM_DATA bool8 sBoxOpen = FALSE;
+
+void RR_PortraitBoxClosed(void)
+{
+    sBoxOpen = FALSE;
+}
 
 // Load a palette into slots 12-15. Slots 0-11 belong to overworld people and
 // are rewritten by the overworld code (on maps with reflections, such as the
@@ -167,12 +179,12 @@ void RR_PortraitHide(void)
     sShownSpeaker = 0;
 }
 
-// Bob gently; leave once the box is closed. Outside a script that's at once;
-// inside one (camera pans, people walking off, #3) after a short grace, so a
-// closemessage straight into the next line doesn't make it flicker.
+// Bob gently; leave once the box is cleared away. Outside a script that's at
+// once; inside one (camera pans, people walking off, #3) after a short grace,
+// so a closemessage straight into the next line doesn't make it flicker.
 static void SpriteCB_Portrait(struct Sprite *sprite)
 {
-    if (IsFieldMessageBoxHidden())
+    if (!sBoxOpen)
     {
         if (!RR_IsScriptActive() || ++sprite->data[2] > PORTRAIT_GRACE)
         {
@@ -328,6 +340,8 @@ void RR_PortraitOnMessage(const u8 *text)
     const struct RRSpeaker *s;
     bool32 alt = FALSE;
 
+    sBoxOpen = TRUE;
+
     if (speaker < ARRAY_COUNT(sSpeakers))
         alt = sSpeakers[speaker].altFlag != 0 && FlagGet(sSpeakers[speaker].altFlag);
 
@@ -364,4 +378,11 @@ void RR_PortraitOnMessage(const u8 *text)
     }
     sShownSpeaker = speaker + 1;
     sShownAlt = alt;
+}
+
+// Script: callnative RR_ScriptPortraitHide. Takes the portrait down while the
+// box stays up, e.g. before a choice menu that sits where the portrait is.
+void RR_ScriptPortraitHide(struct ScriptContext *ctx)
+{
+    RR_PortraitHide();
 }

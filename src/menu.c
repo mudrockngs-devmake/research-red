@@ -20,6 +20,7 @@
 #include "string_util.h"
 #include "strings.h"
 #include "text_window.h"
+#include "rr_portrait.h" // Research Red
 #include "constants/songs.h"
 
 #define DLG_WINDOW_PALETTE_NUM 15
@@ -237,6 +238,8 @@ void DrawStdWindowFrame(u8 windowId, bool8 copyToVram)
 
 void ClearDialogWindowAndFrame(u8 windowId, bool8 copyToVram)
 {
+    if (windowId == 0)
+        RR_PortraitBoxClosed(); // Research Red: the dialogue box is gone, so is its portrait (#76)
     DeactivateSingleTextPrinter(windowId, WINDOW_TEXT_PRINTER);
     CallWindowFunction(windowId, WindowFunc_ClearDialogWindowAndFrame);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
@@ -490,6 +493,8 @@ static void WindowFunc_DrawDialogFrameWithCustomTileAndPalette(u8 bg, u8 tilemap
 
 void ClearDialogWindowAndFrameToTransparent(u8 windowId, bool8 copyToVram)
 {
+    if (windowId == 0)
+        RR_PortraitBoxClosed(); // Research Red (#76)
     // The palette slot doesn't matter, since the tiles are transparent.
     CallWindowFunction(windowId, WindowFunc_ClearDialogWindowAndFrameNullPalette);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
