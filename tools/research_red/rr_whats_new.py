@@ -4,6 +4,7 @@
 Builds a folder for the owner and testers:
   <workspace>/whats-new/<version>/report.html     opens in any browser
   <workspace>/whats-new/<version>/screenshots/    the same pictures, named by change
+  <workspace>/whats-new/<version>/report.pdf      a PDF copy for phones (via Edge on Windows)
 
 The page lists every change with its screenshots, how to try it, a checkbox and
 a notes box. At the end, "Your playtest" asks what a tester's report usually
@@ -27,6 +28,7 @@ import html
 import json
 import os
 import shutil
+import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -249,6 +251,28 @@ def general_section():
             f'{boxes}</div>{BUG_TEMPLATE}')
 
 
+# A PDF copy next to the page, for easy reading on a phone: Windows' Edge (or
+# Chrome) prints the page headless. Skipped with a note if neither is there.
+BROWSERS = ["/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+            "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"]
+
+
+def write_pdf(out):
+    browser = next((b for b in BROWSERS if os.path.exists(b)), None)
+    if browser is None:
+        print("  (no PDF: Edge or Chrome on Windows not found)")
+        return
+    win = subprocess.run(["wslpath", "-w", out], capture_output=True, text=True).stdout.strip()
+    url = "file:///" + win.replace("\\", "/") + "/report.html"
+    subprocess.run([browser, "--headless", "--disable-gpu", "--no-pdf-header-footer",
+                    f"--print-to-pdf={win}\\report.pdf", url],
+                   capture_output=True, timeout=180, cwd="/tmp")
+    if os.path.exists(os.path.join(out, "report.pdf")):
+        print(f"pdf:    {out}/report.pdf")
+    else:
+        print("  (the PDF wasn't written)")
+
+
 def main():
     if len(sys.argv) < 2:
         print(__doc__)
@@ -289,6 +313,7 @@ def main():
                        sections="\n".join(sections), general=general_section())
     open(os.path.join(out, "report.html"), "w", encoding="utf-8").write(page)
     print(f"report: {out}/report.html ({len(os.listdir(shots_dir))} screenshots from {os.path.basename(run)})")
+    write_pdf(out)
     for m in missing:
         print(f"  missing shot: {m}")
 
