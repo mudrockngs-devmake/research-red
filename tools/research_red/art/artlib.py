@@ -15,8 +15,9 @@ import os
 from PIL import Image, ImageDraw
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-# Windows-side output folder for previews (E:\Workspace\romhacks\research-red\art\toolkit)
-TOOLKIT_OUT = "/mnt/e/Workspace/romhacks/research-red/art/toolkit"
+# Windows-side output folder for previews (E:\Workspace\romhacks\research-red\art\toolkit);
+# RR_TOOLKIT_OUT overrides it (the GitHub Action writes its previews elsewhere)
+TOOLKIT_OUT = os.environ.get("RR_TOOLKIT_OUT", "/mnt/e/Workspace/romhacks/research-red/art/toolkit")
 PEOPLE = os.path.join(REPO, "graphics/object_events/pics/people")
 # pret's pokeemerald, sparse copy (people + trainer pics), kept outside the repo
 EMERALD_REF = os.path.expanduser("~/romhacks/_tools/pokeemerald-ref")

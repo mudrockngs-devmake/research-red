@@ -80,8 +80,9 @@ def check(path, kind=None, quiet=False):
         used = sorted(set(im.getdata()))
         if used and used[-1] > 15:
             problems.append("uses palette entries above 15 (%d colours)" % len(used))
-        # bodies often touch the bottom edge, so only the top corners must be background
-        if {im.getpixel((0, 0)), im.getpixel((w - 1, 0))} != {0}:
+        # bodies often touch the bottom edge, so only the top corners must be
+        # background (portraits and call icons are crops: hair may touch the top)
+        if kind not in ("portrait", "call") and {im.getpixel((0, 0)), im.getpixel((w - 1, 0))} != {0}:
             problems.append("the top corners are not colour 0, so the background may not be see-through")
     if not quiet:
         print("%s: %s (%s)" % (path, "OK" if not problems else "; ".join(problems), kind))

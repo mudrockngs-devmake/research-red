@@ -1,0 +1,49 @@
+# Research Red: Art Kit check (tools/research_red/art/, docs/ART_TOOLS.md).
+# On every push that touches art: are the overworld sprites current with their
+# recipes, are the cast pictures valid GBA pictures? Then it builds the review
+# previews (walk GIFs, the overview beside the ref-art colours, the sprite
+# library) and keeps them as a downloadable "art-kit-previews" zip on the run.
+name: Art Kit check
+
+on:
+  push:
+    paths:
+      - "graphics/research_red/**"
+      - "graphics/object_events/palettes/player.pal"
+      - "tools/research_red/art/**"
+      - ".github/workflows/art-kit.yml"
+  workflow_dispatch:
+
+jobs:
+  art:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Pillow (the only module the Art Kit needs)
+        run: pip install pillow
+
+      - name: Overworld sprites match their recipes
+        run: python3 tools/research_red/art/ow_maker.py --check
+
+      - name: Cast pictures are valid GBA pictures
+        run: |
+          python3 tools/research_red/art/battle_kit.py check graphics/research_red/cast/*/battle.png graphics/research_red/cast/*/battle_frlg.png --kind trainer
+          python3 tools/research_red/art/battle_kit.py check graphics/research_red/cast/*/portrait.png --kind portrait
+          python3 tools/research_red/art/battle_kit.py check graphics/research_red/cast/*/call.png --kind call
+
+      - name: Previews
+        env:
+          RR_TOOLKIT_OUT: ${{ github.workspace }}/art-kit-previews
+        run: |
+          python3 tools/research_red/art/ow_maker.py build
+          python3 tools/research_red/art/library.py people objects trainers catalogue
+          python3 tools/research_red/art/walkgen.py selftest
+
+      - name: Keep the previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: art-kit-previews
+          path: art-kit-previews
+          retention-days: 30
