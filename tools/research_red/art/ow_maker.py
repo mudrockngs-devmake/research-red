@@ -305,7 +305,10 @@ def write_outputs(recipes, results):
         print("  %-14s %2d frames, %2d colours%s -> %s" % (
             name, len(frames), len(pal), "  walk like " + ", ".join(r["_templates"]) if r.get("_templates") else "",
             os.path.relpath(png, artlib.REPO)))
-    overview(recipes, results)
+    if len(results) == len(recipes):
+        overview(recipes, results)
+    else:  # a few recipes only: keep the full overview from the last full build
+        print("overview.png not redrawn (only %d of %d recipes built; run build with no names)" % (len(results), len(recipes)))
 
 
 def ref_thumb(name, r, height=96):

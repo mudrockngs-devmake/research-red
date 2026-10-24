@@ -16,7 +16,7 @@ button, input { font:inherit; padding:5px 12px; border-radius:6px; border:1px so
 button { cursor:pointer; } button.on { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
 main { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:14px; padding:14px 16px 40px; }
 @media (max-width: 900px) { main { grid-template-columns:1fr; } }
-#wrap { overflow:auto; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px; }
+#wrap { overflow:auto; max-height:calc(100vh - 90px); background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px; }
 #map { position:relative; display:inline-block; }
 #map > img.bg { display:block; image-rendering:pixelated; }
 .grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(0,0,0,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.12) 1px, transparent 1px); background-size:32px 32px; }
@@ -40,6 +40,7 @@ textarea { width:100%; min-height:70px; font:inherit; padding:6px; border-radius
 <header>
   <h1>Scene Board</h1><span id="mapname"></span><span id="title"></span>
   <span style="flex:1"></span>
+  <span class="help">Zoom</span><button id="zout">−</button><span id="zlabel" class="help">1x</span><button id="zin">+</button>
   <button id="gridbtn" class="on">Grid</button>
   <button id="reset">Reset</button>
   <button id="send" class="on">Send to Claude</button>
@@ -60,6 +61,17 @@ document.getElementById('mapname').textContent = MAP || '';
 document.getElementById('title').textContent = q.get('title') || '';
 const FACES = ['down', 'left', 'up', 'right'], T = 32;
 let people = [], start = [], sel = null, cast = [], others = [];
+// zoom: the map is drawn at 2x already; Z enlarges it (and its people) further, remembered in this browser
+let Z = 1;
+try { Z = Math.max(1, Math.min(4, +localStorage.getItem('boardZoom') || 1)); } catch (e) {}
+function setZoom(z) {
+  Z = Math.max(1, Math.min(4, z)); document.getElementById('map').style.zoom = Z;
+  document.getElementById('zlabel').textContent = Z + 'x';
+  try { localStorage.setItem('boardZoom', Z); } catch (e) {}
+}
+document.getElementById('zin').onclick = () => setZoom(Z + 1);
+document.getElementById('zout').onclick = () => setZoom(Z - 1);
+setZoom(Z);
 const mapEl = document.getElementById('map');
 const sprite = (g, f) => '/api/sprite?gfx=' + encodeURIComponent(g) + '&facing=' + f;
 const short = g => g.replace('OBJ_EVENT_GFX_', '').toLowerCase();
@@ -82,12 +94,12 @@ function draw() {
     d.onpointerdown = e => { d.setPointerCapture(e.pointerId); sx = e.clientX; sy = e.clientY; ox = p.x; oy = p.y; moved = false; d.style.cursor = 'grabbing'; };
     d.onpointermove = e => {
       if (sx === undefined) return;
-      const dx = Math.round((e.clientX - sx) / T), dy = Math.round((e.clientY - sy) / T);
+      const dx = Math.round((e.clientX - sx) / (T * Z)), dy = Math.round((e.clientY - sy) / (T * Z));
       if (dx || dy) moved = true;
       place(ox + dx, oy + dy);
     };
     d.onpointerup = e => {
-      const dx = Math.round((e.clientX - sx) / T), dy = Math.round((e.clientY - sy) / T); sx = undefined;
+      const dx = Math.round((e.clientX - sx) / (T * Z)), dy = Math.round((e.clientY - sy) / (T * Z)); sx = undefined;
       if (moved) { p.x = ox + dx; p.y = oy + dy; sel = i; }
       else if (sel === i) p.facing = FACES[(FACES.indexOf(p.facing) + 1) % 4];
       else sel = i;

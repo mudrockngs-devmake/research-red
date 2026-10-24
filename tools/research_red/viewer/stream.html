@@ -15,24 +15,36 @@ header h1 { font-size:16px; margin:0 12px 0 0; display:flex; align-items:center;
 button, select { font:inherit; padding:5px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer; }
 button.on { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
 .status { color:var(--muted); margin-left:auto; font-size:13px; }
-main { display:grid; grid-template-columns:minmax(0,1fr) 380px; gap:14px; padding:14px 16px 40px; }
+main { display:grid; grid-template-columns:minmax(0,1fr) var(--side,380px); gap:14px; padding:14px 16px 40px; }
 @media (max-width: 900px) { main { grid-template-columns:1fr; } }
 section h2 { font-size:14px; margin:0 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
 .ask { background:var(--card); border:2px solid var(--accent); border-radius:10px; padding:12px; margin-bottom:14px; display:none; }
 .ask.show { display:block; }
 .ask h3 { margin:0 0 6px; font-size:16px; }
-.ask img { max-width:100%; image-rendering:pixelated; background:repeating-conic-gradient(#ccc 0 25%, #eee 0 50%) 0 0/16px 16px; }
+.ask .zoombar { display:flex; gap:6px; align-items:center; margin-bottom:6px; color:var(--muted); font-size:12px; }
+.ask .imgbox { overflow:auto; max-height:75vh; }
+.ask img { display:block; image-rendering:pixelated; cursor:zoom-in; background:repeating-conic-gradient(#ccc 0 25%, #eee 0 50%) 0 0/16px 16px; }
 .ask textarea { width:100%; min-height:54px; margin-top:8px; font:inherit; padding:6px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); }
-.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:8px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(var(--tile,180px),1fr)); gap:8px; }
 .tile { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:6px; cursor:zoom-in; }
 .tile.new { border-color:var(--accent); }
-.tile img { width:100%; height:120px; object-fit:contain; image-rendering:pixelated; display:block; }
+.tile img { width:100%; height:calc(var(--tile,180px) * .8); object-fit:contain; image-rendering:pixelated; display:block; }
 .tile .n { font-size:11px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:4px; }
 aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80px); overflow:auto; }
 .pin { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px; margin-bottom:10px; }
 .pin .bar { display:flex; gap:6px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:6px; }
 .pin .bar span { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.pin img { width:100%; image-rendering:pixelated; display:block; }
+.pin img { width:100%; image-rendering:pixelated; display:block; cursor:zoom-in; }
+.sizes { display:flex; gap:4px; align-items:center; color:var(--muted); font-size:13px; }
+.sizes input { width:110px; }
+/* the big view: one picture filling the window, whole-number zoom so pixels stay sharp */
+#big { position:fixed; inset:0; z-index:20; background:rgba(20,20,20,.92); display:none; flex-direction:column; }
+#big.show { display:flex; }
+#big .bar { display:flex; gap:8px; align-items:center; padding:8px 16px; color:#eee; }
+#big .bar span { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+#big .bar button { background:#333; color:#eee; border-color:#555; }
+#big .stage { flex:1; overflow:auto; display:flex; }
+#big img { margin:auto; image-rendering:pixelated; background:repeating-conic-gradient(#999 0 25%, #bbb 0 50%) 0 0/16px 16px; cursor:grab; }
 .empty { color:var(--muted); padding:20px; text-align:center; border:1px dashed var(--line); border-radius:10px; }
 </style>
 </head>
@@ -42,6 +54,9 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
   <button id="pause">Pause</button>
   <select id="filter"><option value="">Everything</option><option value="art">Art tools</option><option value="test-runs">Tests</option></select>
   <button id="clear">Clear</button>
+  <span class="sizes" title="How big the pictures in the stream and the pinned column are">Picture size
+    <input type="range" id="tileSize" min="120" max="480" step="20" value="180">
+    Pinned column <input type="range" id="sideSize" min="300" max="900" step="20" value="380"></span>
   <span class="status" id="status">connecting...</span>
 </header>
 <main>
@@ -49,7 +64,8 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
     <div class="ask" id="ask">
       <h3 id="askTitle">Claude asks</h3>
       <div id="askNote" class="status" style="margin:0 0 8px"></div>
-      <img id="askImg" alt="">
+      <div class="zoombar"><button id="askOut">−</button><button id="askIn">+</button><button id="askFit">Fit</button><button id="askBig">Full window</button><span id="askZoom"></span></div>
+      <div class="imgbox"><img id="askImg" alt=""></div>
       <textarea id="reply" placeholder="Type a quick answer here (optional), then Send. Or just answer in the terminal."></textarea>
       <button class="on" id="sendReply">Send to Claude</button> <span id="replyDone" class="status"></span>
     </div>
@@ -61,7 +77,62 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
     <div id="pins"><div class="empty">Click any picture to pin it here. It stays while the stream keeps going.</div></div>
   </aside>
 </main>
+<div id="big"><div class="bar"><span id="bigName"></span><button id="bigOut">−</button><span id="bigZoom" style="flex:0"></span><button id="bigIn">+</button><button id="bigFit">Fit</button><button id="bigClose">Close (Esc)</button></div>
+  <div class="stage" id="bigStage"><img id="bigImg" alt=""></div></div>
 <script>
+// ---- sizes: remembered in this browser (if it lets us)
+const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+                set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} } };
+[['tileSize', '--tile'], ['sideSize', '--side']].forEach(([id, prop]) => {
+  const el = document.getElementById(id), apply = () => document.documentElement.style.setProperty(prop, el.value + 'px');
+  if (store.get(id)) el.value = store.get(id);
+  apply(); el.oninput = () => { apply(); store.set(id, el.value); };
+});
+// ---- zoom helpers: GBA art looks best at whole-number sizes (2x, 3x, ...)
+function fitScale(img, w, h) {
+  const n = Math.floor(Math.min(w / img.naturalWidth, h / img.naturalHeight));
+  return Math.max(1, Math.min(n, 16));
+}
+function setScale(img, k, label) {
+  img.style.width = img.naturalWidth * k + 'px'; img.style.height = img.naturalHeight * k + 'px';
+  img.dataset.k = k; if (label) label.textContent = k + 'x';
+}
+// the ask picture: fits the panel by default, - / + step the zoom
+const askImg = document.getElementById('askImg'), askZoom = document.getElementById('askZoom');
+let askFit = true;
+const askFitNow = () => setScale(askImg, fitScale(askImg, askImg.parentElement.clientWidth - 4, window.innerHeight * 0.72), askZoom);
+askImg.onload = () => { askFit = true; askFitNow(); };
+window.addEventListener('resize', () => { if (askFit && askImg.naturalWidth) askFitNow(); if (bigFit && big.classList.contains('show')) bigFitNow(); });
+document.getElementById('askIn').onclick = () => { askFit = false; setScale(askImg, Math.min(+askImg.dataset.k + 1, 16), askZoom); };
+document.getElementById('askOut').onclick = () => { askFit = false; setScale(askImg, Math.max(+askImg.dataset.k - 1, 1), askZoom); };
+document.getElementById('askFit').onclick = () => { askFit = true; askFitNow(); };
+document.getElementById('askBig').onclick = askImg.onclick = () => openBig(askImg.src, document.getElementById('askTitle').textContent);
+// the big view: Fit, - / +, mouse wheel, drag to move around, Esc closes
+const big = document.getElementById('big'), bigImg = document.getElementById('bigImg'), stage = document.getElementById('bigStage');
+const bigZoom = document.getElementById('bigZoom');
+let bigFit = true;
+const bigFitNow = () => setScale(bigImg, fitScale(bigImg, stage.clientWidth - 8, stage.clientHeight - 8), bigZoom);
+function openBig(src, name) {
+  document.getElementById('bigName').textContent = name; big.classList.add('show'); bigFit = true;
+  bigImg.onload = bigFitNow; bigImg.src = src; if (bigImg.complete && bigImg.naturalWidth) bigFitNow();
+}
+const bigStep = d => { bigFit = false; setScale(bigImg, Math.max(1, Math.min(+bigImg.dataset.k + d, 16)), bigZoom); };
+document.getElementById('bigIn').onclick = () => bigStep(1);
+document.getElementById('bigOut').onclick = () => bigStep(-1);
+document.getElementById('bigFit').onclick = () => { bigFit = true; bigFitNow(); };
+document.getElementById('bigClose').onclick = () => big.classList.remove('show');
+stage.addEventListener('wheel', e => { e.preventDefault(); bigStep(e.deltaY < 0 ? 1 : -1); }, { passive: false });
+document.addEventListener('keydown', e => {
+  if (!big.classList.contains('show')) return;
+  if (e.key === 'Escape') big.classList.remove('show');
+  if (e.key === '+' || e.key === '=') bigStep(1);
+  if (e.key === '-') bigStep(-1);
+});
+let drag = null;
+stage.onpointerdown = e => { drag = { x: e.clientX, y: e.clientY, l: stage.scrollLeft, t: stage.scrollTop }; stage.setPointerCapture(e.pointerId); };
+stage.onpointermove = e => { if (drag) { stage.scrollLeft = drag.l - (e.clientX - drag.x); stage.scrollTop = drag.t - (e.clientY - drag.y); } };
+stage.onpointerup = () => { drag = null; };
+
 let since = Date.now() / 1000 - 600, paused = false, seen = new Set(), lastShow = null;
 const grid = document.getElementById('grid'), pins = document.getElementById('pins');
 const url = p => '/file?path=' + encodeURIComponent(p);
@@ -70,10 +141,10 @@ document.getElementById('clear').onclick = () => { grid.innerHTML = ''; seen.cle
 function pin(src, name) {
   if (pins.querySelector('.empty')) pins.innerHTML = '';
   const d = document.createElement('div'); d.className = 'pin';
-  d.innerHTML = '<div class="bar"><span></span><button>2x</button><button>Close</button></div><img alt="">';
+  d.innerHTML = '<div class="bar"><span></span><button>Full window</button><button>Close</button></div><img alt="">';
   d.querySelector('span').textContent = name; d.querySelector('img').src = src;
   const [zoom, close] = d.querySelectorAll('button');
-  zoom.onclick = () => { const i = d.querySelector('img'); i.style.width = i.style.width === '200%' ? '100%' : '200%'; d.style.overflow = 'auto'; };
+  zoom.onclick = d.querySelector('img').onclick = () => openBig(src, name);
   close.onclick = () => d.remove();
   pins.prepend(d);
 }
