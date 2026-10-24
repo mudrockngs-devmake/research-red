@@ -6,6 +6,7 @@
 
 ## Tools
 - Automated test runs use mGBA (endrift, MPL 2.0) as a library. It isn't part of the patch.
+- Map and art tools (not part of the patch): Porymap (huderlem and contributors), Porytiles (grunt-lucas), LibreSprite; pret's pokeemerald for reference sprites.
 
 ## Quoted material
 | What | Where | Source / author | Permission |
@@ -22,8 +23,11 @@ One row per asset that isn't the game's own art or the owner's own work, plus th
 | Cast art (battle, portrait, call icon) for 32 characters | `graphics/research_red/cast/` | Converted from full-body reference art of the owner's character designs | own |
 | Intro video call frame and avatars | `graphics/research_red/intro_call/` | Drawn by `tools/research_red/build_call_ui.py` from the owner's animatic layout; avatars from the cast art | own |
 | Pokémon dialogue portraits | `graphics/research_red/pokemon/` | Cut from the games' front sprites | game |
-| Player walking sprite (male) | `graphics/research_red/player_ow/src/prof_birch.png` | Professor Birch overworld sprite (Pokémon Emerald, via pret/pokeemerald), recolored | game |
-| Player walking sprite (female) | `graphics/research_red/player_ow/` | Lorelei's overworld sprite (Pokémon FireRed), outfit recolored to a white lab coat (#93; was the Reporter) | game |
+| Player walking and running sprites (male) | `graphics/research_red/player_ow/` | Professor Birch's overworld sprite (Pokémon Emerald, via pret/pokeemerald), recolored to the character design; running frames made with the Art Kit from Red's | game |
+| Player walking and running sprites (female) | `graphics/research_red/player_ow/` | Lorelei's overworld sprite (Pokémon FireRed), recolored to the character design (lab coat, jeans) | game |
+| Overworld sprites: Elm, Ivy, Jenny, Officer Jenny, Delia | `graphics/research_red/overworld/` | Recolors of the games' overworld sprites (FireRed's Scientist; Emerald's Anabel, Lucy and Mom, via pret/pokeemerald), Officer Jenny's cap drawn on (Art Kit recipes) | game |
+| Overworld sprites: the gym leaders and Elite Four, with walking frames | `graphics/research_red/overworld/` | The games' own sprites, recolored to the character designs; walking frames generated from other game sprites' walks (Art Kit) | game |
+| Battle pictures: the gym leaders and Elite Four | `graphics/research_red/cast/*/battle_frlg.png` | Converted from the character designs' reference art (FireRed-style framing) | own |
 | Title screen picture (logo, Slowpoke in a lab coat, notebook paper) | `graphics/research_red/title/` | Drawn by `tools/research_red/build_title.py`: Slowpoke's front sprite from the games with a lab coat drawn over it; logo lettering in DejaVu Serif Bold (Bitstream Vera / DejaVu font licence, free to use and modify) | game + own |
 | Creator splash and new-game notices | `src/rr_title.c` | Mareep's and Slowking's front sprites from the games | game |
 | Banter emote bubbles (! ? note) | `graphics/research_red/banter/emotes.png` | Drawn by `tools/research_red/build_banter_fx.py` | own |

@@ -59,14 +59,17 @@ Edit the source, run the tool, commit both. `rr_check.py` fails if a generated f
 - `data/research_red/tm_descriptions.txt` -> the TM51-TM100 descriptions in `src/data/items.h` (`build_tm_descriptions.py`; rerun after changing the TM list in `include/constants/tms_hms.h`, #90)
 - trainers, encounters, maps -> `docs/player/*.md`, `docs/BALANCE.md` (`export_player_docs.py`)
 - scenes and text -> `docs/story/` incl. `FULL_SCRIPT.md` (`export_story.py --sync`; not checked by rr_check, rerun when text changes)
-- intro call graphics (`build_call_ui.py`), player walking sheets (`build_player_ow.py`)
+- `graphics/research_red/overworld/recipes.toml` -> overworld sheets (story cast, Delia, gym leaders, Elite Four, both players) and the marked code blocks in the object event files (`tools/research_red/art/ow_maker.py install`; [ART_TOOLS.md](ART_TOOLS.md))
+- intro call graphics (`build_call_ui.py`)
 
 ## Other tools
 - `tools/research_red/build_cast_art.py`: reference art to battle/portrait/call art and a contact sheet
 - `tools/research_red/render_map.py MAP_X|LAYOUT_X out.png [--grid] [--objects]`: a map to an image (tile coordinates, people marked); `--metatiles gTileset_X out.png`: every tile of a tileset with its number, to pick tiles for map edits (e.g. the chairs in Daisy's house)
 - `tools/research_red/export_story.py`: story data export (`docs/story/`)
+- `tools/research_red/art/`: the Art Kit (sprite library, overworld recipes, battle pictures, map pieces with `tile_kit.py`, new buildings with `building.py`), see [ART_TOOLS.md](ART_TOOLS.md)
 
 Installed on the dev machine (outside the repo; nothing in the build needs them yet):
 - Pillow (`python3-pil`) and ImageMagick (`convert`), from Ubuntu's packages: image editing for sprite and portrait work.
-- Porytiles 2.0.0 in `~/romhacks/_tools/porytiles/`: drawn PNG layers to map tiles and metatiles (new buildings, the picnic blanket).
-- Porymap (optional, Windows): visual map editor for the owner.
+- Porytiles 2.0.0 in `~/romhacks/_tools/porytiles/`: whole tilesets from drawn PNG layers ([ART_TOOLS.md](ART_TOOLS.md#whole-new-tilesets)).
+- pret pokeemerald, sparse copy in `~/romhacks/_tools/pokeemerald-ref/`: Emerald people and trainer pictures for the sprite library (bases used in recipes are copied into the repo).
+- Windows, `E:\Workspace\_tools\`: Porymap 6.3.1 (map editor) and LibreSprite 1.3 (pixel editor).

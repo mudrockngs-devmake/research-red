@@ -16,14 +16,14 @@ All game art: **indexed PNG, max 16 colors, color #0 = the transparent backgroun
 | Battle sprite | 64x64 | Full body facing slightly left, feet near the bottom edge (like FireRed trainer art) |
 | Dialogue portrait | 64x64 | Head and chest, cropped at the bottom |
 | Video-call icon | 32x32 | Face close-up |
-| Overworld sprite | 16x32 per frame | Copy the frame order of an existing sheet in `graphics/object_events/pics/people/` (down, up, left x3 walk frames each). Right-facing is the mirrored left |
+| Overworld sprite | 16x32 per frame | 9 frames: down, up, left standing, then 2 steps each for down, up, left (right is the left mirrored). Drawing only the 3 standing frames is fine: the walking frames can be generated (docs/ART_TOOLS.md) |
 
 Put finished files in `graphics/research_red/cast_handmade/<name>/battle.png` (or `portrait.png`, `call.png`).
-They always win over the generated versions. Overworld sheets go to the owner and are hooked up in code.
+They always win over the generated versions. Overworld sheets: put the PNG in `graphics/research_red/overworld/bases/` and point the character's recipe in `graphics/research_red/overworld/recipes.toml` at it (see docs/ART_TOOLS.md); the code is generated.
 
 Character names: see `CAST` in `tools/research_red/build_cast_art.py` (e.g. `elm`, `ivy`, `ivy_swimsuit`, `jenny`, `jenny_police`).
 
-Tools: LibreSprite (free) or Aseprite. Keep your full-color originals; export the 16-color version.
+Tools: LibreSprite (free) or Aseprite. Keep your full-color originals; export the 16-color version. Check a picture with `python3 tools/research_red/art/battle_kit.py check FILE.png`.
 
 ## Sending art
 Shared folder synced to `E:\Workspace\romhacks\research-red\art\incoming\`, or a GitHub pull request to mudrockngs-devmake/research-red.
