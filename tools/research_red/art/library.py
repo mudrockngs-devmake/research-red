@@ -23,7 +23,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import artlib  # noqa: E402
 
-LIB = artlib.out_dir("library")
+LIB = artlib.out_dir("library") if __name__ == "__main__" else os.path.join(artlib.TOOLKIT_OUT, "library")
 G = os.path.join(artlib.REPO, "graphics")
 
 
@@ -129,8 +129,9 @@ def pokemon():
     print("pokemon: %d species folders, %d pages" % (len(entries), pages))
 
 
-def catalogue():
-    """catalogue.md: OBJ_EVENT_GFX_ name -> picture file, frame count, palette."""
+def gfx_table():
+    """OBJ_EVENT_GFX_ name -> (png path, frame width, frame height, frames used,
+    frames drawn, palette tag), read from the object event source files."""
     src = os.path.join(artlib.REPO, "src/data/object_events")
     pics = {}  # gObjectEventPic_X -> png path
     for m in re.finditer(r'(gObjectEventPic_\w+)\[\]\s*=\s*INCBIN_\w+\("([^"]+)\.4bpp',
@@ -150,7 +151,7 @@ def catalogue():
             fm = re.search(r"\.%s\s*=\s*([^,]+)," % f, body)
             return fm.group(1).strip() if fm else ""
         infos[m.group(1)] = (field("images"), field("paletteTag"), field("width"), field("height"))
-    rows = []
+    out = {}
     text = open(os.path.join(src, "object_event_graphics_info_pointers.h")).read()
     for m in re.finditer(r"\[(OBJ_EVENT_GFX_\w+)\]\s*=\s*&(gObjectEventGraphicsInfo_\w+)", text):
         table, pal, w, h = infos.get(m.group(2), ("", "", "", ""))
@@ -159,7 +160,19 @@ def catalogue():
         real = 0
         if png and os.path.exists(os.path.join(artlib.REPO, png)) and w.isdigit():
             real = len(artlib.load_grid(os.path.join(artlib.REPO, png))[0]) // int(w)
-        rows.append((m.group(1), png, "%sx%s" % (w, h), nframes, real, pal.replace("OBJ_EVENT_PAL_TAG_", "")))
+        out[m.group(1)] = (png, int(w) if w.isdigit() else 16, int(h) if h.isdigit() else 32, nframes, real,
+                           pal.replace("OBJ_EVENT_PAL_TAG_", ""))
+    # aliases like "#define OBJ_EVENT_GFX_TWIN OBJ_EVENT_GFX_LITTLE_GIRL"
+    for m in re.finditer(r"#define (OBJ_EVENT_GFX_\w+)\s+(OBJ_EVENT_GFX_\w+)",
+                         open(os.path.join(artlib.REPO, "include/constants/event_objects.h")).read()):
+        if m.group(2) in out and m.group(1) not in out:
+            out[m.group(1)] = out[m.group(2)]
+    return out
+
+
+def catalogue():
+    """catalogue.md: OBJ_EVENT_GFX_ name -> picture file, frame count, palette."""
+    rows = [(k,) + (v[0], "%dx%d" % (v[1], v[2]), v[3], v[4], v[5]) for k, v in gfx_table().items()]
     out = os.path.join(LIB, "catalogue.md")
     with open(out, "w") as f:
         f.write("# Overworld graphics catalogue\n\nMade by `tools/research_red/art/library.py`.\n"

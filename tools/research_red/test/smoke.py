@@ -10,6 +10,7 @@ Usage:
   python3 tools/research_red/test/smoke.py              # all scenarios
   python3 tools/research_red/test/smoke.py lunch banter # just these
   python3 tools/research_red/test/smoke.py --list
+  python3 tools/research_red/test/smoke.py --watch lab   # live viewer pops up (tools/research_red/viewer)
 
 Output: <workspace>/test-runs/<date>_<version>_<commit>/
   REPORT.md            pass / warn / fail per scenario, where each one ended
@@ -1036,6 +1037,11 @@ def version_and_commit():
 
 
 def main():
+    argv = sys.argv[1:]
+    if "--watch" in argv:
+        # open the live viewer in the Windows browser: screenshots stream in as they're taken
+        argv.remove("--watch")
+        subprocess.run([sys.executable, os.path.join(REPO, "tools/research_red/viewer/viewer.py"), "open"])
     version, commit = version_and_commit()
     base = os.path.join(WORKSPACE, "test-runs") if os.path.isdir(WORKSPACE) else os.path.join(REPO, "build/test-runs")
     T.main(T.Suite(
@@ -1049,7 +1055,7 @@ def main():
         progress_var=STORY,
         map_names=MAP_NAMES,
         setup_hint="run tools/research_red/test/setup_mgba.sh first",
-    ), sys.argv[1:])
+    ), argv)
 
 
 if __name__ == "__main__":

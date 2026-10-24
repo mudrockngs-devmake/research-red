@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research Red Viewer</title>
+<style>
+:root { --bg:#f4f1ea; --card:#fffdf8; --ink:#2b2a28; --muted:#6c675f; --line:#e0dacd; --accent:#c0392b; --accent-ink:#fff; }
+@media (prefers-color-scheme: dark) { :root { --bg:#1b1a18; --card:#25241f; --ink:#ece8e0; --muted:#a39d92; --line:#3a3832; --accent:#e05a47; --accent-ink:#fff; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui, sans-serif; }
+header { position:sticky; top:0; z-index:5; display:flex; gap:10px; align-items:center; padding:10px 16px; background:var(--card); border-bottom:1px solid var(--line); }
+header h1 { font-size:16px; margin:0 12px 0 0; display:flex; align-items:center; gap:8px; }
+.ball { width:18px; height:18px; border-radius:50%; background:linear-gradient(var(--accent) 0 46%, var(--ink) 46% 54%, #fff 54%); border:2px solid var(--ink); }
+button, select { font:inherit; padding:5px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer; }
+button.on { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+.status { color:var(--muted); margin-left:auto; font-size:13px; }
+main { display:grid; grid-template-columns:minmax(0,1fr) 380px; gap:14px; padding:14px 16px 40px; }
+@media (max-width: 900px) { main { grid-template-columns:1fr; } }
+section h2 { font-size:14px; margin:0 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+.ask { background:var(--card); border:2px solid var(--accent); border-radius:10px; padding:12px; margin-bottom:14px; display:none; }
+.ask.show { display:block; }
+.ask h3 { margin:0 0 6px; font-size:16px; }
+.ask img { max-width:100%; image-rendering:pixelated; background:repeating-conic-gradient(#ccc 0 25%, #eee 0 50%) 0 0/16px 16px; }
+.ask textarea { width:100%; min-height:54px; margin-top:8px; font:inherit; padding:6px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); }
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:8px; }
+.tile { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:6px; cursor:zoom-in; }
+.tile.new { border-color:var(--accent); }
+.tile img { width:100%; height:120px; object-fit:contain; image-rendering:pixelated; display:block; }
+.tile .n { font-size:11px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:4px; }
+aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80px); overflow:auto; }
+.pin { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px; margin-bottom:10px; }
+.pin .bar { display:flex; gap:6px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:6px; }
+.pin .bar span { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pin img { width:100%; image-rendering:pixelated; display:block; }
+.empty { color:var(--muted); padding:20px; text-align:center; border:1px dashed var(--line); border-radius:10px; }
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="ball"></span>Research Red Viewer</h1>
+  <button id="pause">Pause</button>
+  <select id="filter"><option value="">Everything</option><option value="art">Art tools</option><option value="test-runs">Tests</option></select>
+  <button id="clear">Clear</button>
+  <span class="status" id="status">connecting...</span>
+</header>
+<main>
+  <section>
+    <div class="ask" id="ask">
+      <h3 id="askTitle">Claude asks</h3>
+      <div id="askNote" class="status" style="margin:0 0 8px"></div>
+      <img id="askImg" alt="">
+      <textarea id="reply" placeholder="Type a quick answer here (optional), then Send. Or just answer in the terminal."></textarea>
+      <button class="on" id="sendReply">Send to Claude</button> <span id="replyDone" class="status"></span>
+    </div>
+    <h2>Live stream</h2>
+    <div class="grid" id="grid"><div class="empty" id="emptyMsg">New pictures appear here as the tools and the tester make them.</div></div>
+  </section>
+  <aside>
+    <h2>Pinned</h2>
+    <div id="pins"><div class="empty">Click any picture to pin it here. It stays while the stream keeps going.</div></div>
+  </aside>
+</main>
+<script>
+let since = Date.now() / 1000 - 600, paused = false, seen = new Set(), lastShow = null;
+const grid = document.getElementById('grid'), pins = document.getElementById('pins');
+const url = p => '/file?path=' + encodeURIComponent(p);
+document.getElementById('pause').onclick = e => { paused = !paused; e.target.classList.toggle('on', paused); e.target.textContent = paused ? 'Paused' : 'Pause'; };
+document.getElementById('clear').onclick = () => { grid.innerHTML = ''; seen.clear(); };
+function pin(src, name) {
+  if (pins.querySelector('.empty')) pins.innerHTML = '';
+  const d = document.createElement('div'); d.className = 'pin';
+  d.innerHTML = '<div class="bar"><span></span><button>2x</button><button>Close</button></div><img alt="">';
+  d.querySelector('span').textContent = name; d.querySelector('img').src = src;
+  const [zoom, close] = d.querySelectorAll('button');
+  zoom.onclick = () => { const i = d.querySelector('img'); i.style.width = i.style.width === '200%' ? '100%' : '200%'; d.style.overflow = 'auto'; };
+  close.onclick = () => d.remove();
+  pins.prepend(d);
+}
+function addTile(im) {
+  if (seen.has(im.path + im.mtime)) return;
+  const f = document.getElementById('filter').value;
+  if (f && !im.name.includes(f)) return;
+  seen.add(im.path + im.mtime);
+  document.getElementById('emptyMsg')?.remove();
+  const t = document.createElement('div'); t.className = 'tile new';
+  t.innerHTML = '<img loading="lazy" alt=""><div class="n"></div>';
+  t.querySelector('img').src = url(im.path) + '&t=' + im.mtime;
+  t.querySelector('.n').textContent = im.name; t.title = im.name;
+  t.onclick = () => pin(url(im.path) + '&t=' + im.mtime, im.name);
+  grid.prepend(t);
+  setTimeout(() => t.classList.remove('new'), 1500);
+  while (grid.children.length > 150) grid.lastChild.remove();
+}
+function showAsk(s) {
+  const a = document.getElementById('ask'); a.classList.add('show');
+  document.getElementById('askTitle').textContent = 'Claude asks: ' + s.title;
+  document.getElementById('askNote').textContent = s.note || '';
+  document.getElementById('askImg').src = s.image;
+  document.getElementById('replyDone').textContent = '';
+  lastShow = s;
+}
+document.getElementById('sendReply').onclick = async () => {
+  const text = document.getElementById('reply').value;
+  await fetch('/api/note', { method: 'POST', body: JSON.stringify({ about: lastShow && lastShow.title, text }) });
+  document.getElementById('replyDone').textContent = 'Sent. Claude reads it next.';
+  document.getElementById('reply').value = '';
+};
+async function tick() {
+  try {
+    const r = await fetch('/api/news?since=' + since); const d = await r.json();
+    document.getElementById('status').textContent = paused ? 'paused (still watching)' : 'live · ' + new Date().toLocaleTimeString();
+    if (!paused) { d.images.slice().reverse().forEach(addTile); since = Math.max(since, ...d.images.map(i => i.mtime), since); }
+    const s = d.shows[d.shows.length - 1];
+    if (s && (!lastShow || lastShow.time !== s.time)) showAsk(s);
+  } catch (e) { document.getElementById('status').textContent = 'viewer stopped: run viewer.py open'; }
+}
+tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>

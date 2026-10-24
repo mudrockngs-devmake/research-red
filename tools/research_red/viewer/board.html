@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scene Board</title>
+<style>
+:root { --bg:#f4f1ea; --card:#fffdf8; --ink:#2b2a28; --muted:#6c675f; --line:#e0dacd; --accent:#c0392b; --accent-ink:#fff; }
+@media (prefers-color-scheme: dark) { :root { --bg:#1b1a18; --card:#25241f; --ink:#ece8e0; --muted:#a39d92; --line:#3a3832; --accent:#e05a47; --accent-ink:#fff; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui, sans-serif; }
+header { display:flex; gap:10px; align-items:center; padding:10px 16px; background:var(--card); border-bottom:1px solid var(--line); flex-wrap:wrap; }
+header h1 { font-size:16px; margin:0; }
+#title { color:var(--accent); font-weight:600; }
+button, input { font:inherit; padding:5px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); }
+button { cursor:pointer; } button.on { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+main { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:14px; padding:14px 16px 40px; }
+@media (max-width: 900px) { main { grid-template-columns:1fr; } }
+#wrap { overflow:auto; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px; }
+#map { position:relative; display:inline-block; }
+#map > img.bg { display:block; image-rendering:pixelated; }
+.grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(0,0,0,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.12) 1px, transparent 1px); background-size:32px 32px; }
+.p { position:absolute; cursor:grab; touch-action:none; }
+.p img { display:block; image-rendering:pixelated; pointer-events:none; }
+.p .tag { position:absolute; top:100%; margin-top:2px; left:50%; transform:translateX(-50%); font-size:10px; background:rgba(0,0,0,.65); color:#fff; padding:0 4px; border-radius:3px; white-space:nowrap; pointer-events:none; }
+.p.sel { outline:2px solid var(--accent); outline-offset:1px; }
+.p.new .tag { background:var(--accent); }
+aside { display:flex; flex-direction:column; gap:12px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px; }
+.card h2 { font-size:13px; margin:0 0 6px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+#list { max-height:260px; overflow:auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:4px; }
+#list div { text-align:center; font-size:9px; cursor:pointer; border:1px solid transparent; border-radius:4px; padding:2px; overflow:hidden; }
+#list div:hover { border-color:var(--accent); }
+#list img { width:32px; height:64px; image-rendering:pixelated; }
+textarea { width:100%; min-height:70px; font:inherit; padding:6px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); }
+.help { color:var(--muted); font-size:13px; margin:0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Scene Board</h1><span id="mapname"></span><span id="title"></span>
+  <span style="flex:1"></span>
+  <button id="gridbtn" class="on">Grid</button>
+  <button id="reset">Reset</button>
+  <button id="send" class="on">Send to Claude</button>
+  <span id="sent" class="help"></span>
+</header>
+<main>
+  <div id="wrap"><div id="map"><img class="bg" id="bg" alt=""><div class="grid" id="gridov"></div></div></div>
+  <aside>
+    <div class="card"><h2>How</h2><p class="help">Drag people to move them (they snap to squares). Click one to select, click again to turn them. Delete removes the selected person. Add someone from the list below. Then Send to Claude.</p></div>
+    <div class="card"><h2>Selected</h2><div id="selinfo" class="help">nobody</div><button id="turn">Turn</button> <button id="del">Delete</button></div>
+    <div class="card"><h2>Add someone</h2><input id="search" placeholder="search (elm, nurse, ...)" style="width:100%;margin-bottom:6px"><div id="list"></div></div>
+    <div class="card"><h2>Note for Claude</h2><textarea id="note" placeholder="e.g. Ivy walks to the table after Elm sits down"></textarea></div>
+  </aside>
+</main>
+<script>
+const q = new URLSearchParams(location.search), MAP = q.get('map');
+document.getElementById('mapname').textContent = MAP || '';
+document.getElementById('title').textContent = q.get('title') || '';
+const FACES = ['down', 'left', 'up', 'right'], T = 32;
+let people = [], start = [], sel = null, cast = [], others = [];
+const mapEl = document.getElementById('map');
+const sprite = (g, f) => '/api/sprite?gfx=' + encodeURIComponent(g) + '&facing=' + f;
+const short = g => g.replace('OBJ_EVENT_GFX_', '').toLowerCase();
+function draw() {
+  mapEl.querySelectorAll('.p').forEach(e => e.remove());
+  people.forEach((p, i) => {
+    if (p.removed) return;
+    const d = document.createElement('div'); d.className = 'p' + (p.new ? ' new' : '') + (sel === i ? ' sel' : '');
+    // sprites are drawn twice their size and stand on their square: feet at
+    // the bottom of the square, centred across it (16x32 people, 32x32 Pokemon)
+    let w = 32, h = 64;
+    const place = (x, y) => { d.style.left = (x * T + (T - w) / 2) + 'px'; d.style.top = ((y + 1) * T - h) + 'px'; };
+    d.innerHTML = '<img alt=""><span class="tag"></span>';
+    const img = d.querySelector('img');
+    img.onload = () => { w = img.naturalWidth * 2; h = img.naturalHeight * 2; img.style.width = w + 'px'; img.style.height = h + 'px'; place(p.x, p.y); };
+    img.src = sprite(p.gfx, p.facing);
+    place(p.x, p.y);
+    d.querySelector('.tag').textContent = (p.id || short(p.gfx)).replace('LOCALID_', '');
+    let sx, sy, ox, oy, moved = false;
+    d.onpointerdown = e => { d.setPointerCapture(e.pointerId); sx = e.clientX; sy = e.clientY; ox = p.x; oy = p.y; moved = false; d.style.cursor = 'grabbing'; };
+    d.onpointermove = e => {
+      if (sx === undefined) return;
+      const dx = Math.round((e.clientX - sx) / T), dy = Math.round((e.clientY - sy) / T);
+      if (dx || dy) moved = true;
+      place(ox + dx, oy + dy);
+    };
+    d.onpointerup = e => {
+      const dx = Math.round((e.clientX - sx) / T), dy = Math.round((e.clientY - sy) / T); sx = undefined;
+      if (moved) { p.x = ox + dx; p.y = oy + dy; sel = i; }
+      else if (sel === i) p.facing = FACES[(FACES.indexOf(p.facing) + 1) % 4];
+      else sel = i;
+      draw();
+    };
+    mapEl.appendChild(d);
+  });
+  const p = people[sel];
+  document.getElementById('selinfo').textContent = p && !p.removed ? (p.id || 'new') + ' · ' + short(p.gfx) + ' · ' + p.x + ',' + p.y + ' facing ' + p.facing : 'nobody';
+}
+document.getElementById('turn').onclick = () => { const p = people[sel]; if (p) { p.facing = FACES[(FACES.indexOf(p.facing) + 1) % 4]; draw(); } };
+document.getElementById('del').onclick = () => { const p = people[sel]; if (p) { p.removed = true; sel = null; draw(); } };
+document.addEventListener('keydown', e => { if (e.key === 'Delete' && people[sel] && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT') document.getElementById('del').click(); });
+document.getElementById('gridbtn').onclick = e => { const g = document.getElementById('gridov'); const on = g.style.display !== 'none'; g.style.display = on ? 'none' : ''; e.target.classList.toggle('on', !on); };
+document.getElementById('reset').onclick = () => { people = JSON.parse(JSON.stringify(start)); sel = null; draw(); };
+function list() {
+  const s = document.getElementById('search').value.toLowerCase(), L = document.getElementById('list'); L.innerHTML = '';
+  cast.concat(others).filter(g => !s || g.toLowerCase().includes(s)).slice(0, 48).forEach(g => {
+    const d = document.createElement('div'); d.innerHTML = '<img loading="lazy" alt=""><br>'; d.querySelector('img').src = sprite(g, 'down');
+    d.append(short(g)); d.title = g;
+    d.onclick = () => { const b = document.getElementById('bg'); people.push({ id: '', gfx: g, x: Math.floor(b.naturalWidth / T / 2), y: Math.floor(b.naturalHeight / T / 2), facing: 'down', new: true }); sel = people.length - 1; draw(); };
+    L.appendChild(d);
+  });
+}
+document.getElementById('search').oninput = list;
+document.getElementById('send').onclick = async () => {
+  const body = { map: MAP, title: q.get('title') || '', note: document.getElementById('note').value,
+                 people: people.map((p, i) => Object.assign({}, p, { moved: !p.new && (p.x !== start[i].x || p.y !== start[i].y), turned: !p.new && p.facing !== start[i].facing })) };
+  const r = await fetch('/api/board', { method: 'POST', body: JSON.stringify(body) });
+  document.getElementById('sent').textContent = r.ok ? 'Sent. Tell Claude in the terminal (or it checks).' : 'Could not send.';
+};
+fetch('/api/board?map=' + encodeURIComponent(MAP)).then(r => r.json()).then(d => {
+  if (d.error) { document.getElementById('title').textContent = d.error; return; }
+  document.getElementById('bg').src = d.image; people = d.people; start = JSON.parse(JSON.stringify(people));
+  cast = d.cast; others = d.others; draw(); list();
+});
+</script>
+</body>
+</html>

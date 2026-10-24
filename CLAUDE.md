@@ -21,6 +21,7 @@ Documentation index: `docs/README.md`.
 - Keep `docs/FLAGS_VARS.md` (registry) and `CREDITS.md` (with the Permission column) up to date with every change.
 - Generated files (encounters, banter, portraits table, player docs): edit the source and rerun the tool; `rr_check.py` fails if they're stale (`docs/DEV_GUIDE.md`). It also fails on ALL-CAPS game text: `tools/research_red/proper_case.py` fixes it (#11).
 - The animatic (`docs/animatic/`) is the scene spec; `docs/scenes/*.md` scene specs from the owner override it.
+- Showing the owner pictures or scenes: the live viewer pops up in their Windows browser (`tools/research_red/viewer/viewer.py show FILE --title "question"`, or `board MAP_X` for drag-and-drop staging; replies via `viewer.py answers`). Use it whenever a question is about how something looks or where people stand.
 - Debug menu stays ON for test builds (Start > Debug > Scripts, named skips 1-12, 13 switches the banter look). Turn OFF before any public release.
 
 ## Where things are
