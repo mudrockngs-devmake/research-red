@@ -9,6 +9,11 @@ on:
   push:
     paths:
       - "graphics/research_red/**"
+      - "graphics/trainers/**"
+      - "src/data/graphics/trainers.h"
+      - "src/data/object_events/**"
+      - "include/constants/event_objects.h"
+      - "docs/ART_TRACKER.md"
       - "graphics/object_events/palettes/player.pal"
       - "tools/research_red/art/**"
       - ".github/workflows/art-kit.yml"
@@ -26,6 +31,9 @@ jobs:
 
       - name: Overworld sprites match their recipes
         run: python3 tools/research_red/art/ow_maker.py --check
+
+      - name: Only approved art is in the game; the tracker is complete
+        run: python3 tools/research_red/art/art_gate.py check
 
       - name: Cast pictures are valid GBA pictures
         run: |

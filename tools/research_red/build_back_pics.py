@@ -9,12 +9,12 @@ behind on the left, the player in front on the right, one 64x64 picture with
 16 colours.
 
 FireRed's Red / Leaf back pics are 5 frames (the ball throw): the player leans
-the way Red does (THROW_LEAN). Writes over
+the way Red does (THROW_LEAN). For the game's
   graphics/trainers/back_pics/{red,leaf}_back_pic.png and
   graphics/trainers/palettes/{red,leaf}_back_pic.pal
-(male player -> Red's slot, female -> Leaf's). While the Art Kit's art is not
-in the game (graphics/research_red/art_kit.toml) they go to
-graphics/research_red/drafts/ instead and the game keeps its back pics.
+(male player -> Red's slot, female -> Leaf's). They're written as drafts to
+graphics/research_red/drafts/; tools/research_red/art/art_gate.py apply copies
+them into the game once the owner approves "back_pics" (art_kit.toml).
 
   python3 tools/research_red/build_back_pics.py [--preview OUT.png]
 """
@@ -99,9 +99,7 @@ def write_pal(path, img):
 
 def main():
     previews = []
-    in_game = artlib.art_in_game()
-    pics = os.path.join(REPO, "graphics/trainers/back_pics") if in_game else artlib.DRAFTS_DIR
-    pals = os.path.join(REPO, "graphics/trainers/palettes") if in_game else artlib.DRAFTS_DIR
+    pics = pals = artlib.DRAFTS_DIR
     os.makedirs(pics, exist_ok=True)
     for player, slot in (("player_m", "red"), ("player_f", "leaf")):
         # one palette for all 5 frames: build them together, then split
@@ -112,9 +110,6 @@ def main():
         frame = sheet.crop((0, 0, 64, 64))
         sheet.save(os.path.join(pics, f"{slot}_back_pic.png"))
         write_pal(os.path.join(pals, f"{slot}_back_pic.pal"), frame)
-        for gen in (os.path.join(pics, f"{slot}_back_pic.4bpp"), os.path.join(pals, f"{slot}_back_pic.gbapal")):
-            if in_game and os.path.exists(gen):
-                os.remove(gen)  # generated: make rebuilds them
         previews.append(frame.convert("RGB"))
     if "--preview" in sys.argv:
         out = sys.argv[sys.argv.index("--preview") + 1]
@@ -122,8 +117,8 @@ def main():
         for i, p in enumerate(previews):
             sheet.paste(p, (i * 72, 0))
         sheet.resize((sheet.width * 4, sheet.height * 4), Image.NEAREST).save(out)
-    print("back pics written to %s (red = male player + Ivy, leaf = female player + Ivy)%s"
-          % (os.path.relpath(pics, REPO), "" if in_game else ": drafts, the art is not in the game (art_kit.toml)"))
+    print("back pic drafts written to %s (red = male player + Ivy, leaf = female player + Ivy);"
+          " art_gate.py apply puts them in the game once approved" % os.path.relpath(pics, REPO))
 
 
 if __name__ == "__main__":

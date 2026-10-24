@@ -7,8 +7,8 @@ _Last updated: 2026-10-24 (Art Kit art taken back out of the game; v0.0.19 still
 
 ## Two lanes + viewer and hub run (2026-10-24, in progress; owner answers in ROADMAP.md "Two lanes")
 No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
-- [ ] 1 switch per piece (art_kit.toml approved list)
-- [ ] 2 asset tracker docs/ART_TRACKER.md + rr_check warning + E: copy
+- [x] 1 switch per piece (art_kit.toml stages; art_gate.py apply, reversible, tested round trip)
+- [x] 2 asset tracker docs/ART_TRACKER.md (58 pieces) + rr_check / GitHub check + E: copy
 - [ ] 3 GitHub Art Kit milestone + art-kit label, move #15 #33
 - [ ] 4 art bible docs/ART_BIBLE.md
 - [ ] 5-6 vertical slice + game lane rule (docs, CLAUDE.md)
@@ -19,8 +19,8 @@ No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
 ## Art Kit art: out of the game until further notice (owner, 2026-10-24)
 The owner wants the art generation and edits improved before anything replaces what's in the game. The game's
 wiring went back to v0.0.19 (the build is byte-identical to the installed v0.0.19 ROM); the tools, recipes and
-all new art stay as drafts. Switch: `graphics/research_red/art_kit.toml` (`in_game = false`); while off,
-`ow_maker.py install` and `build_back_pics.py` write drafts only. How to put it back: docs/ART_TOOLS.md
+all new art stay as drafts. Gate + tracker: `graphics/research_red/art_kit.toml` (only `approved` pieces are in
+the game; `tools/research_red/art/art_gate.py`), page docs/ART_TRACKER.md. How to put pieces in: docs/ART_TOOLS.md
 "Putting the art in the game". So "goes into v0.0.20" below no longer holds.
 
 ## Current build

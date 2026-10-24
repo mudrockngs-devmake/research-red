@@ -7,7 +7,8 @@ Checks Research Red text (data/scripts/research_red/*.inc):
     {STR_VAR_n} as 10, other {CODES} as 1)
   - no ALL-CAPS story names (ELM, IVY, OAK, ...)
 Generated files are current (encounters, banter, player docs, TM text, the
-Art Kit's overworld sprites). And the registry:
+Art Kit's overworld sprites, the art tracker). The Art Kit gate: only pieces
+the owner approved in graphics/research_red/art_kit.toml are in the game. And the registry:
   - every FLAG_RR_* / VAR_RR_* defined in include/constants is listed in docs/FLAGS_VARS.md
 Exit code 1 if anything fails.
 """
@@ -81,6 +82,12 @@ def check_generated(problems):
                        capture_output=True, text=True)
     if r.returncode != 0:
         problems.append((r.stderr or r.stdout).strip().splitlines()[-1])
+    # Art Kit gate: only approved pieces are in the game, every piece is tracked,
+    # docs/ART_TRACKER.md is current (graphics/research_red/art_kit.toml)
+    r = subprocess.run([sys.executable, os.path.join(REPO, "tools/research_red/art/art_gate.py"), "check"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        problems.extend(line for line in (r.stderr or r.stdout).strip().splitlines())
 
 
 def main():

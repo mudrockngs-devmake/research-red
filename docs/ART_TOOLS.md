@@ -20,34 +20,61 @@ on the dev machine; set `RR_TOOLKIT_OUT` to send them somewhere else.
 | build a whole new tileset | Porytiles | [Whole new tilesets](#whole-new-tilesets) |
 | paint maps by hand | Porymap | [Programs](#programs) |
 
-## Is the art in the game? (no, for now)
+## The two lanes: is the art in the game?
 
-**Not yet (owner, 2026-10-24):** the Art Kit's sprites and pictures stay out
-of every game version until the art generation and edits are better. The
-switch is `graphics/research_red/art_kit.toml` (`in_game = false`). While it's
-off:
+Research Red runs in two lanes (owner, 2026-10-24):
 
-- `ow_maker.py build` and `install` both make sheets and previews only: every
-  sheet (the players' too) lands in `graphics/research_red/overworld/`, and
-  the game code isn't touched.
-- `build_back_pics.py` writes to `graphics/research_red/drafts/`.
-- The game uses v0.0.19's pictures: FireRed's overworld people (the story cast
-  on stand-ins: Elm = Scientist, Ivy = Cooltrainer, Jenny = Hex Maniac, Mom
-  for Delia), FireRed's gym leader and Elite Four battle pictures, the
-  players' `battle.png`, the old back pics and `player.pal`.
+- **The game lane.** Mechanics, story, cutscenes and test builds use the art
+  already in the game: FireRed's sprites and tiles, stand-ins, small
+  recolours, Porymap. Small pieces the owner asks for (a table, chairs, a grass
+  patch) are made with the existing tools and logged in the tracker as
+  `game:` pieces.
+- **The Art Kit lane.** These tools, drafts, and hand-finishing in Aseprite.
+  Nothing from here goes into the game until the owner approves it, one piece
+  at a time.
+
+**The tracker is also the gate:** `graphics/research_red/art_kit.toml` lists
+every piece that will get new art. Each piece has a stage:
+placeholder -> draft -> hand-finished -> **approved**. Only approved pieces
+are in the game. The readable page is [ART_TRACKER.md](ART_TRACKER.md), with a
+copy at `E:\Workspace\romhacks\research-red\ART_TRACKER.md`.
+
+    python3 tools/research_red/art/art_gate.py status                 # every piece and its stage
+    python3 tools/research_red/art/art_gate.py set ow:elm hand-finished "hair redrawn"
+    python3 tools/research_red/art/art_gate.py apply                  # make the game files match the approved list
+    python3 tools/research_red/art/art_gate.py tracker                # rewrite ART_TRACKER.md (+ E: copy)
+    python3 tools/research_red/art/art_gate.py verdicts               # the owner's viewer Approve / Needs work -> tracker
+    python3 tools/research_red/art/art_gate.py check                  # (rr_check) game matches, tracker complete + current
+
+Piece ids: `ow:<recipe>` (an overworld sprite), `ow:players` (both players,
+which share `player.pal`), `battle:<cast>` (a trainer battle picture, from
+`battle_fr.png`), `back_pics` (you + Ivy from behind), `game:<name>`
+(placed with the old tools; tracked so the art pass can redo it). A new recipe
+or battle slot needs a tracker entry, and `rr_check` fails until it has one.
+
+`apply` is reversible. It writes the approved pieces into the engine files and
+puts everything else back to what the game had: the stand-in `#define`s in
+`include/constants/event_objects.h` step aside only for approved sprites,
+replaced sprites remember the original (`was gObjectEventGraphicsInfo_Mom`),
+and the players' sheets, `player.pal` and the back pics come back from
+`graphics/research_red/placeholder/`. With nothing approved, the ROM is
+byte-identical to one built without the Art Kit (tested 2026-10-24: approve,
+build, play, un-approve, build, compare).
+
+While a piece isn't approved, the tools still build it, but as a draft only.
+`ow_maker.py` writes every sheet (the players' too) to
+`graphics/research_red/overworld/`, and `build_back_pics.py` writes to
+`graphics/research_red/drafts/`.
 
 ### Putting the art in the game
-Only with the owner's OK, and ideally a piece at a time:
+Only with the owner's OK. The first pass is the **vertical slice**: the
+Pallet Town pieces (`P` in the tracker), finished to the standard everything
+else will follow.
 
-1. Set `in_game = true` in `art_kit.toml`.
-2. `python3 tools/research_red/art/ow_maker.py install`: overworld sprites
-   into the game code; `player_warm.pal` is copied over `player.pal`.
-3. `python3 tools/research_red/build_back_pics.py`: the player + Ivy back pics.
-4. Battle pictures are wired by hand in `src/data/graphics/trainers.h`: the
-   full hook-up is in commit `6bf4af269` (`git diff v0.0.19 6bf4af269 --
-   src/data/graphics/trainers.h`); point each picture at
-   `graphics/research_red/cast/<name>/battle_fr`.
-5. Build, `rr_check.py`, smoke tests, then look at it in the game.
+1. `art_gate.py set <piece> approved` for each piece the owner approved.
+2. `art_gate.py apply`, then `make firered -j6`, `rr_check.py`, the smoke
+   tests, and look at it in the game (the scenes where those characters appear).
+3. Mention it in the CHANGELOG like any other change; CREDITS already lists the art.
 
 ## Sprite library
 
@@ -121,10 +148,10 @@ Commands:
     python3 tools/research_red/art/ow_maker.py templates brock     # walking sheets that move most like it
     python3 tools/research_red/art/ow_maker.py grid elm 0,1,2      # frames as letter grids, to plan patches
     python3 tools/research_red/art/ow_maker.py build elm           # sheet + previews only
-    python3 tools/research_red/art/ow_maker.py install             # all recipes, and the game code (art in the game only)
+    python3 tools/research_red/art/ow_maker.py install             # all recipes + the game code for APPROVED ones (normally art_gate.py apply)
     make firered -j6
 
-With the art in the game (see [above](#is-the-art-in-the-game-no-for-now)),
+For approved pieces (see [above](#the-two-lanes-is-the-art-in-the-game)),
 `install` writes the sheets (PNG + `.pal`) and regenerates marked blocks in
 the engine files (`include/constants/event_objects.h`,
 `src/data/object_events/*.h`, `src/event_object_movement.c`); edit the
@@ -197,7 +224,7 @@ behind: the head and upper body, the face painted over with hair (the back of
 a head is hair), mirrored, framed like FireRed's back pictures:
 
     python3 tools/research_red/art/back_maker.py ivy player_m player_f    # or --all
-    python3 tools/research_red/build_back_pics.py                         # the player + Ivy back pic (drafts/ while the art is out)
+    python3 tools/research_red/build_back_pics.py                         # the player + Ivy back pic (drafts/; art_gate puts it in)
 
 They're drafts (front clothing details still show): finish them in Aseprite
 (`aseprite.py open back:ivy`). A drawing of the back in the reference folder

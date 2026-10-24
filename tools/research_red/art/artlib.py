@@ -24,16 +24,26 @@ EMERALD_REF = os.path.expanduser("~/romhacks/_tools/pokeemerald-ref")
 # bases borrowed from outside the repo are copied here so the build never needs EMERALD_REF
 OW_DIR = os.path.join(REPO, "graphics/research_red/overworld")
 REF_ART = "/mnt/e/Workspace/romhacks/research-red/art/ref/ResearchRed_ref_art"
-# the switch for "is the Art Kit's art in the game?" (owner's call; off = drafts only)
+# Which Art Kit pieces are in the game: graphics/research_red/art_kit.toml is the
+# asset tracker (every piece, its stage) and the gate (only "approved" pieces go
+# in; tools/research_red/art/art_gate.py apply). Off = drafts only.
 ART_KIT_SETTINGS = os.path.join(REPO, "graphics/research_red/art_kit.toml")
 DRAFTS_DIR = os.path.join(REPO, "graphics/research_red/drafts")
+# what the game had before any Art Kit piece went in (put back when a piece is taken out)
+PLACEHOLDER_DIR = os.path.join(REPO, "graphics/research_red/placeholder")
+STAGES = ["placeholder", "draft", "hand-finished", "approved"]
 
 
-def art_in_game():
-    """True when the owner has let the Art Kit's art into the game (art_kit.toml)."""
+def load_pieces():
+    """{piece id: {what, where, game_now, stage, slice, notes}} from art_kit.toml."""
     import tomllib
     with open(ART_KIT_SETTINGS, "rb") as f:
-        return bool(tomllib.load(f).get("in_game", False))
+        return tomllib.load(f).get("pieces", {})
+
+
+def approved(piece):
+    """True when the owner has let this piece into the game."""
+    return load_pieces().get(piece, {}).get("stage") == "approved"
 
 # FireRed overworld frame order (16x32 people). Right-facing frames are the
 # left ones mirrored by the game, so they are never drawn.

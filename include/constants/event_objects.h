@@ -231,10 +231,20 @@ enum ObjectEventGfx
 
 // Research Red: story cast. Temporary stand-ins until custom sprites exist;
 // change these lines (not the maps) when the real sprites are added.
+// Each stand-in steps aside once the Art Kit sprite is let into the game
+// (graphics/research_red/art_kit.toml): its id then comes from the enum above.
+#ifndef RR_ART_HAS_OBJ_EVENT_GFX_RR_IVY
 #define OBJ_EVENT_GFX_RR_IVY    OBJ_EVENT_GFX_COOLTRAINER_F
+#endif
+#ifndef RR_ART_HAS_OBJ_EVENT_GFX_RR_JENNY
 #define OBJ_EVENT_GFX_RR_JENNY  OBJ_EVENT_GFX_HEX_MANIAC // #40: walking frames (Sabrina had none)
+#endif
+#ifndef RR_ART_HAS_OBJ_EVENT_GFX_RR_OFFICER_JENNY
 #define OBJ_EVENT_GFX_RR_OFFICER_JENNY OBJ_EVENT_GFX_POLICEMAN // #40: Viridian's Officer Jenny in uniform
+#endif
+#ifndef RR_ART_HAS_OBJ_EVENT_GFX_RR_ELM
 #define OBJ_EVENT_GFX_RR_ELM    OBJ_EVENT_GFX_SCIENTIST
+#endif
 #define OBJ_EVENT_GFX_VAR_0  (OBJ_EVENT_GFX_VARS + 0x0) // 240
 #define OBJ_EVENT_GFX_VAR_1  (OBJ_EVENT_GFX_VARS + 0x1)
 #define OBJ_EVENT_GFX_VAR_2  (OBJ_EVENT_GFX_VARS + 0x2)

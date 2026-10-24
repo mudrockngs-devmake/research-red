@@ -8,8 +8,8 @@ frames by copying the motion of similar sprites. One command turns all
 recipes into game-ready sheets, previews, and the code that adds them.
 
   python3 tools/research_red/art/ow_maker.py build [name ...]   # sheets + previews
-  python3 tools/research_red/art/ow_maker.py install            # also write the game code (only with the art
-                                                               # in the game: graphics/research_red/art_kit.toml)
+  python3 tools/research_red/art/ow_maker.py install            # also the game code, for the APPROVED pieces only
+                                                               # (art_kit.toml; normally run through art_gate.py apply)
   python3 tools/research_red/art/ow_maker.py check              # are the outputs current? (rr_check)
   python3 tools/research_red/art/ow_maker.py colours BASE       # a base's colours, numbered, with where they're used
   python3 tools/research_red/art/ow_maker.py ref 08_elm         # the main colours of a ref art picture
@@ -245,9 +245,14 @@ def read_jasc(path):
     return [tuple(vals[i:i + 3]) for i in range(0, n * 3, 3)]
 
 
+def piece_of(name):
+    """The tracker's piece id for a recipe (both players are one piece: they share player.pal)."""
+    return "ow:players" if name in ("player_m", "player_f") else "ow:" + name
+
+
 def output_png(name, r):
     # an "output" in the game's own folders (the players) only while the art is in the game
-    if r.get("output") and artlib.art_in_game():
+    if r.get("output") and artlib.approved(piece_of(name)):
         return os.path.join(artlib.REPO, r["output"])
     return os.path.join(artlib.OW_DIR, name + ".png")
 
@@ -382,12 +387,15 @@ def pal_names(pal_name):
 def replace_block(path, part, body, anchor_before=None, anchor_after=None, indent=""):
     """Write body between the Art Kit markers for one part (a file can have
     several parts) in an engine file; the first time, put the markers just
-    before anchor_before (or after anchor_after)."""
+    before anchor_before (or after anchor_after). An empty body takes the
+    block out again, so with nothing approved the files are as they were."""
     text = open(path).read()
     begin, end = MARK_BEGIN % part, MARK_END % part
-    block = "%s%s\n%s%s%s\n" % (indent, begin, body, indent, end)
+    block = "%s%s\n%s%s%s\n" % (indent, begin, body, indent, end) if body else ""
     if begin in text:
         text = re.sub(r"[ \t]*" + re.escape(begin) + r".*?" + re.escape(end) + r"\n", lambda m: block, text, flags=re.S)
+    elif not body:
+        return
     elif anchor_before:
         i = text.index(anchor_before)
         i = text.rfind("\n", 0, i) + 1
@@ -399,24 +407,29 @@ def replace_block(path, part, body, anchor_before=None, anchor_after=None, inden
     open(path, "w").write(text)
 
 
-def install(recipes, results):
+def install(recipes, results, allowed):
+    """Write the game code for the recipes in `allowed` (the approved pieces,
+    tools/research_red/art/art_gate.py); everything else goes back to what
+    the game had before, so approving and un-approving are both one run."""
     src = os.path.join(artlib.REPO, "src/data/object_events")
+    on = [n for n in recipes if n in results and n in allowed]
     pals = []  # (pal_name, path) in recipe order, no repeats
-    for name in recipes:
-        if name in results and results[name][2] and results[name][2] not in [p for p, _ in pals]:
+    for name in on:
+        if results[name][2] and results[name][2] not in [p for p, _ in pals]:
             pals.append((results[name][2], os.path.relpath(os.path.join(artlib.OW_DIR, results[name][2] + ".gbapal"), artlib.REPO)))
-    entries = [(n, recipes[n], code_names(n, recipes[n])) for n in recipes if n in results and not recipes[n].get("output")]
+    entries = [(n, recipes[n], code_names(n, recipes[n])) for n in on if not recipes[n].get("output")]
 
-    # constants: new gfx ids (inside the enum) and palette tags
-    body = "".join("    %s,\n" % c["gfx"] for n, r, c in entries if not r.get("replaces"))
+    # constants: new gfx ids (inside the enum; each also tells the stand-in
+    # #define below the enum to step aside) and palette tags
+    body = "".join("    %s,\n#define RR_ART_HAS_%s\n" % (c["gfx"], c["gfx"]) for n, r, c in entries if not r.get("replaces"))
     replace_block(os.path.join(artlib.REPO, "include/constants/event_objects.h"), "ids", body, anchor_before="    NUM_OBJ_EVENT_GFX,", indent="    ")
     path = os.path.join(artlib.REPO, "include/constants/event_objects.h")
     text = open(path).read()
     tags = "".join("#define %-40s 0x%04X\n" % (pal_names(p)[1], PAL_TAG_BASE + i) for i, (p, _) in enumerate(pals))
     tb, te = "// Research Red: Art Kit palette tags BEGIN (generated)\n", "// Research Red: Art Kit palette tags END\n"
     if tb in text:
-        text = re.sub(re.escape(tb) + ".*?" + re.escape(te), lambda m: tb + tags + te, text, flags=re.S)
-    else:
+        text = re.sub("\n?" + re.escape(tb) + ".*?" + re.escape(te), lambda m: ("\n" + tb + tags + te) if tags else "", text, flags=re.S)
+    elif tags:
         i = text.index("#define OBJ_EVENT_PAL_TAG_DYNAMIC")
         i = text.index("\n", i) + 1
         text = text[:i] + "\n" + tb + tags + te + text[i:]
@@ -463,6 +476,7 @@ def install(recipes, results):
     replace_block(os.path.join(src, "object_event_graphics_info.h"), "info", body, anchor_before="const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal")
 
     # pointers: externs + table entries for new ids; replaced ids are re-pointed
+    # (the comment keeps the original, so taking a sprite out puts it back)
     path = os.path.join(src, "object_event_graphics_info_pointers.h")
     body = "".join("extern const struct ObjectEventGraphicsInfo %s;\n" % c["info"] for n, r, c in entries)
     replace_block(path, "externs", body, anchor_before="extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal;")
@@ -471,18 +485,19 @@ def install(recipes, results):
     anchor = re.search(r"\n[ \t]*\[OBJ_EVENT_GFX_RED_NORMAL\]", text).group(0).strip()
     replace_block(path, "table", body, anchor_before=anchor, indent="    ")
     text = open(path).read()
+    text = re.sub(r"&gObjectEventGraphicsInfo_\w+, // Research Red: Art Kit \(\w+\), was (\w+)", r"&\1,", text)
     for n, r, c in entries:
         if r.get("replaces"):
-            pat = re.compile(r"(\[%s\]\s*=\s*&)gObjectEventGraphicsInfo_\w+,[^\n]*" % re.escape(c["gfx"]))
+            pat = re.compile(r"(\[%s\]\s*=\s*&)(gObjectEventGraphicsInfo_\w+),[^\n]*" % re.escape(c["gfx"]))
             if not pat.search(text):
                 raise SystemExit("%s: no pointer line for %s" % (n, c["gfx"]))
-            text = pat.sub(lambda m: m.group(1) + c["info"] + ", // Research Red: Art Kit (%s)" % n, text)
+            text = pat.sub(lambda m: m.group(1) + c["info"] + ", // Research Red: Art Kit (%s), was %s" % (n, m.group(2)), text)
     open(path, "w").write(text)
 
     # palette table
     body = "".join("    {%s, %s},\n" % pal_names(p) for p, _ in pals)
     replace_block(os.path.join(artlib.REPO, "src/event_object_movement.c"), "palettes", body, anchor_before="    {gObjectEventPal_Substitute,", indent="    ")
-    print("installed %d sprites, %d palettes into the game code" % (len(entries), len(pals)))
+    print("game code: %d overworld sprites, %d palettes in (approved in art_kit.toml)" % (len(entries), len(pals)))
 
 
 # ---------------------------------------------------------------- helper commands
@@ -578,13 +593,9 @@ def main(argv):
         recipes, results = build_all()
         write_outputs(recipes, results)
         save_lock(LOCKED)
-        if not artlib.art_in_game():
-            print("built as drafts only: the Art Kit's art is not in the game (graphics/research_red/art_kit.toml)")
-            return 0
-        install(recipes, results)
-        # the players' sheets are fitted to the warmed palette, so the game's player.pal follows
-        shutil.copyfile(os.path.join(artlib.OW_DIR, "player_warm.pal"),
-                        os.path.join(artlib.REPO, "graphics/object_events/palettes/player.pal"))
+        # only approved pieces go into the game; the players' palette and
+        # sheets are art_gate.py's job (it runs this, then swaps those files)
+        install(recipes, results, {n for n in recipes if artlib.approved(piece_of(n))})
     elif cmd in ("check", "--check"):
         return cmd_check()
     elif cmd == "colours":

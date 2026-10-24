@@ -1,10 +1,389 @@
-# Research Red: is the Art Kit's art in the game?
+# Research Red: the Art Kit's asset tracker AND gate (docs/ART_TRACKER.md is made from this).
 #
-# false (owner, 2026-10-24): not until the art generation and edits are better.
-# The tools still build everything, but only as drafts and previews:
-#   - ow_maker.py writes every sheet to graphics/research_red/overworld/ and
-#     leaves the game code alone ("install" = "build");
-#   - build_back_pics.py writes to graphics/research_red/drafts/.
-# The game keeps v0.0.19's pictures. To put the art in (owner's OK first):
-# set true, then follow docs/ART_TOOLS.md "Putting the art in the game".
-in_game = false
+# One [pieces."id"] per thing that will get new art. stage:
+#   placeholder    the game uses a stand-in or early art; the new version isn't started
+#   draft          the Art Kit made a version (tools, no hand work yet)
+#   hand-finished  the owner (or an artist) finished it in Aseprite
+#   approved       the owner's OK: it goes INTO THE GAME (art_gate.py apply)
+# Only "approved" pieces are in the game; everything else stays drafts and previews.
+# Owner, 2026-10-24: nothing is approved until the Art Kit is polished; the first
+# pieces to go in are the Pallet Town ones (slice = "pallet", the vertical slice).
+#
+# Piece ids: ow:<recipe> (overworld sprite, recipes.toml), ow:players (both players +
+# player.pal), battle:<cast> (trainer battle picture), back_pics (player + Ivy from
+# behind), game:<name> (placed in the game with the old tools; tracked so the art
+# pass can redo it). Change a stage: art_gate.py set ID STAGE ["note"].
+
+# ------------------------------------------------------------------ overworld sprites (walking around)
+
+[pieces."ow:players"]
+what = "The player walking, running, on the bike and surfing (both players; also warms player.pal)"
+where = "Everywhere"
+game_now = "The players' walking sheets from v0.0.19 (recoloured Birch / Lorelei, no new running frames)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."ow:elm"]
+what = "Professor Elm walking"
+where = "Pallet Town, Rival's house, Route 1, Viridian, Route 22, Pewter, Pewter Gym"
+game_now = "FireRed's Scientist (stand-in)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."ow:ivy"]
+what = "Ivy walking"
+where = "Pallet Town, your house, Rival's house, Oak's lab, Route 1, Pewter Gym (and following you)"
+game_now = "FireRed's Cooltrainer (stand-in)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."ow:jenny"]
+what = "Jenny (casual) walking"
+where = "Pallet Town, Rival's house, Oak's lab, Route 1, Viridian, Route 22, Pewter, Pewter Gym"
+game_now = "FireRed's Hex Maniac (stand-in)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."ow:officer_jenny"]
+what = "Officer Jenny walking"
+where = "Viridian City"
+game_now = "FireRed's Policeman (stand-in)"
+stage = "draft"
+
+[pieces."ow:delia"]
+what = "Delia walking"
+where = "Your house (1F)"
+game_now = "FireRed's Mom"
+stage = "draft"
+slice = "pallet"
+
+[pieces."ow:brock"]
+what = "Brock walking"
+where = "Pewter Gym"
+game_now = "FireRed's own Brock sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:misty"]
+what = "Misty walking"
+where = "Cerulean Gym (after the demo)"
+game_now = "FireRed's own Misty sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:lt_surge"]
+what = "Lt. Surge walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Lt. Surge sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:erika"]
+what = "Erika walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Erika sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:koga"]
+what = "Koga walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Koga sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:sabrina"]
+what = "Sabrina walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Sabrina sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:blaine"]
+what = "Blaine walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Blaine sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:giovanni"]
+what = "Giovanni walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Giovanni sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:lorelei"]
+what = "Lorelei walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Lorelei sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:bruno"]
+what = "Bruno walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Bruno sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:agatha"]
+what = "Agatha walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Agatha sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:lance"]
+what = "Lance walking"
+where = "Their FireRed spots (after the demo)"
+game_now = "FireRed's own Lance sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:prof_oak"]
+what = "Professor Oak walking"
+where = "Pallet Town, Oak's lab, Indigo Plateau, Hall of Fame"
+game_now = "FireRed's own Professor Oak sprite (stands still)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."ow:bill"]
+what = "Bill walking"
+where = "Sea Cottage, Cinnabar, One Island (after the demo)"
+game_now = "FireRed's own Bill sprite (stands still)"
+stage = "draft"
+
+[pieces."ow:dj_mary"]
+what = "DJ Mary walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+[pieces."ow:prof_westwood"]
+what = "Prof. Westwood walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+[pieces."ow:melody"]
+what = "Melody walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+[pieces."ow:lisa"]
+what = "Lisa walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+[pieces."ow:mrs_hale"]
+what = "Mrs. Hale walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+[pieces."ow:prof_hale"]
+what = "Prof. Hale walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+[pieces."ow:jessie"]
+what = "Jessie walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+[pieces."ow:james"]
+what = "James walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+[pieces."ow:prof_mudrock"]
+what = "Prof. Mudrock walking"
+where = "Not on a map yet"
+game_now = "Not in the game yet (new character)"
+stage = "draft"
+
+# ------------------------------------------------------------------ battle pictures (the trainer you fight)
+
+[pieces."battle:player_m"]
+what = "You (male): Trainer Card, Hall of Fame battle picture (FireRed proportions, battle_fr)"
+where = "Trainer Card, Hall of Fame"
+game_now = "The cast art's battle.png (v0.0.19)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."battle:player_f"]
+what = "You (female): Trainer Card, Hall of Fame battle picture (FireRed proportions, battle_fr)"
+where = "Trainer Card, Hall of Fame"
+game_now = "The cast art's battle.png (v0.0.19)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."battle:elm"]
+what = "Elm battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "The cast art's battle.png (v0.0.19)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."battle:oak"]
+what = "Oak battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "The cast art's battle.png (v0.0.19)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."battle:daisy"]
+what = "Daisy battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "The cast art's battle.png (v0.0.19)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."battle:delia"]
+what = "Delia battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "The cast art's battle.png (v0.0.19)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."battle:jenny"]
+what = "Jenny battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "The cast art's battle.png (v0.0.19)"
+stage = "draft"
+slice = "pallet"
+
+[pieces."battle:brock"]
+what = "Brock battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:misty"]
+what = "Misty battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:surge"]
+what = "Lt. Surge battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:erika"]
+what = "Erika battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:koga"]
+what = "Koga battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:sabrina"]
+what = "Sabrina battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:blaine"]
+what = "Blaine battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:giovanni"]
+what = "Giovanni battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:lorelei"]
+what = "Lorelei battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:bruno"]
+what = "Bruno battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:agatha"]
+what = "Agatha battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+[pieces."battle:lance"]
+what = "Lance battle picture (FireRed proportions, battle_fr)"
+where = "Battles"
+game_now = "FireRed's own picture"
+stage = "draft"
+
+# ------------------------------------------------------------------ back pictures
+
+[pieces."back_pics"]
+what = "Your side of a battle: you + Ivy seen from behind, with the throw"
+where = "Every battle"
+game_now = "FireRed's Red / Leaf back pictures"
+stage = "draft"
+slice = "pallet"
+notes = "Drafts from back_maker.py; front clothing details still show, finish in Aseprite"
+
+# ------------------------------------------------------------------ game lane: placed with the old tools, redo in the art pass
+
+[pieces."game:cast_portraits"]
+what = "Dialogue portraits and video-call faces (32 characters)"
+where = "Every story scene, the intro call"
+game_now = "Early cast art converted from the ref art (in the game since v0.0.x)"
+stage = "placeholder"
+slice = "pallet"
+
+[pieces."game:cast_battle"]
+what = "The cast's full-body battle.png (until battle_fr is approved)"
+where = "Battles with Elm, Oak, Daisy, Delia, Jenny; full-body banter look"
+game_now = "Early cast art (in the game)"
+stage = "placeholder"
+
+[pieces."game:pokemon_portraits"]
+what = "Pokemon dialogue portraits"
+where = "Banter, story scenes"
+game_now = "Cut from the games' front sprites (#15 for more)"
+stage = "placeholder"
+
+[pieces."game:title"]
+what = "Title screen: logo, Slowpoke in a lab coat, notebook paper"
+where = "Title screen"
+game_now = "build_title.py (own drawing over the game's Slowpoke)"
+stage = "placeholder"
+slice = "pallet"
+
+[pieces."game:intro_call"]
+what = "Intro video call frame and avatars"
+where = "New game"
+game_now = "build_call_ui.py from the animatic layout"
+stage = "placeholder"
+slice = "pallet"
+
+[pieces."game:battle_backgrounds"]
+what = "Battle backgrounds per place"
+where = "Battles"
+game_now = "FireRed's backgrounds in cozier colours (battle_bg_theme.py); scenery ones are #74"
+stage = "placeholder"
+
+[pieces."game:notebook_ui"]
+what = "The Field notebook look (menus, text boxes, battle boxes)"
+where = "Menus everywhere"
+game_now = "ui_theme.py recolour of FireRed's interface"
+stage = "placeholder"
+
+[pieces."game:picnic_blanket"]
+what = "Picnic blanket (#8)"
+where = "Route 22 lunch"
+game_now = "Made with the existing tiles"
+stage = "placeholder"
+
+[pieces."game:ambient_pokemon"]
+what = "Ambient Pokemon on maps (#64)"
+where = "Pallet, lab, Pokemon Centers, Viridian Forest"
+game_now = "The games' overworld Pokemon"
+stage = "placeholder"
