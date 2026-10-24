@@ -3,9 +3,9 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-24 (Art Kit art taken back out of the game; v0.0.19 still in playtest)_
+_Last updated: 2026-10-24 (two lanes set up: Art Kit gate + tracker, viewer and hub upgrades; v0.0.19 still in playtest)_
 
-## Two lanes + viewer and hub run (2026-10-24, in progress; owner answers in ROADMAP.md "Two lanes")
+## Two lanes + viewer and hub run (2026-10-24, done; owner answers in ROADMAP.md "Two lanes")
 No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
 - [x] 1 switch per piece (art_kit.toml stages; art_gate.py apply, reversible, tested round trip)
 - [x] 2 asset tracker docs/ART_TRACKER.md (58 pieces) + rr_check / GitHub check + E: copy
@@ -13,8 +13,8 @@ No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
 - [x] 4 art bible docs/ART_BIBLE.md (draft, 3 questions for the owner at the end)
 - [x] 5-6 vertical slice + game lane rule (ART_TOOLS, CLAUDE.md)
 - [x] 7-14 viewer: verdict/choice buttons (-> art_gate verdicts, tested), spot notes, compare + slider, animation player, in-game preview, history, alert + sound, themes (Dive Ball default; board too)
-- [ ] 15-19 hub: themes (Dive Ball default), Today screen, project shortcuts, health check, desktop shortcut + cheat sheet
-- [ ] final: docs (ART_TOOLS, DEV_GUIDE), STATUS, push
+- [x] 15-19 hub (claude-setup, local): themes (Dive Ball default), Settings, Today screen, project shortcuts (Research Red's `.hub/actions`), health check, desktop shortcut with a ball icon, cheat sheet
+- [x] final: docs, CREDITS, rr_check, build byte-identical to v0.0.19, pushed
 
 ## Art Kit art: out of the game until further notice (owner, 2026-10-24)
 The owner wants the art generation and edits improved before anything replaces what's in the game. The game's
@@ -89,7 +89,7 @@ sprites (Oak, Bill + 9 new RR_ cast drafts); every trainer battle picture from t
 (`tools/research_red/viewer/viewer.py open`) + scene board; Aseprite open/import (`tools/research_red/art/aseprite.py`).
 Owner to look at: the gallery (`E:\Workspace\romhacks\research-red\art\toolkit\gallery.html`), the viewer, hand-finishing
 the back drafts in Aseprite. Hub (claude-setup): Poké Ball look, "Start working" picks up by itself. Image generation tabled.
-Session cost 2026-10-24 total: $33.31 at wrap-up (session-cost; includes round 1's $15.66). Log it in the next round's NOTES.md.
+Session cost 2026-10-24 (earlier sessions) total: $33.31 at wrap-up (session-cost; includes round 1's $15.66). Log it in the next round's NOTES.md.
 Idea for the hub (claude-setup): the owner's favourite balls are the Quick Ball and Dive Ball: offer one as the hub theme.
 - [x] Sprite fixes from the owner's notes + parts library (coats, apron, tie, cane, hair); Koga's battle legs
 - [x] Live preview page + scene board (Windows browser, opens by itself)

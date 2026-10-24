@@ -1,0 +1,7 @@
+# Research Red's own lines in Claude Hub (project menu). One "label|command" per
+# line; the command runs in this folder. Part of the hub's project shortcuts.
+Open the viewer (pictures, questions, scene board)|python3 tools/research_red/viewer/viewer.py open
+Play the installed build in mGBA|cmd.exe /c start "" "E:\Workspace\_tools\mGBA\mGBA-0.10.5-win64\mGBA.exe" "E:\Workspace\romhacks\research-red\ResearchRed_local.gba"
+Open the game folder on E:|explorer.exe 'E:\Workspace\romhacks\research-red'; true
+Read the newest what's-new report|cd /mnt/c && cmd.exe /c start "" "$(wslpath -w "$(ls -d /mnt/e/Workspace/romhacks/research-red/whats-new/v* | sort -V | tail -1)/report.html")"
+Art tracker: what's left to make|cd /mnt/c && cmd.exe /c start "" notepad.exe 'E:\Workspace\romhacks\research-red\ART_TRACKER.md'
