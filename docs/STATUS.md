@@ -70,7 +70,7 @@ Work through this list, commit after each, keep this updated. Nothing gets insta
 - [x] Sprite library: catalogue + contact sheets of every overworld / trainer / Pokemon picture; walk-motion study
 - [x] Overworld maker: recipes (base sheet + recolour + pixel patches), walk/run frame generator, GIF previews, add-to-game command
 - [x] Overworld sprites: Elm, Jenny, Officer Jenny, Ivy, players M/F, Delia; gym leaders + Elite Four
-- [ ] Battle pictures: gym leaders + Elite Four from the ref art; battle sprite checker/fixer, shiny palettes, back-pic throw frames, GIFs
+- [x] Battle pictures: gym leaders + Elite Four from the ref art; battle sprite checker/fixer, shiny palettes, back-pic throw frames, GIFs
 - [ ] Map art: tileset inspector, furniture/building importer (Porytiles or our own), building + door wizard (tested in a scratch copy)
 - [ ] Cloud: GitHub Action for art checks + preview gallery
 - [ ] Guide: docs/ART_TOOLS.md, ARTIST_GUIDE/ASSETS/DEV_GUIDE, rr_check art rule, CREDITS; private sprite-editing notes on E:

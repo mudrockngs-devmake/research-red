@@ -42,12 +42,12 @@ def _patch_cost(stand, walk, sx, sy, wx, wy):
     return cost
 
 
-def move_map(t_stand, t_walk):
+def move_map(t_stand, t_walk, start=HEAD_ROWS, reach=REACH):
     """For each pixel of the template walk frame: (dx, dy) to the pixel of the
     template stand frame it came from, or 'gone' / 'new' / None (keep)."""
     h, w = len(t_stand), len(t_stand[0])
     out = [[None] * w for _ in range(h)]
-    for y in range(HEAD_ROWS, h):
+    for y in range(start, h):
         for x in range(w):
             if t_walk[y][x] == t_stand[y][x] and _patch_cost(t_stand, t_walk, x, y, x, y) == 0:
                 continue  # unchanged pixel: keep ours
@@ -55,8 +55,8 @@ def move_map(t_stand, t_walk):
                 out[y][x] = "gone"
                 continue
             best = None
-            for dy in range(-REACH, REACH + 1):
-                for dx in range(-REACH, REACH + 1):
+            for dy in range(-reach, reach + 1):
+                for dx in range(-reach, reach + 1):
                     sx, sy = x + dx, y + dy
                     if not (0 <= sx < w and 0 <= sy < h) or t_stand[sy][sx] != t_walk[y][x]:
                         continue
@@ -98,34 +98,38 @@ def _near_own(o_stand, x, y, want, link_back):
     return best[1] if best else None
 
 
-def head_bob(t_stand, t_walk):
+def head_bob(t_stand, t_walk, start=HEAD_ROWS, rigid_to=RIGID_TO):
     """How many pixels the template's head moved down in this frame (-1..2)."""
     best = None
+    h, w = len(t_stand), len(t_stand[0])
     for dy in (0, 1, -1, 2):
         same = 0
-        for y in range(HEAD_ROWS, RIGID_TO):
-            if 0 <= y - dy < 32:
-                same += sum(1 for x in range(16) if t_walk[y][x] is not None and t_walk[y][x] == t_stand[y - dy][x])
+        for y in range(start, rigid_to):
+            if 0 <= y - dy < h:
+                same += sum(1 for x in range(w) if t_walk[y][x] is not None and t_walk[y][x] == t_stand[y - dy][x])
         if best is None or same > best[0]:
             best = (same, dy)
     return best[1]
 
 
-def transfer(t_stand, t_walk, o_stand):
+def transfer(t_stand, t_walk, o_stand, start=HEAD_ROWS, rigid_to=RIGID_TO, reach=REACH):
     """Our walking frame from our standing frame and the template's pair.
-    The head (rows above RIGID_TO) is our own head moved by the template's bob,
-    so hair shapes never break up; the body and legs follow the move map."""
-    bob = head_bob(t_stand, t_walk)
-    mm = move_map(t_stand, t_walk)
+    The head (rows above rigid_to) is our own head moved by the template's bob,
+    so hair shapes never break up; the body and legs follow the move map.
+    Any size of frame works (battle_kit.py uses it for 64x64 back pics with
+    rigid_to=0 and a longer reach)."""
+    bob = head_bob(t_stand, t_walk, start, rigid_to) if rigid_to > start else 0
+    mm = move_map(t_stand, t_walk, start, reach)
     link = colour_link(t_stand, o_stand)
     link_back = {}
     for a, b in link.items():
         link_back.setdefault(b, a)
     h, w = len(o_stand), len(o_stand[0])
     out = [row[:] for row in o_stand]
-    for y in range(HEAD_ROWS, RIGID_TO + bob):
-        out[y] = o_stand[y - bob][:] if 0 <= y - bob < h else [None] * w
-    for y in range(RIGID_TO + bob, h):
+    if rigid_to > start:
+        for y in range(start, rigid_to + bob):
+            out[y] = o_stand[y - bob][:] if 0 <= y - bob < h else [None] * w
+    for y in range(max(start, rigid_to + bob), h):
         for x in range(w):
             m = mm[y][x]
             if m is None:

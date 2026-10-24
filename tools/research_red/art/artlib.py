@@ -56,6 +56,13 @@ def load_grid(path):
     return [[None if px[x, y][3] < 128 else px[x, y][:3] for x in range(im.width)] for y in range(im.height)]
 
 
+def load_grid_from_image(im):
+    """A PIL image (any mode) -> grid, alpha < 128 = None."""
+    im = im.convert("RGBA")
+    px = im.load()
+    return [[None if px[x, y][3] < 128 else px[x, y][:3] for x in range(im.width)] for y in range(im.height)]
+
+
 def blank(w, h):
     return [[None] * w for _ in range(h)]
 
