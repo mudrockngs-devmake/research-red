@@ -3,7 +3,10 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-24 (two lanes set up: Art Kit gate + tracker, viewer and hub upgrades; v0.0.19 still in playtest)_
+_Last updated: 2026-10-24, end of day (two lanes set up: Art Kit gate + tracker, viewer and hub upgrades; v0.0.19 still in playtest)_
+
+Session costs 2026-10-24 (`session-cost`, readings may lag): 08:42 session (Art Kit rounds 1-2) $33.74; 12:05 session
+(two lanes, viewer, hub) $9.54; day total $43.28. Log them in the next round's NOTES.md when archiving the playtest.
 
 ## Two lanes + viewer and hub run (2026-10-24, done; owner answers in ROADMAP.md "Two lanes")
 No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
@@ -33,6 +36,9 @@ the game; `tools/research_red/art/art_gate.py`), page docs/ART_TRACKER.md. How t
 - Last playtest archived: `test-archive/2026-10-20_v0.0.18_playtest/` (owner, 9 bug cards -> issues #76-#95 + comments; NOTES.md has the session costs).
 
 ## Waiting on the owner
+- [ ] Try the new viewer (F5: Approve / Needs work, Mark a spot, Animation, In game, History, themes) and the new hub look, Today screen, Settings and the desktop shortcut; say what feels off.
+- [ ] Hub "I'm done for today" (backups were 5 days old on 2026-10-24).
+- [ ] The 3 questions at the end of docs/ART_BIBLE.md (outline colour, battle picture proportions, signature colours), whenever.
 - [ ] v0.0.19 playtest with the what's-new report (pick portraits or full-body there; Debug > Scripts > 13 switches).
 - [ ] Rework the draft lines from part 2: Oak's grant / Lab Supplies lines, the lab's Oak rounds (#86), the aide's PC topic, Slowking's pages.
 - [ ] Rework the placeholder lines added in v0.0.16 (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, the rematches, the lab aide).
@@ -44,7 +50,10 @@ the game; `tools/research_red/art/art_gate.py`), page docs/ART_TRACKER.md. How t
 - Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
 - Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
 
-## NEXT SESSION START HERE: v0.0.19 is out for the owner's playtest (master also has the Art Kit run, see above)
+## NEXT SESSION START HERE: v0.0.19 is out for the owner's playtest; work is in two lanes now
+Game-lane sessions build on the art already in the game; Art Kit sessions improve the tools and drafts (#104 is the
+first pass: Pallet Town). Nothing from the Art Kit is approved: `art_gate.py status` shows every piece.
+Earlier notes on v0.0.19:
 Parts 1 and 2 are done, committed and tested (smoke 61/61, `test-runs/2026-10-21_0234_v0.0.19_c883da619`; `make check`: only the known Explosion timeout;
 rr_check clean). Installed and tagged 2026-10-21 with the owner's OK. After the playtest:
 `tools/research_red/rr_archive_test.sh <test-name>`, then turn the notes into issues.
@@ -156,7 +165,7 @@ Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, 
 - [x] Final: full smoke run, rr_check, CHANGELOG, what's-new report, CREDITS list of art used; NO install/tag
 
 ## Half-finished / open threads
-- Nothing half-done: everything is committed and pushed (2026-10-24 end of day). Back pictures and the 11 newest overworld sprites are drafts for the owner to finish (aseprite.py).
+- Nothing half-done: everything is committed and pushed (2026-10-24 end of day; claude-setup committed locally, it's this-computer-only). All Art Kit art is drafts (tracker: docs/ART_TRACKER.md); none is approved.
 - Rematch rules (owner, 2026-10-20) are on #52: build on each character's existing team, separate tiers for 7 and 8 badges, a post-game tier with regional forms and exchange-program visitors (Mimey, Muffin stay home), Megas in the post-game tier (to add).
 - Still needs the owner's eyes: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile evolution under the cap).
 - The League gate block (Route 22) has no automatic test; check by hand (#2).
