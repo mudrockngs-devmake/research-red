@@ -64,7 +64,19 @@ Test tooling added: `runner.log` per scene, `||` in conditions, `GameMemory.part
 | Flags / vars | 2304 / 256 | ~570 flags and ~90 vars still unused; keep FLAGS_VARS.md current |
 | RAM (EWRAM, permanent) | 250156 of 262144 bytes | ~11.7 KB free; new screens should allocate while open |
 
-## v0.0.19 run (in progress, started 2026-10-20 evening)
+## Art Kit run (started 2026-10-24; owner answers in ROADMAP.md "Art Kit run")
+Work through this list, commit after each, keep this updated. Nothing gets installed or tagged.
+- [ ] Windows tools: Porymap + LibreSprite in `E:\Workspace\_tools\`; survey of other romhack projects' art tools
+- [ ] Sprite library: catalogue + contact sheets of every overworld / trainer / Pokemon picture; walk-motion study
+- [ ] Overworld maker: recipes (base sheet + recolour + pixel patches), walk/run frame generator, GIF previews, add-to-game command
+- [ ] Overworld sprites: Elm, Jenny, Officer Jenny, Ivy, players M/F, Delia; gym leaders + Elite Four
+- [ ] Battle pictures: gym leaders + Elite Four from the ref art; battle sprite checker/fixer, shiny palettes, back-pic throw frames, GIFs
+- [ ] Map art: tileset inspector, furniture/building importer (Porytiles or our own), building + door wizard (tested in a scratch copy)
+- [ ] Cloud: GitHub Action for art checks + preview gallery
+- [ ] Guide: docs/ART_TOOLS.md, ARTIST_GUIDE/ASSETS/DEV_GUIDE, rr_check art rule, CREDITS; private sprite-editing notes on E:
+- [ ] Final: build, rr_check, smoke tests; gallery for the owner
+
+## v0.0.19 run (done, started 2026-10-20 evening)
 Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, commit after each, keep this updated. Stop before install/tag/release.
 - [x] #76 portraits stay on the last page; starter list on the left
 - [x] #78 type display back to the engine's

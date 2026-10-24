@@ -129,3 +129,9 @@ Older notes for this build:
 - Engine extras to consider (built in, off for now): Emerald-style map pop-ups (`OW_MAP_POPUP_EMERALD`); item descriptions only the first time (needs a save-layout change, so at a save-version bump); follower Pokémon (clashes with Ivy following, an experiment at most). Type-tinted battle text boxes would be new work.
 
 **After v0.0.16:** Claude's test-tool upgrades (#18: memory-poke warps and no-encounter mode, a route planner from map data, the engine's battle tests, wait-until-ready), smaller patch (#17).
+
+## Art Kit run (planned with the owner 2026-10-24, while v0.0.19 is in playtest)
+**Owner answers (2026-10-24, all suggestions approved):** templates mined from the game's own sprites, no AI image models (community rules; a private experiment outside the repo could come later); install Porymap and LibreSprite on Windows in `E:\Workspace\_tools\` (Aseprite is fine to buy later if it helps); tools in the repo under `tools/research_red/art/` (public), previews and drafts on `E:\Workspace\romhacks\research-red\art\toolkit\` with a `gallery.html`; one run in this order, commit after each step; look at what other well-known romhack projects use; automate safe things in the cloud (GitHub Actions).
+**Real assets wanted (owner):** overworld sprites for Elm, Jenny (casual and police), Ivy, the two players, Delia (replaces Mom if she doesn't match); gym leaders' and Elite Four's overworld sprites and battle pictures matched to the reference art. Built and committed, not installed until the v0.0.19 playtest is done.
+**Later (owner ideas, not this run):** a greenhouse in or near Pallet (maybe a new route to it), the Wild Area (#60), the fossil sanctuary (#68). The building wizard is meant to make these possible.
+**Learning:** the owner wants to learn sprite editing, alone and in sessions; private starter notes on E: (not in the repo).
