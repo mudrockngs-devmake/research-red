@@ -1,0 +1,10 @@
+# Research Red: is the Art Kit's art in the game?
+#
+# false (owner, 2026-10-24): not until the art generation and edits are better.
+# The tools still build everything, but only as drafts and previews:
+#   - ow_maker.py writes every sheet to graphics/research_red/overworld/ and
+#     leaves the game code alone ("install" = "build");
+#   - build_back_pics.py writes to graphics/research_red/drafts/.
+# The game keeps v0.0.19's pictures. To put the art in (owner's OK first):
+# set true, then follow docs/ART_TOOLS.md "Putting the art in the game".
+in_game = false

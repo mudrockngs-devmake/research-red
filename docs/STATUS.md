@@ -3,7 +3,14 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-24, end of day (Art Kit rounds 1 and 2 done, in master, not installed; v0.0.19 still in playtest)_
+_Last updated: 2026-10-24 (Art Kit art taken back out of the game; v0.0.19 still in playtest)_
+
+## Art Kit art: out of the game until further notice (owner, 2026-10-24)
+The owner wants the art generation and edits improved before anything replaces what's in the game. The game's
+wiring went back to v0.0.19 (the build is byte-identical to the installed v0.0.19 ROM); the tools, recipes and
+all new art stay as drafts. Switch: `graphics/research_red/art_kit.toml` (`in_game = false`); while off,
+`ow_maker.py install` and `build_back_pics.py` write drafts only. How to put it back: docs/ART_TOOLS.md
+"Putting the art in the game". So "goes into v0.0.20" below no longer holds.
 
 ## Current build
 - **v0.0.19** (2026-10-21): parts 1 and 2 (see CHANGELOG.md). Installed as `ResearchRed_local.gba`, tagged `v0.0.19`, pre-release on GitHub. Smoke 61/61 (`test-runs/2026-10-21_0234_v0.0.19_c883da619`). What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.19\report.html`. **Save: start a new game.**

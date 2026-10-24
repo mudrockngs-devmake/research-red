@@ -24,6 +24,16 @@ EMERALD_REF = os.path.expanduser("~/romhacks/_tools/pokeemerald-ref")
 # bases borrowed from outside the repo are copied here so the build never needs EMERALD_REF
 OW_DIR = os.path.join(REPO, "graphics/research_red/overworld")
 REF_ART = "/mnt/e/Workspace/romhacks/research-red/art/ref/ResearchRed_ref_art"
+# the switch for "is the Art Kit's art in the game?" (owner's call; off = drafts only)
+ART_KIT_SETTINGS = os.path.join(REPO, "graphics/research_red/art_kit.toml")
+DRAFTS_DIR = os.path.join(REPO, "graphics/research_red/drafts")
+
+
+def art_in_game():
+    """True when the owner has let the Art Kit's art into the game (art_kit.toml)."""
+    import tomllib
+    with open(ART_KIT_SETTINGS, "rb") as f:
+        return bool(tomllib.load(f).get("in_game", False))
 
 # FireRed overworld frame order (16x32 people). Right-facing frames are the
 # left ones mirrored by the game, so they are never drawn.

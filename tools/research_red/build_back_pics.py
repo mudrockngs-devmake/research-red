@@ -12,7 +12,9 @@ FireRed's Red / Leaf back pics are 5 frames (the ball throw): the player leans
 the way Red does (THROW_LEAN). Writes over
   graphics/trainers/back_pics/{red,leaf}_back_pic.png and
   graphics/trainers/palettes/{red,leaf}_back_pic.pal
-(male player -> Red's slot, female -> Leaf's).
+(male player -> Red's slot, female -> Leaf's). While the Art Kit's art is not
+in the game (graphics/research_red/art_kit.toml) they go to
+graphics/research_red/drafts/ instead and the game keeps its back pics.
 
   python3 tools/research_red/build_back_pics.py [--preview OUT.png]
 """
@@ -23,6 +25,8 @@ from PIL import Image
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CAST = os.path.join(REPO, "graphics/research_red/cast")
+sys.path.insert(0, os.path.join(REPO, "tools/research_red/art"))
+import artlib  # noqa: E402  (pixel grids: colour 0 = see-through; the in-game switch)
 KEY = (0, 255, 0)  # the portraits' transparent green
 FRAMES = 5
 
@@ -54,8 +58,6 @@ def back_view(name, scale):
     path = os.path.join(CAST, name, "back.png")
     if not os.path.exists(path):
         return cutout(name, scale)
-    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "art"))
-    import artlib  # colour 0 = see-through
     im = artlib.to_rgba(artlib.load_grid(path))
     im = im.crop(im.getbbox())
     # back views are upper bodies: scale by height (scale = share of the 64 rows)
@@ -97,6 +99,10 @@ def write_pal(path, img):
 
 def main():
     previews = []
+    in_game = artlib.art_in_game()
+    pics = os.path.join(REPO, "graphics/trainers/back_pics") if in_game else artlib.DRAFTS_DIR
+    pals = os.path.join(REPO, "graphics/trainers/palettes") if in_game else artlib.DRAFTS_DIR
+    os.makedirs(pics, exist_ok=True)
     for player, slot in (("player_m", "red"), ("player_f", "leaf")):
         # one palette for all 5 frames: build them together, then split
         tall = Image.new("RGBA", (64, 64 * FRAMES), (0, 0, 0, 0))
@@ -104,11 +110,11 @@ def main():
             tall.alpha_composite(duo(player, THROW_LEAN[i]), (0, 64 * i))
         sheet = to_indexed(tall)
         frame = sheet.crop((0, 0, 64, 64))
-        sheet.save(os.path.join(REPO, f"graphics/trainers/back_pics/{slot}_back_pic.png"))
-        write_pal(os.path.join(REPO, f"graphics/trainers/palettes/{slot}_back_pic.pal"), frame)
-        for gen in (f"graphics/trainers/back_pics/{slot}_back_pic.4bpp", f"graphics/trainers/palettes/{slot}_back_pic.gbapal"):
-            if os.path.exists(os.path.join(REPO, gen)):
-                os.remove(os.path.join(REPO, gen))  # generated: make rebuilds them
+        sheet.save(os.path.join(pics, f"{slot}_back_pic.png"))
+        write_pal(os.path.join(pals, f"{slot}_back_pic.pal"), frame)
+        for gen in (os.path.join(pics, f"{slot}_back_pic.4bpp"), os.path.join(pals, f"{slot}_back_pic.gbapal")):
+            if in_game and os.path.exists(gen):
+                os.remove(gen)  # generated: make rebuilds them
         previews.append(frame.convert("RGB"))
     if "--preview" in sys.argv:
         out = sys.argv[sys.argv.index("--preview") + 1]
@@ -116,7 +122,8 @@ def main():
         for i, p in enumerate(previews):
             sheet.paste(p, (i * 72, 0))
         sheet.resize((sheet.width * 4, sheet.height * 4), Image.NEAREST).save(out)
-    print("back pics written (red = male player + Ivy, leaf = female player + Ivy)")
+    print("back pics written to %s (red = male player + Ivy, leaf = female player + Ivy)%s"
+          % (os.path.relpath(pics, REPO), "" if in_game else ": drafts, the art is not in the game (art_kit.toml)"))
 
 
 if __name__ == "__main__":

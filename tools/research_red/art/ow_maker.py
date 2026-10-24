@@ -8,7 +8,8 @@ frames by copying the motion of similar sprites. One command turns all
 recipes into game-ready sheets, previews, and the code that adds them.
 
   python3 tools/research_red/art/ow_maker.py build [name ...]   # sheets + previews
-  python3 tools/research_red/art/ow_maker.py install            # also write the game code
+  python3 tools/research_red/art/ow_maker.py install            # also write the game code (only with the art
+                                                               # in the game: graphics/research_red/art_kit.toml)
   python3 tools/research_red/art/ow_maker.py check              # are the outputs current? (rr_check)
   python3 tools/research_red/art/ow_maker.py colours BASE       # a base's colours, numbered, with where they're used
   python3 tools/research_red/art/ow_maker.py ref 08_elm         # the main colours of a ref art picture
@@ -63,6 +64,7 @@ previews (walk GIF, frames, before/after) in E:\\...\\art\\toolkit\\overworld\\.
 """
 import os
 import re
+import shutil
 import sys
 import tomllib
 
@@ -244,7 +246,10 @@ def read_jasc(path):
 
 
 def output_png(name, r):
-    return os.path.join(artlib.REPO, r["output"]) if r.get("output") else os.path.join(artlib.OW_DIR, name + ".png")
+    # an "output" in the game's own folders (the players) only while the art is in the game
+    if r.get("output") and artlib.art_in_game():
+        return os.path.join(artlib.REPO, r["output"])
+    return os.path.join(artlib.OW_DIR, name + ".png")
 
 
 def build_all(only=None):
@@ -570,7 +575,13 @@ def main(argv):
         recipes, results = build_all()
         write_outputs(recipes, results)
         save_lock(LOCKED)
+        if not artlib.art_in_game():
+            print("built as drafts only: the Art Kit's art is not in the game (graphics/research_red/art_kit.toml)")
+            return 0
         install(recipes, results)
+        # the players' sheets are fitted to the warmed palette, so the game's player.pal follows
+        shutil.copyfile(os.path.join(artlib.OW_DIR, "player_warm.pal"),
+                        os.path.join(artlib.REPO, "graphics/object_events/palettes/player.pal"))
     elif cmd in ("check", "--check"):
         return cmd_check()
     elif cmd == "colours":

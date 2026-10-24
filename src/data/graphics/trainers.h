@@ -7,14 +7,14 @@ static const u8 gTrainerBackPic_None[] = INCBIN_U8("graphics/trainers/back_pics/
 static const u16 gTrainerPalette_None[] = INCBIN_U16("graphics/trainers/palettes/none.gbapal");
 
 // Research Red (#24): the player's own picture (Trainer Card, Hall of Fame...) instead of Red / Leaf
-static const u32 gTrainerFrontPic_Red[] = INCBIN_U32("graphics/research_red/cast/player_m/battle_fr.4bpp.smol");
-static const u16 gTrainerPalette_Red[] = INCBIN_U16("graphics/research_red/cast/player_m/battle_fr.gbapal");
+static const u32 gTrainerFrontPic_Red[] = INCBIN_U32("graphics/research_red/cast/player_m/battle.4bpp.smol");
+static const u16 gTrainerPalette_Red[] = INCBIN_U16("graphics/research_red/cast/player_m/battle.gbapal");
 static const u8 gTrainerBackPic_Red[] = INCBIN_U8("graphics/trainers/back_pics/red_back_pic.4bpp");
 static const u16 gTrainerPalette_RedBackPic[] = INCBIN_U16("graphics/trainers/palettes/red_back_pic.gbapal");
 
-static const u32 gTrainerFrontPic_Leaf[] = INCBIN_U32("graphics/research_red/cast/player_f/battle_fr.4bpp.smol"); // Research Red (#24)
+static const u32 gTrainerFrontPic_Leaf[] = INCBIN_U32("graphics/research_red/cast/player_f/battle.4bpp.smol"); // Research Red (#24)
 static const u8 gTrainerBackPic_Leaf[] = INCBIN_U8("graphics/trainers/back_pics/leaf_back_pic.4bpp");
-static const u16 gTrainerPalette_Leaf[] = INCBIN_U16("graphics/research_red/cast/player_f/battle_fr.gbapal"); // Research Red (#24)
+static const u16 gTrainerPalette_Leaf[] = INCBIN_U16("graphics/research_red/cast/player_f/battle.gbapal"); // Research Red (#24)
 static const u16 gTrainerPalette_LeafBackPic[] = INCBIN_U16("graphics/trainers/palettes/leaf_back_pic.gbapal");
 
 static const u32 gTrainerFrontPic_RSBrendan[] = INCBIN_U32("graphics/trainers/front_pics/ruby_sapphire_brendan_front_pic.4bpp.smol");
@@ -352,8 +352,8 @@ static const u16 gTrainerPalette_RivalEarly[] = INCBIN_U16("graphics/trainers/pa
 static const u32 gTrainerFrontPic_Scientist[] = INCBIN_U32("graphics/trainers/front_pics/scientist_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_Scientist[] = INCBIN_U16("graphics/trainers/palettes/scientist.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderGiovanni[] = INCBIN_U32("graphics/research_red/cast/giovanni/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_LeaderGiovanni[] = INCBIN_U16("graphics/research_red/cast/giovanni/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_LeaderGiovanni[] = INCBIN_U32("graphics/trainers/front_pics/leader_giovanni_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_LeaderGiovanni[] = INCBIN_U16("graphics/trainers/palettes/leader_giovanni.gbapal");
 
 static const u32 gTrainerFrontPic_RocketGruntM[] = INCBIN_U32("graphics/trainers/front_pics/rocket_grunt_m_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_RocketGruntM[] = INCBIN_U16("graphics/trainers/palettes/rocket_grunt_m.gbapal");
@@ -364,38 +364,38 @@ static const u16 gTrainerPalette_CooltrainerM[] = INCBIN_U16("graphics/trainers/
 static const u32 gTrainerFrontPic_CooltrainerF[] = INCBIN_U32("graphics/trainers/front_pics/cool_trainer_f_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_CooltrainerF[] = INCBIN_U16("graphics/trainers/palettes/cool_trainer_f.gbapal");
 
-static const u32 gTrainerFrontPic_EliteFourLorelei[] = INCBIN_U32("graphics/research_red/cast/lorelei/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_EliteFourLorelei[] = INCBIN_U16("graphics/research_red/cast/lorelei/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_EliteFourLorelei[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_lorelei_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_EliteFourLorelei[] = INCBIN_U16("graphics/trainers/palettes/elite_four_lorelei.gbapal");
 
-static const u32 gTrainerFrontPic_EliteFourBruno[] = INCBIN_U32("graphics/research_red/cast/bruno/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_EliteFourBruno[] = INCBIN_U16("graphics/research_red/cast/bruno/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_EliteFourBruno[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_bruno_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_EliteFourBruno[] = INCBIN_U16("graphics/trainers/palettes/elite_four_bruno.gbapal");
 
-static const u32 gTrainerFrontPic_EliteFourAgatha[] = INCBIN_U32("graphics/research_red/cast/agatha/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_EliteFourAgatha[] = INCBIN_U16("graphics/research_red/cast/agatha/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_EliteFourAgatha[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_agatha_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_EliteFourAgatha[] = INCBIN_U16("graphics/trainers/palettes/elite_four_agatha.gbapal");
 
-static const u32 gTrainerFrontPic_EliteFourLance[] = INCBIN_U32("graphics/research_red/cast/lance/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_EliteFourLance[] = INCBIN_U16("graphics/research_red/cast/lance/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_EliteFourLance[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_lance_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_EliteFourLance[] = INCBIN_U16("graphics/trainers/palettes/elite_four_lance.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderBrock[] = INCBIN_U32("graphics/research_red/cast/brock/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_LeaderBrock[] = INCBIN_U16("graphics/research_red/cast/brock/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_LeaderBrock[] = INCBIN_U32("graphics/trainers/front_pics/leader_brock_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_LeaderBrock[] = INCBIN_U16("graphics/trainers/palettes/leader_brock.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderMisty[] = INCBIN_U32("graphics/research_red/cast/misty/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_LeaderMisty[] = INCBIN_U16("graphics/research_red/cast/misty/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_LeaderMisty[] = INCBIN_U32("graphics/trainers/front_pics/leader_misty_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_LeaderMisty[] = INCBIN_U16("graphics/trainers/palettes/leader_misty.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderLtSurge[] = INCBIN_U32("graphics/research_red/cast/surge/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_LeaderLtSurge[] = INCBIN_U16("graphics/research_red/cast/surge/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_LeaderLtSurge[] = INCBIN_U32("graphics/trainers/front_pics/leader_lt_surge_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_LeaderLtSurge[] = INCBIN_U16("graphics/trainers/palettes/leader_lt_surge.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderErika[] = INCBIN_U32("graphics/research_red/cast/erika/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_LeaderErika[] = INCBIN_U16("graphics/research_red/cast/erika/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_LeaderErika[] = INCBIN_U32("graphics/trainers/front_pics/leader_erika_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_LeaderErika[] = INCBIN_U16("graphics/trainers/palettes/leader_erika.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderKoga[] = INCBIN_U32("graphics/research_red/cast/koga/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_LeaderKoga[] = INCBIN_U16("graphics/research_red/cast/koga/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_LeaderKoga[] = INCBIN_U32("graphics/trainers/front_pics/leader_koga_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_LeaderKoga[] = INCBIN_U16("graphics/trainers/palettes/leader_koga.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderBlaine[] = INCBIN_U32("graphics/research_red/cast/blaine/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_LeaderBlaine[] = INCBIN_U16("graphics/research_red/cast/blaine/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_LeaderBlaine[] = INCBIN_U32("graphics/trainers/front_pics/leader_blaine_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_LeaderBlaine[] = INCBIN_U16("graphics/trainers/palettes/leader_blaine.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderSabrina[] = INCBIN_U32("graphics/research_red/cast/sabrina/battle_fr.4bpp.smol"); // Research Red: from the ref art (Art Kit)
-static const u16 gTrainerPalette_LeaderSabrina[] = INCBIN_U16("graphics/research_red/cast/sabrina/battle_fr.gbapal"); // Research Red
+static const u32 gTrainerFrontPic_LeaderSabrina[] = INCBIN_U32("graphics/trainers/front_pics/leader_sabrina_front_pic.4bpp.smol");
+static const u16 gTrainerPalette_LeaderSabrina[] = INCBIN_U16("graphics/trainers/palettes/leader_sabrina.gbapal");
 
 static const u32 gTrainerFrontPic_Gentleman[] = INCBIN_U32("graphics/trainers/front_pics/gentleman_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_Gentleman[] = INCBIN_U16("graphics/trainers/palettes/gentleman.gbapal");
@@ -481,17 +481,17 @@ static const u16 gTrainerPalette_PikeQueenLucy[] = INCBIN_U16("graphics/trainers
 static const u32 gTrainerFrontPic_PyramidKingBrandon[] = INCBIN_U32("graphics/trainers/front_pics/pyramid_king_brandon.4bpp.smol");
 static const u16 gTrainerPalette_PyramidKingBrandon[] = INCBIN_U16("graphics/trainers/front_pics/pyramid_king_brandon.gbapal");
 
-// Research Red: battle pics made from the owner's full-body ref art (graphics/research_red/cast/<name>/battle_fr.png: FireRed proportions, built by tools/research_red/build_cast_art.py with tools/research_red/art/pixelize.py)
-static const u32 gTrainerFrontPic_RR_Elm[] = INCBIN_U32("graphics/research_red/cast/elm/battle_fr.4bpp.smol");
-static const u16 gTrainerPalette_RR_Elm[] = INCBIN_U16("graphics/research_red/cast/elm/battle_fr.gbapal");
-static const u32 gTrainerFrontPic_RR_Oak[] = INCBIN_U32("graphics/research_red/cast/oak/battle_fr.4bpp.smol");
-static const u16 gTrainerPalette_RR_Oak[] = INCBIN_U16("graphics/research_red/cast/oak/battle_fr.gbapal");
-static const u32 gTrainerFrontPic_RR_Daisy[] = INCBIN_U32("graphics/research_red/cast/daisy/battle_fr.4bpp.smol");
-static const u16 gTrainerPalette_RR_Daisy[] = INCBIN_U16("graphics/research_red/cast/daisy/battle_fr.gbapal");
-static const u32 gTrainerFrontPic_RR_Delia[] = INCBIN_U32("graphics/research_red/cast/delia/battle_fr.4bpp.smol");
-static const u16 gTrainerPalette_RR_Delia[] = INCBIN_U16("graphics/research_red/cast/delia/battle_fr.gbapal");
-static const u32 gTrainerFrontPic_RR_Jenny[] = INCBIN_U32("graphics/research_red/cast/jenny/battle_fr.4bpp.smol");
-static const u16 gTrainerPalette_RR_Jenny[] = INCBIN_U16("graphics/research_red/cast/jenny/battle_fr.gbapal");
+// Research Red: battle pics made from the owner's full-body ref art (graphics/research_red/cast, built by tools/research_red/build_cast_art.py)
+static const u32 gTrainerFrontPic_RR_Elm[] = INCBIN_U32("graphics/research_red/cast/elm/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_Elm[] = INCBIN_U16("graphics/research_red/cast/elm/battle.gbapal");
+static const u32 gTrainerFrontPic_RR_Oak[] = INCBIN_U32("graphics/research_red/cast/oak/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_Oak[] = INCBIN_U16("graphics/research_red/cast/oak/battle.gbapal");
+static const u32 gTrainerFrontPic_RR_Daisy[] = INCBIN_U32("graphics/research_red/cast/daisy/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_Daisy[] = INCBIN_U16("graphics/research_red/cast/daisy/battle.gbapal");
+static const u32 gTrainerFrontPic_RR_Delia[] = INCBIN_U32("graphics/research_red/cast/delia/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_Delia[] = INCBIN_U16("graphics/research_red/cast/delia/battle.gbapal");
+static const u32 gTrainerFrontPic_RR_Jenny[] = INCBIN_U32("graphics/research_red/cast/jenny/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_Jenny[] = INCBIN_U16("graphics/research_red/cast/jenny/battle.gbapal");
 
 
 static const union AnimCmd sAnimCmd_Kanto[] = {

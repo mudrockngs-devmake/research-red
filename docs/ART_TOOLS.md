@@ -20,6 +20,35 @@ on the dev machine; set `RR_TOOLKIT_OUT` to send them somewhere else.
 | build a whole new tileset | Porytiles | [Whole new tilesets](#whole-new-tilesets) |
 | paint maps by hand | Porymap | [Programs](#programs) |
 
+## Is the art in the game? (no, for now)
+
+**Not yet (owner, 2026-10-24):** the Art Kit's sprites and pictures stay out
+of every game version until the art generation and edits are better. The
+switch is `graphics/research_red/art_kit.toml` (`in_game = false`). While it's
+off:
+
+- `ow_maker.py build` and `install` both make sheets and previews only: every
+  sheet (the players' too) lands in `graphics/research_red/overworld/`, and
+  the game code isn't touched.
+- `build_back_pics.py` writes to `graphics/research_red/drafts/`.
+- The game uses v0.0.19's pictures: FireRed's overworld people (the story cast
+  on stand-ins: Elm = Scientist, Ivy = Cooltrainer, Jenny = Hex Maniac, Mom
+  for Delia), FireRed's gym leader and Elite Four battle pictures, the
+  players' `battle.png`, the old back pics and `player.pal`.
+
+### Putting the art in the game
+Only with the owner's OK, and ideally a piece at a time:
+
+1. Set `in_game = true` in `art_kit.toml`.
+2. `python3 tools/research_red/art/ow_maker.py install`: overworld sprites
+   into the game code; `player_warm.pal` is copied over `player.pal`.
+3. `python3 tools/research_red/build_back_pics.py`: the player + Ivy back pics.
+4. Battle pictures are wired by hand in `src/data/graphics/trainers.h`: the
+   full hook-up is in commit `6bf4af269` (`git diff v0.0.19 6bf4af269 --
+   src/data/graphics/trainers.h`); point each picture at
+   `graphics/research_red/cast/<name>/battle_fr`.
+5. Build, `rr_check.py`, smoke tests, then look at it in the game.
+
 ## Sprite library
 
     python3 tools/research_red/art/library.py
@@ -92,9 +121,10 @@ Commands:
     python3 tools/research_red/art/ow_maker.py templates brock     # walking sheets that move most like it
     python3 tools/research_red/art/ow_maker.py grid elm 0,1,2      # frames as letter grids, to plan patches
     python3 tools/research_red/art/ow_maker.py build elm           # sheet + previews only
-    python3 tools/research_red/art/ow_maker.py install             # all recipes, and the game code
+    python3 tools/research_red/art/ow_maker.py install             # all recipes, and the game code (art in the game only)
     make firered -j6
 
+With the art in the game (see [above](#is-the-art-in-the-game-no-for-now)),
 `install` writes the sheets (PNG + `.pal`) and regenerates marked blocks in
 the engine files (`include/constants/event_objects.h`,
 `src/data/object_events/*.h`, `src/event_object_movement.c`); edit the
@@ -103,8 +133,8 @@ its recipe. Previews: `overworld/<name>_walk.gif`, `_run.gif`, `_frames.png`
 (before and after) and `overview.png` (every recipe beside its reference art).
 
 Map scripts keep using the names: `OBJ_EVENT_GFX_RR_ELM`, `_RR_IVY`,
-`_RR_JENNY`, `_RR_OFFICER_JENNY`; replaced ones keep theirs (`OBJ_EVENT_GFX_MOM`
-is Delia, `OBJ_EVENT_GFX_BROCK` walks now).
+`_RR_JENNY`, `_RR_OFFICER_JENNY`; replaced ones keep theirs (once installed,
+`OBJ_EVENT_GFX_MOM` is Delia and `OBJ_EVENT_GFX_BROCK` walks).
 
 Hand-made art always wins: draw over a generated sheet in LibreSprite or
 Aseprite (16x32 frames, 16 colours, colour 0 = background), save it as a new
@@ -134,8 +164,8 @@ as in a Poké Ball throw) don't transfer well.
 ## Battle pictures
 
 `tools/research_red/build_cast_art.py` turns each full-body reference picture
-into `graphics/research_red/cast/<name>/`: **`battle_fr.png`** (the one the game
-uses: full body in FireRed's proportions, a bigger head and sturdier limbs),
+into `graphics/research_red/cast/<name>/`: **`battle_fr.png`** (the one meant
+for the game once the art goes in: full body in FireRed's proportions, a bigger head and sturdier limbs),
 `battle.png` (plain full body), `battle_frlg.png` (cropped at the thighs),
 `portrait.png`, `call.png`. Files in `cast_handmade/<name>/` replace the
 generated ones.
@@ -167,7 +197,7 @@ behind: the head and upper body, the face painted over with hair (the back of
 a head is hair), mirrored, framed like FireRed's back pictures:
 
     python3 tools/research_red/art/back_maker.py ivy player_m player_f    # or --all
-    python3 tools/research_red/build_back_pics.py                         # the player + Ivy back pic
+    python3 tools/research_red/build_back_pics.py                         # the player + Ivy back pic (drafts/ while the art is out)
 
 They're drafts (front clothing details still show): finish them in Aseprite
 (`aseprite.py open back:ivy`). A drawing of the back in the reference folder

@@ -99,7 +99,8 @@ patches = [
 ]
 
 # ------------------------------------------------------------------ the player (shares player.pal with the bike, surf and fishing sprites)
-# player.pal was warmed to the ref art (tan skin, auburn hair) on 2026-10-24; the bike/surf/fishing sprites follow it.
+# player_warm.pal is player.pal warmed to the ref art (tan skin, auburn hair), 2026-10-24. With the art in the
+# game (graphics/research_red/art_kit.toml) "install" copies it over player.pal, and the bike/surf/fishing sprites follow it.
 
 [player_m]
 notes = "Male player: auburn hair, OPEN lab coat over an olive shirt, jeans. Slim body: FireRed's Scientist with Professor Birch's head (Birch alone looked too heavy)."
@@ -107,7 +108,7 @@ base = "scientist"
 head_from = "graphics/research_red/player_ow/src/prof_birch.png"
 head_rows = 23
 output = "graphics/research_red/player_ow/male_normal.png"
-fit_palette = "graphics/object_events/palettes/player.pal"
+fit_palette = "graphics/research_red/overworld/player_warm.pal"
 walk = "keep"
 run = true
 recolour = [
@@ -123,7 +124,7 @@ parts = [ { part = "open_coat_scientist", colours = { S = "#bd9c39", B = "#6a292
 notes = "Female player: long auburn hair, lab coat, olive top, jeans. Base: FireRed's Lorelei (the long hair); her glasses are replaced by eyes."
 base = "lorelei"
 output = "graphics/research_red/player_ow/female_normal.png"
-fit_palette = "graphics/object_events/palettes/player.pal"
+fit_palette = "graphics/research_red/overworld/player_warm.pal"
 run = true
 recolour = [
   { from = ["#e66a4a"], to = "#d65c34", rows = [0, 23] },                      # hair: exact palette reds, so it can't
