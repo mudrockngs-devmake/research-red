@@ -9,9 +9,9 @@ _Last updated: 2026-10-24 (Art Kit art taken back out of the game; v0.0.19 still
 No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
 - [x] 1 switch per piece (art_kit.toml stages; art_gate.py apply, reversible, tested round trip)
 - [x] 2 asset tracker docs/ART_TRACKER.md (58 pieces) + rr_check / GitHub check + E: copy
-- [ ] 3 GitHub Art Kit milestone + art-kit label, move #15 #33
-- [ ] 4 art bible docs/ART_BIBLE.md
-- [ ] 5-6 vertical slice + game lane rule (docs, CLAUDE.md)
+- [x] 3 GitHub Art Kit milestone + art-kit label, #15 #33 moved, #104 vertical slice
+- [x] 4 art bible docs/ART_BIBLE.md (draft, 3 questions for the owner at the end)
+- [x] 5-6 vertical slice + game lane rule (ART_TOOLS, CLAUDE.md)
 - [ ] 7-14 viewer: verdict/choice buttons, spot notes, compare, animation player, in-game preview, history, alert, themes
 - [ ] 15-19 hub: themes (Dive Ball default), Today screen, project shortcuts, health check, desktop shortcut + cheat sheet
 - [ ] final: docs (ART_TOOLS, DEV_GUIDE), STATUS, push

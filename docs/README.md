@@ -29,6 +29,7 @@ Start here. Everything about how the project works, in one place.
 - [FLAGS_VARS.md](FLAGS_VARS.md): every flag, var and trainer Research Red uses.
 - [ARTIST_GUIDE.md](ARTIST_GUIDE.md): how to make or replace art. [ASSETS.md](ASSETS.md): the asset list.
 - [ART_TOOLS.md](ART_TOOLS.md): the Art Kit: sprite library, overworld sprite recipes and walking frames, battle pictures, map pieces, new buildings, Porymap/Porytiles.
+- [ART_BIBLE.md](ART_BIBLE.md): how Research Red looks (the rules every sprite, picture and tile follows). [ART_TRACKER.md](ART_TRACKER.md): every piece that will get new art and its stage; only approved pieces are in the game (generated).
 - [RESOURCES.md](RESOURCES.md): sources and credit rules. [../CREDITS.md](../CREDITS.md): who made what, and permissions.
 - [CHAT_TO_CODE.md](CHAT_TO_CODE.md): how ideas from chat become changes.
 
