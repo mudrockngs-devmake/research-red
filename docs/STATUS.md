@@ -66,10 +66,10 @@ Test tooling added: `runner.log` per scene, `||` in conditions, `GameMemory.part
 
 ## Art Kit run (started 2026-10-24; owner answers in ROADMAP.md "Art Kit run")
 Work through this list, commit after each, keep this updated. Nothing gets installed or tagged.
-- [ ] Windows tools: Porymap + LibreSprite in `E:\Workspace\_tools\`; survey of other romhack projects' art tools
-- [ ] Sprite library: catalogue + contact sheets of every overworld / trainer / Pokemon picture; walk-motion study
-- [ ] Overworld maker: recipes (base sheet + recolour + pixel patches), walk/run frame generator, GIF previews, add-to-game command
-- [ ] Overworld sprites: Elm, Jenny, Officer Jenny, Ivy, players M/F, Delia; gym leaders + Elite Four
+- [x] Windows tools: Porymap + LibreSprite in `E:\Workspace\_tools\`; survey of other romhack projects' art tools
+- [x] Sprite library: catalogue + contact sheets of every overworld / trainer / Pokemon picture; walk-motion study
+- [x] Overworld maker: recipes (base sheet + recolour + pixel patches), walk/run frame generator, GIF previews, add-to-game command
+- [x] Overworld sprites: Elm, Jenny, Officer Jenny, Ivy, players M/F, Delia; gym leaders + Elite Four
 - [ ] Battle pictures: gym leaders + Elite Four from the ref art; battle sprite checker/fixer, shiny palettes, back-pic throw frames, GIFs
 - [ ] Map art: tileset inspector, furniture/building importer (Porytiles or our own), building + door wizard (tested in a scratch copy)
 - [ ] Cloud: GitHub Action for art checks + preview gallery

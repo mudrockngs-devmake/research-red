@@ -352,8 +352,8 @@ static const u16 gTrainerPalette_RivalEarly[] = INCBIN_U16("graphics/trainers/pa
 static const u32 gTrainerFrontPic_Scientist[] = INCBIN_U32("graphics/trainers/front_pics/scientist_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_Scientist[] = INCBIN_U16("graphics/trainers/palettes/scientist.gbapal");
 
-static const u32 gTrainerFrontPic_LeaderGiovanni[] = INCBIN_U32("graphics/trainers/front_pics/leader_giovanni_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_LeaderGiovanni[] = INCBIN_U16("graphics/trainers/palettes/leader_giovanni.gbapal");
+static const u32 gTrainerFrontPic_LeaderGiovanni[] = INCBIN_U32("graphics/research_red/cast/giovanni/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_LeaderGiovanni[] = INCBIN_U16("graphics/research_red/cast/giovanni/battle_frlg.gbapal"); // Research Red
 
 static const u32 gTrainerFrontPic_RocketGruntM[] = INCBIN_U32("graphics/trainers/front_pics/rocket_grunt_m_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_RocketGruntM[] = INCBIN_U16("graphics/trainers/palettes/rocket_grunt_m.gbapal");
@@ -364,38 +364,38 @@ static const u16 gTrainerPalette_CooltrainerM[] = INCBIN_U16("graphics/trainers/
 static const u32 gTrainerFrontPic_CooltrainerF[] = INCBIN_U32("graphics/trainers/front_pics/cool_trainer_f_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_CooltrainerF[] = INCBIN_U16("graphics/trainers/palettes/cool_trainer_f.gbapal");
 
-static const u32 gTrainerFrontPic_EliteFourLorelei[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_lorelei_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_EliteFourLorelei[] = INCBIN_U16("graphics/trainers/palettes/elite_four_lorelei.gbapal");
+static const u32 gTrainerFrontPic_EliteFourLorelei[] = INCBIN_U32("graphics/research_red/cast/lorelei/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_EliteFourLorelei[] = INCBIN_U16("graphics/research_red/cast/lorelei/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_EliteFourBruno[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_bruno_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_EliteFourBruno[] = INCBIN_U16("graphics/trainers/palettes/elite_four_bruno.gbapal");
+static const u32 gTrainerFrontPic_EliteFourBruno[] = INCBIN_U32("graphics/research_red/cast/bruno/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_EliteFourBruno[] = INCBIN_U16("graphics/research_red/cast/bruno/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_EliteFourAgatha[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_agatha_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_EliteFourAgatha[] = INCBIN_U16("graphics/trainers/palettes/elite_four_agatha.gbapal");
+static const u32 gTrainerFrontPic_EliteFourAgatha[] = INCBIN_U32("graphics/research_red/cast/agatha/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_EliteFourAgatha[] = INCBIN_U16("graphics/research_red/cast/agatha/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_EliteFourLance[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_lance_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_EliteFourLance[] = INCBIN_U16("graphics/trainers/palettes/elite_four_lance.gbapal");
+static const u32 gTrainerFrontPic_EliteFourLance[] = INCBIN_U32("graphics/research_red/cast/lance/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_EliteFourLance[] = INCBIN_U16("graphics/research_red/cast/lance/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_LeaderBrock[] = INCBIN_U32("graphics/trainers/front_pics/leader_brock_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_LeaderBrock[] = INCBIN_U16("graphics/trainers/palettes/leader_brock.gbapal");
+static const u32 gTrainerFrontPic_LeaderBrock[] = INCBIN_U32("graphics/research_red/cast/brock/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_LeaderBrock[] = INCBIN_U16("graphics/research_red/cast/brock/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_LeaderMisty[] = INCBIN_U32("graphics/trainers/front_pics/leader_misty_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_LeaderMisty[] = INCBIN_U16("graphics/trainers/palettes/leader_misty.gbapal");
+static const u32 gTrainerFrontPic_LeaderMisty[] = INCBIN_U32("graphics/research_red/cast/misty/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_LeaderMisty[] = INCBIN_U16("graphics/research_red/cast/misty/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_LeaderLtSurge[] = INCBIN_U32("graphics/trainers/front_pics/leader_lt_surge_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_LeaderLtSurge[] = INCBIN_U16("graphics/trainers/palettes/leader_lt_surge.gbapal");
+static const u32 gTrainerFrontPic_LeaderLtSurge[] = INCBIN_U32("graphics/research_red/cast/surge/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_LeaderLtSurge[] = INCBIN_U16("graphics/research_red/cast/surge/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_LeaderErika[] = INCBIN_U32("graphics/trainers/front_pics/leader_erika_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_LeaderErika[] = INCBIN_U16("graphics/trainers/palettes/leader_erika.gbapal");
+static const u32 gTrainerFrontPic_LeaderErika[] = INCBIN_U32("graphics/research_red/cast/erika/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_LeaderErika[] = INCBIN_U16("graphics/research_red/cast/erika/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_LeaderKoga[] = INCBIN_U32("graphics/trainers/front_pics/leader_koga_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_LeaderKoga[] = INCBIN_U16("graphics/trainers/palettes/leader_koga.gbapal");
+static const u32 gTrainerFrontPic_LeaderKoga[] = INCBIN_U32("graphics/research_red/cast/koga/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_LeaderKoga[] = INCBIN_U16("graphics/research_red/cast/koga/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_LeaderBlaine[] = INCBIN_U32("graphics/trainers/front_pics/leader_blaine_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_LeaderBlaine[] = INCBIN_U16("graphics/trainers/palettes/leader_blaine.gbapal");
+static const u32 gTrainerFrontPic_LeaderBlaine[] = INCBIN_U32("graphics/research_red/cast/blaine/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_LeaderBlaine[] = INCBIN_U16("graphics/research_red/cast/blaine/battle_frlg.gbapal"); // Research Red
 
-static const u32 gTrainerFrontPic_LeaderSabrina[] = INCBIN_U32("graphics/trainers/front_pics/leader_sabrina_front_pic.4bpp.smol");
-static const u16 gTrainerPalette_LeaderSabrina[] = INCBIN_U16("graphics/trainers/palettes/leader_sabrina.gbapal");
+static const u32 gTrainerFrontPic_LeaderSabrina[] = INCBIN_U32("graphics/research_red/cast/sabrina/battle_frlg.4bpp.smol"); // Research Red: from the ref art (Art Kit)
+static const u16 gTrainerPalette_LeaderSabrina[] = INCBIN_U16("graphics/research_red/cast/sabrina/battle_frlg.gbapal"); // Research Red
 
 static const u32 gTrainerFrontPic_Gentleman[] = INCBIN_U32("graphics/trainers/front_pics/gentleman_front_pic.4bpp.smol");
 static const u16 gTrainerPalette_Gentleman[] = INCBIN_U16("graphics/trainers/palettes/gentleman.gbapal");
