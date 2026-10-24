@@ -1,29 +1,63 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dive">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Research Red Viewer</title>
 <style>
-:root { --bg:#f4f1ea; --card:#fffdf8; --ink:#2b2a28; --muted:#6c675f; --line:#e0dacd; --accent:#c0392b; --accent-ink:#fff; }
-@media (prefers-color-scheme: dark) { :root { --bg:#1b1a18; --card:#25241f; --ink:#ece8e0; --muted:#a39d92; --line:#3a3832; --accent:#e05a47; --accent-ink:#fff; } }
+/* Themes (picked in the header, remembered): Dive Ball (default: calm blues for
+   long sessions), Quick Ball (blue + yellow), Poke Ball (red + white). Each has
+   a light and a dark version that follows Windows' light/dark setting. */
+:root, [data-theme="dive"] { --bg:#eef3f7; --card:#fbfdff; --ink:#1c2a3a; --muted:#5b6f84; --line:#d3dee8; --accent:#2f6fae; --accent2:#7fc8e8; --accent-ink:#fff; --good:#2e8b57; --warn:#c0702b; }
+[data-theme="quick"] { --bg:#f3f5fb; --card:#ffffff; --ink:#1d2340; --muted:#5d6488; --line:#d9ddef; --accent:#2c5fb3; --accent2:#f2c230; --accent-ink:#fff; --good:#2e8b57; --warn:#c0702b; }
+[data-theme="poke"] { --bg:#f4f1ea; --card:#fffdf8; --ink:#2b2a28; --muted:#6c675f; --line:#e0dacd; --accent:#c0392b; --accent2:#ffffff; --accent-ink:#fff; --good:#2e8b57; --warn:#c0702b; }
+@media (prefers-color-scheme: dark) {
+  :root, [data-theme="dive"] { --bg:#0f1a26; --card:#162434; --ink:#e3ecf4; --muted:#8fa3b8; --line:#24384d; --accent:#4f9be0; --accent2:#8fd3ee; --accent-ink:#06121e; --good:#5cc98a; --warn:#e8a25c; }
+  [data-theme="quick"] { --bg:#121628; --card:#1b2038; --ink:#e8eaf6; --muted:#9aa1c4; --line:#2b3256; --accent:#5a8be0; --accent2:#f2c230; --accent-ink:#0b1022; --good:#5cc98a; --warn:#e8a25c; }
+  [data-theme="poke"] { --bg:#1b1a18; --card:#25241f; --ink:#ece8e0; --muted:#a39d92; --line:#3a3832; --accent:#e05a47; --accent2:#ffffff; --accent-ink:#fff; --good:#5cc98a; --warn:#e8a25c; }
+}
 * { box-sizing:border-box; }
+[hidden] { display:none !important; }
 body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui, sans-serif; }
-header { position:sticky; top:0; z-index:5; display:flex; gap:10px; align-items:center; padding:10px 16px; background:var(--card); border-bottom:1px solid var(--line); }
-header h1 { font-size:16px; margin:0 12px 0 0; display:flex; align-items:center; gap:8px; }
-.ball { width:18px; height:18px; border-radius:50%; background:linear-gradient(var(--accent) 0 46%, var(--ink) 46% 54%, #fff 54%); border:2px solid var(--ink); }
-button, select { font:inherit; padding:5px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer; }
+header { position:sticky; top:0; z-index:5; display:flex; flex-wrap:wrap; gap:8px 10px; align-items:center; padding:10px 16px; background:var(--card); border-bottom:1px solid var(--line); }
+header h1 { font-size:16px; margin:0 8px 0 0; display:flex; align-items:center; gap:8px; }
+.ball { width:18px; height:18px; border-radius:50%; border:2px solid var(--ink); background:linear-gradient(var(--accent) 0 46%, var(--ink) 46% 54%, var(--card) 54%); flex:none; }
+[data-theme="dive"] .ball { background:radial-gradient(circle at 50% 50%, var(--card) 0 18%, transparent 19%), linear-gradient(var(--accent) 0 46%, var(--ink) 46% 54%, var(--accent2) 54%); }
+[data-theme="quick"] .ball { background:radial-gradient(circle at 50% 28%, var(--accent2) 0 22%, transparent 23%), linear-gradient(var(--accent) 0 46%, var(--ink) 46% 54%, var(--card) 54%); }
+button, select, input[type=search] { font:inherit; padding:5px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer; }
+input[type=search] { cursor:text; }
 button.on { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
-.status { color:var(--muted); margin-left:auto; font-size:13px; }
+button.good { border-color:var(--good); color:var(--good); } button.good.on { background:var(--good); color:#fff; }
+button.warn { border-color:var(--warn); color:var(--warn); } button.warn.on { background:var(--warn); color:#fff; }
+button:focus-visible, select:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+.status { color:var(--muted); font-size:13px; }
+.grow { flex:1; }
 main { display:grid; grid-template-columns:minmax(0,1fr) var(--side,380px); gap:14px; padding:14px 16px 40px; }
 @media (max-width: 900px) { main { grid-template-columns:1fr; } }
-section h2 { font-size:14px; margin:0 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+section h2, aside h2 { font-size:14px; margin:0 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
 .ask { background:var(--card); border:2px solid var(--accent); border-radius:10px; padding:12px; margin-bottom:14px; display:none; }
 .ask.show { display:block; }
-.ask h3 { margin:0 0 6px; font-size:16px; }
-.ask .zoombar { display:flex; gap:6px; align-items:center; margin-bottom:6px; color:var(--muted); font-size:12px; }
-.ask .imgbox { overflow:auto; max-height:75vh; }
-.ask img { display:block; image-rendering:pixelated; cursor:zoom-in; background:repeating-conic-gradient(#ccc 0 25%, #eee 0 50%) 0 0/16px 16px; }
+.ask h3 { margin:0 0 4px; font-size:16px; }
+.piece { display:inline-block; font-size:12px; padding:1px 8px; border-radius:10px; background:var(--accent2); color:#10202e; margin-left:6px; vertical-align:middle; font-weight:normal; }
+.zoombar { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:8px 0 6px; color:var(--muted); font-size:12px; }
+.imgbox { overflow:auto; max-height:75vh; display:flex; gap:12px; align-items:flex-start; }
+.imgbox figure { margin:0; }
+.imgbox figcaption { font-size:11px; color:var(--muted); margin-top:2px; }
+.pix { image-rendering:pixelated; display:block; background:repeating-conic-gradient(#ccc 0 25%, #eee 0 50%) 0 0/16px 16px; }
+.spotwrap { position:relative; display:inline-block; cursor:zoom-in; }
+.spotwrap.marking { cursor:crosshair; }
+.spot { position:absolute; width:22px; height:22px; margin:-11px 0 0 -11px; border-radius:50%; background:var(--warn); color:#fff; font:bold 12px/22px system-ui; text-align:center; box-shadow:0 0 0 2px #fff; pointer-events:none; }
+.spots { margin:6px 0; display:flex; flex-direction:column; gap:4px; }
+.spots div { display:flex; gap:6px; align-items:center; }
+.spots b { width:22px; height:22px; border-radius:50%; background:var(--warn); color:#fff; text-align:center; line-height:22px; font-size:12px; flex:none; }
+.spots input { flex:1; font:inherit; padding:4px 6px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); }
+.slider { position:relative; display:inline-block; }
+.slider .top { position:absolute; top:0; bottom:0; overflow:hidden; }
+.slider .top img { position:absolute; top:0; }
+.slider .handle { position:absolute; top:0; bottom:0; width:2px; margin-left:-1px; background:var(--accent); box-shadow:0 0 0 1px #fff; }
+.slider + input { display:block; width:100%; margin-top:6px; }
+.player canvas { image-rendering:pixelated; display:block; background:repeating-conic-gradient(#ccc 0 25%, #eee 0 50%) 0 0/16px 16px; }
+.answer { margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
 .ask textarea { width:100%; min-height:54px; margin-top:8px; font:inherit; padding:6px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); }
 .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(var(--tile,180px),1fr)); gap:8px; }
 .tile { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:6px; cursor:zoom-in; }
@@ -35,92 +69,326 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
 .pin .bar { display:flex; gap:6px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:6px; }
 .pin .bar span { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .pin img { width:100%; image-rendering:pixelated; display:block; cursor:zoom-in; }
+.empty { color:var(--muted); padding:20px; text-align:center; border:1px dashed var(--line); border-radius:10px; }
 .sizes { display:flex; gap:4px; align-items:center; color:var(--muted); font-size:13px; }
-.sizes input { width:110px; }
-/* the big view: one picture filling the window, whole-number zoom so pixels stay sharp */
-#big { position:fixed; inset:0; z-index:20; background:rgba(20,20,20,.92); display:none; flex-direction:column; }
+.sizes input { width:100px; }
+.hcard { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px; margin-bottom:10px; display:flex; gap:12px; }
+.hcard img { width:120px; height:90px; object-fit:contain; image-rendering:pixelated; flex:none; cursor:zoom-in; background:var(--bg); border-radius:6px; }
+.hcard h4 { margin:0 0 2px; font-size:14px; }
+.hcard .a { margin:4px 0; padding:4px 8px; border-left:3px solid var(--accent); background:var(--bg); border-radius:0 6px 6px 0; font-size:13px; }
+#big { position:fixed; inset:0; z-index:20; background:rgba(10,14,20,.94); display:none; flex-direction:column; }
 #big.show { display:flex; }
 #big .bar { display:flex; gap:8px; align-items:center; padding:8px 16px; color:#eee; }
 #big .bar span { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-#big .bar button { background:#333; color:#eee; border-color:#555; }
+#big .bar #bigZoom { flex:0; }
+#big .bar button { background:#2a3340; color:#eee; border-color:#4a5566; }
 #big .stage { flex:1; overflow:auto; display:flex; }
 #big img { margin:auto; image-rendering:pixelated; background:repeating-conic-gradient(#999 0 25%, #bbb 0 50%) 0 0/16px 16px; cursor:grab; }
-.empty { color:var(--muted); padding:20px; text-align:center; border:1px dashed var(--line); border-radius:10px; }
 </style>
 </head>
 <body>
 <header>
   <h1><span class="ball"></span>Research Red Viewer</h1>
+  <span><button id="tabLive" class="on">Live</button> <button id="tabHistory">History</button></span>
   <button id="pause">Pause</button>
-  <select id="filter"><option value="">Everything</option><option value="art">Art tools</option><option value="test-runs">Tests</option></select>
+  <select id="filter" title="Which pictures the stream shows"><option value="">Everything</option><option value="art">Art tools</option><option value="test-runs">Tests</option></select>
   <button id="clear">Clear</button>
   <span class="sizes" title="How big the pictures in the stream and the pinned column are">Picture size
     <input type="range" id="tileSize" min="120" max="480" step="20" value="180">
-    Pinned column <input type="range" id="sideSize" min="300" max="900" step="20" value="380"></span>
+    Pinned <input type="range" id="sideSize" min="300" max="900" step="20" value="380"></span>
+  <span class="grow"></span>
+  <select id="theme" title="Colours"><option value="dive">Dive Ball</option><option value="quick">Quick Ball</option><option value="poke">Poké Ball</option></select>
+  <button id="sound" title="A soft sound when Claude asks something">Sound: off</button>
   <span class="status" id="status">connecting...</span>
 </header>
 <main>
   <section>
     <div class="ask" id="ask">
-      <h3 id="askTitle">Claude asks</h3>
-      <div id="askNote" class="status" style="margin:0 0 8px"></div>
-      <div class="zoombar"><button id="askOut">−</button><button id="askIn">+</button><button id="askFit">Fit</button><button id="askBig">Full window</button><span id="askZoom"></span></div>
-      <div class="imgbox"><img id="askImg" alt=""></div>
-      <textarea id="reply" placeholder="Type a quick answer here (optional), then Send. Or just answer in the terminal."></textarea>
-      <button class="on" id="sendReply">Send to Claude</button> <span id="replyDone" class="status"></span>
+      <h3><span id="askTitle">Claude asks</span><span id="askPiece" class="piece" hidden></span></h3>
+      <div id="askNote" class="status"></div>
+      <div class="zoombar">
+        <button id="zOut" title="Smaller">−</button><button id="zIn" title="Bigger">+</button><button id="zFit">Fit</button>
+        <button id="zBig">Full window</button><span id="zLabel"></span>
+        <span class="grow"></span>
+        <span id="modeBtns"></span>
+        <button id="markBtn" title="Then click the picture where something needs changing">Mark a spot</button>
+      </div>
+      <div class="imgbox" id="askBox"></div>
+      <div class="spots" id="spotList"></div>
+      <div class="answer" id="answerBtns"></div>
+      <textarea id="reply" placeholder="Type an answer here (optional), then Send. Or just answer in the terminal."></textarea>
+      <div class="answer"><button class="on" id="sendReply">Send to Claude</button><span id="replyDone" class="status"></span></div>
     </div>
-    <h2>Live stream</h2>
-    <div class="grid" id="grid"><div class="empty" id="emptyMsg">New pictures appear here as the tools and the tester make them.</div></div>
+    <div id="live">
+      <h2>Live stream</h2>
+      <div class="grid" id="grid"><div class="empty" id="emptyMsg">New pictures appear here as the tools and the tester make them.</div></div>
+    </div>
+    <div id="history" hidden>
+      <h2>Everything Claude asked</h2>
+      <input type="search" id="hSearch" placeholder="search questions and answers" style="width:100%;margin-bottom:10px">
+      <div id="hList"><div class="empty">Loading...</div></div>
+    </div>
   </section>
   <aside>
     <h2>Pinned</h2>
     <div id="pins"><div class="empty">Click any picture to pin it here. It stays while the stream keeps going.</div></div>
   </aside>
 </main>
-<div id="big"><div class="bar"><span id="bigName"></span><button id="bigOut">−</button><span id="bigZoom" style="flex:0"></span><button id="bigIn">+</button><button id="bigFit">Fit</button><button id="bigClose">Close (Esc)</button></div>
+<div id="big"><div class="bar"><span id="bigName"></span><button id="bigOut">−</button><span id="bigZoom"></span><button id="bigIn">+</button><button id="bigFit">Fit</button><button id="bigClose">Close (Esc)</button></div>
   <div class="stage" id="bigStage"><img id="bigImg" alt=""></div></div>
 <script>
-// ---- sizes: remembered in this browser (if it lets us)
+const $ = id => document.getElementById(id);
 const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
                 set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} } };
+const url = p => '/file?path=' + encodeURIComponent(p);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+
+// ---- theme, sound, sizes (remembered in this browser)
+const theme = $('theme');
+theme.value = store.get('theme') || 'dive';
+document.documentElement.dataset.theme = theme.value;
+theme.onchange = () => { document.documentElement.dataset.theme = theme.value; store.set('theme', theme.value); };
+let sound = store.get('sound') === 'on';
+const showSound = () => { $('sound').textContent = 'Sound: ' + (sound ? 'on' : 'off'); $('sound').classList.toggle('on', sound); };
+$('sound').onclick = () => { sound = !sound; store.set('sound', sound ? 'on' : 'off'); showSound(); if (sound) chime(); };
+showSound();
+function chime() {  // two soft, quiet notes
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [660, 880].forEach((f, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain(), t = ctx.currentTime + i * 0.15;
+      o.frequency.value = f; o.type = 'sine';
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.06, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+      o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + 0.4);
+    });
+  } catch (e) {}
+}
 [['tileSize', '--tile'], ['sideSize', '--side']].forEach(([id, prop]) => {
-  const el = document.getElementById(id), apply = () => document.documentElement.style.setProperty(prop, el.value + 'px');
-  if (store.get(id)) el.value = store.get(id);
-  apply(); el.oninput = () => { apply(); store.set(id, el.value); };
+  const r = $(id), apply = () => document.documentElement.style.setProperty(prop, r.value + 'px');
+  if (store.get(id)) r.value = store.get(id);
+  apply(); r.oninput = () => { apply(); store.set(id, r.value); };
 });
-// ---- zoom helpers: GBA art looks best at whole-number sizes (2x, 3x, ...)
-function fitScale(img, w, h) {
-  const n = Math.floor(Math.min(w / img.naturalWidth, h / img.naturalHeight));
-  return Math.max(1, Math.min(n, 16));
+
+// ---- tabs
+function tab(name) {
+  $('live').hidden = name !== 'live'; $('history').hidden = name !== 'history';
+  $('tabLive').classList.toggle('on', name === 'live'); $('tabHistory').classList.toggle('on', name === 'history');
+  if (name === 'history') loadHistory();
 }
-function setScale(img, k, label) {
-  img.style.width = img.naturalWidth * k + 'px'; img.style.height = img.naturalHeight * k + 'px';
-  img.dataset.k = k; if (label) label.textContent = k + 'x';
+$('tabLive').onclick = () => tab('live');
+$('tabHistory').onclick = () => tab('history');
+
+// ---- gentle alert: the tab title blinks while the page is in the background
+const baseTitle = document.title;
+let blink = null;
+function alertAsk() {
+  if (sound) chime();
+  if (!document.hidden || blink) return;
+  let on = false;
+  blink = setInterval(() => { on = !on; document.title = on ? '● Claude asks' : baseTitle; }, 1000);
 }
-// the ask picture: fits the panel by default, - / + step the zoom
-const askImg = document.getElementById('askImg'), askZoom = document.getElementById('askZoom');
-let askFit = true;
-const askFitNow = () => setScale(askImg, fitScale(askImg, askImg.parentElement.clientWidth - 4, window.innerHeight * 0.72), askZoom);
-askImg.onload = () => { askFit = true; askFitNow(); };
-window.addEventListener('resize', () => { if (askFit && askImg.naturalWidth) askFitNow(); if (bigFit && big.classList.contains('show')) bigFitNow(); });
-document.getElementById('askIn').onclick = () => { askFit = false; setScale(askImg, Math.min(+askImg.dataset.k + 1, 16), askZoom); };
-document.getElementById('askOut').onclick = () => { askFit = false; setScale(askImg, Math.max(+askImg.dataset.k - 1, 1), askZoom); };
-document.getElementById('askFit').onclick = () => { askFit = true; askFitNow(); };
-document.getElementById('askBig').onclick = askImg.onclick = () => openBig(askImg.src, document.getElementById('askTitle').textContent);
-// the big view: Fit, - / +, mouse wheel, drag to move around, Esc closes
-const big = document.getElementById('big'), bigImg = document.getElementById('bigImg'), stage = document.getElementById('bigStage');
-const bigZoom = document.getElementById('bigZoom');
-let bigFit = true;
-const bigFitNow = () => setScale(bigImg, fitScale(bigImg, stage.clientWidth - 8, stage.clientHeight - 8), bigZoom);
+function stopBlink() { if (blink) { clearInterval(blink); blink = null; document.title = baseTitle; } }
+document.addEventListener('visibilitychange', () => { if (!document.hidden) stopBlink(); });
+
+// ---- whole-number zoom: GBA art stays sharp at 2x, 3x, ...
+function fitScale(w, h, natW, natH) { return Math.max(1, Math.min(16, Math.floor(Math.min(w / natW, h / natH)))); }
+function sizeImg(img, z) { img.style.width = img.naturalWidth * z + 'px'; img.style.height = img.naturalHeight * z + 'px'; }
+
+// ---- the ask panel: one picture, side by side, before/after, animation, in game
+let ask = null, mode = 'single', k = 1, fit = true, marking = false, spots = [], verdict = null, choice = null, player = null;
+const box = $('askBox');
+const askImgs = () => [...box.querySelectorAll('img.pix')].filter(i => !i.dataset.real);
+function applyZoom() {
+  const imgs = askImgs().filter(i => i.naturalWidth);
+  let w = 0, h = 0, room = box.clientWidth - 8;
+  if (mode === 'frames' && ask.frames) { w = ask.frames.w; h = ask.frames.h; }
+  else if (mode === 'ingame') { w = 240; h = 160; room -= 252; }
+  else if (mode === 'side') { w = imgs.reduce((a, i) => a + i.naturalWidth, 0); h = Math.max(0, ...imgs.map(i => i.naturalHeight)); room -= 12 * (imgs.length - 1); }
+  else if (imgs.length) { w = Math.max(...imgs.map(i => i.naturalWidth)); h = Math.max(...imgs.map(i => i.naturalHeight)); }
+  if (!w) return;
+  if (fit) k = fitScale(room, window.innerHeight * 0.7, w, h);
+  imgs.forEach(i => sizeImg(i, k));
+  box.querySelectorAll('img[data-real]').forEach(i => { if (i.naturalWidth) sizeImg(i, 1); });
+  if (mode === 'slider') layoutSlider();
+  if (player) player.draw();
+  drawSpots();
+  $('zLabel').textContent = k + 'x';
+}
+$('zIn').onclick = () => { fit = false; k = Math.min(16, k + 1); applyZoom(); };
+$('zOut').onclick = () => { fit = false; k = Math.max(1, k - 1); applyZoom(); };
+$('zFit').onclick = () => { fit = true; applyZoom(); };
+$('zBig').onclick = () => { const i = askImgs()[0]; if (i) openBig(i.src, ask.title); };
+window.addEventListener('resize', () => { if (fit && ask) applyZoom(); if (bigFit && big.classList.contains('show')) bigFitNow(); });
+
+function pixImg(src) { const i = el('img', 'pix'); i.alt = ''; i.onload = applyZoom; i.src = src; return i; }
+function render() {
+  if (player) { player.stop(); player = null; }
+  box.innerHTML = '';
+  const imgs = ask.images || [{ src: ask.image, name: '' }];
+  if (mode === 'single' || mode === 'side') {
+    (mode === 'single' ? imgs.slice(0, 1) : imgs).forEach((im, n) => {
+      const f = el('figure'), wrap = el('span', 'spotwrap' + (marking ? ' marking' : '')), i = pixImg(im.src);
+      wrap.dataset.n = n; wrap.appendChild(i); f.appendChild(wrap);
+      if (imgs.length > 1) f.appendChild(el('figcaption', '', String.fromCharCode(65 + n) + ': ' + im.name));
+      wrap.onclick = e => {
+        if (!marking) return openBig(i.src, ask.title);
+        const r = i.getBoundingClientRect();
+        spots.push({ image: n, x: Math.floor((e.clientX - r.left) / k), y: Math.floor((e.clientY - r.top) / k), text: '' });
+        drawSpots(); listSpots();
+      };
+      box.appendChild(f);
+    });
+  } else if (mode === 'slider') {
+    const f = el('figure'), s = el('div', 'slider'), a = pixImg(imgs[0].src), top = el('div', 'top'), b = pixImg(imgs[1].src), h = el('div', 'handle'), r = el('input');
+    r.type = 'range'; r.min = 0; r.max = 100; r.value = 50; r.id = 'sliderRange';
+    top.appendChild(b); s.append(a, top, h);
+    f.append(s, r, el('figcaption', '', 'Left of the line: ' + imgs[0].name + '  ·  right: ' + imgs[1].name));
+    r.oninput = layoutSlider; box.appendChild(f);
+  } else if (mode === 'frames') {
+    player = makePlayer(imgs[0].src, ask.frames); box.appendChild(player.node);
+  } else if (mode === 'ingame') {
+    const zoomed = pixImg(ask.ingame), real = pixImg(ask.ingame);
+    real.dataset.real = '1';
+    const f1 = el('figure'), f2 = el('figure');
+    f2.append(zoomed, el('figcaption', '', 'Zoomed, like an emulator window'));
+    f1.append(real, el('figcaption', '', 'Real size: a GBA screen is 240x160'));
+    box.append(f2, f1);
+  }
+  applyZoom();
+}
+function layoutSlider() {
+  const s = box.querySelector('.slider'); if (!s) return;
+  const v = +$('sliderRange').value / 100, w = s.querySelector(':scope > img').offsetWidth, top = s.querySelector('.top');
+  top.style.left = (w * v) + 'px'; top.style.width = (w * (1 - v)) + 'px';
+  top.querySelector('img').style.left = -(w * v) + 'px';
+  s.querySelector('.handle').style.left = (w * v) + 'px';
+}
+// a sprite sheet played frame by frame; game speed = 133 ms a step (FireRed walks)
+function makePlayer(src, fr) {
+  const node = el('div', 'player'), c = el('canvas'), bar = el('div', 'zoombar');
+  const play = el('button', 'on', 'Pause'), step = el('button', '', 'Next frame'), speed = el('select'), info = el('span');
+  [['1', 'Game speed'], ['0.5', 'Half speed'], ['0.25', 'Quarter speed'], ['2', 'Double speed']].forEach(([v, t]) => { const o = el('option', '', t); o.value = v; speed.appendChild(o); });
+  bar.append(play, step, speed, info); node.append(c, bar);
+  const img = new Image(), ctx = c.getContext('2d');
+  let i = 0, timer = null, order = [];
+  const p = {
+    node,
+    draw() {
+      if (!img.naturalWidth || !order.length) return;
+      c.width = fr.w * k; c.height = fr.h * k; ctx.imageSmoothingEnabled = false;
+      const f = order[i % order.length], cols = Math.max(1, Math.floor(img.naturalWidth / fr.w));
+      ctx.clearRect(0, 0, c.width, c.height);
+      ctx.drawImage(img, (f % cols) * fr.w, Math.floor(f / cols) * fr.h, fr.w, fr.h, 0, 0, fr.w * k, fr.h * k);
+      info.textContent = 'frame ' + f + ' (' + (i % order.length + 1) + ' of ' + order.length + ')';
+    },
+    start() { p.stop(); timer = setInterval(() => { i++; p.draw(); }, fr.ms / +speed.value); play.textContent = 'Pause'; play.classList.add('on'); },
+    stop() { if (timer) clearInterval(timer); timer = null; play.textContent = 'Play'; play.classList.remove('on'); }
+  };
+  play.onclick = () => timer ? p.stop() : p.start();
+  step.onclick = () => { p.stop(); i++; p.draw(); };
+  speed.onchange = () => { if (timer) p.start(); };
+  img.onload = () => {
+    const n = Math.max(1, Math.floor(img.naturalWidth / fr.w)) * Math.max(1, Math.floor(img.naturalHeight / fr.h));
+    order = fr.order && fr.order.length ? fr.order : [...Array(n).keys()];
+    applyZoom(); p.start();
+  };
+  img.src = src;
+  return p;
+}
+// notes on a spot: numbered markers in picture pixels, one text line each
+function drawSpots() {
+  box.querySelectorAll('.spot').forEach(s => s.remove());
+  if (mode !== 'single' && mode !== 'side') return;
+  spots.forEach((s, n) => {
+    const wrap = box.querySelector('.spotwrap[data-n="' + s.image + '"]'); if (!wrap) return;
+    const d = el('span', 'spot', n + 1); d.style.left = (s.x + .5) * k + 'px'; d.style.top = (s.y + .5) * k + 'px'; wrap.appendChild(d);
+  });
+}
+function listSpots() {
+  const L = $('spotList'); L.innerHTML = '';
+  spots.forEach((s, n) => {
+    const row = el('div'), inp = el('input'), x = el('button', '', '✕');
+    inp.placeholder = 'What should change here? (pixel ' + s.x + ',' + s.y + ')'; inp.value = s.text;
+    inp.oninput = () => { s.text = inp.value; };
+    x.title = 'Remove this spot'; x.onclick = () => { spots.splice(n, 1); drawSpots(); listSpots(); };
+    row.append(el('b', '', n + 1), inp, x); L.appendChild(row);
+    if (n === spots.length - 1 && !s.text) inp.focus();
+  });
+}
+function setMarking(on) {
+  marking = on; $('markBtn').classList.toggle('on', on);
+  $('markBtn').textContent = on ? 'Marking: click the picture' : 'Mark a spot';
+  box.querySelectorAll('.spotwrap').forEach(w => w.classList.toggle('marking', on));
+}
+$('markBtn').onclick = () => setMarking(!marking);
+function setMode(m) {
+  mode = m; fit = true;
+  $('modeBtns').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.m === m));
+  $('markBtn').hidden = !(m === 'single' || m === 'side');
+  render();
+}
+function toggleGroup(btns, b, on) { btns.forEach(x => x.classList.toggle('on', x === b && on)); }
+function showAsk(s) {
+  ask = s; spots = []; verdict = null; choice = null;
+  $('ask').classList.add('show');
+  $('askTitle').textContent = 'Claude asks: ' + s.title;
+  $('askPiece').hidden = !s.piece; $('askPiece').textContent = s.piece || '';
+  $('askNote').textContent = s.note || '';
+  $('replyDone').textContent = ''; $('spotList').innerHTML = '';
+  setMarking(false);
+  const n = (s.images || []).length, ms = [['single', 'Picture']];
+  if (n >= 2) ms.push(['side', 'Side by side']);
+  if (n === 2) ms.push(['slider', 'Before / after']);
+  if (s.frames) ms.push(['frames', 'Animation']);
+  if (s.ingame) ms.push(['ingame', 'In game']);
+  const mb = $('modeBtns'); mb.innerHTML = '';
+  if (ms.length > 1) ms.forEach(([m, t]) => { const b = el('button', '', t); b.dataset.m = m; b.onclick = () => setMode(m); mb.appendChild(b); });
+  const ab = $('answerBtns'); ab.innerHTML = '';
+  const vb = [], cb = [];
+  if (s.piece) {
+    [['approve', 'Approve', 'good'], ['needs_work', 'Needs work', 'warn']].forEach(([v, t, c]) => {
+      const b = el('button', c, t); vb.push(b);
+      b.onclick = () => { verdict = verdict === v ? null : v; toggleGroup(vb, b, verdict === v); };
+      ab.appendChild(b);
+    });
+    ab.appendChild(el('span', 'status', 'Approve = OK for the game. Claude still checks with you before it goes in.'));
+  }
+  (s.choices || []).forEach(c => {
+    const b = el('button', '', c); cb.push(b);
+    b.onclick = () => { choice = choice === c ? null : c; toggleGroup(cb, b, choice === c); };
+    ab.appendChild(b);
+  });
+  setMode(s.frames ? 'frames' : s.ingame ? 'ingame' : n >= 2 ? 'side' : 'single');
+  alertAsk();
+}
+$('sendReply').onclick = async () => {
+  const text = $('reply').value;
+  if (ask.piece && !verdict && !text && !spots.length) { $('replyDone').textContent = 'Pick Approve or Needs work, or type a note.'; return; }
+  const body = { ask: ask.time, about: ask.title, text, spots };
+  if (ask.piece) body.piece = ask.piece;
+  if (verdict) { body.kind = 'verdict'; body.verdict = verdict; }
+  else if (choice) { body.kind = 'choice'; body.choice = choice; }
+  const r = await fetch('/api/note', { method: 'POST', body: JSON.stringify(body) });
+  $('replyDone').textContent = r.ok ? 'Sent. Claude reads it next.' : 'Could not send (is the viewer running?).';
+  if (r.ok) $('reply').value = '';
+};
+
+// ---- the big view: Fit, - / +, mouse wheel, drag to move around, Esc closes
+const big = $('big'), bigImg = $('bigImg'), stage = $('bigStage');
+let bigFit = true, bk = 1;
+const showBk = () => { sizeImg(bigImg, bk); $('bigZoom').textContent = bk + 'x'; };
+const bigFitNow = () => { bk = fitScale(stage.clientWidth - 8, stage.clientHeight - 8, bigImg.naturalWidth, bigImg.naturalHeight); showBk(); };
 function openBig(src, name) {
-  document.getElementById('bigName').textContent = name; big.classList.add('show'); bigFit = true;
+  $('bigName').textContent = name; big.classList.add('show'); bigFit = true;
   bigImg.onload = bigFitNow; bigImg.src = src; if (bigImg.complete && bigImg.naturalWidth) bigFitNow();
 }
-const bigStep = d => { bigFit = false; setScale(bigImg, Math.max(1, Math.min(+bigImg.dataset.k + d, 16)), bigZoom); };
-document.getElementById('bigIn').onclick = () => bigStep(1);
-document.getElementById('bigOut').onclick = () => bigStep(-1);
-document.getElementById('bigFit').onclick = () => { bigFit = true; bigFitNow(); };
-document.getElementById('bigClose').onclick = () => big.classList.remove('show');
+const bigStep = d => { bigFit = false; bk = Math.max(1, Math.min(bk + d, 16)); showBk(); };
+$('bigIn').onclick = () => bigStep(1);
+$('bigOut').onclick = () => bigStep(-1);
+$('bigFit').onclick = () => { bigFit = true; bigFitNow(); };
+$('bigClose').onclick = () => big.classList.remove('show');
 stage.addEventListener('wheel', e => { e.preventDefault(); bigStep(e.deltaY < 0 ? 1 : -1); }, { passive: false });
 document.addEventListener('keydown', e => {
   if (!big.classList.contains('show')) return;
@@ -133,58 +401,80 @@ stage.onpointerdown = e => { drag = { x: e.clientX, y: e.clientY, l: stage.scrol
 stage.onpointermove = e => { if (drag) { stage.scrollLeft = drag.l - (e.clientX - drag.x); stage.scrollTop = drag.t - (e.clientY - drag.y); } };
 stage.onpointerup = () => { drag = null; };
 
-let since = Date.now() / 1000 - 600, paused = false, seen = new Set(), lastShow = null;
-const grid = document.getElementById('grid'), pins = document.getElementById('pins');
-const url = p => '/file?path=' + encodeURIComponent(p);
-document.getElementById('pause').onclick = e => { paused = !paused; e.target.classList.toggle('on', paused); e.target.textContent = paused ? 'Paused' : 'Pause'; };
-document.getElementById('clear').onclick = () => { grid.innerHTML = ''; seen.clear(); };
+// ---- live stream + pins
+let since = Date.now() / 1000 - 600, paused = false, seen = new Set(), lastTime = null;
+const grid = $('grid'), pins = $('pins');
+$('pause').onclick = e => { paused = !paused; e.target.classList.toggle('on', paused); e.target.textContent = paused ? 'Paused' : 'Pause'; };
+$('clear').onclick = () => { grid.innerHTML = ''; seen.clear(); };
 function pin(src, name) {
   if (pins.querySelector('.empty')) pins.innerHTML = '';
-  const d = document.createElement('div'); d.className = 'pin';
-  d.innerHTML = '<div class="bar"><span></span><button>Full window</button><button>Close</button></div><img alt="">';
-  d.querySelector('span').textContent = name; d.querySelector('img').src = src;
-  const [zoom, close] = d.querySelectorAll('button');
-  zoom.onclick = d.querySelector('img').onclick = () => openBig(src, name);
+  const d = el('div', 'pin'), bar = el('div', 'bar'), zoom = el('button', '', 'Full window'), close = el('button', '', 'Close'), i = el('img');
+  bar.append(el('span', '', name), zoom, close); i.src = src; i.alt = ''; d.append(bar, i);
+  zoom.onclick = i.onclick = () => openBig(src, name);
   close.onclick = () => d.remove();
   pins.prepend(d);
 }
 function addTile(im) {
   if (seen.has(im.path + im.mtime)) return;
-  const f = document.getElementById('filter').value;
+  const f = $('filter').value;
   if (f && !im.name.includes(f)) return;
   seen.add(im.path + im.mtime);
-  document.getElementById('emptyMsg')?.remove();
-  const t = document.createElement('div'); t.className = 'tile new';
-  t.innerHTML = '<img loading="lazy" alt=""><div class="n"></div>';
-  t.querySelector('img').src = url(im.path) + '&t=' + im.mtime;
-  t.querySelector('.n').textContent = im.name; t.title = im.name;
+  $('emptyMsg')?.remove();
+  const t = el('div', 'tile new'), i = el('img');
+  i.loading = 'lazy'; i.alt = ''; i.src = url(im.path) + '&t=' + im.mtime;
+  t.append(i, el('div', 'n', im.name)); t.title = im.name;
   t.onclick = () => pin(url(im.path) + '&t=' + im.mtime, im.name);
   grid.prepend(t);
   setTimeout(() => t.classList.remove('new'), 1500);
   while (grid.children.length > 150) grid.lastChild.remove();
 }
-function showAsk(s) {
-  const a = document.getElementById('ask'); a.classList.add('show');
-  document.getElementById('askTitle').textContent = 'Claude asks: ' + s.title;
-  document.getElementById('askNote').textContent = s.note || '';
-  document.getElementById('askImg').src = s.image;
-  document.getElementById('replyDone').textContent = '';
-  lastShow = s;
+
+// ---- history: every question and what came back, searchable
+let hData = [];
+async function loadHistory() {
+  try { hData = await (await fetch('/api/history')).json(); } catch (e) { hData = []; }
+  drawHistory();
 }
-document.getElementById('sendReply').onclick = async () => {
-  const text = document.getElementById('reply').value;
-  await fetch('/api/note', { method: 'POST', body: JSON.stringify({ about: lastShow && lastShow.title, text }) });
-  document.getElementById('replyDone').textContent = 'Sent. Claude reads it next.';
-  document.getElementById('reply').value = '';
-};
+function answerText(a) {
+  const parts = [];
+  if (a.verdict) parts.push(a.verdict === 'approve' ? 'Approved' : 'Needs work');
+  if (a.choice) parts.push('Picked: ' + a.choice);
+  if (a.text) parts.push(a.text);
+  (a.spots || []).forEach((s, n) => parts.push('spot ' + (n + 1) + ' (' + s.x + ',' + s.y + '): ' + (s.text || '')));
+  if (a.kind === 'board') parts.push('scene board: ' + (a.people || []).filter(p => p.moved || p.turned || p.new || p.removed).length + ' changes');
+  return (a.sent || '').slice(11, 16) + '  ' + parts.join(' · ');
+}
+function drawHistory() {
+  const q = $('hSearch').value.toLowerCase(), L = $('hList'); L.innerHTML = '';
+  const rows = hData.filter(h => !q || JSON.stringify(h).toLowerCase().includes(q));
+  if (!rows.length) { L.appendChild(el('div', 'empty', q ? 'Nothing matches.' : 'No questions yet.')); return; }
+  rows.forEach(h => {
+    const c = el('div', 'hcard'), i = el('img'), body = el('div');
+    i.src = h.image; i.alt = ''; i.onclick = () => openBig(h.image, h.title);
+    const t = (h.time || '').replace(/^(\d{4})(\d\d)(\d\d)_(\d\d)(\d\d).*/, '$1-$2-$3 $4:$5');
+    body.append(el('h4', '', h.title), el('div', 'status', t + (h.piece ? ' · ' + h.piece : '') + (h.note ? ' · ' + h.note : '')));
+    (h.answers || []).forEach(a => body.appendChild(el('div', 'a', answerText(a))));
+    const again = el('button', '', 'Show again');
+    again.onclick = () => { tab('live'); showAsk(h); window.scrollTo(0, 0); };
+    body.appendChild(again);
+    c.append(i, body); L.appendChild(c);
+  });
+}
+$('hSearch').oninput = drawHistory;
+
+// ---- news, once a second
 async function tick() {
   try {
-    const r = await fetch('/api/news?since=' + since); const d = await r.json();
-    document.getElementById('status').textContent = paused ? 'paused (still watching)' : 'live · ' + new Date().toLocaleTimeString();
-    if (!paused) { d.images.slice().reverse().forEach(addTile); since = Math.max(since, ...d.images.map(i => i.mtime), since); }
+    const d = await (await fetch('/api/news?since=' + since)).json();
+    $('status').textContent = paused ? 'paused (still watching)' : 'live · ' + new Date().toLocaleTimeString();
+    if (!paused) { d.images.slice().reverse().forEach(addTile); since = Math.max(since, ...d.images.map(i => i.mtime)); }
     const s = d.shows[d.shows.length - 1];
-    if (s && (!lastShow || lastShow.time !== s.time)) showAsk(s);
-  } catch (e) { document.getElementById('status').textContent = 'viewer stopped: run viewer.py open'; }
+    if (s && s.time !== lastTime) {
+      const first = lastTime === null;
+      lastTime = s.time; showAsk(s);
+      if (first) stopBlink();  // opening the page isn't news
+    }
+  } catch (e) { $('status').textContent = 'viewer stopped: run viewer.py open'; }
 }
 tick(); setInterval(tick, 1000);
 </script>

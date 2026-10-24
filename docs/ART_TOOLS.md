@@ -249,15 +249,39 @@ in the recipe; battle/back/portrait: `cast_handmade/<name>/`) and rebuilds.
 
     python3 tools/research_red/viewer/viewer.py open                 # the page, in the Windows browser
     python3 tools/research_red/viewer/viewer.py show FILE.png --title "Which hair?"
+    python3 tools/research_red/viewer/viewer.py show A.png B.png --title "Old or new?" --choices "Old,New"
+    python3 tools/research_red/viewer/viewer.py show graphics/research_red/overworld/elm.png --piece ow:elm \
+        --frames 16x32 --order 0,3,0,4 --map MAP_PALLET_TOWN --at 9,9 --title "Elm ready?"
     python3 tools/research_red/viewer/viewer.py board MAP_PALLET_TOWN --title "Where does Ivy stand?"
     python3 tools/research_red/viewer/viewer.py answers
+    python3 tools/research_red/art/art_gate.py verdicts              # Approve / Needs work -> the tracker
     python3 tools/research_red/test/smoke.py --watch lab             # tests stream into it
 
-A small local page (only this computer can reach it): new pictures from the
-art tools and the newest test run stream in (pause, click to pin); `show`
-puts a picture in a "Claude asks" panel with a reply box; `board` shows a map
-with its people: drag them, click to turn, add someone from the list, then
-**Send to Claude** (the positions land in `viewer\answers\`).
+A small local page (only this computer can reach it).
+
+- **Live:** new pictures from the art tools and the newest test run stream
+  in. You can pause, click a picture to pin it, and use the sliders for
+  picture size and the pinned column.
+- **Claude asks:** `show` puts pictures in a panel at the top.
+  - Zoom always goes in whole steps (− + Fit; Full window has wheel zoom, drag and Esc).
+  - **Side by side** and a **Before / after** slider appear for two or more files.
+  - **Animation** (`--frames`) plays a sheet at game speed (133 ms a step), half or quarter speed, or frame by frame.
+  - **In game** (`--map --at`) puts frame 0 on the real map among its people,
+    as a 240x160 screen, both zoomed and at real size.
+  - **Mark a spot** pins numbered notes to exact pixels.
+  - **Approve / Needs work** (`--piece`) and choice buttons (`--choices`) give
+    a clear answer. `art_gate.py verdicts` copies verdicts and notes into the
+    tracker. Approve never puts anything in the game by itself: the stage
+    changes only with `art_gate.py set`, after asking the owner.
+- **History:** every question with its answers, searchable, and Show again.
+- **Alert:** the tab title blinks while the page is in the background, plus
+  a soft sound if Sound is on.
+- **Themes:** Dive Ball (the default), Quick Ball and Poké Ball, each with a
+  light and a dark version following Windows. The scene board follows the
+  same choice.
+- **Scene board** (`board`): a map with its people. Drag them, click to turn
+  them, add someone from the list, zoom with − +, then **Send to Claude** (the
+  positions land in `viewer\answers\`).
 
 ## Map pieces
 

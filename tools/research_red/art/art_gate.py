@@ -284,9 +284,11 @@ def cmd_verdicts():
         if pid and pid in artlib.load_pieces():
             label = {"approve": "approves", "needs_work": "needs work"}.get(a.get("verdict"), a.get("verdict"))
             set_field(pid, "verdict", "%s, %s" % (label, a.get("sent", "")[:10]))
-            if a.get("text"):
-                set_field(pid, "notes", a["text"])
-            print("%s: %s%s" % (pid, label, (": " + a["text"]) if a.get("text") else ""))
+            note = "; ".join(([a["text"]] if a.get("text") else []) +
+                             ["spot %d,%d: %s" % (sp["x"], sp["y"], sp.get("text", "")) for sp in a.get("spots", [])])
+            if note:
+                set_field(pid, "notes", note)
+            print("%s: %s%s" % (pid, label, (": " + note) if note else ""))
             os.makedirs(done, exist_ok=True)
             shutil.move(path, os.path.join(done, os.path.basename(path)))
             taken += 1

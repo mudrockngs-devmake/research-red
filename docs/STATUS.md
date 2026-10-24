@@ -12,7 +12,7 @@ No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
 - [x] 3 GitHub Art Kit milestone + art-kit label, #15 #33 moved, #104 vertical slice
 - [x] 4 art bible docs/ART_BIBLE.md (draft, 3 questions for the owner at the end)
 - [x] 5-6 vertical slice + game lane rule (ART_TOOLS, CLAUDE.md)
-- [ ] 7-14 viewer: verdict/choice buttons, spot notes, compare, animation player, in-game preview, history, alert, themes
+- [x] 7-14 viewer: verdict/choice buttons (-> art_gate verdicts, tested), spot notes, compare + slider, animation player, in-game preview, history, alert + sound, themes (Dive Ball default; board too)
 - [ ] 15-19 hub: themes (Dive Ball default), Today screen, project shortcuts, health check, desktop shortcut + cheat sheet
 - [ ] final: docs (ART_TOOLS, DEV_GUIDE), STATUS, push
 

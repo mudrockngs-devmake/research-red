@@ -2,8 +2,16 @@
 """Research Red: the live viewer, a page in the Windows browser.
 
   python3 tools/research_red/viewer/viewer.py open            # start (if needed) and open the page
-  python3 tools/research_red/viewer/viewer.py show FILE.png [--title "Which hair?"] [--note "..."]
-        put a picture in the page's "Claude asks" panel (the page pops up)
+  python3 tools/research_red/viewer/viewer.py show FILE.png [FILE2.png ...] [--title "Which hair?"] [--note "..."]
+        put a picture in the page's "Claude asks" panel (the page pops up). Options:
+          --piece ow:elm           Approve / Needs work buttons; the verdict goes to the
+                                   art tracker (art_gate.py verdicts)
+          --choices "A,B,C"        one button per choice (the answer is the choice)
+          two or more files        compare: side by side, and a before/after slider for two
+          --frames 16x32 [--order 0,3,0,4] [--ms 133]
+                                   play a sprite sheet's frames (game speed: 133 ms a step)
+          --map MAP_X --at 9,7     the sprite (frame 0) on that map at that square, at the
+                                   size it is in the game (240x160 screen)
   python3 tools/research_red/viewer/viewer.py board MAP_X [--title "Where should Ivy stand?"]
         open the scene board for a map: drag people, click to turn them,
         add people from the list, then "Send to Claude"
@@ -130,7 +138,7 @@ def recent_images(since, limit=60):
     return INDEX.recent(since, limit)
 
 
-def shows():
+def shows(limit=8):
     items = []
     for f in sorted(os.listdir(SHOW)):
         if f.endswith(".json"):
@@ -138,7 +146,72 @@ def shows():
                 items.append(json.load(open(os.path.join(SHOW, f))))
             except (OSError, ValueError):
                 pass
-    return items[-8:]
+    return items[-limit:] if limit else items
+
+
+def history():
+    """Every question Claude asked, newest first, each with the answers sent about it."""
+    answers = {}
+    for f in sorted(os.listdir(ANSWERS)):
+        if f.endswith(".json"):
+            try:
+                a = json.load(open(os.path.join(ANSWERS, f)))
+            except (OSError, ValueError):
+                continue
+            answers.setdefault(a.get("ask") or a.get("about") or "", []).append(a)
+    out = []
+    for s in reversed(shows(0)):
+        s = dict(s)
+        s["answers"] = answers.get(s.get("time"), []) + answers.get(s.get("title"), [])
+        out.append(s)
+    return out
+
+
+def see_through(path):
+    """GBA pictures keep their see-through colour as palette colour 0 (often bright
+    green); make the viewer's copy show it as see-through, like the game does."""
+    try:
+        from PIL import Image
+        im = Image.open(path)
+        if im.mode == "P" and "transparency" not in im.info:
+            im.save(path, transparency=0)
+    except (OSError, ValueError):
+        pass
+
+
+def ingame_png(map_id, x, y, img_path, fw, fh):
+    """A 240x160 GBA screen: the map around square (x, y) at its real size, the
+    map's own people, and the sprite (frame 0) standing on that square."""
+    import io
+    import artlib
+    import render_map
+    from PIL import Image
+    out = os.path.join(BOARDS, map_id + ".png")
+    if not os.path.exists(out) or time.time() - os.path.getmtime(out) > 60:
+        render_map.render_map(map_id, out)
+    full = Image.open(out).convert("RGBA")
+    full = full.resize((full.width // 2, full.height // 2), Image.NEAREST)  # 16 px squares, like the game
+    m = render_map.find_map(map_id)
+
+    def stand(frame_img, sx, sy):
+        full.alpha_composite(frame_img, (sx * 16 + (16 - frame_img.width) // 2, (sy + 1) * 16 - frame_img.height))
+    for o in m.get("object_events", []):
+        if (o["x"], o["y"]) == (x, y):
+            continue
+        png = sprite_png(o.get("graphics_id", ""), movement_facing(o.get("movement_type", "")))
+        if png:
+            stand(Image.open(io.BytesIO(png)).convert("RGBA"), o["x"], o["y"])
+    grid = artlib.load_grid(img_path)
+    stand(artlib.to_rgba(artlib.crop(grid, 0, 0, min(fw, len(grid[0])), min(fh, len(grid)))), x, y)
+    # the camera keeps the player a little below the middle (FireRed: 7.5 squares across, 5 down)
+    left, top = x * 16 + 8 - 120, y * 16 + 8 - 80
+    left = max(0, min(left, full.width - 240))
+    top = max(0, min(top, full.height - 160))
+    screen = Image.new("RGBA", (240, 160), (0, 0, 0, 255))
+    screen.alpha_composite(full.crop((left, top, left + 240, top + 160)))
+    buf = io.BytesIO()
+    screen.convert("RGB").save(buf, "PNG")
+    return buf.getvalue()
 
 
 # ---------------------------------------------------------------- scene board data
@@ -241,6 +314,17 @@ class Handler(BaseHTTPRequestHandler):
         if u.path == "/api/news":
             since = float(q.get("since", ["0"])[0])
             return self.send(200, {"now": time.time(), "images": recent_images(since), "shows": shows()})
+        if u.path == "/api/history":
+            return self.send(200, history())
+        if u.path == "/api/ingame":
+            try:
+                if not os.path.realpath(q["img"][0]).startswith(os.path.realpath(HOME) + os.sep):
+                    return self.send(403, {"error": "not allowed"})
+                png = ingame_png(q["map"][0], int(q["x"][0]), int(q["y"][0]), q["img"][0],
+                                 int(q.get("fw", ["16"])[0]), int(q.get("fh", ["32"])[0]))
+                return self.send(200, png, "image/png")
+            except (SystemExit, KeyError, ValueError, OSError, StopIteration) as e:
+                return self.send(404, {"error": "no in-game preview: %s" % e})
         if u.path == "/api/board":
             try:
                 return self.send(200, board_data(q["map"][0]))
@@ -262,7 +346,8 @@ class Handler(BaseHTTPRequestHandler):
         n = int(self.headers.get("Content-Length", "0"))
         data = json.loads(self.rfile.read(n) or b"{}")
         stamp = time.strftime("%Y%m%d_%H%M%S")
-        kind = "board" if self.path == "/api/board" else "note"
+        # notes, verdicts (Approve / Needs work about a tracker piece), choices, board sends
+        kind = "board" if self.path == "/api/board" else data.get("kind") if data.get("kind") in ("verdict", "choice") else "note"
         data["kind"], data["sent"] = kind, time.strftime("%Y-%m-%d %H:%M:%S")
         path = os.path.join(ANSWERS, "%s_%s.json" % (stamp, kind))
         json.dump(data, open(path, "w"), indent=2)
@@ -335,13 +420,30 @@ def main(argv):
         open_page()
     elif cmd == "show":
         start()
-        src = os.path.abspath(rest[0])
         stamp = time.strftime("%Y%m%d_%H%M%S")
-        dst = os.path.join(SHOW, stamp + "_" + os.path.basename(src))
-        shutil.copy(src, dst)
-        meta = {"image": "/file?path=" + urllib.parse.quote(dst), "title": opts.get("title", os.path.basename(src)),
+        images, copies = [], []
+        for n, src in enumerate(rest):
+            dst = os.path.join(SHOW, "%s_%d_%s" % (stamp, n, os.path.basename(src)))
+            shutil.copy(os.path.abspath(src), dst)
+            see_through(dst)
+            copies.append(dst)
+            images.append({"src": "/file?path=" + urllib.parse.quote(dst), "name": os.path.basename(src)})
+        meta = {"image": images[0]["src"], "images": images, "title": opts.get("title", os.path.basename(rest[0])),
                 "note": opts.get("note", ""), "time": stamp}
-        json.dump(meta, open(dst + ".json", "w"))
+        if opts.get("piece"):
+            meta["piece"] = opts["piece"]
+        if opts.get("choices"):
+            meta["choices"] = [c.strip() for c in opts["choices"].split(",") if c.strip()]
+        if opts.get("frames"):
+            fw, fh = (int(v) for v in opts["frames"].lower().split("x"))
+            meta["frames"] = {"w": fw, "h": fh, "ms": int(opts.get("ms", "133")),
+                              "order": [int(v) for v in opts["order"].split(",")] if opts.get("order") else None}
+        if opts.get("map") and opts.get("at"):
+            x, y = (int(v) for v in opts["at"].split(","))
+            fw, fh = (meta["frames"]["w"], meta["frames"]["h"]) if "frames" in meta else (16, 32)
+            meta["ingame"] = "/api/ingame?" + urllib.parse.urlencode(
+                {"map": opts["map"], "x": x, "y": y, "img": copies[0], "fw": fw, "fh": fh})
+        json.dump(meta, open(os.path.join(SHOW, stamp + ".json"), "w"))
         if opts.get("open", "yes") != "no":
             open_page("/?ask=" + stamp)
         print("shown:", meta["title"])
