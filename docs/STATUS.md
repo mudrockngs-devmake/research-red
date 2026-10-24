@@ -64,6 +64,16 @@ Test tooling added: `runner.log` per scene, `||` in conditions, `GameMemory.part
 | Flags / vars | 2304 / 256 | ~570 flags and ~90 vars still unused; keep FLAGS_VARS.md current |
 | RAM (EWRAM, permanent) | 250156 of 262144 bytes | ~11.7 KB free; new screens should allocate while open |
 
+## Art Kit round 2 (started 2026-10-24; owner answers in ROADMAP.md "Art Kit round 2")
+- [ ] Sprite fixes from the owner's notes + parts library (coats, apron, tie, cane, hair); Koga's battle legs
+- [ ] Live preview page + scene board (Windows browser, opens by itself)
+- [ ] Better battle-picture shrinker, before/after
+- [ ] Back-sprite pipeline (Ivy, both players), throw frames
+- [ ] Overworld sprites for the rest of the ref cast
+- [ ] Aseprite automation (open with grid/palette, batch export)
+- [ ] Issues: partner battles, play as Ivy, tag battle
+- [ ] Final: build, rr_check, smoke, gallery, docs
+
 ## Art Kit run (2026-10-24, done; owner answers in ROADMAP.md "Art Kit run")
 Result: `tools/research_red/art/` + docs/ART_TOOLS.md. Gallery for the owner: `E:\Workspace\romhacks\research-red\art\toolkit\gallery.html`
 (private learning notes beside it: `LEARN_SPRITE_EDITING.md`). In master, NOT installed: 17 overworld sprites (Elm, Ivy, Jenny,
