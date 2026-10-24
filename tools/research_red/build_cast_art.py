@@ -3,8 +3,9 @@
 
 For every reference image this writes graphics/research_red/cast/<name>/:
   battle.png    64x64 full-body trainer pic
-  battle_frlg.png  64x64 FireRed-style framing: head to mid-thigh, figure
-                twice as big (used for the gym leaders and Elite Four)
+  battle_frlg.png  64x64 cropped framing: head to mid-thigh, figure twice as big
+  battle_fr.png 64x64 full body in FireRed's proportions (bigger head, sturdier
+                limbs), shrunk the pixel-art way (tools/research_red/art/pixelize.py)
   portrait.png  64x64 head-and-chest dialogue portrait
   call.png      32x32 face close-up for video calls
 All are 4-bit indexed PNGs, max 16 colors, index 0 = transparent (pure green).
@@ -38,6 +39,8 @@ HEAD_FRAC_W = 0.20
 HEAD_BOOST = 1.0
 KEEP_DARK = 0.42
 FRLG_CROP = 0.60  # battle_frlg: how much of the figure (from the head down) fills the picture
+FR_HEAD_SCALE = 1.35  # battle_fr: how much bigger the head is drawn (FireRed's chunkier proportions)
+FR_WIDEN = 1.15       # battle_fr: the figure made this much wider (sturdier limbs)
 
 # Poses where an arm sits above or beside the head fool the automatic head
 # finder; give (head centre x, top of head y) in reference-image pixels.
@@ -252,6 +255,34 @@ def build(ref_path, out_dir, name=""):
     return res
 
 
+def build_fr(ref_path, out_dir, name=""):
+    """battle_fr.png: the whole figure in FireRed's trainer proportions, made
+    with the Art Kit's pixel-art shrinker (no thin jagged legs)."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "art"))
+    from PIL import Image
+    import pixelize
+    w, h, rows = load_ref(ref_path)
+    x0, y0, x1, y1, head_x, head_top = figure_box(w, h, rows)
+    if name in HEAD_OVERRIDES:
+        head_x, head_top = HEAD_OVERRIDES[name]
+    fh = y1 - y0
+    im = Image.new("RGBA", (w, h))
+    im.putdata([p for r in rows for p in r])
+    hw, hh = int(fh * HEAD_FRAC_W), int(fh * HEAD_FRAC_H)
+    fig = pixelize.fr_proportions(im, (head_x - hw // 2, head_top, head_x + hw // 2, head_top + hh),
+                                  head_scale=FR_HEAD_SCALE, widen=FR_WIDEN)
+    # fit 64x64 (63 tall: feet on the bottom row, room for the outline)
+    k = min(62 / fig.width, 63 / fig.height)
+    ow, oh = max(4, int(fig.width * k)), max(4, int(fig.height * k))
+    g = pixelize.pixelize(fig, ow, oh, thick_from=oh // 2)
+    canvas = [[None] * 64 for _ in range(64)]
+    ox, oy = (64 - ow) // 2, 64 - oh
+    for y in range(oh):
+        for x in range(ow):
+            canvas[oy + y][ox + x] = g[y][x]
+    return save_indexed(os.path.join(out_dir, "battle_fr.png"), canvas, 64, 64, 0, 0)
+
+
 def main():
     ref_dir = sys.argv[1] if len(sys.argv) > 1 else REF_DIR
     sheet = []
@@ -261,7 +292,8 @@ def main():
             print("missing", path)
             continue
         res = build(path, os.path.join(OUT_DIR, name), name)
-        for kind in ("battle", "battle_frlg", "portrait", "call"):
+        res["battle_fr"] = build_fr(path, os.path.join(OUT_DIR, name), name)
+        for kind in ("battle", "battle_frlg", "battle_fr", "portrait", "call"):
             hand = os.path.join(HANDMADE_DIR, name, kind + ".png")
             if os.path.exists(hand):
                 shutil.copyfile(hand, os.path.join(OUT_DIR, name, kind + ".png"))

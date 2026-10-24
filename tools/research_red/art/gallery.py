@@ -75,8 +75,7 @@ def main():
     parts.append("</div>")
 
     parts.append("<h2 id='battle'>Battle pictures</h2><div class='grid'>")
-    for f, title, note in (("leaders_before_after.png", "Gym leaders and Elite Four", "FireRed's picture, then the new one from the reference art (in the game now)."),
-                           ("cast_full_vs_frlg.png", "Story cast: full body (now) or FireRed framing (option)", "The cast keeps the full-body look for now; say if you'd like the bigger framing."),
+    for f, title, note in (("battle_fr_before_after.png", "Battle pictures: before, now, FireRed's own", "Now: full body in FireRed's proportions, shrunk the pixel-art way (tools/research_red/art/pixelize.py). In the game for the cast, gym leaders and Elite Four."),
                            ("back_made_throw.png", "Back-pic throw draft (battle_kit backpic)", "Follows Red's lean; the throwing arm still needs drawing."),
                            ("pikachu_shiny.png", "Shiny palette (battle_kit shiny)", "Example: colours turned round the colour wheel.")):
         p = os.path.join(out, "battle", f)
