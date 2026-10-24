@@ -2,6 +2,8 @@
 
 A headless copy of mGBA plays the game from scripted button presses, takes screenshots, and checks the game's memory to see that each scene really finished. It runs on every build before the owner gets it.
 
+Live view: add `--watch` (`python3 tools/research_red/test/smoke.py --watch lab`) and the screenshots stream into the viewer page in the Windows browser as they're taken (tools/research_red/viewer, docs/ART_TOOLS.md).
+
 ## Run them
 ```
 python3 tools/research_red/test/smoke.py            # all scenarios (about 5 minutes)

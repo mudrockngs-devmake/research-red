@@ -23,7 +23,7 @@ They always win over the generated versions. Overworld sheets: put the PNG in `g
 
 Character names: see `CAST` in `tools/research_red/build_cast_art.py` (e.g. `elm`, `ivy`, `ivy_swimsuit`, `jenny`, `jenny_police`).
 
-Tools: LibreSprite (free) or Aseprite. Keep your full-color originals; export the 16-color version. Check a picture with `python3 tools/research_red/art/battle_kit.py check FILE.png`.
+Tools: Aseprite (or LibreSprite, free). On the dev machine `python3 tools/research_red/art/aseprite.py open ow:<name>` / `battle:<name>` / `back:<name>` opens a sprite ready to edit and `import` puts it back. Keep your full-color originals; export the 16-color version. Check a picture with `python3 tools/research_red/art/battle_kit.py check FILE.png`.
 
 ## Sending art
 Shared folder synced to `E:\Workspace\romhacks\research-red\art\incoming\`, or a GitHub pull request to mudrockngs-devmake/research-red.

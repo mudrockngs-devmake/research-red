@@ -76,7 +76,9 @@ def main():
 
     parts.append("<h2 id='battle'>Battle pictures</h2><div class='grid'>")
     for f, title, note in (("battle_fr_before_after.png", "Battle pictures: before, now, FireRed's own", "Now: full body in FireRed's proportions, shrunk the pixel-art way (tools/research_red/art/pixelize.py). In the game for the cast, gym leaders and Elite Four."),
-                           ("back_made_throw.png", "Back-pic throw draft (battle_kit backpic)", "Follows Red's lean; the throwing arm still needs drawing."),
+                           ("backs.png", "Back views (drafts) beside the fronts", "back_maker.py works out the view from behind; finish by hand (aseprite.py open back:ivy)."),
+                           ("red_back_pic.gif", "Your side of a battle: male player + Ivy, the throw", "build_back_pics.py from the back views."),
+                           ("leaf_back_pic.gif", "Your side of a battle: female player + Ivy, the throw", ""),
                            ("pikachu_shiny.png", "Shiny palette (battle_kit shiny)", "Example: colours turned round the colour wheel.")):
         p = os.path.join(out, "battle", f)
         if os.path.exists(p):

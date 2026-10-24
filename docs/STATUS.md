@@ -64,15 +64,22 @@ Test tooling added: `runner.log` per scene, `||` in conditions, `GameMemory.part
 | Flags / vars | 2304 / 256 | ~570 flags and ~90 vars still unused; keep FLAGS_VARS.md current |
 | RAM (EWRAM, permanent) | 250156 of 262144 bytes | ~11.7 KB free; new screens should allocate while open |
 
-## Art Kit round 2 (started 2026-10-24; owner answers in ROADMAP.md "Art Kit round 2")
+## Art Kit round 2 (2026-10-24, done; owner answers in ROADMAP.md "Art Kit round 2")
+Result, in master, NOT installed (goes into v0.0.20 with round 1): the owner's sprite notes fixed; 11 more overworld
+sprites (Oak, Bill + 9 new RR_ cast drafts); every trainer battle picture from the ref art now `battle_fr`
+(full body, FireRed proportions); back views (drafts) and a from-behind player + Ivy back pic; live viewer
+(`tools/research_red/viewer/viewer.py open`) + scene board; Aseprite open/import (`tools/research_red/art/aseprite.py`).
+Owner to look at: the gallery (`E:\Workspace\romhacks\research-red\art\toolkit\gallery.html`), the viewer, hand-finishing
+the back drafts in Aseprite. Hub (claude-setup): Poké Ball look, "Start working" picks up by itself. Image generation tabled.
+Session cost 2026-10-24 total: $32.46 (session-cost; includes round 1's $15.66).
 - [x] Sprite fixes from the owner's notes + parts library (coats, apron, tie, cane, hair); Koga's battle legs
 - [x] Live preview page + scene board (Windows browser, opens by itself)
 - [x] Better battle-picture shrinker, before/after
 - [x] Back-sprite pipeline (Ivy, both players), throw frames
 - [x] Overworld sprites for the rest of the ref cast
 - [x] Aseprite automation (open with grid/palette, batch export)
-- [ ] Issues: partner battles, play as Ivy, tag battle
-- [ ] Final: build, rr_check, smoke, gallery, docs
+- [x] Issues: partner battles (#101), play as Ivy (#102), tag battle (#103)
+- [x] Final: build, rr_check, smoke 61/61 (`test-runs/2026-10-24_1111_v0.0.19_97d89164e-dirty`, the 3 WARNs are old), gallery, docs
 
 ## Art Kit run (2026-10-24, done; owner answers in ROADMAP.md "Art Kit run")
 Result: `tools/research_red/art/` + docs/ART_TOOLS.md. Gallery for the owner: `E:\Workspace\romhacks\research-red\art\toolkit\gallery.html`

@@ -10,7 +10,10 @@ on the dev machine; set `RR_TOOLKIT_OUT` to send them somewhere else.
 | see what sprites already exist | `library.py` | [Sprite library](#sprite-library) |
 | make or change a character's overworld sprite | `ow_maker.py` + `graphics/research_red/overworld/recipes.toml` | [Overworld sprites](#overworld-sprites) |
 | give a standing-only sprite walking frames | `walkgen.py` (used by `ow_maker.py`) | [How walking frames are made](#how-walking-frames-are-made) |
-| make battle pictures from reference art | `tools/research_red/build_cast_art.py` | [Battle pictures](#battle-pictures) |
+| make battle pictures from reference art | `tools/research_red/build_cast_art.py` + `pixelize.py` | [Battle pictures](#battle-pictures) |
+| draft a back view (battle back picture) | `back_maker.py`, `tools/research_red/build_back_pics.py` | [Back pictures](#back-pictures) |
+| hand-finish anything in Aseprite | `aseprite.py` | [Hand-finishing in Aseprite](#hand-finishing-in-aseprite) |
+| show pictures live, stage a scene by dragging | `tools/research_red/viewer/viewer.py` | [Live viewer and scene board](#live-viewer-and-scene-board) |
 | check / fix / animate a battle picture | `battle_kit.py` | [Battle pictures](#battle-pictures) |
 | add furniture or a building front to a tileset | `tile_kit.py` | [Map pieces](#map-pieces) |
 | add a building you can walk into | `building.py` | [Buildings and doors](#buildings-and-doors) |
@@ -58,8 +61,20 @@ recolour = [
   and dark steps. `rows` limits it to part of the body (people stand in rows
   11-30 of their 32-pixel frame: hair about 11-16, face 16-22, body 23-27,
   legs 28-30); `dirs = ["up"]` limits it to the frames facing one way.
-- **swap**: exact one-colour swaps. **head_from**: borrow another sheet's head.
-- **patches**: draw pixels on a standing frame (Officer Jenny's cap is one).
+- **anchor**: which shade of a group lands exactly on the new colour (use the
+  one most of the area is drawn in; otherwise a mostly-dark area can go black).
+- **box** / **dirs** on a recolour: only inside a rectangle / only the frames
+  facing one way (Jenny's hair hanging beside her body, Sabrina's hair down her back).
+- **swap**: exact one-colour swaps. **head_from**: borrow another sheet's head
+  (Jessie wears the Beauty's hair on a Rocket body).
+- **patches**: draw pixels on a standing frame (Officer Jenny's cap, Delia's
+  apron, Agatha's cane, Mrs. Hale's sun hat). On kept walk frames a patch on
+  the head follows the head's bob, so hats stay on.
+- **parts**: reusable patches from `graphics/research_red/overworld/parts.toml`
+  (the open lab coat for the Scientist body: Elm, the male player, Prof. Hale);
+  the recipe fills in the colours.
+- **grow**: one pixel more of something all round (Ivy's bigger hair).
+- **hand**: a hand-finished sheet (`aseprite.py import`): used exactly as drawn.
 - **walk**: `keep` the base's walking frames, or `make` new ones (automatic
   when the base only stands). **templates**: which sheets to copy the motion
   from (`auto` picks the three closest body shapes; the picks are saved in
@@ -75,6 +90,7 @@ Commands:
     python3 tools/research_red/art/ow_maker.py colours scientist   # the base's colours, where each is used
     python3 tools/research_red/art/ow_maker.py ref 08_elm          # main colours of a reference picture
     python3 tools/research_red/art/ow_maker.py templates brock     # walking sheets that move most like it
+    python3 tools/research_red/art/ow_maker.py grid elm 0,1,2      # frames as letter grids, to plan patches
     python3 tools/research_red/art/ow_maker.py build elm           # sheet + previews only
     python3 tools/research_red/art/ow_maker.py install             # all recipes, and the game code
     make firered -j6
@@ -118,10 +134,18 @@ as in a Poké Ball throw) don't transfer well.
 ## Battle pictures
 
 `tools/research_red/build_cast_art.py` turns each full-body reference picture
-into `graphics/research_red/cast/<name>/`: `battle.png` (full body),
-`battle_frlg.png` (FireRed-style framing: head to mid-thigh, twice as big; used
-by the gym leaders and Elite Four), `portrait.png`, `call.png`. Files in
-`cast_handmade/<name>/` replace the generated ones.
+into `graphics/research_red/cast/<name>/`: **`battle_fr.png`** (the one the game
+uses: full body in FireRed's proportions, a bigger head and sturdier limbs),
+`battle.png` (plain full body), `battle_frlg.png` (cropped at the thighs),
+`portrait.png`, `call.png`. Files in `cast_handmade/<name>/` replace the
+generated ones.
+
+`battle_fr.png` is made by `pixelize.py`, a shrinker for turning big art into
+pixel art that doesn't look shrunk: it flattens the colours first, shrinks by
+vote (each pixel takes its area's commonest colour, no blur; line art wins
+where there's enough of it), removes stray pixels, fills one-pixel holes (legs
+stay connected), thickens one-pixel limbs and draws a dark outline. Faces are
+1-2 pixels at this size: they're where a hand pass helps most.
 
 `battle_kit.py`:
 
@@ -135,6 +159,48 @@ by the gym leaders and Elite Four), `portrait.png`, `call.png`. Files in
 `backpic` follows how FireRed's Red leans in each frame of the throw; a real
 throwing arm still has to be drawn by hand (`--mode transfer` tries the
 pixel motion copy, which breaks up on such a big movement).
+
+## Back pictures
+
+The reference art shows the front only. `back_maker.py` drafts the view from
+behind: the head and upper body, the face painted over with hair (the back of
+a head is hair), mirrored, framed like FireRed's back pictures:
+
+    python3 tools/research_red/art/back_maker.py ivy player_m player_f    # or --all
+    python3 tools/research_red/build_back_pics.py                         # the player + Ivy back pic
+
+They're drafts (front clothing details still show): finish them in Aseprite
+(`aseprite.py open back:ivy`). A drawing of the back in the reference folder
+(`<number>_<name>_back.png`) is used instead of guessing.
+`build_back_pics.py` puts the player and Ivy together from their back views,
+with the throw frames leaning the way FireRed's Red does.
+
+## Hand-finishing in Aseprite
+
+    python3 tools/research_red/art/aseprite.py open ow:elm          # overworld sheet, 16x32 grid
+    python3 tools/research_red/art/aseprite.py open battle:jenny    # battle picture, 64x64 grid
+    python3 tools/research_red/art/aseprite.py open back:ivy
+    python3 tools/research_red/art/aseprite.py import ow:elm        # back into the game
+
+`open` copies the picture to `E:\Workspace\romhacks\research-red\art\edit\`
+and opens it in Aseprite with the grid on. Save (PNG, or .aseprite with
+layers). `import` checks it (size, 16 colours, colour 0 = see-through), stores
+it where hand-made art wins (overworld: `bases/hand_<name>.png` + `hand = ...`
+in the recipe; battle/back/portrait: `cast_handmade/<name>/`) and rebuilds.
+
+## Live viewer and scene board
+
+    python3 tools/research_red/viewer/viewer.py open                 # the page, in the Windows browser
+    python3 tools/research_red/viewer/viewer.py show FILE.png --title "Which hair?"
+    python3 tools/research_red/viewer/viewer.py board MAP_PALLET_TOWN --title "Where does Ivy stand?"
+    python3 tools/research_red/viewer/viewer.py answers
+    python3 tools/research_red/test/smoke.py --watch lab             # tests stream into it
+
+A small local page (only this computer can reach it): new pictures from the
+art tools and the newest test run stream in (pause, click to pin); `show`
+puts a picture in a "Claude asks" panel with a reply box; `board` shows a map
+with its people: drag them, click to turn, add someone from the list, then
+**Send to Claude** (the positions land in `viewer\answers\`).
 
 ## Map pieces
 
@@ -193,7 +259,8 @@ recompiles a whole tileset, so for small additions to an existing one prefer
 | Program | What for | Where |
 |---|---|---|
 | [Porymap](https://github.com/huderlem/porymap) 6.3 | The standard map editor: paint blocks, collision, place people, warps, signs | Windows: `E:\Workspace\_tools\Porymap\porymap.exe`, open the project folder through `\\wsl.localhost\<Ubuntu>\home\<you>\...\research-red` |
-| [LibreSprite](https://libresprite.github.io) 1.3 (free) or Aseprite | Touching up sprites pixel by pixel | Windows: `E:\Workspace\_tools\LibreSprite\libresprite.exe` |
+| [Aseprite](https://www.aseprite.org) 1.3 | The pixel editor most Pokémon spriters use; `aseprite.py` opens and imports for you | Windows (Steam): `E:\SteamLibrary\steamapps\common\Aseprite\` |
+| [LibreSprite](https://libresprite.github.io) 1.3 (free) | A free alternative | Windows: `E:\Workspace\_tools\LibreSprite\libresprite.exe` |
 | Porytiles 2.0 | Whole tilesets from layer PNGs | Ubuntu: `~/romhacks/_tools/porytiles/` |
 | gbagfx | PNG to GBA formats (the build runs it) | `tools/gbagfx/` |
 
