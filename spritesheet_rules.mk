@@ -4988,6 +4988,10 @@ $(OBJEVENTGFXDIR)/misc/ball_%.4bpp: $(OBJEVENTGFXDIR)/misc/ball_%.png ; $(GFX) $
 graphics/door_anims/battle_tower_multi_corridor.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-# Research Red: the player's walking sheets (tools/research_red/build_player_ow.py)
+# Research Red: the player's walking sheets (recipes player_m / player_f, tools/research_red/art/ow_maker.py)
 graphics/research_red/player_ow/%_normal.4bpp: graphics/research_red/player_ow/%_normal.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+# Research Red: Art Kit overworld sprites (graphics/research_red/overworld/recipes.toml), all 16x32 frames
+graphics/research_red/overworld/%.4bpp: graphics/research_red/overworld/%.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4

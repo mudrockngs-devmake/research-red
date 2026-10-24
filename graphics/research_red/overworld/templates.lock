@@ -1,0 +1,12 @@
+# Walking templates picked by ow_maker.py for recipes with templates = ["auto"].
+# Delete a line (or run ow_maker.py build --retemplate) to pick again.
+agatha = daisy, lass, picnicker
+blaine = rocker, giovanni, celio
+brock = policeman, em:gym_leaders/juan, celio
+bruno = black_belt, rocker, clerk
+erika = lass, picnicker, daisy
+koga = scientist, celio, rocket_m
+lance = red_normal, swimmer_m_land, maniac
+lt_surge = celio, rocket_m, rocker
+misty = woman_1, swimmer_f_land, crush_girl
+sabrina = lass, swimmer_f_land, picnicker

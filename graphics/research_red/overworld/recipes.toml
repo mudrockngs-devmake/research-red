@@ -1,0 +1,220 @@
+# Research Red overworld sprites, one recipe each.
+# Build: python3 tools/research_red/art/ow_maker.py install   (help: ow_maker.py --help, docs/ART_TOOLS.md)
+# Colours below were picked from the owner's reference art (E:\Workspace\romhacks\research-red\art\ref\).
+# Base names: FireRed's graphics/object_events/pics/people/<name>.png, "em:" = Emerald (pret pokeemerald).
+# People stand in rows 11-30 of their frame: hair ~11-16, face ~16-22, body ~23-27, legs ~28-30.
+
+# ------------------------------------------------------------------ story cast
+
+[elm]
+notes = "Professor Elm: brown hair, glasses, lab coat, teal shirt, olive trousers. FireRed's Scientist already has the glasses and coat."
+base = "scientist"
+gfx = "RR_ELM"
+recolour = [
+  { from = ["#393918", "#7b7341", "#cdac62"], to = "#9b6a3c", rows = [0, 23] },  # hair -> brown
+  { from = ["#7b7341"], to = "#3f9a90", rows = [23, 27] },                     # tie / shirt -> teal
+  { from = ["#4a4a5a"], to = "#7f8f4f", rows = [26, 32] },                     # trousers -> olive
+]
+
+[ivy]
+notes = "Ivy: purple hair to the shoulders, white lab coat, coral top, navy skirt, pink shoes. Emerald's Anabel walks, has the hair shape and an already-white outfit."
+base = "em:frontier_brains/anabel"
+gfx = "RR_IVY"
+ref = "05_ivy_labcoat"
+recolour = [
+  { from = ["#a44173", "#522041", "#d573a4"], to = "#7a3a96", rows = [0, 23] },  # hair -> purple
+  { from = ["#a44173", "#522041"], to = "#e0705f", rows = [23, 26] },          # top -> coral
+  { from = ["#a44173", "#522041"], to = "#c8c8dc", rows = [26, 29] },          # lower top -> coat shade
+  { from = ["#d5d5d5"], to = "#283a6a", rows = [26, 29] },                     # skirt -> navy
+  { from = ["#394a62", "#6a8bac"], to = "#e05a8a", rows = [28, 32] },          # shoes -> pink
+]
+
+[jenny]
+notes = "Jenny (casual): long teal hair, blue jacket over a light blue top, navy skirt. Emerald's Lucy walks and has the long hair."
+base = "em:frontier_brains/lucy"
+gfx = "RR_JENNY"
+ref = "07_jenny_casual"
+palette = "jenny"
+recolour = [
+  { from = ["#000000", "#414152", "#8b8b94"], to = "#3cb8a8", rows = [0, 18], contrast = 0.75 },  # hair (incl. its dark) -> teal
+  { from = ["#414152", "#8b8b94"], to = "#3cb8a8", rows = [18, 23], contrast = 0.75 },  # hair sides -> teal
+  { from = ["#000000", "#414152", "#8b8b94"], to = "#3cb8a8", rows = [18, 29], contrast = 0.75, dirs = ["up"] },  # long hair down the back
+  { from = ["#522041"], to = "#8ec6e8", rows = [23, 27] },                     # top -> light blue
+  { from = ["#a44173", "#d573a4"], to = "#3a5cb0", rows = [18, 28] },          # jacket -> blue
+  { from = ["#414152", "#8b8b94"], to = "#283a78", rows = [23, 30] },          # skirt -> navy
+  { from = ["#a44173", "#522041"], to = "#1e2648", rows = [28, 32] },          # shoes -> dark navy
+]
+patches = [
+  { dir = "down", x = 5, y = 25, rows = ["bbbbbb", ".bbbb."], colours = { b = "#8ec6e8" } },  # cover the midriff
+]
+
+[officer_jenny]
+notes = "Officer Jenny (Viridian): Jenny's hair in the police uniform and cap."
+base = "em:frontier_brains/lucy"
+gfx = "RR_OFFICER_JENNY"
+ref = "06_jenny_police"
+palette = "jenny"
+recolour = [
+  { from = ["#000000", "#414152", "#8b8b94"], to = "#3cb8a8", rows = [0, 18], contrast = 0.75 },
+  { from = ["#414152", "#8b8b94"], to = "#3cb8a8", rows = [18, 23], contrast = 0.75 },
+  { from = ["#000000", "#414152", "#8b8b94"], to = "#3cb8a8", rows = [18, 29], contrast = 0.75, dirs = ["up"] },  # long hair down the back
+  { from = ["#522041"], to = "#8ec6e8", rows = [23, 27] },                     # shirt -> light blue
+  { from = ["#a44173", "#d573a4"], to = "#3a5cb0", rows = [18, 28] },          # uniform -> police blue
+  { from = ["#414152", "#8b8b94"], to = "#283a78", rows = [23, 30] },          # skirt -> navy
+  { from = ["#a44173", "#522041"], to = "#1e2648", rows = [28, 32] },
+]
+patches = [
+  { dir = "down", x = 5, y = 25, rows = ["bbbbbb", ".bbbb."], colours = { b = "#3a5cb0" } },
+  # the cap: n navy, k black brim, y gold badge
+  { dir = "down", x = 3, y = 9, rows = ["..kkkkkkkk..", ".knnnnnnnnk.", "knnnnyynnnnk", "knnnnnnnnnnk", "kkkkkkkkkkkk"], colours = { n = "#2c3c8c", k = "#101828", y = "#f0c838" } },
+  { dir = "up", x = 3, y = 9, rows = ["..kkkkkkkk..", ".knnnnnnnnk.", "knnnnnnnnnnk", "knnnnnnnnnnk", "kkkkkkkkkkkk"], colours = { n = "#2c3c8c", k = "#101828" } },
+  { dir = "left", x = 2, y = 9, rows = ["...kkkkkkkk..", "..knnnnnnnnk.", ".knnyynnnnnnk", ".knnnnnnnnnnk", "kkkkkkknnnnk."], colours = { n = "#2c3c8c", k = "#101828", y = "#f0c838" } },
+]
+
+[delia]
+notes = "Delia (the player's mum): brown hair, coral top, white apron, blue skirt. Emerald's Mom walks; FireRed's stands still."
+base = "em:mom"
+replaces = "MOM"
+recolour = [
+  { from = ["#7b4141"], to = "#8a5530", rows = [0, 23] },                      # hair -> warm brown
+  { from = ["#a44173", "#d573a4"], to = "#e8705f", rows = [16, 32] },          # top -> coral
+  { from = ["#394a62", "#6a8bac"], to = "#4f78c0", rows = [23, 32] },          # skirt -> blue
+]
+
+# ------------------------------------------------------------------ the player (shares player.pal with the bike, surf and fishing sprites)
+# player.pal was warmed to the ref art (tan skin, auburn hair) on 2026-10-24; the bike/surf/fishing sprites follow it.
+
+[player_m]
+notes = "Male player: auburn hair, lab coat, olive shirt, jeans. Base: Emerald's Professor Birch (has the coat)."
+base = "graphics/research_red/player_ow/src/prof_birch.png"
+output = "graphics/research_red/player_ow/male_normal.png"
+fit_palette = "graphics/object_events/palettes/player.pal"
+run = true
+recolour = [
+  { from = ["#521000", "#943929", "#cd624a"], to = "#c0502c", rows = [0, 23] },  # hair -> auburn
+  { from = ["#521000"], to = "#3a4fa0", rows = [23, 32] },                     # trousers -> jeans
+  { from = ["#103900", "#417b00", "#73bd00"], to = "#b09a40" },                # shirt -> olive
+]
+
+[player_f]
+notes = "Female player: long auburn hair, lab coat, olive top, jeans. Base: FireRed's Lorelei (the long hair); her glasses become eyes."
+base = "lorelei"
+output = "graphics/research_red/player_ow/female_normal.png"
+fit_palette = "graphics/object_events/palettes/player.pal"
+run = true
+recolour = [
+  { from = ["#e66a4a", "#943929", "#521000"], to = "#a83c20", rows = [0, 23] },  # hair -> auburn
+  { from = ["#8b8b94"], to = "#eeeeff", rows = [23, 30] },                     # dress (light) -> white coat
+  { from = ["#393918"], to = "#b4b4d5", rows = [23, 30] },                     # dress shade -> coat shade
+  { from = ["#4a4a5a"], to = "#bd9c39", rows = [23, 27] },                     # top -> olive
+  { from = ["#4a4a5a"], to = "#4141d5", rows = [27, 32] },                     # legs -> jeans
+]
+swap = { "#c5c5d5" = "#000000", "#ffffff" = "#000000" }                       # glasses -> eyes
+
+# ------------------------------------------------------------------ gym leaders (FireRed's stand still; these walk)
+
+[brock]
+notes = "Brock: FireRed's already matches the ref art (spiky hair, green/orange). Gains walking frames."
+base = "brock"
+replaces = "BROCK"
+
+[misty]
+notes = "Misty: orange side ponytail, white jacket over a white/blue swimsuit."
+base = "misty"
+replaces = "MISTY"
+recolour = [
+  { from = ["#d5ac20", "#836200", "#ffde4a"], to = "#f07a2a", rows = [0, 23] },  # hair -> orange
+  { from = ["#6a52bd", "#413962"], to = "#e8eef8", rows = [23, 32] },          # outfit -> white
+]
+
+[lt_surge]
+notes = "Lt. Surge: blond flat-top, olive army jacket and trousers."
+base = "lt_surge"
+replaces = "LT_SURGE"
+recolour = [
+  { from = ["#204110", "#398b00", "#83cd31"], to = "#6b6b34" },                # camo green -> olive
+]
+
+[erika]
+notes = "Erika: black bob with a blue hairband, plum kimono, blue hakama."
+base = "erika"
+replaces = "ERIKA"
+recolour = [
+  { from = ["#413962", "#6a52bd"], to = "#2a2a36", rows = [0, 23] },           # hair -> black
+  { from = ["#ee7341", "#ac4139", "#ffde4a", "#d5ac20", "#836200"], to = "#9a4a78", rows = [16, 28] }, # kimono -> plum
+  { from = ["#ee7341", "#ac4139"], to = "#3f5fb0", rows = [28, 32] },          # hakama -> blue
+]
+
+[koga]
+notes = "Koga: dark spiky hair, navy ninja outfit, red scarf."
+base = "koga"
+replaces = "KOGA"
+recolour = [
+  { from = ["#4a4a5a", "#8b8b94", "#c5c5d5"], to = "#30304a", rows = [0, 17] },  # hair -> near black
+  { from = ["#4a4a5a", "#8b8b94"], to = "#34407a", rows = [17, 32] },          # outfit -> navy
+  { from = ["#e66a4a", "#943929"], to = "#d03a30" },                           # scarf -> red
+]
+
+[sabrina]
+notes = "Sabrina: very long black hair, red top, black trousers."
+base = "sabrina"
+replaces = "SABRINA"
+recolour = [
+  { from = ["#413962", "#6a52bd"], to = "#2a2a34", rows = [0, 23] },           # hair -> black
+  { from = ["#413962", "#6a52bd", "#ee7341", "#ac4139"], to = "#c0303a", rows = [23, 28] }, # top -> red
+  { from = ["#413962", "#6a52bd", "#ee7341", "#ac4139"], to = "#24242c", rows = [28, 32] }, # trousers -> black
+]
+
+[blaine]
+notes = "Blaine: bald, white moustache, white lab coat, lavender trousers."
+base = "blaine"
+replaces = "BLAINE"
+recolour = [
+  { from = ["#6283cd", "#8b4152"], to = "#8a80c0", rows = [24, 32] },          # trousers -> lavender
+]
+
+[giovanni]
+notes = "Giovanni: the orange double-breasted suit."
+base = "giovanni"
+replaces = "GIOVANNI"
+recolour = [
+  { from = ["#4a4a5a"], to = "#c84a10", rows = [21, 32] },                     # suit -> orange
+  { from = ["#8b8b94"], to = "#f07a30", rows = [21, 32] },                     # suit light -> bright orange
+]
+
+# ------------------------------------------------------------------ Elite Four
+
+[lorelei]
+notes = "Lorelei: long red hair, glasses, dark purple dress."
+base = "lorelei"
+replaces = "LORELEI"
+recolour = [
+  { from = ["#4a4a5a", "#8b8b94", "#393918"], to = "#4a2f6a", rows = [21, 32] }, # dress -> dark purple
+]
+
+[bruno]
+notes = "Bruno: spiky black hair, bare chest, white trousers, black belt."
+base = "bruno"
+replaces = "BRUNO"
+recolour = [
+  { from = ["#4a4a5a", "#8b8b94", "#c5c5d5"], to = "#e8e8e0", rows = [24, 32] }, # trousers -> white
+  { from = ["#393918", "#7b7341"], to = "#22222a", rows = [0, 23] },           # hair -> black
+]
+
+[agatha]
+notes = "Agatha: in the ref art, wavy blonde hair, plum dress, white apron."
+base = "agatha"
+replaces = "AGATHA"
+recolour = [
+  { from = ["#8b8b94", "#c5c5d5", "#4a4a5a"], to = "#d8a840", rows = [0, 23] },  # hair -> blonde
+  { from = ["#8b4152", "#d56a7b"], to = "#7a3a78", rows = [21, 32] },          # dress -> plum
+]
+
+[lance]
+notes = "Lance: crimson spiky hair, black suit with red, cape."
+base = "lance"
+replaces = "LANCE"
+recolour = [
+  { from = ["#e66a4a", "#943929", "#521000"], to = "#a01028", rows = [0, 23], contrast = 0.8 },  # hair -> crimson
+  { from = ["#8b8b94", "#4a4a5a"], to = "#34343e", rows = [21, 32] },          # suit -> black
+]

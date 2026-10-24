@@ -2,7 +2,9 @@
 """Research Red: build the cast art set from the owner's full-body reference art.
 
 For every reference image this writes graphics/research_red/cast/<name>/:
-  battle.png    64x64 full-body trainer pic (FRLG style)
+  battle.png    64x64 full-body trainer pic
+  battle_frlg.png  64x64 FireRed-style framing: head to mid-thigh, figure
+                twice as big (used for the gym leaders and Elite Four)
   portrait.png  64x64 head-and-chest dialogue portrait
   call.png      32x32 face close-up for video calls
 All are 4-bit indexed PNGs, max 16 colors, index 0 = transparent (pure green).
@@ -35,6 +37,7 @@ HEAD_FRAC_H = 0.16
 HEAD_FRAC_W = 0.20
 HEAD_BOOST = 1.0
 KEEP_DARK = 0.42
+FRLG_CROP = 0.60  # battle_frlg: how much of the figure (from the head down) fills the picture
 
 # Poses where an arm sits above or beside the head fool the automatic head
 # finder; give (head centre x, top of head y) in reference-image pixels.
@@ -222,6 +225,17 @@ def build(ref_path, out_dir, name=""):
     img = outline(canvas, True)
     res["battle"] = save_indexed(os.path.join(out_dir, "battle.png"), img, 64, 64, 0, 0)
 
+    # battle_frlg: FireRed's own trainer pics show the head down to about the
+    # thighs, much bigger than a full body. Crop that much of the figure (60%),
+    # centred on the head sideways, and fill 64x64 with it (bottom edge cut).
+    ch = int(fh * FRLG_CROP)
+    k2 = 62 / ch
+    cw = int(64 / k2)
+    cx0 = max(x0 - cw // 4, min(head_x - cw // 2, x1 - cw + cw // 4))
+    cy0 = head_top - int(2 / k2)
+    img = outline(downscale(rows, w, h, cx0, cy0, cw, int(64 / k2), 64, 64, keep_dark=KEEP_DARK), False)
+    res["battle_frlg"] = save_indexed(os.path.join(out_dir, "battle_frlg.png"), img, 64, 64, 0, 0)
+
     # portrait: square crop from just above the head down ~40% of the figure
     side = int(fh * 0.40)
     cy0 = head_top - side // 20
@@ -247,7 +261,7 @@ def main():
             print("missing", path)
             continue
         res = build(path, os.path.join(OUT_DIR, name), name)
-        for kind in ("battle", "portrait", "call"):
+        for kind in ("battle", "battle_frlg", "portrait", "call"):
             hand = os.path.join(HANDMADE_DIR, name, kind + ".png")
             if os.path.exists(hand):
                 shutil.copyfile(hand, os.path.join(OUT_DIR, name, kind + ".png"))

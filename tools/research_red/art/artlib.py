@@ -243,6 +243,18 @@ def walk_strip(frames):
     return seq, [130] * len(seq)
 
 
+def run_strip(run9):
+    """Like walk_strip for the player's 9 running frames (south, north, west
+    in groups of pose, step, step)."""
+    seq = []
+    for d, flip in ((0, False), (1, False), (2, False), (2, True)):
+        pose, a, b = run9[d * 3], run9[d * 3 + 1], run9[d * 3 + 2]
+        for _ in range(2):
+            for f in (pose, a, pose, b):
+                seq.append(mirror(f) if flip else f)
+    return seq, [85] * len(seq)
+
+
 # ---------------------------------------------------------------- colour maths
 
 def hls(c):

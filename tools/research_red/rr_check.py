@@ -6,7 +6,8 @@ Checks Research Red text (data/scripts/research_red/*.inc):
   - every text line is at most 34 characters ({PLAYER} counts as 7,
     {STR_VAR_n} as 10, other {CODES} as 1)
   - no ALL-CAPS story names (ELM, IVY, OAK, ...)
-And the registry:
+Generated files are current (encounters, banter, player docs, TM text, the
+Art Kit's overworld sprites). And the registry:
   - every FLAG_RR_* / VAR_RR_* defined in include/constants is listed in docs/FLAGS_VARS.md
 Exit code 1 if anything fails.
 """
@@ -75,6 +76,11 @@ def check_generated(problems):
                            capture_output=True, text=True)
         if r.returncode != 0:
             problems.append((r.stderr or r.stdout).strip())
+    # Art Kit: overworld sprites from graphics/research_red/overworld/recipes.toml
+    r = subprocess.run([sys.executable, os.path.join(REPO, "tools/research_red/art/ow_maker.py"), "--check"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        problems.append((r.stderr or r.stdout).strip().splitlines()[-1])
 
 
 def main():
