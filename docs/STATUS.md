@@ -3,7 +3,7 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-21 (v0.0.19 released for the playtest)_
+_Last updated: 2026-10-24 (Art Kit run done; v0.0.19 still in playtest)_
 
 ## Current build
 - **v0.0.19** (2026-10-21): parts 1 and 2 (see CHANGELOG.md). Installed as `ResearchRed_local.gba`, tagged `v0.0.19`, pre-release on GitHub. Smoke 61/61 (`test-runs/2026-10-21_0234_v0.0.19_c883da619`). What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.19\report.html`. **Save: start a new game.**
@@ -26,7 +26,7 @@ _Last updated: 2026-10-21 (v0.0.19 released for the playtest)_
 - Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
 - Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
 
-## NEXT SESSION START HERE: v0.0.19 is out for the owner's playtest
+## NEXT SESSION START HERE: v0.0.19 is out for the owner's playtest (master also has the Art Kit run, see above)
 Parts 1 and 2 are done, committed and tested (smoke 61/61, `test-runs/2026-10-21_0234_v0.0.19_c883da619`; `make check`: only the known Explosion timeout;
 rr_check clean). Installed and tagged 2026-10-21 with the owner's OK. After the playtest:
 `tools/research_red/rr_archive_test.sh <test-name>`, then turn the notes into issues.
@@ -64,7 +64,14 @@ Test tooling added: `runner.log` per scene, `||` in conditions, `GameMemory.part
 | Flags / vars | 2304 / 256 | ~570 flags and ~90 vars still unused; keep FLAGS_VARS.md current |
 | RAM (EWRAM, permanent) | 250156 of 262144 bytes | ~11.7 KB free; new screens should allocate while open |
 
-## Art Kit run (started 2026-10-24; owner answers in ROADMAP.md "Art Kit run")
+## Art Kit run (2026-10-24, done; owner answers in ROADMAP.md "Art Kit run")
+Result: `tools/research_red/art/` + docs/ART_TOOLS.md. Gallery for the owner: `E:\Workspace\romhacks\research-red\art\toolkit\gallery.html`
+(private learning notes beside it: `LEARN_SPRITE_EDITING.md`). In master, NOT installed: 17 overworld sprites (Elm, Ivy, Jenny,
+Officer Jenny; Delia replaces Mom; gym leaders + E4 walk, ref-art colours), players rebuilt with real running frames,
+player.pal warmed, gym leader / E4 battle pictures from the ref art (battle_frlg). Smoke 61/61
+(`test-runs/2026-10-24_0945_v0.0.19_92fecedfc`; the 3 WARNs are old). These go into v0.0.20 (CHANGELOG then).
+Owner to look at: the gallery; cast battle pics full body vs FireRed framing (`battle/cast_full_vs_frlg.png`);
+greenhouse / Wild Area / fossil park ideas not filed as issues yet (ask first). Session cost 2026-10-24: $15.66 (session-cost, may lag).
 Work through this list, commit after each, keep this updated. Nothing gets installed or tagged.
 - [x] Windows tools: Porymap + LibreSprite in `E:\Workspace\_tools\`; survey of other romhack projects' art tools
 - [x] Sprite library: catalogue + contact sheets of every overworld / trainer / Pokemon picture; walk-motion study
@@ -72,9 +79,9 @@ Work through this list, commit after each, keep this updated. Nothing gets insta
 - [x] Overworld sprites: Elm, Jenny, Officer Jenny, Ivy, players M/F, Delia; gym leaders + Elite Four
 - [x] Battle pictures: gym leaders + Elite Four from the ref art; battle sprite checker/fixer, shiny palettes, back-pic throw frames, GIFs
 - [x] Map art: tileset inspector, furniture/building importer (Porytiles or our own), building + door wizard (tested in a scratch copy)
-- [ ] Cloud: GitHub Action for art checks + preview gallery
-- [ ] Guide: docs/ART_TOOLS.md, ARTIST_GUIDE/ASSETS/DEV_GUIDE, rr_check art rule, CREDITS; private sprite-editing notes on E:
-- [ ] Final: build, rr_check, smoke tests; gallery for the owner
+- [x] Cloud: GitHub Action for art checks + preview gallery
+- [x] Guide: docs/ART_TOOLS.md, ARTIST_GUIDE/ASSETS/DEV_GUIDE, rr_check art rule, CREDITS; private sprite-editing notes on E:
+- [x] Final: build, rr_check, smoke tests; gallery for the owner
 
 ## v0.0.19 run (done, started 2026-10-20 evening)
 Owner approved everything (ROADMAP.md "Owner answers"). Work through this list, commit after each, keep this updated. Stop before install/tag/release.
