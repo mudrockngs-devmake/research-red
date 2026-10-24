@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Research Red: the player's battle back sprites (#7).
 
-Until there are real back sprites, your side of a battle shows the player and
-Ivy together, made from their dialogue portraits (facing the camera, which the
-owner is fine with for now): Ivy a little behind on the left, the player in
-front on the right, in one 64x64 picture with 16 colours.
+Your side of a battle shows the player and Ivy together, seen from behind:
+each one's back view (graphics/research_red/cast/<name>/back.png, drafts made
+by tools/research_red/art/back_maker.py; a hand-drawn cast_handmade/<name>/back.png
+wins), or their front-facing portrait if there is no back view. Ivy a little
+behind on the left, the player in front on the right, one 64x64 picture with
+16 colours.
 
-FireRed's Red / Leaf back pics are 5 frames (the ball throw); all five get the
-same picture, so the throw is just a slide. Writes over
+FireRed's Red / Leaf back pics are 5 frames (the ball throw): the player leans
+the way Red does (THROW_LEAN). Writes over
   graphics/trainers/back_pics/{red,leaf}_back_pic.png and
   graphics/trainers/palettes/{red,leaf}_back_pic.pal
 (male player -> Red's slot, female -> Leaf's).
@@ -38,12 +40,36 @@ def cutout(name, scale):
     return im.resize((size, size), Image.NEAREST)
 
 
-def duo(player):
+# How far the player leans in each frame of the Poke Ball throw: FireRed's
+# Red moves his head (0,0) (-8,4) (-7,1) (-7,-1) (-10,5) (measured with
+# tools/research_red/art/battle_kit.py); half that, so the player doesn't
+# bump into Ivy.
+THROW_LEAN = [(0, 0), (-4, 2), (-4, 1), (-4, 0), (-5, 2)]
+
+
+def back_view(name, scale):
+    """The character seen from behind (cast/<name>/back.png, made by
+    tools/research_red/art/back_maker.py or drawn by hand), or the
+    front-facing portrait while there is no back view yet."""
+    path = os.path.join(CAST, name, "back.png")
+    if not os.path.exists(path):
+        return cutout(name, scale)
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "art"))
+    import artlib  # colour 0 = see-through
+    im = artlib.to_rgba(artlib.load_grid(path))
+    im = im.crop(im.getbbox())
+    # back views are upper bodies: scale by height (scale = share of the 64 rows)
+    k = 64 * scale / im.height
+    return im.resize((max(1, round(im.width * k)), round(im.height * k)), Image.NEAREST)
+
+
+def duo(player, lean=(0, 0)):
     canvas = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
-    ivy = cutout("ivy", 0.80)        # behind, left
-    you = cutout(player, 0.86)       # in front, right
+    have_backs = os.path.exists(os.path.join(CAST, player, "back.png"))
+    ivy = back_view("ivy", 0.84 if have_backs else 0.80)        # behind, left
+    you = back_view(player, 0.97 if have_backs else 0.86)       # in front, right
     canvas.alpha_composite(ivy, (-4, 64 - ivy.height))
-    canvas.alpha_composite(you, (64 - you.width + 6, 64 - you.height))
+    canvas.alpha_composite(you, (64 - you.width + 6 + lean[0], 64 - you.height + lean[1]))
     return canvas
 
 
@@ -72,11 +98,12 @@ def write_pal(path, img):
 def main():
     previews = []
     for player, slot in (("player_m", "red"), ("player_f", "leaf")):
-        frame = to_indexed(duo(player))
-        sheet = Image.new("P", (64, 64 * FRAMES), 0)
-        sheet.putpalette(frame.getpalette())
+        # one palette for all 5 frames: build them together, then split
+        tall = Image.new("RGBA", (64, 64 * FRAMES), (0, 0, 0, 0))
         for i in range(FRAMES):
-            sheet.paste(frame, (0, 64 * i))
+            tall.alpha_composite(duo(player, THROW_LEAN[i]), (0, 64 * i))
+        sheet = to_indexed(tall)
+        frame = sheet.crop((0, 0, 64, 64))
         sheet.save(os.path.join(REPO, f"graphics/trainers/back_pics/{slot}_back_pic.png"))
         write_pal(os.path.join(REPO, f"graphics/trainers/palettes/{slot}_back_pic.pal"), frame)
         for gen in (f"graphics/trainers/back_pics/{slot}_back_pic.4bpp", f"graphics/trainers/palettes/{slot}_back_pic.gbapal"):

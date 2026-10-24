@@ -68,7 +68,7 @@ Test tooling added: `runner.log` per scene, `||` in conditions, `GameMemory.part
 - [x] Sprite fixes from the owner's notes + parts library (coats, apron, tie, cane, hair); Koga's battle legs
 - [x] Live preview page + scene board (Windows browser, opens by itself)
 - [x] Better battle-picture shrinker, before/after
-- [ ] Back-sprite pipeline (Ivy, both players), throw frames
+- [x] Back-sprite pipeline (Ivy, both players), throw frames
 - [ ] Overworld sprites for the rest of the ref cast
 - [ ] Aseprite automation (open with grid/palette, batch export)
 - [ ] Issues: partner battles, play as Ivy, tag battle
