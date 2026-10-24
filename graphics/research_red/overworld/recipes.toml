@@ -7,7 +7,7 @@
 # ------------------------------------------------------------------ story cast
 
 [elm]
-notes = "Professor Elm: brown hair, glasses, lab coat, teal shirt, olive trousers. FireRed's Scientist already has the glasses and coat."
+notes = "Professor Elm: brown hair, glasses, OPEN lab coat over a teal shirt, olive trousers. FireRed's Scientist already has the glasses and coat."
 base = "scientist"
 gfx = "RR_ELM"
 recolour = [
@@ -15,18 +15,23 @@ recolour = [
   { from = ["#7b7341"], to = "#3f9a90", rows = [23, 27] },                     # tie / shirt -> teal
   { from = ["#4a4a5a"], to = "#7f8f4f", rows = [26, 32] },                     # trousers -> olive
 ]
+parts = [ { part = "open_coat_scientist", colours = { S = "#41948b", B = "#4a3118", P = "#7b8352" } } ]
 
 [ivy]
-notes = "Ivy: purple hair to the shoulders, white lab coat, coral top, navy skirt, pink shoes. Emerald's Anabel walks, has the hair shape and an already-white outfit."
+notes = "Ivy: purple hair to the shoulders (bigger than Anabel's), white lab coat, coral top, navy skirt, pink shoes. Emerald's Anabel has the hair shape and an already-white outfit."
 base = "em:frontier_brains/anabel"
 gfx = "RR_IVY"
 ref = "05_ivy_labcoat"
+walk = "make"
 recolour = [
   { from = ["#a44173", "#522041", "#d573a4"], to = "#7a3a96", rows = [0, 23] },  # hair -> purple
   { from = ["#a44173", "#522041"], to = "#e0705f", rows = [23, 26] },          # top -> coral
   { from = ["#a44173", "#522041"], to = "#c8c8dc", rows = [26, 29] },          # lower top -> coat shade
   { from = ["#d5d5d5"], to = "#283a6a", rows = [26, 29] },                     # skirt -> navy
   { from = ["#394a62", "#6a8bac"], to = "#e05a8a", rows = [28, 32] },          # shoes -> pink
+]
+grow = [
+  { colours = ["#7b3994", "#311841", "#ac6ac5"], outline = "#311841", fill = "#7b3994", rows = [11, 25] },  # more hair volume
 ]
 
 [jenny]
@@ -41,8 +46,11 @@ recolour = [
   { from = ["#000000", "#414152", "#8b8b94"], to = "#3cb8a8", rows = [18, 29], contrast = 0.75, dirs = ["up"] },  # long hair down the back
   { from = ["#522041"], to = "#8ec6e8", rows = [23, 27] },                     # top -> light blue
   { from = ["#a44173", "#d573a4"], to = "#3a5cb0", rows = [18, 28] },          # jacket -> blue
-  { from = ["#414152", "#8b8b94"], to = "#283a78", rows = [23, 30] },          # skirt -> navy
+  { from = ["#414152", "#8b8b94"], to = "#283a78", rows = [23, 30], anchor = "#414152" },  # skirt -> navy
   { from = ["#a44173", "#522041"], to = "#1e2648", rows = [28, 32] },          # shoes -> dark navy
+  { from = ["#000000"], to = "#24524e", rows = [16, 28], box = [0, 0, 5, 32], dirs = ["down"] },   # hair beside the body: dark teal, not black
+  { from = ["#000000"], to = "#24524e", rows = [16, 28], box = [11, 0, 16, 32], dirs = ["down"] },
+  { from = ["#000000"], to = "#24524e", rows = [16, 26], box = [8, 0, 16, 32], dirs = ["left"] },
 ]
 patches = [
   { dir = "down", x = 5, y = 25, rows = ["bbbbbb", ".bbbb."], colours = { b = "#8ec6e8" } },  # cover the midriff
@@ -60,8 +68,11 @@ recolour = [
   { from = ["#000000", "#414152", "#8b8b94"], to = "#3cb8a8", rows = [18, 29], contrast = 0.75, dirs = ["up"] },  # long hair down the back
   { from = ["#522041"], to = "#8ec6e8", rows = [23, 27] },                     # shirt -> light blue
   { from = ["#a44173", "#d573a4"], to = "#3a5cb0", rows = [18, 28] },          # uniform -> police blue
-  { from = ["#414152", "#8b8b94"], to = "#283a78", rows = [23, 30] },          # skirt -> navy
+  { from = ["#414152", "#8b8b94"], to = "#283a78", rows = [23, 30], anchor = "#414152" },  # skirt -> navy
   { from = ["#a44173", "#522041"], to = "#1e2648", rows = [28, 32] },
+  { from = ["#000000"], to = "#24524e", rows = [16, 28], box = [0, 0, 5, 32], dirs = ["down"] },
+  { from = ["#000000"], to = "#24524e", rows = [16, 28], box = [11, 0, 16, 32], dirs = ["down"] },
+  { from = ["#000000"], to = "#24524e", rows = [16, 26], box = [8, 0, 16, 32], dirs = ["left"] },
 ]
 patches = [
   { dir = "down", x = 5, y = 25, rows = ["bbbbbb", ".bbbb."], colours = { b = "#3a5cb0" } },
@@ -80,36 +91,54 @@ recolour = [
   { from = ["#a44173", "#d573a4"], to = "#e8705f", rows = [16, 32] },          # top -> coral
   { from = ["#394a62", "#6a8bac"], to = "#4f78c0", rows = [23, 32] },          # skirt -> blue
 ]
+patches = [
+  # a white apron: bib, waist, skirt (W white, G its shade)
+  { dir = "down", x = 5, y = 23, rows = [".WWWW.", ".WWWW.", "GWWWWG", "GWWWWG", "GWWWWG", ".GWWG."], colours = { W = "#f6f6f6", G = "#d5d5d5" } },
+  { dir = "up", x = 6, y = 25, rows = ["WGGW"], colours = { W = "#f6f6f6", G = "#d5d5d5" } },                  # the bow at the back
+  { dir = "left", x = 5, y = 24, rows = ["W.", "W.", "WG", "WG", "WG"], colours = { W = "#f6f6f6", G = "#d5d5d5" } },
+]
 
 # ------------------------------------------------------------------ the player (shares player.pal with the bike, surf and fishing sprites)
 # player.pal was warmed to the ref art (tan skin, auburn hair) on 2026-10-24; the bike/surf/fishing sprites follow it.
 
 [player_m]
-notes = "Male player: auburn hair, lab coat, olive shirt, jeans. Base: Emerald's Professor Birch (has the coat)."
-base = "graphics/research_red/player_ow/src/prof_birch.png"
+notes = "Male player: auburn hair, OPEN lab coat over an olive shirt, jeans. Slim body: FireRed's Scientist with Professor Birch's head (Birch alone looked too heavy)."
+base = "scientist"
+head_from = "graphics/research_red/player_ow/src/prof_birch.png"
+head_rows = 23
 output = "graphics/research_red/player_ow/male_normal.png"
 fit_palette = "graphics/object_events/palettes/player.pal"
+walk = "keep"
 run = true
 recolour = [
-  { from = ["#521000", "#943929", "#cd624a"], to = "#c0502c", rows = [0, 23] },  # hair -> auburn
-  { from = ["#521000"], to = "#3a4fa0", rows = [23, 32] },                     # trousers -> jeans
-  { from = ["#103900", "#417b00", "#73bd00"], to = "#b09a40" },                # shirt -> olive
+  { from = ["#cd624a"], to = "#d65c34", rows = [0, 23] },                      # hair light -> the palette's auburn
+  { from = ["#943929"], to = "#c53939", rows = [0, 23] },                      # hair mid
+  { from = ["#521000"], to = "#6a2929", rows = [0, 23] },                      # hair dark
+  { from = ["#7b7341"], to = "#bd9c39", rows = [23, 27] },                     # shirt -> olive
+  { from = ["#4a4a5a"], to = "#39397b", rows = [26, 32] },                     # trousers -> jeans
 ]
+parts = [ { part = "open_coat_scientist", colours = { S = "#bd9c39", B = "#6a2929", P = "#4141d5", d = "#eeeeff", f = "#b4b4d5" } } ]
 
 [player_f]
-notes = "Female player: long auburn hair, lab coat, olive top, jeans. Base: FireRed's Lorelei (the long hair); her glasses become eyes."
+notes = "Female player: long auburn hair, lab coat, olive top, jeans. Base: FireRed's Lorelei (the long hair); her glasses are replaced by eyes."
 base = "lorelei"
 output = "graphics/research_red/player_ow/female_normal.png"
 fit_palette = "graphics/object_events/palettes/player.pal"
 run = true
 recolour = [
-  { from = ["#e66a4a", "#943929", "#521000"], to = "#a83c20", rows = [0, 23] },  # hair -> auburn
+  { from = ["#e66a4a"], to = "#d65c34", rows = [0, 23] },                      # hair: exact palette reds, so it can't
+  { from = ["#943929"], to = "#c53939", rows = [0, 23] },                      #   land on a skin colour
+  { from = ["#521000"], to = "#6a2929", rows = [0, 23] },
   { from = ["#8b8b94"], to = "#eeeeff", rows = [23, 30] },                     # dress (light) -> white coat
   { from = ["#393918"], to = "#b4b4d5", rows = [23, 30] },                     # dress shade -> coat shade
   { from = ["#4a4a5a"], to = "#bd9c39", rows = [23, 27] },                     # top -> olive
   { from = ["#4a4a5a"], to = "#4141d5", rows = [27, 32] },                     # legs -> jeans
 ]
-swap = { "#c5c5d5" = "#000000", "#ffffff" = "#000000" }                       # glasses -> eyes
+patches = [
+  # eyes where the glasses were (s skin, k black)
+  { dir = "down", x = 4, y = 19, rows = ["skssssks", "skssssks", ".ss..ss."], colours = { s = "#f0b480", k = "#000000" } },
+  { dir = "left", x = 3, y = 19, rows = ["skss", "skss", ".sss"], colours = { s = "#f0b480", k = "#000000" } },
+]
 
 # ------------------------------------------------------------------ gym leaders (FireRed's stand still; these walk)
 
@@ -117,6 +146,9 @@ swap = { "#c5c5d5" = "#000000", "#ffffff" = "#000000" }                       # 
 notes = "Brock: FireRed's already matches the ref art (spiky hair, green/orange). Gains walking frames."
 base = "brock"
 replaces = "BROCK"
+recolour = [
+  { from = ["#a48320", "#525220"], to = "#6a4a28", rows = [0, 17] },           # hair -> darker brown (ref art)
+]
 
 [misty]
 notes = "Misty: orange side ponytail, white jacket over a white/blue swimsuit."
@@ -124,7 +156,8 @@ base = "misty"
 replaces = "MISTY"
 recolour = [
   { from = ["#d5ac20", "#836200", "#ffde4a"], to = "#f07a2a", rows = [0, 23] },  # hair -> orange
-  { from = ["#6a52bd", "#413962"], to = "#e8eef8", rows = [23, 32] },          # outfit -> white
+  { from = ["#6a52bd", "#413962"], to = "#e8eef8", rows = [23, 28] },          # outfit -> white
+  { from = ["#6a52bd", "#413962"], to = "#3a6ad0", rows = [28, 32] },          # swimsuit bottom -> blue
 ]
 
 [lt_surge]
@@ -151,7 +184,7 @@ base = "koga"
 replaces = "KOGA"
 recolour = [
   { from = ["#4a4a5a", "#8b8b94", "#c5c5d5"], to = "#30304a", rows = [0, 17] },  # hair -> near black
-  { from = ["#4a4a5a", "#8b8b94"], to = "#34407a", rows = [17, 32] },          # outfit -> navy
+  { from = ["#4a4a5a", "#8b8b94"], to = "#4a3e96", rows = [17, 32], anchor = "#4a4a5a" },  # outfit -> navy purple
   { from = ["#e66a4a", "#943929"], to = "#d03a30" },                           # scarf -> red
 ]
 
@@ -163,6 +196,10 @@ recolour = [
   { from = ["#413962", "#6a52bd"], to = "#2a2a34", rows = [0, 23] },           # hair -> black
   { from = ["#413962", "#6a52bd", "#ee7341", "#ac4139"], to = "#c0303a", rows = [23, 28] }, # top -> red
   { from = ["#413962", "#6a52bd", "#ee7341", "#ac4139"], to = "#24242c", rows = [28, 32] }, # trousers -> black
+  { from = ["#413962", "#6a52bd"], to = "#2a2a36", rows = [23, 30], dirs = ["up"] },  # long hair down the back stays black
+  { from = ["#413962", "#6a52bd"], to = "#2a2a36", rows = [23, 30], box = [8, 0, 16, 32], dirs = ["left"] },
+  { from = ["#413962", "#6a52bd"], to = "#2a2a36", rows = [23, 26], box = [0, 0, 4, 32], dirs = ["down"] },
+  { from = ["#413962", "#6a52bd"], to = "#2a2a36", rows = [23, 26], box = [12, 0, 16, 32], dirs = ["down"] },
 ]
 
 [blaine]
@@ -171,6 +208,12 @@ base = "blaine"
 replaces = "BLAINE"
 recolour = [
   { from = ["#6283cd", "#8b4152"], to = "#8a80c0", rows = [24, 32] },          # trousers -> lavender
+]
+patches = [
+  { dir = "down", x = 7, y = 24, rows = ["TT", "TT", "tt"], colours = { T = "#e07a30", t = "#a04a20" } },        # the tie
+  { dir = "down", x = 4, y = 15, rows = ["W......W", "W......W"], colours = { W = "#e8e8f0" } },               # white hair at the sides
+  { dir = "up", x = 4, y = 16, rows = ["WWWWWWWW"], colours = { W = "#e8e8f0" } },
+  { dir = "left", x = 10, y = 14, rows = ["WW", "WW"], colours = { W = "#e8e8f0" } },
 ]
 
 [giovanni]
@@ -208,6 +251,12 @@ replaces = "AGATHA"
 recolour = [
   { from = ["#8b8b94", "#c5c5d5", "#4a4a5a"], to = "#d8a840", rows = [0, 23] },  # hair -> blonde
   { from = ["#8b4152", "#d56a7b"], to = "#7a3a78", rows = [21, 32] },          # dress -> plum
+]
+patches = [
+  # her cane (C wood, H the handle)
+  { dir = "down", x = 13, y = 22, rows = [".HH", "..C", "..C", "..C", "..C", "..C", "..C", "..C", "..C"], colours = { C = "#6b4a2a", H = "#3a2a1a" } },
+  { dir = "up", x = 0, y = 22, rows = ["HH", "C.", "C.", "C.", "C.", "C.", "C.", "C.", "C."], colours = { C = "#6b4a2a", H = "#3a2a1a" } },
+  { dir = "left", x = 1, y = 22, rows = ["HH", "C.", "C.", "C.", "C.", "C.", "C.", "C.", "C."], colours = { C = "#6b4a2a", H = "#3a2a1a" } },
 ]
 
 [lance]

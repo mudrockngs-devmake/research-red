@@ -1,0 +1,11 @@
+# Research Red: reusable pixel patches for overworld recipes (tools/research_red/art/ow_maker.py).
+# A recipe uses one with  parts = [ { part = "name", colours = { S = "#hex", ... } } ]
+# Letters are filled from the recipe's colours (or the defaults here); "." keeps the pixel.
+# Each part is drawn for one body shape (named after the base it fits).
+
+[open_coat_scientist]
+notes = "An open lab coat on FireRed's Scientist body: shirt (S), belt (B) and trousers (P) show down the middle. Elm, the male player."
+patches = [
+  { dir = "down", x = 5, y = 24, rows = ["dSSSSd", "fSSSSf", "fBBBBf", "fPPPPf", "fPPPPf"], colours = { d = "#ffffff", f = "#c5c5d5" } },
+  { dir = "left", x = 5, y = 24, rows = ["S", "S", "B", "P"] },
+]

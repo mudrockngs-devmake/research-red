@@ -282,13 +282,14 @@ def hexc(c):
     return "#%02x%02x%02x" % c
 
 
-def recolour_ramp(base_cols, target, contrast=1.0):
+def recolour_ramp(base_cols, target, contrast=1.0, anchor=None):
     """Map a group of shades to a new colour, keeping the steps between them.
-    The middle shade of the group lands on the target; lighter and darker
-    shades keep their distance (times contrast). Returns {old: new}."""
+    The middle shade of the group (or `anchor`, one of base_cols: use the
+    shade most of the area is drawn in) lands on the target; lighter and
+    darker shades keep their distance (times contrast). Returns {old: new}."""
     th, tl, ts = hls(target)
     ls = sorted(hls(c)[1] for c in base_cols)
-    mid = ls[len(ls) // 2]
+    mid = hls(anchor)[1] if anchor else ls[len(ls) // 2]
     out = {}
     for c in base_cols:
         _, l, s = hls(c)

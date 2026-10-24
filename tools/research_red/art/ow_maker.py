@@ -13,24 +13,36 @@ recipes into game-ready sheets, previews, and the code that adds them.
   python3 tools/research_red/art/ow_maker.py colours BASE       # a base's colours, numbered, with where they're used
   python3 tools/research_red/art/ow_maker.py ref 08_elm         # the main colours of a ref art picture
   python3 tools/research_red/art/ow_maker.py templates BASE     # which walking sheets move most like BASE
+  python3 tools/research_red/art/ow_maker.py grid NAME [0,1,2]   # frames as letter grids, to plan patches
 
 Recipe keys (all optional except base):
   base       = "scientist"        body to start from (see artlib.sheet_path for names)
   head_from  = "em:steven"        take the head (rows 0..head_rows-1) from another sheet
   head_rows  = 23                 people stand in rows 11-30: hair ~11-16, face ~16-22,
                                   body ~23-27, legs ~28-30
-  recolour   = [ { from = ["#hex", ...], to = "#hex", contrast = 1.0, rows = [0, 12] }, ... ]
+  recolour   = [ { from = ["#hex", ...], to = "#hex", contrast = 1.0, rows = [0, 12], anchor = "#hex" }, ... ]
                a group of shades (e.g. the hair's light/mid/dark) -> one new colour,
                light and dark steps kept; rows (optional) = only rows a..b-1
                (for a colour the base uses on both hair and trousers);
+               anchor (optional) = the shade that lands exactly on `to` (pick the
+               one most of the area uses; otherwise the middle shade does);
                dirs (optional) = only frames facing these ways, e.g. ["up"]
-               (long hair covers the back in the up frames)
+               (long hair covers the back in the up frames);
+               box (optional) = [x0, y0, x1, y1]: only inside that rectangle
+               (x1, y1 not included), e.g. the hair hanging beside the body
   swap       = { "#old" = "#new" }  exact single-colour swaps (after recolour, whole sprite)
   patches    = [ { dir = "down", x = 4, y = 0, rows = ["..ab..", ...], colours = { a = "#hex" } } ]
                draw pixels on a standing frame (dir: down, up, left); "." keeps,
                "_" makes see-through. Walk frames are made after patches, so the
                walk picks them up; with walk = "keep" a patch is copied onto that
                direction's walk frames too (good for hair and faces).
+  grow       = [ { colours = ["#hex", ...], outline = "#hex", fill = "#hex", rows = [11, 25], dirs = [...] } ]
+               make a part bigger by one pixel all round (hair volume): see-through
+               pixels touching those colours become the outline, the old outline
+               becomes fill
+  parts      = [ { part = "open_coat_scientist", colours = { S = "#hex", ... } } ]
+               reusable pixel patches from graphics/research_red/overworld/parts.toml
+               (an open lab coat, ...); colours fill the part's letters
   walk       = "make" | "keep"      make new walk frames, or keep the base's own
   templates  = ["auto"]           walking sheets to copy motion from ("auto" = the
                                   3 closest in body shape; or names)
@@ -57,6 +69,7 @@ import artlib  # noqa: E402
 import walkgen  # noqa: E402
 
 RECIPES = os.path.join(artlib.OW_DIR, "recipes.toml")
+PARTS = os.path.join(artlib.OW_DIR, "parts.toml")
 # the walking templates "auto" picked, saved so every machine builds the same
 # sprites (delete a line, or run "build --retemplate", to pick again)
 LOCK = os.path.join(artlib.OW_DIR, "templates.lock")
@@ -106,6 +119,37 @@ def apply_patch(frame, patch):
             frame[y][x] = None if ch == "_" else legend[ch]
 
 
+def load_parts():
+    if not os.path.exists(PARTS):
+        return {}
+    with open(PARTS, "rb") as f:
+        return tomllib.load(f)
+
+
+def grow(frame, g):
+    """One pixel more of a part (hair) all round, inside the given rows."""
+    cols = {artlib.parse_hex(c) for c in g["colours"]}
+    outline, fill = artlib.parse_hex(g["outline"]), artlib.parse_hex(g.get("fill", g["colours"][0]))
+    y0, y1 = g.get("rows", [0, 32])
+    h, w = len(frame), len(frame[0])
+    new = []
+    for y in range(y0, min(y1, h)):
+        for x in range(w):
+            if frame[y][x] is None and any(0 <= x + dx < w and 0 <= y + dy < h and frame[y + dy][x + dx] in cols
+                                           for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                new.append((x, y))
+    old_edge = set()
+    for x, y in new:
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if 0 <= x + dx < w and 0 <= y + dy < h and frame[y + dy][x + dx] == outline:
+                old_edge.add((x + dx, y + dy))
+    for x, y in new:
+        frame[y][x] = outline
+    for x, y in old_edge:
+        if (x, y) not in new:
+            frame[y][x] = fill
+
+
 def build_frames(name, r):
     """The finished frames for one recipe (list of 16x32 grids)."""
     frames = artlib.sheet_frames(artlib.people_sheet(r["base"]))
@@ -122,24 +166,40 @@ def build_frames(name, r):
     # colours: ramps first (each limited to its rows), then exact swaps
     orig = [[row[:] for row in f] for f in frames]
     for rc in r.get("recolour", []):
-        cmap = artlib.recolour_ramp([artlib.parse_hex(c) for c in rc["from"]],
-                                    artlib.parse_hex(rc["to"]), rc.get("contrast", 1.0))
+        cmap = artlib.recolour_ramp([artlib.parse_hex(c) for c in rc["from"]], artlib.parse_hex(rc["to"]),
+                                    rc.get("contrast", 1.0), artlib.parse_hex(rc["anchor"]) if rc.get("anchor") else None)
         y0, y1 = rc.get("rows", [0, 32])
+        bx0, by0, bx1, by1 = rc.get("box", [0, 0, 16, 32])
+        y0, y1 = max(y0, by0), min(y1, by1)
         want = {DIRS[d] for d in rc.get("dirs", DIRS)}
         for i, (f, o) in enumerate(zip(frames, orig)):
             if i < 9 and artlib.STAND_OF.get(i, i) not in want:
                 continue
             for y in range(y0, min(y1, len(f))):
-                f[y] = [cmap[o[y][x]] if o[y][x] in cmap else f[y][x] for x in range(len(f[y]))]
+                f[y] = [cmap[o[y][x]] if (o[y][x] in cmap and bx0 <= x < bx1) else f[y][x] for x in range(len(f[y]))]
     cmap = {artlib.parse_hex(a): artlib.parse_hex(b) for a, b in r.get("swap", {}).items()}
     frames = [artlib.apply_map(f, cmap) for f in frames]
     walk = r.get("walk", "make" if len(frames) < 9 else "keep")
-    for p in r.get("patches", []):
+    for g in r.get("grow", []):
+        for d in g.get("dirs", DIRS):
+            grow(frames[DIRS[d]], g)
+            if walk == "keep" and len(frames) >= 9:
+                for wi in WALKS_OF[DIRS[d]]:
+                    grow(frames[wi], g)
+    patches = list(r.get("patches", []))
+    parts = load_parts()
+    for use in r.get("parts", []):
+        for p in parts[use["part"]]["patches"]:
+            patches.append(dict(p, colours=dict(p.get("colours", {}), **use.get("colours", {}))))
+    for p in patches:
         d = DIRS[p["dir"]]
         apply_patch(frames[d], p)
         if walk == "keep" and len(frames) >= 9:
             for wi in WALKS_OF[d]:
-                apply_patch(frames[wi], p)
+                # the base's own walk frames bob the head down; a patch on the
+                # head (a cap) has to bob with it or it slides off
+                bob = walkgen.head_bob(frames[d], frames[wi]) if p.get("y", 0) < walkgen.RIGID_TO else 0
+                apply_patch(frames[wi], dict(p, y=p.get("y", 0) + bob))
     if walk == "make" or len(frames) < 9:
         names = r.get("templates", ["auto"])
         if names == ["auto"] and name in LOCKED and not RETEMPLATE:
@@ -444,6 +504,25 @@ def cmd_ref(ref):
     print("->", out)
 
 
+def cmd_grid(name, frames="0,1,2"):
+    """Print frames as letter grids (one letter per colour) to plan patches.
+    name: a recipe (its built sheet) or any base name."""
+    recipes = load_recipes()
+    if name in recipes:
+        g = artlib.load_grid(output_png(name, recipes[name]))
+    else:
+        g = artlib.people_sheet(name)
+    fr = artlib.sheet_frames(g)
+    idx = [int(i) for i in frames.split(",")]
+    cols = artlib.colours(artlib.join_frames([fr[i] for i in idx]))
+    key = {c: "abcdefghijklmnopqrstuvwxyz"[i] for i, c in enumerate(cols)}
+    print("  " + "  ".join("%s=%s" % (key[c], artlib.hexc(c)) for c in cols))
+    print("     " + "   ".join(("frame %d" % i).ljust(16) for i in idx))
+    print("     " + "   ".join("0123456789abcdef" for _ in idx))
+    for y in range(8, 32):
+        print("  %2d " % y + "   ".join("".join("." if p is None else key[p] for p in fr[i][y]) for i in idx))
+
+
 def cmd_templates(base):
     frames = artlib.sheet_frames(artlib.people_sheet(base))
     for score, name, _ in walkgen.best_templates(frames[:3], n=8, exclude=(base,)):
@@ -495,6 +574,8 @@ def main(argv):
         cmd_ref(rest[0])
     elif cmd == "templates":
         cmd_templates(rest[0])
+    elif cmd == "grid":
+        cmd_grid(rest[0], rest[1] if len(rest) > 1 else "0,1,2")
     else:
         print(__doc__)
         return 1
