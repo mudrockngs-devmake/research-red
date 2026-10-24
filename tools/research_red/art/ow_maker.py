@@ -55,6 +55,8 @@ Recipe keys (all optional except base):
   ref        = "08_elm"           the ref art picture to show beside it in overview.png
                                   (default: the ref file whose name ends with the recipe name)
   notes      = "..."              for people reading the recipe
+  hand       = "bases/hand_elm.png"  a hand-edited sheet (aseprite.py import): used exactly
+                                  as drawn; everything above is then only the history
 
 Outputs: the sheet PNG + palette (.pal) in graphics/research_red/overworld/,
 previews (walk GIF, frames, before/after) in E:\\...\\art\\toolkit\\overworld\\.
@@ -152,6 +154,9 @@ def grow(frame, g):
 
 def build_frames(name, r):
     """The finished frames for one recipe (list of 16x32 grids)."""
+    if r.get("hand"):
+        # hand-finished in a pixel editor: the drawing is the sprite
+        return artlib.sheet_frames(artlib.load_grid(os.path.join(artlib.OW_DIR, r["hand"])))
     frames = artlib.sheet_frames(artlib.people_sheet(r["base"]))
     frames = [[row[:] for row in f] for f in frames]
     if len(frames) < 3:
