@@ -207,6 +207,15 @@ enum ObjectEventGfx
     OBJ_EVENT_GFX_RR_IVY,
     OBJ_EVENT_GFX_RR_JENNY,
     OBJ_EVENT_GFX_RR_OFFICER_JENNY,
+    OBJ_EVENT_GFX_RR_DJ_MARY,
+    OBJ_EVENT_GFX_RR_WESTWOOD,
+    OBJ_EVENT_GFX_RR_MELODY,
+    OBJ_EVENT_GFX_RR_LISA,
+    OBJ_EVENT_GFX_RR_MRS_HALE,
+    OBJ_EVENT_GFX_RR_PROF_HALE,
+    OBJ_EVENT_GFX_RR_JESSIE,
+    OBJ_EVENT_GFX_RR_JAMES,
+    OBJ_EVENT_GFX_RR_MUDROCK,
     // Research Red: Art Kit overworld sprites (ids) END
     NUM_OBJ_EVENT_GFX,
 };
@@ -361,6 +370,17 @@ enum ObjectEventGfx
 #define OBJ_EVENT_PAL_TAG_RR_BRUNO               0x118D
 #define OBJ_EVENT_PAL_TAG_RR_AGATHA              0x118E
 #define OBJ_EVENT_PAL_TAG_RR_LANCE               0x118F
+#define OBJ_EVENT_PAL_TAG_RR_PROF_OAK            0x1190
+#define OBJ_EVENT_PAL_TAG_RR_BILL                0x1191
+#define OBJ_EVENT_PAL_TAG_RR_DJ_MARY             0x1192
+#define OBJ_EVENT_PAL_TAG_RR_PROF_WESTWOOD       0x1193
+#define OBJ_EVENT_PAL_TAG_RR_MELODY              0x1194
+#define OBJ_EVENT_PAL_TAG_RR_LISA                0x1195
+#define OBJ_EVENT_PAL_TAG_RR_MRS_HALE            0x1196
+#define OBJ_EVENT_PAL_TAG_RR_PROF_HALE           0x1197
+#define OBJ_EVENT_PAL_TAG_RR_JESSIE              0x1198
+#define OBJ_EVENT_PAL_TAG_RR_JAMES               0x1199
+#define OBJ_EVENT_PAL_TAG_RR_PROF_MUDROCK        0x119A
 // Research Red: Art Kit palette tags END
 
 #if OW_FOLLOWERS_POKEBALLS

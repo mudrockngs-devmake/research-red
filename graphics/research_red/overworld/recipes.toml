@@ -267,3 +267,142 @@ recolour = [
   { from = ["#e66a4a", "#943929", "#521000"], to = "#a01028", rows = [0, 23], contrast = 0.8 },  # hair -> crimson
   { from = ["#8b8b94", "#4a4a5a"], to = "#34343e", rows = [21, 32] },          # suit -> black
 ]
+
+# ------------------------------------------------------------------ the rest of the ref cast (drafts, 2026-10-24)
+# Daisy keeps FireRed's sprite: it already matches the ref art (blonde, green dress).
+
+[prof_oak]
+notes = "Professor Oak: grey hair, white lab coat, red shirt, khaki trousers. FireRed's own Oak, recoloured."
+base = "prof_oak"
+replaces = "PROF_OAK"
+ref = "11_oak"
+recolour = [
+  { from = ["#7b7341", "#cdac62", "#393918"], to = "#a8a8b4", rows = [0, 23], anchor = "#cdac62" },  # hair -> grey
+  { from = ["#4a4a5a", "#8b8b94"], to = "#b08850", rows = [26, 32], anchor = "#4a4a5a" },          # trousers -> khaki
+]
+
+[bill]
+notes = "Bill: brown hair, light blue shirt and tie, green trousers. FireRed's own Bill, recoloured."
+base = "bill"
+replaces = "BILL"
+recolour = [
+  { from = ["#a48bee", "#6a52bd", "#413962"], to = "#a8c8f0", rows = [23, 27], anchor = "#a48bee" },  # shirt -> light blue
+  { from = ["#413962", "#6a52bd", "#a48bee"], to = "#6a9a5a", rows = [27, 32], anchor = "#413962" },  # trousers -> green
+]
+
+[dj_mary]
+notes = "DJ Mary: red curls, glasses, green jumper, beige skirt. Base: FireRed's Lorelei (red hair, glasses)."
+base = "lorelei"
+gfx = "RR_DJ_MARY"
+ref = "13_dj_mary"
+recolour = [
+  { from = ["#4a4a5a", "#8b8b94", "#393918"], to = "#3a7a4a", rows = [21, 27], anchor = "#4a4a5a" },  # jumper -> green
+  { from = ["#4a4a5a", "#8b8b94", "#393918"], to = "#c8a882", rows = [27, 32], anchor = "#4a4a5a" },  # skirt -> beige
+]
+
+[prof_westwood]
+notes = "Professor Westwood: bald with big blue hair at the sides, glasses, lab coat, green shirt, grey trousers. Base: Blaine (bald, glasses, coat)."
+base = "blaine"
+gfx = "RR_WESTWOOD"
+ref = "22_prof_westwood"
+recolour = [
+  { from = ["#6283cd", "#8b4152"], to = "#6a6a78", rows = [24, 32] },                                # trousers -> grey
+  { from = ["#39394a"], to = "#4a8a4a", rows = [23, 28] },                                           # shirt -> green
+]
+patches = [
+  { dir = "down", x = 3, y = 15, rows = ["BB......BB", "BB......BB", "B........B"], colours = { B = "#5a7ad0" } },
+  { dir = "up", x = 3, y = 15, rows = ["BBBBBBBBBB", "BBBBBBBBBB"], colours = { B = "#5a7ad0" } },
+  { dir = "left", x = 10, y = 14, rows = ["BB", "BBB", "BB"], colours = { B = "#5a7ad0" } },
+]
+
+[melody]
+notes = "Melody: long red hair, pink top, jeans. Base: FireRed's Lass (long hair)."
+base = "lass"
+gfx = "RR_MELODY"
+ref = "25_melody"
+recolour = [
+  { from = ["#836200", "#d5ac20", "#4a3131"], to = "#d84030", rows = [0, 23], anchor = "#836200" },  # hair -> red
+  { from = ["#ee7341", "#ac4139"], to = "#f0a0b0", rows = [16, 27] },                                # top -> pink
+  { from = ["#6a52bd", "#413962", "#a48bee"], to = "#4a6ab0", rows = [23, 32], anchor = "#6a52bd" },  # skirt -> jeans
+]
+
+[lisa]
+notes = "Lisa: red bandana, long dark blue hair, red top, jeans. Base: Emerald's May (the bandana)."
+base = "em:may/walking"
+gfx = "RR_LISA"
+ref = "27_lisa"
+recolour = [
+  { from = ["#41ac20", "#6ad541"], to = "#d03030", rows = [0, 20] },                                 # bandana -> red
+  { from = ["#4a3139"], to = "#283060", rows = [0, 23] },                                            # hair -> dark blue
+  { from = ["#293941"], to = "#3a5aa0", rows = [23, 32] },                                           # shorts -> jeans
+]
+
+[mrs_hale]
+notes = "Mrs. Hale: brown hair under a white sun hat with a blue band, lavender cardigan, cream dress. Base: FireRed's woman_2."
+base = "woman_2"
+gfx = "RR_MRS_HALE"
+ref = "28_mrs_hale"
+recolour = [
+  { from = ["#7b7341", "#cdac62", "#393918"], to = "#8a6040", rows = [0, 23], anchor = "#7b7341" },  # hair -> brown
+  { from = ["#943929", "#e66a4a", "#521000"], to = "#a898d0", rows = [21, 32], anchor = "#943929" },  # dress -> lavender
+]
+patches = [
+  # a sun hat: crown over the head, blue band, wide brim (W white, S its shade, B the band, K outline)
+  { dir = "down", x = 0, y = 8, rows = ["....KKKKKKKK....", "...KWWWWWWWWK...", "...KWWWWWWWWK...", "..KBBBBBBBBBBK..", "KKWWWWWWWWWWWWKK", ".KSSSSSSSSSSSSK."], colours = { W = "#f4f4f4", S = "#c8c8d8", B = "#5a8ad8", K = "#505060" } },
+  { dir = "up", x = 0, y = 8, rows = ["....KKKKKKKK....", "...KWWWWWWWWK...", "...KWWWWWWWWK...", "..KBBBBBBBBBBK..", "KKWWWWWWWWWWWWKK", ".KSSSSSSSSSSSSK."], colours = { W = "#f4f4f4", S = "#c8c8d8", B = "#5a8ad8", K = "#505060" } },
+  { dir = "left", x = 0, y = 8, rows = ["....KKKKKKKK....", "...KWWWWWWWWK...", "...KWWWWWWWWK...", "..KBBBBBBBBBBK..", "KKWWWWWWWWWWWWKK", ".KSSSSSSSSSSSSK."], colours = { W = "#f4f4f4", S = "#c8c8d8", B = "#5a8ad8", K = "#505060" } },
+]
+
+[prof_hale]
+notes = "Professor Hale: longer brown hair, open lab coat, green shirt, grey trousers. Base: FireRed's Scientist (like Elm)."
+base = "scientist"
+gfx = "RR_PROF_HALE"
+ref = "29_prof_hale"
+walk = "make"
+recolour = [
+  { from = ["#393918", "#7b7341", "#cdac62"], to = "#6a5038", rows = [0, 23] },                      # hair -> brown
+  { from = ["#7b7341"], to = "#7aba5a", rows = [23, 27] },                                           # shirt -> green
+  { from = ["#4a4a5a"], to = "#5a5a68", rows = [26, 32] },                                           # trousers -> grey
+]
+grow = [ { colours = ["#2a2010", "#6a5038", "#a88a68"], outline = "#2a2010", fill = "#6a5038", rows = [11, 24] } ]
+parts = [ { part = "open_coat_scientist", colours = { S = "#7aba5a", B = "#3a3020", P = "#5a5a68" } } ]
+
+[jessie]
+notes = "Jessie: long magenta hair, white Team Rocket uniform with the red R, black boots. Body: FireRed's Rocket grunt (f); hair: the Beauty's long hair."
+base = "rocket_f"
+head_from = "beauty"
+head_rows = 22
+gfx = "RR_JESSIE"
+ref = "30_jessie"
+walk = "make"
+recolour = [
+  { from = ["#d5ac20", "#836200", "#ffde4a", "#4a3131"], to = "#c83878", rows = [0, 30], anchor = "#d5ac20" },  # hair -> magenta
+  { from = ["#4a4a5a", "#8b8b94"], to = "#e8e8f0", rows = [22, 32], anchor = "#8b8b94" },                        # uniform -> white
+]
+
+[james]
+notes = "James: lavender hair, white Team Rocket uniform with the red R, black boots. Body: FireRed's Rocket grunt (m); hair: the Cooltrainer's."
+base = "rocket_m"
+head_from = "cooltrainer_m"
+head_rows = 22
+gfx = "RR_JAMES"
+ref = "31_james"
+walk = "make"
+recolour = [
+  { from = ["#6a52bd", "#413962", "#a48bee"], to = "#9a8ae0", rows = [0, 22], anchor = "#6a52bd" },  # hair -> lavender
+  { from = ["#4a4a5a", "#8b8b94"], to = "#e8e8f0", rows = [22, 32], anchor = "#8b8b94" },            # uniform -> white
+]
+
+[prof_mudrock]
+notes = "Professor Mudrock: dark curly hair, glasses, beard, blue coat over a grey t-shirt, dark trousers. Base: FireRed's Scientist (glasses)."
+base = "scientist"
+gfx = "RR_MUDROCK"
+ref = "32_prof_mudrock"
+recolour = [
+  { from = ["#393918", "#7b7341", "#cdac62"], to = "#2c2c34", rows = [0, 23], anchor = "#7b7341" },  # hair -> black
+  { from = ["#f6bd94", "#ffd5b4", "#de9473"], to = "#b07850", rows = [0, 32], anchor = "#f6bd94" },  # skin
+  { from = ["#ffffff", "#c5c5d5"], to = "#4a7ad0", rows = [22, 32], anchor = "#ffffff" },            # coat -> blue
+  { from = ["#7b7341"], to = "#8a8a90", rows = [23, 27] },                                           # t-shirt -> grey
+  { from = ["#4a4a5a"], to = "#34343c", rows = [26, 32] },                                           # trousers -> dark
+]
+patches = [ { dir = "down", x = 5, y = 21, rows = [".BBBB.", "..BB.."], colours = { B = "#2c2c34" } } ]

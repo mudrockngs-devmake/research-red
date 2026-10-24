@@ -69,7 +69,7 @@ Test tooling added: `runner.log` per scene, `||` in conditions, `GameMemory.part
 - [x] Live preview page + scene board (Windows browser, opens by itself)
 - [x] Better battle-picture shrinker, before/after
 - [x] Back-sprite pipeline (Ivy, both players), throw frames
-- [ ] Overworld sprites for the rest of the ref cast
+- [x] Overworld sprites for the rest of the ref cast
 - [ ] Aseprite automation (open with grid/palette, batch export)
 - [ ] Issues: partner battles, play as Ivy, tag battle
 - [ ] Final: build, rr_check, smoke, gallery, docs
