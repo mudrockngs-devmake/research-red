@@ -140,3 +140,16 @@ Older notes for this build:
 **Owner notes on the overworld drafts:** Elm and both players: open lab coat showing shirt and trouser colours; Ivy: bigger hair; Jenny: stray black hair pixels, the police cap must stay on while walking; Delia: a white apron; male player: slimmer than Birch; female player: eyes and mouth missing; Brock: darker hair; Misty: a bit of blue (optional); Koga: purple, not black, and his battle picture's legs look cut off; Blaine: a tie and side hair; Sabrina: hair ends a different colour; Agatha: a cane. Erika, Lorelei, Lance, Giovanni, Bruno, Surge fine.
 **Plan:** parts library drawn at overworld size (open coats, apron, tie, cane, hairstyles); live preview page in the Windows browser (pin a picture, pause; the tester streams to it; pictures pushed with questions) and a drag-and-drop scene board ("Send to Claude"); a better battle-picture shrinker (no thin, jagged limbs) with before/after; back sprites: pipeline piloted on Ivy and both players (needs back-view drawings later; rough version from the overworld back frame for now); overworld sprites for the rest of the ref cast; Aseprite automation (Aseprite 1.3 in E:\SteamLibrary). Issues: partner battles, playing as Ivy, the Jenny+Ivy vs Elm+you tag battle. Not installed until the v0.0.19 playtest is done.
 **Tabled (separate topic, don't raise during game updates):** image generation tools.
+
+## Two lanes + viewer and hub upgrades (planned with the owner 2026-10-24, all suggestions approved)
+The owner: the Art Kit overhaul is its own side lane; the game keeps going on the art already in it
+(placeholders, Porymap, small recolours), and Art Kit art goes in piece by piece once it's polished.
+Approved, all 19 (checklist in STATUS.md):
+1. One project, a switch per piece (`graphics/research_red/art_kit.toml` `approved = [...]`).
+2. Asset tracker `docs/ART_TRACKER.md` (placeholder -> draft -> hand-finished -> approved -> in game); rr_check warns on Art Kit pieces missing from it; copy on E:.
+3. GitHub "Art Kit" milestone + `art-kit` label; #15 and #33 move there, #74 stays a game issue.
+4. Art bible `docs/ART_BIBLE.md` (drafted from FireRed's style + the ref art; owner adjusts).
+5. Vertical slice: the first art pass is Pallet Town only (Delia, Elm, Ivy, Jenny, Oak, players, lab).
+6. Game lane rule: small map pieces (tables, chairs, grass) with the existing tools are fine in game, logged in the tracker.
+7-14. Viewer: Approve / Needs work + A/B/C choice buttons (feed the tracker); notes on a spot of a picture; compare (side by side, before/after slider); animation player; in-game size preview on a real map; history; gentle alert; themes.
+15-19. Hub (claude-setup): Quick Ball / Dive Ball themes in a Settings menu (Dive Ball the default: calm for long sessions); a Today screen; project shortcuts (viewer, play latest build, game folder); health check (backup age, disk space, unsaved work); desktop shortcut with an icon + cheat sheet.

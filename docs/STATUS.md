@@ -5,6 +5,17 @@ update it at the end of every session** (and whenever a build goes out).
 
 _Last updated: 2026-10-24 (Art Kit art taken back out of the game; v0.0.19 still in playtest)_
 
+## Two lanes + viewer and hub run (2026-10-24, in progress; owner answers in ROADMAP.md "Two lanes")
+No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
+- [ ] 1 switch per piece (art_kit.toml approved list)
+- [ ] 2 asset tracker docs/ART_TRACKER.md + rr_check warning + E: copy
+- [ ] 3 GitHub Art Kit milestone + art-kit label, move #15 #33
+- [ ] 4 art bible docs/ART_BIBLE.md
+- [ ] 5-6 vertical slice + game lane rule (docs, CLAUDE.md)
+- [ ] 7-14 viewer: verdict/choice buttons, spot notes, compare, animation player, in-game preview, history, alert, themes
+- [ ] 15-19 hub: themes (Dive Ball default), Today screen, project shortcuts, health check, desktop shortcut + cheat sheet
+- [ ] final: docs (ART_TOOLS, DEV_GUIDE), STATUS, push
+
 ## Art Kit art: out of the game until further notice (owner, 2026-10-24)
 The owner wants the art generation and edits improved before anything replaces what's in the game. The game's
 wiring went back to v0.0.19 (the build is byte-identical to the installed v0.0.19 ROM); the tools, recipes and
