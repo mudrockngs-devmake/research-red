@@ -16,9 +16,11 @@ _Last updated: 2026-10-28 (v0.0.19 playtest archived, issues #106-#132)_
 - New test tools (2026-10-28, docs/TESTING.md): checks on every scene (dialogue/portraits and boxes closing early,
   leftovers, battles #128/#107, brightness, wild, script coverage), settings matrix (`matrix.py`), type chart engine
   test (#112), sprite tours (#125), day/night (#108, fails until fixed), wild probes (#106, fail until fixed), and the
-  **full playthrough** (`playthrough.py`, power-on to Brock, no debug skips). It loses to Brock with its two
-  Pokémon (Lv 10/12; it can't catch yet). Not yet in it: the Pewter legs after Brock, Brock rematch tiers, Delia,
-  Elm/Jenny rebattles (#127, open question on EXP/money).
+  **full playthrough** (`playthrough.py`, power-on to the Pewter rematch, no debug skips): Quick Balls from Lab
+  Supplies, one training round with catching, Rare Candies to Lv 14, beats Brock (2026-10-28). The full run from
+  power-on can still black out on Route 2 to #106's leftover Squirtle (wild Pokémon reuse Oak's team) when the team
+  is weak; after #106 is fixed it should go through. Not yet in it: Brock rematch tiers, Delia, Elm/Jenny rebattles
+  (#127, open question on EXP/money).
 
 ## Working setup run (2026-10-28, items 1-6 done; owner answers in ROADMAP.md "Working setup")
 - [x] 5 short STATUS, history in docs/history/
@@ -48,7 +50,7 @@ _Last updated: 2026-10-28 (v0.0.19 playtest archived, issues #106-#132)_
 
 ## Next up
 - **v0.0.20** (milestone): first the bugs, worst first: #106 (reproduced by smoke `oak_rematch_wild`/`delia_wild` and the
-  playthrough: wild battles reuse the last trainer's team until the next trainer battle), #108, #110, #107, #109, #112 (+ a test of every demo matchup), #128; then #105 lab cutscenes, #119, #121-#125. Smaller batches, test each change (owner 2026-10-28).
+  playthrough: wild battles reuse the last trainer's team until the next trainer battle), #108, #110, #107, #109, #112 (+ a test of every demo matchup), #128 (decided: singles = the game's own choice, curated fights stay 6-vs-6; #107 one team under one AI); then #105 lab cutscenes, #119, #121-#125. Smaller batches, test each change (owner 2026-10-28).
 - Tasks for the owner: #129 credits/permissions list, #130 Oak's aides list.
 - Tooling: a smaller patch (#17).
 
