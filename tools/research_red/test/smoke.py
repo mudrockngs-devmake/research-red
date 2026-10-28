@@ -11,11 +11,13 @@ Usage:
   python3 tools/research_red/test/smoke.py lunch banter # just these
   python3 tools/research_red/test/smoke.py --list
   python3 tools/research_red/test/smoke.py --watch lab   # live viewer pops up (tools/research_red/viewer)
+  python3 tools/research_red/test/smoke.py --no-compare  # skip the before/after picture comparison
 
 Output: <workspace>/test-runs/<date>_<version>_<commit>/
   REPORT.md            pass / warn / fail per scenario, where each one ended
   <scenario>.png       contact sheet
   <scenario>/          every screenshot
+  COMPARE.md, compare.html   pictures compared with the last tagged build's runs (compare.py)
 Run it after building, before handing a ROM to the owner.
 """
 import datetime
@@ -1042,6 +1044,15 @@ def main():
         # open the live viewer in the Windows browser: screenshots stream in as they're taken
         argv.remove("--watch")
         subprocess.run([sys.executable, os.path.join(REPO, "tools/research_red/viewer/viewer.py"), "open"])
+    compare = None
+    if "--no-compare" in argv:
+        argv.remove("--no-compare")
+    else:
+        try:
+            from compare import compare_run   # needs Pillow
+            compare = compare_run
+        except ImportError:
+            print("(no Pillow: skipping the picture comparison)")
     version, commit = version_and_commit()
     base = os.path.join(WORKSPACE, "test-runs") if os.path.isdir(WORKSPACE) else os.path.join(REPO, "build/test-runs")
     T.main(T.Suite(
@@ -1055,6 +1066,7 @@ def main():
         progress_var=STORY,
         map_names=MAP_NAMES,
         setup_hint="run tools/research_red/test/setup_mgba.sh first",
+        after_run=compare,
     ), argv)
 
 

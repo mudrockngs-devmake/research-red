@@ -58,6 +58,7 @@ class Suite:
     first_timeout: int = 600   # seconds of real time per scenario
     timeout: int = 1200
     setup_hint: str = "build rr_run with setup_mgba.sh"
+    after_run: object = None   # called with out_dir once the report is written (e.g. compare.py)
 
 
 # --- script building blocks ----------------------------------------------
@@ -253,6 +254,10 @@ def main(suite, argv):
         if w not in suite.scenarios:
             sys.exit(f"unknown scenario '{w}' (see --list)")
 
+    try:
+        os.nice(10)   # low priority, so the PC stays usable while every core plays a scenario
+    except OSError:
+        pass
     os.makedirs(suite.out_dir, exist_ok=True)
     workdir = tempfile.mkdtemp(prefix="gba_tester_")
     rom = os.path.join(workdir, "test.gba")   # the build can keep changing while tests run
@@ -287,6 +292,8 @@ def main(suite, argv):
     results.sort(key=lambda r: order.index(r[0]))
     write_report(suite, results)
     shutil.rmtree(workdir, ignore_errors=True)
+    if suite.after_run:
+        suite.after_run(suite.out_dir)
     failed = [r for r in results if r[1] == "FAIL"]
     print(f"{len(results) - len(failed)}/{len(results)} passed. Report: {os.path.join(suite.out_dir, 'REPORT.md')}")
     sys.exit(1 if failed else 0)
