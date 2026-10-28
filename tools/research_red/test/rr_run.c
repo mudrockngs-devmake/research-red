@@ -43,6 +43,12 @@
 //                     each one. Pointed at the script engine's current
 //                     command, it lists every event script that ran
 //                     (coverage.py turns them into script names).
+//   trigger ADDR VALUE DELAY COND
+//                     from now on, each time COND starts holding, write VALUE
+//                     to ADDR (4 bytes; *PTR+OFF allowed) DELAY frames later
+//                     and print "TRIGGER line frame". E.g. give the player's
+//                     side careful AI settings at the start of every battle.
+//                     "trigger clear" removes them all.
 //   pal               print the 16 sprite palettes (debugging)
 //   oam               print the first 24 sprites (debugging)
 //   tiles FIRST N     print N sprite tiles from FIRST (debugging)
@@ -127,6 +133,12 @@ static int sCoverCount;
 static uint32_t *sCoverSet;
 static int sCoverUsed;
 static void sampleFrame(void);
+
+// "trigger": a poke a few frames after a condition starts holding
+#define MAX_TRIGGERS 8
+static struct { struct Term addr; uint32_t value; int delay; struct Cond cond; int held; int countdown; } sTrig[MAX_TRIGGERS];
+static int sTrigCount;
+static void pokeTerm(const struct Term *t, uint32_t v);
 
 static int keymask(const char *s)
 {
@@ -308,6 +320,18 @@ static void sampleFrame(void)
             printf("WATCH %s %lu %u\n", sWatch[i].label, sFrame, v);
         }
     }
+    for (int i = 0; i < sTrigCount; i++)
+    {
+        int now = condHolds(&sTrig[i].cond);
+        if (now && !sTrig[i].held)
+            sTrig[i].countdown = sTrig[i].delay + 1;
+        sTrig[i].held = now;
+        if (sTrig[i].countdown && --sTrig[i].countdown == 0)
+        {
+            pokeTerm(&sTrig[i].addr, sTrig[i].value);
+            printf("TRIGGER %d %lu\n", i, sFrame);
+        }
+    }
     for (int i = 0; i < sCoverCount; i++)
     {
         uint32_t v = readAddr(&sCover[i]);
@@ -339,6 +363,13 @@ static void frames(int keys, int n)
         watchStuck(keys);
         sampleFrame();
     }
+}
+
+static void pokeTerm(const struct Term *t, uint32_t v)
+{
+    uint32_t a = t->off + (t->ptr ? core->rawRead32(core, t->ptr, -1) : 0);
+    for (int i = 0; i < t->size; i++)
+        core->rawWrite8(core, a + i, -1, (v >> (8 * i)) & 0xFF);
 }
 
 static void shot(const char *path)
@@ -581,6 +612,21 @@ int main(int argc, char **argv)
                 sCoverSet = calloc(COVER_SLOTS, sizeof *sCoverSet);
             if (parseAddr(a, &sCover[sCoverCount]))
                 sCoverCount++;
+        }
+        else if (!strcmp(cmd, "trigger") && !strcmp(a, "clear"))
+            sTrigCount = 0;
+        else if (!strcmp(cmd, "trigger") && ntok >= 7 && sTrigCount < MAX_TRIGGERS)
+        {
+            if (parseAddr(tok[1], &sTrig[sTrigCount].addr) && parseCond(tok + 4, ntok - 4, &sTrig[sTrigCount].cond))
+            {
+                sTrig[sTrigCount].value = strtoul(tok[2], NULL, 0);
+                sTrig[sTrigCount].delay = atoi(tok[3]);
+                sTrig[sTrigCount].held = condHolds(&sTrig[sTrigCount].cond);
+                sTrig[sTrigCount].countdown = 0;
+                sTrigCount++;
+            }
+            else
+                fprintf(stderr, "rr_run: line %d: bad trigger\n", sLine);
         }
         else if (!strcmp(cmd, "pal"))
             for (int pl = 0; pl < 16; pl++)

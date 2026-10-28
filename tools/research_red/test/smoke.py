@@ -278,6 +278,14 @@ def poke_sb2(field, value):
     return [f"poke *{T.G.sym('gSaveBlock2Ptr'):#x}+{off:#x}:1 {value}"]
 
 
+def options_bits(bits):
+    """Set bits in SaveBlock2's options byte (after playTimeVBlanks): 2 = battle
+    style Set (no 'Will you switch?' after a KO, which nobody answers when the
+    AI plays your side), 4 = battle animations off (faster long runs)."""
+    off = T.G.const("offsetof(struct SaveBlock2, playTimeVBlanks)") + 1
+    return [f"poke *{T.G.sym('gSaveBlock2Ptr'):#x}+{off:#x}:1 |{bits}"]
+
+
 def poke_var(var, value):
     return [f"poke {T.G.var_addr(var)} {value}"]
 

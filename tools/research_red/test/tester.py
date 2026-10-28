@@ -66,6 +66,12 @@ class Suite:
     always_start: list = dataclasses.field(default_factory=list)
     always_end: list = dataclasses.field(default_factory=list)
     judges: list = dataclasses.field(default_factory=list)
+    # A playthrough: play the scenarios one after another (each starts from a
+    # state the one before saved), stop at the first FAIL, and keep the states
+    # (.ss, loadable in mGBA) in keep_states, so a later run can start from any
+    # leg ("--from NAME" loads the states found there).
+    sequential: bool = False
+    keep_states: str = None
 
 
 # --- script building blocks ----------------------------------------------
@@ -251,7 +257,12 @@ def write_report(suite, results):
 
 
 def main(suite, argv):
-    """Command line: [scenario ...] [--list]. Exits 1 if anything FAILs."""
+    """Command line: [scenario ...] [--list] [--from NAME]. Exits 1 if anything FAILs."""
+    start_from = None
+    if "--from" in argv:
+        i = argv.index("--from")
+        start_from = argv[i + 1]
+        argv = argv[:i] + argv[i + 2:]
     args = [a for a in argv if not a.startswith("--")]
     if "--list" in argv:
         for k, (_, desc) in suite.scenarios.items():
@@ -263,6 +274,8 @@ def main(suite, argv):
     if not (os.path.exists(suite.rom) and os.path.exists(elf)):
         sys.exit(f"{suite.rom} (and .elf) not found: build first")
     wanted = args or list(suite.scenarios)
+    if start_from:
+        wanted = list(suite.scenarios)[list(suite.scenarios).index(start_from):]
     for w in wanted:
         if w not in suite.scenarios:
             sys.exit(f"unknown scenario '{w}' (see --list)")
@@ -283,6 +296,8 @@ def main(suite, argv):
 
     results = []
     print(f"{suite.title} -> {suite.out_dir}")
+    if suite.sequential:
+        return main_sequential(suite, rom, wanted, scripts, workdir, start_from)
     rest = [w for w in wanted if w != suite.first]
     if suite.first:
         print(f"  {suite.first} ...", flush=True)
@@ -311,4 +326,32 @@ def main(suite, argv):
         suite.after_run(suite.out_dir)
     failed = [r for r in results if r[1] == "FAIL"]
     print(f"{len(results) - len(failed)}/{len(results)} passed. Report: {os.path.join(suite.out_dir, 'REPORT.md')}")
+    sys.exit(1 if failed else 0)
+
+
+def main_sequential(suite, rom, wanted, scripts, workdir, start_from):
+    """Play the legs in order; a FAIL stops the run (later legs need its state)."""
+    if start_from and suite.keep_states:
+        for f in os.listdir(suite.keep_states):
+            if f.endswith(".ss"):
+                shutil.copy(os.path.join(suite.keep_states, f), workdir)
+    results = []
+    for w in wanted:
+        print(f"  {w} ...", flush=True)
+        r = run(suite, rom, w, scripts[w], workdir, suite.timeout)
+        results.append(r)
+        print(f"  {w}: {r[1]} ({'; '.join(r[2])})", flush=True)
+        if suite.keep_states:
+            os.makedirs(suite.keep_states, exist_ok=True)
+            for f in os.listdir(workdir):
+                if f.endswith(".ss"):
+                    shutil.copy(os.path.join(workdir, f), suite.keep_states)
+        if r[1] == "FAIL":
+            break
+    write_report(suite, results)
+    shutil.rmtree(workdir, ignore_errors=True)
+    if suite.after_run:
+        suite.after_run(suite.out_dir)
+    failed = [r for r in results if r[1] == "FAIL"]
+    print(f"{len(results) - len(failed)}/{len(wanted)} legs passed. Report: {os.path.join(suite.out_dir, 'REPORT.md')}")
     sys.exit(1 if failed else 0)

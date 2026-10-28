@@ -37,7 +37,9 @@ FIGHTS = {
 }
 SETTINGS = {
     "default": lambda: [],
-    "singles": lambda: T.clear_flag("FLAG_RR_FORCE_DOUBLES"),
+    # trainers as singles; battle style Set so a KO doesn't ask "Will you switch?"
+    # (nobody answers it while the AI plays your side: a test-mode limit)
+    "singles": lambda: T.clear_flag("FLAG_RR_FORCE_DOUBLES") + smoke.options_bits(2),
     "wilddbl": lambda: T.set_flag("FLAG_RR_FORCE_DOUBLE_WILD"),
 }
 
