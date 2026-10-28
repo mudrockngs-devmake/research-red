@@ -202,8 +202,9 @@ def run(suite, rom, name, lines, workdir, timeout):
     end = [ln for f in suite.always_end for ln in f(G)]
     open(script, "w").write("\n".join(with_states(prelude() + start + lines + end + epilogue(), workdir)) + "\n")
     try:
-        out = subprocess.run([suite.runner, rom, script, sdir], timeout=timeout, check=True,
-                             capture_output=True, text=True).stdout
+        run = subprocess.run([suite.runner, rom, script, sdir], timeout=timeout, check=True,
+                             capture_output=True, text=True)
+        out = run.stdout
     except subprocess.TimeoutExpired:
         return name, "FAIL", ["timed out"], ""
     except subprocess.CalledProcessError as e:
@@ -213,6 +214,9 @@ def run(suite, rom, name, lines, workdir, timeout):
     if not shots:
         return name, "FAIL", ["no screenshots"], ""
     fails, warns, peeks = [], [], {}
+    # the runner's complaints about the script (a bad condition, too many guards):
+    # a line it skipped means the scene didn't run as written
+    fails += [ln.strip() for ln in run.stderr.splitlines() if ln.startswith("rr_run: line")]
     for line in out.splitlines():
         p = line.split()
         if p[0] == "CHECK" and p[2] == "fail":

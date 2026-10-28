@@ -20,7 +20,7 @@ import tempfile
 
 HEADERS = ["global.h", "main.h", "constants/flags.h", "constants/vars.h",
            "constants/map_groups.h", "constants/species.h", "task.h", "battle.h", "constants/opponents.h", "constants/battle_ai.h",
-           "battle_setup.h", "party_menu.h"]
+           "battle_setup.h", "party_menu.h", "item_menu.h"]
 OFFSETS = {  # name -> C expression
     "sb1_location": "offsetof(struct SaveBlock1, location)",
     "sb1_flags": "offsetof(struct SaveBlock1, flags)",
@@ -68,6 +68,35 @@ class GameMemory:
             values += [int(v)] if kind == "word" else [0] * (int(v) // 4)
         values = values[:len(names)]
         self._consts.update(zip(names, values))
+
+    def bitfield_bytes(self, struct, member):
+        """A bitfield member's place in its struct, as {byte offset: mask}
+        (offsetof can't name a bitfield): compile the struct with only that
+        member set to all ones and see which bits come out set. For a
+        condition like "is it nonzero": OR of (byte & mask)."""
+        key = ("bitfield", struct, member)
+        if key not in self._consts:
+            src = "".join(f'#include "{h}"\n' for h in HEADERS)
+            src += f"const struct {struct} rr_bf = {{ .{member} = 0xFFFFFFFF }};\n"
+            with tempfile.TemporaryDirectory() as tmp:
+                c = os.path.join(tmp, "rr_bf.c")
+                open(c, "w").write(src)
+                r = subprocess.run(["arm-none-eabi-gcc", "-iquote", os.path.join(self.repo, "include"),
+                                    "-DMODERN=1", "-DTESTING=0", f"-D{self.define}", "-std=gnu17", "-w",
+                                    "-mthumb", "-mabi=apcs-gnu", "-march=armv4t", "-S", "-o", "-", c],
+                                   capture_output=True, text=True)
+            if r.returncode:
+                raise ValueError(f"can't place {struct}.{member}:\n{r.stderr[-800:]}")
+            body = r.stdout.split("rr_bf:", 1)[1].split(".size", 1)[0]
+            data = bytearray()
+            sizes = {"byte": 1, "short": 2, "2byte": 2, "hword": 2, "word": 4, "4byte": 4}
+            for kind, v in re.findall(r"\.(byte|short|2byte|hword|word|4byte|space|zero)\s+(-?\d+)", body):
+                if kind in ("space", "zero"):
+                    data += bytes(int(v))
+                else:
+                    data += (int(v) & (1 << 8 * sizes[kind]) - 1).to_bytes(sizes[kind], "little")
+            self._consts[key] = {i: b for i, b in enumerate(data) if b}
+        return self._consts[key]
 
     def const(self, name):
         """Value of a game constant or expression, e.g. FLAG_SYS_POKEDEX_GET."""

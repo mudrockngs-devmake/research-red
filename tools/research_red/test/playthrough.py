@@ -14,6 +14,8 @@ How it plays:
     the first move that has PP, and sends the next healthy Pokémon when one
     faints). Battle animations off and the Set style, to save time. It heals
     at the Pokémon Centers in Viridian and Pewter.
+  - Before the Gym: Quick Balls from Lab Supplies, one training round on
+    Route 2 (catching up to six), then Rare Candies to the cap (Lv 14).
   - Every story question gets A (Yes). Your starter is the first one offered.
     A new move with four known: Yes, forget the first one.
   - Each leg starts from the state the leg before saved; the states are kept
@@ -98,7 +100,8 @@ def every_leg(run=True):
     tasks, tsize = g.sym("gTasks"), g.const("sizeof(struct Task)")
     whiteout = " || ".join(f"{tasks + i * tsize:#x}:4 == {g.sym('Task_RushInjuredPokemonToCenter') | 1:#x}"
                            for i in range(16))
-    return (T.set_flag("FLAG_RR_AI_VS_AI") + careful_ai() + party_menu_guards() + wild_action(run) + move_menu_guards()
+    return (T.set_flag("FLAG_RR_AI_VS_AI") + careful_ai() + party_menu_guards()
+            + ([] if run else blocked_move_guards() + catch_guards()) + wild_action(run) + move_menu_guards()
             + [f"guard A {whiteout}", f"guard A {g.in_battle()} || {talking} || {summary}",
                             smoke.rr_checks.TEST_MODE_MARK])
 
@@ -120,6 +123,140 @@ def wild_action(run):
             f"{g.sym('gBattleTypeFlags'):#x}:4 !& {g.const('BATTLE_TYPE_TRAINER')}")
     moves = ((0, "DOWN"), (1, "DOWN"), (2, "RIGHT"), (3, "A")) if run else ((1, "LEFT"), (2, "UP"), (3, "LEFT"))
     return [f"guard {key} {menu} && {cursor:#x}:1 == {at}" for at, key in moves]
+
+
+def blocked_move_guards():
+    """Training legs: when the lead's move is Disabled or Encored, A on it
+    only says it can't be used, again and again: run from that wild battle
+    instead (the action menu's cursor to Run, 3). Must come before
+    catch_guards and wild_action."""
+    g = G()
+    funcs, cursor = g.sym("gBattlerControllerFuncs"), g.sym("gActionSelectionCursor")
+    near = g.sym("HandleInputChooseMove")
+    action = min(g.all_symbols["HandleInputChooseAction"], key=lambda a: abs(a - near))
+    vol = g.sym("gBattleMons") + g.const("offsetof(struct BattlePokemon, volatiles)")
+    blocked = [f"{vol + at:#x}:1 & {mask:#x}" for member in ("disabledMove", "encoredMove")
+               for at, mask in g.bitfield_bytes("Volatiles", member).items()]
+    menu = (f"{funcs:#x}:4 == {action | 1:#x} && "
+            f"{g.sym('gBattleTypeFlags'):#x}:4 !& {g.const('BATTLE_TYPE_TRAINER')}")
+    # no brackets in the runner's conditions (&& binds tighter): one && group per blocked byte
+    return [f"guard {key} " + " || ".join(f"{menu} && {cursor:#x}:1 == {at} && {b}" for b in blocked)
+            for at, key in ((0, "DOWN"), (1, "DOWN"), (2, "RIGHT"), (3, "A"))]
+
+
+def catch_guards():
+    """Training legs: with fewer than six Pokémon and Quick Balls in the Bag
+    (from Lab Supplies), throw one at every wild Pokémon, like a player
+    filling the team before the Gym: the action menu's cursor to Bag (1),
+    then in the Bag the Poké Balls pocket, its first slot, A (and A on Use).
+    "Give it a nickname?": B (No). Must come before wild_action's guards."""
+    g = G()
+    funcs, cursor = g.sym("gBattlerControllerFuncs"), g.sym("gActionSelectionCursor")
+    near = g.sym("HandleInputChooseMove")
+    action = min(g.all_symbols["HandleInputChooseAction"], key=lambda a: abs(a - near))
+    wants = (f"{g.party_addr()} < 6 && {g.bag_slot_addr('pokeBalls', 0)} == {g.const('ITEM_QUICK_BALL')}")
+    menu = (f"{funcs:#x}:4 == {action | 1:#x} && {wants} && "
+            f"{g.sym('gBattleTypeFlags'):#x}:4 !& {g.const('BATTLE_TYPE_TRAINER')}")
+    cb2 = g.sym("gMain") + g.const("main_callback2")
+    bag = f"{cb2:#x}:4 == {g.sym('CB2_BagMenuRun') | 1:#x}"
+    pos = g.sym("gBagPosition")
+    pocket = f"{pos + g.const('offsetof(struct BagPosition, pocket)'):#x}:2"
+    balls = g.const("POCKET_POKE_BALLS")
+    row = f"{pos + g.const('offsetof(struct BagPosition, cursorPosition)') + 2 * balls:#x}:2"
+    nick = f"*{g.sym('gBattlescriptCurrInstr'):#x}:1 == {g.const('B_SCR_OP_TRYGIVECAUGHTMONNICK')}"
+    return ([f"guard B {g.in_battle()} && {nick}"]
+            + [f"guard {key} {menu} && {cursor:#x}:1 == {at}" for at, key in ((0, "RIGHT"), (2, "UP"), (3, "UP"))]
+            + [f"guard A {menu} && {cursor:#x}:1 == 1",
+               f"guard RIGHT {bag} && {pocket} != {balls}",
+               f"guard UP {bag} && {pocket} == {balls} && {row} != 0",
+               f"guard A {bag}"])
+
+
+def supplies_row(item):
+    """An item's row in the Lab Supplies list (gRRLabSupplies, src/research_red.c)."""
+    src = open(os.path.join(smoke.REPO, "src/research_red.c")).read()
+    block = src.split("const u16 gRRLabSupplies[] =", 1)[1].split("};", 1)[0]
+    return re.findall(r"\bITEM_\w+", re.sub(r"//[^\n]*", "", block)).index(item)
+
+
+def lab_supplies(start_tile, center, item, tens, label, pocket, run=True):
+    """The research grant's free shop on the Center's PC (Lab Supplies, the
+    third PC entry): `tens` x 10 of `item` (RIGHT adds 10 to the amount).
+    The guards would press A in these menus, so they're off for the visit and
+    come back after. The item must land in the first slot of its Bag pocket
+    (an empty pocket: the later guards pick slot 0). Ends at the PC, (11, 2)."""
+    g = G()
+    lines = nav.go(g, start_tile, center, (11, 2)) + ["guard clear", "trigger clear",
+             "press UP 4", "wait 10", "press A 4", "wait 80", "shot pc_on",
+             "press A 4", "wait 60", "shot pc_menu",
+             "press DOWN 4", "wait 10", "press DOWN 4", "wait 10", "press A 4", "wait 60",
+             "press A 4", "wait 120", "shot supplies", "press A 4", "wait 60"]  # the shop's greeting
+    lines += ["press DOWN 4", "wait 24"] * supplies_row(item)
+    lines += [f"shot {label}", "press A 4", "wait 120"] + ["press RIGHT 4", "wait 16"] * tens + ["shot how_many",
+              "press A 4", "wait 90", "shot ok", "press A 4", "wait 90", "press A 4", "wait 60",
+              "shot bought", "press B 4", "wait 90", "press B 4", "wait 60"]
+    # B out of the list and the PC menu before the guards come back (they'd A into a PC)
+    lines += play_until("pc_off", g.field_free(), 1200, key="B", every=40) + every_leg(run)
+    return lines + check(label, f"{g.bag_slot_addr(pocket, 0)} == {g.const(item)}")
+
+
+CANDY_LEVEL = 14   # the level cap with no badges (docs/DESIGN.md section 1)
+
+
+def candy_guards(slot, target):
+    """Rare Candies on party slot `slot` until it reaches `target`, through the
+    menus a player uses: Start > Bag > Items pocket, its first slot (the
+    candies) > Use > that Pokémon. A through level-ups, new moves (Yes, the
+    summary screen's first move goes) and evolutions; B out once it's there."""
+    g = G()
+    party, size = g.sym("gPlayerParty"), g.const("sizeof(struct Pokemon)")
+    lvl = f"{party + slot * size + g.const('offsetof(struct Pokemon, level)'):#x}:1"
+    need = f"{lvl} != 0 && {lvl} < {target}"
+    cb2 = g.sym("gMain") + g.const("main_callback2")
+    # the Start menu is open: field controls locked by it, no script, its input handler set
+    start_menu = (f"{g.overworld()} && {g.sym('sLockFieldControls'):#x}:1 != 0 && "
+                  f"{g.sym('sGlobalScriptContextStatus'):#x}:1 == {g.const('script_shutdown')} && "
+                  f"{g.sym('gMenuCallback'):#x}:4 == {g.sym('HandleStartMenuInput') | 1:#x}")
+    menu_pos, actions = g.sym("sStartMenuCursorPos"), g.sym("sCurrentStartMenuActions")
+    # MENU_ACTION_* is an enum inside src/start_menu.c (no header): count it from there
+    enum = open(os.path.join(smoke.REPO, "src/start_menu.c")).read().split("MENU_ACTION_", 1)[1]
+    bag_action = re.findall(r"MENU_ACTION_\w+|^\w+", "MENU_ACTION_" + enum.split("}", 1)[0]).index("MENU_ACTION_BAG")
+    not_bag = " || ".join(f"{start_menu} && {need} && {menu_pos:#x}:1 == {k} && "
+                          f"{actions + k:#x}:1 != {bag_action}" for k in range(9))
+    bag = f"{cb2:#x}:4 == {g.sym('CB2_BagMenuRun') | 1:#x}"
+    pos = g.sym("gBagPosition")
+    pocket = f"{pos + g.const('offsetof(struct BagPosition, pocket)'):#x}:2"
+    items = g.const("POCKET_ITEMS")
+    row = f"{pos + g.const('offsetof(struct BagPosition, cursorPosition)') + 2 * items:#x}:2"
+    party_menu = f"{cb2:#x}:4 == {g.sym('CB2_UpdatePartyMenu') | 1:#x}"
+    pslot = f"{g.sym('gPartyMenu') + g.const('offsetof(struct PartyMenu, slotId)'):#x}:1"
+    evolving = f"{cb2:#x}:4 == {g.sym('CB2_EvolutionSceneUpdate') | 1:#x}"
+    summary = f"{g.sym('sMonSummaryScreen'):#x}:4 != 0"
+    # FireRed's item-use scene ("Rare Candy was used on ...", the level-up) waits for A
+    item_scene = f"{cb2:#x}:4 == {g.sym('CB2_PSA') | 1:#x}"
+    return [f"guard A {evolving} || {summary} || {item_scene}",
+            f"guard DOWN {party_menu} && {need} && {pslot} != {slot}",
+            f"guard A {party_menu} && {need}",
+            f"guard B {party_menu}",
+            f"guard LEFT {bag} && {need} && {pocket} != {items}",
+            f"guard UP {bag} && {need} && {row} != 0",
+            f"guard A {bag} && {need}",
+            f"guard B {bag}",
+            f"guard DOWN {not_bag}",
+            f"guard A {start_menu} && {need}",
+            f"guard B {start_menu}",
+            f"guard START {g.field_free()} && {need}",
+            # level-up and move texts on the map after the Bag closes
+            f"guard A {g.overworld()} && {g.sym('sGlobalScriptContextStatus'):#x}:1 != {g.const('script_shutdown')}"]
+
+
+def candies(slot, target, frames=12000):
+    g = G()
+    party, size = g.sym("gPlayerParty"), g.const("sizeof(struct Pokemon)")
+    lvl = f"{party + slot * size + g.const('offsetof(struct Pokemon, level)'):#x}:1"
+    return (["guard clear"] + candy_guards(slot, target)
+            + [f"until candy{slot} {frames} - {lvl} >= {target} && {g.field_free()} || {lvl} == 0 && {g.field_free()}",
+               "guard clear"])
 
 
 def move_menu_guards():
@@ -276,40 +413,76 @@ def p10():
             + expect("MAP_PEWTER_CITY") + leg_end("p10_forest"))
 
 
-TRAINING_ROUNDS = 3
-TRAINING_PACES = 60
+TRAINING_ROUNDS = 1
+TRAINING_LEVELS = (11,)          # the two lead Pokémon's level to reach in each round (then Rare Candies)
+TRAINING_FRAMES = 300000         # at most per round (about 80 minutes of play)
 
 
 def training(i):
     """A training round before the Gym, as a player does it: heal at the
-    Pewter Pokémon Center, fight wild Pokémon in Route 2's grass for a while.
+    Pewter Pokémon Center (the first round also fills the Bag with Quick
+    Balls from Lab Supplies), then walk back and forth on two tall-grass
+    tiles of Route 2, fighting wild Pokémon (and catching them while the team
+    has fewer than six) until the two lead Pokémon reach the round's level.
     Each round is its own leg, so it starts from wherever the last one really
     ended (a blackout sends you to the Center) and its levels show in
     PLAYTHROUGH.md."""
+    g = G()
     prev = "p10_forest" if i == 1 else f"p11_train{i - 1}"
     center = "MAP_PEWTER_CITY_POKEMON_CENTER_1F"
     a, b = nav.grass_route((center, 7, 4), "MAP_ROUTE2")
     d_out = "RIGHT" if b[1] > a[1] else "LEFT"
     d_back = "LEFT" if d_out == "RIGHT" else "RIGHT"
-    pace = []
-    for _ in range(TRAINING_PACES):
-        pace += [f"hold {d_out} 16", "wait 4", f"hold {d_back} 16", "wait 4"]
-    lines = (start(prev, run=False) + heal(here(("MAP_PEWTER_CITY", 17, 26)), center)
-             + nav.go(G(), (center, 7, 4), None, goal=lambda n: n == a, label="train") + pace
-             + [f"until trained 20000 A {G().field_free()}"])
+    party, size = g.sym("gPlayerParty"), g.const("sizeof(struct Pokemon)")
+    lvl = g.const("offsetof(struct Pokemon, level)")
+    target = TRAINING_LEVELS[i - 1]
+    trained = " && ".join(f"{party + k * size + lvl:#x}:1 >= {target}" for k in (0, 1))
+    lines = start(prev, run=False) + heal(here(("MAP_PEWTER_CITY", 17, 26)), center)
+    if i == 1:
+        lines += lab_supplies((center, 7, 4), center, "ITEM_QUICK_BALL", 5, "quick_balls", "pokeBalls", run=False)
+    lines += nav.go(g, (center, 11, 2) if i == 1 else (center, 7, 4), None, goal=lambda n: n == a, label="train")
+    # pacing: a tap on one tile turns (or steps) toward the other
+    lines += [f"guard {d_out} {g.field_free()} && {g.player_at(a[1], a[2])}",
+              f"guard {d_back} {g.field_free()} && {g.player_at(b[1], b[2])}",
+              f"until trained {TRAINING_FRAMES} A {trained} && {g.field_free()}"]
     return lines + leg_end(f"p11_train{i}")
 
 
 for _i in range(1, TRAINING_ROUNDS + 1):
     LEGS[f"p11_train{_i}"] = ((lambda i=_i: training(i)),
-                              f"Training {_i}/{TRAINING_ROUNDS}: heal in Pewter, fight wild Pokémon on Route 2")
+                              f"Training {_i}/{TRAINING_ROUNDS}: heal in Pewter, Route 2 grass until the leads reach Lv {TRAINING_LEVELS[_i - 1]}")
+
+
+@leg("p11_candies", f"Heal in Pewter, Rare Candies from Lab Supplies: the whole team to the cap (Lv {CANDY_LEVEL})")
+def p11_candies():
+    """The rest of the way to Brock the quick way a player can take: Rare
+    Candies from Lab Supplies on each Pokémon up to the cap, then one more on
+    the lead, which must do nothing (the cap stops candies, docs/DESIGN.md)."""
+    g = G()
+    center = "MAP_PEWTER_CITY_POKEMON_CENTER_1F"
+    party, size = g.sym("gPlayerParty"), g.const("sizeof(struct Pokemon)")
+    lvl = g.const("offsetof(struct Pokemon, level)")
+    lines = (start(f"p11_train{TRAINING_ROUNDS}") + heal(here(("MAP_PEWTER_CITY", 17, 26)), center)
+             + lab_supplies((center, 7, 4), center, "ITEM_RARE_CANDY", 6, "rare_candies", "items"))
+    for k in range(6):
+        lines += candies(k, CANDY_LEVEL)
+    # at the cap: one more candy on the lead, by hand (the candy guards would
+    # loop Bag -> Pokémon -> Bag); it must say it won't have any effect.
+    # The Start menu's cursor is still on Bag from the candies.
+    lines += (["guard clear", "press START", "wait 30", "shot cap_start", "press A", "wait 90", "press A", "wait 30", "press A", "wait 90", "shot cap_choose",
+                 "press A", "wait 60", "shot cap_no_effect"]
+              + play_until("menus_closed", g.field_free(), 1200, key="B", every=30))
+    lines += check("cap_holds", f"{party + lvl:#x}:1 == {CANDY_LEVEL}")
+    lines += [ln for k in range(6) for ln in check(f"lv_{k}", f"{party + k * size + lvl:#x}:1 == {CANDY_LEVEL} || "
+                                                   f"{party + k * size + lvl:#x}:1 == 0")]
+    return lines + every_leg() + leg_end("p11_candies")
 
 
 @leg("p11_brock", "Heal in Pewter, then the Gym: the Camper, then Brock")
 def p11():
     g = G()
     center = "MAP_PEWTER_CITY_POKEMON_CENTER_1F"
-    return (start(f"p11_train{TRAINING_ROUNDS}") + heal(here(("MAP_PEWTER_CITY", 17, 26)), center)
+    return (start("p11_candies") + heal(here(("MAP_PEWTER_CITY", 17, 26)), center)
             + nav.go(g, (center, 7, 4), "MAP_PEWTER_CITY_GYM", (6, 6))
             + ["press UP 6", "wait 20", "press A", "wait 60"]
             + play_until("brock_battle", g.in_battle(), 3000, key="A", every=40)

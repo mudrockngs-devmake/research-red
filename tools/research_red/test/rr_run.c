@@ -30,7 +30,7 @@
 //   guard KEYS COND   whenever COND holds before a frame, tap KEYS (4 on, 4
 //                     off) until it doesn't (at most 600 frames); prints
 //                     "GUARD line frame" each time. E.g. back out of a debug
-//                     menu that random presses opened. Up to 16 guards: each
+//                     menu that random presses opened. Up to 32 guards: each
 //                     tap uses the first one (in order given) that holds.
 //                     "guard clear": all off.
 //   watch LABEL ADDR  from now on, print "WATCH LABEL frame value" whenever
@@ -121,7 +121,7 @@ struct Cond
 static struct Cond sIdle[MAX_IDLE];
 static int sIdleCount;
 // "guard": keys pressed while a condition holds; several, the first that holds wins
-#define MAX_GUARDS 16
+#define MAX_GUARDS 32
 static struct { struct Cond cond; int keys; } sGuards[MAX_GUARDS];
 static int sGuardCount;
 static int condHolds(const struct Cond *c);
@@ -591,7 +591,9 @@ int main(int argc, char **argv)
         }
         else if (!strcmp(cmd, "guard") && !strcmp(a, "clear"))
             sGuardCount = 0;
-        else if (!strcmp(cmd, "guard") && ntok >= 5 && sGuardCount < MAX_GUARDS)
+        else if (!strcmp(cmd, "guard") && ntok >= 5 && sGuardCount >= MAX_GUARDS)
+            fprintf(stderr, "rr_run: line %d: more than %d guards\n", sLine, MAX_GUARDS);
+        else if (!strcmp(cmd, "guard") && ntok >= 5)
         {
             if (parseCond(tok + 2, ntok - 2, &sGuards[sGuardCount].cond))
                 sGuards[sGuardCount++].keys = keymask(a);

@@ -34,9 +34,11 @@ Every smoke scene, matrix run and playthrough leg gets these, without the scene 
 ## The full playthrough (`playthrough.py`, #18)
 Power-on to "everything done in Pewter", **no debug skips**: the Mareep splash, the title, Slowking's notices, the intro call, every story scene in order, walking between them by the map data (`nav.py`), wild Pokémon and trainers on the way, the Gym, the Pewter rematch and Brock watch, and the optional fights with a wild check after each. How it plays:
 - **Trainer battles**: the AI plays your side with a careful trainer's settings (your real team, no test-mode Lv 30s).
-- **Wild battles on the way**: it runs, like a player heading for the next town. **Training legs** before the Gym (heal at the Pewter Center, fight wild Pokémon on Route 2, three rounds) fight them instead: the first move with PP left, the next healthy Pokémon when one faints.
+- **Wild battles on the way**: it runs, like a player heading for the next town. The **training leg** before the Gym fights them instead: it takes 50 Quick Balls from Lab Supplies (the Pewter Center's PC), walks two tall-grass tiles on Route 2, throws a Quick Ball at every wild Pokémon while the team has fewer than six, and otherwise fights (the first move with PP left; the next healthy Pokémon when one faints; it runs if its move is Disabled or Encored), until the two leads reach Lv 11.
+- **Then Rare Candies** (owner 2026-10-28): from Lab Supplies, through Start > Bag > Use, the whole team to the cap (Lv 14 with no badges), and one more on the lead, which must say "It won't have any effect" (the cap holds). Quicker than grinding, and still the game's own menus and level-ups.
 - It heals at the Viridian and Pewter Pokémon Centers; story questions get Yes; "forget a move?" gets Yes (the first move goes); a blackout gets pressed through. Battle animations are off and the battle style is Set.
-- It doesn't catch Pokémon (yet), so it reaches Brock with two. First run (2026-10-28): Lv 10 and 12 after training, and Brock's six (Lv 12-14) won. That's a balance data point for #110 as much as a bot limit.
+- EXP data for #110 (2026-10-28): with only the starter and one more, training on Route 2 for three rounds left them at Lv 10 and 12 and Brock's six (Lv 12-14) won. 29 wild battles on Route 2 took two leads from Lv 9 to 11-12: Route 2 gives little EXP. Six at Lv 14 beat Brock.
+- The runner holds up to 32 guards; a line it can't take (too many guards, a bad condition) fails the scene ("rr_run: line N: ..."), it isn't skipped quietly.
 ```
 python3 tools/research_red/test/playthrough.py                      # the whole thing
 python3 tools/research_red/test/playthrough.py --list
