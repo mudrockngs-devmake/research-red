@@ -1090,8 +1090,11 @@ def version_and_commit():
     return (m.group(0) if m else "v?"), commit + ("-dirty" if dirty else "")
 
 
-def main():
-    argv = sys.argv[1:]
+def main(scenarios=None, kind=None, argv=None, title="Smoke test", after_run=None):
+    """Run scenes (default: all of SCENARIOS). Other test sets (matrix.py)
+    reuse this with their own scenes and a subfolder `kind` of test-runs/."""
+    argv = sys.argv[1:] if argv is None else argv
+    scenarios = scenarios or SCENARIOS
     if "--watch" in argv:
         # open the live viewer in the Windows browser: screenshots stream in as they're taken
         argv.remove("--watch")
@@ -1107,18 +1110,20 @@ def main():
             print("(no Pillow: skipping the picture comparison)")
     version, commit = version_and_commit()
     base = os.path.join(WORKSPACE, "test-runs") if os.path.isdir(WORKSPACE) else os.path.join(REPO, "build/test-runs")
+    if kind:
+        base = os.path.join(base, kind)
     T.main(T.Suite(
-        title=f"Smoke test: {version} ({commit})",
+        title=f"{title}: {version} ({commit})",
         repo=REPO,
         rom=os.path.join(REPO, "pokefirered.gba"),
-        scenarios=SCENARIOS,
+        scenarios=scenarios,
         out_dir=os.path.join(base, f"{datetime.datetime.now():%Y-%m-%d_%H%M}_{version}_{commit}"),
         runner=os.path.join(TOOLS, "rr_run"),
         first="intro",
         progress_var=STORY,
         map_names=MAP_NAMES,
         setup_hint="run tools/research_red/test/setup_mgba.sh first",
-        after_run=compare,
+        after_run=after_run or compare,
         always_start=rr_checks.ALWAYS_START,
         always_end=rr_checks.ALWAYS_END,
         judges=rr_checks.JUDGES,

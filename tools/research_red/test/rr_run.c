@@ -168,11 +168,11 @@ static uint32_t readAddr(const struct Term *t)
     uint32_t a = t->off;
     if (t->ptr)
         a += core->rawRead32(core, t->ptr, -1);
-    if (t->size == 4)
-        return core->rawRead32(core, a, -1);
-    if (t->size == 2)
-        return core->rawRead16(core, a, -1);
-    return core->rawRead8(core, a, -1);
+    // byte by byte: packed structs put 2- and 4-byte fields at odd addresses
+    uint32_t v = 0;
+    for (int i = t->size - 1; i >= 0; i--)
+        v = (v << 8) | core->rawRead8(core, a + i, -1);
+    return v;
 }
 
 static int termHolds(const struct Term *t)

@@ -136,7 +136,66 @@ def wild_judge(out, sdir, script):
     return fails, []
 
 
-ALWAYS_START = [dialogue_start]
+# --- battles (#128, #107) ---------------------------------------------------------
+# Every battle's start is recorded (battles.json in the scene's folder). Curated
+# fights (Research Red's own trainers and the Gym leaders) must always be
+# doubles, whatever the Research Rules say (#128); two separate opponent teams
+# are flagged for #107 (one team of 6 under one AI is the plan).
+def battles_start(G):
+    cb2 = G.sym("gMain") + G.const("main_callback2")
+    params = G.sym("gTrainerBattleParameter")
+    opp_a = params + G.const("offsetof(TrainerBattleParameter, params.opponentA)")
+    opp_b = params + G.const("offsetof(TrainerBattleParameter, params.opponentB)")
+    curated = [G.const(n) for n in curated_trainers()]
+    return [f"watch b_cb2 {cb2:#x}:4", f"watch b_flags {G.sym('gBattleTypeFlags'):#x}:4",
+            f"watch b_count {G.sym('gEnemyPartyCount'):#x}:1",
+            f"watch b_oppa {opp_a:#x}:2", f"watch b_oppb {opp_b:#x}:2",
+            f"# battle-main {G.sym('BattleMainCB2') | 1}",
+            f"# battle-bits {G.const('BATTLE_TYPE_DOUBLE')} {G.const('BATTLE_TYPE_TRAINER')} "
+            f"{G.const('BATTLE_TYPE_TWO_OPPONENTS')}",
+            f"# battle-curated {' '.join(map(str, curated))}",
+            f"# battle-names " + " ".join(f"{G.const(n)}={n}" for n in curated_trainers())]
+
+
+def curated_trainers():
+    """TRAINER_RR_* (except the watched Oak fights, #105) and the Gym leaders."""
+    text = open(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(HERE))),
+                             "include/constants/opponents.h")).read()
+    names = re.findall(r"^\s+(TRAINER_(?:RR_\w+|LEADER_\w+)),", text, re.M)
+    return [n for n in names if "OAK_LAB" not in n]
+
+
+def battles_judge(out, sdir, script):
+    main = int(re.search(r"^# battle-main (\d+)$", script, re.M)[1])
+    dbl, trainer, two = map(int, re.search(r"^# battle-bits (\d+) (\d+) (\d+)$", script, re.M).groups())
+    curated = set(map(int, re.search(r"^# battle-curated(.*)$", script, re.M)[1].split()))
+    names = dict(kv.split("=") for kv in re.search(r"^# battle-names(.*)$", script, re.M)[1].split())
+    now, battles = {}, []
+    for f, k, v in sorted(((int(p[2]), p[1], int(p[3])) for p in (l.split() for l in out.splitlines())
+                           if p and p[0] == "WATCH" and p[1].startswith("b_")), key=lambda e: e[0]):
+        was_in = now.get("b_cb2") == main
+        now[k] = v
+        if k == "b_cb2" and v == main and not was_in:
+            flags = now.get("b_flags", 0)
+            battles.append({"frame": f, "trainer": bool(flags & trainer), "double": bool(flags & dbl),
+                            "two_opponents": bool(flags & two), "enemy_count": now.get("b_count", 0),
+                            "opponent_a": names.get(str(now.get("b_oppa")), now.get("b_oppa")),
+                            "opponent_b": names.get(str(now.get("b_oppb")), now.get("b_oppb")),
+                            "curated": bool(flags & trainer) and now.get("b_oppa") in curated})
+    json.dump(battles, open(os.path.join(sdir, "battles.json"), "w"), indent=1)
+    fails, warns = [], []
+    for b in battles:
+        if not b["curated"]:
+            continue
+        who = b["opponent_a"] + (f" + {b['opponent_b']}" if b["two_opponents"] else "")
+        if not b["double"]:
+            fails.append(f"curated fight {who} started as a single (#128: Research Rules must not change it)")
+        if b["two_opponents"]:
+            warns.append(f"{who}: two separate teams ({b['enemy_count']} Pokémon), not one team under one AI (#107)")
+    return fails, warns
+
+
+ALWAYS_START = [dialogue_start, battles_start]
 def position_end(G):
     """Where the scene left the player (PEEK where_map/x/y in runner.log; x, y
     carry the 7-tile border: subtract 7 for Porymap's numbers)."""
@@ -145,4 +204,4 @@ def position_end(G):
 
 
 ALWAYS_END = [leftovers_end, position_end]
-JUDGES = [dialogue_judge, leftovers_judge, brightness_judge, wild_judge]
+JUDGES = [dialogue_judge, leftovers_judge, brightness_judge, wild_judge, battles_judge]
