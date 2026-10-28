@@ -2479,6 +2479,16 @@ static const struct BattleWindowText *const sBattleTextOnWindowsInfo[] =
 
 static const u8 sRecordedBattleTextSpeeds[] = {8, 4, 1, 0};
 
+// Research Red: in test mode (the AI plays your side, B_FLAG_AI_VS_AI_BATTLE)
+// your Pokemon run on the partner controller, so the switch-in and withdraw
+// messages took them for a battle partner's and looked up the partner on your
+// right. A single battle has nobody there: the game read garbage and crashed
+// when your next Pokemon went out. They're yours, so they get your lines.
+static bool32 RR_IsOwnMonInAiVsAiSingles(enum BattlerId battler)
+{
+    return IsAiVsAiBattle() && !IsDoubleBattle() && IsOnPlayerSide(battler);
+}
+
 void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
 {
     s32 i;
@@ -2648,7 +2658,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
     case STRINGID_RETURNMON: // sending poke to ball msg
         if ((GetBattlerPosition(battler) & BIT_FLANK) == B_FLANK_LEFT) // battler 0 and 1
         {
-            if (BattlerIsPlayer(battler) || BattlerIsOldMan(battler) || BattlerIsPokedude(battler)) // Player
+            if (BattlerIsPlayer(battler) || BattlerIsOldMan(battler) || BattlerIsPokedude(battler) || RR_IsOwnMonInAiVsAiSingles(battler)) // Player
             {
                 if (*(&gBattleStruct->hpScale) == 0)
                     stringPtr = sText_PkmnThatsEnough;
@@ -2725,7 +2735,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
     case STRINGID_SWITCHINMON: // switch-in msg
         if ((GetBattlerPosition(gBattleScripting.battler) & BIT_FLANK) == B_FLANK_LEFT) // battler 0 and 1
         {
-            if (BattlerIsPlayer(gBattleScripting.battler)) // Player
+            if (BattlerIsPlayer(gBattleScripting.battler) || RR_IsOwnMonInAiVsAiSingles(gBattleScripting.battler)) // Player
             {
                 if (*(&gBattleStruct->hpScale) == 0)
                     stringPtr = sText_GoPkmn2;

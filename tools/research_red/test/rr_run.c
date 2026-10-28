@@ -22,6 +22,9 @@
 //   autoshot N [PREFIX]  during "until", save a screenshot every N frames
 //                     (PREFIX0001, PREFIX0002, ...; default prefix s; 0 = off)
 //   peek LABEL ADDR   print "PEEK LABEL value"
+//   regs LABEL        print the CPU's program counter and link register as
+//                     "PEEK LABEL_pc value" / "PEEK LABEL_lr value": where the
+//                     game is when it hangs (look the address up in the .elf)
 //   stuck N           report "stuck" after N unchanged frames (0 = off;
 //                     default 1200, 20 seconds)
 //   idle COND         the screen may legitimately sit still while COND is
@@ -76,6 +79,7 @@
 #include <mgba/core/config.h>
 #include <mgba/core/log.h>
 #include <mgba/core/serialize.h>
+#include <mgba/internal/arm/arm.h>
 #include <mgba-util/vfs.h>
 #include <png.h>
 #include <stdio.h>
@@ -582,6 +586,11 @@ int main(int argc, char **argv)
             struct Term t;
             if (parseAddr(tok[2], &t))
                 printf("PEEK %s %u\n", a, readAddr(&t));
+        }
+        else if (!strcmp(cmd, "regs"))
+        {
+            struct ARMCore *cpu = core->cpu;
+            printf("PEEK %s_pc %u\nPEEK %s_lr %u\n", a, (unsigned)cpu->gprs[ARM_PC], a, (unsigned)cpu->gprs[ARM_LR]);
         }
         else if (!strcmp(cmd, "autoshot"))
         {
