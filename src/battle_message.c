@@ -3047,9 +3047,15 @@ static const u8 *BattleStringGetOpponentNameByTrainerId(u16 trainerId, u8 *text,
         // Research Red: was opponentA, so a rival's partner (Jenny) was named after the rival
         enum TrainerClassID trainerClass = GetTrainerClassFromId(trainerId);
 
-        if (trainerClass == TRAINER_CLASS_RIVAL_EARLY
-            || trainerClass == TRAINER_CLASS_RIVAL_LATE
-            || trainerClass == TRAINER_CLASS_CHAMPION)
+        // Research Red (#107): our own trainers (from TRAINER_RR_ELM_LAB_BULBASAUR
+        // on) use their own names, so the Rival-class pair shows "Elm&Jenny";
+        // FireRed's rivals ("Terry" in the data) still take the rival's name
+        bool32 rrTrainer = trainerId >= TRAINER_RR_ELM_LAB_BULBASAUR && trainerId < TRAINERS_COUNT;
+
+        if (!rrTrainer
+            && (trainerClass == TRAINER_CLASS_RIVAL_EARLY
+             || trainerClass == TRAINER_CLASS_RIVAL_LATE
+             || trainerClass == TRAINER_CLASS_CHAMPION))
             toCpy = GetExpandedPlaceholder(PLACEHOLDER_ID_RIVAL);
         else
             toCpy = GetTrainerNameFromId(trainerId);

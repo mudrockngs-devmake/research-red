@@ -1,0 +1,41 @@
+{
+  "version": "v0.0.20",
+  "intro": "v0.0.20 is a small build about battles fighting the way we decided (#106, #107, #121, #128). Play from a new game as usual; the big things to watch are the Elm & Jenny fights (the lab, Route 22, Pewter) and the Oak & Daisy rematch, with the Research Rules on doubles and then on singles. Tick each change once you've seen it, and use the notes box for anything that feels off.",
+  "save": "Save: old saves work (you start a new game each round anyway).",
+  "sections": [
+    {"title": "Pairs fight as one", "items": [
+      {"id": "pair-picture", "title": "Elm & Jenny and Oak & Daisy: one opponent, one picture (#107)",
+       "what": "Each pair is one trainer with one team of six and one AI, shown as one picture of the two of them (head to thighs, the partner a step behind). The battle text calls them \"Elm&Jenny\" and \"Oak&Daisy\". Their Pokémon take turns in the team, so in doubles one of each leads.",
+       "try": "The lab battle, Route 22, the Pewter rematch, and the Oak & Daisy rematch in the lab.",
+       "shots": ["route22/s0018.png", "oak_rematch/s0011.png"]},
+      {"id": "pair-lines", "title": "Their lines mid-battle slide their picture in",
+       "what": "When Elm, Jenny, Oak or Daisy speak mid-battle, their pair picture slides in on their side the FireRed way, and the line starts with who's talking. Their 2-down, 4-down and last-Pokémon lines play in singles too.",
+       "try": "Route 22 or Pewter: watch for the lines after two and four of their Pokémon faint, and when their last one comes out.",
+       "shots": ["route22/s0025.png"]},
+      {"id": "your-picture", "title": "You and Ivy side by side",
+       "what": "Your side of every battle shows you in front and Ivy a step behind, the same way as Elm and Jenny. Debug > Scripts > 14 switches back to the old picture (you and Ivy turned to each other) so you can compare; 14 again switches back.",
+       "try": "Any battle. Then Start > Debug > Scripts > 14 and another battle.",
+       "shots": ["route22/s0016.png"]}
+    ]},
+    {"title": "Singles or doubles", "items": [
+      {"id": "rules-style", "title": "The Research Rules decide every trainer battle (#128)",
+       "what": "Doubles makes every trainer battle a double; singles goes back to each battle's own style. Curated fights (Elm & Jenny, Oak & Daisy, Delia, Brock's rematch) keep their teams of six either way, so with singles they're 6-vs-6 single battles. Delia no longer forces a double.",
+       "try": "After Daisy's house, play a fight on doubles, then switch Options > Research Rules > trainers to singles and play one again (Delia at home or the Oak & Daisy rematch are quick to reach).",
+       "shots": []}
+    ]},
+    {"title": "Teams and fixes", "items": [
+      {"id": "nidoran", "title": "Oak brings Nidoran♂, not Slowpoke (#121)",
+       "what": "The lab's Slowpoke never battles. Oak's rematch team has Nidoran♂ instead: Nidorino from your first badge, Nidoking from your fourth.",
+       "try": "The Oak & Daisy rematch in the lab, before and after Brock.",
+       "shots": []},
+      {"id": "wild-after-oak", "title": "Wild battles after the Oak & Daisy rematch (#106)",
+       "what": "A wild battle right after the rematch could send out Oak's starters instead of the wild Pokémon. It now gets the wild Pokémon.",
+       "try": "Beat or lose to Oak & Daisy, then walk into the grass on Route 1.",
+       "shots": []},
+      {"id": "test-mode-singles", "title": "Test mode in single battles",
+       "what": "With test mode on (Debug > Scripts > 9) a single battle used to crash when your next Pokémon went out. Fixed (test builds only).",
+       "try": "Only if you use test mode: a trainer fight on singles.",
+       "shots": []}
+    ]}
+  ]
+}

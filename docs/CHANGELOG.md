@@ -2,6 +2,17 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
+## v0.0.20
+Battles fight as designed (issues #106, #107, #121, #128).
+- Changed: Elm and Jenny, and Oak and Daisy, are one opponent each: one team of six under one AI, with one picture of the pair (#107). Their names in battle are "Elm&Jenny" and "Oak&Daisy". Their Pokémon take turns in the team, so in doubles one of each leads. When either of them speaks mid-battle, the pair picture slides in on their side, FireRed style, and the line says who's talking; their 2-down, 4-down and last-Pokémon lines play in singles too.
+- Changed: your side matches: you in front and Ivy a step behind, like Elm and Jenny. Debug > Scripts > 14 switches back to the old picture (you and Ivy turned to each other) to compare.
+- Changed: the Research Rules battle style decides every trainer battle (#128): doubles makes them doubles, singles goes back to each battle's own style. Curated fights (Elm and Jenny, Oak and Daisy, Delia, Brock's rematch) keep their teams of six either way. Delia no longer forces a double.
+- Changed: the lab's Slowpoke never battles (#121): Oak's rematch team brings Nidoran♂ instead (Nidorino from 1 badge, Nidoking from 4).
+- Fixed: a wild battle right after the Oak and Daisy rematch could send out Oak's starters instead of the wild Pokémon (#106).
+- Fixed (test builds): with test mode on (Debug > Scripts > 9), a single battle crashed when your next Pokémon went out.
+- Testing tools: the settings matrix plays every curated fight under all four Research Rules mixes; the full playthrough catches with Quick Balls and uses Rare Candies from Lab Supplies; the test runner can show where the game is when it hangs.
+- **Save:** old saves work (you start a new game each round anyway).
+
 ## v0.0.19
 The big one after the v0.0.18 playtest (issues #76-#100).
 - New: a title screen of our own (#12): notebook paper, the Research Red logo and Slowpoke in a lab coat (worn low so its face and ear show, a sleeve tucked around the front). At power-on a little Mareep walks in, sparks, and "A fan project by MudrockNGS" fades in (A skips). On a new game, a Slowking presents the fan-project notice, a short spoiler-free welcome to the story, and the demo notice before the intro call.
