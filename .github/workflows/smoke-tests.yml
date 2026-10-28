@@ -1,0 +1,68 @@
+# Research Red: the automated smoke tests on GitHub (#18, docs/TESTING.md).
+# Every push: a quick set of key scenes. A version tag (v*): all of them.
+# The result shows as a tick or a cross next to the commit; the screenshots
+# and REPORT.md are attached to the run ("Artifacts", kept 14 days).
+name: Smoke tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Run every scene (not just the quick set)"
+        type: boolean
+        default: false
+  push:
+    branches: [master, main]
+    tags: ['v*']
+
+concurrency:
+  group: smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      # the quick set: the story from the intro to Pewter, plus menus and a catch
+      QUICK: breakfast grass lab route1 route22 lunch pewter catch pokedex pc
+    steps:
+      - name: Check out Research Red
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential binutils-arm-none-eabi gcc-arm-none-eabi \
+            libnewlib-arm-none-eabi libpng-dev zlib1g-dev python3 git curl
+
+      - name: Build Research Red ROM
+        run: make firered -j"$(nproc)" -O
+
+      - name: Reuse the test runner (mGBA) from earlier runs
+        uses: actions/cache@v4
+        with:
+          path: ~/romhacks/_tools
+          key: rr-run-${{ hashFiles('tools/research_red/test/setup_mgba.sh', 'tools/research_red/test/rr_run.c') }}
+
+      - name: Build the test runner
+        run: |
+          test -x ~/romhacks/_tools/rr_run || tools/research_red/test/setup_mgba.sh
+
+      - name: Run the smoke tests
+        run: |
+          if [ "${{ startsWith(github.ref, 'refs/tags/') || inputs.full }}" = "true" ]; then
+            python3 tools/research_red/test/smoke.py --no-compare
+          else
+            python3 tools/research_red/test/smoke.py --no-compare $QUICK
+          fi
+
+      - name: Attach the report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-tests
+          path: build/test-runs/
+          if-no-files-found: warn
+          retention-days: 14

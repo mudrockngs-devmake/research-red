@@ -59,6 +59,9 @@ Plays key story fights 50 times each in the real game with the AI on both sides,
 - **Your side's AI**: in an AI-vs-AI battle the game gives your side the AI settings of a battle partner, and with none it plays almost at random (test mode never noticed: its Lv 30 team wins anyway). The simulator sets your side to a basic trainer's settings right after each battle starts (no useless moves, goes for KOs), like Brock's. It still uses the odd Growl.
 - About 8 minutes for all four at 50 runs (low priority). `balance.py brock --runs 20` for one.
 
+## On GitHub (`.github/workflows/smoke-tests.yml`)
+Every push to master runs a quick set of 10 scenes (breakfast, grass, lab, route1, route22, lunch, pewter, catch, pokedex, pc); a version tag (`v*`) runs all of them. A tick or a cross shows next to the commit on GitHub (and in the Actions tab). The report and screenshots are attached to the run ("Artifacts", kept 14 days). The built test runner is cached, so only the first run builds mGBA. Free for a public repository. To run everything by hand: Actions > Smoke tests > Run workflow > tick "Run every scene". No picture comparison there (the earlier runs live on this PC).
+
 ## What's covered
 | Scenario | How it gets there |
 |---|---|
