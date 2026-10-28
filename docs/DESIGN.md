@@ -31,7 +31,8 @@ How to use it:
 - Held items and Berries come back after battle (#58).
 
 **Planned** (owner 2026-10-28, #128)
-- Whatever the player picks in Research Rules (wild doubles, trainers as singles), **curated fights stay as designed**: gym leaders, Elm and Jenny, Oak and Daisy, Delia, and any trainer we curate as a 6-vs-6 double.
+- Research Rules battle style (owner 2026-10-28, #128): **doubles** makes every trainer battle a double; **singles** goes back to the game's own choice for each battle (FireRed's built-in doubles stay doubles). Curated fights keep their **6-vs-6 teams** either way (gym leaders, Elm and Jenny, Oak and Daisy, Delia, rivals from Route 22 on); with singles they are 6-vs-6 single battles.
+- Paired opponents (Elm and Jenny, Oak and Daisy) are **one team of six under one AI** (owner 2026-10-28, #107). The partner is there to see and to talk, like Ivy on your side; in singles they still stand there.
 - Two-person teams are **one team of 6 under one AI** (Elm's; Oak's for Oak and Daisy, #107); the partner is there for dialogue and pictures.
 - Effectiveness in battle: the engine's own markers, not our colours (#112); maybe colours later as their own tested change.
 
