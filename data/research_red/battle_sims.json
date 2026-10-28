@@ -1,0 +1,1464 @@
+{
+ "fights": {
+  "lab": {
+   "fight": "Lab: you and Ivy vs Elm and Jenny (double)",
+   "team": "your starter + Ivy's, Lv 5 (the scene's own)",
+   "build": "v0.0.19 (b8977e7ae-dirty)",
+   "date": "2026-10-27",
+   "runs": 50,
+   "won": 40,
+   "lost": 10,
+   "unfinished": 0,
+   "avg_turns": 5.7,
+   "avg_your_fainted": 0.7,
+   "avg_their_fainted": 1.8,
+   "results": [
+    {
+     "seed": 0,
+     "outcome": "won",
+     "turns": 7,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 1,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 2,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 3,
+     "outcome": "lost",
+     "turns": 6,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 4,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 5,
+     "outcome": "won",
+     "turns": 4,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 6,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 7,
+     "outcome": "won",
+     "turns": 7,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 8,
+     "outcome": "lost",
+     "turns": 5,
+     "your_fainted": 2,
+     "their_fainted": 0
+    },
+    {
+     "seed": 9,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 10,
+     "outcome": "lost",
+     "turns": 7,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 11,
+     "outcome": "lost",
+     "turns": 7,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 12,
+     "outcome": "won",
+     "turns": 4,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 13,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 14,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 15,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 16,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 17,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 18,
+     "outcome": "lost",
+     "turns": 7,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 19,
+     "outcome": "lost",
+     "turns": 7,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 20,
+     "outcome": "lost",
+     "turns": 7,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 21,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 22,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 23,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 24,
+     "outcome": "won",
+     "turns": 9,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 25,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 26,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 27,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 28,
+     "outcome": "lost",
+     "turns": 7,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 29,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 30,
+     "outcome": "lost",
+     "turns": 5,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 31,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 32,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 33,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 34,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 35,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 36,
+     "outcome": "lost",
+     "turns": 6,
+     "your_fainted": 2,
+     "their_fainted": 1
+    },
+    {
+     "seed": 37,
+     "outcome": "won",
+     "turns": 7,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 38,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 39,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 40,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 41,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 42,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 43,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 44,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 45,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 1,
+     "their_fainted": 2
+    },
+    {
+     "seed": 46,
+     "outcome": "won",
+     "turns": 4,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 47,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 48,
+     "outcome": "won",
+     "turns": 5,
+     "your_fainted": 0,
+     "their_fainted": 2
+    },
+    {
+     "seed": 49,
+     "outcome": "won",
+     "turns": 6,
+     "your_fainted": 0,
+     "their_fainted": 2
+    }
+   ]
+  },
+  "route22": {
+   "fight": "Route 22: the 6v6 double with Ivy vs Elm and Jenny",
+   "team": "debug 4 team: starter, Bulbasaur, Spearow, Rattata, Mankey, Nidoran M, all Lv 12",
+   "build": "v0.0.19 (b8977e7ae-dirty)",
+   "date": "2026-10-27",
+   "runs": 50,
+   "won": 50,
+   "lost": 0,
+   "unfinished": 0,
+   "avg_turns": 19.5,
+   "avg_your_fainted": 2.1,
+   "avg_their_fainted": 6.0,
+   "results": [
+    {
+     "seed": 0,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 1,
+     "outcome": "won",
+     "turns": 21,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 2,
+     "outcome": "won",
+     "turns": 23,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 3,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 4,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 5,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 6,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 7,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 8,
+     "outcome": "won",
+     "turns": 14,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 9,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 10,
+     "outcome": "won",
+     "turns": 22,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 11,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 12,
+     "outcome": "won",
+     "turns": 16,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 13,
+     "outcome": "won",
+     "turns": 32,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 14,
+     "outcome": "won",
+     "turns": 21,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 15,
+     "outcome": "won",
+     "turns": 25,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 16,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 17,
+     "outcome": "won",
+     "turns": 15,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 18,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 0,
+     "their_fainted": 6
+    },
+    {
+     "seed": 19,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 20,
+     "outcome": "won",
+     "turns": 23,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 21,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 22,
+     "outcome": "won",
+     "turns": 25,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 23,
+     "outcome": "won",
+     "turns": 25,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 24,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 25,
+     "outcome": "won",
+     "turns": 16,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 26,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 27,
+     "outcome": "won",
+     "turns": 22,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 28,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 29,
+     "outcome": "won",
+     "turns": 15,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 30,
+     "outcome": "won",
+     "turns": 15,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 31,
+     "outcome": "won",
+     "turns": 24,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 32,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 33,
+     "outcome": "won",
+     "turns": 21,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 34,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 35,
+     "outcome": "won",
+     "turns": 15,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 36,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 37,
+     "outcome": "won",
+     "turns": 22,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 38,
+     "outcome": "won",
+     "turns": 23,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 39,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 40,
+     "outcome": "won",
+     "turns": 21,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 41,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 42,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 43,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 44,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 45,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 46,
+     "outcome": "won",
+     "turns": 22,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 47,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 48,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 49,
+     "outcome": "won",
+     "turns": 16,
+     "your_fainted": 2,
+     "their_fainted": 6
+    }
+   ]
+  },
+  "pewter": {
+   "fight": "Pewter: Elm and Jenny's rematch outside the Pokémon Center",
+   "team": "debug 10 team, all Lv 12 (1 badge; probably low: the cap is 21 after Brock)",
+   "build": "v0.0.19 (b8977e7ae-dirty)",
+   "date": "2026-10-27",
+   "runs": 50,
+   "won": 0,
+   "lost": 50,
+   "unfinished": 0,
+   "avg_turns": 20.1,
+   "avg_your_fainted": 6.0,
+   "avg_their_fainted": 2.4,
+   "results": [
+    {
+     "seed": 0,
+     "outcome": "lost",
+     "turns": 12,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 1,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 2,
+     "outcome": "lost",
+     "turns": 16,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 3,
+     "outcome": "lost",
+     "turns": 19,
+     "your_fainted": 6,
+     "their_fainted": 4
+    },
+    {
+     "seed": 4,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 5,
+     "outcome": "lost",
+     "turns": 26,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 6,
+     "outcome": "lost",
+     "turns": 25,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 7,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 8,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 9,
+     "outcome": "lost",
+     "turns": 13,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 10,
+     "outcome": "lost",
+     "turns": 22,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 11,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 12,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 13,
+     "outcome": "lost",
+     "turns": 24,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 14,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 15,
+     "outcome": "lost",
+     "turns": 26,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 16,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 17,
+     "outcome": "lost",
+     "turns": 22,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 18,
+     "outcome": "lost",
+     "turns": 24,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 19,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 20,
+     "outcome": "lost",
+     "turns": 24,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 21,
+     "outcome": "lost",
+     "turns": 17,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 22,
+     "outcome": "lost",
+     "turns": 17,
+     "your_fainted": 6,
+     "their_fainted": 1
+    },
+    {
+     "seed": 23,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 24,
+     "outcome": "lost",
+     "turns": 25,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 25,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 26,
+     "outcome": "lost",
+     "turns": 23,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 27,
+     "outcome": "lost",
+     "turns": 16,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 28,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 29,
+     "outcome": "lost",
+     "turns": 18,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 30,
+     "outcome": "lost",
+     "turns": 16,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 31,
+     "outcome": "lost",
+     "turns": 23,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 32,
+     "outcome": "lost",
+     "turns": 22,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 33,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 34,
+     "outcome": "lost",
+     "turns": 23,
+     "your_fainted": 6,
+     "their_fainted": 1
+    },
+    {
+     "seed": 35,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 36,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 37,
+     "outcome": "lost",
+     "turns": 18,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 38,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 39,
+     "outcome": "lost",
+     "turns": 24,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 40,
+     "outcome": "lost",
+     "turns": 17,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 41,
+     "outcome": "lost",
+     "turns": 11,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 42,
+     "outcome": "lost",
+     "turns": 22,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 43,
+     "outcome": "lost",
+     "turns": 18,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 44,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 45,
+     "outcome": "lost",
+     "turns": 19,
+     "your_fainted": 6,
+     "their_fainted": 1
+    },
+    {
+     "seed": 46,
+     "outcome": "lost",
+     "turns": 14,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 47,
+     "outcome": "lost",
+     "turns": 19,
+     "your_fainted": 6,
+     "their_fainted": 2
+    },
+    {
+     "seed": 48,
+     "outcome": "lost",
+     "turns": 21,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 49,
+     "outcome": "lost",
+     "turns": 18,
+     "your_fainted": 6,
+     "their_fainted": 3
+    }
+   ]
+  },
+  "brock": {
+   "fight": "Pewter Gym: Brock",
+   "team": "debug 10 team, all Lv 12 (no badge, cap 14)",
+   "build": "v0.0.19 (b8977e7ae-dirty)",
+   "date": "2026-10-27",
+   "runs": 50,
+   "won": 44,
+   "lost": 6,
+   "unfinished": 0,
+   "avg_turns": 16.4,
+   "avg_your_fainted": 2.7,
+   "avg_their_fainted": 5.8,
+   "results": [
+    {
+     "seed": 0,
+     "outcome": "won",
+     "turns": 12,
+     "your_fainted": 0,
+     "their_fainted": 6
+    },
+    {
+     "seed": 1,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 4,
+     "their_fainted": 6
+    },
+    {
+     "seed": 2,
+     "outcome": "won",
+     "turns": 25,
+     "your_fainted": 5,
+     "their_fainted": 6
+    },
+    {
+     "seed": 3,
+     "outcome": "won",
+     "turns": 9,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 4,
+     "outcome": "lost",
+     "turns": 22,
+     "your_fainted": 6,
+     "their_fainted": 5
+    },
+    {
+     "seed": 5,
+     "outcome": "won",
+     "turns": 14,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 6,
+     "outcome": "won",
+     "turns": 22,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 7,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 5,
+     "their_fainted": 6
+    },
+    {
+     "seed": 8,
+     "outcome": "won",
+     "turns": 16,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 9,
+     "outcome": "won",
+     "turns": 12,
+     "your_fainted": 0,
+     "their_fainted": 6
+    },
+    {
+     "seed": 10,
+     "outcome": "won",
+     "turns": 11,
+     "your_fainted": 0,
+     "their_fainted": 6
+    },
+    {
+     "seed": 11,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 5,
+     "their_fainted": 6
+    },
+    {
+     "seed": 12,
+     "outcome": "won",
+     "turns": 11,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 13,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 5,
+     "their_fainted": 6
+    },
+    {
+     "seed": 14,
+     "outcome": "won",
+     "turns": 10,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 15,
+     "outcome": "won",
+     "turns": 12,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 16,
+     "outcome": "won",
+     "turns": 14,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 17,
+     "outcome": "won",
+     "turns": 21,
+     "your_fainted": 4,
+     "their_fainted": 6
+    },
+    {
+     "seed": 18,
+     "outcome": "won",
+     "turns": 14,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 19,
+     "outcome": "won",
+     "turns": 26,
+     "your_fainted": 5,
+     "their_fainted": 6
+    },
+    {
+     "seed": 20,
+     "outcome": "won",
+     "turns": 9,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 21,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 22,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 5
+    },
+    {
+     "seed": 23,
+     "outcome": "lost",
+     "turns": 22,
+     "your_fainted": 6,
+     "their_fainted": 4
+    },
+    {
+     "seed": 24,
+     "outcome": "won",
+     "turns": 14,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 25,
+     "outcome": "won",
+     "turns": 16,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 26,
+     "outcome": "won",
+     "turns": 13,
+     "your_fainted": 0,
+     "their_fainted": 6
+    },
+    {
+     "seed": 27,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 28,
+     "outcome": "won",
+     "turns": 11,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 29,
+     "outcome": "lost",
+     "turns": 13,
+     "your_fainted": 6,
+     "their_fainted": 3
+    },
+    {
+     "seed": 30,
+     "outcome": "won",
+     "turns": 16,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 31,
+     "outcome": "won",
+     "turns": 10,
+     "your_fainted": 0,
+     "their_fainted": 6
+    },
+    {
+     "seed": 32,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 33,
+     "outcome": "lost",
+     "turns": 20,
+     "your_fainted": 6,
+     "their_fainted": 4
+    },
+    {
+     "seed": 34,
+     "outcome": "won",
+     "turns": 11,
+     "your_fainted": 0,
+     "their_fainted": 6
+    },
+    {
+     "seed": 35,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 36,
+     "outcome": "won",
+     "turns": 11,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 37,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 5,
+     "their_fainted": 6
+    },
+    {
+     "seed": 38,
+     "outcome": "won",
+     "turns": 12,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 39,
+     "outcome": "won",
+     "turns": 20,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 40,
+     "outcome": "won",
+     "turns": 14,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 41,
+     "outcome": "won",
+     "turns": 17,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 42,
+     "outcome": "won",
+     "turns": 21,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 43,
+     "outcome": "won",
+     "turns": 16,
+     "your_fainted": 1,
+     "their_fainted": 6
+    },
+    {
+     "seed": 44,
+     "outcome": "won",
+     "turns": 22,
+     "your_fainted": 4,
+     "their_fainted": 6
+    },
+    {
+     "seed": 45,
+     "outcome": "won",
+     "turns": 18,
+     "your_fainted": 3,
+     "their_fainted": 6
+    },
+    {
+     "seed": 46,
+     "outcome": "won",
+     "turns": 16,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 47,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 2,
+     "their_fainted": 6
+    },
+    {
+     "seed": 48,
+     "outcome": "lost",
+     "turns": 23,
+     "your_fainted": 6,
+     "their_fainted": 5
+    },
+    {
+     "seed": 49,
+     "outcome": "won",
+     "turns": 19,
+     "your_fainted": 5,
+     "their_fainted": 6
+    }
+   ]
+  }
+ }
+}

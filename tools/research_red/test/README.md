@@ -7,7 +7,7 @@ How to use it for Research Red: [docs/TESTING.md](../../../docs/TESTING.md).
 ## Two halves
 | Reusable (any pokefirered / pokeemerald-style decomp) | Research Red only |
 |---|---|
-| `rr_run.c`: the headless emulator runner (C, links libmgba) | `smoke.py`: our scenes, the debug-menu skips, story variable `VAR_0x40FE`, where reports go; `monkey.py`: random presses from our debug-skip starting points |
+| `rr_run.c`: the headless emulator runner (C, links libmgba) | `smoke.py`: our scenes, the debug-menu skips, story variable `VAR_0x40FE`, where reports go; `monkey.py`: random presses from our debug-skip starting points; `balance.py`: AI-vs-AI fights for balance |
 | `setup_mgba.sh`: downloads mGBA + CMake and builds `rr_run` | |
 | `tester.py`: building blocks, runs scenes in parallel, judges results, writes the report | |
 | `game_memory.py`: names (flags, vars, maps, team size) -> memory addresses | |

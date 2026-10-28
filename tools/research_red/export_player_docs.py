@@ -285,8 +285,31 @@ def build():
               "", "## Notes", "",
               "- The debug skips (Start > Debug > Scripts) raise the team to Lv 12 for Route 22 and the lunch.",
               "- Elm and Jenny's starters are in the starter slot of their teams; see TRAINERS.md for the chain.", ""]
+    lines += simulated_fights()
     outputs[BALANCE] = "\n".join(lines)
     return outputs
+
+
+def simulated_fights():
+    """The "Simulated fights" section, from tools/research_red/test/balance.py's results."""
+    path = os.path.join(REPO, "data/research_red/battle_sims.json")
+    if not os.path.exists(path):
+        return []
+    fights = json.load(open(path, encoding="utf-8"))["fights"]
+    lines = ["## Simulated fights (tools/research_red/test/balance.py)", "",
+             "The game plays each fight many times with the AI on both sides (yours plays like a careful player: "
+             "no useless moves, goes for KOs), a different random seed each time. Your team is a guess at a typical "
+             "player there: the debug skip's team. Rerun after changing a team or the AI.", "",
+             "| Fight | Your team (guess) | Won | Turns (average) | Your Pokémon fainted (average) | Theirs fainted | Simulated |",
+             "|---|---|---|---|---|---|---|"]
+    for d in fights.values():
+        won = f"{d['won']} of {d['runs']} ({round(100 * d['won'] / d['runs'])}%)" if d["runs"] else "-"
+        if d["unfinished"]:
+            won += f", {d['unfinished']} unfinished"
+        lines.append(f"| {d['fight']} | {d['team']} | {won} | {d['avg_turns']} | {d['avg_your_fainted']} "
+                     f"| {d['avg_their_fainted']} | {d['date']}, {d['build']} |")
+    return lines + ["", "Reading it: won under about 60% is hard for a typical team at that point, over 95% with "
+                    "few of yours fainting is easy. Numbers per seed: data/research_red/battle_sims.json.", ""]
 
 
 def main():

@@ -279,6 +279,8 @@ def main(suite, argv):
             results.pop()
     for w in rest:
         for m in re.finditer(r"^load @(\w+)$", "\n".join(scripts[w]), re.M):
+            if f"save @{m[1]}" in scripts[w]:   # the scenario saves that state itself
+                continue
             if not os.path.exists(os.path.join(workdir, m[1] + ".ss")):
                 sys.exit(f"'{w}' needs the state @{m[1]}, which {suite.first or 'nothing'} didn't save")
     with concurrent.futures.ThreadPoolExecutor(max_workers=os.cpu_count() or 4) as pool:

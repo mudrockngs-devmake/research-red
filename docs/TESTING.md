@@ -52,6 +52,13 @@ python3 tools/research_red/test/monkey.py --seed 1234 pewter       # replay one
 Results: `E:\Workspace\romhacks\research-red\test-runs\monkey\<date>_<version>_<commit>_seed<N>\` (a screenshot every 10 seconds).
 First hunt (2026-10-27, v0.0.19 build): 30 runs x 30 game minutes, nothing broke.
 
+## Battle simulations (`balance.py`)
+Plays key story fights 50 times each in the real game with the AI on both sides, a different random seed each time, and counts wins, turns and fainted Pokémon. Results: `data/research_red/battle_sims.json`, shown in docs/BALANCE.md ("Simulated fights", made by `export_player_docs.py`).
+- Fights: the lab double, Route 22's 6v6 double, Elm and Jenny's Pewter rematch, Brock. Add one in `FIGHTS` (a setup up to just before the fight, what starts it).
+- **Your team is a guess**: the team the debug skip hands out at that point (`data/scripts/debug.inc`). Change that to change the guess.
+- **Your side's AI**: in an AI-vs-AI battle the game gives your side the AI settings of a battle partner, and with none it plays almost at random (test mode never noticed: its Lv 30 team wins anyway). The simulator sets your side to a basic trainer's settings right after each battle starts (no useless moves, goes for KOs), like Brock's. It still uses the odd Growl.
+- About 8 minutes for all four at 50 runs (low priority). `balance.py brock --runs 20` for one.
+
 ## What's covered
 | Scenario | How it gets there |
 |---|---|
@@ -158,5 +165,6 @@ After changing `rr_run.c`, rebuild it with `setup_mgba.sh` (it skips the downloa
 | `tools/research_red/test/game_memory.py` | Names (story step, flags, maps, team size) -> memory addresses |
 | `tools/research_red/test/README.md` | How the pieces fit, and how to reuse the tester for another hack |
 | `tools/research_red/test/contact_sheet.py` | Reads screenshots, makes the grids |
+| `tools/research_red/test/balance.py` | Battle simulations for balance (results in `data/research_red/battle_sims.json` -> docs/BALANCE.md) |
 | `tools/research_red/test/monkey.py` | The random-button stress test (uses smoke.py's intro and debug skips) |
 | `tools/research_red/test/compare.py` | Before/after pictures against the last tagged build's runs (needs Pillow) |

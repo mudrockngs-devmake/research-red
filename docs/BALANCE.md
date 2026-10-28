@@ -34,3 +34,16 @@ The cap follows how many badges you have (gyms in any order). At the cap your te
 
 - The debug skips (Start > Debug > Scripts) raise the team to Lv 12 for Route 22 and the lunch.
 - Elm and Jenny's starters are in the starter slot of their teams; see TRAINERS.md for the chain.
+
+## Simulated fights (tools/research_red/test/balance.py)
+
+The game plays each fight many times with the AI on both sides (yours plays like a careful player: no useless moves, goes for KOs), a different random seed each time. Your team is a guess at a typical player there: the debug skip's team. Rerun after changing a team or the AI.
+
+| Fight | Your team (guess) | Won | Turns (average) | Your Pokémon fainted (average) | Theirs fainted | Simulated |
+|---|---|---|---|---|---|---|
+| Lab: you and Ivy vs Elm and Jenny (double) | your starter + Ivy's, Lv 5 (the scene's own) | 40 of 50 (80%) | 5.7 | 0.7 | 1.8 | 2026-10-27, v0.0.19 (b8977e7ae-dirty) |
+| Route 22: the 6v6 double with Ivy vs Elm and Jenny | debug 4 team: starter, Bulbasaur, Spearow, Rattata, Mankey, Nidoran M, all Lv 12 | 50 of 50 (100%) | 19.5 | 2.1 | 6.0 | 2026-10-27, v0.0.19 (b8977e7ae-dirty) |
+| Pewter: Elm and Jenny's rematch outside the Pokémon Center | debug 10 team, all Lv 12 (1 badge; probably low: the cap is 21 after Brock) | 0 of 50 (0%) | 20.1 | 6.0 | 2.4 | 2026-10-27, v0.0.19 (b8977e7ae-dirty) |
+| Pewter Gym: Brock | debug 10 team, all Lv 12 (no badge, cap 14) | 44 of 50 (88%) | 16.4 | 2.7 | 5.8 | 2026-10-27, v0.0.19 (b8977e7ae-dirty) |
+
+Reading it: won under about 60% is hard for a typical team at that point, over 95% with few of yours fainting is easy. Numbers per seed: data/research_red/battle_sims.json.
