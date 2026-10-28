@@ -24,6 +24,7 @@
 // leads (the ace); Oddish, Grimer, Miltank, a shiny Butterfree and Munchlax
 // (the grocery bill), who only becomes a Snorlax after the Elite Four.
 #include "global.h"
+#include "battle.h"
 #include "event_data.h"
 #include "move.h"
 #include "pokemon.h"
@@ -140,7 +141,11 @@ void RR_AdjustRematchParty(struct Pokemon *party, u16 trainerId, u32 count)
     u32 below = level - (tier == RR_POSTGAME_TIER ? 2 : 1);
     u32 pick = VarGet(VAR_RR_STARTER) % 6;
 
-    if (!RR_IsRematchTrainer(trainerId) || count < 3)
+    // Only in trainer battles (#106): the game builds the enemy party through
+    // here for wild battles too, with the last trainer's id still set and the
+    // count of that trainer's team, so a wild battle after the Oak + Daisy
+    // rematch got Oak's starters in place of the wild Pokemon.
+    if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || !RR_IsRematchTrainer(trainerId) || count < 3)
         return;
     postgame = tier == RR_POSTGAME_TIER;
     if (trainerId == TRAINER_RR_OAK_REMATCH)

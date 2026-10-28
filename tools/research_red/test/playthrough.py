@@ -14,8 +14,9 @@ How it plays:
     the first move that has PP, and sends the next healthy Pokémon when one
     faints). Battle animations off and the Set style, to save time. It heals
     at the Pokémon Centers in Viridian and Pewter.
-  - Before the Gym: Quick Balls from Lab Supplies, one training round on
-    Route 2 (catching up to six), then Rare Candies to the cap (Lv 14).
+  - Before the Forest: Quick Balls from Lab Supplies and one training round
+    on Route 2 (catching up to six). Before the Gym: Rare Candies to the cap
+    (Lv 14).
   - Every story question gets A (Yes). Your starter is the first one offered.
     A new move with four known: Yes, forget the first one.
   - Each leg starts from the state the leg before saved; the states are kept
@@ -405,52 +406,43 @@ def heal(start_tile, center):
             + check("team_healed", f"{G().sym('gPlayerParty') + G().const('offsetof(struct Pokemon, hp)'):#x}:2 > 0"))
 
 
-@leg("p10_forest", "Heal in Viridian, then Route 2 and Viridian Forest (Bug Catchers, the Samurai) to Pewter City")
-def p10():
-    center = "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F"
-    return (start("p09_oak_daisy") + heal(here(None), center)
-            + nav.go(G(), (center, 7, 4), "MAP_PEWTER_CITY", (17, 26))
-            + expect("MAP_PEWTER_CITY") + leg_end("p10_forest"))
+TRAINING_LEVEL = 10        # the two leads' level before Viridian Forest (its Bug Catchers: Lv 9-11)
+TRAINING_FRAMES = 300000   # at most (about 80 minutes of play)
 
 
-TRAINING_ROUNDS = 1
-TRAINING_LEVELS = (11,)          # the two lead Pokémon's level to reach in each round (then Rare Candies)
-TRAINING_FRAMES = 300000         # at most per round (about 80 minutes of play)
-
-
-def training(i):
-    """A training round before the Gym, as a player does it: heal at the
-    Pewter Pokémon Center (the first round also fills the Bag with Quick
-    Balls from Lab Supplies), then walk back and forth on two tall-grass
-    tiles of Route 2, fighting wild Pokémon (and catching them while the team
-    has fewer than six) until the two lead Pokémon reach the round's level.
-    Each round is its own leg, so it starts from wherever the last one really
-    ended (a blackout sends you to the Center) and its levels show in
-    PLAYTHROUGH.md."""
+@leg("p10_train", f"Heal in Viridian, Quick Balls from Lab Supplies, Route 2 grass (catching up to six) until the leads reach Lv {TRAINING_LEVEL}")
+def p10_train():
+    """A training round before Viridian Forest, as a player does it: heal at
+    the Viridian Pokémon Center, fill the Bag with Quick Balls from Lab
+    Supplies, then walk back and forth on two tall-grass tiles of Route 2,
+    fighting wild Pokémon (and catching them while the team has fewer than
+    six) until the two lead Pokémon reach TRAINING_LEVEL. A team that lost
+    the opening fights is still at Lv 7 here and blacks out in the Forest
+    without it."""
     g = G()
-    prev = "p10_forest" if i == 1 else f"p11_train{i - 1}"
-    center = "MAP_PEWTER_CITY_POKEMON_CENTER_1F"
-    a, b = nav.grass_route((center, 7, 4), "MAP_ROUTE2")
+    center = "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F"
+    a, b = nav.grass_route((center, 11, 2), "MAP_ROUTE2")
     d_out = "RIGHT" if b[1] > a[1] else "LEFT"
     d_back = "LEFT" if d_out == "RIGHT" else "RIGHT"
     party, size = g.sym("gPlayerParty"), g.const("sizeof(struct Pokemon)")
     lvl = g.const("offsetof(struct Pokemon, level)")
-    target = TRAINING_LEVELS[i - 1]
-    trained = " && ".join(f"{party + k * size + lvl:#x}:1 >= {target}" for k in (0, 1))
-    lines = start(prev, run=False) + heal(here(("MAP_PEWTER_CITY", 17, 26)), center)
-    if i == 1:
-        lines += lab_supplies((center, 7, 4), center, "ITEM_QUICK_BALL", 5, "quick_balls", "pokeBalls", run=False)
-    lines += nav.go(g, (center, 11, 2) if i == 1 else (center, 7, 4), None, goal=lambda n: n == a, label="train")
+    trained = " && ".join(f"{party + k * size + lvl:#x}:1 >= {TRAINING_LEVEL}" for k in (0, 1))
+    lines = (start("p09_oak_daisy", run=False) + heal(here(None), center)
+             + lab_supplies((center, 7, 4), center, "ITEM_QUICK_BALL", 5, "quick_balls", "pokeBalls", run=False)
+             + nav.go(g, (center, 11, 2), None, goal=lambda n: n == a, label="train"))
     # pacing: a tap on one tile turns (or steps) toward the other
     lines += [f"guard {d_out} {g.field_free()} && {g.player_at(a[1], a[2])}",
               f"guard {d_back} {g.field_free()} && {g.player_at(b[1], b[2])}",
               f"until trained {TRAINING_FRAMES} A {trained} && {g.field_free()}"]
-    return lines + leg_end(f"p11_train{i}")
+    return lines + leg_end("p10_train")
 
 
-for _i in range(1, TRAINING_ROUNDS + 1):
-    LEGS[f"p11_train{_i}"] = ((lambda i=_i: training(i)),
-                              f"Training {_i}/{TRAINING_ROUNDS}: heal in Pewter, Route 2 grass until the leads reach Lv {TRAINING_LEVELS[_i - 1]}")
+@leg("p10_forest", "Heal in Viridian, then Route 2 and Viridian Forest (Bug Catchers, the Samurai) to Pewter City")
+def p10():
+    center = "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F"
+    return (start("p10_train") + heal(here(None), center)
+            + nav.go(G(), (center, 7, 4), "MAP_PEWTER_CITY", (17, 26))
+            + expect("MAP_PEWTER_CITY") + leg_end("p10_forest"))
 
 
 @leg("p11_candies", f"Heal in Pewter, Rare Candies from Lab Supplies: the whole team to the cap (Lv {CANDY_LEVEL})")
@@ -462,7 +454,7 @@ def p11_candies():
     center = "MAP_PEWTER_CITY_POKEMON_CENTER_1F"
     party, size = g.sym("gPlayerParty"), g.const("sizeof(struct Pokemon)")
     lvl = g.const("offsetof(struct Pokemon, level)")
-    lines = (start(f"p11_train{TRAINING_ROUNDS}") + heal(here(("MAP_PEWTER_CITY", 17, 26)), center)
+    lines = (start("p10_forest") + heal(here(("MAP_PEWTER_CITY", 17, 26)), center)
              + lab_supplies((center, 7, 4), center, "ITEM_RARE_CANDY", 6, "rare_candies", "items"))
     for k in range(6):
         lines += candies(k, CANDY_LEVEL)
