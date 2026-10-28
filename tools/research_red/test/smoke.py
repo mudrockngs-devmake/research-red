@@ -442,6 +442,30 @@ def sc_bike():
             + debug_script(SCRIPT_BIKE) + ["wait 30", "shot b005"] + step("RIGHT", 2) + ["wait 20", "shot b006"]
             + check("back_on_foot", T.G.field_free()))
 
+def sprite_tour(female):
+    """#125: the player (and Ivy) in every situation, with a picture each:
+    standing and walking four ways, running, through a door and back, on the
+    bike, surfing in Pallet's sea (with the water reflection), back on land.
+    The female player is poked in, then a door reloads the sprites."""
+    G = T.G
+    gender = poke_sb2("playerGender", 1) if female else []
+    lines = ["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + gender
+    # through the front door and out again: the map reload picks up the gender
+    lines += nav.go(G, ("MAP_PALLET_TOWN", 15, 8), "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F") + ["wait 30", "shot door_in"]
+    lines += nav.go(G, ("MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", 4, 8), "MAP_PALLET_TOWN", (6, 8)) + ["wait 60", "shot stand"]
+    # to the shore by the lab (8,16), face the water, surf (as sc_gerald), back to land
+    lines += nav.go(G, ("MAP_PALLET_TOWN", 6, 8), "MAP_PALLET_TOWN", (8, 16), max_frames=1500)
+    lines += ["press DOWN 2", "wait 10", "press A", "wait 30", "mash A 200", "wait 60", "shot surf",
+              "hold LEFT 16", "wait 4", "shot surf_reflection", "hold RIGHT 16", "wait 20", "shot surf_back",
+              "hold UP 16", "wait 30", "shot landed"]
+    # last, where the position no longer matters: walking, running, the bike
+    for d in ("UP", "LEFT", "DOWN", "RIGHT"):
+        lines += [f"hold {d} 8", f"shot walk_{d.lower()}", "wait 20"]
+    lines += ["hold B+UP 10", "shot run", "wait 30"]
+    lines += debug_script(SCRIPT_BIKE) + ["hold UP 12", "shot bike", "wait 20"] + debug_script(SCRIPT_BIKE)
+    return lines + check("on_foot", G.field_free())
+
+
 def sc_pewter():
     # After Brock: Elm and Jenny's rematch outside the Pokemon Center (#10).
     # Debug 10 leaves us below the door at (17,26); Elm stands at (16,27) with
@@ -1046,6 +1070,8 @@ SCENARIOS = {
     "digletts": (sc_digletts, "After Brock: Diglett's Cave is closed by the Diglett crew (demo)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
     "bike": (sc_bike, "On the bike: your own sprite, Ivy out of view; off again, she's back (#80, #28)"),
+    "sprites_m": (lambda: sprite_tour(False), "#125: the male player in every situation (walk, run, door, bike, surf, reflection)"),
+    "sprites_f": (lambda: sprite_tour(True), "#125: the female player in every situation (walk, run, door, bike, surf, reflection)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),

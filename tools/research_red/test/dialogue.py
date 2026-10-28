@@ -11,7 +11,8 @@ Afterwards judge() reads that timeline and reports:
         wrong picture, like Jenny's face on Elm's line in the v0.0.19 playtest)
   FAIL  narration (no "Name:") still shows a cast member's portrait
   FAIL  the text box closed while its text was still printing (a box that
-        vanishes early, #76)
+        vanishes early, #76); signs you walk into and away from are fine
+        (FireRed's walk-away feature, sMsgBoxIsCancelable)
   WARN  a speaker's portrait was skipped (no room for the picture)
 
 Speaker numbers follow graphics/research_red/portraits.txt (line order).
@@ -68,7 +69,8 @@ def watch_lines(G):
     return [f"watchtext msg {G.sym('gStringVar4'):#x} {TEXT_BYTES}",
             f"watch speaker {G.sym('sShownSpeaker'):#x}:1",
             f"watch box {G.sym('sBoxOpen'):#x}:1",
-            f"watch printer {G.sym('sMessageBoxType'):#x}:1"]
+            f"watch printer {G.sym('sMessageBoxType'):#x}:1",
+            f"watch cancelable {G.sym('sMsgBoxIsCancelable'):#x}:1"]
 
 
 def speaker_of(text):
@@ -82,7 +84,7 @@ def judge(log):
     events = []   # (frame, kind, value)
     for line in log.splitlines():
         p = line.split()
-        if p and p[0] == "WATCH" and p[1] in ("speaker", "box", "printer"):
+        if p and p[0] == "WATCH" and p[1] in ("speaker", "box", "printer", "cancelable"):
             events.append((int(p[2]), p[1], int(p[3])))
         elif p and p[0] == "WATCHTEXT" and p[1] == "msg":
             events.append((int(p[2]), "msg", decode(p[3]) if len(p) > 3 else ""))
@@ -122,7 +124,9 @@ def judge(log):
             seen.add(line)
         elif kind == "box" and val == 0:
             # closed: was the text still printing just before?
-            if value_at("printer", f - 1) in PRINTING and value_at("box", f - 1) == 1:
+            # (a sign you walked into may be cancelled by walking away: FireRed's own feature)
+            if (value_at("printer", f - 1) in PRINTING and value_at("box", f - 1) == 1
+                    and not value_at("cancelable", f - 1)):
                 fails.append(f"the text box closed while its text was still printing (frame {f}): "
                              f"\"{value_at('msg', f, '')[:40]}\"")
     return fails, warns
