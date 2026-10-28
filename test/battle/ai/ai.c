@@ -1230,6 +1230,9 @@ AI_SINGLE_BATTLE_TEST("AI will consider using Explosion inversely proportional t
         ASSUME(EXPLOSION_LOWER_HP_THRESHOLD == 10);
         ASSUME(EXPLOSION_HIGHER_HP_THRESHOLD == 90);
         ASSUME(LAST_MON_PREFERS_NOT_SACRIFICE == FALSE);
+        // Research Red: our catch-up EXP (B_LEVEL_CAP_EXP_UP) levels the Lv 5 Zigzagoon
+        // up after the KO, which this test doesn't script and timed out on: caps off here
+        FLAG_SET(FLAG_RR_LEVEL_CAPS_OFF);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_ZIGZAGOON) { Level(5); Moves(MOVE_SCRATCH); }
         OPPONENT(SPECIES_ZIGZAGOON) { Level(5); HP(monHP); MaxHP(20); Moves(MOVE_SCRATCH, MOVE_EXPLOSION); }

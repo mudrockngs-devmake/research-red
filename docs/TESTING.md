@@ -28,6 +28,18 @@ What the results mean:
 - **Fake clock**: the runner never reads the computer's clock. Every run starts at 2026-10-20 10:00 (morning) and time moves with the game, so a run plays out the same at 9 AM or 9 PM: day/night, the Rest menu and anything random come out identical each time. (Before this, the Rest tests failed in the evening and battles were won or lost by luck.)
 - `game_memory.py` turns names into addresses: RAM symbols come from `pokefirered.elf`, and struct offsets and constants (`FLAG_*`, `MAP_*`, `VAR_*`) come from compiling a tiny C file against the game's headers, so they stay right when the code changes. Nothing to update by hand.
 
+## Before/after pictures (`compare.py`)
+After every smoke run, each screenshot is compared with the same screenshot from the last tagged build (`git describe`, e.g. v0.0.19): the newest clean run (no `-dirty`) of a commit at or before that tag that played the scenario. The runner and its clock are repeatable, so an unchanged scene gives the very same pictures; anything else is a real change. Tiny differences (under 0.2% of the screen) are ignored.
+- `REPORT.md` gets a "Pictures compared" list at the end; `COMPARE.md` has a line per scenario (same / changed: how many pictures and the first one).
+- `compare.html` (open it in the browser): before | after | what changed (changed pixels in pink), up to 6 per scene.
+- A scene that now takes longer shifts all its later pictures, so "changed: 140 of 142" can mean one longer line of text. Look at the first changed picture.
+```
+python3 tools/research_red/test/compare.py RUN_FOLDER                  # again, e.g. after a new tag
+python3 tools/research_red/test/compare.py RUN_FOLDER --against OLD_RUN # against one run
+python3 tools/research_red/test/compare.py RUN_FOLDER --show lab        # before/after slider in the viewer
+python3 tools/research_red/test/smoke.py --no-compare                   # skip it
+```
+
 ## What's covered
 | Scenario | How it gets there |
 |---|---|
@@ -93,12 +105,12 @@ Battles use **test mode** (debug script 9): the AI plays your side, so nobody ha
 ## The engine's own tests (`make check`)
 pokefirered-expansion ships ~5,200 small battle tests ("Burn deals 1/16 damage", "Mind Blown is blocked by Damp"...). `make check -j6` builds a separate test copy of the game (in `build/firered-test/`, the normal ROM isn't touched) and runs them all: about 30 minutes the first time, faster after. One test, or a group by name: `make check TESTS="Sunlight"`.
 
-Run it after changing battle code, move/ability/item data or the save layout. Expected today (2026-10-20): **4584 passed, 1 failed**:
-- *AI will consider using Explosion inversely proportional to its missing HP 2/2* times out. Upstream engine test on AI code Research Red hasn't touched; not investigated yet (#18).
+Run it after changing battle code, move/ability/item data or the save layout. Expected (2026-10-27): **everything passes** (see the end of the run for the count).
 
 Research Red's adjustments to the engine tests (each marked `Research Red`):
 - `test/save.c`: our SaveBlock1 size (15864). If it fails, the save layout moved: bump `RR_SAVE_VERSION` (docs/SAVES.md), then the number.
 - `test/battle/exp.c`: two experience tests switch our level caps off (`FLAG_RR_LEVEL_CAPS_OFF`), otherwise the cap gives 0 exp.
+- `test/battle/ai/ai.c`, *AI will consider using Explosion...*: caps off too. Our catch-up EXP (`B_LEVEL_CAP_EXP_UP`) levelled the Lv 5 Zigzagoon up after the KO, which the test doesn't expect, so it timed out (found 2026-10-27, #18). Other upstream tests with a Lv 5 winner may need the same line.
 
 ## First-time setup (once per machine)
 ```
@@ -134,3 +146,4 @@ After changing `rr_run.c`, rebuild it with `setup_mgba.sh` (it skips the downloa
 | `tools/research_red/test/game_memory.py` | Names (story step, flags, maps, team size) -> memory addresses |
 | `tools/research_red/test/README.md` | How the pieces fit, and how to reuse the tester for another hack |
 | `tools/research_red/test/contact_sheet.py` | Reads screenshots, makes the grids |
+| `tools/research_red/test/compare.py` | Before/after pictures against the last tagged build's runs (needs Pillow) |
