@@ -19,6 +19,7 @@ Start here. Everything about how the project works, in one place.
 - [BALANCE.md](BALANCE.md): levels per area and level caps, generated.
 
 ## Making the game
+- **[DESIGN.md](DESIGN.md)**: the game's rules (level caps, battle format, rematches, the lab...): what's in the game, what's planned, and when it was decided.
 - [DEV_GUIDE.md](DEV_GUIDE.md): where everything lives, conventions, generated files, memory budget.
 - [STYLE_GUIDE.md](STYLE_GUIDE.md): how the characters talk, text rules.
 - [GLOSSARY.md](GLOSSARY.md): names and game words, and how voice typing mixes them up.
