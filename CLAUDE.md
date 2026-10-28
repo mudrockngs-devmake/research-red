@@ -26,6 +26,9 @@ Documentation index: `docs/README.md`.
 - Showing the owner pictures or scenes: the live viewer pops up in their Windows browser (`tools/research_red/viewer/viewer.py show FILE --title "question"`, or `board MAP_X` for drag-and-drop staging; replies via `viewer.py answers`). Use it whenever a question is about how something looks or where people stand.
 - Debug menu stays ON for test builds (Start > Debug > Scripts, named skips 1-12, 13 switches the banter look). Turn OFF before any public release.
 
+## Skills (`.claude/skills/`)
+- `owner-notes` (notes to issues, read back first), `test-build` (a v0.0.x build start to finish), `playtest-intake` (archive + notes to issues), `new-scene` (scene conventions + its smoke test). Follow them; improve them when a step turns out wrong.
+
 ## Where things are
 - Story scenes: one file each in `data/scripts/research_red/rr_*.inc`; FireRed maps keep only their hooks. Layout and conventions: `docs/DEV_GUIDE.md`.
 - Ivy is an NPC follower (FNPC). Cutscenes: `rr_ivy_to_scene LOCALID_X_IVY` at the start, `rr_ivy_follow LOCALID_X_IVY` at the end (scene Ivy objects need a hide flag). Helpers: `asm/macros/event.inc` (Research Red section), `src/research_red.c`, `data/scripts/research_red/rr_ivy.inc`.
