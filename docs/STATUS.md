@@ -49,8 +49,15 @@ _Last updated: 2026-10-28 (v0.0.19 playtest archived, issues #106-#132)_
 - [ ] Optional: phone emulator / real hardware (#16); workshop the report's playtest form.
 
 ## Next up
-- **v0.0.20** (milestone): first the bugs, worst first: #106 (reproduced by smoke `oak_rematch_wild`/`delia_wild` and the
-  playthrough: wild battles reuse the last trainer's team until the next trainer battle), #108, #110, #107, #109, #112 (+ a test of every demo matchup), #128 (decided: singles = the game's own choice, curated fights stay 6-vs-6; #107 one team under one AI); then #105 lab cutscenes, #119, #121-#125. Smaller batches, test each change (owner 2026-10-28).
+- **Small themed builds** (owner 2026-10-28): 3-5 related issues per test build, risky systems on their own, each fix
+  with a test that fails before and passes after, smoke + full playthrough before the owner plays, a short checklist
+  for the playtest. Milestones on GitHub:
+  - **v0.0.20 battles fight as designed**: #106 fixed (9a98154a4; open until the playtest), #107 one team under one AI
+    (Elm/Jenny too), #128 curated fights stay 6-vs-6 with either setting (decided), #121 Slowpoke never battles (it's
+    in Oak's rematch team, src/rr_rematch.c).
+  - v0.0.21 story flow (#119, #117, #116, #113, #114); v0.0.22 text and menus (#120, #115, #109, #124);
+    v0.0.23 balance (#110, #111, #123, #112); v0.0.24 day and night (#108); v0.0.25 the lab's look (#118, #122, #125).
+  - Then the features (#105 lab cutscenes and the rest of ROADMAP.md).
 - Tasks for the owner: #129 credits/permissions list, #130 Oak's aides list.
 - Tooling: a smaller patch (#17).
 
