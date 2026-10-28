@@ -7,11 +7,13 @@ Brock's rematch) once with each Research Rules setting a player can pick:
   default     as a new game: trainer battles doubles, wild battles singles
   singles     "trainers as singles" (FLAG_RR_FORCE_DOUBLES off)
   wilddbl     wild doubles on (FLAG_RR_FORCE_DOUBLE_WILD)
+  both        trainers as singles and wild doubles on
 
 The battle recorder (rr_checks.py, on every scene) writes battles.json and
-FAILs a curated fight that starts as a single (#128); two separate opponent
-teams are a WARN for #107 until that's built. The wild probe after Oak +
-Daisy checks the leak from #106 under each setting too.
+FAILs a curated fight against two separate trainers (#107: pairs are one
+trainer). Singles or doubles follows the setting (#128); MATRIX.md shows
+which each fight was. The wild probe after Oak + Daisy checks the leak from
+#106 under each setting too.
 
   python3 tools/research_red/test/matrix.py [scene ...] [--list]
 
@@ -41,6 +43,7 @@ SETTINGS = {
     # (nobody answers it while the AI plays your side: a test-mode limit)
     "singles": lambda: T.clear_flag("FLAG_RR_FORCE_DOUBLES") + smoke.options_bits(2),
     "wilddbl": lambda: T.set_flag("FLAG_RR_FORCE_DOUBLE_WILD"),
+    "both": lambda: T.clear_flag("FLAG_RR_FORCE_DOUBLES") + smoke.options_bits(2) + T.set_flag("FLAG_RR_FORCE_DOUBLE_WILD"),
 }
 
 
@@ -76,14 +79,14 @@ def summary(out_dir):
             parts = []
             for b in json.load(open(path)):
                 if b["curated"]:
-                    kind = "double" if b["double"] else "**single**"
+                    kind = "double" if b["double"] else "single"
                     teams = "2 teams" if b["two_opponents"] else "1 team"
                     parts.append(f"{b['opponent_a'].removeprefix('TRAINER_')}: {kind}, {teams}, {b['enemy_count']} mons")
             cells.append("<br>".join(parts) or "no curated battle")
         rows.append(f"| {f} | " + " | ".join(cells) + " |")
     open(os.path.join(out_dir, "MATRIX.md"), "w").write(
         "# Settings matrix\n\nHow each curated fight started under each Research Rules setting "
-        "(#128: always a double; #107: one team of 6).\n\n" + "\n".join(rows) + "\n")
+        "(#128: doubles or singles as the setting says; #107: one trainer, one team of 6).\n\n" + "\n".join(rows) + "\n")
 
 
 if __name__ == "__main__":

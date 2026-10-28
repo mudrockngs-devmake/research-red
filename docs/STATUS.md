@@ -5,7 +5,7 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-28 (v0.0.19 playtest archived, issues #106-#132)_
+_Last updated: 2026-10-28 (v0.0.20 battle work: #106, #107, #121, #128)_
 
 ## Now
 - **v0.0.19 playtest done and archived** (`test-archive/2026-10-28_v0.0.19_playtest/`, issues #106-#132, milestone v0.0.20).
@@ -52,9 +52,11 @@ _Last updated: 2026-10-28 (v0.0.19 playtest archived, issues #106-#132)_
 - **Small themed builds** (owner 2026-10-28): 3-5 related issues per test build, risky systems on their own, each fix
   with a test that fails before and passes after, smoke + full playthrough before the owner plays, a short checklist
   for the playtest. Milestones on GitHub:
-  - **v0.0.20 battles fight as designed**: #106 fixed (9a98154a4; open until the playtest), #107 one team under one AI
-    (Elm/Jenny too), #128 curated fights stay 6-vs-6 with either setting (decided), #121 Slowpoke never battles (it's
-    in Oak's rematch team, src/rr_rematch.c).
+  - **v0.0.20 battles fight as designed**: #106 fixed (9a98154a4); #107 done (1b276e562: Elm & Jenny and Oak & Daisy
+    are one trainer each, one team of six, one picture of the pair, FireRed's slide-in for their lines); #128 the
+    Research Rules decide singles/doubles for every fight (Delia too), settings matrix running; #121 Oak brings
+    Nidoran M instead of Slowpoke (the video-call intro is still to do). All open until the owner's playtest.
+    Still open: the opponent's name says "Rival Elm sent out ..." for Jenny's Pokémon too (ask the owner about names).
   - v0.0.21 story flow (#119, #117, #116, #113, #114); v0.0.22 text and menus (#120, #115, #109, #124);
     v0.0.23 balance (#110, #111, #123, #112); v0.0.24 day and night (#108); v0.0.25 the lab's look (#118, #122, #125).
   - Then the features (#105 lab cutscenes and the rest of ROADMAP.md).
