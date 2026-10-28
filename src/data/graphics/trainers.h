@@ -497,6 +497,11 @@ static const u32 gTrainerFrontPic_RR_ElmJenny[] = INCBIN_U32("graphics/research_
 static const u16 gTrainerPalette_RR_ElmJenny[] = INCBIN_U16("graphics/research_red/cast/pairs/elm_jenny/battle.gbapal");
 static const u32 gTrainerFrontPic_RR_OakDaisy[] = INCBIN_U32("graphics/research_red/cast/pairs/oak_daisy/battle.4bpp.smol");
 static const u16 gTrainerPalette_RR_OakDaisy[] = INCBIN_U16("graphics/research_red/cast/pairs/oak_daisy/battle.gbapal");
+// Research Red: you and Ivy side by side, your side of a battle (FLAG_RR_BACK_PIC_FACING off)
+static const u8 gTrainerBackPic_RR_PlayerMIvy[] = INCBIN_U8("graphics/research_red/cast/pairs/player_m_ivy/back.4bpp");
+static const u16 gTrainerPalette_RR_PlayerMIvy[] = INCBIN_U16("graphics/research_red/cast/pairs/player_m_ivy/back.gbapal");
+static const u8 gTrainerBackPic_RR_PlayerFIvy[] = INCBIN_U8("graphics/research_red/cast/pairs/player_f_ivy/back.4bpp");
+static const u16 gTrainerPalette_RR_PlayerFIvy[] = INCBIN_U16("graphics/research_red/cast/pairs/player_f_ivy/back.gbapal");
 
 
 static const union AnimCmd sAnimCmd_Kanto[] = {
@@ -1264,5 +1269,15 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_RR_OAK_DAISY] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_OakDaisy, gTrainerPalette_RR_OakDaisy, TRAINER_PIC_SIZE),
+    },
+    [TRAINER_PIC_RR_PLAYER_M_IVY] = // Research Red: the trainer card etc. still show the player alone
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Red, gTrainerPalette_Red, TRAINER_PIC_SIZE),
+        .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_RR_PlayerMIvy, gTrainerPalette_RR_PlayerMIvy, sBackAnims_Kanto),
+    },
+    [TRAINER_PIC_RR_PLAYER_F_IVY] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Leaf, gTrainerPalette_Leaf, TRAINER_PIC_SIZE),
+        .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_RR_PlayerFIvy, gTrainerPalette_RR_PlayerFIvy, sBackAnims_Kanto),
     },
 };

@@ -35,6 +35,8 @@ How to use it:
 - Paired opponents (Elm and Jenny, Oak and Daisy) are **one team of six under one AI** (owner 2026-10-28, #107). The partner is there to see and to talk, like Ivy on your side; in singles they still stand there.
   - Done as **one ordinary trainer** (Elm's / Oak's entry, the partner's Pokémon taking turns in the party so in doubles they lead together) with **one picture of the pair**, the same in singles and doubles (owner 2026-10-28: head to thighs, the partner a step behind; `tools/research_red/build_pair_art.py`). Like FireRed's own Twins: no special engine code; the Research Rules decide singles or doubles.
   - Their battle lines work like FireRed's: the pair picture slides in on their side and the line starts with who's talking ("Jenny: ..."); no portraits for the other side (owner 2026-10-28). You and Ivy keep your portraits over your Pokémon (#95).
+  - Their names in battle text: "Elm&Jenny" and "Oak&Daisy" (10 letters at most; owner 2026-10-28).
+  - Your side matches (owner 2026-10-28): you in front and Ivy a step behind, head to thighs, by default; Debug > Scripts > 14 switches back to the #7 picture (you and Ivy turned to each other) for comparing.
   - The 2-down / 4-down lines count the whole team, and the last-Pokémon line plays when they have nobody left to send in (in doubles: when their last two are out).
 - Two-person teams are **one team of 6 under one AI** (Elm's; Oak's for Oak and Daisy, #107); the partner is there for dialogue and pictures.
 - Effectiveness in battle: the engine's own markers, not our colours (#112); maybe colours later as their own tested change.

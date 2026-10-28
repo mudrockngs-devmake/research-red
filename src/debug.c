@@ -377,6 +377,7 @@ extern const u8 Debug_EventScript_Script_10[]; // Research Red
 extern const u8 Debug_EventScript_Script_11[]; // Research Red
 extern const u8 Debug_EventScript_Script_12[]; // Research Red
 extern const u8 Debug_EventScript_Script_13[]; // Research Red
+extern const u8 Debug_EventScript_Script_14[]; // Research Red
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
@@ -654,6 +655,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Scripts[] =
     { COMPOUND_STRING("11 Catch test"), DebugAction_ExecuteScript, Debug_EventScript_Script_11 },
     { COMPOUND_STRING("12 Bike test"), DebugAction_ExecuteScript, Debug_EventScript_Script_12 },
     { COMPOUND_STRING("13 Banter look"), DebugAction_ExecuteScript, Debug_EventScript_Script_13 }, // Research Red (#5, #95)
+    { COMPOUND_STRING("14 Your battle pic"), DebugAction_ExecuteScript, Debug_EventScript_Script_14 }, // Research Red
     { NULL }
 };
 

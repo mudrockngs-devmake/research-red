@@ -12,6 +12,11 @@ cast builder's own steps (tools/research_red/build_cast_art.py), into
 graphics/research_red/cast/pairs/<pair>/battle.png: 64x64, 15 colours plus
 transparent (the pair shares one palette).
 
+Your side the same way (owner 2026-10-28): you in front, Ivy a step behind,
+pairs/player_{m,f}_ivy/back.png, 5 frames (64x320) for the Poke Ball throw,
+with the lean from tools/research_red/build_back_pics.py. The game shows it
+unless FLAG_RR_BACK_PIC_FACING is set (Debug > Scripts > 14: the #7 picture).
+
 Usage: build_pair_art.py [REF_DIR]
 """
 import os
@@ -26,6 +31,12 @@ PAIRS = {
     "elm_jenny": ("08_elm", "07_jenny_casual"),
     "oak_daisy": ("11_oak", "12_daisy"),
 }
+# your side: back pictures with the throw frames
+DUOS = {
+    "player_m_ivy": ("03_player_m", "05_ivy_labcoat"),
+    "player_f_ivy": ("04_player_f", "05_ivy_labcoat"),
+}
+THROW_LEAN = [(0, 0), (-4, 2), (-4, 1), (-4, 0), (-5, 2)]  # as build_back_pics.py: you lean, Ivy stays
 CROP = 0.60      # head to thighs: this much of the figure from the head down
 HEIGHT = 63      # that part fills the picture's height
 BEHIND = 2       # the partner stands this many pixels higher (further back)
@@ -44,7 +55,7 @@ def figure(ref_dir, ref):
     return [row[cols[0]:cols[-1] + 1] for row in img]
 
 
-def build_pair(ref_dir, front, behind):
+def build_pair(ref_dir, front, behind, lean=(0, 0)):
     f, b = figure(ref_dir, front), figure(ref_dir, behind)
     fw, bw = len(f[0]), len(b[0])
     overlap = max(0, fw + bw - FIT)
@@ -57,7 +68,7 @@ def build_pair(ref_dir, front, behind):
                 if c is not None and 0 <= oy + y < 64 and 0 <= ox + x < 64:
                     canvas[oy + y][ox + x] = c
     paste(b, x0 + fw - overlap, 64 - HEIGHT - BEHIND)   # the partner first, so the front one covers them
-    paste(f, x0, 64 - HEIGHT)
+    paste(f, x0 + lean[0], 64 - HEIGHT + lean[1])
     return canvas
 
 
@@ -68,6 +79,13 @@ def main():
         os.makedirs(out, exist_ok=True)
         B.save_indexed(os.path.join(out, "battle.png"), build_pair(ref_dir, front, behind), 64, 64, 0, 0)
         print("built", pair)
+    for duo, (front, behind) in DUOS.items():
+        out = os.path.join(OUT_DIR, duo)
+        os.makedirs(out, exist_ok=True)
+        # one palette for all 5 frames: stack them, then save as one sheet
+        sheet = [row for lean in THROW_LEAN for row in build_pair(ref_dir, front, behind, lean)]
+        B.save_indexed(os.path.join(out, "back.png"), sheet, 64, 64 * len(THROW_LEAN), 0, 0)
+        print("built", duo)
 
 
 if __name__ == "__main__":

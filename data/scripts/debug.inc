@@ -387,6 +387,29 @@ RR_Debug_Text_BanterFullBody:
 RR_Debug_Text_BanterPortraits:
 	.string "Banter look: portraits.$"
 
+@ Research Red: switch your battle picture between you and Ivy side by side
+@ (the default, like Elm and Jenny) and turned to each other (#7)
+Debug_EventScript_Script_14::
+	goto_if_set FLAG_RR_BACK_PIC_FACING, RR_Debug_BackPicSideBySide
+	setflag FLAG_RR_BACK_PIC_FACING
+	msgbox RR_Debug_Text_BackPicFacing, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Debug_BackPicSideBySide::
+	clearflag FLAG_RR_BACK_PIC_FACING
+	msgbox RR_Debug_Text_BackPicSideBySide, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Debug_Text_BackPicFacing:
+	.string "Your battle picture: you and Ivy\n"
+	.string "turned to each other.$"
+
+RR_Debug_Text_BackPicSideBySide:
+	.string "Your battle picture: you and Ivy\n"
+	.string "side by side.$"
+
 RR_Debug_TestModeOff::
 	clearflag FLAG_RR_AI_VS_AI
 	msgbox RR_Debug_Text_TestModeOff, MSGBOX_DEFAULT

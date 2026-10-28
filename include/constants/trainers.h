@@ -190,6 +190,8 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_RR_DELIA,
     TRAINER_PIC_RR_ELM_JENNY, // Research Red (#107): pairs in one picture (cast/pairs, tools/research_red/build_pair_art.py)
     TRAINER_PIC_RR_OAK_DAISY,
+    TRAINER_PIC_RR_PLAYER_M_IVY, // Research Red: you and Ivy side by side (back pic; front = the player's own)
+    TRAINER_PIC_RR_PLAYER_F_IVY,
     TRAINER_PIC_COUNT,
 };
 

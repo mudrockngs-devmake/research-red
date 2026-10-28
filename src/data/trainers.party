@@ -14448,7 +14448,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
    trainer ids stay in include/constants/opponents.h, unused. */
 
 === TRAINER_RR_ELM_LAB_BULBASAUR ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14465,7 +14465,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RR_ELM_LAB_CHARMANDER ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14482,7 +14482,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RR_ELM_LAB_SQUIRTLE ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14499,7 +14499,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RR_ELM_LAB_CHIKORITA ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14516,7 +14516,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RR_ELM_LAB_CYNDAQUIL ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14533,7 +14533,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RR_ELM_LAB_TOTODILE ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14658,7 +14658,7 @@ IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
    desserts (Jenny lets him). */
 
 === TRAINER_RR_ELM_R22_BULBASAUR ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14691,7 +14691,7 @@ Level: 8
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_CHARMANDER ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14724,7 +14724,7 @@ Level: 8
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_SQUIRTLE ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14757,7 +14757,7 @@ Level: 8
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_CHIKORITA ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14790,7 +14790,7 @@ Level: 8
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_CYNDAQUIL ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14823,7 +14823,7 @@ Level: 8
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_TOTODILE ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14858,7 +14858,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 /* Research Red: Pewter City, outside the Gym (after Brock) */
 
 === TRAINER_RR_ELM_PEWTER_BULBASAUR ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14891,7 +14891,7 @@ Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_CHARMANDER ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14924,7 +14924,7 @@ Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_SQUIRTLE ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14957,7 +14957,7 @@ Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_CHIKORITA ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -14990,7 +14990,7 @@ Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_CYNDAQUIL ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -15023,7 +15023,7 @@ Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_TOTODILE ===
-Name: Elm
+Name: Elm&Jenny
 Class: Rival Early
 Pic: RR Elm Jenny
 Gender: Male
@@ -15064,7 +15064,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
    No money, 1.5x EXP. */
 
 === TRAINER_RR_OAK_REMATCH ===
-Name: Oak
+Name: Oak&Daisy
 Class: Pkmn Prof
 Pic: RR Oak Daisy
 Gender: Male
