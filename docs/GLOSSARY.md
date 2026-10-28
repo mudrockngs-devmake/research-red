@@ -10,14 +10,14 @@ owner-notes skill). Add a row whenever a new mix-up turns up.
 |---|---|---|
 | Player | An adult professor: Maple, Cedar or Sequoia (male or female). Ivy's spouse | |
 | Ivy | The player's wife, regional-forms researcher; follows you (FNPC) and fights beside you | Ivey |
-| Elm | Johto professor, the player's best-friend rival | Elmo, Helm, Elm's (for "Elm and") |
+| Elm | Johto professor, the player's best-friend rival | Elmo, Helm, Hellman / almond ("Elm and"), Elm's |
 | Jenny | Elm's wife, New Bark Town's Officer Jenny (off duty); Growlithe Cruller | Jenny's, Genie |
 | Officer Jenny | The local police officer (Viridian lunch); a different person from Jenny | |
 | Prof. Oak | Mentor, a grandfather to everyone; rematches that grow with your badges | Oaks, oak |
 | Daisy | Oak's granddaughter, hosts Elm and Jenny, the bet's referee; Muffin the Rattata | |
 | Delia | Ash's mom, host in Pallet; Mimey; optional double battle | Delia's, Dahlia |
 | Brock, Misty, Lt. Surge, Erika, Koga, Sabrina, Blaine, Giovanni | The Kanto Gym Leaders, in FireRed's order | Brockwood (Brock would), Erica, blame / Blain (Blaine), Gio |
-| Gerald | The Lapras who blocks surfing from Pallet to Cinnabar (demo) | |
+| Gerald | The Tentacool who blocks surfing from Pallet to Cinnabar (demo); not Oak's Lapras on Pallet's shore | tentacles (Tentacool) |
 | Slowking | Writes the notices at New Game | |
 
 ## Pokémon with names
@@ -26,6 +26,7 @@ owner-notes skill). Add a row whenever a new mix-up turns up.
 | Mimey | Delia's Mr. Mime |
 | Muffin | Daisy's Rattata (Elm insists it's a Persian) |
 | Cruller | Jenny's Growlithe |
+| Cyndaquil, Totodile, Chikorita, Bulbasaur, Rhyhorn, Lapras | (species, for spelling) heard as syndical / syndicwill, Bodasore, Ryhorn, laparos |
 | Matcha, Cinnamon, Toffee, Pistachio, Biscotti, Churro, Macaron, Licorice, Pudding... | Elm and Jenny's team: dessert and drink names (docs/player/TRAINERS.md) |
 
 ## Places
@@ -36,7 +37,8 @@ owner-notes skill). Add a row whenever a new mix-up turns up.
 | Pewter City | Pewder, Peter |
 | Cinnabar Island | Cinnebar |
 | Route 1, Route 2, Route 22 | root one, root 22 |
-| Oak's lab, Daisy's house (Rival's house on the map) | |
+| Oak's lab, Daisy's house (Rival's house on the map) | Gary's house |
+| Sevii Islands (Bill's islands) | service islands |
 
 ## Game words (Research Red)
 | Word | Means | Heard as |
@@ -55,6 +57,8 @@ owner-notes skill). Add a row whenever a new mix-up turns up.
 | Ranch Pager | Calls Oak's Pokémon for field moves (Fly, Dig, Flash...) (#29) | ranch pager, launch pager |
 | Lab Supplies | The grant's free shop on every PC (#96) | |
 | Field Guide | Notes on Pokémon and places (Start menu) | |
+| DexNav | Search for hidden Pokémon (Start menu); Jenny gives it after the first lab fight | dex NAV, deck staff |
+| Pokédex | The Pokémon encyclopedia (EVO, AREA, SIZE tabs) | polka decks |
 | Research Rules | Options that change the rules (level caps, healing...) (src/rr_rules.c) | |
 | FNPC | A follower NPC (Ivy) | |
 | story step | `VAR_0x40FE`, how far the story is (CLAUDE.md) | |

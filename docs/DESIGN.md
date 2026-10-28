@@ -16,9 +16,11 @@ How to use it:
 - Hard caps by **how many** badges you have (not which ones): 0 badges Lv 14, 1: 21, 2: 24, 3: 29, 4: 43, 5: 43, 6: 47, 7: 50, 8 badges before the Elite Four: 63, after: none.
 - At the cap: no EXP, Rare Candies stop. Below it: **catch-up EXP** (more the further below).
 - Optional: Options > Research Rules > Level caps off (no cap, no catch-up bonus). Overlevelling is the player's choice; Elm jokes about it when setting up the bet.
-- Rematches against family and friends give 1.5x EXP and no money (#53).
+- Rematches against family and friends give 1.5x EXP and no money (#53). **Bug** (#110): it also reaches the opening lab fights.
 
 **Planned**
+- **Opening fights give normal EXP** (you and Ivy vs Elm and Jenny, Oak's first fight); a double battle giving a fair amount is fine. The big boost ("a very large amount of EXP", an easy place to grind to the cap) is **only for the replayable Oak and Daisy fights** after Route 22 (owner 2026-10-28, #110).
+- Double battles give EXP faster in general: after #110, look again at wild levels and the caps (owner 2026-10-28).
 - No early EXP from Oak fights in the opening: Oak and Daisy's scaling fights only start after Route 22 (owner 2026-10-28, #105).
 - Watch: a player who grinds reaches Lv 14 before Route 22, where Elm and Jenny are around Lv 8-9. No separate cap for Route 22 for now; keep an eye on it in playtests (owner 2026-10-28).
 
@@ -28,8 +30,15 @@ How to use it:
 - Battle style shift / set; **Heal after battles** on/off (#54).
 - Held items and Berries come back after battle (#58).
 
+**Planned** (owner 2026-10-28, #128)
+- Whatever the player picks in Research Rules (wild doubles, trainers as singles), **curated fights stay as designed**: gym leaders, Elm and Jenny, Oak and Daisy, Delia, and any trainer we curate as a 6-vs-6 double.
+- Two-person teams are **one team of 6 under one AI** (Elm's; Oak's for Oak and Daisy, #107); the partner is there for dialogue and pictures.
+- Effectiveness in battle: the engine's own markers, not our colours (#112); maybe colours later as their own tested change.
+
 ## 3. Progression and gates
 **Planned** (owner 2026-10-28, #52)
+- Pallet: you can't leave for Route 1 before Daisy's house (the bet). Stepping onto Route 1 early: Elm shouts from Daisy's window, you step back, Ivy nudges you to be good sports (owner 2026-10-28, #119).
+- Diglett's Cave route stays as it is in the demo (owner 2026-10-28, #130).
 - The gyms stay in FireRed's order. The demo's blocks (Diglett's Cave, Pewter's east exit, Gerald at sea, the League gate) become real story gates in the full game, written into the story instead of developer notes. The middle stretch (Erika, Koga, Sabrina) can keep some freedom: check FireRed's real gating there.
 - **No overworld scaling**: wild Pokémon and route trainers keep their levels (no Crystal Clear-style respec). Only gym leaders adapt (section 5).
 
@@ -43,7 +52,10 @@ How to use it:
 - **You lose**: no Oak fight then. Optionally watch Elm and Jenny vs Oak (cutscene), then the gag where Oak flattens them (cutscene, optional).
 - After the cutscenes, win or lose, Oak offers **one optional fight** for some EXP, available **any time until Route 22** ("if you'd like to fight me with these, any time is fine"). His team: two Lv 5 Pokémon.
 - Levels on screen add up: Elm and Jenny fight you at Lv 5, Oak's leftover starters at Lv 6 vs Oak's Lv 5s, the gag at Lv 7 vs Oak's Lv 50s.
-- After Route 22, Oak and Daisy become the optional scaling EXP fights (section 5). The Viridian old man makes sure the Route 22 point is always reached first.
+- After Route 22, Oak and Daisy become the optional scaling EXP fights (section 5). The first one is **Lv 10**; the scaling per badge is decided after Brock, probably between Brock's and Misty's caps (owner 2026-10-28, #105).
+- Watched fights show both Elm and Jenny (#105). The lab's Slowpoke is Oak's newest addition (introduced in the video call), never battles and stays a Slowpoke (#121); later it sleeps in a little bed on the table (#122).
+- Idea (#126): Ivy asks if you'd recommend her starter; then Elm and Jenny pick so nobody has the same Pokémon.
+- All six starters are 50% female (#123). The Viridian old man makes sure the Route 22 point is always reached first.
 
 ## 5. Rematches
 **In the game** (v0.0.16-19)
@@ -54,6 +66,8 @@ How to use it:
 - Each gym leader has **a preset team per badge count**, from their own gym up to 8 badges, plus a post-Elite Four team. Brock: his gym team (0 badges), then 1 to 8, then post-game. Misty from 2 badges up, and so on.
 - **Erika, Koga and Sabrina**: their tier follows how many badges you have, so their order doesn't matter.
 - **Giovanni**: his gym fight, a way to refight him (depends on the story), and a post-game team.
+- **Only gym leaders get a tier menu.** Elm and Jenny, Delia, Oak and Daisy grow with badges with no tier choice (owner 2026-10-28).
+- **Elm and Jenny's rematches are friendly practice**: replayable, no EXP, no money, maybe an item each time (#127).
 - **The rematch menu**: pick any tier from the leader's original team up to your current badge count (like Crystal Clear).
 - Open: the Pewter rematch with Elm and Jenny wins 6% for a team at the cap (Lv 14) (BALANCE.md "Simulated fights"): tune it, or keep it a hard optional fight?
 
@@ -72,6 +86,8 @@ How to use it:
 **In the game** (#29): Oak's Pokémon do the field moves (Fly with Pidgeot, Dig with Diglett, Flash, Teleport with Abra...), called with the Ranch Pager.
 
 ## 9. Time and rest
+**Bug** (#108): the light doesn't follow the clock; there should be only two light levels, day and night (owner 2026-10-28).
+
 **In the game** (#56, #27): Rest (at home with Delia, or with Nurse Joy) moves the clock to night or morning; wild tables change at night.
 
 ## 10. Pokédex and banter

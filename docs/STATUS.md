@@ -5,12 +5,13 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-28 (working setup run; v0.0.19 still in playtest)_
+_Last updated: 2026-10-28 (v0.0.19 playtest archived, issues #106-#132)_
 
 ## Now
-- **v0.0.19 is out for the owner's playtest.** Work is in two lanes: game-lane sessions use the art already in the
-  game; Art Kit sessions improve the tools and drafts (#104: Pallet Town first). No Art Kit piece is approved yet
-  (`art_gate.py status`), so none is in the game (owner, 2026-10-24).
+- **v0.0.19 playtest done and archived** (`test-archive/2026-10-28_v0.0.19_playtest/`, issues #106-#132, milestone v0.0.20).
+- Two lanes: game-lane sessions use the art already in the game; Art Kit sessions improve the tools and drafts
+  (#104: Pallet Town first). No Art Kit piece is approved yet (`art_gate.py status`). Exception (owner 2026-10-28,
+  #125): v0.0.20 tries the cast's overworld drafts as they are, for testing only (not approved).
 - Since v0.0.19 (in master, not in a build yet): tester upgrades (#18, docs/TESTING.md); debug 10's team is Lv 14.
 
 ## Working setup run (2026-10-28, items 1-6 done; owner answers in ROADMAP.md "Working setup")
@@ -26,12 +27,10 @@ _Last updated: 2026-10-28 (working setup run; v0.0.19 still in playtest)_
 ## Current build
 - **v0.0.19** (2026-10-21): installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke 61/61.
   What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.19\report.html`. **Save: start a new game.**
-- Last playtest archived: `test-archive/2026-10-20_v0.0.18_playtest/` (issues #76-#95).
-- After the playtest: `tools/research_red/rr_archive_test.sh <test-name>`, then the notes become issues.
+- Last playtest archived: `test-archive/2026-10-28_v0.0.19_playtest/` (issues #106-#132; saves archived too, the owner starts fresh each round).
 
 ## Waiting on the owner
-- [ ] v0.0.19 playtest with the what's-new report (pick portraits or full-body there; Debug > Scripts > 13 switches).
-- [ ] Notes on the lab and the fights (#105 so far), then balance: the Pewter rematch with Elm and Jenny wins 6% for a
+- [ ] Balance: the Pewter rematch with Elm and Jenny wins 6% for a
       team at the cap (Lv 14), Brock 94% (docs/BALANCE.md "Simulated fights"). Tune it, or keep it a hard optional fight?
 - [ ] Try the viewer (F5: Approve / Needs work, Mark a spot, Animation, In game, History, themes) and the hub's look,
       Today screen, Settings and desktop shortcut; say what feels off.
@@ -42,7 +41,8 @@ _Last updated: 2026-10-28 (working setup run; v0.0.19 still in playtest)_
 - [ ] Optional: phone emulator / real hardware (#16); workshop the report's playtest form.
 
 ## Next up
-- After the playtest: v0.0.20 from the owner's notes (#105 lab rework, rematch tiers #52, playtest issues).
+- **v0.0.20** (milestone): first the bugs, worst first: #106 (reproduce from the archived save states), #108, #110, #107, #109, #112 (+ a test of every demo matchup), #128; then #105 lab cutscenes, #119, #121-#125. Smaller batches, test each change (owner 2026-10-28).
+- Tasks for the owner: #129 credits/permissions list, #130 Oak's aides list.
 - Tooling: a smaller patch (#17).
 
 ## Watch closely in the v0.0.19 playtest (new or reworked code, most likely to break)
@@ -61,8 +61,7 @@ _Last updated: 2026-10-28 (working setup run; v0.0.19 still in playtest)_
 - 13 rows of `docs/reference/kanto_anime.csv` are marked "memory" (to verify).
 
 ## Session costs not yet logged (log them in the next playtest round's NOTES.md)
-- v0.0.19 part 1 $110.87; part 2 $28.04 (2026-10-21). 2026-10-24: Art Kit rounds 1-2 $33.74; two lanes, viewer, hub $9.54.
-- 2026-10-27/28: tester upgrades + working setup (add at wrap-up).
+- Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. This session (2026-10-28, intake): add at wrap-up.
 
 ## Capacity (measured 2026-10-21)
 | Space | Used | Notes |
