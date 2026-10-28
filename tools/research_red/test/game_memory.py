@@ -61,7 +61,11 @@ class GameMemory:
         if r.returncode:
             raise ValueError(f"can't resolve {', '.join(names)}:\n{r.stderr[-800:]}")
         body = r.stdout.split("rr_values:", 1)[1]
-        values = [int(v) for v in re.findall(r"\.word\s+(-?\d+)", body)][:len(names)]
+        values = []
+        for kind, v in re.findall(r"\.(word|space)\s+(-?\d+)", body):
+            # gcc writes zeros as ".space N" (N bytes of them)
+            values += [int(v)] if kind == "word" else [0] * (int(v) // 4)
+        values = values[:len(names)]
         self._consts.update(zip(names, values))
 
     def const(self, name):

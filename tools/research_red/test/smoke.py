@@ -29,6 +29,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 sys.path.insert(0, HERE)
+import nav  # noqa: E402
 import rr_checks  # noqa: E402
 import tester as T  # noqa: E402
 from tester import advance, check, expect, play_until, ready, scene_end, start_menu_item, step  # noqa: E402
@@ -627,6 +628,38 @@ def sc_rest():
             + check("closed", T.G.field_free()))
 
 
+def sc_daynight():
+    # #108: day and night must be two light levels only. Outside Pallet by day,
+    # then Rest with Delia (night, morning, night, morning), stepping outside
+    # after each for a picture. rr_checks' brightness ranges judge them: every
+    # day picture alike and bright, every night picture alike and darker.
+    hour = f"{T.G.sym('gLocalTime') + 2:#x}:1"
+    G = T.G
+    by_delia = ("MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", 8, 3)   # above Delia (8,4)
+    outside = ("MAP_PALLET_TOWN", 6, 8)                      # below the front door
+
+    def rest(prefix, want_hour):
+        return (["press DOWN 6", "wait 20", "press A", "wait 150", "press DOWN", "wait 10", "press A", "wait 60"]
+                + play_until(f"rested_{prefix}", G.field_free(), 3000, key="A", every=0 or 600)
+                + check(f"{prefix}_{want_hour}h", f"{hour} == {want_hour}"))
+
+    def out_and_back(shot):
+        return (nav.go(G, by_delia, outside[0], outside[1:]) + ["wait 200", f"shot {shot}"]
+                + nav.go(G, outside, by_delia[0], by_delia[1:]))
+
+    lines = ["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+    lines += nav.go(G, ("MAP_PALLET_TOWN", 15, 8), outside[0], outside[1:]) + ["wait 200", "shot day0"]
+    lines += nav.go(G, outside, by_delia[0], by_delia[1:])
+    lines += rest("a", 20) + out_and_back("night1")
+    lines += rest("b", 7) + out_and_back("day1")
+    lines += rest("c", 20) + out_and_back("night2")
+    lines += rest("d", 7) + out_and_back("day2")
+    # the bright day level vs the darker night level (0-255; measured on the
+    # v0.0.18-era lighting: day about 170 here, night clearly darker)
+    return (lines + rr_checks.same_bright(["day0", "day1", "day2"]) + rr_checks.same_bright(["night1", "night2"])
+            + rr_checks.bright("day0", 150, 255) + rr_checks.bright("night1", 60, 145))
+
+
 def sc_rest_center():
     # #56: Nurse Joy in Pewter's Pokemon Center offers Heal / Rest / No thanks.
     # Debug 10 leaves us below the door at (17,26); the counter is straight up.
@@ -701,6 +734,19 @@ def sc_oak_rematch():
               + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=7))
     return (["load @bedroom"] + after_brock_test_mode()
             + fly + walk + battle)
+
+
+def sc_oak_rematch_wild():
+    # #106: after the Oak + Daisy rematch, a wild battle on Route 1 must be a
+    # wild Pokemon from Route 1's table (in v0.0.19 every wild battle became
+    # their team). Wild doubles on, as some testers played.
+    return (sc_oak_rematch() + T.set_flag("FLAG_RR_FORCE_DOUBLE_WILD")
+            + nav.wild_probe(T.G, ("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", 6, 4), "MAP_ROUTE1"))
+
+
+def sc_delia_wild():
+    # #106: the same after Delia's double (wild singles, the default)
+    return sc_delia_battle() + nav.wild_probe(T.G, ("MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", 8, 3), "MAP_ROUTE1")
 
 
 def sc_lab_aide():
@@ -1015,8 +1061,11 @@ SCENARIOS = {
     "pager_select": (sc_pager_select, "Register the Ranch Pager, then SELECT opens it on the map (#29)"),
     "pager_dig": (sc_pager_dig, "Ranch Pager > Dig in Diglett's Cave: Oak's Diglett digs us out (#29)"),
     "rest": (sc_rest, "Delia: Rest till night, then till morning; the Start menu clock (#56, #27)"),
+    "daynight": (sc_daynight, "Day and night (#108): outside after each Rest with Delia (night, morning, night, morning); only two light levels"),
     "rest_center": (sc_rest_center, "Nurse Joy in Pewter: Rest till night (#56)"),
     "oak_rematch": (sc_oak_rematch, "Oak + Daisy rematch in the lab after Brock (#53)"),
+    "oak_rematch_wild": (sc_oak_rematch_wild, "#106: after the Oak + Daisy rematch, a wild double on Route 1 is wild Pokémon from its table"),
+    "delia_wild": (sc_delia_wild, "#106: after Delia's double, a wild battle on Route 1 is a wild Pokémon from its table"),
     "delia_battle": (sc_delia_battle, "Delia's double battle at home after Brock (#70)"),
     "brock_rematch": (sc_brock_rematch, "Brock's rematch in the Gym, tier menu, his team at 1 badge (#52)"),
     "lab_aide": (sc_lab_aide, "The lab aide explains the research tools (#72)"),

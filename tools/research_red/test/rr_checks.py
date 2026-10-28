@@ -86,6 +86,12 @@ def bright(shot, lo, hi):
     return [f"# expect-bright {shot} {lo} {hi}"]
 
 
+def same_bright(shots, tolerance=6):
+    """Script lines: FAIL unless the screenshots (same place, taken earlier)
+    are within `tolerance` of each other in brightness (one light level)."""
+    return [f"# expect-same-bright {tolerance} {' '.join(shots)}"]
+
+
 def brightness_judge(out, sdir, script):
     fails, values = [], {}
     for f in sorted(os.listdir(sdir)):
@@ -98,9 +104,45 @@ def brightness_judge(out, sdir, script):
             fails.append(f"{shot}.png missing (brightness check)")
         elif not float(lo) <= v <= float(hi):
             fails.append(f"{shot}.png brightness {v} is outside {lo}-{hi}")
+    for tol, shots in re.findall(r"^# expect-same-bright (\S+) (.+)$", script, re.M):
+        vals = {sh: values.get(sh) for sh in shots.split()}
+        known = [v for v in vals.values() if v is not None]
+        if known and max(known) - min(known) > float(tol):
+            fails.append("not one light level: " + ", ".join(f"{k} {v}" for k, v in vals.items()))
+    return fails, []
+
+
+# --- wild probe (nav.wild_probe, #106) -----------------------------------------
+def wild_judge(out, sdir, script):
+    """A wild_probe in the scene: what appeared must be a wild Pokemon from
+    that map's encounter table, in a wild battle (not a trainer's team)."""
+    m = re.search(r"^# wild-map (\S+)$", script, re.M)
+    if not m:
+        return [], []
+    allowed = set(re.search(r"^# wild-allowed (.*)$", script, re.M)[1].split())
+    trainer_bit = int(re.search(r"^# wild-trainer-bit (\d+)$", script, re.M)[1])
+    peeks = dict(re.findall(r"^PEEK (wild_\w+) (\d+)$", out, re.M))
+    if "wild_species_1" not in peeks or re.search(r"^UNTIL wild_battle timeout", out, re.M):
+        return [f"wild probe on {m[1]}: no wild battle started"], []
+    fails = []
+    if int(peeks["wild_trainer_flags"]) & trainer_bit:
+        fails.append(f"wild probe on {m[1]}: the battle is a trainer battle")
+    for slot in ("wild_species_1", "wild_species_3"):
+        sp = peeks.get(slot, "0")
+        if slot == "wild_species_3" and sp == "0":
+            continue      # a single battle
+        if sp not in allowed:
+            fails.append(f"wild probe on {m[1]}: species {sp} isn't in its encounter table (a leftover team? #106)")
     return fails, []
 
 
 ALWAYS_START = [dialogue_start]
-ALWAYS_END = [leftovers_end]
-JUDGES = [dialogue_judge, leftovers_judge, brightness_judge]
+def position_end(G):
+    """Where the scene left the player (PEEK where_map/x/y in runner.log; x, y
+    carry the 7-tile border: subtract 7 for Porymap's numbers)."""
+    import nav
+    return nav.where(G)
+
+
+ALWAYS_END = [leftovers_end, position_end]
+JUDGES = [dialogue_judge, leftovers_judge, brightness_judge, wild_judge]

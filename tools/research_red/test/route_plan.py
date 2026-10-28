@@ -12,6 +12,7 @@ Limits: no ledges (jumping), no surfing, objects count as walls where they
 stand at the start (people who walk around can still get in the way).
 """
 import json
+import re
 import os
 import struct
 import sys
@@ -21,6 +22,13 @@ REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.a
 LAYOUTS = {l["id"]: l for l in json.load(open(os.path.join(REPO, "data/layouts/layouts.json")))["layouts"] if "id" in l}
 _by_const = None
 _cache = {}
+# nav.py turns this on: people with a hide flag (scene copies of Elm, Jenny...)
+# don't block (they're usually hidden; nav's runtime checks catch anyone in the
+# way), and a warp only counts where the tile really is a door, stairs or an
+# exit mat entered in its arrow's direction (from the tilesets' behaviours)
+SMART = False
+_attrs = {}
+_behaviors = None
 
 
 def map_folder(const):
@@ -41,11 +49,65 @@ def load(const):
     lay = LAYOUTS[d["layout"]]
     blocks = open(os.path.join(REPO, lay["blockdata_filepath"]), "rb").read()
     m = {"w": lay["width"], "h": lay["height"], "blocks": blocks, "json": d,
-         "objs": {(o["x"], o["y"]) for o in d.get("object_events", [])},
+         "objs": {(o["x"], o["y"]) for o in d.get("object_events", [])
+                  if not (SMART and o.get("flag", "0") not in ("0", ""))},
+         "tilesets": (lay["primary_tileset"], lay["secondary_tileset"]),
          "warps": {(w["x"], w["y"]): (w["dest_map"], int(w["dest_warp_id"])) for w in d.get("warp_events", [])},
          "conns": d.get("connections") or []}
     _cache[const] = m
     return m
+
+
+def behaviors():
+    """MB_* name -> number (include/constants/metatile_behaviors.h, in order)."""
+    global _behaviors
+    if _behaviors is None:
+        text = open(os.path.join(REPO, "include/constants/metatile_behaviors.h")).read()
+        names = re.findall(r"^\s+(MB_\w+),", text.split("enum", 1)[1], re.M)
+        _behaviors = {n: i for i, n in enumerate(names)}
+    return _behaviors
+
+
+def tileset_attrs(tileset):
+    """gTileset_X -> its metatile attribute words (u32 each)."""
+    if tileset not in _attrs:
+        headers = open(os.path.join(REPO, "src/data/tilesets/headers.h")).read()
+        block = headers.split(f"const struct Tileset {tileset} =", 1)[1].split("};", 1)[0]
+        sym = re.search(r"\.metatileAttributes = (\w+)", block)[1]
+        files = open(os.path.join(REPO, "src/data/tilesets/metatiles.h")).read()
+        path = re.search(rf"{sym}\[\] = INCBIN_U32\(\"([^\"]+)\"\)", files)[1]
+        data = open(os.path.join(REPO, path), "rb").read()
+        _attrs[tileset] = struct.unpack(f"<{len(data) // 4}I", data)
+    return _attrs[tileset]
+
+
+def attribute(m, x, y):
+    """The metatile attribute word at (x, y) (behaviour in bits 0-8, encounter type 24-26)."""
+    v = struct.unpack_from("<H", m["blocks"], 2 * (y * m["w"] + x))[0] & 0x3FF
+    primary, secondary = m["tilesets"]
+    table, i = (tileset_attrs(primary), v) if v < 640 else (tileset_attrs(secondary), v - 640)
+    return table[i] if i < len(table) else 0
+
+
+ARROWS = {"MB_SOUTH_ARROW_WARP": "DOWN", "MB_NORTH_ARROW_WARP": "UP",
+          "MB_EAST_ARROW_WARP": "RIGHT", "MB_WEST_ARROW_WARP": "LEFT"}
+DOORS = ("MB_WARP_DOOR", "MB_REGULAR_WARP", "MB_CAVE_DOOR", "MB_LADDER", "MB_FALL_WARP",
+         "MB_UP_RIGHT_STAIR_WARP", "MB_UP_LEFT_STAIR_WARP", "MB_DOWN_RIGHT_STAIR_WARP", "MB_DOWN_LEFT_STAIR_WARP",
+         "MB_UP_ESCALATOR", "MB_DOWN_ESCALATOR")
+
+
+def warp_works(m, x, y, direction):
+    """Does stepping onto (x, y) going `direction` take this warp?"""
+    b = attribute(m, x, y) & 0x1FF
+    mb = behaviors()
+    if any(b == mb[n] for n in DOORS):
+        return True
+    return any(b == mb[n] and direction == d for n, d in ARROWS.items())
+
+
+def is_grass(m, x, y):
+    """A tile with land encounters (tall grass and the like)."""
+    return (attribute(m, x, y) >> 24) & 7 == 1
 
 
 def walkable(m, x, y):
@@ -60,7 +122,7 @@ def neighbours(const, x, y):
     for dx, dy, name in ((1, 0, "RIGHT"), (-1, 0, "LEFT"), (0, 1, "DOWN"), (0, -1, "UP")):
         nx, ny = x + dx, y + dy
         if 0 <= nx < m["w"] and 0 <= ny < m["h"]:
-            if (nx, ny) in m["warps"]:
+            if (nx, ny) in m["warps"] and (not SMART or warp_works(m, nx, ny, name)):
                 dest, wid = m["warps"][(nx, ny)]
                 if dest.startswith("MAP_") and dest != "MAP_DYNAMIC":
                     w = load(dest)["json"]["warp_events"][wid]
