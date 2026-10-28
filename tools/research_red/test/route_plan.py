@@ -22,9 +22,9 @@ REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.a
 LAYOUTS = {l["id"]: l for l in json.load(open(os.path.join(REPO, "data/layouts/layouts.json")))["layouts"] if "id" in l}
 _by_const = None
 _cache = {}
-# nav.py turns this on: people with a hide flag (scene copies of Elm, Jenny...)
-# don't block (they're usually hidden; nav's runtime checks catch anyone in the
-# way), and a warp only counts where the tile really is a door, stairs or an
+# nav.py turns this on: scene copies of the cast and people with a lasting
+# hide flag don't block (usually hidden; nav's runtime checks catch anyone in
+# the way; other FLAG_TEMP objects such as Cut trees do block), and a warp only counts where the tile really is a door, stairs or an
 # exit mat entered in its arrow's direction (from the tilesets' behaviours)
 SMART = False
 _attrs = {}
@@ -50,12 +50,32 @@ def load(const):
     blocks = open(os.path.join(REPO, lay["blockdata_filepath"]), "rb").read()
     m = {"w": lay["width"], "h": lay["height"], "blocks": blocks, "json": d,
          "objs": {(o["x"], o["y"]) for o in d.get("object_events", [])
-                  if not (SMART and o.get("flag", "0") not in ("0", ""))},
+                  if not (SMART and is_scene_copy(o))} | set(MOVED_PEOPLE.get(const, []) if SMART else []),
          "tilesets": (lay["primary_tileset"], lay["secondary_tileset"]),
          "warps": {(w["x"], w["y"]): (w["dest_map"], int(w["dest_warp_id"])) for w in d.get("warp_events", [])},
          "conns": d.get("connections") or []}
     _cache[const] = m
     return m
+
+
+# People a map script moves somewhere their map data doesn't say (SMART only).
+MOVED_PEOPLE = {
+    # FireRed's sign lady stands at the Route 1 entrance (12, 2) once the
+    # player has walked past the sign, until her Start-menu lesson (walk by on
+    # x = 13 to get it)
+    "MAP_PALLET_TOWN": [(12, 2)],
+}
+
+SCENE_CAST = ("OBJ_EVENT_GFX_RR_ELM", "OBJ_EVENT_GFX_RR_JENNY", "OBJ_EVENT_GFX_RR_IVY", "OBJ_EVENT_GFX_RR_OFFICER_JENNY")
+
+
+def is_scene_copy(o):
+    """A cast member placed on a map for a scene (hidden by a flag the rest of
+    the time), or anyone with a lasting hide flag: walk through them."""
+    flag = o.get("flag", "0")
+    if flag in ("0", ""):
+        return False
+    return o["graphics_id"] in SCENE_CAST or not flag.startswith("FLAG_TEMP")
 
 
 def behaviors():

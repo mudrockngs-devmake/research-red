@@ -42,3 +42,14 @@ Raw runner commands are listed at the top of `rr_run.c`. Conditions join with `&
 (all) and `||` (any group). Each scene's folder gets the runner's own output as
 `runner.log` (checks, peeks, `oam`/`pal` dumps). `G.all_symbols[name]` lists every
 address of a name that several files use for a static function.
+
+## Suite hooks (for checks that run on every scene)
+- `always_start` / `always_end`: functions of `G` returning lines put at the start /
+  end of every scenario (e.g. `watch` lines that record the dialogue).
+- `judges`: functions `(runner_output, scene_folder, script_text) -> (fails, warns)`
+  run after each scenario. A script can pass a judge facts as `# name value` comment
+  lines (the runner ignores them). Research Red's are in `rr_checks.py`.
+- `sequential=True`, `keep_states=DIR`: a playthrough. Legs run in order, each built
+  just before it runs (so it can start from where the last one really ended,
+  `tester.LAST_POSITION`), a FAIL stops the run, save states and end positions are
+  kept in `DIR` for `--from LEG`.

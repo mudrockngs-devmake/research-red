@@ -13,6 +13,11 @@ so no scene has to ask for them:
   brightness  how bright every screenshot is (mean, 0-255), saved as
               brightness.json in the scene's folder; a scene can demand a range
               with bright(shot, lo, hi) (day/night, #108)
+  wild        a wild_probe's battle is a wild Pokemon from that map (#106)
+  battles     every battle's start (battles.json); curated fights stay
+              doubles (#128); two separate teams are flagged (#107)
+  coverage    which event scripts ran (coverage.json; coverage.py adds up a
+              whole run into COVERAGE.md: what no test reaches)
 
 Each check reads game memory or the pictures, never the screenshots' timing.
 """
@@ -122,7 +127,20 @@ def wild_judge(out, sdir, script):
     allowed = set(re.search(r"^# wild-allowed (.*)$", script, re.M)[1].split())
     trainer_bit = int(re.search(r"^# wild-trainer-bit (\d+)$", script, re.M)[1])
     peeks = dict(re.findall(r"^PEEK (wild_\w+) (\d+)$", out, re.M))
-    if "wild_species_1" not in peeks or re.search(r"^UNTIL wild_battle timeout", out, re.M):
+    guarded = re.search(r"^# wild-map-id (\d+)$", script, re.M)
+    if guarded:
+        # the playthrough plays wild battles out as they come: judge the
+        # battles recorded on that map after the probe started
+        mark = re.search(r"^MARK wild_probe (\d+)$", out, re.M)
+        start = int(mark[1]) if mark else 0
+        found = [b for b in battle_list(out, script) if b["map"] == int(guarded[1]) and b["frame"] >= start
+                 and not b["curated"]]
+        if not found:
+            return [f"wild probe on {m[1]}: no wild battle started"], []
+        b = found[0]
+        peeks = {"wild_species_1": str(b["species_1"]), "wild_species_3": str(b["species_3"] if b["double"] else 0),
+                 "wild_trainer_flags": str(trainer_bit if b["trainer"] else 0)}
+    elif "wild_species_1" not in peeks or re.search(r"^UNTIL wild_battle timeout", out, re.M):
         return [f"wild probe on {m[1]}: no wild battle started"], []
     fails = []
     if int(peeks["wild_trainer_flags"]) & trainer_bit:
@@ -147,7 +165,15 @@ def battles_start(G):
     opp_a = params + G.const("offsetof(TrainerBattleParameter, params.opponentA)")
     opp_b = params + G.const("offsetof(TrainerBattleParameter, params.opponentB)")
     curated = [G.const(n) for n in curated_trainers()]
-    return [f"watch b_cb2 {cb2:#x}:4", f"watch b_flags {G.sym('gBattleTypeFlags'):#x}:4",
+    mons, size = G.sym("gBattleMons"), G.const("sizeof(struct BattlePokemon)")
+    sp = G.const("offsetof(struct BattlePokemon, species)")
+    party, psize = G.sym("gPlayerParty"), G.const("sizeof(struct Pokemon)")
+    hp = G.const("offsetof(struct Pokemon, hp)")
+    able = [f"watch b_hp{i} {party + i * psize + hp:#x}:2" for i in range(6)]   # who can fight
+    able.append(f"watch b_pcount {G.sym('gPlayerPartyCount'):#x}:1")
+    return able + [f"watch b_map {G.map_addr()}", f"watch b_sp1 {mons + size + sp:#x}:2",
+            f"watch b_sp3 {mons + 3 * size + sp:#x}:2",
+            f"watch b_cb2 {cb2:#x}:4", f"watch b_flags {G.sym('gBattleTypeFlags'):#x}:4",
             f"watch b_count {G.sym('gEnemyPartyCount'):#x}:1",
             f"watch b_oppa {opp_a:#x}:2", f"watch b_oppb {opp_b:#x}:2",
             f"# battle-main {G.sym('BattleMainCB2') | 1}",
@@ -165,7 +191,9 @@ def curated_trainers():
     return [n for n in names if "OAK_LAB" not in n]
 
 
-def battles_judge(out, sdir, script):
+def battle_list(out, script):
+    """Every battle's start from the watch lines: frame, map (as the game
+    stores it), single/double, trainers, team size, the first foes' species."""
     main = int(re.search(r"^# battle-main (\d+)$", script, re.M)[1])
     dbl, trainer, two = map(int, re.search(r"^# battle-bits (\d+) (\d+) (\d+)$", script, re.M).groups())
     curated = set(map(int, re.search(r"^# battle-curated(.*)$", script, re.M)[1].split()))
@@ -175,27 +203,63 @@ def battles_judge(out, sdir, script):
                            if p and p[0] == "WATCH" and p[1].startswith("b_")), key=lambda e: e[0]):
         was_in = now.get("b_cb2") == main
         now[k] = v
+        if k in ("b_sp1", "b_sp3") and battles and battles[-1].get("fresh_" + k) and now.get("b_cb2") == main:
+            battles[-1]["species_" + k[-1]] = v        # the foes are loaded just after the start
+            battles[-1]["fresh_" + k] = v == 0
         if k == "b_cb2" and v == main and not was_in:
             flags = now.get("b_flags", 0)
-            battles.append({"frame": f, "trainer": bool(flags & trainer), "double": bool(flags & dbl),
+            battles.append({"frame": f, "map": now.get("b_map", 0), "species_1": now.get("b_sp1", 0),
+                            "species_3": now.get("b_sp3", 0), "fresh_b_sp1": True, "fresh_b_sp3": True,
+                            "trainer": bool(flags & trainer), "double": bool(flags & dbl),
                             "two_opponents": bool(flags & two), "enemy_count": now.get("b_count", 0),
-                            "opponent_a": names.get(str(now.get("b_oppa")), now.get("b_oppa")),
-                            "opponent_b": names.get(str(now.get("b_oppb")), now.get("b_oppb")),
+                            "player_able": sum(1 for i in range(min(6, now.get("b_pcount", 6)))
+                                               if now.get(f"b_hp{i}", 0) > 0),
+                            # (the trainer numbers stay from the last trainer battle: wild ones get none)
+                            "opponent_a": names.get(str(now.get("b_oppa")), now.get("b_oppa")) if flags & trainer else None,
+                            "opponent_b": names.get(str(now.get("b_oppb")), now.get("b_oppb")) if flags & trainer else None,
                             "curated": bool(flags & trainer) and now.get("b_oppa") in curated})
+    for b in battles:
+        b.pop("fresh_b_sp1", None)
+        b.pop("fresh_b_sp3", None)
+    return battles
+
+
+def battles_judge(out, sdir, script):
+    battles = battle_list(out, script)
     json.dump(battles, open(os.path.join(sdir, "battles.json"), "w"), indent=1)
     fails, warns = [], []
     for b in battles:
         if not b["curated"]:
             continue
         who = b["opponent_a"] + (f" + {b['opponent_b']}" if b["two_opponents"] else "")
-        if not b["double"]:
+        if not b["double"] and b["player_able"] < 2:
+            warns.append(f"curated fight {who} started as a single: you had {b['player_able']} Pokémon able to fight")
+        elif not b["double"]:
             fails.append(f"curated fight {who} started as a single (#128: Research Rules must not change it)")
         if b["two_opponents"]:
             warns.append(f"{who}: two separate teams ({b['enemy_count']} Pokémon), not one team under one AI (#107)")
     return fails, warns
 
 
-ALWAYS_START = [dialogue_start, battles_start]
+# --- script coverage (coverage.py) -------------------------------------------------
+def coverage_start(G):
+    """Record where the event script engine is, every frame."""
+    ctx = G.sym("sGlobalScriptContext")
+    ptr = ctx + G.const("offsetof(struct ScriptContext, scriptPtr)")
+    # text waits inside FireRed's shared message scripts (Std_MsgboxDefault...):
+    # the story script that called them is on the call stack (return addresses)
+    stack = ctx + G.const("offsetof(struct ScriptContext, stack)")
+    return [f"cover {ptr:#x}:4"] + [f"cover {stack + 4 * i:#x}:4" for i in range(3)]
+
+
+def coverage_judge(out, sdir, script):
+    import coverage
+    values = [int(v) for v in re.findall(r"^COVER (\d+)$", out, re.M)]
+    json.dump(sorted(coverage.labels_hit(values)), open(os.path.join(sdir, "coverage.json"), "w"), indent=0)
+    return [], []
+
+
+ALWAYS_START = [dialogue_start, battles_start, coverage_start]
 def position_end(G):
     """Where the scene left the player (PEEK where_map/x/y in runner.log; x, y
     carry the 7-tile border: subtract 7 for Porymap's numbers)."""
@@ -204,4 +268,4 @@ def position_end(G):
 
 
 ALWAYS_END = [leftovers_end, position_end]
-JUDGES = [dialogue_judge, leftovers_judge, brightness_judge, wild_judge, battles_judge]
+JUDGES = [dialogue_judge, leftovers_judge, brightness_judge, wild_judge, battles_judge, coverage_judge]

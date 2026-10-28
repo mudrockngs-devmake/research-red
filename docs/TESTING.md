@@ -21,6 +21,37 @@ What the results mean:
 - **WARN**: the screen froze for 20 seconds while buttons were being pressed (`stuck_<line>.png`; the note names the last screenshot before the freeze), or the scenario ended on a black screen.
 - **PASS**: every scene reached its end and the facts check out. It still doesn't mean the scene *looks* right: open the contact sheets. The first run of these tests found a real bug (a portrait flashing in the previous speaker's colors) that way.
 
+## Checks on every scene (`rr_checks.py`)
+Every smoke scene, matrix run and playthrough leg gets these, without the scene asking for them:
+- **Dialogue** (`dialogue.py`, #120 #76): the runner records the message text, whose portrait is up, and the text box's state on every frame. FAIL if a "Name:" line shows someone else's portrait, if narration still shows a cast portrait, or if **a text box closes while its text is still printing** (a box that vanishes early). Signs you walk into and away from are fine (FireRed's walk-away feature). WARN if a speaker's portrait was skipped. This reads memory, so a screenshot taken a moment late can't fool it.
+- **Leftovers**: when the scene hands control back, nothing a battle switches on for a while is still on ("no whiteout", the AI playing your side outside test mode).
+- **Battles** (#128, #107): every battle's start goes into `battles.json` (single/double, trainer(s), team size). A curated fight (Research Red's own trainers, the Gym leaders) that starts as a single FAILs; two separate teams instead of one team of 6 WARNs.
+- **Brightness**: the mean brightness of every screenshot (`brightness.json`). Scenes can demand a range or "one light level" (`rr_checks.bright`, `same_bright`; the `daynight` scene, #108).
+- **Wild Pokémon**: a `nav.wild_probe` walks into grass, waits for a wild battle and checks it's a wild Pokémon from that map's table (#106).
+- **Script coverage**: which event scripts ran (`coverage.json`). `coverage.py RUN_FOLDER [...]` adds runs up into `COVERAGE.md`: every label in `data/scripts/research_red/` that no test reaches. It's a guide, not an exact count: the script engine is checked once a frame (and its call stack, for text shown through FireRed's shared message scripts), so a label that runs and moves on within one frame can be missed.
+- **Where it ended**: the player's map and tile, in the runner log (the playthrough starts each leg from there).
+
+## The full playthrough (`playthrough.py`, #18)
+Power-on to "everything done in Pewter", **no debug skips**: the Mareep splash, the title, Slowking's notices, the intro call, every story scene in order, walking between them by the map data (`nav.py`), wild Pokémon and trainers on the way, the Gym, the Pewter rematch and Brock watch, and the optional fights with a wild check after each. How it plays:
+- **Trainer battles**: the AI plays your side with a careful trainer's settings (your real team, no test-mode Lv 30s).
+- **Wild battles on the way**: it runs, like a player heading for the next town. **Training legs** before the Gym (heal at the Pewter Center, fight wild Pokémon on Route 2, three rounds) fight them instead: the first move with PP left, the next healthy Pokémon when one faints.
+- It heals at the Viridian and Pewter Pokémon Centers; story questions get Yes; "forget a move?" gets Yes (the first move goes); a blackout gets pressed through. Battle animations are off and the battle style is Set.
+- It doesn't catch Pokémon (yet), so it reaches Brock with two. First run (2026-10-28): Lv 10 and 12 after training, and Brock's six (Lv 12-14) won. That's a balance data point for #110 as much as a bot limit.
+```
+python3 tools/research_red/test/playthrough.py                      # the whole thing
+python3 tools/research_red/test/playthrough.py --list
+python3 tools/research_red/test/playthrough.py --from p08_lunch RUN_FOLDER   # restart at a leg
+```
+Results: `test-runs\playthrough\<date>_<version>_<commit>\`: `PLAYTHROUGH.md` (a row per leg: story step, team levels, money, battles: the real EXP curve, #110), `REPORT.md`, contact sheets, and `states\<leg>.ss`: **save states you can open in mGBA** to jump to any point of the playthrough. A FAIL stops the run (the next leg needs its state); fix it and restart there with `--from`. Save states only work with the build that made them: after a game change, play from the start (`--from` refuses otherwise).
+
+What the bot does that a person would too: opens its way through the sign lady's Start-menu lesson, waits for wanderers to move, answers "forget a move?" with Yes (the first move goes). Walking plans come from the map data; people who stand somewhere their map data doesn't say are listed in `route_plan.MOVED_PEOPLE` (or a leg's `avoid=`).
+
+## Settings matrix (`matrix.py`, #128)
+Every curated fight (Route 22, Pewter, Oak + Daisy, Delia, Brock) under each Research Rules setting (default, trainers as singles, wild doubles). `MATRIX.md`: how each fight started. A curated fight must be a double under every setting.
+
+## Asking the owner mid-run (viewer)
+`viewer.py show SHOT.png --title "Does this look right?" --choices "Yes,No" --wait 10` pops the question up in the Windows browser and waits up to 10 minutes for the reply (printed; exit 2 if none came). `viewer.py answer STAMP` fetches a reply later. The live stream already shows every new screenshot of the newest run.
+
 ## How the checks work
 - **Wait-until**: a scene presses A (or B) until the game says it's over: story step set and the player free to walk (on the map, no script running, no text box). Longer dialogue just takes longer; a scene that never ends fails at its time limit instead of quietly passing.
 - **Memory checks**: after a scene, `expect(map, story, team)` reads the game's memory and compares.
@@ -120,6 +151,10 @@ Every push to master runs a quick set of 10 scenes (breakfast, grass, lab, route
 | delia_battle | After Brock: Fly to Pallet, home, Delia asks for a battle (Yes): Mimey and Gloom lead (1 badge, Lv 21) |
 | oak_rematch | After Brock: Ranch Pager > Fly to Pallet, into the lab, Oak + Daisy double (1 badge: middle-stage starters, Lv 21) |
 | trainer_card | Start > your name: the Trainer Card shows your own picture (#24) |
+| daynight | Outside at 10:00 (day), then Rest at home to night, morning, night, morning; same spot each time. Days must match days, nights nights (#108). **Fails until #108 is fixed** |
+| oak_rematch_wild | Oak + Daisy's rematch, then a wild battle on Route 1: must be a Route 1 wild Pokémon (#106). **Fails until #106 is fixed** |
+| delia_wild | Delia's battle, then a wild battle (#106). **Fails until #106 is fixed** |
+| sprites_m / sprites_f | Sprite tour for each player: in and out of a door, surf (with reflection), walk four ways, run, bike (#125: the before/after check for new overworld sprites) |
 | tms | After the lab: the TM Case holds all 108 TMs and HMs (memory check); one screenshot per TM51-TM100 (names fit their rows, descriptions their box) and the longest name selected |
 
 Battles use **test mode** (debug script 9): the AI plays your side, so nobody has to choose moves.
@@ -171,3 +206,10 @@ After changing `rr_run.c`, rebuild it with `setup_mgba.sh` (it skips the downloa
 | `tools/research_red/test/balance.py` | Battle simulations for balance (results in `data/research_red/battle_sims.json` -> docs/BALANCE.md) |
 | `tools/research_red/test/monkey.py` | The random-button stress test (uses smoke.py's intro and debug skips) |
 | `tools/research_red/test/compare.py` | Before/after pictures against the last tagged build's runs (needs Pillow) |
+| `tools/research_red/test/rr_checks.py` | The checks on every scene (dialogue, leftovers, battles, brightness, wild, coverage) |
+| `tools/research_red/test/dialogue.py` | The dialogue check (portraits, boxes closing early) |
+| `tools/research_red/test/nav.py` | Walk anywhere by map data; the wild probe |
+| `tools/research_red/test/playthrough.py` | The full playthrough, power-on to Pewter |
+| `tools/research_red/test/matrix.py` | Curated fights x Research Rules settings |
+| `tools/research_red/test/coverage.py` | Script coverage report from runs |
+| `test/battle/rr_type_chart.c` | Engine test: every type matchup against the official chart (#112) |

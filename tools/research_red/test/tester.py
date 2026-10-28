@@ -25,6 +25,7 @@ own before the rest (in parallel), so it can save the starting point.
 """
 import concurrent.futures
 import dataclasses
+import json
 import datetime
 import os
 import re
@@ -292,7 +293,9 @@ def main(suite, argv):
     global G, PROGRESS_VAR
     G = GameMemory(suite.repo, os.path.join(workdir, "test.elf"), suite.game_define)
     PROGRESS_VAR = suite.progress_var
-    scripts = {w: suite.scenarios[w][0]() for w in set(wanted) | ({suite.first} if suite.first else set())}
+    # (a playthrough builds each leg just before it runs: it starts where the last one ended)
+    scripts = {} if suite.sequential else \
+        {w: suite.scenarios[w][0]() for w in set(wanted) | ({suite.first} if suite.first else set())}
 
     results = []
     print(f"{suite.title} -> {suite.out_dir}")
@@ -329,16 +332,59 @@ def main(suite, argv):
     sys.exit(1 if failed else 0)
 
 
+LAST_POSITION = None   # (MAP_X, x, y) where the previous leg ended (sequential runs)
+
+
+def end_position(log, map_names):
+    """(MAP_X, x, y) from a scene's 'where' peeks (Porymap numbers), or None."""
+    if not os.path.exists(log):
+        return None
+    peeks = dict(re.findall(r"^PEEK (where_\w+) (\d+)$", open(log).read(), re.M))
+    if "where_map" not in peeks:
+        return None
+    G._resolve({m: m for m in map_names if m not in G._consts})   # one compile for all of them
+    names = {G.map_value(m): m for m in map_names}
+    name = names.get(int(peeks["where_map"]))
+    return (name, int(peeks["where_x"]) - 7, int(peeks["where_y"]) - 7) if name else None
+
+
+def blocks_next_leg(message):
+    """A FAIL the next leg can't start from: the leg didn't get where it was
+    going (a timeout, a failed map/story check) or the game crashed. Findings
+    like a wrong portrait or a wrong wild Pokemon don't stop a playthrough."""
+    return (message.startswith(("never reached", "check ", "error screen", "runner", "timed out", "no screenshots"))
+            or "crash" in message)
+
+
 def main_sequential(suite, rom, wanted, scripts, workdir, start_from):
     """Play the legs in order; a FAIL stops the run (later legs need its state)."""
+    global LAST_POSITION
+    names = list(suite.scenarios)
+    positions = {}       # leg -> where it ended, kept with the states for --from
+    pos_file = os.path.join(suite.keep_states or "", "positions.json")
+    import hashlib
+    rom_id = hashlib.sha1(open(rom, "rb").read()).hexdigest()
     if start_from and suite.keep_states:
+        # a save state only works with the exact build that made it (code moves)
+        made_by = os.path.join(suite.keep_states, "rom.sha1")
+        if not os.path.exists(made_by) or open(made_by).read().strip() != rom_id:
+            sys.exit("--from: those save states were made by a different build of the ROM; "
+                     "play from the start (they'd load into a frozen game)")
         for f in os.listdir(suite.keep_states):
             if f.endswith(".ss"):
                 shutil.copy(os.path.join(suite.keep_states, f), workdir)
+        if os.path.exists(pos_file):
+            positions = json.load(open(pos_file))
+            prev = names[names.index(start_from) - 1] if names.index(start_from) else None
+            LAST_POSITION = tuple(positions[prev]) if prev in positions else None
     results = []
     for w in wanted:
         print(f"  {w} ...", flush=True)
-        r = run(suite, rom, w, scripts[w], workdir, suite.timeout)
+        # built just before it runs, so it can start from where the last leg really ended
+        r = run(suite, rom, w, suite.scenarios[w][0](), workdir, suite.timeout)
+        LAST_POSITION = end_position(os.path.join(suite.out_dir, w, "runner.log"), suite.map_names) or LAST_POSITION
+        if LAST_POSITION:
+            positions[w] = LAST_POSITION
         results.append(r)
         print(f"  {w}: {r[1]} ({'; '.join(r[2])})", flush=True)
         if suite.keep_states:
@@ -346,7 +392,10 @@ def main_sequential(suite, rom, wanted, scripts, workdir, start_from):
             for f in os.listdir(workdir):
                 if f.endswith(".ss"):
                     shutil.copy(os.path.join(workdir, f), suite.keep_states)
-        if r[1] == "FAIL":
+            json.dump(positions, open(pos_file, "w"), indent=1)
+            open(os.path.join(suite.keep_states, "rom.sha1"), "w").write(rom_id)
+        if r[1] == "FAIL" and any(blocks_next_leg(m) for m in r[2]):
+            print(f"  stopping: {w} didn't end where the next leg starts", flush=True)
             break
     write_report(suite, results)
     shutil.rmtree(workdir, ignore_errors=True)

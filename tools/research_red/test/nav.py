@@ -5,7 +5,8 @@ go(G, start, goal_map, goal_xy) plans the shortest walk with route_plan.py
 (walkable tiles, map connections, doors) and turns it into runner lines that
 check every leg really happened: each straight stretch taps the direction
 until the player stands on its last tile, and each door waits until the new
-map is loaded and the player can walk. A person in the way only costs time;
+map is loaded and the player can walk. A person in the way only costs time
+(wanderers move on);
 something that never lets you through FAILs at that leg (see its timeout_
 screenshot), instead of throwing every later step off.
 
@@ -39,9 +40,10 @@ def is_grass(node):
     return route_plan.is_grass(route_plan.load(m), x, y)
 
 
-def path(start, goal_map, goal_xy=None, goal=None):
+def path(start, goal_map, goal_xy=None, goal=None, avoid=()):
     """[(direction, (map, x, y), through_door)] one entry per step, or None.
-    goal: a test on (map, x, y) instead of goal_map/goal_xy."""
+    goal: a test on (map, x, y) instead of goal_map/goal_xy.
+    avoid: (map, x, y) tiles someone stands on right now (a scene's cast)."""
     prev = {start: None}
     q = deque([start])
     end = None
@@ -51,7 +53,7 @@ def path(start, goal_map, goal_xy=None, goal=None):
             end = cur
             break
         for name, nxt, warp in route_plan.neighbours(*cur):
-            if nxt not in prev:
+            if nxt not in prev and nxt not in avoid:
                 prev[nxt] = (cur, name, warp)
                 q.append(nxt)
     if end is None:
@@ -64,9 +66,12 @@ def path(start, goal_map, goal_xy=None, goal=None):
     return steps[::-1]
 
 
-def go(G, start, goal_map, goal_xy=None, max_frames=900, label="go", goal=None):
-    """Runner lines walking from start to the goal (raises if there's no way)."""
-    steps = path(tuple(start), goal_map, goal_xy, goal)
+def go(G, start, goal_map, goal_xy=None, max_frames=20000, label="go", goal=None, avoid=()):
+    """Runner lines walking from start to the goal (raises if there's no way).
+    max_frames per stretch counts every frame, so it leaves room for a wild
+    battle on the way (the playthrough plays those out); a stretch that's
+    fine finishes as soon as the player gets there."""
+    steps = path(tuple(start), goal_map, goal_xy, goal, avoid)
     if steps is None:
         raise ValueError(f"no walking route from {start} to {goal_map} {goal_xy or ''}")
     lines = []
@@ -112,17 +117,25 @@ def grass_route(start, grass_map):
     return (m, x, y), (m, nx, y)
 
 
-def wild_probe(G, start, grass_map, max_paces=150):
+def wild_probe(G, start, grass_map, max_paces=150, guarded=False):
     """Walk to grass on grass_map and pace until a wild battle starts; record
     what appeared (PEEK wild_species_1 / _3, wild_trainer_flags). rr_checks'
-    wild judge then checks it's a wild Pokemon from that map's table (#106)."""
+    wild judge then checks it's a wild Pokemon from that map's table (#106).
+    guarded: a guard plays battles out as they come (the playthrough): pace
+    a while and let the judge read the first battle on that map from the
+    battle record instead."""
     a, b = grass_route(start, grass_map)
-    lines = go(G, start, None, goal=lambda n: n == a, label="wildgo")
+    lines = ["mark wild_probe"] + go(G, start, None, goal=lambda n: n == a, label="wildgo")
     d_out = "RIGHT" if b[1] > a[1] else "LEFT"
     d_back = "LEFT" if d_out == "RIGHT" else "RIGHT"
     pace = []
     for _ in range(max_paces):
         pace += [f"hold {d_out} 16", "wait 4", f"hold {d_back} 16", "wait 4"]
+    if guarded:
+        return lines + pace[:4 * 60] + [
+            f"# wild-map {grass_map}", f"# wild-map-id {G.map_value(grass_map)}",
+            f"# wild-allowed {' '.join(str(G.const(c)) for c in wild_species(grass_map))}",
+            f"# wild-trainer-bit {G.const('BATTLE_TYPE_TRAINER')}"]
     mons = G.sym("gBattleMons")
     size = G.const("sizeof(struct BattlePokemon)")
     sp = G.const("offsetof(struct BattlePokemon, species)")

@@ -30,7 +30,9 @@
 //   guard KEYS COND   whenever COND holds before a frame, tap KEYS (4 on, 4
 //                     off) until it doesn't (at most 600 frames); prints
 //                     "GUARD line frame" each time. E.g. back out of a debug
-//                     menu that random presses opened. "guard clear": off.
+//                     menu that random presses opened. Up to 16 guards: each
+//                     tap uses the first one (in order given) that holds.
+//                     "guard clear": all off.
 //   watch LABEL ADDR  from now on, print "WATCH LABEL frame value" whenever
 //                     the value at ADDR changes (and once at the start);
 //                     "watch clear" stops them all. E.g. the portrait shown,
@@ -45,10 +47,12 @@
 //                     (coverage.py turns them into script names).
 //   trigger ADDR VALUE DELAY COND
 //                     from now on, each time COND starts holding, write VALUE
-//                     to ADDR (4 bytes; *PTR+OFF allowed) DELAY frames later
+//                     to ADDR (*PTR+OFF and :size allowed; |MASK sets those
+//                     bits and keeps the rest, for a flag) DELAY frames later
 //                     and print "TRIGGER line frame". E.g. give the player's
 //                     side careful AI settings at the start of every battle.
 //                     "trigger clear" removes them all.
+//   mark LABEL        print "MARK LABEL frame" (where something starts, for a judge)
 //   pal               print the 16 sprite palettes (debugging)
 //   oam               print the first 24 sprites (debugging)
 //   tiles FIRST N     print N sprite tiles from FIRST (debugging)
@@ -116,8 +120,10 @@ struct Cond
 };
 static struct Cond sIdle[MAX_IDLE];
 static int sIdleCount;
-static struct Cond sGuard;           // "guard": keys pressed while it holds
-static int sGuardKeys;
+// "guard": keys pressed while a condition holds; several, the first that holds wins
+#define MAX_GUARDS 16
+static struct { struct Cond cond; int keys; } sGuards[MAX_GUARDS];
+static int sGuardCount;
 static int condHolds(const struct Cond *c);
 
 // "watch": values printed whenever they change
@@ -136,7 +142,7 @@ static void sampleFrame(void);
 
 // "trigger": a poke a few frames after a condition starts holding
 #define MAX_TRIGGERS 8
-static struct { struct Term addr; uint32_t value; int delay; struct Cond cond; int held; int countdown; } sTrig[MAX_TRIGGERS];
+static struct { struct Term addr; uint32_t value; int orBits; int delay; struct Cond cond; int held; int countdown; } sTrig[MAX_TRIGGERS];
 static int sTrigCount;
 static void pokeTerm(const struct Term *t, uint32_t v);
 
@@ -274,12 +280,25 @@ static void watchStuck(int keys)
 }
 
 // "guard": tap the guard keys until its condition stops holding
+static int guardKeys(void)
+{
+    for (int g = 0; g < sGuardCount; g++)
+        if (condHolds(&sGuards[g].cond))
+            return sGuards[g].keys;
+    return -1;
+}
+
 static void escapeGuard(void)
 {
     printf("GUARD %d %lu\n", sLine, sFrame);
-    for (int i = 0; i < 600 && condHolds(&sGuard); i++)
+    int keys = guardKeys();
+    for (int i = 0; i < 600 && keys >= 0; i++)
     {
-        core->setKeys(core, i % 8 < 4 ? sGuardKeys : 0);
+        if (i % 8 == 0)
+            keys = guardKeys();   // a new tap: whichever guard holds now
+        if (keys < 0)
+            break;
+        core->setKeys(core, i % 8 < 4 ? keys : 0);
         core->runFrame(core);
         sFrame++;
         sampleFrame();
@@ -328,7 +347,10 @@ static void sampleFrame(void)
         sTrig[i].held = now;
         if (sTrig[i].countdown && --sTrig[i].countdown == 0)
         {
-            pokeTerm(&sTrig[i].addr, sTrig[i].value);
+            uint32_t v = sTrig[i].value;
+            if (sTrig[i].orBits)   // "|mask": set those bits, keep the rest (a flag)
+                v |= readAddr(&sTrig[i].addr);
+            pokeTerm(&sTrig[i].addr, v);
             printf("TRIGGER %d %lu\n", i, sFrame);
         }
     }
@@ -353,7 +375,7 @@ static void frames(int keys, int n)
     core->setKeys(core, keys);
     for (int i = 0; i < n; i++)
     {
-        if (sGuardKeys && condHolds(&sGuard))
+        if (sGuardCount && guardKeys() >= 0)
         {
             escapeGuard();
             core->setKeys(core, keys);
@@ -506,12 +528,15 @@ int main(int argc, char **argv)
                 fprintf(stderr, "rr_run: line %d: bad condition\n", sLine);
             else
             {
+                // count real frames: a guard pressing its keys inside frames() runs many
+                unsigned long start = sFrame, nextShot = sAutoShot;
                 while (!condHolds(&c) && waited < max)
                 {
                     frames(waited % 8 < 2 ? keys : 0, 1);
-                    waited++;
-                    if (sAutoShot && waited % sAutoShot == 0)
+                    waited = (int)(sFrame - start);
+                    if (sAutoShot && (unsigned long)waited >= nextShot)
                     {
+                        nextShot = waited + sAutoShot;
                         char p[1024];
                         snprintf(sLastShot, sizeof sLastShot, "%s%04d", sAutoPrefix, ++sAutoCount);
                         snprintf(p, sizeof p, "%s/%s.png", argv[3], sLastShot);
@@ -565,11 +590,11 @@ int main(int argc, char **argv)
                 snprintf(sAutoPrefix, sizeof sAutoPrefix, "%s", tok[2]);
         }
         else if (!strcmp(cmd, "guard") && !strcmp(a, "clear"))
-            sGuardKeys = 0;
-        else if (!strcmp(cmd, "guard") && ntok >= 5)
+            sGuardCount = 0;
+        else if (!strcmp(cmd, "guard") && ntok >= 5 && sGuardCount < MAX_GUARDS)
         {
-            if (parseCond(tok + 2, ntok - 2, &sGuard))
-                sGuardKeys = keymask(a);
+            if (parseCond(tok + 2, ntok - 2, &sGuards[sGuardCount].cond))
+                sGuards[sGuardCount++].keys = keymask(a);
             else
                 fprintf(stderr, "rr_run: line %d: bad condition\n", sLine);
         }
@@ -613,13 +638,16 @@ int main(int argc, char **argv)
             if (parseAddr(a, &sCover[sCoverCount]))
                 sCoverCount++;
         }
+        else if (!strcmp(cmd, "mark"))
+            printf("MARK %s %lu\n", a, sFrame);
         else if (!strcmp(cmd, "trigger") && !strcmp(a, "clear"))
             sTrigCount = 0;
         else if (!strcmp(cmd, "trigger") && ntok >= 7 && sTrigCount < MAX_TRIGGERS)
         {
             if (parseAddr(tok[1], &sTrig[sTrigCount].addr) && parseCond(tok + 4, ntok - 4, &sTrig[sTrigCount].cond))
             {
-                sTrig[sTrigCount].value = strtoul(tok[2], NULL, 0);
+                sTrig[sTrigCount].orBits = tok[2][0] == '|';
+                sTrig[sTrigCount].value = strtoul(tok[2] + sTrig[sTrigCount].orBits, NULL, 0);
                 sTrig[sTrigCount].delay = atoi(tok[3]);
                 sTrig[sTrigCount].held = condHolds(&sTrig[sTrigCount].cond);
                 sTrig[sTrigCount].countdown = 0;

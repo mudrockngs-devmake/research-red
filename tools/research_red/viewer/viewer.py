@@ -12,10 +12,14 @@
                                    play a sprite sheet's frames (game speed: 133 ms a step)
           --map MAP_X --at 9,7     the sprite (frame 0) on that map at that square, at the
                                    size it is in the game (240x160 screen)
+          --wait MINUTES           wait for the reply to THIS question and print it (exit 0),
+                                   or exit 2 if none came in time: a test run (or Claude)
+                                   can stop mid-play, ask, and carry on with the answer
   python3 tools/research_red/viewer/viewer.py board MAP_X [--title "Where should Ivy stand?"]
         open the scene board for a map: drag people, click to turn them,
         add people from the list, then "Send to Claude"
   python3 tools/research_red/viewer/viewer.py answers         # what came back (board sends, notes)
+  python3 tools/research_red/viewer/viewer.py answer STAMP    # the reply to one question (exit 2 if none yet)
   python3 tools/research_red/viewer/viewer.py stop
 
 The stream shows every new picture from the art tools (art\\toolkit\\) and
@@ -354,6 +358,30 @@ class Handler(BaseHTTPRequestHandler):
         self.send(200, {"ok": True, "saved": os.path.basename(path)})
 
 
+def find_answer(stamp):
+    """The newest reply to the question shown at `stamp`, or None."""
+    for f in sorted(os.listdir(ANSWERS), reverse=True):
+        if f.endswith(".json"):
+            try:
+                data = json.load(open(os.path.join(ANSWERS, f)))
+            except (OSError, ValueError):
+                continue
+            if data.get("ask") == stamp:
+                return data
+    return None
+
+
+def wait_answer(stamp, seconds):
+    """Check for the reply every 2 seconds, up to `seconds`."""
+    end = time.time() + seconds
+    while time.time() < end:
+        got = find_answer(stamp)
+        if got:
+            return got
+        time.sleep(2)
+    return None
+
+
 def serve():
     srv = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
     threading.Thread(target=keep_indexing, daemon=True).start()
@@ -446,7 +474,19 @@ def main(argv):
         json.dump(meta, open(os.path.join(SHOW, stamp + ".json"), "w"))
         if opts.get("open", "yes") != "no":
             open_page("/?ask=" + stamp)
-        print("shown:", meta["title"])
+        print("shown:", meta["title"], "(question %s)" % stamp)
+        if opts.get("wait"):
+            got = wait_answer(stamp, float(opts["wait"]) * 60)
+            if not got:
+                print("no answer within %s minutes (later: viewer.py answer %s)" % (opts["wait"], stamp))
+                return 2
+            print(json.dumps(got, indent=2))
+    elif cmd == "answer":
+        got = find_answer(rest[0])
+        if not got:
+            print("no answer yet to", rest[0])
+            return 2
+        print(json.dumps(got, indent=2))
     elif cmd == "board":
         start()
         title = urllib.parse.quote(opts.get("title", ""))
