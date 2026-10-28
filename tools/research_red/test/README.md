@@ -7,14 +7,15 @@ How to use it for Research Red: [docs/TESTING.md](../../../docs/TESTING.md).
 ## Two halves
 | Reusable (any pokefirered / pokeemerald-style decomp) | Research Red only |
 |---|---|
-| `rr_run.c`: the headless emulator runner (C, links libmgba) | `smoke.py`: our scenes, the debug-menu skips, story variable `VAR_0x40FE`, where reports go |
+| `rr_run.c`: the headless emulator runner (C, links libmgba) | `smoke.py`: our scenes, the debug-menu skips, story variable `VAR_0x40FE`, where reports go; `monkey.py`: random presses from our debug-skip starting points |
 | `setup_mgba.sh`: downloads mGBA + CMake and builds `rr_run` | |
 | `tester.py`: building blocks, runs scenes in parallel, judges results, writes the report | |
 | `game_memory.py`: names (flags, vars, maps, team size) -> memory addresses | |
 | `contact_sheet.py` (+ `../rrpng.py`): screenshot grids | |
+| `compare.py`: before/after pictures against an earlier run (needs Pillow; plug it in with `Suite(after_run=compare.compare_run)`; finding the last tag's runs relies on folder names `<date>_<version>_<commit>`) | |
 
 ## Reusing it for another hack
-1. Copy the five reusable files above (and `rrpng.py`) into the new project, keeping
+1. Copy the reusable files above (and `rrpng.py`) into the new project, keeping
    `rrpng.py` one folder above the others.
 2. Run `setup_mgba.sh` once (skip it if `~/romhacks/_tools/rr_run` already exists:
    one runner serves every project).

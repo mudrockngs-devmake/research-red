@@ -19,7 +19,7 @@ import subprocess
 import tempfile
 
 HEADERS = ["global.h", "main.h", "constants/flags.h", "constants/vars.h",
-           "constants/map_groups.h", "constants/species.h"]
+           "constants/map_groups.h", "constants/species.h", "task.h"]
 OFFSETS = {  # name -> C expression
     "sb1_location": "offsetof(struct SaveBlock1, location)",
     "sb1_flags": "offsetof(struct SaveBlock1, flags)",

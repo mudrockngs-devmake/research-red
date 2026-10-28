@@ -40,6 +40,18 @@ python3 tools/research_red/test/compare.py RUN_FOLDER --show lab        # before
 python3 tools/research_red/test/smoke.py --no-compare                   # skip it
 ```
 
+## Random-button stress test (`monkey.py`)
+From 6 starting points (bedroom, Pallet after the lab, Route 22, lunch, Pewter after Brock, a wild battle) it presses random buttons for a while: walking, A/B, the Start menu, the bag, the Pokédex, battles, saving, renaming. Same checks as the smoke tests (error screen, frozen screen, black end), same report. On demand, not on every build. Cheap: 10 game minutes from every start take about half a minute.
+- **Repeatable**: the presses come from a seed (printed in the report and the folder name). The same seed on the same build presses the very same buttons, so a crash it finds can be replayed: `monkey.py --seed 1234 pewter`.
+- **No debug menu**: if random presses open it, the runner backs out with B right away (`guard` in rr_run), so no debug warps or gifts.
+```
+python3 tools/research_red/test/monkey.py                          # every start, 10 game minutes, a new seed
+python3 tools/research_red/test/monkey.py --seeds 5 --minutes 30   # a bigger hunt (about 6 minutes)
+python3 tools/research_red/test/monkey.py --seed 1234 pewter       # replay one
+```
+Results: `E:\Workspace\romhacks\research-red\test-runs\monkey\<date>_<version>_<commit>_seed<N>\` (a screenshot every 10 seconds).
+First hunt (2026-10-27, v0.0.19 build): 30 runs x 30 game minutes, nothing broke.
+
 ## What's covered
 | Scenario | How it gets there |
 |---|---|
@@ -146,4 +158,5 @@ After changing `rr_run.c`, rebuild it with `setup_mgba.sh` (it skips the downloa
 | `tools/research_red/test/game_memory.py` | Names (story step, flags, maps, team size) -> memory addresses |
 | `tools/research_red/test/README.md` | How the pieces fit, and how to reuse the tester for another hack |
 | `tools/research_red/test/contact_sheet.py` | Reads screenshots, makes the grids |
+| `tools/research_red/test/monkey.py` | The random-button stress test (uses smoke.py's intro and debug skips) |
 | `tools/research_red/test/compare.py` | Before/after pictures against the last tagged build's runs (needs Pillow) |

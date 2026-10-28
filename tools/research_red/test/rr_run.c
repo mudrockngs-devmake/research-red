@@ -27,6 +27,10 @@
 //   idle COND         the screen may legitimately sit still while COND is
 //                     true (e.g. the player is free on the map); each idle
 //                     line adds one such case. "idle clear" forgets them all.
+//   guard KEYS COND   whenever COND holds before a frame, tap KEYS (4 on, 4
+//                     off) until it doesn't (at most 600 frames); prints
+//                     "GUARD line frame" each time. E.g. back out of a debug
+//                     menu that random presses opened. "guard clear": off.
 //   pal               print the 16 sprite palettes (debugging)
 //   oam               print the first 24 sprites (debugging)
 //   tiles FIRST N     print N sprite tiles from FIRST (debugging)
@@ -77,7 +81,7 @@ static int sAutoShot;                // "until" screenshot interval (0 = off)
 static char sAutoPrefix[64] = "s";
 static int sAutoCount;
 
-#define MAX_TERMS 10
+#define MAX_TERMS 64
 #define MAX_IDLE 8
 struct Term
 {
@@ -94,6 +98,9 @@ struct Cond
 };
 static struct Cond sIdle[MAX_IDLE];
 static int sIdleCount;
+static struct Cond sGuard;           // "guard": keys pressed while it holds
+static int sGuardKeys;
+static int condHolds(const struct Cond *c);
 
 static int keymask(const char *s)
 {
@@ -228,11 +235,34 @@ static void watchStuck(int keys)
     sStuckReported = 1;
 }
 
+// "guard": tap the guard keys until its condition stops holding
+static void escapeGuard(void)
+{
+    printf("GUARD %d %lu\n", sLine, sFrame);
+    for (int i = 0; i < 600 && condHolds(&sGuard); i++)
+    {
+        core->setKeys(core, i % 8 < 4 ? sGuardKeys : 0);
+        core->runFrame(core);
+        sFrame++;
+    }
+    for (int i = 0; i < 8; i++)   // let go before the script's keys come back
+    {
+        core->setKeys(core, 0);
+        core->runFrame(core);
+        sFrame++;
+    }
+}
+
 static void frames(int keys, int n)
 {
     core->setKeys(core, keys);
     for (int i = 0; i < n; i++)
     {
+        if (sGuardKeys && condHolds(&sGuard))
+        {
+            escapeGuard();
+            core->setKeys(core, keys);
+        }
         core->runFrame(core);
         sFrame++;
         watchStuck(keys);
@@ -304,13 +334,13 @@ int main(int argc, char **argv)
     FILE *s = fopen(argv[2], "r");
     if (!s)
         return 4;
-    char line[1024];
+    char line[4096];
     while (fgets(line, sizeof line, s))
     {
         sLine++;
-        char *tok[32];
+        char *tok[256];
         int ntok = 0;
-        for (char *t = strtok(line, " \t\r\n"); t && ntok < 32; t = strtok(NULL, " \t\r\n"))
+        for (char *t = strtok(line, " \t\r\n"); t && ntok < 256; t = strtok(NULL, " \t\r\n"))
             tok[ntok++] = t;
         if (!ntok || tok[0][0] == '#')
             continue;
@@ -430,6 +460,15 @@ int main(int argc, char **argv)
             sAutoShot = atoi(a);
             if (ntok > 2)
                 snprintf(sAutoPrefix, sizeof sAutoPrefix, "%s", tok[2]);
+        }
+        else if (!strcmp(cmd, "guard") && !strcmp(a, "clear"))
+            sGuardKeys = 0;
+        else if (!strcmp(cmd, "guard") && ntok >= 5)
+        {
+            if (parseCond(tok + 2, ntok - 2, &sGuard))
+                sGuardKeys = keymask(a);
+            else
+                fprintf(stderr, "rr_run: line %d: bad condition\n", sLine);
         }
         else if (!strcmp(cmd, "stuck"))
             sStuckLimit = atoi(a);
