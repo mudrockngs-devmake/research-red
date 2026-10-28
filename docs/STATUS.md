@@ -3,19 +3,24 @@
 The one-page "where are we right now". **Read it at the start of every session;
 update it at the end of every session** (and whenever a build goes out).
 
-_Last updated: 2026-10-24, end of day (two lanes set up: Art Kit gate + tracker, viewer and hub upgrades; v0.0.19 still in playtest)_
+_Last updated: 2026-10-27 (tester upgrades #18 finished: picture comparison, random-button test, battle sims, tests on GitHub, engine tests green; v0.0.19 still in playtest)_
 
 Session costs 2026-10-24 (`session-cost`, readings may lag): 08:42 session (Art Kit rounds 1-2) $33.74; 12:05 session
 (two lanes, viewer, hub) $9.54; day total $43.28. Log them in the next round's NOTES.md when archiving the playtest.
 
-## Tester upgrades run (2026-10-27, in progress; owner answers in ROADMAP.md "Tester upgrades")
+## Tester upgrades run (2026-10-27, done; owner answers in ROADMAP.md "Tester upgrades")
 No game changes. Commit after each item.
 - [x] 1 before/after picture comparison (`compare.py`, after every smoke run; unchanged build: 0 of 61 differ)
 - [x] 2 random-button stress test (`monkey.py`; first hunt 30 x 30 game minutes: nothing broke)
-- [ ] 3 AI-vs-AI battle sims -> docs/BALANCE.md
-- [ ] 4 tests on GitHub (quick set per push, full set on tags)
+- [x] 3 AI-vs-AI battle sims (`balance.py`, real game via the emulator; BALANCE.md "Simulated fights"): lab 80%, Route 22 100%, Pewter rematch 0% (Lv 12 debug team, probably too low a guess), Brock 88%
+- [x] 4 tests on GitHub (`.github/workflows/smoke-tests.yml`: 10 scenes per push, all on tags)
 - [x] 5 the AI Explosion engine test timeout (our catch-up EXP; caps off in that test; `make check` 4585 passed, 0 failed)
-- [ ] final: docs (TESTING.md, test README), rr_check, smoke run, close #18
+- [x] final: docs (TESTING.md, test README), rr_check clean, smoke 61/61 (`test-runs/2026-10-27_2155_v0.0.19_c4ed68ca7-dirty`, the 3 WARNs are old), #18 closed
+
+For the owner: the Pewter rematch (Elm and Jenny, Lv 14-15) beats the Lv 12 debug team every time. What level is a
+typical player after Brock (cap 21)? Raise debug 10's team and rerun `balance.py pewter`, or tune the fight. Side finding:
+in AI-vs-AI battles (test mode, the lab's watched Oak battle) the player's side plays almost at random (no partner = no
+AI settings); harmless so far because those sides are much stronger. The sims work around it.
 
 ## Two lanes + viewer and hub run (2026-10-24, done; owner answers in ROADMAP.md "Two lanes")
 No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
@@ -57,7 +62,7 @@ the game; `tools/research_red/art/art_gate.py`), page docs/ART_TRACKER.md. How t
 ## Next up: v0.0.19
 - Owner wants all remaining demo items in v0.0.19, portraits (#76) first, using the upgraded tester. New issues from the playtest: #76-#95.
 - Plan: [ROADMAP.md](ROADMAP.md) "Next build: v0.0.19" (optional new background art #74 round 2; title screen mock-ups #12, rematch Megas and other Gym leaders #52, Brock watch scene #69, banter cutscene #5/#4, ambient Pokémon #64, Forest exchanges #9, Pokédex Area tab #20, proper case #11, Cruller, art items).
-- Test tools (#18): done: route planner, memory pokes, `T.ready()` (wait-until-ready), a fake clock in rr_run (runs repeatable at any hour), the engine's own tests (`make check`: 4584 pass, 1 known upstream failure, docs/TESTING.md). Left: the AI Explosion test timeout, the issue's "later" ideas. Then a smaller patch (#17).
+- Test tools (#18): all done (2026-10-27), see docs/TESTING.md: route planner, memory pokes, `T.ready()`, fake clock, engine tests (`make check` all green), before/after pictures, random-button test, battle sims, tests on GitHub. Next tooling: a smaller patch (#17).
 
 ## NEXT SESSION START HERE: v0.0.19 is out for the owner's playtest; work is in two lanes now
 Game-lane sessions build on the art already in the game; Art Kit sessions improve the tools and drafts (#104 is the
