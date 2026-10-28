@@ -17,10 +17,11 @@ No game changes. Commit after each item.
 - [x] 5 the AI Explosion engine test timeout (our catch-up EXP; caps off in that test; `make check` 4585 passed, 0 failed)
 - [x] final: docs (TESTING.md, test README), rr_check clean, smoke 61/61 (`test-runs/2026-10-27_2155_v0.0.19_c4ed68ca7-dirty`, the 3 WARNs are old), #18 closed
 
-For the owner: the Pewter rematch (Elm and Jenny, Lv 14-15) beats the Lv 12 debug team every time. What level is a
-typical player after Brock (cap 21)? Raise debug 10's team and rerun `balance.py pewter`, or tune the fight. Side finding:
-in AI-vs-AI battles (test mode, the lab's watched Oak battle) the player's side plays almost at random (no partner = no
-AI settings); harmless so far because those sides are much stronger. The sims work around it.
+Owner (2026-10-27): with caps on, a player is at the cap (14) for Brock and still there right after. Debug 10's team is
+now Lv 14 (debug only). Sims at Lv 14: Brock won 94% (easy side), **Pewter rematch won 6%**: Elm and Jenny (Lv 14-15)
+beat a capped team almost every time. Decide: tune the rematch (levels, moves) or keep it as a hard optional fight.
+Side finding: in AI-vs-AI battles (test mode, the lab's watched Oak battle) the player's side plays almost at random
+(no partner = no AI settings); harmless so far because those sides are much stronger. The sims work around it.
 
 ## Two lanes + viewer and hub run (2026-10-24, done; owner answers in ROADMAP.md "Two lanes")
 No game changes in this run (v0.0.19 stays in playtest). Commit after each item.

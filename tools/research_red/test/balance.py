@@ -64,11 +64,11 @@ FIGHTS = {
     "pewter": (lambda: debug_script(smoke.SCRIPT_AFTER_BROCK) + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20"],
                lambda: ["press A", "wait 30"],
                "Pewter: Elm and Jenny's rematch outside the Pokémon Center",
-               "debug 10 team, all Lv 12 (1 badge; probably low: the cap is 21 after Brock)"),
+               "debug 10 team, all Lv 14 (the cap before Brock; 1 badge)"),
     "brock": (brock_setup,
               lambda: ["press A", "wait 30"],
               "Pewter Gym: Brock",
-              "debug 10 team, all Lv 12 (no badge, cap 14)"),
+              "debug 10 team, all Lv 14 (no badge, at the cap)"),
 }
 
 
