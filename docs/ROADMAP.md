@@ -161,3 +161,8 @@ No game changes, no version bump. Checklist in STATUS.md.
 3. AI-vs-AI battle sims: the engine's battle tester plays key fights (lab, Route 22, Brock) ~50 times with a guessed typical player team (owner corrects later); win rates and turns into docs/BALANCE.md.
 4. GitHub: a quick set (~10 scenes) on every push, the full set on `v*` tags; screenshots attached to the run.
 5. The upstream "AI Explosion" engine test timeout: at most ~30 minutes; if upstream's fault, mark it a known skip so `make check` is green.
+
+## Working setup (planned with the owner 2026-10-28, all suggestions approved)
+Research Red now: 1 glossary (names, voice-typing mix-ups, our terms); 2 game design document `docs/DESIGN.md` (one section per system, the decision and its date; issues stay for the work); 3 notes intake skill (a numbered "what I heard" read-back before anything is filed); 4 project skills for test builds, playtest intake, new scenes; 5 short STATUS (finished runs move to `docs/history/`); 6 `rr_check` before every commit.
+Later, in a claude-setup session: 7 automatic session start (hook); 8 project template with all of the above; 9 a "how we work" handbook every project points to; 10 the notes intake skill for every project.
+A: keep committing straight to master (no branches / pull requests yet; revisit when the owner wants to review code). B: 1-6 now, 7-10 in claude-setup.

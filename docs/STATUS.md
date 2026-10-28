@@ -8,6 +8,15 @@ _Last updated: 2026-10-27 (tester upgrades #18 finished: picture comparison, ran
 Session costs 2026-10-24 (`session-cost`, readings may lag): 08:42 session (Art Kit rounds 1-2) $33.74; 12:05 session
 (two lanes, viewer, hub) $9.54; day total $43.28. Log them in the next round's NOTES.md when archiving the playtest.
 
+## Working setup run (2026-10-28, in progress; owner answers in ROADMAP.md "Working setup")
+- [ ] 5 short STATUS, history in docs/history/
+- [ ] 1 glossary docs/GLOSSARY.md
+- [ ] 2 game design document docs/DESIGN.md
+- [ ] 3 notes intake skill (.claude/skills/owner-notes)
+- [ ] 4 project skills: test build, playtest intake, new scene
+- [ ] 6 rr_check before every commit (git hook)
+- [ ] later in claude-setup: 7 session-start hook, 8 template, 9 handbook, 10 global notes intake
+
 ## Tester upgrades run (2026-10-27, done; owner answers in ROADMAP.md "Tester upgrades")
 No game changes. Commit after each item.
 - [x] 1 before/after picture comparison (`compare.py`, after every smoke run; unchanged build: 0 of 61 differ)
