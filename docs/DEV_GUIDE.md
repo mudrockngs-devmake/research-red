@@ -51,6 +51,8 @@ These limits are the hardware's and are kept so the patch works on every emulato
 6. After the owner's playtest: issues for what they found, `tools/research_red/rr_archive_test.sh <name>`, fill in its `NOTES.md` (include the cost from `session-cost`) ([PLAYTESTING.md](PLAYTESTING.md))
 7. Update [STATUS.md](STATUS.md)
 
+**Check before every commit:** `.githooks/pre-commit` runs `rr_check.py` (about 2 seconds) and stops a commit that would fail it. Turn it on once per clone: `git config core.hooksPath .githooks`. On GitHub, the smoke tests run after every push (docs/TESTING.md).
+
 ## Generated files
 Edit the source, run the tool, commit both. `rr_check.py` fails if a generated file is stale.
 - `graphics/research_red/portraits.txt` -> `src/data/research_red/portraits.h` (`build_portraits.py`)

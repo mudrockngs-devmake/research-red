@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Research Red: before every commit, run the project's quick check (about 2 seconds):
+# stale generated files, ALL-CAPS game text, the art gate, docs registries...
+# Turned on per clone with: git config core.hooksPath .githooks  (docs/DEV_GUIDE.md)
+cd "$(git rev-parse --show-toplevel)" || exit 0
+if ! out=$(python3 tools/research_red/rr_check.py 2>&1); then
+    echo "$out"
+    echo
+    echo "Commit stopped: rr_check found problems (above). Fix them (generated files: rerun"
+    echo "their tool), then commit again. docs/DEV_GUIDE.md explains each check."
+    exit 1
+fi
