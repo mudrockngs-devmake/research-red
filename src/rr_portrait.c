@@ -28,8 +28,6 @@
 #include "palette.h"
 #include "util.h"
 #include "event_object_movement.h"
-#include "battle.h"
-#include "battle_interface.h"
 #include "constants/flags.h"
 #include "constants/songs.h"
 #include "sound.h"
@@ -858,45 +856,18 @@ void RR_ShowDexStamp(u32 dexNum, s16 x, s16 y)
 }
 
 // ---------------------------------------------------------------------------
-// In battle (#95): when a page of the battle message is spoken by someone with
-// a portrait ("Ivy: That's the best kind, Elm."), their portrait stands above
-// the message box until the page changes: you and Ivy on the left, over your
-// Pokémon; anyone else (Elm, Jenny, Oak, Daisy...) on the right, facing you.
-// Pairs who fight as one trainer share one battle picture (#107), so the
-// portrait shows which of them is talking. While the other side's portrait is
-// up it stands where your HP boxes are, so those hide until it goes (only the
-// ones that were showing come back). Called every frame from BattleMainCB2.
+// In battle (#95): when a page of the battle message is spoken by the player
+// or Ivy ("Ivy: That's the best kind, Elm."), their portrait stands above the
+// message box, over your Pokémon, until the page changes. The other side's
+// lines are FireRed's own: their battle picture slides in (Elm and Jenny's
+// picture of the pair, #107) and the line starts with who's talking. Called every frame from
+// BattleMainCB2.
 // ---------------------------------------------------------------------------
-#define BATTLE_PORTRAIT_X       40
-#define BATTLE_PORTRAIT_X_OTHER 200
-#define BATTLE_PORTRAIT_Y       80   // bottom edge on the message box (y 112)
+#define BATTLE_PORTRAIT_X 40
+#define BATTLE_PORTRAIT_Y 80   // bottom edge on the message box (y 112)
 
 static EWRAM_DATA u8 sBattleSpeakerIdPlus1 = 0;   // sprite id + 1 (0: none)
-static EWRAM_DATA u8 sBattleSpeaker = 0;  // who has the portrait (only read while one is up)
-static EWRAM_DATA u8 sHiddenHealthboxes = 0;  // battlers whose HP box the portrait hid (bits)
-
-// Hide (or bring back) your side's HP boxes under the other side's portrait
-static void HideOurHealthboxes(bool32 hide)
-{
-    u32 battler;
-
-    for (battler = 0; battler < gBattlersCount; battler++)
-    {
-        if (!IsOnPlayerSide(battler))
-            continue;
-        if (hide && !gSprites[gHealthboxSpriteIds[battler]].invisible)
-        {
-            SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
-            sHiddenHealthboxes |= 1u << battler;
-        }
-        else if (!hide && (sHiddenHealthboxes & (1u << battler)))
-        {
-            SetHealthboxSpriteVisible(gHealthboxSpriteIds[battler]);
-        }
-    }
-    if (!hide)
-        sHiddenHealthboxes = 0;
-}
+static EWRAM_DATA u8 sBattleSpeaker = RR_LINE_NARRATION;
 
 static bool32 IsBattlePortraitUp(void)
 {
@@ -907,13 +878,9 @@ static bool32 IsBattlePortraitUp(void)
 
 void RR_UpdateBattleSpeakerPortrait(const u8 *text)
 {
-    static const u8 sIvy[] = _("Ivy");
     const u8 *cur, *page;
-    const u32 *gfx;
-    const u16 *pal;
     u8 state;
-    u32 who = SPEAKER_NONE;
-    bool32 ourSide;
+    u32 who = RR_LINE_NARRATION;
 
     if (RR_GetWindowPrinterPos(0, &cur, &state) && cur > text) // window 0: the battle message box
     {
@@ -922,36 +889,25 @@ void RR_UpdateBattleSpeakerPortrait(const u8 *text)
             page--; // waiting at a page break: that page is still on screen
         while (page > text && page[-1] != CHAR_PROMPT_CLEAR)
             page--;
-        who = GetSpeaker(page);
+        who = RR_GetLineSpeaker(page);
+        if (who != RR_LINE_PLAYER && who != RR_LINE_IVY)
+            who = RR_LINE_NARRATION;
     }
     if (!IsBattlePortraitUp())
-    {
-        // gone without us (the battle ended and its sprites were freed): the
-        // HP boxes went with it, nothing to bring back
-        sBattleSpeaker = SPEAKER_NONE;
-        sHiddenHealthboxes = 0;
-    }
+        sBattleSpeaker = RR_LINE_NARRATION;
     if (who == sBattleSpeaker)
         return;
     if (IsBattlePortraitUp())
-    {
         RR_DestroyStandalonePortrait(0, sBattleSpeakerIdPlus1 - 1);
-        HideOurHealthboxes(FALSE);
-    }
     sBattleSpeakerIdPlus1 = 0;
-    sBattleSpeaker = SPEAKER_NONE;
-    if (who == SPEAKER_NONE || !GetSpeakerPicture(who, &gfx, &pal))
+    sBattleSpeaker = RR_LINE_NARRATION;
+    if (who == RR_LINE_NARRATION)
         return;
-    ourSide = who == SPEAKER_PLAYER || who == FindSpeaker(sIvy);
-    sBattleSpeakerIdPlus1 = CreateStandalone(0, gfx, pal, 64 * 64 / 2,
-                                             ourSide ? BATTLE_PORTRAIT_X : BATTLE_PORTRAIT_X_OTHER,
-                                             BATTLE_PORTRAIT_Y, !ourSide) + 1;
+    sBattleSpeakerIdPlus1 = RR_CreateStandalonePortrait(0, who, BATTLE_PORTRAIT_X, BATTLE_PORTRAIT_Y, FALSE) + 1;
     if (sBattleSpeakerIdPlus1 - 1 < MAX_SPRITES)
     {
         sBattleSpeaker = who;
         RR_StandalonePortraitHop(0, sBattleSpeakerIdPlus1 - 1);
-        if (!ourSide)
-            HideOurHealthboxes(TRUE);
     }
     else
         sBattleSpeakerIdPlus1 = 0;
