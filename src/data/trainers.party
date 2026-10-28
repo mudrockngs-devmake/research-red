@@ -15058,6 +15058,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 /* Research Red (#53): Oak + Daisy rematch in Oak's Lab after the Route 22
    6v6. One trainer with one team of six (#107): Oak's and Daisy's Pokemon
    take turns (in doubles they lead together), the picture shows them both.
+   Oak's third is Nidoran M, not the lab's Slowpoke, who never battles (#121).
    Species, levels and moves here are placeholders: the team is set from your
    badges and lab pick when the battle starts (src/rr_rematch.c).
    No money, 1.5x EXP. */
@@ -15087,7 +15088,7 @@ Clefairy
 Level: 13
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 
-Slowpoke
+Nidoran M
 Level: 13
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 

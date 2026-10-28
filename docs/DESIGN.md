@@ -57,7 +57,7 @@ How to use it:
 - After the cutscenes, win or lose, Oak offers **one optional fight** for some EXP, available **any time until Route 22** ("if you'd like to fight me with these, any time is fine"). His team: two Lv 5 Pokémon.
 - Levels on screen add up: Elm and Jenny fight you at Lv 5, Oak's leftover starters at Lv 6 vs Oak's Lv 5s, the gag at Lv 7 vs Oak's Lv 50s.
 - After Route 22, Oak and Daisy become the optional scaling EXP fights (section 5). The first one is **Lv 10**; the scaling per badge is decided after Brock, probably between Brock's and Misty's caps (owner 2026-10-28, #105).
-- Watched fights show both Elm and Jenny (#105). The lab's Slowpoke is Oak's newest addition (introduced in the video call), never battles and stays a Slowpoke (#121); later it sleeps in a little bed on the table (#122).
+- Watched fights show both Elm and Jenny (#105). The lab's Slowpoke is Oak's newest addition (introduced in the video call), never battles and stays a Slowpoke (#121): Nidoran♂ takes its place on Oak's rematch team, a Nidoking from 4 badges (owner 2026-10-28); later it sleeps in a little bed on the table (#122).
 - Idea (#126): Ivy asks if you'd recommend her starter; then Elm and Jenny pick so nobody has the same Pokémon.
 - All six starters are 50% female (#123). The Viridian old man makes sure the Route 22 point is always reached first.
 

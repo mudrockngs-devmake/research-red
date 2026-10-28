@@ -28,6 +28,8 @@
 #include "palette.h"
 #include "util.h"
 #include "event_object_movement.h"
+#include "battle.h"
+#include "battle_interface.h"
 #include "constants/flags.h"
 #include "constants/songs.h"
 #include "sound.h"
@@ -861,8 +863,9 @@ void RR_ShowDexStamp(u32 dexNum, s16 x, s16 y)
 // the message box until the page changes: you and Ivy on the left, over your
 // Pokémon; anyone else (Elm, Jenny, Oak, Daisy...) on the right, facing you.
 // Pairs who fight as one trainer share one battle picture (#107), so the
-// portrait shows which of them is talking. Called every frame from
-// BattleMainCB2.
+// portrait shows which of them is talking. While the other side's portrait is
+// up it stands where your HP boxes are, so those hide until it goes (only the
+// ones that were showing come back). Called every frame from BattleMainCB2.
 // ---------------------------------------------------------------------------
 #define BATTLE_PORTRAIT_X       40
 #define BATTLE_PORTRAIT_X_OTHER 200
@@ -870,6 +873,30 @@ void RR_ShowDexStamp(u32 dexNum, s16 x, s16 y)
 
 static EWRAM_DATA u8 sBattleSpeakerIdPlus1 = 0;   // sprite id + 1 (0: none)
 static EWRAM_DATA u8 sBattleSpeaker = 0;  // who has the portrait (only read while one is up)
+static EWRAM_DATA u8 sHiddenHealthboxes = 0;  // battlers whose HP box the portrait hid (bits)
+
+// Hide (or bring back) your side's HP boxes under the other side's portrait
+static void HideOurHealthboxes(bool32 hide)
+{
+    u32 battler;
+
+    for (battler = 0; battler < gBattlersCount; battler++)
+    {
+        if (!IsOnPlayerSide(battler))
+            continue;
+        if (hide && !gSprites[gHealthboxSpriteIds[battler]].invisible)
+        {
+            SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
+            sHiddenHealthboxes |= 1u << battler;
+        }
+        else if (!hide && (sHiddenHealthboxes & (1u << battler)))
+        {
+            SetHealthboxSpriteVisible(gHealthboxSpriteIds[battler]);
+        }
+    }
+    if (!hide)
+        sHiddenHealthboxes = 0;
+}
 
 static bool32 IsBattlePortraitUp(void)
 {
@@ -880,6 +907,7 @@ static bool32 IsBattlePortraitUp(void)
 
 void RR_UpdateBattleSpeakerPortrait(const u8 *text)
 {
+    static const u8 sIvy[] = _("Ivy");
     const u8 *cur, *page;
     const u32 *gfx;
     const u16 *pal;
@@ -897,16 +925,24 @@ void RR_UpdateBattleSpeakerPortrait(const u8 *text)
         who = GetSpeaker(page);
     }
     if (!IsBattlePortraitUp())
+    {
+        // gone without us (the battle ended and its sprites were freed): the
+        // HP boxes went with it, nothing to bring back
         sBattleSpeaker = SPEAKER_NONE;
+        sHiddenHealthboxes = 0;
+    }
     if (who == sBattleSpeaker)
         return;
     if (IsBattlePortraitUp())
+    {
         RR_DestroyStandalonePortrait(0, sBattleSpeakerIdPlus1 - 1);
+        HideOurHealthboxes(FALSE);
+    }
     sBattleSpeakerIdPlus1 = 0;
     sBattleSpeaker = SPEAKER_NONE;
     if (who == SPEAKER_NONE || !GetSpeakerPicture(who, &gfx, &pal))
         return;
-    ourSide = RR_GetLineSpeaker(page) == RR_LINE_PLAYER || RR_GetLineSpeaker(page) == RR_LINE_IVY;
+    ourSide = who == SPEAKER_PLAYER || who == FindSpeaker(sIvy);
     sBattleSpeakerIdPlus1 = CreateStandalone(0, gfx, pal, 64 * 64 / 2,
                                              ourSide ? BATTLE_PORTRAIT_X : BATTLE_PORTRAIT_X_OTHER,
                                              BATTLE_PORTRAIT_Y, !ourSide) + 1;
@@ -914,6 +950,8 @@ void RR_UpdateBattleSpeakerPortrait(const u8 *text)
     {
         sBattleSpeaker = who;
         RR_StandalonePortraitHop(0, sBattleSpeakerIdPlus1 - 1);
+        if (!ourSide)
+            HideOurHealthboxes(TRUE);
     }
     else
         sBattleSpeakerIdPlus1 = 0;

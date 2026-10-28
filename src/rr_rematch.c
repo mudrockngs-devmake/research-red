@@ -18,8 +18,9 @@
 // Oak + Daisy (#53): after the Route 22 6v6, in Oak's Lab. One trainer with
 // one team (#107): Oak's and Daisy's Pokemon take turns in the party (0, 2, 4
 // Oak's; 1, 3, 5 Daisy's), so in doubles they lead together. Oak brings the
-// two starters left over in the lab (they depend on your pick) and the lab's
-// Slowpoke; Daisy brings Muffin (a Rattata forever, with an Eviolite and
+// two starters left over in the lab (they depend on your pick) and Nidoran M,
+// a Nidoking later (his first Pokemon in the anime; the lab's Slowpoke never
+// battles, #121, owner 2026-10-28); Daisy brings Muffin (a Rattata forever, with an Eviolite and
 // better moves instead), Clefairy and Vulpix.
 //
 // Delia (#70): on her own at home, from the Route 22 6v6 on. Mimey
@@ -152,15 +153,15 @@ void RR_AdjustRematchParty(struct Pokemon *party, u16 trainerId, u32 count)
     postgame = tier == RR_POSTGAME_TIER;
     if (trainerId == TRAINER_RR_OAK_REMATCH)
     {
-        // Oak (0, 2, 4): the leftover starters are the aces; Slowpoke turns
-        // up as a Galarian Slowking from 5 badges, and nobody can work out how
+        // Oak (0, 2, 4): the leftover starters are the aces; Nidoran M
+        // grows like they do (Nidorino from 1 badge, Nidoking from 4)
         // post-game: a Cyndaquil-line starter comes back as a Hisuian Typhlosion
         u16 johto = StarterForTier(sOakLeftovers[pick][1], tier);
         if (postgame && johto == SPECIES_TYPHLOSION)
             johto = SPECIES_TYPHLOSION_HISUI;
         SetMonSpeciesAndLevel(&party[0], StarterForTier(sOakLeftovers[pick][0], tier), level, FALSE);
         SetMonSpeciesAndLevel(&party[2], johto, level, FALSE);
-        SetMonSpeciesAndLevel(&party[4], tier >= 5 ? SPECIES_SLOWKING_GALAR : SPECIES_SLOWPOKE, below, FALSE);
+        SetMonSpeciesAndLevel(&party[4], tier >= 4 ? SPECIES_NIDOKING : tier >= 1 ? SPECIES_NIDORINO : SPECIES_NIDORAN_M, below, FALSE);
 
         // Daisy (1, 3, 5): Muffin never evolves: better moves instead.
         // Post-game she stays home and an Alolan Raticate on the exchange
