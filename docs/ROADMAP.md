@@ -153,3 +153,11 @@ Approved, all 19 (checklist in STATUS.md):
 6. Game lane rule: small map pieces (tables, chairs, grass) with the existing tools are fine in game, logged in the tracker.
 7-14. Viewer: Approve / Needs work + A/B/C choice buttons (feed the tracker); notes on a spot of a picture; compare (side by side, before/after slider); animation player; in-game size preview on a real map; history; gentle alert; themes.
 15-19. Hub (claude-setup): Quick Ball / Dive Ball themes in a Settings menu (Dive Ball the default: calm for long sessions); a Today screen; project shortcuts (viewer, play latest build, game folder); health check (backup age, disk space, unsaved work); desktop shortcut with an icon + cheat sheet.
+
+## Tester upgrades, the rest of #18 (planned with the owner 2026-10-27, all suggestions approved)
+No game changes, no version bump. Checklist in STATUS.md.
+1. Before/after picture comparison: each smoke run compares its screenshots with the last tagged build's run; small changes (clock) ignored; a page with side by side + changed pixels marked, opened in the viewer.
+2. Random-button stress test: seeded (repeatable), ~6 saved starting points, ~10 game minutes each, on demand, low priority.
+3. AI-vs-AI battle sims: the engine's battle tester plays key fights (lab, Route 22, Brock) ~50 times with a guessed typical player team (owner corrects later); win rates and turns into docs/BALANCE.md.
+4. GitHub: a quick set (~10 scenes) on every push, the full set on `v*` tags; screenshots attached to the run.
+5. The upstream "AI Explosion" engine test timeout: at most ~30 minutes; if upstream's fault, mark it a known skip so `make check` is green.

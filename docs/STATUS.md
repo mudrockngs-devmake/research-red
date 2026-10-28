@@ -8,6 +8,15 @@ _Last updated: 2026-10-24, end of day (two lanes set up: Art Kit gate + tracker,
 Session costs 2026-10-24 (`session-cost`, readings may lag): 08:42 session (Art Kit rounds 1-2) $33.74; 12:05 session
 (two lanes, viewer, hub) $9.54; day total $43.28. Log them in the next round's NOTES.md when archiving the playtest.
 
+## Tester upgrades run (2026-10-27, in progress; owner answers in ROADMAP.md "Tester upgrades")
+No game changes. Commit after each item.
+- [ ] 1 before/after picture comparison (vs the last tagged build's run)
+- [ ] 2 random-button stress test (seeded, saved starting points)
+- [ ] 3 AI-vs-AI battle sims -> docs/BALANCE.md
+- [ ] 4 tests on GitHub (quick set per push, full set on tags)
+- [ ] 5 the AI Explosion engine test timeout
+- [ ] final: docs (TESTING.md, test README), rr_check, smoke run, close #18
+
 ## Two lanes + viewer and hub run (2026-10-24, done; owner answers in ROADMAP.md "Two lanes")
 No game changes in this run (v0.0.19 stays in playtest). Commit after each item.
 - [x] 1 switch per piece (art_kit.toml stages; art_gate.py apply, reversible, tested round trip)
