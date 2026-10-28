@@ -13,14 +13,15 @@ _Last updated: 2026-10-28 (working setup run; v0.0.19 still in playtest)_
   (`art_gate.py status`), so none is in the game (owner, 2026-10-24).
 - Since v0.0.19 (in master, not in a build yet): tester upgrades (#18, docs/TESTING.md); debug 10's team is Lv 14.
 
-## Working setup run (2026-10-28, in progress; owner answers in ROADMAP.md "Working setup")
+## Working setup run (2026-10-28, items 1-6 done; owner answers in ROADMAP.md "Working setup")
 - [x] 5 short STATUS, history in docs/history/
-- [ ] 1 glossary docs/GLOSSARY.md
-- [ ] 2 game design document docs/DESIGN.md
-- [ ] 3 notes intake skill (.claude/skills/owner-notes)
-- [ ] 4 project skills: test build, playtest intake, new scene
-- [ ] 6 rr_check before every commit (git hook)
-- [ ] later in claude-setup: 7 session-start hook, 8 template, 9 handbook, 10 global notes intake
+- [x] 1 glossary docs/GLOSSARY.md
+- [x] 2 game design document docs/DESIGN.md
+- [x] 3 notes intake skill (.claude/skills/owner-notes)
+- [x] 4 project skills: test build, playtest intake, new scene
+- [x] 6 rr_check before every commit (git hook)
+- [ ] later, in a claude-setup session: 7 session-start hook, 8 project template (glossary, DESIGN, short STATUS +
+      history, .claude/skills, .githooks + core.hooksPath, GitHub checks, issue forms), 9 handbook, 10 global owner-notes skill
 
 ## Current build
 - **v0.0.19** (2026-10-21): installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub. Smoke 61/61.
