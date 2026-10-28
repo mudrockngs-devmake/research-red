@@ -10,11 +10,11 @@ Session costs 2026-10-24 (`session-cost`, readings may lag): 08:42 session (Art 
 
 ## Tester upgrades run (2026-10-27, in progress; owner answers in ROADMAP.md "Tester upgrades")
 No game changes. Commit after each item.
-- [ ] 1 before/after picture comparison (vs the last tagged build's run)
-- [ ] 2 random-button stress test (seeded, saved starting points)
+- [x] 1 before/after picture comparison (`compare.py`, after every smoke run; unchanged build: 0 of 61 differ)
+- [x] 2 random-button stress test (`monkey.py`; first hunt 30 x 30 game minutes: nothing broke)
 - [ ] 3 AI-vs-AI battle sims -> docs/BALANCE.md
 - [ ] 4 tests on GitHub (quick set per push, full set on tags)
-- [ ] 5 the AI Explosion engine test timeout
+- [x] 5 the AI Explosion engine test timeout (our catch-up EXP; caps off in that test; `make check` 4585 passed, 0 failed)
 - [ ] final: docs (TESTING.md, test README), rr_check, smoke run, close #18
 
 ## Two lanes + viewer and hub run (2026-10-24, done; owner answers in ROADMAP.md "Two lanes")
