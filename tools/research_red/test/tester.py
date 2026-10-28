@@ -59,6 +59,13 @@ class Suite:
     timeout: int = 1200
     setup_hint: str = "build rr_run with setup_mgba.sh"
     after_run: object = None   # called with out_dir once the report is written (e.g. compare.py)
+    # Checks run on EVERY scenario (the hack's own, e.g. Research Red's dialogue
+    # and leftover checks): extra script lines at the start / end of each
+    # script (functions of the GameMemory), and judges called afterwards with
+    # (runner output, scenario folder, script text) returning (fails, warns).
+    always_start: list = dataclasses.field(default_factory=list)
+    always_end: list = dataclasses.field(default_factory=list)
+    judges: list = dataclasses.field(default_factory=list)
 
 
 # --- script building blocks ----------------------------------------------
@@ -184,7 +191,9 @@ def run(suite, rom, name, lines, workdir, timeout):
     shutil.rmtree(sdir, ignore_errors=True)   # a rerun in the same minute shares the folder
     os.makedirs(sdir, exist_ok=True)
     script = os.path.join(workdir, name + ".txt")
-    open(script, "w").write("\n".join(with_states(prelude() + lines + epilogue(), workdir)) + "\n")
+    start = [ln for f in suite.always_start for ln in f(G)]
+    end = [ln for f in suite.always_end for ln in f(G)]
+    open(script, "w").write("\n".join(with_states(prelude() + start + lines + end + epilogue(), workdir)) + "\n")
     try:
         out = subprocess.run([suite.runner, rom, script, sdir], timeout=timeout, check=True,
                              capture_output=True, text=True).stdout
@@ -210,6 +219,10 @@ def run(suite, rom, name, lines, workdir, timeout):
             peeks[p[1]] = int(p[2])
             if os.environ.get("RR_SHOW_PEEKS"):    # debugging: RR_SHOW_PEEKS=1 smoke.py ...
                 print(f"    {name}: {p[1]} = {p[2]}")
+    for judge in suite.judges:
+        jf, jw = judge(out, sdir, open(script).read())
+        fails += jf
+        warns += jw
     states = [(f, classify(os.path.join(sdir, f))) for f in shots]
     for want in re.findall(r"^# expect-not-black (\S+)$", open(script).read(), re.M):
         if dict(states).get(want + ".png") == "black":

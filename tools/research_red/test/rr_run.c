@@ -31,6 +31,18 @@
 //                     off) until it doesn't (at most 600 frames); prints
 //                     "GUARD line frame" each time. E.g. back out of a debug
 //                     menu that random presses opened. "guard clear": off.
+//   watch LABEL ADDR  from now on, print "WATCH LABEL frame value" whenever
+//                     the value at ADDR changes (and once at the start);
+//                     "watch clear" stops them all. E.g. the portrait shown,
+//                     the speaker, the battle outcome, over a whole scene.
+//   watchtext LABEL ADDR N  like watch, for N bytes (up to 64) at ADDR,
+//                     printed as hex: "WATCHTEXT LABEL frame 8bc2ff..."
+//                     (the message text, decoded by dialogue.py)
+//   cover ADDR        from now on, remember every value ADDR (4 bytes) takes,
+//                     sampled each frame; at the end print "COVER value" for
+//                     each one. Pointed at the script engine's current
+//                     command, it lists every event script that ran
+//                     (coverage.py turns them into script names).
 //   pal               print the 16 sprite palettes (debugging)
 //   oam               print the first 24 sprites (debugging)
 //   tiles FIRST N     print N sprite tiles from FIRST (debugging)
@@ -101,6 +113,20 @@ static int sIdleCount;
 static struct Cond sGuard;           // "guard": keys pressed while it holds
 static int sGuardKeys;
 static int condHolds(const struct Cond *c);
+
+// "watch": values printed whenever they change
+#define MAX_WATCH 32
+static struct { char label[64]; struct Term t; uint32_t last; int textLen; uint8_t text[64]; } sWatch[MAX_WATCH];
+static int sWatchCount;
+
+// "cover": every distinct value seen at a few addresses (open-addressing set)
+#define MAX_COVER 4
+#define COVER_SLOTS (1 << 18)
+static struct Term sCover[MAX_COVER];
+static int sCoverCount;
+static uint32_t *sCoverSet;
+static int sCoverUsed;
+static void sampleFrame(void);
 
 static int keymask(const char *s)
 {
@@ -244,12 +270,57 @@ static void escapeGuard(void)
         core->setKeys(core, i % 8 < 4 ? sGuardKeys : 0);
         core->runFrame(core);
         sFrame++;
+        sampleFrame();
     }
     for (int i = 0; i < 8; i++)   // let go before the script's keys come back
     {
         core->setKeys(core, 0);
         core->runFrame(core);
         sFrame++;
+    }
+}
+
+static uint32_t readAddr(const struct Term *t);
+
+static void sampleFrame(void)
+{
+    for (int i = 0; i < sWatchCount; i++)
+    {
+        if (sWatch[i].textLen)
+        {
+            uint8_t now[64];
+            for (int b = 0; b < sWatch[i].textLen; b++)
+                now[b] = core->rawRead8(core, sWatch[i].t.off + b, -1);
+            if (memcmp(now, sWatch[i].text, sWatch[i].textLen))
+            {
+                memcpy(sWatch[i].text, now, sWatch[i].textLen);
+                printf("WATCHTEXT %s %lu ", sWatch[i].label, sFrame);
+                for (int b = 0; b < sWatch[i].textLen; b++)
+                    printf("%02x", now[b]);
+                printf("\n");
+            }
+            continue;
+        }
+        uint32_t v = readAddr(&sWatch[i].t);
+        if (v != sWatch[i].last)
+        {
+            sWatch[i].last = v;
+            printf("WATCH %s %lu %u\n", sWatch[i].label, sFrame, v);
+        }
+    }
+    for (int i = 0; i < sCoverCount; i++)
+    {
+        uint32_t v = readAddr(&sCover[i]);
+        if (!v || sCoverUsed >= COVER_SLOTS / 2)
+            continue;
+        uint32_t h = (v * 2654435761u) & (COVER_SLOTS - 1);
+        while (sCoverSet[h] && sCoverSet[h] != v)
+            h = (h + 1) & (COVER_SLOTS - 1);
+        if (!sCoverSet[h])
+        {
+            sCoverSet[h] = v;
+            sCoverUsed++;
+        }
     }
 }
 
@@ -266,6 +337,7 @@ static void frames(int keys, int n)
         core->runFrame(core);
         sFrame++;
         watchStuck(keys);
+        sampleFrame();
     }
 }
 
@@ -481,6 +553,35 @@ int main(int argc, char **argv)
             else
                 fprintf(stderr, "rr_run: line %d: bad condition\n", sLine);
         }
+        else if (!strcmp(cmd, "watch") && !strcmp(a, "clear"))
+            sWatchCount = 0;
+        else if (!strcmp(cmd, "watchtext") && ntok >= 4 && sWatchCount < MAX_WATCH)
+        {
+            sWatch[sWatchCount].t.ptr = 0;
+            sWatch[sWatchCount].t.off = strtoul(tok[2], NULL, 0);
+            sWatch[sWatchCount].textLen = atoi(tok[3]) > 64 ? 64 : atoi(tok[3]);
+            memset(sWatch[sWatchCount].text, 0xAA, 64);   // differs from anything: prints at once
+            snprintf(sWatch[sWatchCount].label, sizeof sWatch[0].label, "%s", a);
+            sWatchCount++;
+        }
+        else if (!strcmp(cmd, "watch") && ntok >= 3 && sWatchCount < MAX_WATCH)
+        {
+            sWatch[sWatchCount].textLen = 0;
+            if (parseAddr(tok[2], &sWatch[sWatchCount].t))
+            {
+                snprintf(sWatch[sWatchCount].label, sizeof sWatch[0].label, "%s", a);
+                sWatch[sWatchCount].last = readAddr(&sWatch[sWatchCount].t);
+                printf("WATCH %s %lu %u\n", a, sFrame, sWatch[sWatchCount].last);
+                sWatchCount++;
+            }
+        }
+        else if (!strcmp(cmd, "cover") && ntok >= 2 && sCoverCount < MAX_COVER)
+        {
+            if (!sCoverSet)
+                sCoverSet = calloc(COVER_SLOTS, sizeof *sCoverSet);
+            if (parseAddr(a, &sCover[sCoverCount]))
+                sCoverCount++;
+        }
         else if (!strcmp(cmd, "pal"))
             for (int pl = 0; pl < 16; pl++)
             {
@@ -510,6 +611,10 @@ int main(int argc, char **argv)
         fflush(stdout);
     }
     fclose(s);
+    if (sCoverSet)
+        for (int i = 0; i < COVER_SLOTS; i++)
+            if (sCoverSet[i])
+                printf("COVER %u\n", sCoverSet[i]);
     core->deinit(core);
     return 0;
 }

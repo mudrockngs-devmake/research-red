@@ -29,6 +29,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 sys.path.insert(0, HERE)
+import rr_checks  # noqa: E402
 import tester as T  # noqa: E402
 from tester import advance, check, expect, play_until, ready, scene_end, start_menu_item, step  # noqa: E402
 
@@ -49,6 +50,8 @@ def debug_script(n):
     lines += ["press A", "wait 20"]
     lines += ["press DOWN", "wait 6"] * (n - 1)
     lines += ["press A", "wait 240"]
+    if n == SCRIPT_TEST_MODE:
+        lines.append(rr_checks.TEST_MODE_MARK)   # the AI may keep playing your side: not a leftover
     return lines
 
 
@@ -1067,6 +1070,9 @@ def main():
         map_names=MAP_NAMES,
         setup_hint="run tools/research_red/test/setup_mgba.sh first",
         after_run=compare,
+        always_start=rr_checks.ALWAYS_START,
+        always_end=rr_checks.ALWAYS_END,
+        judges=rr_checks.JUDGES,
     ), argv)
 
 
