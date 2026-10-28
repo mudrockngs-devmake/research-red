@@ -4,21 +4,15 @@
 //   RR_TWO_DOWN         2 of their Pokemon have fainted (once per battle)
 //   RR_FOUR_DOWN        4 have fainted
 //   LAST_SWITCHIN       that trainer sends out their last Pokemon
-// In Elm & Jenny's doubles each of them has their own last line.
+// Elm and Jenny are one trainer (#107): Jenny's lines are in Elm's entries,
+// and the last-Pokemon line has one each.
 
         [TRAINER_RR_ELM_R22_BULBASAUR] =
         {
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: Rematch! This time I read a book!\pJenny: He read the back of a book.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_R22_BULBASAUR] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_BULBASAUR] =
@@ -26,14 +20,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: I've been training since breakfast! Second breakfast!\pJenny: He means lunch.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_PEWTER_BULBASAUR] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_CHARMANDER] =
@@ -41,14 +28,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: Rematch! This time I read a book!\pJenny: He read the back of a book.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_R22_CHARMANDER] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_CHARMANDER] =
@@ -56,14 +36,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: I've been training since breakfast! Second breakfast!\pJenny: He means lunch.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_PEWTER_CHARMANDER] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_SQUIRTLE] =
@@ -71,14 +44,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: Rematch! This time I read a book!\pJenny: He read the back of a book.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_R22_SQUIRTLE] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_SQUIRTLE] =
@@ -86,14 +52,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: I've been training since breakfast! Second breakfast!\pJenny: He means lunch.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_PEWTER_SQUIRTLE] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_CHIKORITA] =
@@ -101,14 +60,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: Rematch! This time I read a book!\pJenny: He read the back of a book.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_R22_CHIKORITA] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_CHIKORITA] =
@@ -116,14 +68,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: I've been training since breakfast! Second breakfast!\pJenny: He means lunch.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_PEWTER_CHIKORITA] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_CYNDAQUIL] =
@@ -131,14 +76,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: Rematch! This time I read a book!\pJenny: He read the back of a book.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_R22_CYNDAQUIL] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_CYNDAQUIL] =
@@ -146,14 +84,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: I've been training since breakfast! Second breakfast!\pJenny: He means lunch.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_PEWTER_CYNDAQUIL] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_R22_TOTODILE] =
@@ -161,14 +92,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: Rematch! This time I read a book!\pJenny: He read the back of a book.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_R22_TOTODILE] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! Okay. That was the warm-up.\pJenny: That was not the warm-up, dear.\p{B_PLAYER_NAME}: It looked like a very thorough warm-up from here.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, we are losing.\pElm: Strategically losing!\pIvy: That's the best kind, Elm.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Legends. And dinner plans.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_RR_ELM_PEWTER_TOTODILE] =
@@ -176,14 +100,7 @@
             [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Elm: I've been training since breakfast! Second breakfast!\pJenny: He means lunch.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!{PAUSE_UNTIL_PRESS}"),
-        },
-
-        [TRAINER_RR_JENNY_PEWTER_TOTODILE] =
-        {
-            [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Elm: Okay! That was the warm-up!\pJenny: Dear, we just said this battle is the warm-up.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Jenny: In my professional opinion, they are very good.\pIvy: In my personal opinion, so are you.{PAUSE_UNTIL_PRESS}"),
-            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Jenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Elm: Last one! This is where legends are made!\pJenny: Still legends. Still dinner.{PAUSE_UNTIL_PRESS}"),
         },
 
         [TRAINER_LEADER_BROCK] =

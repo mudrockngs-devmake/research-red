@@ -15,12 +15,14 @@
 // Gym leaders (#52, Brock so far): talk to him after his badge and pick a tier
 // up to your badge count (RR_ScriptSetChosenTier); his Gym team grows from there.
 //
-// Oak + Daisy (#53): a double after the Route 22 6v6, in Oak's Lab. Oak brings
-// the two starters left over in the lab (they depend on your pick) and the
-// lab's Slowpoke; Daisy brings Muffin (a Rattata forever, with an Eviolite and
+// Oak + Daisy (#53): after the Route 22 6v6, in Oak's Lab. One trainer with
+// one team (#107): Oak's and Daisy's Pokemon take turns in the party (0, 2, 4
+// Oak's; 1, 3, 5 Daisy's), so in doubles they lead together. Oak brings the
+// two starters left over in the lab (they depend on your pick) and the lab's
+// Slowpoke; Daisy brings Muffin (a Rattata forever, with an Eviolite and
 // better moves instead), Clefairy and Vulpix.
 //
-// Delia (#70): a double on her own at home, from the Route 22 6v6 on. Mimey
+// Delia (#70): on her own at home, from the Route 22 6v6 on. Mimey
 // leads (the ace); Oddish, Grimer, Miltank, a shiny Butterfree and Munchlax
 // (the grocery bill), who only becomes a Snorlax after the Elite Four.
 #include "global.h"
@@ -59,7 +61,7 @@ u32 RR_GetRematchTier(void)
 
 bool32 RR_IsRematchTrainer(u16 trainerId)
 {
-    return trainerId == TRAINER_RR_OAK_REMATCH || trainerId == TRAINER_RR_DAISY_REMATCH
+    return trainerId == TRAINER_RR_OAK_REMATCH
         || trainerId == TRAINER_RR_DELIA_REMATCH || trainerId == TRAINER_RR_BROCK_REMATCH;
 }
 
@@ -145,39 +147,38 @@ void RR_AdjustRematchParty(struct Pokemon *party, u16 trainerId, u32 count)
     // here for wild battles too, with the last trainer's id still set and the
     // count of that trainer's team, so a wild battle after the Oak + Daisy
     // rematch got Oak's starters in place of the wild Pokemon.
-    if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || !RR_IsRematchTrainer(trainerId) || count < 3)
+    if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || !RR_IsRematchTrainer(trainerId) || count < 6)
         return;
     postgame = tier == RR_POSTGAME_TIER;
     if (trainerId == TRAINER_RR_OAK_REMATCH)
     {
-        // the leftover starters are the aces; Slowpoke turns up as a
-        // Galarian Slowking from 5 badges, and nobody can work out how
+        // Oak (0, 2, 4): the leftover starters are the aces; Slowpoke turns
+        // up as a Galarian Slowking from 5 badges, and nobody can work out how
         // post-game: a Cyndaquil-line starter comes back as a Hisuian Typhlosion
         u16 johto = StarterForTier(sOakLeftovers[pick][1], tier);
         if (postgame && johto == SPECIES_TYPHLOSION)
             johto = SPECIES_TYPHLOSION_HISUI;
         SetMonSpeciesAndLevel(&party[0], StarterForTier(sOakLeftovers[pick][0], tier), level, FALSE);
-        SetMonSpeciesAndLevel(&party[1], johto, level, FALSE);
-        SetMonSpeciesAndLevel(&party[2], tier >= 5 ? SPECIES_SLOWKING_GALAR : SPECIES_SLOWPOKE, below, FALSE);
-    }
-    else if (trainerId == TRAINER_RR_DAISY_REMATCH)
-    {
-        // Muffin never evolves: better moves instead. Post-game she stays home
-        // and an Alolan Raticate on the exchange program fights instead.
+        SetMonSpeciesAndLevel(&party[2], johto, level, FALSE);
+        SetMonSpeciesAndLevel(&party[4], tier >= 5 ? SPECIES_SLOWKING_GALAR : SPECIES_SLOWPOKE, below, FALSE);
+
+        // Daisy (1, 3, 5): Muffin never evolves: better moves instead.
+        // Post-game she stays home and an Alolan Raticate on the exchange
+        // program fights instead.
         if (postgame)
-            SetMonSpeciesAndLevel(&party[0], SPECIES_RATICATE_ALOLA, below, FALSE);
+            SetMonSpeciesAndLevel(&party[1], SPECIES_RATICATE_ALOLA, below, FALSE);
         else
-            SetMonSpeciesAndLevel(&party[0], SPECIES_RATTATA, below, TRUE);
+            SetMonSpeciesAndLevel(&party[1], SPECIES_RATTATA, below, TRUE);
         if (tier >= 1 && !postgame)
-            SetMove(&party[0], 0, MOVE_SUPER_FANG);
+            SetMove(&party[1], 0, MOVE_SUPER_FANG);
         if (tier >= 3 && !postgame)
-            SetMove(&party[0], 1, MOVE_SUCKER_PUNCH);
+            SetMove(&party[1], 1, MOVE_SUCKER_PUNCH);
         if (tier >= 4 && !postgame)
-            SetMove(&party[0], 2, MOVE_CRUNCH);
-        SetMonSpeciesAndLevel(&party[1], tier >= 3 ? SPECIES_CLEFABLE : SPECIES_CLEFAIRY, below, FALSE);
-        SetMonSpeciesAndLevel(&party[2], postgame ? SPECIES_NINETALES_ALOLA : tier >= 4 ? SPECIES_NINETALES : SPECIES_VULPIX, below, FALSE);
+            SetMove(&party[1], 2, MOVE_CRUNCH);
+        SetMonSpeciesAndLevel(&party[3], tier >= 3 ? SPECIES_CLEFABLE : SPECIES_CLEFAIRY, below, FALSE);
+        SetMonSpeciesAndLevel(&party[5], postgame ? SPECIES_NINETALES_ALOLA : tier >= 4 ? SPECIES_NINETALES : SPECIES_VULPIX, below, FALSE);
     }
-    else if (trainerId == TRAINER_RR_DELIA_REMATCH && count >= 6)
+    else if (trainerId == TRAINER_RR_DELIA_REMATCH)
     {
         // post-game: Mimey stays home; a Galarian Mr. Rime visits on an exchange
         if (postgame)
@@ -190,7 +191,7 @@ void RR_AdjustRematchParty(struct Pokemon *party, u16 trainerId, u32 count)
         SetMonSpeciesAndLevel(&party[4], SPECIES_BUTTERFREE, below, FALSE);
         SetMonSpeciesAndLevel(&party[5], postgame ? SPECIES_SNORLAX : SPECIES_MUNCHLAX, below, FALSE);
     }
-    else if (trainerId == TRAINER_RR_BROCK_REMATCH && count >= 6)
+    else if (trainerId == TRAINER_RR_BROCK_REMATCH)
     {
         // his Gym team, growing; Onix (then Steelix) is the ace
         SetMonSpeciesAndLevel(&party[0], postgame ? SPECIES_GOLEM_ALOLA : tier >= 4 ? SPECIES_GOLEM : tier >= 3 ? SPECIES_GRAVELER : SPECIES_GEODUDE, below, FALSE);

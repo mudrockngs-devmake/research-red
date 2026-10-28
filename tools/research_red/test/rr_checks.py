@@ -156,9 +156,11 @@ def wild_judge(out, sdir, script):
 
 # --- battles (#128, #107) ---------------------------------------------------------
 # Every battle's start is recorded (battles.json in the scene's folder). Curated
-# fights (Research Red's own trainers and the Gym leaders) must always be
-# doubles, whatever the Research Rules say (#128); two separate opponent teams
-# are flagged for #107 (one team of 6 under one AI is the plan).
+# fights (Research Red's own trainers and the Gym leaders) keep their teams
+# whatever the Research Rules say; with "trainers as singles" they may be
+# singles (#128, owner 2026-10-28). A pair (Elm and Jenny, Oak and Daisy) is
+# one trainer with one team and a combined picture (#107): a curated fight
+# against two trainers with two separate teams is a failure.
 def battles_start(G):
     cb2 = G.sym("gMain") + G.const("main_callback2")
     params = G.sym("gTrainerBattleParameter")
@@ -232,12 +234,8 @@ def battles_judge(out, sdir, script):
         if not b["curated"]:
             continue
         who = b["opponent_a"] + (f" + {b['opponent_b']}" if b["two_opponents"] else "")
-        if not b["double"] and b["player_able"] < 2:
-            warns.append(f"curated fight {who} started as a single: you had {b['player_able']} Pokémon able to fight")
-        elif not b["double"]:
-            fails.append(f"curated fight {who} started as a single (#128: Research Rules must not change it)")
         if b["two_opponents"]:
-            warns.append(f"{who}: two separate teams ({b['enemy_count']} Pokémon), not one team under one AI (#107)")
+            fails.append(f"{who}: two separate teams ({b['enemy_count']} Pokémon), not one team under one AI (#107)")
     return fails, warns
 
 

@@ -6,7 +6,7 @@ Every trainer battle is a double (you and Ivy). Change that in Options > Researc
 
 ## Pallet Town
 
-### Elm & Jenny (2v2, their lab starters)
+### Elm & Jenny (their lab starters)
 
 Their starters depend on yours:
 
@@ -19,21 +19,16 @@ Their starters depend on yours:
 | Cyndaquil | Squirtle | Bulbasaur |
 | Totodile | Bulbasaur | Charmander |
 
-**Elm** (shown with Cyndaquil; the starter slot changes with yours)
+**Their team** (Elm's and Jenny's Pokémon take turns; shown with Cyndaquil and Totodile, the starters change with yours)
 
 | Pokémon | Level | Moves |
 |---|---|---|
 | Cyndaquil | 5 | level-up moves |
-
-**Jenny** (shown with Totodile; the starter slot changes with yours)
-
-| Pokémon | Level | Moves |
-|---|---|---|
 | Totodile | 5 | level-up moves |
 
 ## Route 22
 
-### Elm & Jenny (6v6 double)
+### Elm & Jenny (6v6)
 
 Their starters depend on yours:
 
@@ -46,20 +41,15 @@ Their starters depend on yours:
 | Cyndaquil | Squirtle | Bulbasaur |
 | Totodile | Bulbasaur | Charmander |
 
-**Elm** (shown with Cyndaquil; the starter slot changes with yours)
+**Their team** (Elm's and Jenny's Pokémon take turns; shown with Cyndaquil and Totodile, the starters change with yours)
 
 | Pokémon | Level | Moves |
 |---|---|---|
 | Cinnamon (Cyndaquil) | 9 | level-up moves |
-| Churro (Sandshrew) | 8 | level-up moves |
-| Pudding (Pidgey) | 8 | level-up moves |
-
-**Jenny** (shown with Totodile; the starter slot changes with yours)
-
-| Pokémon | Level | Moves |
-|---|---|---|
 | Biscotti (Totodile) | 9 | level-up moves |
+| Churro (Sandshrew) | 8 | level-up moves |
 | Licorice (Ekans) | 8 | level-up moves |
+| Pudding (Pidgey) | 8 | level-up moves |
 | Macaron (Nidoran♀) | 8 | level-up moves |
 
 ## Viridian Forest
@@ -103,7 +93,7 @@ Their starters depend on yours:
 
 ## Pewter City
 
-### Elm & Jenny after Brock (6v6 double, outside the Pokémon Center)
+### Elm & Jenny after Brock (6v6, outside the Pokémon Center)
 
 Their starters depend on yours:
 
@@ -116,25 +106,16 @@ Their starters depend on yours:
 | Cyndaquil | Squirtle | Bulbasaur |
 | Totodile | Bulbasaur | Charmander |
 
-**Elm** (shown with Cyndaquil; the starter slot changes with yours)
+**Their team** (Elm's and Jenny's Pokémon take turns; shown with Cyndaquil and Totodile, the starters change with yours)
 
 | Pokémon | Level | Moves |
 |---|---|---|
 | Cinnamon (Cyndaquil) | 15 | level-up moves |
-| Pudding (Pidgeotto) | 14 | level-up moves |
-| Churro (Sandshrew) | 14 | level-up moves |
-
-**Jenny** (shown with Totodile; the starter slot changes with yours)
-
-| Pokémon | Level | Moves |
-|---|---|---|
 | Biscotti (Totodile) | 15 | level-up moves |
+| Pudding (Pidgeotto) | 14 | level-up moves |
 | Licorice (Ekans) | 14 | level-up moves |
+| Churro (Sandshrew) | 14 | level-up moves |
 | Macaron (Nidorina) | 14 | level-up moves |
-| Cruller (Growlithe) | 15 | level-up moves |
-| Route 22 6V6 Species Levels And Moves Here Are Placeholders The Team Is | None | level-up moves |
-| Set From Your Badges And Lab Pick When The Battle Starts Src Rr Rematch C | None | level-up moves |
-| No Money 1 5X Exp | None | level-up moves |
 
 ### Leader Brock
 

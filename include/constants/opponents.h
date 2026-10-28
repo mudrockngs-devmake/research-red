@@ -678,6 +678,8 @@ enum TrainerID
     TRAINER_RR_ELM_LAB_CHIKORITA,
     TRAINER_RR_ELM_LAB_CYNDAQUIL,
     TRAINER_RR_ELM_LAB_TOTODILE,
+    // Research Red (#107): Jenny and Daisy fight inside Elm's and Oak's teams now;
+    // their ids stay (unused) so the trainer flags after them keep their place in saves
     TRAINER_RR_JENNY_LAB_BULBASAUR,
     TRAINER_RR_JENNY_LAB_CHARMANDER,
     TRAINER_RR_JENNY_LAB_SQUIRTLE,
@@ -716,7 +718,7 @@ enum TrainerID
     TRAINER_RR_JENNY_PEWTER_CYNDAQUIL,
     TRAINER_RR_JENNY_PEWTER_TOTODILE,
     TRAINER_RR_OAK_REMATCH,   // Research Red (#53): teams set by src/rr_rematch.c
-    TRAINER_RR_DAISY_REMATCH,
+    TRAINER_RR_DAISY_REMATCH, // unused (#107)
     TRAINER_RR_DELIA_REMATCH, // Research Red (#70)
     TRAINER_RR_BROCK_REMATCH, // Research Red (#52)
     TRAINER_RR_OAK_LAB_RANCH, // Research Red (#86): Oak's ranch team when he steps in after a lab loss

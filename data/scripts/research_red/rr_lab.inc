@@ -359,32 +359,32 @@ RR_Lab_EventScript_AfterPicks::
 
 @ Player picked Bulbasaur: Elm Cyndaquil, Jenny Totodile
 RR_Lab_EventScript_BattleAfterBulbasaur::
-	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_CYNDAQUIL, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_TOTODILE, RR_Lab_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_LAB_CYNDAQUIL, RR_Lab_Text_Elm_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
 @ Player picked Charmander: Elm Totodile, Jenny Chikorita
 RR_Lab_EventScript_BattleAfterCharmander::
-	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_TOTODILE, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CHIKORITA, RR_Lab_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_LAB_TOTODILE, RR_Lab_Text_Elm_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
 @ Player picked Squirtle: Elm Chikorita, Jenny Cyndaquil
 RR_Lab_EventScript_BattleAfterSquirtle::
-	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_CHIKORITA, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CYNDAQUIL, RR_Lab_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_LAB_CHIKORITA, RR_Lab_Text_Elm_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
 @ Player picked Chikorita: Elm Charmander, Jenny Squirtle
 RR_Lab_EventScript_BattleAfterChikorita::
-	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_CHARMANDER, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_SQUIRTLE, RR_Lab_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_LAB_CHARMANDER, RR_Lab_Text_Elm_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
 @ Player picked Cyndaquil: Elm Squirtle, Jenny Bulbasaur
 RR_Lab_EventScript_BattleAfterCyndaquil::
-	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_SQUIRTLE, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_BULBASAUR, RR_Lab_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_LAB_SQUIRTLE, RR_Lab_Text_Elm_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
 @ Player picked Totodile: Elm Bulbasaur, Jenny Charmander
 RR_Lab_EventScript_BattleAfterTotodile::
-	trainerbattle_two_trainers TRAINER_RR_ELM_LAB_BULBASAUR, RR_Lab_Text_Elm_Defeat, TRAINER_RR_JENNY_LAB_CHARMANDER, RR_Lab_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_LAB_BULBASAUR, RR_Lab_Text_Elm_Defeat
 	goto RR_Lab_EventScript_BattleResult
 
 RR_Lab_EventScript_BattleResult::
@@ -1027,11 +1027,10 @@ RR_Lab_Text_Elm_TestNow::
 
 RR_Lab_Text_Elm_Defeat::
     .string "Elm: That was the warm-up!\n"
-    .string "…It was not the warm-up.$"
-
-RR_Lab_Text_Jenny_Defeat::
+    .string "…It was not the warm-up.\p"
     .string "Jenny: Noted.\n"
     .string "For the report.$"
+
 
 RR_Lab_Text_Elm_Victory::
     .string "Elm: Ha! History!\n"

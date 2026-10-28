@@ -44,27 +44,27 @@ RR_Pewter_EventScript_Rematch::
 
 @ Same pairings as the lab and Route 22 (Elm and Jenny keep their lab picks)
 RR_Pewter_EventScript_BattleAfterBulbasaur::
-	trainerbattle_two_trainers TRAINER_RR_ELM_PEWTER_CYNDAQUIL, RR_Pewter_Text_Elm_Defeat, TRAINER_RR_JENNY_PEWTER_TOTODILE, RR_Pewter_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_PEWTER_CYNDAQUIL, RR_Pewter_Text_Elm_Defeat
 	goto RR_Pewter_EventScript_AfterBattle
 
 RR_Pewter_EventScript_BattleAfterCharmander::
-	trainerbattle_two_trainers TRAINER_RR_ELM_PEWTER_TOTODILE, RR_Pewter_Text_Elm_Defeat, TRAINER_RR_JENNY_PEWTER_CHIKORITA, RR_Pewter_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_PEWTER_TOTODILE, RR_Pewter_Text_Elm_Defeat
 	goto RR_Pewter_EventScript_AfterBattle
 
 RR_Pewter_EventScript_BattleAfterSquirtle::
-	trainerbattle_two_trainers TRAINER_RR_ELM_PEWTER_CHIKORITA, RR_Pewter_Text_Elm_Defeat, TRAINER_RR_JENNY_PEWTER_CYNDAQUIL, RR_Pewter_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_PEWTER_CHIKORITA, RR_Pewter_Text_Elm_Defeat
 	goto RR_Pewter_EventScript_AfterBattle
 
 RR_Pewter_EventScript_BattleAfterChikorita::
-	trainerbattle_two_trainers TRAINER_RR_ELM_PEWTER_CHARMANDER, RR_Pewter_Text_Elm_Defeat, TRAINER_RR_JENNY_PEWTER_SQUIRTLE, RR_Pewter_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_PEWTER_CHARMANDER, RR_Pewter_Text_Elm_Defeat
 	goto RR_Pewter_EventScript_AfterBattle
 
 RR_Pewter_EventScript_BattleAfterCyndaquil::
-	trainerbattle_two_trainers TRAINER_RR_ELM_PEWTER_SQUIRTLE, RR_Pewter_Text_Elm_Defeat, TRAINER_RR_JENNY_PEWTER_BULBASAUR, RR_Pewter_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_PEWTER_SQUIRTLE, RR_Pewter_Text_Elm_Defeat
 	goto RR_Pewter_EventScript_AfterBattle
 
 RR_Pewter_EventScript_BattleAfterTotodile::
-	trainerbattle_two_trainers TRAINER_RR_ELM_PEWTER_BULBASAUR, RR_Pewter_Text_Elm_Defeat, TRAINER_RR_JENNY_PEWTER_CHARMANDER, RR_Pewter_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_PEWTER_BULBASAUR, RR_Pewter_Text_Elm_Defeat
 	goto RR_Pewter_EventScript_AfterBattle
 
 RR_Pewter_EventScript_AfterBattle::
@@ -151,11 +151,10 @@ RR_Pewter_Text_Jenny_Warm::
 
 RR_Pewter_Text_Elm_Defeat::
     .string "Elm: One to nothing. Fine. FINE.\n"
-    .string "It's a long road.$"
-
-RR_Pewter_Text_Jenny_Defeat::
+    .string "It's a long road.\p"
     .string "Jenny: He means\n"
     .string "“congratulations.”$"
+
 
 RR_Pewter_Text_Elm_GoodBattle::
     .string "Elm: …You're really good at this,\n"

@@ -36,32 +36,32 @@ RR_Route22_EventScript_ElmJenny::
 
 @ Player picked Bulbasaur: Elm Cyndaquil, Jenny Totodile
 RR_Route22_EventScript_BattleAfterBulbasaur::
-	trainerbattle_two_trainers TRAINER_RR_ELM_R22_CYNDAQUIL, RR_Route22_Text_Elm_Defeat, TRAINER_RR_JENNY_R22_TOTODILE, RR_Route22_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_R22_CYNDAQUIL, RR_Route22_Text_Elm_Defeat
 	goto RR_Route22_EventScript_AfterBattle
 
 @ Player picked Charmander: Elm Totodile, Jenny Chikorita
 RR_Route22_EventScript_BattleAfterCharmander::
-	trainerbattle_two_trainers TRAINER_RR_ELM_R22_TOTODILE, RR_Route22_Text_Elm_Defeat, TRAINER_RR_JENNY_R22_CHIKORITA, RR_Route22_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_R22_TOTODILE, RR_Route22_Text_Elm_Defeat
 	goto RR_Route22_EventScript_AfterBattle
 
 @ Player picked Squirtle: Elm Chikorita, Jenny Cyndaquil
 RR_Route22_EventScript_BattleAfterSquirtle::
-	trainerbattle_two_trainers TRAINER_RR_ELM_R22_CHIKORITA, RR_Route22_Text_Elm_Defeat, TRAINER_RR_JENNY_R22_CYNDAQUIL, RR_Route22_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_R22_CHIKORITA, RR_Route22_Text_Elm_Defeat
 	goto RR_Route22_EventScript_AfterBattle
 
 @ Player picked Chikorita: Elm Charmander, Jenny Squirtle
 RR_Route22_EventScript_BattleAfterChikorita::
-	trainerbattle_two_trainers TRAINER_RR_ELM_R22_CHARMANDER, RR_Route22_Text_Elm_Defeat, TRAINER_RR_JENNY_R22_SQUIRTLE, RR_Route22_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_R22_CHARMANDER, RR_Route22_Text_Elm_Defeat
 	goto RR_Route22_EventScript_AfterBattle
 
 @ Player picked Cyndaquil: Elm Squirtle, Jenny Bulbasaur
 RR_Route22_EventScript_BattleAfterCyndaquil::
-	trainerbattle_two_trainers TRAINER_RR_ELM_R22_SQUIRTLE, RR_Route22_Text_Elm_Defeat, TRAINER_RR_JENNY_R22_BULBASAUR, RR_Route22_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_R22_SQUIRTLE, RR_Route22_Text_Elm_Defeat
 	goto RR_Route22_EventScript_AfterBattle
 
 @ Player picked Totodile: Elm Bulbasaur, Jenny Charmander
 RR_Route22_EventScript_BattleAfterTotodile::
-	trainerbattle_two_trainers TRAINER_RR_ELM_R22_BULBASAUR, RR_Route22_Text_Elm_Defeat, TRAINER_RR_JENNY_R22_CHARMANDER, RR_Route22_Text_Jenny_Defeat
+	trainerbattle_no_intro TRAINER_RR_ELM_R22_BULBASAUR, RR_Route22_Text_Elm_Defeat
 	goto RR_Route22_EventScript_AfterBattle
 
 RR_Route22_EventScript_AfterBattle::
@@ -152,11 +152,10 @@ RR_Route22_Text_P_Always::
 
 RR_Route22_Text_Elm_Defeat::
     .string "Elm: I demand a rematch.\n"
-    .string "At every Gym. Forever.$"
-
-RR_Route22_Text_Jenny_Defeat::
+    .string "At every Gym. Forever.\p"
     .string "Jenny: Well fought, you two.\n"
     .string "I'll write it up kindly.$"
+
 
 RR_Route22_Text_Elm_Forever::
     .string "Elm: Fine. FINE.\n"

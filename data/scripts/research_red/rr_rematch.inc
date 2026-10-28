@@ -12,11 +12,9 @@ RR_Lab_EventScript_OakRematch::
 	closemessage
 	setflag FLAG_RR_NO_WHITEOUT
 	cleartrainerflag TRAINER_RR_OAK_REMATCH
-	cleartrainerflag TRAINER_RR_DAISY_REMATCH
-	trainerbattle_two_trainers TRAINER_RR_OAK_REMATCH, RR_Rematch_Text_OakDefeat, TRAINER_RR_DAISY_REMATCH, RR_Rematch_Text_DaisyDefeat
+	trainerbattle_no_intro TRAINER_RR_OAK_REMATCH, RR_Rematch_Text_OakDefeat
 	clearflag FLAG_RR_NO_WHITEOUT
 	cleartrainerflag TRAINER_RR_OAK_REMATCH
-	cleartrainerflag TRAINER_RR_DAISY_REMATCH
 	special HealPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -63,11 +61,10 @@ RR_Rematch_Text_OakDefeat:
 	.string "Oak: Ho ho! Splendid! A haiku:\p"
 	.string "“Bright young researcher,\n"
 	.string "my Slowpoke still hasn't noticed\l"
-	.string "the battle is done.”$"
-
-RR_Rematch_Text_DaisyDefeat:
+	.string "the battle is done.”\p"
 	.string "Daisy: Oh, Muffin. You were still\n"
 	.string "the cutest one out there.$"
+
 
 RR_Rematch_Text_OakGrown:
 	.string "Oak: You've grown, {PLAYER}. My\n"

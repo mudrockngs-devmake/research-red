@@ -492,6 +492,11 @@ static const u32 gTrainerFrontPic_RR_Delia[] = INCBIN_U32("graphics/research_red
 static const u16 gTrainerPalette_RR_Delia[] = INCBIN_U16("graphics/research_red/cast/delia/battle.gbapal");
 static const u32 gTrainerFrontPic_RR_Jenny[] = INCBIN_U32("graphics/research_red/cast/jenny/battle.4bpp.smol");
 static const u16 gTrainerPalette_RR_Jenny[] = INCBIN_U16("graphics/research_red/cast/jenny/battle.gbapal");
+// Research Red (#107): the pairs who fight as one trainer, in one picture (tools/research_red/build_pair_art.py)
+static const u32 gTrainerFrontPic_RR_ElmJenny[] = INCBIN_U32("graphics/research_red/cast/pairs/elm_jenny/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_ElmJenny[] = INCBIN_U16("graphics/research_red/cast/pairs/elm_jenny/battle.gbapal");
+static const u32 gTrainerFrontPic_RR_OakDaisy[] = INCBIN_U32("graphics/research_red/cast/pairs/oak_daisy/battle.4bpp.smol");
+static const u16 gTrainerPalette_RR_OakDaisy[] = INCBIN_U16("graphics/research_red/cast/pairs/oak_daisy/battle.gbapal");
 
 
 static const union AnimCmd sAnimCmd_Kanto[] = {
@@ -1251,5 +1256,13 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_RR_DELIA] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_Delia, gTrainerPalette_RR_Delia, TRAINER_PIC_SIZE),
+    },
+    [TRAINER_PIC_RR_ELM_JENNY] = // Research Red (#107)
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_ElmJenny, gTrainerPalette_RR_ElmJenny, TRAINER_PIC_SIZE),
+    },
+    [TRAINER_PIC_RR_OAK_DAISY] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RR_OakDaisy, gTrainerPalette_RR_OakDaisy, TRAINER_PIC_SIZE),
     },
 };

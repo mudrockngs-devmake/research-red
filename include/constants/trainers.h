@@ -188,6 +188,8 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_RR_OAK,   // Research Red (#53, #70): from graphics/research_red/cast/*/battle.png
     TRAINER_PIC_RR_DAISY,
     TRAINER_PIC_RR_DELIA,
+    TRAINER_PIC_RR_ELM_JENNY, // Research Red (#107): pairs in one picture (cast/pairs, tools/research_red/build_pair_art.py)
+    TRAINER_PIC_RR_OAK_DAISY,
     TRAINER_PIC_COUNT,
 };
 

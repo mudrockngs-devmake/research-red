@@ -48,9 +48,10 @@ LEVEL_CAPS = [("0 (before Brock)", 14), ("1", 21), ("2", 24), ("3", 29), ("4", 4
               ("6", 47), ("7", 50), ("8 (until the Elite Four)", 63)]
 # Story trainers in the demo that aren't on a map script (scene battles)
 STORY_TRAINERS = [
-    ("Oak's lab", "TRAINER_RR_ELM_LAB_", "TRAINER_RR_JENNY_LAB_", "Elm & Jenny (2v2, their lab starters)"),
-    ("Route 22", "TRAINER_RR_ELM_R22_", "TRAINER_RR_JENNY_R22_", "Elm & Jenny (6v6 double)"),
-    ("Pewter City", "TRAINER_RR_ELM_PEWTER_", "TRAINER_RR_JENNY_PEWTER_", "Elm & Jenny after Brock (6v6 double, outside the Pokémon Center)"),
+    # Elm and Jenny are one trainer with one team (#107): Elm's and Jenny's Pokémon take turns
+    ("Oak's lab", "TRAINER_RR_ELM_LAB_", "Elm & Jenny (their lab starters)"),
+    ("Route 22", "TRAINER_RR_ELM_R22_", "Elm & Jenny (6v6)"),
+    ("Pewter City", "TRAINER_RR_ELM_PEWTER_", "Elm & Jenny after Brock (6v6, outside the Pokémon Center)"),
 ]
 # The starter chain: your pick -> (Elm's, Jenny's)
 # Maps inside these areas that belong to later in the game
@@ -232,17 +233,17 @@ def build():
         if not ids and not story:
             continue
         lines += [f"## {title}", ""]
-        for where, elm_prefix, jenny_prefix, desc in story:
+        for where, prefix, desc in story:
             lines += [f"### {desc}", "", "Their starters depend on yours:", "",
                       "| Your starter | Elm | Jenny |", "|---|---|---|"]
             for i, st in enumerate(STARTERS):
                 e, j = chain(i)
                 lines.append(f"| {pretty('SPECIES_' + st, species)} | {pretty('SPECIES_' + e, species)} | {pretty('SPECIES_' + j, species)} |")
             lines.append("")
-            for who, prefix, first in (("Elm", elm_prefix, "CYNDAQUIL"), ("Jenny", jenny_prefix, "TOTODILE")):
-                tbl, lv = team_table(prefix + first)
-                lines += [f"**{who}** (shown with {pretty('SPECIES_' + first, species)}; the starter slot changes with yours)", ""] + tbl + [""]
-                trainer_levels.setdefault(title, []).extend(lv)
+            tbl, lv = team_table(prefix + "CYNDAQUIL")
+            lines += ["**Their team** (Elm's and Jenny's Pokémon take turns; shown with Cyndaquil and Totodile, "
+                      "the starters change with yours)", ""] + tbl + [""]
+            trainer_levels.setdefault(title, []).extend(lv)
         for tid in ids:
             t = trainers.get(tid)
             if not t:

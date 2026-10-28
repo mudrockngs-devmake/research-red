@@ -856,17 +856,20 @@ void RR_ShowDexStamp(u32 dexNum, s16 x, s16 y)
 }
 
 // ---------------------------------------------------------------------------
-// In battle (#95): when a page of the battle message is spoken by the player
-// or Ivy ("Ivy: That's the best kind, Elm."), their portrait stands above the
-// message box, over your Pokémon, until the page changes. Elm and Jenny have
-// their own pictures on screen in those moments. Called every frame from
+// In battle (#95): when a page of the battle message is spoken by someone with
+// a portrait ("Ivy: That's the best kind, Elm."), their portrait stands above
+// the message box until the page changes: you and Ivy on the left, over your
+// Pokémon; anyone else (Elm, Jenny, Oak, Daisy...) on the right, facing you.
+// Pairs who fight as one trainer share one battle picture (#107), so the
+// portrait shows which of them is talking. Called every frame from
 // BattleMainCB2.
 // ---------------------------------------------------------------------------
-#define BATTLE_PORTRAIT_X 40
-#define BATTLE_PORTRAIT_Y 80   // bottom edge on the message box (y 112)
+#define BATTLE_PORTRAIT_X       40
+#define BATTLE_PORTRAIT_X_OTHER 200
+#define BATTLE_PORTRAIT_Y       80   // bottom edge on the message box (y 112)
 
 static EWRAM_DATA u8 sBattleSpeakerIdPlus1 = 0;   // sprite id + 1 (0: none)
-static EWRAM_DATA u8 sBattleSpeaker = RR_LINE_NARRATION;
+static EWRAM_DATA u8 sBattleSpeaker = 0;  // who has the portrait (only read while one is up)
 
 static bool32 IsBattlePortraitUp(void)
 {
@@ -878,8 +881,11 @@ static bool32 IsBattlePortraitUp(void)
 void RR_UpdateBattleSpeakerPortrait(const u8 *text)
 {
     const u8 *cur, *page;
+    const u32 *gfx;
+    const u16 *pal;
     u8 state;
-    u32 who = RR_LINE_NARRATION;
+    u32 who = SPEAKER_NONE;
+    bool32 ourSide;
 
     if (RR_GetWindowPrinterPos(0, &cur, &state) && cur > text) // window 0: the battle message box
     {
@@ -888,21 +894,22 @@ void RR_UpdateBattleSpeakerPortrait(const u8 *text)
             page--; // waiting at a page break: that page is still on screen
         while (page > text && page[-1] != CHAR_PROMPT_CLEAR)
             page--;
-        who = RR_GetLineSpeaker(page);
-        if (who != RR_LINE_PLAYER && who != RR_LINE_IVY)
-            who = RR_LINE_NARRATION;
+        who = GetSpeaker(page);
     }
     if (!IsBattlePortraitUp())
-        sBattleSpeaker = RR_LINE_NARRATION;
+        sBattleSpeaker = SPEAKER_NONE;
     if (who == sBattleSpeaker)
         return;
     if (IsBattlePortraitUp())
         RR_DestroyStandalonePortrait(0, sBattleSpeakerIdPlus1 - 1);
     sBattleSpeakerIdPlus1 = 0;
-    sBattleSpeaker = RR_LINE_NARRATION;
-    if (who == RR_LINE_NARRATION)
+    sBattleSpeaker = SPEAKER_NONE;
+    if (who == SPEAKER_NONE || !GetSpeakerPicture(who, &gfx, &pal))
         return;
-    sBattleSpeakerIdPlus1 = RR_CreateStandalonePortrait(0, who, BATTLE_PORTRAIT_X, BATTLE_PORTRAIT_Y, FALSE) + 1;
+    ourSide = RR_GetLineSpeaker(page) == RR_LINE_PLAYER || RR_GetLineSpeaker(page) == RR_LINE_IVY;
+    sBattleSpeakerIdPlus1 = CreateStandalone(0, gfx, pal, 64 * 64 / 2,
+                                             ourSide ? BATTLE_PORTRAIT_X : BATTLE_PORTRAIT_X_OTHER,
+                                             BATTLE_PORTRAIT_Y, !ourSide) + 1;
     if (sBattleSpeakerIdPlus1 - 1 < MAX_SPRITES)
     {
         sBattleSpeaker = who;
