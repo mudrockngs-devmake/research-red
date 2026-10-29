@@ -271,7 +271,7 @@ def battles_judge(out, sdir, script):
 # A scripted fight (src/rr_scripted_fight.c) shows its own opening and its
 # lines, in that order; its trainer number says which fight ran.
 SCRIPTED_FIGHT_LINES = {
-    "TRAINER_RR_ELM_JENNY_WATCH": ["Elm and Jenny challenge Prof. Oak!", "Elm: "],
+    "TRAINER_RR_OAK_WATCH": ["Elm and Jenny challenge Prof. Oak!", "Elm: ", "Oak: "],
 }
 
 

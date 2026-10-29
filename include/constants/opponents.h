@@ -721,7 +721,7 @@ enum TrainerID
     TRAINER_RR_DAISY_REMATCH, // unused (#107)
     TRAINER_RR_DELIA_REMATCH, // Research Red (#70)
     TRAINER_RR_BROCK_REMATCH, // Research Red (#52)
-    TRAINER_RR_ELM_JENNY_WATCH, // Research Red (#105): Elm and Jenny in the scripted lab fights (team set by src/rr_scripted_fight.c; was Oak's ranch team, #86)
+    TRAINER_RR_OAK_WATCH, // Research Red (#105): Oak in the scripted lab fights against Elm and Jenny (team set by src/rr_scripted_fight.c; was Oak's ranch team, #86)
     TRAINER_RR_SAMURAI, // Research Red (#9): Viridian Forest
     TRAINERS_COUNT,
 

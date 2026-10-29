@@ -405,12 +405,24 @@ RR_Lab_EventScript_BattleResult::
 	msgbox RR_Lab_Text_Ivy_LetThemHaveIt, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_OakOffer
 
-@ Won (#105, owner 2026-10-28): Oak asks you right away
+@ Won (#105, owner 2026-10-28): Oak asks you right away; after his fight
+@ (or a No) watching Elm and Jenny take him on is offered too (owner
+@ 2026-10-29). VAR_TEMP_7 = 1 marks this order.
 RR_Lab_EventScript_AfterBattle::
+	setvar VAR_TEMP_7, 1
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_BestOfFive, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Jenny_BestOfZero, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_OakOffer
+
+@ After a win and Oak's offer: Elm wants his turn against Oak (optional to watch)
+RR_Lab_EventScript_WatchAfterWin::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Elm_OurTurn, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_WatchOakAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_ElmChallengesOak
+	msgbox RR_Lab_Text_Ivy_LetThemHaveIt, MSGBOX_DEFAULT
+	goto RR_Lab_EventScript_TableNap
 
 @ #105, after a loss and only if you want to watch: Elm and Jenny (Lv 6) take
 @ on Oak's two leftover starters (Lv 5) and win; Elm asks for another round
@@ -425,12 +437,12 @@ RR_Lab_EventScript_ElmChallengesOak::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Protocol, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_Accepts, MSGBOX_DEFAULT
-	call RR_Lab_EventScript_HealElmJenny
 	call RR_Lab_EventScript_SetupPair
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_StartersGo, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Ivy_Popcorn, MSGBOX_DEFAULT
 	closemessage
+	call RR_Lab_EventScript_OakTakesBalls
 	setvar VAR_0x8006, RR_FIGHT_LAB_STARTERS
 	call RR_Lab_EventScript_ScriptedFight
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -447,7 +459,6 @@ RR_Lab_EventScript_ElmChallengesOak::
 	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_RanchSkip
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_HealAgain, MSGBOX_DEFAULT
-	call RR_Lab_EventScript_HealElmJenny
 	closemessage
 	setvar VAR_0x8006, RR_FIGHT_LAB_RANCH
 	call RR_Lab_EventScript_ScriptedFight
@@ -465,11 +476,14 @@ RR_Lab_EventScript_RanchAftermath::
 	msgbox RR_Lab_Text_Oak_TaurosHaiku, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_Allergies, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Ivy_OakGlow, MSGBOX_DEFAULT
+	goto_if_eq VAR_TEMP_7, 1, RR_Lab_EventScript_TableNap
 @ --- your turn, if you like: never forced, healed first. One fight with
 @ Oak's two leftover starters (Lv 5); if you say No it waits until Route 22:
 @ talk to Oak in the lab (#105, owner 2026-10-28) ---
 RR_Lab_EventScript_OakOffer::
 	call RR_Lab_EventScript_SetupPair
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp @ #150: face Oak
+	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Challenge, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_OakBattleAsk, MSGBOX_YESNO
@@ -482,12 +496,12 @@ RR_Lab_EventScript_OakOffer::
 	msgbox RR_Lab_Text_Elm_Funding, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_SweetThought, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_Haiku, MSGBOX_DEFAULT
-	goto RR_Lab_EventScript_TableNap
+	goto RR_Lab_EventScript_AfterOakOffer
 
 RR_Lab_EventScript_OakBeaten::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_MoreInYou, MSGBOX_DEFAULT
-	goto RR_Lab_EventScript_TableNap
+	goto RR_Lab_EventScript_AfterOakOffer
 
 RR_Lab_EventScript_OakDeclined::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -495,6 +509,8 @@ RR_Lab_EventScript_OakDeclined::
 	msgbox RR_Lab_Text_Oak_AnyTime, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_StillFunding, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_HaveItCovered, MSGBOX_DEFAULT
+RR_Lab_EventScript_AfterOakOffer::
+	goto_if_eq VAR_TEMP_7, 1, RR_Lab_EventScript_WatchAfterWin
 
 @ Oak keeps the two leftover starters (they're in his rematch team); the
 @ table is empty, and the lab's Slowpoke claims it for naps from now on
@@ -559,6 +575,7 @@ RR_Lab_EventScript_Grant::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_SecondGrant, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_SameGrant, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_SeeMyAide, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_GoSeeDaisy, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_MeetAtDaisys, MSGBOX_DEFAULT
 	closemessage
@@ -1128,6 +1145,17 @@ RR_Lab_Text_Oak_SameGrant::
     .string "Oak: You got one, Elm.\n"
     .string "It's the same grant.$"
 
+RR_Lab_Text_Oak_SeeMyAide::
+    .string "Oak: Oh, one more thing, everyone!\p"
+    .string "Questions about the project, the\n"
+    .string "grant or any of the gadgets?\l"
+    .string "My aide over there knows it all.\p"
+    .string "Better than I do, frankly.$"
+
+RR_Lab_Text_Elm_OurTurn::
+    .string "Elm: Our turn! Professor, you're\n"
+    .string "all warmed up. Team Science next!$"
+
 RR_Lab_Text_Oak_GoSeeDaisy::
     .string "Oak: Go and see Daisy. She has\n"
     .string "Town Maps. And patience.\p"
@@ -1149,12 +1177,17 @@ RR_Lab_Text_IvyMonJoins::
 @ Elm and Jenny won, so they face Oak; the player watches (AI vs AI).
 @ Placeholder dialogue until the owner's scene spec.
 @ ---------------------------------------------------------------
-@ Oak heals Elm and Jenny's Pokémon (a fanfare and a line)
-RR_Lab_EventScript_HealElmJenny::
-	playfanfare MUS_HEAL
-	message RR_Lab_Text_HealedElmJenny
-	waitmessage
-	waitfanfare
+@ #151: Oak takes his two leftover starters' Poké Balls off the table to
+@ battle (the picked ones are gone already); they stay with him
+RR_Lab_EventScript_OakTakesBalls::
+	playse SE_BALL
+	removeobject LOCALID_BULBASAUR_BALL
+	removeobject LOCALID_SQUIRTLE_BALL
+	removeobject LOCALID_CHARMANDER_BALL
+	removeobject LOCALID_LAB_CHIKORITA_BALL
+	removeobject LOCALID_LAB_CYNDAQUIL_BALL
+	removeobject LOCALID_LAB_TOTODILE_BALL
+	waitse
 	return
 
 @ The two starters Oak has left (STR_VAR_1, STR_VAR_2) and Elm and Jenny's
@@ -1259,12 +1292,9 @@ RR_Lab_EventScript_OakBattle5::
 RR_Lab_EventScript_OakFirstFight::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_LikeThis, MSGBOX_DEFAULT
-	playfanfare MUS_HEAL
-	special HealPlayerParty
-	message RR_Lab_Text_HealedYours
-	waitmessage
-	waitfanfare
+	special HealPlayerParty @ quietly (owner 2026-10-29): Oak's offer already says he heals
 	closemessage
+	call RR_Lab_EventScript_OakTakesBalls
 	setflag FLAG_RR_OAK_FIRST_FIGHT
 	setflag FLAG_RR_NO_WHITEOUT
 	call RR_Lab_EventScript_OakStarterBattle
@@ -1301,11 +1331,11 @@ RR_Lab_EventScript_OakOffToViridian::
 	end
 
 @ #105: a scripted fight (VAR_0x8006 = RR_FIGHT_*): Elm and Jenny's picks
-@ against Oak's Pokemon, who stand in for your party until it ends
+@ (standing in for your party until it ends) against Oak's Pokemon
 RR_Lab_EventScript_ScriptedFight::
 	call RR_Lab_EventScript_SetupPair
 	callnative RR_ScriptStartScriptedFight
-	trainerbattle_no_intro TRAINER_RR_ELM_JENNY_WATCH, RR_Lab_Text_ElmJenny_RanchDefeat
+	trainerbattle_no_intro TRAINER_RR_OAK_WATCH, RR_Lab_Text_Oak_WatchDefeat
 	callnative RR_ScriptEndScriptedFight
 	special HealPlayerParty
 	return
@@ -1337,10 +1367,6 @@ RR_Lab_Text_Oak_Accepts::
     .string "lab? Gladly!\p"
     .string "But a professor looks after his\n"
     .string "opponents. Let me heal yours.$"
-
-RR_Lab_Text_HealedElmJenny::
-    .string "Oak healed Elm and Jenny's\n"
-    .string "Pokémon.$"
 
 RR_Lab_Text_Oak_StartersGo::
     .string "Oak: {STR_VAR_1}! {STR_VAR_2}!\n"
@@ -1395,9 +1421,6 @@ RR_Lab_Text_Oak_TaurosHaiku::
 RR_Lab_Text_Elm_Allergies::
     .string "Elm: It's allergies! Tauros shed\n"
     .string "on me!$"
-
-RR_Lab_Text_HealedYours::
-    .string "Oak healed your Pokémon.$"
 
 RR_Lab_Text_Oak_KeepStarters::
     .string "Oak: {STR_VAR_1} and {STR_VAR_2}\n"
@@ -1507,9 +1530,8 @@ RR_Lab_Text_Elm_Pidgeot::
     .string "are fully evolved!$"
 
 @ Elm and Jenny's line when Oak's ranch team wins (the scripted fight)
-RR_Lab_Text_ElmJenny_RanchDefeat::
-    .string "Elm: We were winning! For one\n"
-    .string "whole turn!$"
+RR_Lab_Text_Oak_WatchDefeat::
+    .string "Oak: Ho ho! Well fought, you two!$"
 
 RR_Lab_Text_Jenny_OakFast::
     .string "Jenny: In my professional opinion,\n"

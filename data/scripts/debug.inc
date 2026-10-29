@@ -161,6 +161,7 @@ Debug_EventScript_Text_DefensiveIVs:
 @ ===================================================================
 Debug_EventScript_Script_1::
 	call RR_Debug_StateGrassDone
+	callnative RR_ScriptEmptyParty @ #153: no team left over from an earlier try
 	destroyfollowernpc
 	warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, 12
 	waitstate

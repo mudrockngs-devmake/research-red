@@ -16,7 +16,7 @@ How to use it:
 - Hard caps by **how many** badges you have (not which ones): 0 badges Lv 14, 1: 21, 2: 24, 3: 29, 4: 43, 5: 43, 6: 47, 7: 50, 8 badges before the Elite Four: 63, after: none.
 - At the cap: no EXP, Rare Candies stop. Below it: **catch-up EXP** (more the further below).
 - Optional: Options > Research Rules > Level caps off (no cap, no catch-up bonus). Overlevelling is the player's choice; Elm jokes about it when setting up the bet.
-- Rematches against family and friends give 1.5x EXP and no money (#53). **Bug** (#110): it also reaches the opening lab fights.
+- Rematches against family and friends give 1.5x EXP and no money (#53). Checked 2026-10-29 (#110): that boost is only on the Oak and Daisy, Delia and Brock rematches, not the lab fights; the lab's extra EXP is catch-up EXP (double while 5+ levels under the cap).
 
 **Planned**
 - **Opening fights give normal EXP** (you and Ivy vs Elm and Jenny, Oak's first fight); a double battle giving a fair amount is fine. The big boost ("a very large amount of EXP", an easy place to grind to the cap) is **only for the replayable Oak and Daisy fights** after Route 22 (owner 2026-10-28, #110).
@@ -51,19 +51,13 @@ How to use it:
 - **No overworld scaling**: wild Pokémon and route trainers keep their levels (no Crystal Clear-style respec). Only gym leaders adapt (section 5).
 
 ## 4. The lab, Oak, and Elm and Jenny's early fights
-**In the game** (v0.0.21, #105)
+**In the game** (v0.0.22, #105)
 - You and Ivy fight Elm and Jenny (double, Lv 5).
-- **You win:** Oak asks right away if you want to battle his two leftover starters (Lv 5).
+- **You win:** Oak asks right away if you want to battle his two leftover starters (Lv 5). After that (Yes or No) Elm wants his turn: watching Elm and Jenny vs Oak, and the gag after it, is optional (owner 2026-10-29).
 - **You lose:** Elm and Jenny gloat; you can watch them take on Oak (Elm and Jenny Lv 6 vs his starters Lv 5), then the gag where Oak's Lv 50 Pidgeot and Tauros flatten them (Lv 7), each optional. Then Oak offers you his fight.
 - Saying No to Oak's fight: it waits until Route 22 (talk to Oak in the lab); one fight only (FLAG_RR_OAK_FIRST_FIGHT). After Route 22 Oak and Daisy are the rematch.
-- **The watched fights are scripted** (owner 2026-10-29, #105; `src/rr_scripted_fight.c`): a real battle screen that plays out the same way every time, with lines between turns. Elm and Jenny are on the far side with their pair picture; Oak's Pokémon are on the near side with no trainer picture. Each turn's moves come from a table; nothing misses or lands a critical hit and nobody switches (like FireRed's Poké Dude battles). It opens with "Elm and Jenny challenge Prof. Oak!" and gives no prize money. Fight 1 lasts about four turns (Oak's side only uses plain hits); the gag is over in two.
-
-**Planned** (owner 2026-10-29, v0.0.21 spot check, #105)
-- **Seen from Elm and Jenny's side** (replaces the far-side layout above): their Pokémon on the near side, Oak as the opponent with his picture sliding in when he talks; Ivy and the player can still chime in.
-- **The gag is instant:** Pidgeot and Tauros attack straight away and wipe them out (no Agility, no Rest).
-- **Scripted fights advance on their own**, no pressing A, in every scripted fight.
-- After a win and Oak's fight, watching Elm and Jenny vs Oak (and the gag) is still offered, optional.
-- Healing before the lab fights stays, announced shorter or not at all.
+- Healing before the lab fights is quiet: Oak's lines say he heals, no fanfare (owner 2026-10-29). You turn to face Oak when he asks (#150); his Poké Balls leave the table when his starters battle (#151). Before everyone leaves, Oak points you to his aide for the project, the grant and the gadgets (#152).
+- **The watched fights are scripted** (owner 2026-10-29, #105; `src/rr_scripted_fight.c`): a real battle screen that plays out the same way every time, with lines between turns, **seen from Elm and Jenny's side**: their Pokémon on the near side with their pair picture, Oak as the opponent, his picture sliding in when he talks; Elm's, Jenny's and Ivy's lines show their portraits. Each turn's moves come from a table; nothing misses or lands a critical hit and nobody switches (like FireRed's Poké Dude battles). The text moves on by itself. It opens with "Elm and Jenny challenge Prof. Oak!" and gives no prize money. Fight 1 lasts about four turns (Oak's side only uses plain hits); the gag is instant (Pidgeot and Tauros hit straight away).
 
 **Planned** (owner 2026-10-28, #105)
 - **Watched fights become scripted cutscenes** with fun dialogue, not AI battles: Elm and Jenny vs the gym leaders next (#142), on the same scripted-fight system as the lab.
@@ -82,8 +76,8 @@ How to use it:
 - **Erika, Koga and Sabrina**: their tier follows how many badges you have, so their order doesn't matter.
 - **Giovanni**: his gym fight, a way to refight him (depends on the story), and a post-game team.
 - **Only gym leaders get a tier menu.** Elm and Jenny, Delia, Oak and Daisy grow with badges with no tier choice (owner 2026-10-28).
-- Elm and Jenny wait by the Pewter Pokémon Center whenever you're in Pewter after their first fight there, for a rebattle any time (owner 2026-10-29, #143); when the story moves to the next town, they move with it.
-- After Brock, Elm asks if you want to watch them fight Brock (#142). Saying no: next time you're in Pewter they're at the Center, say once that it was a great fight and they learned a lot, then just offer rebattles. Their rebattle team after Brock: all Lv 15 for now (owner 2026-10-29, #143). They stand left of the Center, facing down.
+- Elm and Jenny wait by the Pewter Pokémon Center whenever you're in Pewter after their first fight there, for a rebattle any time (owner 2026-10-29, #143); when the story moves to the next town, they move with it. In the game since v0.0.21; since v0.0.22 they stand left of the Center facing down.
+- After Brock, Elm asks if you want to watch them fight Brock (#142). Saying no: next time you're in Pewter they're at the Center, say once that it was a great fight and they learned a lot, then just offer rebattles. Their rebattle team after Brock: all Lv 15 for now (owner 2026-10-29, #143).
 - **Elm and Jenny's rematches** are replayable and give **normal EXP and normal prize money**, like any trainer (owner 2026-10-28, #127; this replaces the earlier "no EXP, no money"). They shouldn't be the place to earn money: that comes from gym leader rebattles and the rest of the game. Still open: an item each time.
 - **The rematch menu**: pick any tier from the leader's original team up to your current badge count (like Crystal Clear).
 - Open: the Pewter rematch with Elm and Jenny wins 6% for a team at the cap (Lv 14) (BALANCE.md "Simulated fights"): tune it, or keep it a hard optional fight?

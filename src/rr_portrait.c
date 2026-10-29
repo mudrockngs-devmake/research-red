@@ -19,6 +19,7 @@
 #include "malloc.h"
 #include "menu.h"
 #include "rr_portrait.h"
+#include "rr_scripted_fight.h"
 #include "script.h"
 #include "sprite.h"
 #include "string_util.h"
@@ -576,6 +577,17 @@ u8 RR_CreateStandalonePortrait(u32 slot, u32 who, s16 x, s16 y, bool32 hFlip)
     return CreateStandalone(slot, gfx, pal, 64 * 64 / 2, x, y, hFlip);
 }
 
+// The same for any speaker (SPEAKER_PLAYER or an index into sSpeakers)
+static u8 CreateStandaloneForSpeaker(u32 slot, u32 speaker, s16 x, s16 y)
+{
+    const u32 *gfx;
+    const u16 *pal;
+
+    if (slot >= 2 || !GetSpeakerPicture(speaker, &gfx, &pal))
+        return MAX_SPRITES;
+    return CreateStandalone(slot, gfx, pal, 64 * 64 / 2, x, y, FALSE);
+}
+
 // Elm's and Jenny's small video-call faces (32x32, cast/*/call.png): they
 // "call in" for their family's banter lines
 static const u32 sCallGfx_Elm[] = INCBIN_U32("graphics/research_red/cast/elm/call.4bpp");
@@ -858,7 +870,8 @@ void RR_ShowDexStamp(u32 dexNum, s16 x, s16 y)
 // ---------------------------------------------------------------------------
 // In battle (#95): when a page of the battle message is spoken by the player
 // or Ivy ("Ivy: That's the best kind, Elm."), their portrait stands above the
-// message box, over your Pokémon, until the page changes. The other side's
+// message box, over your Pokémon, until the page changes. In a scripted fight
+// (#105) Elm and Jenny are on your side, so theirs show too. The other side's
 // lines are FireRed's own: their battle picture slides in (Elm and Jenny's
 // picture of the pair, #107) and the line starts with who's talking. Called every frame from
 // BattleMainCB2.
@@ -867,7 +880,25 @@ void RR_ShowDexStamp(u32 dexNum, s16 x, s16 y)
 #define BATTLE_PORTRAIT_Y 80   // bottom edge on the message box (y 112)
 
 static EWRAM_DATA u8 sBattleSpeakerIdPlus1 = 0;   // sprite id + 1 (0: none)
-static EWRAM_DATA u8 sBattleSpeaker = RR_LINE_NARRATION;
+static EWRAM_DATA u8 sBattleSpeaker = 0; // SPEAKER_PLAYER or an index into sSpeakers (reset below while no portrait is up)
+
+// Whose lines get a portrait in battle: yours, Ivy's, and in a scripted
+// fight Elm's and Jenny's (they fight on your side there)
+static bool32 HasBattlePortrait(u32 speaker)
+{
+    static const u8 sIvy[] = _("Ivy");
+    static const u8 sElm[] = _("Elm");
+    static const u8 sJenny[] = _("Jenny");
+
+    if (speaker == SPEAKER_PLAYER)
+        return TRUE;
+    if (speaker == SPEAKER_NONE)
+        return FALSE;
+    if (StringCompare(sSpeakers[speaker].name, sIvy) == 0)
+        return TRUE;
+    return RR_IsScriptedFight()
+        && (StringCompare(sSpeakers[speaker].name, sElm) == 0 || StringCompare(sSpeakers[speaker].name, sJenny) == 0);
+}
 
 static bool32 IsBattlePortraitUp(void)
 {
@@ -880,7 +911,7 @@ void RR_UpdateBattleSpeakerPortrait(const u8 *text)
 {
     const u8 *cur, *page;
     u8 state;
-    u32 who = RR_LINE_NARRATION;
+    u32 who = SPEAKER_NONE;
 
     if (RR_GetWindowPrinterPos(0, &cur, &state) && cur > text) // window 0: the battle message box
     {
@@ -889,21 +920,21 @@ void RR_UpdateBattleSpeakerPortrait(const u8 *text)
             page--; // waiting at a page break: that page is still on screen
         while (page > text && page[-1] != CHAR_PROMPT_CLEAR)
             page--;
-        who = RR_GetLineSpeaker(page);
-        if (who != RR_LINE_PLAYER && who != RR_LINE_IVY)
-            who = RR_LINE_NARRATION;
+        who = GetSpeaker(page);
+        if (!HasBattlePortrait(who))
+            who = SPEAKER_NONE;
     }
     if (!IsBattlePortraitUp())
-        sBattleSpeaker = RR_LINE_NARRATION;
+        sBattleSpeaker = SPEAKER_NONE;
     if (who == sBattleSpeaker)
         return;
     if (IsBattlePortraitUp())
         RR_DestroyStandalonePortrait(0, sBattleSpeakerIdPlus1 - 1);
     sBattleSpeakerIdPlus1 = 0;
-    sBattleSpeaker = RR_LINE_NARRATION;
-    if (who == RR_LINE_NARRATION)
+    sBattleSpeaker = SPEAKER_NONE;
+    if (who == SPEAKER_NONE)
         return;
-    sBattleSpeakerIdPlus1 = RR_CreateStandalonePortrait(0, who, BATTLE_PORTRAIT_X, BATTLE_PORTRAIT_Y, FALSE) + 1;
+    sBattleSpeakerIdPlus1 = CreateStandaloneForSpeaker(0, who, BATTLE_PORTRAIT_X, BATTLE_PORTRAIT_Y) + 1;
     if (sBattleSpeakerIdPlus1 - 1 < MAX_SPRITES)
     {
         sBattleSpeaker = who;

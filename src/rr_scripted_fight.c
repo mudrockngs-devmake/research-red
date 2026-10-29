@@ -3,23 +3,24 @@
 // Elm and Jenny against Oak in the lab: a real battle on the battle screen
 // that plays out the same way every time, with lines between turns. It is a
 // watched fight (AI vs AI, FLAG_RR_AI_VS_AI) with a few rules on top:
-//   - Oak's Pokemon stand on the near side with no trainer picture (Oak just
-//     calls them out); Elm and Jenny are the trainer on the far side
-//     (TRAINER_RR_ELM_JENNY_WATCH, their pair picture).
+//   - Seen from Elm and Jenny's side (owner 2026-10-29): their Pokemon stand
+//     on the near side with their pair picture, and Oak is the trainer on the
+//     far side (TRAINER_RR_OAK_WATCH, his picture).
 //   - Every turn each Pokemon uses the kind of move the fight's turn table
 //     gives it, against the Pokemon facing it. Nothing misses, nothing lands
 //     a critical hit, nobody switches (FireRed's Poke Dude battles work the
 //     same way).
 //   - Lines play before the first turn and after the turns the line table
-//     names: Elm and Jenny's slide in with their picture, the others are
-//     plain messages (Ivy's show her portrait).
+//     names: Oak's slide his picture in, the others are plain messages
+//     (Elm's, Jenny's and Ivy's show their portraits, src/rr_portrait.c).
+//   - The text moves along by itself, no pressing A (src/battle_message.c).
 //   - No "You are challenged" and no prize money.
 //
 // From a script (rr_lab.inc):
 //   call RR_Lab_EventScript_SetupPair   @ Elm and Jenny's picks in VAR_0x8004/5
 //   setvar VAR_0x8006, RR_FIGHT_LAB_STARTERS
 //   callnative RR_ScriptStartScriptedFight
-//   trainerbattle_no_intro TRAINER_RR_ELM_JENNY_WATCH, <Elm and Jenny's losing line>
+//   trainerbattle_no_intro TRAINER_RR_OAK_WATCH, <Oak's losing line>
 //   callnative RR_ScriptEndScriptedFight
 #include "global.h"
 #include "battle.h"
@@ -45,8 +46,8 @@ enum
     RR_STATUS, // its first move that does no damage (Growl, Leer, Tail Whip...)
 };
 
-// One turn: what each battler does. The near side is Oak's (battlers 0 and
-// 2), the far side Elm and Jenny's (1 and 3). The last turn repeats.
+// One turn: what each battler does. The near side is Elm and Jenny's
+// (battlers 0 and 2), the far side Oak's (1 and 3). The last turn repeats.
 struct RRFightTurn
 {
     u8 move[MAX_BATTLERS_COUNT]; // RR_HIT / RR_BEST / RR_STATUS, by battler
@@ -55,7 +56,7 @@ struct RRFightTurn
 struct RRFightLine
 {
     u8 afterTurn;   // 0 = before the first turn
-    bool8 slide;    // Elm and Jenny slide in for it
+    bool8 slide;    // Oak's picture slides in for it
     const u8 *text;
 };
 
@@ -75,29 +76,28 @@ struct RRScriptedFight
 // Jenny always win, in about four turns.
 static const struct RRFightTurn sTurns_LabStarters[] =
 {
-    {{ [0] = RR_HIT, [2] = RR_HIT, [1] = RR_BEST, [3] = RR_BEST }},
+    {{ [0] = RR_BEST, [2] = RR_BEST, [1] = RR_HIT, [3] = RR_HIT }},
 };
 
 static const struct RRFightLine sLines_LabStarters[] =
 {
-    { 0, TRUE,  COMPOUND_STRING("Elm: Team Science, go! Jenny, the protocol!\pJenny: Step one: don't fall over, dear.{PAUSE_UNTIL_PRESS}") },
-    { 1, FALSE, COMPOUND_STRING("Oak: Ho ho! Good form! But can you keep it up?{PAUSE_UNTIL_PRESS}") },
-    { 2, TRUE,  COMPOUND_STRING("Elm: Jenny! We're winning! Against Oak!\pJenny: Don't jinx it, dear.{PAUSE_UNTIL_PRESS}") },
-    { 3, FALSE, COMPOUND_STRING("Ivy: Oak looks happier losing than most people look winning.{PAUSE_UNTIL_PRESS}") },
+    { 0, FALSE, COMPOUND_STRING("Elm: Team Science, go! Jenny, the protocol!\pJenny: Step one: don't fall over, dear.") },
+    { 1, TRUE,  COMPOUND_STRING("Oak: Ho ho! Good form! But can you keep it up?") },
+    { 2, FALSE, COMPOUND_STRING("Elm: Jenny! We're winning! Against Oak!\pJenny: Don't jinx it, dear.") },
+    { 3, FALSE, COMPOUND_STRING("Ivy: Oak looks happier losing than most people look winning.") },
 };
 
 // Fight 2, the gag: Elm and Jenny (Lv 7) against Oak's ranch Pidgeot and
-// Tauros (Lv 50). Oak tries to go easy for one turn.
+// Tauros (Lv 50), who hit straight away and flatten them in one turn.
 static const struct RRFightTurn sTurns_LabRanch[] =
 {
-    {{ [0] = RR_STATUS, [2] = RR_STATUS, [1] = RR_BEST, [3] = RR_BEST }},
-    {{ [0] = RR_BEST,   [2] = RR_BEST,   [1] = RR_BEST, [3] = RR_BEST }},
+    {{ [0] = RR_BEST, [2] = RR_BEST, [1] = RR_BEST, [3] = RR_BEST }},
 };
 
 static const struct RRFightLine sLines_LabRanch[] =
 {
-    { 0, TRUE,  COMPOUND_STRING("Elm: Level 50 is just a number, Jenny!\pJenny: It's a very large number, dear.{PAUSE_UNTIL_PRESS}") },
-    { 1, FALSE, COMPOUND_STRING("Oak: Pidgeot! Tauros! Gently now, they're colleagues!{PAUSE_UNTIL_PRESS}") },
+    { 0, FALSE, COMPOUND_STRING("Elm: Level 50 is just a number, Jenny!\pJenny: It's a very large number, dear.") },
+    { 0, TRUE,  COMPOUND_STRING("Oak: Pidgeot! Tauros! Gently now, they're colleagues!") },
 };
 
 static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
@@ -133,7 +133,6 @@ static const u16 sOakLeftovers[6][2] =
 };
 
 static EWRAM_DATA u8 sFightPlus1 = 0;          // the fight running + 1 (0 = none)
-static EWRAM_DATA u16 sElmJennySpecies[2] = {0};
 static EWRAM_DATA u8 sLinesPlayed = 0;         // one bit per line
 
 static const struct RRScriptedFight *GetFight(void)
@@ -146,31 +145,23 @@ bool32 RR_IsScriptedFight(void)
     return sFightPlus1 != 0 && IsAiVsAiBattle();
 }
 
-// VAR_0x8006 = RR_FIGHT_*, VAR_0x8004/5 = Elm and Jenny's species. Oak's
+// VAR_0x8006 = RR_FIGHT_*, VAR_0x8004/5 = Elm and Jenny's species. Their
 // Pokemon stand in for your party until RR_ScriptEndScriptedFight.
 void RR_ScriptStartScriptedFight(struct ScriptContext *ctx)
 {
     const struct RRScriptedFight *fight;
-    u32 i, starter = VarGet(VAR_RR_STARTER);
-    u16 species;
+    u32 i;
 
     if (VarGet(VAR_0x8006) >= RR_FIGHT_COUNT)
         return;
     sFightPlus1 = VarGet(VAR_0x8006) + 1;
     sLinesPlayed = 0;
-    sElmJennySpecies[0] = VarGet(VAR_0x8004);
-    sElmJennySpecies[1] = VarGet(VAR_0x8005);
     fight = GetFight();
 
     SavePlayerParty();
     ZeroPlayerPartyMons();
     for (i = 0; i < 2; i++)
-    {
-        species = fight->oakSpecies[i];
-        if (species == SPECIES_NONE)
-            species = sOakLeftovers[starter < 6 ? starter : 0][i];
-        CreateRandomMonWithIVs(&gPlayerParty[i], species, fight->oakLevel, fight->oakIvs);
-    }
+        CreateRandomMonWithIVs(&gPlayerParty[i], VarGet(VAR_0x8004 + i), fight->elmJennyLevel, fight->elmJennyIvs);
     CalculatePlayerPartyCount();
     FlagSet(FLAG_RR_AI_VS_AI);
     FlagSet(FLAG_RR_NO_WHITEOUT);
@@ -185,15 +176,23 @@ void RR_ScriptEndScriptedFight(struct ScriptContext *ctx)
     CalculatePlayerPartyCount();
 }
 
-// Battle start (CreateNPCTrainerParty): Elm and Jenny's two Pokemon
+// Battle start (CreateNPCTrainerParty): Oak's two Pokemon
 void RR_ScriptedFightAdjustParty(struct Pokemon *party, u16 trainerId)
 {
-    u32 i;
+    const struct RRScriptedFight *fight;
+    u32 i, starter = VarGet(VAR_RR_STARTER);
+    u16 species;
 
-    if (sFightPlus1 == 0 || trainerId != TRAINER_RR_ELM_JENNY_WATCH)
+    if (sFightPlus1 == 0 || trainerId != TRAINER_RR_OAK_WATCH)
         return;
+    fight = GetFight();
     for (i = 0; i < 2; i++)
-        CreateRandomMonWithIVs(&party[i], sElmJennySpecies[i], GetFight()->elmJennyLevel, GetFight()->elmJennyIvs);
+    {
+        species = fight->oakSpecies[i];
+        if (species == SPECIES_NONE)
+            species = sOakLeftovers[starter < 6 ? starter : 0][i];
+        CreateRandomMonWithIVs(&party[i], species, fight->oakLevel, fight->oakIvs);
+    }
 }
 
 static bool32 IsSameType(enum BattlerId battler, enum Move move)
@@ -300,6 +299,10 @@ const u8 *RR_ScriptedFightLineScript(void)
             continue;
         sLinesPlayed |= 1u << i;
         gBattleStruct->trainerSlideMsg = fight->lines[i].text;
+        // The slide borrows Oak's Pokemon's picture memory; the script gives it
+        // back to this battler and its partner. Without it they showed a
+        // broken copy of his picture when hit (#154).
+        gBattleScripting.battler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
         return fight->lines[i].slide ? BattleScript_TrainerASlideMsgEnd2 : BattleScript_RRScriptedLineEnd2;
     }
     return NULL;
@@ -310,9 +313,3 @@ const u8 *RR_ScriptedFightIntroText(void)
     return GetFight()->intro;
 }
 
-// Oak's side has no trainer picture: it's drawn (the intro needs it) but hidden
-void RR_ScriptedFightHideTrainerPic(enum BattlerId battler)
-{
-    if (RR_IsScriptedFight() && GetBattlerSide(battler) == B_SIDE_PLAYER)
-        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].invisible = TRUE;
-}

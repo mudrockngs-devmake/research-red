@@ -1,5 +1,6 @@
 // Research Red: custom native script commands.
 #include "global.h"
+#include "rr_scripted_fight.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "follower_npc.h"
@@ -76,6 +77,14 @@ void RR_ScriptBorrowRivalTeam(struct ScriptContext *ctx)
 void RR_ScriptReturnPlayerTeam(struct ScriptContext *ctx)
 {
     LoadPlayerParty();
+    CalculatePlayerPartyCount();
+}
+
+// Debug > Scripts > 1 (#153): back to before the lab with no Pokemon, so a
+// second try doesn't keep the first try's team
+void RR_ScriptEmptyParty(struct ScriptContext *ctx)
+{
+    ZeroPlayerPartyMons();
     CalculatePlayerPartyCount();
 }
 
@@ -378,6 +387,8 @@ void RR_ScriptSetWatchPic(struct ScriptContext *ctx)
 // The front pic of whoever is being watched, or TRAINER_PIC_NONE for your own
 u16 RR_GetWatchTrainerPic(void)
 {
+    if (RR_IsScriptedFight()) // #105: Elm and Jenny on your side
+        return TRAINER_PIC_RR_ELM_JENNY;
     return sRRWatchPic;
 }
 

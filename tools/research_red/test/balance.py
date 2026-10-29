@@ -61,7 +61,7 @@ FIGHTS = {
                 lambda: step("LEFT"),
                 "Route 22: the 6v6 double with Ivy vs Elm and Jenny",
                 "debug 4 team: starter, Bulbasaur, Spearow, Rattata, Mankey, Nidoran M, all Lv 12"),
-    "pewter": (lambda: debug_script(smoke.SCRIPT_AFTER_BROCK) + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20"],
+    "pewter": (lambda: debug_script(smoke.SCRIPT_AFTER_BROCK) + step("LEFT", 5) + ["wait 20", "press UP 6", "wait 20"],
                lambda: ["press A", "wait 30"],
                "Pewter: Elm and Jenny's rematch outside the Pokémon Center",
                "debug 10 team, all Lv 14 (the cap before Brock; 1 badge)"),

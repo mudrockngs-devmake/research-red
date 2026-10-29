@@ -1,5 +1,4 @@
 #include "global.h"
-#include "rr_scripted_fight.h" // Research Red
 #include "battle.h"
 #include "battle_ai_main.h"
 #include "battle_ai_switch.h"
@@ -267,7 +266,6 @@ static void PlayerPartnerHandleDrawTrainerPic(enum BattlerId battler)
         isFrontPic = TRUE;
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
-    RR_ScriptedFightHideTrainerPic(battler); // Research Red (#105): Oak's side shows no trainer
 }
 
 static void PlayerPartnerHandleTrainerSlide(enum BattlerId battler)

@@ -193,6 +193,16 @@ def sc_lab():
             + expect(story=3, party=1) + check("oak_fought", T.G.flag_set("FLAG_RR_OAK_FIRST_FIGHT")) + table_nap())
 
 
+def sc_debug1_party():
+    # #153: Debug > Scripts > 1 again on a save with Pokemon starts the lab
+    # with an empty team (it kept the earlier try's team before)
+    g = T.G
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + ["mash B 40"]
+            + check("has_team", g.party_count(2))
+            + debug_script(SCRIPT_LAB) + ["wait 120", "shot lab"]
+            + check("team_empty", g.party_count(0)))
+
+
 def sc_lab_skip():
     # #105: B says No to Oak's fight after the win; the offer waits: walk up
     # to Oak (6,3) and talk to him (A: Yes), then his one fight is done
@@ -498,11 +508,11 @@ def sprite_tour(female):
 
 def sc_pewter():
     # After Brock: Elm and Jenny's rematch outside the Pokemon Center (#10).
-    # Debug 10 leaves us below the door at (17,26); Elm stands at (16,27) with
-    # Jenny behind him (16,28) (#83).
+    # Debug 10 leaves us below the door at (17,26); Elm and Jenny stand left
+    # of the Center at (11,25) and (12,25), facing down (#143).
     return (["load @bedroom"] + after_brock_test_mode() + ["shot s000"]
-            + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20", "shot s001", "press A", "wait 30"]
-            + play_until("pewter", scene_end(8), 45000)  # the autopilot battle can run long
+            + step("LEFT", 5) + ["wait 20", "press UP 6", "wait 20", "shot s001", "press A", "wait 30"]
+            + play_until("pewter", scene_end(8), 60000)  # the autopilot battle can run long
             # A says Yes to "Want to come watch?": the Brock scene plays in the Gym (#69)
             + play_until("watched", T.G.var_is("VAR_RR_BROCK_WATCH", 2) + " && " + T.G.field_free(), 20000, key="A", every=60)
             + expect("MAP_PEWTER_CITY_GYM", story=8, party=1))
@@ -511,14 +521,14 @@ def sc_pewter():
 def sc_pewter_again():
     # #143: after their first Pewter fight (story 8, the Brock watch seen), Elm
     # and Jenny wait by the Center whenever you're in Pewter: leave for Route 2,
-    # come back, talk to Elm (16,27) and rebattle (Yes)
+    # come back, talk to Jenny (12,25) and rebattle (Yes)
     g = T.G
     return (["load @bedroom"] + after_brock_test_mode() + poke_var("VAR_0x40FE", 8)
             + poke_var("VAR_RR_BROCK_WATCH", 2) + ["shot s000"]
             + nav.go(g, ("MAP_PEWTER_CITY", 17, 26), "MAP_ROUTE2", (8, 3)) + expect("MAP_ROUTE2")
             + nav.go(g, ("MAP_ROUTE2", 8, 3), "MAP_PEWTER_CITY", (17, 26)) + ["wait 30", "shot back"]
             + check("they_wait", g.flag_set("FLAG_TEMP_13").replace(" & ", " !& "))   # not hidden
-            + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20", "press A", "wait 30", "shot ask"]
+            + step("LEFT", 5) + ["wait 20", "press UP 6", "wait 20", "press A", "wait 30", "shot ask"]
             + play_until("in_battle", g.in_battle(), 3000, key="A", every=40)
             + play_until("rebattled", g.field_free(), 45000, key="B", every=60)   # (on the map again)
             + expect("MAP_PEWTER_CITY", story=8))
@@ -1144,6 +1154,7 @@ SCENARIOS = {
     "delia_wild": (sc_delia_wild, "#106: after Delia's double, a wild battle on Route 1 is a wild Pokémon from its table"),
     "delia_battle": (sc_delia_battle, "Delia's double battle at home after Brock (#70)"),
     "brock_rematch": (sc_brock_rematch, "Brock's rematch in the Gym, tier menu, his team at 1 badge (#52)"),
+    "debug1_party": (sc_debug1_party, "Debug jump 1 on a save with Pokémon starts the lab with no team (#153)"),
     "lab_aide": (sc_lab_aide, "The lab aide explains the research tools (#72)"),
     "forest": (sc_forest, "Viridian Forest: a battle there uses the forest background (#74)"),
     "forest_charlie": (sc_forest_charlie, "Viridian Forest: beat a Bug Catcher (Sammy), then you and Ivy talk (#9)"),

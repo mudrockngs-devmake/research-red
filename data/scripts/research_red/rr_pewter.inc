@@ -2,8 +2,8 @@
 @ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 @ Pokemon Center: town scenes and rematches happen just outside Pokemon
 @ Centers, #10; Nurse Joy doesn't allow battles indoors)
-@ Story step 7 + badge 1: Elm and Jenny wait below-left of the Pewter
-@ Pokemon Center door (15-16, 27). Talking to them: they spot the badge, 6v6 double, then
+@ Story step 7 + badge 1: Elm and Jenny wait left of the Pewter Pokemon
+@ Center, side by side facing down (11-12, 25; owner 2026-10-29, #143). Talking to them: they spot the badge, 6v6 double, then
 @ they head off to challenge Brock themselves. Sets VAR_0x40FE to 8.
 @ They're friends travelling the same road: they'll turn up again.
 @ After that first fight they wait by the Center whenever you're in Pewter,

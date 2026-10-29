@@ -3927,11 +3927,14 @@ static void TryDoEventsBeforeFirstTurn(void)
         gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_TRAINER_SLIDE_A:
-        if (RR_IsScriptedFight()) // Research Red (#105): a scripted fight's opening line
+        if (RR_IsScriptedFight()) // Research Red (#105): a scripted fight's opening lines, one at a time
         {
             const u8 *script = RR_ScriptedFightLineScript();
             if (script != NULL)
+            {
                 BattleScriptExecute(script);
+                break; // back here for the next one
+            }
         }
         else if (ShouldDoTrainerSlide(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), TRAINER_SLIDE_BEFORE_FIRST_TURN))
             BattleScriptExecute(BattleScript_TrainerASlideMsgEnd2);

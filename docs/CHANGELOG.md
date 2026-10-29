@@ -2,6 +2,21 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
+## v0.0.22
+The lab and its scripted fights (issues #105, #110, #143, #150-#154). A spot-check round: Start > Debug > Scripts jumps straight to each change.
+- Changed: Elm and Jenny's fights against Oak are seen from their side now (#105): their Pokémon on the near side with their picture, Oak as the opponent. When Oak talks his picture slides in; Elm's, Jenny's and Ivy's lines show their portraits.
+- Changed: the gag is instant again: Oak's Lv 50 Pidgeot and Tauros hit straight away and flatten them in one turn.
+- Changed: the scripted fights play themselves: the text moves on without pressing A.
+- Changed: win against Elm and Jenny and, after Oak's offer, you can still watch them take on Oak (and the gag), optional.
+- Changed: healing before the lab fights is quiet: Oak says he'll heal you, no fanfare or extra message.
+- Changed: you turn to face Oak when he asks to battle (#150), and his two Poké Balls leave the table when his starters battle (#151).
+- New: before everyone leaves the lab, Oak tells you his aide can answer anything about the project, the grant and the gadgets (#152).
+- Changed: in Pewter, Elm and Jenny wait left of the Pokémon Center, facing you (#143).
+- Fixed: a broken, multicoloured copy of the trainer's picture flashed during attacks in the scripted fights (#154).
+- Fixed (test builds): debug jump 1 kept the Pokémon from an earlier try; it starts with no team now (#153).
+- Checked (#110): the rematch EXP boost doesn't reach the lab fights. The lab's extra EXP comes from catch-up EXP (double while you're 5+ levels under the cap).
+- **Save:** old saves work (you start from the debug jumps this round anyway).
+
 ## v0.0.21
 Elm and Jenny on the road (issues #105, #116, #139, #140, #143, #148). A spot-check round: Start > Debug > Scripts jumps straight to each change.
 - New: Elm and Jenny's fights against Oak in the lab are scripted (#105): a real battle that plays out the same way every time, with lines between turns. Elm and Jenny are on the far side with their pair picture, Oak's Pokémon on the near side. It opens with "Elm and Jenny challenge Prof. Oak!" and is about four turns; the gag with Oak's Pidgeot and Tauros is over in two.
