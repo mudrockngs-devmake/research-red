@@ -324,6 +324,27 @@ Debug_EventScript_Script_9::
 @ Pokemon Center door (Elm and Jenny's rematch just left of it, #10; the demo
 @ blocker at the east exit, #35).
 Debug_EventScript_Script_10::
+	call RR_Debug_StateAfterBrock
+	setvar VAR_0x40FE, 7
+	goto Debug_Script10_Warp
+
+@ Research Red (#143): like 10, with Elm and Jenny's Pewter rematch already
+@ done (story 8) and their Brock fight watched: they wait by the Center for
+@ a rebattle. (The story is set after the shared state: the Grass/Lab/Daisy
+@ steps reset it, which made 15 play the first rematch in v0.0.21.)
+Debug_EventScript_Script_15::
+	call RR_Debug_StateAfterBrock
+	setvar VAR_0x40FE, 8
+	setvar VAR_RR_BROCK_WATCH, 2
+Debug_Script10_Warp:
+	rr_ivy_create_follower
+	warp MAP_PEWTER_CITY, 17, 26
+	waitstate
+	release
+	end
+
+@ Debug 10 and 15: Brock beaten, a Lv 14 team, in Pewter
+RR_Debug_StateAfterBrock::
 	call RR_Debug_StateGrassDone
 	call RR_Debug_StateLabDone
 	call RR_Debug_StateDaisyDone
@@ -335,9 +356,6 @@ Debug_EventScript_Script_10::
 	special HealPlayerParty
 	setvar VAR_MAP_SCENE_ROUTE22, 2
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
-	goto_if_ge VAR_0x40FE, 8, Debug_Script10_StorySet @ debug 15 set 8
-	setvar VAR_0x40FE, 7
-Debug_Script10_StorySet:
 	setflag FLAG_RR_DEXNAV_GET @ Research Red: Jenny gives it after the Route 22 battle
 	setflag FLAG_RR_DEXNAV_DETECTOR
 	setflag FLAG_BADGE01_GET
@@ -346,18 +364,7 @@ Debug_Script10_StorySet:
 	setflag FLAG_WORLD_MAP_PALLET_TOWN @ Research Red: the towns you'd have passed (Fly targets)
 	setflag FLAG_WORLD_MAP_VIRIDIAN_CITY
 	setflag FLAG_WORLD_MAP_PEWTER_CITY
-	rr_ivy_create_follower
-	warp MAP_PEWTER_CITY, 17, 26
-	waitstate
-	release
-	end
-
-@ Research Red (#143): like 10, with Elm and Jenny's Pewter rematch already
-@ done (story 8): walk out of Pewter and back in, they wait by the Center
-Debug_EventScript_Script_15::
-	setvar VAR_RR_BROCK_WATCH, 2
-	setvar VAR_0x40FE, 8
-	goto Debug_EventScript_Script_10
+	return
 
 @ Catch test: 10 Poké Balls and a wild Pidgey, for checking what happens
 @ after a catch (the new Pokédex entry and its banter, #5). Smoke test "catch".

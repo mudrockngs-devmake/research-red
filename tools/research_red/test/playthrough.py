@@ -501,8 +501,8 @@ def p11():
 @leg("p12_pewter", "Outside the Pokémon Center: Elm and Jenny's rematch, then watching them take on Brock")
 def p12():
     g = G()
-    return (start("p11_brock") + nav.go(g, here(("MAP_PEWTER_CITY_GYM", 6, 6)), "MAP_PEWTER_CITY", (12, 26))
-            + ["press UP 6", "wait 20", "press A", "wait 30"]
+    return (start("p11_brock") + nav.go(g, here(("MAP_PEWTER_CITY_GYM", 6, 6)), "MAP_PEWTER_CITY", (12, 24))
+            + ["press DOWN 6", "wait 20", "press A", "wait 30"]   # Jenny (12,25), from above (the way from the Gym)
             + play_until("pewter", scene_end(8), 60000)
             + play_until("watched", g.var_is("VAR_RR_BROCK_WATCH", 2) + " && " + g.field_free(), 20000, key="A", every=60)
             + expect(story=8) + leg_end("p12_pewter"))

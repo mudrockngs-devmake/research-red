@@ -203,6 +203,39 @@ def sc_debug1_party():
             + check("team_empty", g.party_count(0)))
 
 
+def sc_cl_lose_watch():
+    # The v0.0.22 checklist as the owner plays it (#105): jump 1, lose the lab
+    # battle, Yes to watching. During both scripted fights NO button is
+    # pressed: each must end by itself (the text moves on without A).
+    g = T.G
+    party, size = g.sym("gPlayerParty"), g.const("sizeof(struct Pokemon)")
+    hp = g.const("offsetof(struct Pokemon, hp)")
+    low_hp = [f"poke {party + i * size + hp:#x}:2 1" for i in range(2)]
+    off = g.in_battle().replace(" == ", " != ")
+    return (["load @bedroom"] + debug_script(SCRIPT_LAB) + step("UP")
+            + play_until("two_mons", g.party_count(2), 40000, key="A", every=200) + low_hp
+            + play_until("lab_battle", g.in_battle(), 20000, key="A", every=120)
+            + play_until("lab_lost", off, 20000, key="A", every=120)
+            + play_until("fight1_on", g.in_battle(), 20000, key="A", every=90)
+            + play_until("fight1_by_itself", off, 6000, key="-", every=30)
+            + play_until("gag_on", g.in_battle(), 20000, key="A", every=90)
+            + play_until("gag_by_itself", off, 4000, key="-", every=20)
+            + play_until("scene_done", scene_end(3), 60000, key="A", every=120)
+            + expect(story=3, party=2) + table_nap())
+
+
+def sc_cl_pewter15():
+    # The v0.0.22 checklist: Debug > Scripts > 15, Elm and Jenny wait left of
+    # the Pewter Pokemon Center facing down (#143); talk to Jenny, say No
+    g = T.G
+    return (["load @bedroom"] + debug_script(15) + ["wait 60", "shot arrive"]
+            + check("they_wait", g.flag_set("FLAG_TEMP_13").replace(" & ", " !& "))
+            + step("LEFT", 5) + ["wait 20", "shot near", "press UP 6", "wait 20", "press A", "wait 60", "shot ask",
+                                 "press B", "wait 60", "shot no"]   # the rebattle question: No
+            + play_until("declined", g.field_free(), 3000, key="B", every=40) + ["shot end"]
+            + expect("MAP_PEWTER_CITY"))
+
+
 def sc_lab_skip():
     # #105: B says No to Oak's fight after the win; the offer waits: walk up
     # to Oak (6,3) and talk to him (A: Yes), then his one fight is done
@@ -1155,6 +1188,8 @@ SCENARIOS = {
     "delia_wild": (sc_delia_wild, "#106: after Delia's double, a wild battle on Route 1 is a wild Pokémon from its table"),
     "delia_battle": (sc_delia_battle, "Delia's double battle at home after Brock (#70)"),
     "brock_rematch": (sc_brock_rematch, "Brock's rematch in the Gym, tier menu, his team at 1 badge (#52)"),
+    "cl_lose_watch": (sc_cl_lose_watch, "Checklist v0.0.22: lose the lab battle, watch both scripted fights without pressing anything (#105)"),
+    "cl_pewter15": (sc_cl_pewter15, "Checklist v0.0.22: debug 15, Elm and Jenny left of the Pewter Center, facing down (#143)"),
     "debug1_party": (sc_debug1_party, "Debug jump 1 on a save with Pokémon starts the lab with no team (#153)"),
     "lab_aide": (sc_lab_aide, "The lab aide explains the research tools (#72)"),
     "forest": (sc_forest, "Viridian Forest: a battle there uses the forest background (#74)"),

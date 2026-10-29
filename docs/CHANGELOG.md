@@ -14,6 +14,8 @@ The lab and its scripted fights (issues #105, #110, #143, #150-#154). A spot-che
 - Changed: in Pewter, Elm and Jenny wait left of the Pokémon Center, facing you (#143).
 - Fixed: a broken, multicoloured copy of the trainer's picture flashed during attacks in the scripted fights (#154).
 - Fixed (test builds): debug jump 1 kept the Pokémon from an earlier try; it starts with no team now (#153).
+- Fixed (test builds): debug jump 15 played Elm and Jenny's first Pewter fight instead of the rebattle (since v0.0.21).
+- Testing tools: the checklist you get is now played by the test bot first, the same way (`cl_*` scenes), with its answers next to yours.
 - Checked (#110): the rematch EXP boost doesn't reach the lab fights. The lab's extra EXP comes from catch-up EXP (double while you're 5+ levels under the cap).
 - **Save:** old saves work (you start from the debug jumps this round anyway).
 
