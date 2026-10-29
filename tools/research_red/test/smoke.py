@@ -253,7 +253,10 @@ def sc_lunch():
     # Debug 6 puts us below Elm (29,26): the lunch starts on arrival (#148)
     return (["load @bedroom"] + debug_script(SCRIPT_LUNCH) + ["shot s000"]
             + play_until("lunch", scene_end(7), 10000, key="B", every=50)
-            + expect("MAP_VIRIDIAN_CITY", story=7))
+            + expect("MAP_VIRIDIAN_CITY", story=7)
+            # the old man is up straight away: the road north is open (he used to lie
+            # across it until you left Viridian)
+            + nav.go(T.G, ("MAP_VIRIDIAN_CITY", 32, 26), "MAP_ROUTE2", (7, 76)) + expect("MAP_ROUTE2"))
 
 
 def sc_banter():

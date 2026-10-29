@@ -2,6 +2,18 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
+## v0.0.21
+Elm and Jenny on the road (issues #105, #116, #139, #140, #143, #148). A spot-check round: Start > Debug > Scripts jumps straight to each change.
+- New: Elm and Jenny's fights against Oak in the lab are scripted (#105): a real battle that plays out the same way every time, with lines between turns. Elm and Jenny are on the far side with their pair picture, Oak's Pokémon on the near side. It opens with "Elm and Jenny challenge Prof. Oak!" and is about four turns; the gag with Oak's Pidgeot and Tauros is over in two.
+- Changed: the lab's order (#105). Win against Elm and Jenny and Oak asks you to battle right away. Lose and you can watch Elm and Jenny take on Oak (optional), then Oak asks. Say No to Oak and his fight waits: talk to him in the lab any time before Route 22 (one fight only).
+- Changed: Route 22: Elm and Jenny's team is all Lv 10, and Jenny brings her Growlithe Cruller (Nidoran♀ sits it out) (#139, #140). Their Pewter team brings Cruller too.
+- Changed: the lunch follows straight after the Route 22 fight (#148): you're taken to Viridian and it starts on arrival. Jenny now ends up behind Elm on Route 22 (#116).
+- Fixed: after the lunch the old man still lay across the road north until you left Viridian and came back. He gets up during the lunch now.
+- Changed: after their Pewter rematch, Elm and Jenny wait by the Pokémon Center whenever you're in Pewter (#143). Talk to Elm for another battle (no prize money, no whiteout).
+- New debug jump: 15 Pewter rebattle (the rematch already done).
+- Testing tools: the playthrough can run with trainers on singles and checks every trainer battle is the style the Research Rules say (#128); a won curated fight must have beaten their whole team (#139); battle text is recorded, and a scripted fight must show its lines.
+- **Save:** old saves work (you start from the debug jumps this round anyway).
+
 ## v0.0.20
 Battles fight as designed (issues #106, #107, #121, #128).
 - Changed: Elm and Jenny, and Oak and Daisy, are one opponent each: one team of six under one AI, with one picture of the pair (#107). Their names in battle are "Elm&Jenny" and "Oak&Daisy". Their Pokémon take turns in the team, so in doubles one of each leads. When either of them speaks mid-battle, the pair picture slides in on their side, FireRed style, and the line says who's talking; their 2-down, 4-down and last-Pokémon lines play in singles too.

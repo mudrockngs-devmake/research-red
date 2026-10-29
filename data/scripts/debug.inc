@@ -334,7 +334,9 @@ Debug_EventScript_Script_10::
 	special HealPlayerParty
 	setvar VAR_MAP_SCENE_ROUTE22, 2
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
+	goto_if_ge VAR_0x40FE, 8, Debug_Script10_StorySet @ debug 15 set 8
 	setvar VAR_0x40FE, 7
+Debug_Script10_StorySet:
 	setflag FLAG_RR_DEXNAV_GET @ Research Red: Jenny gives it after the Route 22 battle
 	setflag FLAG_RR_DEXNAV_DETECTOR
 	setflag FLAG_BADGE01_GET
@@ -348,6 +350,13 @@ Debug_EventScript_Script_10::
 	waitstate
 	release
 	end
+
+@ Research Red (#143): like 10, with Elm and Jenny's Pewter rematch already
+@ done (story 8): walk out of Pewter and back in, they wait by the Center
+Debug_EventScript_Script_15::
+	setvar VAR_RR_BROCK_WATCH, 2
+	setvar VAR_0x40FE, 8
+	goto Debug_EventScript_Script_10
 
 @ Catch test: 10 Poké Balls and a wild Pidgey, for checking what happens
 @ after a catch (the new Pokédex entry and its banter, #5). Smoke test "catch".

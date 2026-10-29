@@ -103,10 +103,16 @@ RR_Lunch_EventScript_Main::
 	setmetatile 31, 25, METATILE_General_RR_PathEdge, FALSE
 	setmetatile 30, 26, METATILE_General_RR_GrassEdge, FALSE
 	setmetatile 31, 26, METATILE_General_RR_PathEdge, FALSE
+	@ The old man has finished his nap: the road north is open. He gets up
+	@ now, not on the next visit (he lay across the road until you left, #148)
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
+	removeobject LOCALID_TUTORIAL_MAN
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_1
+	setobjectxyperm LOCALID_TUTORIAL_MAN, 21, 6
+	setobjectmovementtype LOCALID_TUTORIAL_MAN, MOVEMENT_TYPE_LOOK_AROUND
+	addobject LOCALID_TUTORIAL_MAN
 	special DrawWholeMapView
 	fadescreen FADE_FROM_BLACK
-	@ The old man has finished his nap: the road north is open
-	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
 	setvar VAR_0x40FE, 7
 	msgbox RR_Lunch_Text_OldManAwake, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Ivy_Forest, MSGBOX_DEFAULT

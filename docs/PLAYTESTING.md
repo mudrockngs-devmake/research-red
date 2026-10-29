@@ -56,10 +56,15 @@ Start > DEBUG > Scripts:
 | 3 | Route 1 | Daisy done, at Pallet's north exit |
 | 4 | Route 22 | Route 1 done, just east of Elm and Jenny's trigger |
 | 5 | Test team | Adds Spearow, Rattata, Mankey, Nidoran♂ |
-| 6 | Lunch | Route 22 done, in Viridian two steps below Elm and Jenny (right of the Pokémon Center): talk to start |
+| 6 | Lunch | Route 22 done, in Viridian below Elm and Jenny (right of the Pokémon Center): the lunch starts on arrival |
 | 7 | Dex banter | Queues the banter for Tentacool, Slowpoke, Quilava |
 | 8 | Route 1 Elm | Daisy done, one step from Elm and Jenny's Route 1 scene |
 | 9 | Test mode | On/off: the AI fights your battles; team to Lv 30 |
 | 10 | After Brock | Badge 1, story past the lunch, in Pewter below the Pokémon Center door (Elm and Jenny's rematch just outside; the demo blocker at the east exit). Pallet, Viridian and Pewter are Fly targets |
+| 11 | Catch test | 10 Poké Balls and a wild Pidgey |
+| 12 | Bike test | A Bicycle, and straight onto it |
+| 13 | Banter look | Switches the banter between portraits and full-body pictures |
+| 14 | Your battle pic | Switches your battle picture between side by side and turned to each other |
+| 15 | Pewter rebattle | Like 10, with Elm and Jenny's Pewter rematch done: leave Pewter and come back, they wait by the Center (#143) |
 
 Skips 4 and 6 give a Lv 12 team.
