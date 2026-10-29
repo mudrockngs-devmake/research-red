@@ -1,5 +1,6 @@
 #include "global.h"
 #include "rr_rematch.h" // Research Red
+#include "rr_scripted_fight.h" // Research Red
 #include "rr_portrait.h" // Research Red
 #include "battle.h"
 #include "battle_anim.h"
@@ -2123,6 +2124,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         retVal = CreateNPCTrainerPartyFromTrainer(party, GetTrainerStructFromId(trainerNum), firstTrainer, gBattleTypeFlags);
     }
     RR_AdjustRematchParty(party, trainerNum, retVal); // Research Red (#53): rematch teams follow your badges
+    RR_ScriptedFightAdjustParty(party, trainerNum); // Research Red (#105): Elm and Jenny's team in a scripted fight
     return retVal;
 }
 
@@ -3925,7 +3927,13 @@ static void TryDoEventsBeforeFirstTurn(void)
         gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_TRAINER_SLIDE_A:
-        if (ShouldDoTrainerSlide(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), TRAINER_SLIDE_BEFORE_FIRST_TURN))
+        if (RR_IsScriptedFight()) // Research Red (#105): a scripted fight's opening line
+        {
+            const u8 *script = RR_ScriptedFightLineScript();
+            if (script != NULL)
+                BattleScriptExecute(script);
+        }
+        else if (ShouldDoTrainerSlide(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), TRAINER_SLIDE_BEFORE_FIRST_TURN))
             BattleScriptExecute(BattleScript_TrainerASlideMsgEnd2);
         gBattleStruct->eventState.beforeFirstTurn++;
         break;
@@ -5441,6 +5449,8 @@ static void HandleEndTurn_BattleWon(void)
     {
         BattleStopLowHpSound();
         gBattlescriptCurrInstr = BattleScript_LocalTrainerBattleWon;
+        if (RR_IsScriptedFight()) // Research Red (#105): no "You defeated" or prize money
+            gBattlescriptCurrInstr = BattleScript_RRScriptedFightWon;
 
         switch (GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA))
         {

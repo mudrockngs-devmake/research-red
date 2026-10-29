@@ -415,7 +415,7 @@ RR_Lab_EventScript_AfterBattle::
 @ #105, after a loss and only if you want to watch: Elm and Jenny (Lv 6) take
 @ on Oak's two leftover starters (Lv 5) and win; Elm asks for another round
 @ and Oak's Lv 50 ranch Pokemon flatten them (Lv 7, optional to watch).
-@ To become scripted battles (Poke Dude system, #105).
+@ Both are scripted fights (src/rr_scripted_fight.c): the same every time.
 RR_Lab_EventScript_ElmChallengesOak::
 	closemessage
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
@@ -431,10 +431,8 @@ RR_Lab_EventScript_ElmChallengesOak::
 	msgbox RR_Lab_Text_Oak_StartersGo, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Ivy_Popcorn, MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_0x8006, 6
-	call RR_Lab_EventScript_StartWatch
-	call RR_Lab_EventScript_OakStarterBattle
-	call RR_Lab_EventScript_EndWatch
+	setvar VAR_0x8006, RR_FIGHT_LAB_STARTERS
+	call RR_Lab_EventScript_ScriptedFight
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_WeBeatOak, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Jenny_Noted, MSGBOX_DEFAULT
@@ -451,11 +449,8 @@ RR_Lab_EventScript_ElmChallengesOak::
 	msgbox RR_Lab_Text_Oak_HealAgain, MSGBOX_DEFAULT
 	call RR_Lab_EventScript_HealElmJenny
 	closemessage
-	call RR_Lab_EventScript_SetupPair
-	setvar VAR_0x8006, 7
-	call RR_Lab_EventScript_StartWatch
-	trainerbattle_no_intro TRAINER_RR_OAK_LAB_RANCH, RR_Lab_Text_Oak_RanchDefeat
-	call RR_Lab_EventScript_EndWatch
+	setvar VAR_0x8006, RR_FIGHT_LAB_RANCH
+	call RR_Lab_EventScript_ScriptedFight
 	goto RR_Lab_EventScript_RanchAftermath
 
 RR_Lab_EventScript_RanchSkip::
@@ -1258,8 +1253,6 @@ RR_Lab_EventScript_OakBattle5::
 	trainerbattle_no_intro TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE, RR_Lab_Text_Oak_Defeat
 	return
 
-@ A watched battle (AI vs AI, #86): Elm and Jenny's picks (VAR_0x8004/5, at
-@ level VAR_0x8006) stand in for the player's party; Elm shows on your side
 @ #105: your one-time fight with Oak's leftover starters (heal first);
 @ VAR_RESULT is the outcome. From the lab scene or by talking to Oak later
 @ (before Route 22). No whiteout.
@@ -1307,20 +1300,13 @@ RR_Lab_EventScript_OakOffToViridian::
 	release
 	end
 
-RR_Lab_EventScript_StartWatch::
-	callnative RR_ScriptBorrowRivalTeam
-	setflag FLAG_RR_AI_VS_AI
-	setflag FLAG_RR_NO_WHITEOUT
-	setvar VAR_0x8004, TRAINER_PIC_RR_ELM @ #7: Elm on your side, not a "?"
-	callnative RR_ScriptSetWatchPic
-	return
-
-RR_Lab_EventScript_EndWatch::
-	setvar VAR_0x8004, 0
-	callnative RR_ScriptSetWatchPic
-	clearflag FLAG_RR_AI_VS_AI
-	clearflag FLAG_RR_NO_WHITEOUT
-	callnative RR_ScriptReturnPlayerTeam
+@ #105: a scripted fight (VAR_0x8006 = RR_FIGHT_*): Elm and Jenny's picks
+@ against Oak's Pokemon, who stand in for your party until it ends
+RR_Lab_EventScript_ScriptedFight::
+	call RR_Lab_EventScript_SetupPair
+	callnative RR_ScriptStartScriptedFight
+	trainerbattle_no_intro TRAINER_RR_ELM_JENNY_WATCH, RR_Lab_Text_ElmJenny_RanchDefeat
+	callnative RR_ScriptEndScriptedFight
 	special HealPlayerParty
 	return
 
@@ -1520,8 +1506,10 @@ RR_Lab_Text_Elm_Pidgeot::
     .string "Elm: His ranch team?! Jenny, those\n"
     .string "are fully evolved!$"
 
-RR_Lab_Text_Oak_RanchDefeat::
-    .string "Oak: Ho ho! Well, I never.$"
+@ Elm and Jenny's line when Oak's ranch team wins (the scripted fight)
+RR_Lab_Text_ElmJenny_RanchDefeat::
+    .string "Elm: We were winning! For one\n"
+    .string "whole turn!$"
 
 RR_Lab_Text_Jenny_OakFast::
     .string "Jenny: In my professional opinion,\n"

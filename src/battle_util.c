@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_scripted_fight.h" // Research Red
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_arena.h"
@@ -7974,6 +7975,8 @@ s32 CalcCritChanceStageGen1(struct BattleContext *ctx)
 static bool32 IsCriticalHit(struct BattleContext *ctx)
 {
     if (gBattleTypeFlags & (BATTLE_TYPE_CATCH_TUTORIAL | BATTLE_TYPE_POKEDUDE))
+        return FALSE;
+    if (RR_IsScriptedFight()) // Research Red (#105): like the Poke Dude's battles
         return FALSE;
     if ((gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE) && !BtlCtrl_OakOldMan_TestState2Flag(1))
         return FALSE;

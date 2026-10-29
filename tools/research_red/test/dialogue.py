@@ -67,6 +67,8 @@ def decode(hexstr):
 def watch_lines(G):
     """Runner lines that start the recording (put in every scene's prelude)."""
     return [f"watchtext msg {G.sym('gStringVar4'):#x} {TEXT_BYTES}",
+            # the battle message box (intro lines, scripted-fight lines, #105)
+            f"watchtext btext {G.sym('gDisplayedStringBattle'):#x} {TEXT_BYTES}",
             f"watch speaker {G.sym('sShownSpeaker'):#x}:1",
             f"watch box {G.sym('sBoxOpen'):#x}:1",
             f"watch printer {G.sym('sMessageBoxType'):#x}:1",

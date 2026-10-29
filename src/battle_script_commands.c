@@ -1,5 +1,6 @@
 #include "global.h"
 #include "rr_rematch.h" // Research Red
+#include "rr_scripted_fight.h" // Research Red
 #include "rr_dex_banter.h"
 #include "battle.h"
 #include "battle_hold_effects.h"
@@ -1120,6 +1121,9 @@ static bool32 ShouldSkipFRLGAccuracyCheck(void)
     }
 
     if (gBattleTypeFlags & BATTLE_TYPE_POKEDUDE)
+        return TRUE;
+
+    if (RR_IsScriptedFight()) // Research Red (#105): nothing misses, like the Poke Dude's battles
         return TRUE;
 
     return FALSE;

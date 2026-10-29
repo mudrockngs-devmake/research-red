@@ -27,6 +27,8 @@ extern const u8 BattleScript_FaintBattler[];
 extern const u8 BattleScript_GiveExp[];
 extern const u8 BattleScript_HandleFaintedMon[];
 extern const u8 BattleScript_LocalTrainerBattleWon[];
+extern const u8 BattleScript_RRScriptedLineEnd2[];   // Research Red (#105)
+extern const u8 BattleScript_RRScriptedFightWon[];   // Research Red (#105)
 extern const u8 BattleScript_LocalTwoTrainersDefeated[];
 extern const u8 BattleScript_LocalBattleWonLoseTexts[];
 extern const u8 BattleScript_LocalBattleWonReward[];

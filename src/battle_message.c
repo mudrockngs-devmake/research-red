@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_scripted_fight.h" // Research Red
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "battle_message.h"
@@ -2566,7 +2567,9 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
             }
             else
             {
-                if (BATTLE_TWO_VS_ONE_OPPONENT)
+                if (RR_IsScriptedFight()) // Research Red (#105): "Elm and Jenny challenge Prof. Oak!"
+                    stringPtr = RR_ScriptedFightIntroText();
+                else if (BATTLE_TWO_VS_ONE_OPPONENT)
                     stringPtr = sText_Trainer1WantsToBattle;
                 else if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))
                     stringPtr = sText_TwoTrainersWantToBattle;

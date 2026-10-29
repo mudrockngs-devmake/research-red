@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_scripted_fight.h" // Research Red
 #include "battle.h"
 #include "battle_hold_effects.h"
 #include "battle_setup.h"
@@ -1392,6 +1393,13 @@ static bool32 TryEndTurnTrainerSlide(enum BattlerId battler)
 static bool32 HandleEndTurnTrainerASlides(enum BattlerId battler)
 {
     gBattleStruct->eventState.endTurnBattler++;
+    if (RR_IsScriptedFight()) // Research Red (#105): a scripted fight's line after this turn
+    {
+        const u8 *script = RR_ScriptedFightLineScript();
+        if (script != NULL)
+            BattleScriptExecute(script);
+        return script != NULL;
+    }
     bool32 slide = TryEndTurnTrainerSlide(B_BATTLER_1);
     if (slide == TRUE)
         BattleScriptExecute(BattleScript_TrainerASlideMsgEnd2);

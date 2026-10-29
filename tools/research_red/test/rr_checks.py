@@ -16,6 +16,7 @@ so no scene has to ask for them:
   wild        a wild_probe's battle is a wild Pokemon from that map (#106)
   battles     every battle's start (battles.json); curated fights stay
               doubles (#128); two separate teams are flagged (#107)
+  scripted    a scripted fight shows its opening and lines (#105)
   coverage    which event scripts ran (coverage.json; coverage.py adds up a
               whole run into COVERAGE.md: what no test reaches)
 
@@ -185,15 +186,15 @@ def battles_start(G):
             f"# battle-bits {G.const('BATTLE_TYPE_DOUBLE')} {G.const('BATTLE_TYPE_TRAINER')} "
             f"{G.const('BATTLE_TYPE_TWO_OPPONENTS')}",
             f"# battle-curated {' '.join(map(str, curated))}",
-            f"# battle-names " + " ".join(f"{G.const(n)}={n}" for n in curated_trainers())]
+            f"# battle-names " + " ".join(f"{G.const(n)}={n}" for n in curated_trainers() + list(SCRIPTED_FIGHT_LINES))]
 
 
 def curated_trainers():
-    """TRAINER_RR_* (except the watched Oak fights, #105) and the Gym leaders."""
+    """TRAINER_RR_* (except Oak's lab fights and the scripted fights, #105) and the Gym leaders."""
     text = open(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(HERE))),
                              "include/constants/opponents.h")).read()
     names = re.findall(r"^\s+(TRAINER_(?:RR_\w+|LEADER_\w+)),", text, re.M)
-    return [n for n in names if "OAK_LAB" not in n]
+    return [n for n in names if "OAK_LAB" not in n and n not in SCRIPTED_FIGHT_LINES]
 
 
 def battle_list(out, script):
@@ -266,6 +267,42 @@ def battles_judge(out, sdir, script):
     return fails, warns
 
 
+# --- scripted fights (#105) ----------------------------------------------------------
+# A scripted fight (src/rr_scripted_fight.c) shows its own opening and its
+# lines, in that order; its trainer number says which fight ran.
+SCRIPTED_FIGHT_LINES = {
+    "TRAINER_RR_ELM_JENNY_WATCH": ["Elm and Jenny challenge Prof. Oak!", "Elm: "],
+}
+
+
+def battle_texts(out):
+    """The battle message box's texts in order (each once in a row)."""
+    texts = []
+    for p in (l.split() for l in out.splitlines()):
+        if len(p) > 3 and p[0] == "WATCHTEXT" and p[1] == "btext":
+            t = dialogue.decode(p[3])
+            if not texts or texts[-1] != t:
+                texts.append(t)
+    return texts
+
+
+def scripted_judge(out, sdir, script):
+    fights = [b["opponent_a"] for b in battle_list(out, script) if b["opponent_a"] in SCRIPTED_FIGHT_LINES]
+    if not fights:
+        return [], []
+    texts = battle_texts(out)
+    fails = []
+    for name in sorted(set(fights)):
+        at = 0
+        for want in SCRIPTED_FIGHT_LINES[name]:
+            hit = next((i for i in range(at, len(texts)) if texts[i].startswith(want)), None)
+            if hit is None:
+                fails.append(f"{name}: the scripted fight never showed \"{want}\" (#105)")
+                break
+            at = hit + 1
+    return fails, []
+
+
 # --- script coverage (coverage.py) -------------------------------------------------
 def coverage_start(G):
     """Record where the event script engine is, every frame."""
@@ -293,4 +330,5 @@ def position_end(G):
 
 
 ALWAYS_END = [leftovers_end, position_end]
-JUDGES = [dialogue_judge, leftovers_judge, brightness_judge, wild_judge, battles_judge, coverage_judge]
+JUDGES = [dialogue_judge, leftovers_judge, brightness_judge, wild_judge, battles_judge, scripted_judge,
+          coverage_judge]

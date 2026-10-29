@@ -25,6 +25,7 @@ How the project is laid out and how work moves through it.
 | Title screen, splash, notices (#12) | `src/rr_title.c` (FireRed's `CB2_InitTitleScreen` hands over to it); picture from `tools/research_red/build_title.py` -> `graphics/research_red/title/`. The version shown comes from the stamp in `src/rr_intro_call.c` |
 | TMs | List: `include/constants/tms_hms.h` (TM51-100 are ours, #57/#90). Descriptions: `data/research_red/tm_descriptions.txt` -> `tools/research_red/build_tm_descriptions.py`. Moves the relearner teaches as tutor moves (`src/data/tutor_moves.h`) should not also be TMs |
 | Mid-battle lines | `src/data/research_red/trainer_slides.h` (adds slide types RR_TWO_DOWN / RR_FOUR_DOWN) |
+| Scripted fights you watch (#105) | `src/rr_scripted_fight.c`: a fight is a turn table (what each Pokémon uses: a plain hit, its best move or a status move) and a line table (after which turn; Elm and Jenny's lines slide in). Add one to `sFights` and a number to `include/constants/rr_fights.h`; a script runs it with `setvar VAR_0x8006, RR_FIGHT_X`, `callnative RR_ScriptStartScriptedFight`, `trainerbattle_no_intro TRAINER_RR_ELM_JENNY_WATCH, <their losing line>`, `callnative RR_ScriptEndScriptedFight` (example: `RR_Lab_EventScript_ScriptedFight`). The smoke tests check its opening and lines show (`rr_checks.py` SCRIPTED_FIGHT_LINES) |
 | Tools | `tools/research_red/` |
 
 ## Conventions

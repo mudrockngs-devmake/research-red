@@ -281,6 +281,20 @@ BattleScript_TrainerASlideMsgEnd2::
 	call BattleScript_TrainerASlideMsgRet
 	end2
 
+@ Research Red (#105): a scripted fight's line that isn't Elm and Jenny's (no slide-in)
+BattleScript_RRScriptedLineEnd2::
+	printstring STRINGID_TRAINERSLIDE
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
+@ Research Red (#105): Oak's side won a scripted fight: Elm and Jenny's line, no prize money
+BattleScript_RRScriptedFightWon::
+	trainerslidein BS_OPPONENT1
+	waitstate
+	printstring STRINGID_TRAINER1LOSETEXT
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
 BattleScript_TrainerBSlideMsgRet::
 	trainerslidein BS_OPPONENT2
 	handletrainerslidemsg BS_SCRIPTING, PRINT_SLIDE_MESSAGE

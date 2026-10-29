@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_scripted_fight.h" // Research Red
 #include "main.h"
 #include "malloc.h"
 #include "battle.h"
@@ -410,6 +411,7 @@ void ComputeBattlerDecisions(enum BattlerId battler)
         if (isAiBattler)
             BattlerChooseNonMoveAction();
         ModifySwitchAfterMoveScoring(battler);
+        RR_ScriptedFightChooseMove(battler); // Research Red (#105): a scripted fight's turn table decides
 
         AIDebugTimerEnd();
 

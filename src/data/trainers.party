@@ -15177,22 +15177,24 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
    his leftover starters, and Oak brings out his ranch and ride Pokémon at
    Lv 50 (slapstick; watched, optional). Never fought by the player. */
 
-=== TRAINER_RR_OAK_LAB_RANCH ===
-Name: Oak
-Class: Pkmn Prof
-Pic: Professor Oak
+/* Research Red (#105): Elm & Jenny in the scripted lab fights against Oak
+   (they watch-fight Oak's leftover starters, then his ranch Pidgeot and
+   Tauros). Placeholder team: src/rr_scripted_fight.c sets species and level. */
+
+=== TRAINER_RR_ELM_JENNY_WATCH ===
+Name: Elm&Jenny
+Class: Rival Early
+Pic: RR Elm Jenny
 Gender: Male
 Music: Male
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Pidgeot
-Level: 50
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Cyndaquil
+Level: 6
 
-Tauros
-Level: 50
-IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
+Totodile
+Level: 6
 
 /* Research Red (#9): the Samurai, a homage to the anime's Viridian Forest
    episode: a young bug trainer in armour with Pinsir and a Metapod that
