@@ -8,7 +8,8 @@ Keep it short (about 80 lines): when a run is finished, move its checklist to
 _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
 
 ## Now
-- **v0.0.19 playtest done and archived** (`test-archive/2026-10-28_v0.0.19_playtest/`, issues #106-#132, milestone v0.0.20).
+- **v0.0.20 playtest done and archived** (`test-archive/2026-10-29_v0.0.20_playtest/`, new issues #133-#148, #106 closed).
+  Waiting on the owner: #148 (the Viridian old man and the lunch scene: how not to force it).
 - Two lanes: game-lane sessions use the art already in the game; Art Kit sessions improve the tools and drafts
   (#104: Pallet Town first). No Art Kit piece is approved yet (`art_gate.py status`). Exception (owner 2026-10-28,
   #125): v0.0.20 tries the cast's overworld drafts as they are, for testing only (not approved).
@@ -37,7 +38,7 @@ _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
   handheld in `D:\z-handheldshare\ResearchRed_v0.0.20.gba` (one-time, owner's ask). Smoke 65/66 (daynight fails
   until #108), settings matrix all four mixes pass, full playthrough 14/14 legs.
   What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.20\report.html`. **Save: old saves work.**
-- Last playtest archived: `test-archive/2026-10-28_v0.0.19_playtest/`.
+- Last playtest archived: `test-archive/2026-10-29_v0.0.20_playtest/`.
 
 ## Waiting on the owner
 - [ ] Balance: the Pewter rematch with Elm and Jenny wins 6% for a
@@ -54,7 +55,7 @@ _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
 - **Small themed builds** (owner 2026-10-28): 3-5 related issues per test build, risky systems on their own, each fix
   with a test that fails before and passes after, smoke + full playthrough before the owner plays, a short checklist
   for the playtest. Milestones on GitHub:
-  - **v0.0.20 battles fight as designed: built** (#106, #107, #128; #121's team part). Open until the owner's playtest.
+  - **v0.0.20 battles fight as designed: built and played** (#106 closed; #107, #128 work, follow-ups #133, #134, #139).
     Still to do from #121: Oak introduces the Slowpoke in the video call (male, stays a Slowpoke).
   - v0.0.21 story flow (#119, #117, #116, #113, #114); v0.0.22 text and menus (#120, #115, #109, #124);
     v0.0.23 balance (#110, #111, #123, #112); v0.0.24 day and night (#108); v0.0.25 the lab's look (#118, #122, #125).
@@ -73,12 +74,12 @@ _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
 - Nothing half-done. All Art Kit art is drafts (tracker: docs/ART_TRACKER.md).
 - In AI-vs-AI battles (test mode, the lab's watched Oak battle) the player's side plays almost at random (no partner =
   no AI settings); harmless so far. The battle sims work around it; #105 turns the watched fights into cutscenes.
-- Still needs the owner's eyes: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile under the cap).
+- Still needs the owner's eyes: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile under the cap; Cyndaquil evolving at 14 is expected).
 - The League gate block (Route 22) has no automatic test; check by hand (#2).
 - 13 rows of `docs/reference/kanto_anime.csv` are marked "memory" (to verify).
 
 ## Session costs not yet logged (log them in the next playtest round's NOTES.md)
-- Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. This session (2026-10-28, intake): add at wrap-up.
+- Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. The session started 2026-10-27 21:29 ($76.27 at the v0.0.20 intake) is noted in the v0.0.20 NOTES.md; add its final figure at wrap-up.
 
 ## Capacity (measured 2026-10-21)
 | Space | Used | Notes |
