@@ -3,43 +3,94 @@
   "intro": "v0.0.21 is about Elm and Jenny on the road (#105, #116, #139, #140, #143, #148). This is a spot-check round: no full playthrough. Each change below says which Start > Debug > Scripts jump takes you straight to it (start a new game, skip the call with START, then open the Start menu). Tick each change once you've seen it, and use the notes box for anything that feels off.",
   "save": "Save: old saves work (you start from the debug jumps this round anyway).",
   "sections": [
-    {"title": "The lab (Debug > Scripts > 1, then walk up into the lab)", "items": [
-      {"id": "lab-win", "title": "Win against Elm & Jenny: Oak asks right away (#105)",
-       "what": "After you beat Elm and Jenny they say their lines and Oak asks if you want to battle his two leftover starters straight away. No watching first.",
-       "try": "Jump 1, win the lab battle.",
-       "shots": []},
-      {"id": "lab-lose", "title": "Lose: watching Elm & Jenny vs Oak is optional (#105)",
-       "what": "If you lose, Elm and Jenny gloat and you're asked if you want to watch them take on Oak. Yes plays the fights; No skips straight to Oak asking you.",
-       "try": "Jump 1 again (new game or reload), lose the lab battle on purpose, say Yes once and No once.",
-       "shots": []},
-      {"id": "scripted-fights", "title": "Elm & Jenny vs Oak is a scripted fight (#105)",
-       "what": "A real battle that goes the same way every time, with lines between turns. Elm and Jenny are on the far side with their pair picture (their lines slide it in), Oak's Pokémon on the near side with no trainer. It opens with \"Elm and Jenny challenge Prof. Oak!\" and lasts about four turns. The gag (Oak's Lv 50 Pidgeot and Tauros) is over in two and ends on Elm's line. No prize money.",
-       "try": "Lose the lab battle and say Yes to watching, and Yes to the second round.",
-       "shots": []},
-      {"id": "oak-waits", "title": "Say No to Oak: his fight waits until Route 22",
-       "what": "If you turn down Oak's battle, talk to him in the lab any time before Route 22 and he offers it again. One fight only: after it he just sends you on your way.",
-       "try": "Say No to Oak, finish the scene, walk back into the lab and talk to him.",
-       "shots": []}
-    ]},
-    {"title": "Route 22 and the lunch (Debug > Scripts > 4, then step left)", "items": [
-      {"id": "r22-team", "title": "Route 22: all Lv 10, and Cruller is in (#139, #140)",
-       "what": "Elm and Jenny's six are all Lv 10, and Jenny brings her Growlithe Cruller (Nidoran♀ sits this one out). You fight all six.",
-       "try": "Jump 4, fight them. Count six Pokémon and look for Cruller.",
-       "shots": []},
-      {"id": "r22-jenny", "title": "Jenny ends up behind Elm (#116)",
-       "what": "When they walk up to you on Route 22, Jenny now ends up behind Elm instead of off to the side.",
-       "try": "Jump 4: watch where Jenny stands when they reach you.",
-       "shots": []},
-      {"id": "lunch", "title": "The lunch follows straight after (#148)",
-       "what": "After the Route 22 fight Elm says it's lunch time and you're taken to Viridian; the lunch starts on arrival, no need to find them.",
-       "try": "Finish the Route 22 fight (or jump 6 for the lunch on its own).",
-       "shots": []}
-    ]},
-    {"title": "Pewter (Debug > Scripts > 15)", "items": [
-      {"id": "pewter-wait", "title": "Elm & Jenny wait by the Pokémon Center (#143)",
-       "what": "After their Pewter rematch they stay by the Pokémon Center whenever you're in Pewter. Talk to Elm for another battle: no prize money, and losing doesn't send you back.",
-       "try": "Jump 15, walk south out of Pewter onto Route 2, come back, talk to Elm.",
-       "shots": []}
-    ]}
+    {
+      "title": "The lab (Debug > Scripts > 1, then walk up into the lab)",
+      "items": [
+        {
+          "id": "lab-win",
+          "title": "Win against Elm & Jenny: Oak asks right away (#105)",
+          "what": "After you beat Elm and Jenny they say their lines and Oak asks if you want to battle his two leftover starters straight away. No watching first.",
+          "try": "Jump 1, win the lab battle.",
+          "shots": [
+            "lab/s0095.png",
+            "lab/s0111.png"
+          ]
+        },
+        {
+          "id": "lab-lose",
+          "title": "Lose: watching Elm & Jenny vs Oak is optional (#105)",
+          "what": "If you lose, Elm and Jenny gloat and you're asked if you want to watch them take on Oak. Yes plays the fights; No skips straight to Oak asking you.",
+          "try": "Jump 1 again (new game or reload), lose the lab battle on purpose, say Yes once and No once.",
+          "shots": [
+            "lab_loss/s0040.png"
+          ]
+        },
+        {
+          "id": "scripted-fights",
+          "title": "Elm & Jenny vs Oak is a scripted fight (#105)",
+          "what": "A real battle that goes the same way every time, with lines between turns. Elm and Jenny are on the far side with their pair picture (their lines slide it in), Oak's Pokémon on the near side with no trainer. It opens with \"Elm and Jenny challenge Prof. Oak!\" and lasts about four turns. The gag (Oak's Lv 50 Pidgeot and Tauros) is over in two and ends on Elm's line. No prize money.",
+          "try": "Lose the lab battle and say Yes to watching, and Yes to the second round.",
+          "shots": [
+            "lab_loss/s0052.png",
+            "lab_loss/s0058.png",
+            "lab_loss/s0100.png"
+          ]
+        },
+        {
+          "id": "oak-waits",
+          "title": "Say No to Oak: his fight waits until Route 22",
+          "what": "If you turn down Oak's battle, talk to him in the lab any time before Route 22 and he offers it again. One fight only: after it he just sends you on your way.",
+          "try": "Say No to Oak, finish the scene, walk back into the lab and talk to him.",
+          "shots": []
+        }
+      ]
+    },
+    {
+      "title": "Route 22 and the lunch (Debug > Scripts > 4, then step left)",
+      "items": [
+        {
+          "id": "r22-team",
+          "title": "Route 22: all Lv 10, and Cruller is in (#139, #140)",
+          "what": "Elm and Jenny's six are all Lv 10, and Jenny brings her Growlithe Cruller (Nidoran♀ sits this one out). You fight all six.",
+          "try": "Jump 4, fight them. Count six Pokémon and look for Cruller.",
+          "shots": [
+            "route22/s0071.png"
+          ]
+        },
+        {
+          "id": "r22-jenny",
+          "title": "Jenny ends up behind Elm (#116)",
+          "what": "When they walk up to you on Route 22, Jenny now ends up behind Elm instead of off to the side.",
+          "try": "Jump 4: watch where Jenny stands when they reach you.",
+          "shots": [
+            "route22/s0002.png"
+          ]
+        },
+        {
+          "id": "lunch",
+          "title": "The lunch follows straight after (#148)",
+          "what": "After the Route 22 fight Elm says it's lunch time and you're taken to Viridian; the lunch starts on arrival, no need to find them.",
+          "try": "Finish the Route 22 fight (or jump 6 for the lunch on its own).",
+          "shots": [
+            "lunch/s0025.png",
+            "lunch/s0035.png"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pewter (Debug > Scripts > 15)",
+      "items": [
+        {
+          "id": "pewter-wait",
+          "title": "Elm & Jenny wait by the Pokémon Center (#143)",
+          "what": "After their Pewter rematch they stay by the Pokémon Center whenever you're in Pewter. Talk to Elm for another battle: normal prize money (#127), and losing doesn't send you back.",
+          "try": "Jump 15, walk south out of Pewter onto Route 2, come back, talk to Elm.",
+          "shots": [
+            "pewter_again/s0427.png"
+          ]
+        }
+      ]
+    }
   ]
 }

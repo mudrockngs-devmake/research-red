@@ -9,7 +9,7 @@ Elm and Jenny on the road (issues #105, #116, #139, #140, #143, #148). A spot-ch
 - Changed: Route 22: Elm and Jenny's team is all Lv 10, and Jenny brings her Growlithe Cruller (Nidoran♀ sits it out) (#139, #140). Their Pewter team brings Cruller too.
 - Changed: the lunch follows straight after the Route 22 fight (#148): you're taken to Viridian and it starts on arrival. Jenny now ends up behind Elm on Route 22 (#116).
 - Fixed: after the lunch the old man still lay across the road north until you left Viridian and came back. He gets up during the lunch now.
-- Changed: after their Pewter rematch, Elm and Jenny wait by the Pokémon Center whenever you're in Pewter (#143). Talk to Elm for another battle (no prize money, no whiteout).
+- Changed: after their Pewter rematch, Elm and Jenny wait by the Pokémon Center whenever you're in Pewter (#143). Talk to Elm for another battle (normal prize money, as with any trainer; losing doesn't send you back).
 - New debug jump: 15 Pewter rebattle (the rematch already done).
 - Testing tools: the playthrough can run with trainers on singles and checks every trainer battle is the style the Research Rules say (#128); a won curated fight must have beaten their whole team (#139); battle text is recorded, and a scripted fight must show its lines.
 - **Save:** old saves work (you start from the debug jumps this round anyway).
