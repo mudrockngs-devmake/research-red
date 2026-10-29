@@ -45,7 +45,7 @@ How to use it:
 **Planned** (owner 2026-10-28, #52)
 - Pallet: you can't leave for Route 1 before Daisy's house (the bet). Stepping onto Route 1 early: Elm shouts from Daisy's window, you step back, Ivy nudges you to be good sports (owner 2026-10-28, #119).
 - Diglett's Cave route stays as it is in the demo (owner 2026-10-28, #130).
-- Viridian lunch (owner 2026-10-29, #148): not forced. After Route 22 Elm invites you to lunch at the Pokémon Center and the old man leaves. Play it any time around Viridian; entering Viridian Forest skips it for good. The lunch stays one standalone scene, so it could later follow straight after the Route 22 fight instead.
+- Viridian lunch (owner 2026-10-29, #148): straight after the Route 22 fight, as part of the same scene (a fade to the picnic), so there is no gap and nothing to block; the old man's lunch gate goes. The lunch stays one standalone scene, so an invite you can play any time before Viridian Forest stays an easy switch.
 - The gyms stay in FireRed's order. The demo's blocks (Diglett's Cave, Pewter's east exit, Gerald at sea, the League gate) become real story gates in the full game, written into the story instead of developer notes. The middle stretch (Erika, Koga, Sabrina) can keep some freedom: check FireRed's real gating there.
 - **No overworld scaling**: wild Pokémon and route trainers keep their levels (no Crystal Clear-style respec). Only gym leaders adapt (section 5).
 
