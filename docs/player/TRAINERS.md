@@ -45,12 +45,12 @@ Their starters depend on yours:
 
 | Pokémon | Level | Moves |
 |---|---|---|
-| Cinnamon (Cyndaquil) | 9 | level-up moves |
-| Biscotti (Totodile) | 9 | level-up moves |
-| Churro (Sandshrew) | 8 | level-up moves |
-| Licorice (Ekans) | 8 | level-up moves |
-| Pudding (Pidgey) | 8 | level-up moves |
-| Macaron (Nidoran♀) | 8 | level-up moves |
+| Cinnamon (Cyndaquil) | 10 | level-up moves |
+| Biscotti (Totodile) | 10 | level-up moves |
+| Churro (Sandshrew) | 10 | level-up moves |
+| Licorice (Ekans) | 10 | level-up moves |
+| Pudding (Pidgey) | 10 | level-up moves |
+| Cruller (Growlithe) | 10 | level-up moves |
 
 ## Viridian Forest
 
@@ -115,7 +115,7 @@ Their starters depend on yours:
 | Pudding (Pidgeotto) | 14 | level-up moves |
 | Licorice (Ekans) | 14 | level-up moves |
 | Churro (Sandshrew) | 14 | level-up moves |
-| Macaron (Nidorina) | 14 | level-up moves |
+| Cruller (Growlithe) | 15 | level-up moves |
 
 ### Leader Brock
 

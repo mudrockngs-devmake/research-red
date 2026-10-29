@@ -14655,7 +14655,8 @@ IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 /* Research Red: Route 22 (Elm & Jenny, 6v6 double). One version per
    starter Elm/Jenny can have from the lab chain; Elm names his catches after
-   desserts (Jenny lets him). */
+   desserts (Jenny lets him). All Lv 10 (owner 2026-10-29, #140); Jenny brings
+   her Growlithe Cruller, Macaron sits this one out (#139). */
 
 === TRAINER_RR_ELM_R22_BULBASAUR ===
 Name: Elm&Jenny
@@ -14667,27 +14668,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Pistachio (Bulbasaur)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Toffee (Charmander)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Churro (Sandshrew)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Licorice (Ekans)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pudding (Pidgey)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidoran F)
-Level: 8
+Cruller (Growlithe)
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_CHARMANDER ===
@@ -14700,27 +14701,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Toffee (Charmander)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Cream Puff (Squirtle)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Churro (Sandshrew)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Licorice (Ekans)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pudding (Pidgey)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidoran F)
-Level: 8
+Cruller (Growlithe)
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_SQUIRTLE ===
@@ -14733,27 +14734,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Cream Puff (Squirtle)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pistachio (Bulbasaur)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Churro (Sandshrew)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Licorice (Ekans)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pudding (Pidgey)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidoran F)
-Level: 8
+Cruller (Growlithe)
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_CHIKORITA ===
@@ -14766,27 +14767,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Matcha (Chikorita)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Cinnamon (Cyndaquil)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Churro (Sandshrew)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Licorice (Ekans)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pudding (Pidgey)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidoran F)
-Level: 8
+Cruller (Growlithe)
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_CYNDAQUIL ===
@@ -14799,27 +14800,27 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Cinnamon (Cyndaquil)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Biscotti (Totodile)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Churro (Sandshrew)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Licorice (Ekans)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pudding (Pidgey)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidoran F)
-Level: 8
+Cruller (Growlithe)
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_R22_TOTODILE ===
@@ -14832,30 +14833,31 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Biscotti (Totodile)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Matcha (Chikorita)
-Level: 9
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Churro (Sandshrew)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Licorice (Ekans)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pudding (Pidgey)
-Level: 8
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidoran F)
-Level: 8
+Cruller (Growlithe)
+Level: 10
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-/* Research Red: Pewter City, outside the Gym (after Brock) */
+/* Research Red: Pewter City, outside the Gym (after Brock). Six of their
+   seven: Cruller in, Macaron sits it out (owner 2026-10-29, #139). */
 
 === TRAINER_RR_ELM_PEWTER_BULBASAUR ===
 Name: Elm&Jenny
@@ -14886,8 +14888,8 @@ Churro (Sandshrew)
 Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidorina)
-Level: 14
+Cruller (Growlithe)
+Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_CHARMANDER ===
@@ -14919,8 +14921,8 @@ Churro (Sandshrew)
 Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidorina)
-Level: 14
+Cruller (Growlithe)
+Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_SQUIRTLE ===
@@ -14952,8 +14954,8 @@ Churro (Sandshrew)
 Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidorina)
-Level: 14
+Cruller (Growlithe)
+Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_CHIKORITA ===
@@ -14985,8 +14987,8 @@ Churro (Sandshrew)
 Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidorina)
-Level: 14
+Cruller (Growlithe)
+Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_CYNDAQUIL ===
@@ -15018,8 +15020,8 @@ Churro (Sandshrew)
 Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidorina)
-Level: 14
+Cruller (Growlithe)
+Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RR_ELM_PEWTER_TOTODILE ===
@@ -15051,8 +15053,8 @@ Churro (Sandshrew)
 Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Macaron (Nidorina)
-Level: 14
+Cruller (Growlithe)
+Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 /* Research Red (#53): Oak + Daisy rematch in Oak's Lab after the Route 22

@@ -22,7 +22,7 @@ How to use it:
 - **Opening fights give normal EXP** (you and Ivy vs Elm and Jenny, Oak's first fight); a double battle giving a fair amount is fine. The big boost ("a very large amount of EXP", an easy place to grind to the cap) is **only for the replayable Oak and Daisy fights** after Route 22 (owner 2026-10-28, #110).
 - Double battles give EXP faster in general: after #110, look again at wild levels and the caps (owner 2026-10-28).
 - No early EXP from Oak fights in the opening: Oak and Daisy's scaling fights only start after Route 22 (owner 2026-10-28, #105).
-- Watch: a player who grinds reaches Lv 14 before Route 22, where Elm and Jenny are around Lv 8-9. No separate cap for Route 22 for now; keep an eye on it in playtests (owner 2026-10-28).
+- Route 22: Elm and Jenny's Pokémon are all Lv 10 (owner 2026-10-29, #140). A player who grinds can reach Lv 14 before it; no separate cap for Route 22 for now (owner 2026-10-28).
 
 ## 2. Battle format
 **In the game** (Research Rules, src/rr_rules.c; first shown at Daisy's, then in Options)
@@ -34,7 +34,8 @@ How to use it:
   - Paired opponents (Elm and Jenny, Oak and Daisy) are **one team of six under one AI** (owner 2026-10-28, #107). The partner is there to see and to talk, like Ivy on your side; in singles they still stand there.
     - Done as **one ordinary trainer** (Elm's / Oak's entry, the partner's Pokémon taking turns in the party so in doubles they lead together) with **one picture of the pair**, the same in singles and doubles (owner 2026-10-28: head to thighs, the partner a step behind; `tools/research_red/build_pair_art.py`). Like FireRed's own Twins: no special engine code; the Research Rules decide singles or doubles.
     - Their battle lines work like FireRed's: the pair picture slides in on their side and the line starts with who's talking ("Jenny: ..."); no portraits for the other side (owner 2026-10-28). You and Ivy keep your portraits over your Pokémon (#95).
-    - Their names in battle text: "Elm&Jenny" and "Oak&Daisy" (10 letters at most; owner 2026-10-28).
+    - Their teams: on Route 22 and in Pewter Jenny brings her Growlithe Cruller and Macaron sits out (owner 2026-10-29, #139).
+  - Their names in battle text: "Elm&Jenny" and "Oak&Daisy" (10 letters at most; owner 2026-10-28).
     - Your side matches (owner 2026-10-28): you in front and Ivy a step behind, head to thighs, by default; Debug > Scripts > 14 switches back to the #7 picture (you and Ivy turned to each other) for comparing.
     - The 2-down / 4-down lines count the whole team, and the last-Pokémon line plays when they have nobody left to send in (in doubles: when their last two are out).
 
