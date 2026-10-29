@@ -3,51 +3,108 @@
   "intro": "v0.0.22 is about the lab and its scripted fights (#105, #110, #143, #150-#154). A spot-check round: each change says which Start > Debug > Scripts jump takes you there (start a new game, skip the call with START, then open the Start menu). Tick each change once you've seen it, and use the notes box for anything that feels off.",
   "save": "Save: old saves work (you start from the debug jumps this round anyway).",
   "sections": [
-    {"title": "The scripted fights (Debug > Scripts > 1, walk up into the lab, lose to Elm & Jenny)", "items": [
-      {"id": "side", "title": "Seen from Elm & Jenny's side (#105)",
-       "what": "Elm and Jenny's Pokémon are on the near side with their picture at the start, and Oak is the opponent. When Oak talks, his picture slides in; Elm's, Jenny's and Ivy's lines show their portraits.",
-       "try": "Lose the lab battle, say Yes to watching.",
-       "shots": []},
-      {"id": "auto", "title": "The fights play themselves (#105)",
-       "what": "No pressing A during the scripted fights: the text moves on by itself.",
-       "try": "Watch both fights without touching the buttons.",
-       "shots": []},
-      {"id": "gag", "title": "The gag is instant again (#105)",
-       "what": "Oak's Lv 50 Pidgeot and Tauros hit straight away and flatten Elm and Jenny in one turn. No Agility, no Rest.",
-       "try": "Say Yes to the second round.",
-       "shots": []},
-      {"id": "glitch", "title": "No more flashing picture (#154)",
-       "what": "The broken, multicoloured copy of the trainer's picture that flashed during attacks is gone.",
-       "try": "Watch the attacks after Oak's line in the first fight.",
-       "shots": []}
-    ]},
-    {"title": "The rest of the lab (Debug > Scripts > 1)", "items": [
-      {"id": "win-watch", "title": "Win, and you can still watch (#105)",
-       "what": "Beat Elm and Jenny: Oak asks you first. After his fight (or a No), Elm wants his turn and you're asked if you want to watch them take on Oak, then the gag.",
-       "try": "Win the lab battle, answer Oak, then say Yes to watching.",
-       "shots": []},
-      {"id": "face-balls", "title": "Facing Oak, and his Poké Balls leave the table (#150, #151)",
-       "what": "You turn to face Oak when he asks to battle. When his starters battle (yours or Elm and Jenny's fight), their Poké Balls leave the table.",
-       "try": "Look at the table after Oak's fight starts.",
-       "shots": []},
-      {"id": "heal", "title": "Quiet healing (#105)",
-       "what": "No healing fanfare or extra message before the lab fights: Oak's lines say he heals you.",
-       "try": "Say Yes to Oak's fight.",
-       "shots": []},
-      {"id": "aide", "title": "Oak points you to his aide (#152)",
-       "what": "Before everyone leaves, Oak says his aide can answer anything about the project, the grant and the gadgets.",
-       "try": "Finish the lab scene.",
-       "shots": []},
-      {"id": "debug1", "title": "Debug jump 1 starts with no team (#153)",
-       "what": "Using jump 1 again on the same game no longer keeps the Pokémon from your earlier try.",
-       "try": "Jump 1 twice in a row and check your team.",
-       "shots": []}
-    ]},
-    {"title": "Pewter (Debug > Scripts > 15)", "items": [
-      {"id": "pewter-spot", "title": "Elm & Jenny wait left of the Pokémon Center (#143)",
-       "what": "They stand side by side left of the Center, facing down, so you see their faces. Talk to either for a rebattle.",
-       "try": "Jump 15, look left of the Center.",
-       "shots": []}
-    ]}
+    {
+      "title": "The scripted fights (Debug > Scripts > 1, walk up into the lab, lose to Elm & Jenny)",
+      "items": [
+        {
+          "id": "side",
+          "title": "Seen from Elm & Jenny's side (#105)",
+          "what": "Elm and Jenny's Pokémon are on the near side with their picture at the start, and Oak is the opponent. When Oak talks, his picture slides in; Elm's, Jenny's and Ivy's lines show their portraits.",
+          "try": "Lose the lab battle, say Yes to watching.",
+          "shots": [
+            "cl_lose_watch/s0054.png",
+            "cl_lose_watch/s0102.png",
+            "cl_lose_watch/s0074.png"
+          ]
+        },
+        {
+          "id": "auto",
+          "title": "The fights play themselves (#105)",
+          "what": "No pressing A during the scripted fights: the text moves on by itself.",
+          "try": "Watch both fights without touching the buttons.",
+          "shots": [
+            "cl_lose_watch/s0126.png"
+          ]
+        },
+        {
+          "id": "gag",
+          "title": "The gag is instant again (#105)",
+          "what": "Oak's Lv 50 Pidgeot and Tauros hit straight away and flatten Elm and Jenny in one turn. No Agility, no Rest.",
+          "try": "Say Yes to the second round.",
+          "shots": [
+            "cl_lose_watch/s0282.png",
+            "cl_lose_watch/s0303.png"
+          ]
+        },
+        {
+          "id": "glitch",
+          "title": "No more flashing picture (#154)",
+          "what": "The broken, multicoloured copy of the trainer's picture that flashed during attacks is gone.",
+          "try": "Watch the attacks after Oak's line in the first fight.",
+          "shots": [
+            "cl_lose_watch/s0106.png"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "The rest of the lab (Debug > Scripts > 1)",
+      "items": [
+        {
+          "id": "win-watch",
+          "title": "Win, and you can still watch (#105)",
+          "what": "Beat Elm and Jenny: Oak asks you first. After his fight (or a No), Elm wants his turn and you're asked if you want to watch them take on Oak, then the gag.",
+          "try": "Win the lab battle, answer Oak, then say Yes to watching.",
+          "shots": []
+        },
+        {
+          "id": "face-balls",
+          "title": "Facing Oak, and his Poké Balls leave the table (#150, #151)",
+          "what": "You turn to face Oak when he asks to battle. When his starters battle (yours or Elm and Jenny's fight), their Poké Balls leave the table.",
+          "try": "Look at the table after Oak's fight starts.",
+          "shots": [
+            "lab/s0098.png"
+          ]
+        },
+        {
+          "id": "heal",
+          "title": "Quiet healing (#105)",
+          "what": "No healing fanfare or extra message before the lab fights: Oak's lines say he heals you.",
+          "try": "Say Yes to Oak's fight.",
+          "shots": []
+        },
+        {
+          "id": "aide",
+          "title": "Oak points you to his aide (#152)",
+          "what": "Before everyone leaves, Oak says his aide can answer anything about the project, the grant and the gadgets.",
+          "try": "Finish the lab scene.",
+          "shots": []
+        },
+        {
+          "id": "debug1",
+          "title": "Debug jump 1 starts with no team (#153)",
+          "what": "Using jump 1 again on the same game no longer keeps the Pokémon from your earlier try.",
+          "try": "Jump 1 twice in a row and check your team.",
+          "shots": [
+            "debug1_party/lab.png"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pewter (Debug > Scripts > 15)",
+      "items": [
+        {
+          "id": "pewter-spot",
+          "title": "Elm & Jenny wait left of the Pokémon Center (#143)",
+          "what": "They stand side by side left of the Center, facing down, so you see their faces. Talk to either: Elm asks \"Back for more?\" (the rebattle; jump 15 played their first Pewter fight in v0.0.21, fixed).",
+          "try": "Jump 15, look left of the Center.",
+          "shots": [
+            "cl_pewter15/arrive.png",
+            "cl_pewter15/ask.png"
+          ]
+        }
+      ]
+    }
   ]
 }
