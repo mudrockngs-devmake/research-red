@@ -226,14 +226,14 @@ def sc_route1():
 
 def sc_route22():
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE22) + debug_script(SCRIPT_TEST_MODE) + ["mash B 40", "shot s000"]
-            + step("LEFT") + play_until("route22", scene_end(6), 60000)   # a 6v6 double fought by the AI: long
-            + expect("MAP_ROUTE22", story=6, party=1))
+            + step("LEFT") + play_until("route22", scene_end(7), 70000)   # a 6v6 double fought by the AI: long
+            # then straight into the lunch in Viridian (#148)
+            + expect("MAP_VIRIDIAN_CITY", story=7, party=1))
 
 
 def sc_lunch():
-    # Debug 6 leaves us two steps below Elm (29,26): one step up, talk to him
-    return (["load @bedroom"] + debug_script(SCRIPT_LUNCH) + ["shot s000"] + step("UP", 1)
-            + ["press UP 2", "wait 10", "press A", "wait 30"]
+    # Debug 6 puts us below Elm (29,26): the lunch starts on arrival (#148)
+    return (["load @bedroom"] + debug_script(SCRIPT_LUNCH) + ["shot s000"]
             + play_until("lunch", scene_end(7), 10000, key="B", every=50)
             + expect("MAP_VIRIDIAN_CITY", story=7))
 

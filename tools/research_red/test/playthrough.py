@@ -27,6 +27,7 @@ Output: PLAYTHROUGH.md (a row per leg: story step, where, team levels, money,
 battles) - the real EXP curve (#110) - plus REPORT.md and contact sheets.
 
   python3 tools/research_red/test/playthrough.py            # the whole thing
+  python3 tools/research_red/test/playthrough.py --singles  # trainers as singles (Research Rules)
   python3 tools/research_red/test/playthrough.py --list
   python3 tools/research_red/test/playthrough.py --from p07_route22 RUN_DIR
         (start at a leg, using the states of an earlier run in RUN_DIR)
@@ -86,6 +87,12 @@ def careful_ai():
     return lines
 
 
+# Research Rules "trainers": doubles (the default) or singles (--singles). Both
+# runs go before every build (owner 2026-10-29): every trainer on the way must
+# be a double in one and a single in the other (rr_checks battles_judge).
+TRAINERS = "doubles"
+
+
 def every_leg(run=True):
     """Lines at the start of each leg (after its load). run: run from wild
     battles (False on training legs: fight them)."""
@@ -101,7 +108,9 @@ def every_leg(run=True):
     tasks, tsize = g.sym("gTasks"), g.const("sizeof(struct Task)")
     whiteout = " || ".join(f"{tasks + i * tsize:#x}:4 == {g.sym('Task_RushInjuredPokemonToCenter') | 1:#x}"
                            for i in range(16))
-    return (T.set_flag("FLAG_RR_AI_VS_AI") + careful_ai() + party_menu_guards()
+    # (singles: cleared on every leg, since the Rules at Daisy's set it)
+    rules = (T.clear_flag("FLAG_RR_FORCE_DOUBLES") if TRAINERS == "singles" else []) + [f"# trainers {TRAINERS}"]
+    return (rules + T.set_flag("FLAG_RR_AI_VS_AI") + careful_ai() + party_menu_guards()
             + ([] if run else blocked_move_guards() + catch_guards()) + wild_action(run) + move_menu_guards()
             + [f"guard A {whiteout}", f"guard A {g.in_battle()} || {talking} || {summary}",
                             smoke.rr_checks.TEST_MODE_MARK])
@@ -145,6 +154,9 @@ def blocked_move_guards():
             for at, key in ((0, "DOWN"), (1, "DOWN"), (2, "RIGHT"), (3, "A"))]
 
 
+NO_ATTACK = ("SPECIES_ABRA", "SPECIES_METAPOD", "SPECIES_KAKUNA", "SPECIES_MAGIKARP")   # not worth catching
+
+
 def catch_guards():
     """Training legs: with fewer than six Pokémon and Quick Balls in the Bag
     (from Lab Supplies), throw one at every wild Pokémon, like a player
@@ -156,6 +168,11 @@ def catch_guards():
     near = g.sym("HandleInputChooseMove")
     action = min(g.all_symbols["HandleInputChooseAction"], key=lambda a: abs(a - near))
     wants = (f"{g.party_addr()} < 6 && {g.bag_slot_addr('pokeBalls', 0)} == {g.const('ITEM_QUICK_BALL')}")
+    # not ones with no attacking move at these levels: a lone Teleport Abra lost
+    # the singles playthrough's Brock fight (2026-10-29)
+    foe = g.sym("gBattleMons") + g.const("sizeof(struct BattlePokemon)") + g.const("offsetof(struct BattlePokemon, species)")
+    for sp in NO_ATTACK:
+        wants += f" && {foe:#x}:2 != {g.const(sp)}"
     menu = (f"{funcs:#x}:4 == {action | 1:#x} && {wants} && "
             f"{g.sym('gBattleTypeFlags'):#x}:4 !& {g.const('BATTLE_TYPE_TRAINER')}")
     cb2 = g.sym("gMain") + g.const("main_callback2")
@@ -361,19 +378,18 @@ def p06():
             + leg_end("p06_route1"))
 
 
-@leg("p07_route22", "Viridian, then Route 22: the 6v6 double with Elm and Jenny")
+@leg("p07_route22", "Viridian, then Route 22: the 6v6 double with Elm and Jenny, straight into the lunch (#148)")
 def p07():
     return (start("p06_route1") + nav.go(G(), here(("MAP_ROUTE1", 12, 2)), "MAP_ROUTE22", (34, 5))
-            + step("LEFT") + play_until("route22", scene_end(6), 60000)
-            + expect("MAP_ROUTE22", story=6) + leg_end("p07_route22"))
+            + step("LEFT") + play_until("route22", scene_end(7), 70000, key="B", every=50)
+            + expect("MAP_VIRIDIAN_CITY", story=7) + leg_end("p07_route22"))
 
 
-@leg("p08_lunch", "Viridian lunch by the Pokémon Center, Officer Jenny")
+@leg("p08_lunch", "After the lunch: the road north is open (the old man's spot), then back to the Pokémon Center")
 def p08():
-    return (start("p07_route22") + nav.go(G(), here(("MAP_ROUTE22", 33, 5)), "MAP_VIRIDIAN_CITY", (29, 27),
-                   avoid={("MAP_VIRIDIAN_CITY", 29, 26), ("MAP_VIRIDIAN_CITY", 29, 25)})   # Elm and Jenny wait there
-            + ["press UP 2", "wait 10", "press A", "wait 30"]
-            + play_until("lunch", scene_end(7), 10000, key="B", every=50)
+    g = G()
+    return (start("p07_route22") + nav.go(g, here(("MAP_VIRIDIAN_CITY", 32, 26)), "MAP_ROUTE2", (7, 76))
+            + expect("MAP_ROUTE2") + nav.go(g, ("MAP_ROUTE2", 7, 76), "MAP_VIRIDIAN_CITY", (32, 26))
             + expect("MAP_VIRIDIAN_CITY", story=7) + leg_end("p08_lunch"))
 
 
@@ -493,7 +509,11 @@ def p12():
 
 
 def main():
+    global TRAINERS
     argv = sys.argv[1:]
+    if "--singles" in argv:
+        argv.remove("--singles")
+        TRAINERS = "singles"
     run_from = None
     if "--from" in argv and len(argv) > argv.index("--from") + 2:
         run_from = argv.pop(argv.index("--from") + 2)    # the earlier run's folder (its states/)
@@ -502,7 +522,8 @@ def main():
     out = os.path.join(smoke.WORKSPACE if os.path.isdir(smoke.WORKSPACE) else os.path.join(smoke.REPO, "build"),
                        "test-runs", "playthrough")
     import datetime
-    run_dir = os.path.join(out, f"{datetime.datetime.now():%Y-%m-%d_%H%M}_{version}_{commit}")
+    run_dir = os.path.join(out, f"{datetime.datetime.now():%Y-%m-%d_%H%M}_{version}_{commit}"
+                           + ("_singles" if TRAINERS == "singles" else ""))
     states = os.path.join(run_dir, "states")
     if run_from:
         import shutil
@@ -510,7 +531,7 @@ def main():
         for f in os.listdir(os.path.join(run_from, "states")):
             shutil.copy(os.path.join(run_from, "states", f), states)
     T.main(T.Suite(
-        title=f"Playthrough: {version} ({commit})", repo=smoke.REPO,
+        title=f"Playthrough: {version} ({commit}), trainers as {TRAINERS}", repo=smoke.REPO,
         rom=os.path.join(smoke.REPO, "pokefirered.gba"), scenarios=scenes, out_dir=run_dir,
         runner=os.path.join(smoke.TOOLS, "rr_run"), progress_var=smoke.STORY, map_names=demo_maps(),
         setup_hint="run tools/research_red/test/setup_mgba.sh first", after_run=summary,
@@ -521,7 +542,8 @@ def main():
 
 def summary(run_dir):
     """PLAYTHROUGH.md: a row per leg, from each leg's runner.log and battles.json."""
-    rows = ["| Leg | Result | Story | Team levels | Money | Battles (curated) |", "|---|---|---|---|---|---|"]
+    rows = ["| Leg | Result | Story | Team levels | Money | Battles (curated) | Trainer singles / doubles |",
+            "|---|---|---|---|---|---|---|"]
     report = open(os.path.join(run_dir, "REPORT.md")).read()
     for name, (_, desc) in LEGS.items():
         log = os.path.join(run_dir, name, "runner.log")
@@ -534,11 +556,13 @@ def summary(run_dir):
         bpath = os.path.join(run_dir, name, "battles.json")
         battles = json.load(open(bpath)) if os.path.exists(bpath) else []
         cur = sum(1 for b in battles if b["curated"])
+        tr = [b for b in battles if b["trainer"]]
+        fmt = f"{sum(1 for b in tr if not b['double'])} / {sum(1 for b in tr if b['double'])}"
         m = re.search(rf"^\| {name}: .*? \| (\w+) \|", report, re.M)
         rows.append(f"| {name}: {desc} | {m[1] if m else '?'} | {peeks.get('story', '?')} | {levels} | "
-                    f"{money} | {len(battles)} ({cur}) |")
+                    f"{money} | {len(battles)} ({cur}) | {fmt} |")
     open(os.path.join(run_dir, "PLAYTHROUGH.md"), "w").write(
-        "# Playthrough\n\nPower-on to Pewter with no debug skips; the AI plays your side. "
+        f"# Playthrough (trainers as {TRAINERS})\n\nPower-on to Pewter with no debug skips; the AI plays your side. "
         "Team levels after each leg are the real EXP curve (#110).\n\n" + "\n".join(rows) + "\n")
 
 

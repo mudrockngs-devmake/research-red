@@ -160,7 +160,8 @@ def wild_judge(out, sdir, script):
 # whatever the Research Rules say; with "trainers as singles" they may be
 # singles (#128, owner 2026-10-28). A pair (Elm and Jenny, Oak and Daisy) is
 # one trainer with one team and a combined picture (#107): a curated fight
-# against two trainers with two separate teams is a failure.
+# against two trainers with two separate teams is a failure. A curated fight
+# you win must have beaten every one of their Pokémon (#139: all six come out).
 def battles_start(G):
     cb2 = G.sym("gMain") + G.const("main_callback2")
     params = G.sym("gTrainerBattleParameter")
@@ -173,6 +174,8 @@ def battles_start(G):
     hp = G.const("offsetof(struct Pokemon, hp)")
     able = [f"watch b_hp{i} {party + i * psize + hp:#x}:2" for i in range(6)]   # who can fight
     able.append(f"watch b_pcount {G.sym('gPlayerPartyCount'):#x}:1")
+    foes = G.sym("gEnemyParty")
+    able += [f"watch b_ehp{i} {foes + i * psize + hp:#x}:2" for i in range(6)]   # who they've lost
     return able + [f"watch b_map {G.map_addr()}", f"watch b_sp1 {mons + size + sp:#x}:2",
             f"watch b_sp3 {mons + 3 * size + sp:#x}:2",
             f"watch b_cb2 {cb2:#x}:4", f"watch b_flags {G.sym('gBattleTypeFlags'):#x}:4",
@@ -204,7 +207,17 @@ def battle_list(out, script):
     for f, k, v in sorted(((int(p[2]), p[1], int(p[3])) for p in (l.split() for l in out.splitlines())
                            if p and p[0] == "WATCH" and p[1].startswith("b_")), key=lambda e: e[0]):
         was_in = now.get("b_cb2") == main
+        before = now.get(k, 0)
         now[k] = v
+        if k.startswith("b_ehp") and was_in and battles and before > 0 and v == 0:
+            battles[-1]["beaten"][int(k[-1])] = f
+        if k == "b_cb2" and was_in and v != main and battles:
+            # the game clears what's left of their team at the end of a battle (several at
+            # once, same frame): only one-at-a-time faints count
+            at = list(battles[-1]["beaten"].values())
+            battles[-1]["foes_beaten"] = sum(1 for t in at if at.count(t) == 1)
+            battles[-1]["player_able_end"] = sum(1 for i in range(min(6, now.get("b_pcount", 6)))
+                                                 if now.get(f"b_hp{i}", 0) > 0)
         if k in ("b_sp1", "b_sp3") and battles and battles[-1].get("fresh_" + k) and now.get("b_cb2") == main:
             battles[-1]["species_" + k[-1]] = v        # the foes are loaded just after the start
             battles[-1]["fresh_" + k] = v == 0
@@ -212,6 +225,7 @@ def battle_list(out, script):
             flags = now.get("b_flags", 0)
             battles.append({"frame": f, "map": now.get("b_map", 0), "species_1": now.get("b_sp1", 0),
                             "species_3": now.get("b_sp3", 0), "fresh_b_sp1": True, "fresh_b_sp3": True,
+                            "beaten": {},
                             "trainer": bool(flags & trainer), "double": bool(flags & dbl),
                             "two_opponents": bool(flags & two), "enemy_count": now.get("b_count", 0),
                             "player_able": sum(1 for i in range(min(6, now.get("b_pcount", 6)))
@@ -223,6 +237,7 @@ def battle_list(out, script):
     for b in battles:
         b.pop("fresh_b_sp1", None)
         b.pop("fresh_b_sp3", None)
+        b.pop("beaten", None)
     return battles
 
 
@@ -230,12 +245,24 @@ def battles_judge(out, sdir, script):
     battles = battle_list(out, script)
     json.dump(battles, open(os.path.join(sdir, "battles.json"), "w"), indent=1)
     fails, warns = [], []
+    # the playthrough marks its Research Rules setting (# trainers doubles/singles)
+    mode = re.search(r"^# trainers (doubles|singles)$", script, re.M)
     for b in battles:
+        if mode and b["trainer"]:
+            who = b["opponent_a"] or "a trainer"
+            if mode[1] == "doubles" and not b["double"]:
+                fails.append(f"{who}: a single battle with trainers set to doubles (#128)")
+            elif mode[1] == "singles" and b["double"]:
+                warns.append(f"{who}: a double with trainers set to singles (fine only for FireRed's own doubles, #128)")
         if not b["curated"]:
             continue
         who = b["opponent_a"] + (f" + {b['opponent_b']}" if b["two_opponents"] else "")
         if b["two_opponents"]:
             fails.append(f"{who}: two separate teams ({b['enemy_count']} Pokémon), not one team under one AI (#107)")
+        # a win (you still have someone standing) must have beaten their whole team (#139)
+        if b.get("player_able_end") and b.get("foes_beaten", 0) < b["enemy_count"]:
+            fails.append(f"{who}: the battle ended with {b['foes_beaten']} of their {b['enemy_count']} "
+                         f"Pokémon beaten (#139)")
     return fails, warns
 
 
