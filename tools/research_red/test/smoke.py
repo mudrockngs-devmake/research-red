@@ -1058,7 +1058,8 @@ def sc_wild():
             + ["wait 200", "shot w001", "mash B 120", "wait 30", "shot w002", "press A", "wait 60", "shot w003",
                "press B", "wait 30", "press RIGHT", "wait 10", "press DOWN", "wait 10", "shot w004", "press A"]
             # keep choosing RUN (the cursor stays on it) until the escape works
-            + play_until("ran_away", T.G.field_free(), 6000, key="A", every=40))
+            + play_until("ran_away", T.G.field_free(), 6000, key="A", every=40)
+            + ["wait 60", "shot w005"])   # after the fade back to the map
 
 def sc_relearn():
     # #89: Start > POKEMON > first Pokémon > Learn Moves > TM Moves: the list

@@ -16,7 +16,7 @@ How to use it:
 - Hard caps by **how many** badges you have (not which ones): 0 badges Lv 14, 1: 21, 2: 24, 3: 29, 4: 43, 5: 43, 6: 47, 7: 50, 8 badges before the Elite Four: 63, after: none.
 - At the cap: no EXP, Rare Candies stop. Below it: **catch-up EXP** (more the further below).
 - Optional: Options > Research Rules > Level caps off (no cap, no catch-up bonus). Overlevelling is the player's choice; Elm jokes about it when setting up the bet.
-- Rematches against family and friends give 1.5x EXP and no money (#53). Checked 2026-10-29 (#110): that boost is only on the Oak and Daisy, Delia and Brock rematches, not the lab fights; the lab's extra EXP is catch-up EXP (double while 5+ levels under the cap).
+- Rematches against family and friends give 1.5x EXP and no money (#53). Checked 2026-10-29 (#110): that boost is only on the Oak and Daisy, Delia and Brock rematches, not the lab fights; the lab's extra EXP is catch-up EXP (double while 5+ levels under the cap), kept as it is for now (owner 2026-10-29).
 
 **Planned**
 - **Opening fights give normal EXP** (you and Ivy vs Elm and Jenny, Oak's first fight); a double battle giving a fair amount is fine. The big boost ("a very large amount of EXP", an easy place to grind to the cap) is **only for the replayable Oak and Daisy fights** after Route 22 (owner 2026-10-28, #110).
