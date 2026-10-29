@@ -5,7 +5,7 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
+_Last updated: 2026-10-29 (v0.0.21 built: Elm & Jenny on the road)_
 
 ## Now
 - **v0.0.20 playtest done and archived** (`test-archive/2026-10-29_v0.0.20_playtest/`, new issues #133-#148, #106 closed).
@@ -33,10 +33,13 @@ _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
       history, .claude/skills, .githooks + core.hooksPath, GitHub checks, issue forms), 9 handbook, 10 global owner-notes skill
 
 ## Current build
-- **v0.0.20** (2026-10-28): installed as `ResearchRed_local.gba`, tagged, pre-release on GitHub; a copy for the
-  handheld in `D:\z-handheldshare\ResearchRed_v0.0.20.gba` (one-time, owner's ask). Smoke 65/66 (daynight fails
-  until #108), settings matrix all four mixes pass, full playthrough 14/14 legs.
-  What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.20\report.html`. **Save: old saves work.**
+- **v0.0.21 Elm & Jenny on the road** (2026-10-29, spot-check round): installed as `ResearchRed_local.gba`, tagged,
+  pre-release on GitHub. #105 scripted lab fights (Elm & Jenny vs Oak, `src/rr_scripted_fight.c`), lab order, #139/#140
+  Route 22 all Lv 10 with Cruller, #148 lunch straight after Route 22 (the old man gets up during it), #116, #143,
+  debug 15 (Pewter rebattle). Smoke all pass (daynight fails until #108), settings matrix 21/21, playthrough doubles
+  14/14; **singles 12/14: the bot loses to Brock's 6-vs-6 in singles** (same as v0.0.20; a balance question for
+  v0.0.25). What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.21\report.html` (debug jump per change).
+  **Save: old saves work.**
 - Last playtest archived: `test-archive/2026-10-29_v0.0.20_playtest/`.
 
 ## Waiting on the owner
@@ -55,14 +58,12 @@ _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
   with a test that fails before and passes after. **Spot-check rounds** for most builds (a debug jump per change,
   the owner plays only those); a **full playthrough** about every third build (owner 2026-10-29, docs/PLAYTESTING.md).
   Milestones on GitHub (plan agreed 2026-10-29):
-  - **v0.0.21 Elm & Jenny on the road** (spot check): #139 first (Route 22 shows six balls but four fought; Cruller
-    isn't in the merged Route 22 team, check every merged team), #140 Route 22 all Lv 10, #148 lunch straight after
-    the Route 22 fight (old man's block goes), #116 Jenny behind Elm, #143 they wait in Pewter.
+  - v0.0.21 Elm & Jenny on the road: built 2026-10-29, waiting for the owner's spot check.
   - v0.0.22 day and night (#108; spot check); v0.0.23 Pallet and Daisy's house (#119, #117, #136, #137, #138; then a
     full playthrough); v0.0.24 text and menus (#135, #146, #120, #115, #109, #124); v0.0.25 levels and balance
     (#111, #141, #110, #123, #112); v0.0.26 moves and evolution (#145, #144, #147); v0.0.27 battle pictures (#133,
     #134); v0.0.28 the lab's look (#118, #122, #125).
-  - Then the features: scripted battle scenes (#105 the lab with Elm & Jenny vs Oak, #142 vs Brock), #121's video
+  - Then the features: scripted battle scenes (#142 vs Brock, on #105's system), #121's video
     call, #113, #114 and the rest of ROADMAP.md.
 - Tasks for the owner: #129 credits/permissions list, #130 Oak's aides list.
 - Tooling: a smaller patch (#17).
@@ -76,8 +77,8 @@ _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
 
 ## Half-finished / open threads
 - Nothing half-done. All Art Kit art is drafts (tracker: docs/ART_TRACKER.md).
-- In AI-vs-AI battles (test mode, the lab's watched Oak battle) the player's side plays almost at random (no partner =
-  no AI settings); harmless so far. The battle sims work around it; #105 turns the watched fights into cutscenes.
+- In AI-vs-AI test battles the player's side plays almost at random (no partner = no AI settings); harmless so far.
+  The lab's watched fights are now scripted (#105); #142 (Elm & Jenny vs Brock) should reuse that system.
 - Still needs the owner's eyes: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile under the cap; Cyndaquil evolving at 14 is expected).
 - The League gate block (Route 22) has no automatic test; check by hand (#2).
 - 13 rows of `docs/reference/kanto_anime.csv` are marked "memory" (to verify).
