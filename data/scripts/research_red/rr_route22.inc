@@ -3,8 +3,8 @@
 @ the lab is done (VAR_MAP_SCENE_ROUTE22 == 1). Elm and Jenny use their lab
 @ starters (the chain from VAR_RR_STARTER) plus their dessert-named catches.
 @ Their mid-battle banter is in src/data/research_red/trainer_slides.h.
-@ Win or lose the story goes on: story progress becomes 6, which sets up the
-@ lunch in Viridian City (rr_lunch.inc).
+@ Win or lose the story goes on: story progress becomes 6 and the screen fades
+@ straight to the lunch in Viridian City (rr_lunch.inc; owner 2026-10-29, #148).
 
 RR_Route22_EventScript_ElmJenny::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -100,16 +100,12 @@ RR_Route22_EventScript_Goodbye::
 	msgbox RR_Route22_Text_Jenny_NextTown, MSGBOX_DEFAULT
 	msgbox RR_Route22_Text_Elm_Lunch, MSGBOX_DEFAULT
 	closemessage
-	delay 10
-	playbgm MUS_RIVAL_EXIT, 0
-	call_if_ne VAR_TEMP_1, 2, RR_Route22_EventScript_PairExit
-	call_if_eq VAR_TEMP_1, 2, RR_Route22_EventScript_PairExitBottom
-	fadedefaultbgm
-	removeobject LOCALID_ROUTE22_RIVAL
-	removeobject LOCALID_ROUTE22_JENNY
 	setvar VAR_MAP_SCENE_ROUTE22, 2
-	@ Story progress 6: lunch with Elm and Jenny outside the Viridian Pokemon Center
+	@ Story progress 6: lunch with Elm and Jenny outside the Viridian Pokemon
+	@ Center, straight away (#148): Viridian's ON_FRAME starts it on arrival
 	setvar VAR_0x40FE, 6
+	warp MAP_VIRIDIAN_CITY, 29, 27
+	waitstate
 	releaseall
 	end
 
@@ -217,8 +213,8 @@ RR_Route22_Text_Jenny_NextTown::
     .string "Jenny: Same time next town.$"
 
 RR_Route22_Text_Elm_Lunch::
-    .string "Elm: But first, lunch! We'll meet\n"
-    .string "you at the Pokémon Center!$"
+    .string "Elm: But first, lunch! Jenny\n"
+    .string "packed a picnic. To the Center!$"
 
 @ #83: Elm leads, Jenny trails one step behind (rr_move_pair)
 RR_Route22_EventScript_PairApproach::

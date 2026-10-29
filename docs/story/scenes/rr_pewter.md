@@ -28,27 +28,27 @@ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 
 ### RR_Pewter_EventScript_BattleAfterBulbasaur
 
-*[trainerbattle_two_trainers Rival Early Elm (Cinnamon, Pudding, Churro) + RR Officer Jenny (Biscotti, Licorice, Macaron, Cruller, set from your badges and lab pick when the battle starts, No money, 1.5x EXP. */)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Cinnamon, Biscotti, Pudding, Licorice, Churro, Cruller)]*
 
 ### RR_Pewter_EventScript_BattleAfterCharmander
 
-*[trainerbattle_two_trainers Rival Early Elm (Biscotti, Pudding, Churro) + RR Officer Jenny (Matcha, Licorice, Macaron, Cruller)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Biscotti, Matcha, Pudding, Licorice, Churro, Cruller, take turns, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles, badges and lab pick when the battle starts, No money, 1.5x EXP. */)]*
 
 ### RR_Pewter_EventScript_BattleAfterSquirtle
 
-*[trainerbattle_two_trainers Rival Early Elm (Matcha, Pudding, Churro) + RR Officer Jenny (Cinnamon, Licorice, Macaron, Cruller)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Matcha, Cinnamon, Pudding, Licorice, Churro, Cruller)]*
 
 ### RR_Pewter_EventScript_BattleAfterChikorita
 
-*[trainerbattle_two_trainers Rival Early Elm (Toffee, Pudding, Churro) + RR Officer Jenny (Cream Puff, Licorice, Macaron, Cruller)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Toffee, Cream Puff, Pudding, Licorice, Churro, Cruller)]*
 
 ### RR_Pewter_EventScript_BattleAfterCyndaquil
 
-*[trainerbattle_two_trainers Rival Early Elm (Cream Puff, Pudding, Churro) + RR Officer Jenny (Pistachio, Licorice, Macaron, Cruller)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Cream Puff, Pistachio, Pudding, Licorice, Churro, Cruller)]*
 
 ### RR_Pewter_EventScript_BattleAfterTotodile
 
-*[trainerbattle_two_trainers Rival Early Elm (Pistachio, Pudding, Churro) + RR Officer Jenny (Toffee, Licorice, Macaron, Cruller)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Pistachio, Toffee, Pudding, Licorice, Churro, Cruller)]*
 
 ### RR_Pewter_EventScript_AfterBattle
 

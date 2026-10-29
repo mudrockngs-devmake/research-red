@@ -65,26 +65,20 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > Daisy: Muffin's been training.
 > She's not evolving. She's perfect.
 
-**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
+**Battle:** Pkmn Prof Oak&Daisy (single): Squirtle Lv14, Muffin Lv13, Chikorita Lv14, Clefairy Lv13, Nidoran M Lv13, Vulpix Lv13, doubles from the Research Rules Lv?
 
-**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
-
-**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
-
-**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+**Battle:** Pkmn Prof Oak&Daisy (single): Squirtle Lv14, Muffin Lv13, Chikorita Lv14, Clefairy Lv13, Nidoran M Lv13, Vulpix Lv13, doubles from the Research Rules Lv?
 
 > Oak: Ho ho! Splendid! A haiku:
 >
 > “Bright young researcher,
 > my Slowpoke still hasn't noticed
 > the battle is done.”
-
+>
 > Daisy: Oh, Muffin. You were still
 > the cutest one out there.
 
-**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
-
-**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+**Battle:** Pkmn Prof Oak&Daisy (single): Squirtle Lv14, Muffin Lv13, Chikorita Lv14, Clefairy Lv13, Nidoran M Lv13, Vulpix Lv13, doubles from the Research Rules Lv?
 
 > Oak: You've grown, {PLAYER}. My
 > team will have to grow too!
@@ -604,26 +598,20 @@ Script `RR_Lab_EventScript_DaisyRematch`
 > Daisy: Muffin's been training.
 > She's not evolving. She's perfect.
 
-**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
+**Battle:** Pkmn Prof Oak&Daisy (single): Squirtle Lv14, Muffin Lv13, Chikorita Lv14, Clefairy Lv13, Nidoran M Lv13, Vulpix Lv13, doubles from the Research Rules Lv?
 
-**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
-
-**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
-
-**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+**Battle:** Pkmn Prof Oak&Daisy (single): Squirtle Lv14, Muffin Lv13, Chikorita Lv14, Clefairy Lv13, Nidoran M Lv13, Vulpix Lv13, doubles from the Research Rules Lv?
 
 > Oak: Ho ho! Splendid! A haiku:
 >
 > “Bright young researcher,
 > my Slowpoke still hasn't noticed
 > the battle is done.”
-
+>
 > Daisy: Oh, Muffin. You were still
 > the cutest one out there.
 
-**Battle:** Pkmn Prof Oak (double): Squirtle Lv14, Chikorita Lv14, Slowpoke Lv13
-
-**Battle:** Pkmn Trainer 1 Daisy (double): Muffin Lv13, Clefairy Lv13, Vulpix Lv13
+**Battle:** Pkmn Prof Oak&Daisy (single): Squirtle Lv14, Muffin Lv13, Chikorita Lv14, Clefairy Lv13, Nidoran M Lv13, Vulpix Lv13, doubles from the Research Rules Lv?
 
 > Oak: You've grown, {PLAYER}. My
 > team will have to grow too!

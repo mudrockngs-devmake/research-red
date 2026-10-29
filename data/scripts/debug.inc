@@ -279,8 +279,8 @@ Debug_EventScript_Script_6::
 	setflag FLAG_RR_DEXNAV_GET @ Research Red: Jenny gives it after the Route 22 battle
 	setflag FLAG_RR_DEXNAV_DETECTOR
 	rr_ivy_create_follower
-	@ two steps below Elm, who sits right of the Pokemon Center (talk to start)
-	warp MAP_VIRIDIAN_CITY, 29, 28
+	@ below Elm, who sits right of the Pokemon Center: the lunch starts on arrival (#148)
+	warp MAP_VIRIDIAN_CITY, 29, 27
 	waitstate
 	release
 	end

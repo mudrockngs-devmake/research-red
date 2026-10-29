@@ -15,7 +15,7 @@
 > Daisy: Muffin's been training.
 > She's not evolving. She's perfect.
 
-*[trainerbattle_two_trainers Pkmn Prof Oak (Squirtle, Chikorita, Slowpoke) + Pkmn Trainer 1 Daisy (Muffin, Clefairy, Vulpix)]*
+*[trainerbattle_no_intro Pkmn Prof Oak&Daisy (Squirtle, Muffin, Chikorita, Clefairy, Nidoran M, Vulpix, doubles from the Research Rules)]*
 
 > Daisy: We won! Muffin, did you
 > hear that? We won!

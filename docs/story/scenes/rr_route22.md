@@ -29,27 +29,27 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 
 ### RR_Route22_EventScript_BattleAfterBulbasaur
 
-*[trainerbattle_two_trainers Rival Early Elm (Cinnamon, Churro, Pudding) + RR Officer Jenny (Biscotti, Licorice, Macaron)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Cinnamon, Biscotti, Churro, Licorice, Pudding, Cruller)]*
 
 ### RR_Route22_EventScript_BattleAfterCharmander
 
-*[trainerbattle_two_trainers Rival Early Elm (Biscotti, Churro, Pudding) + RR Officer Jenny (Matcha, Licorice, Macaron)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Biscotti, Matcha, Churro, Licorice, Pudding, Cruller)]*
 
 ### RR_Route22_EventScript_BattleAfterSquirtle
 
-*[trainerbattle_two_trainers Rival Early Elm (Matcha, Churro, Pudding) + RR Officer Jenny (Cinnamon, Licorice, Macaron)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Matcha, Cinnamon, Churro, Licorice, Pudding, Cruller)]*
 
 ### RR_Route22_EventScript_BattleAfterChikorita
 
-*[trainerbattle_two_trainers Rival Early Elm (Toffee, Churro, Pudding) + RR Officer Jenny (Cream Puff, Licorice, Macaron)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Toffee, Cream Puff, Churro, Licorice, Pudding, Cruller)]*
 
 ### RR_Route22_EventScript_BattleAfterCyndaquil
 
-*[trainerbattle_two_trainers Rival Early Elm (Cream Puff, Churro, Pudding) + RR Officer Jenny (Pistachio, Licorice, Macaron)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Cream Puff, Pistachio, Churro, Licorice, Pudding, Cruller)]*
 
 ### RR_Route22_EventScript_BattleAfterTotodile
 
-*[trainerbattle_two_trainers Rival Early Elm (Pistachio, Churro, Pudding) + RR Officer Jenny (Toffee, Licorice, Macaron)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Pistachio, Toffee, Churro, Licorice, Pudding, Cruller)]*
 
 ### RR_Route22_EventScript_AfterBattle
 
@@ -101,10 +101,12 @@ Research Red: Route 22, Elm and Jenny's 6v6 double (animatic 06)
 
 > Jenny: Same time next town.
 
-> Elm: But first, lunch! We'll meet
-> you at the Pokémon Center!
+> Elm: But first, lunch! Jenny
+> packed a picnic. To the Center!
 
 *[setvar VAR_0x40FE ]*
+
+*[warp MAP_VIRIDIAN_CITY]*
 
 ### RR_Route22_EventScript_PairApproach
 

@@ -42,13 +42,13 @@ Script `PalletTown_PlayersHouse_1F_EventScript_Mom`
 > Delia: Mimey, apron off!
 > Everyone, out to play!
 
-**Battle:** Pkmn Trainer 1 Delia (double): Mimey Lv14, Oddish Lv13, Grimer Lv13, Miltank Lv13, Butterfree Lv13, Munchlax Lv13, pick in the Gym Lv?
+**Battle:** Pkmn Trainer 1 Delia (single): Mimey Lv14, Oddish Lv13, Grimer Lv13, Miltank Lv13, Butterfree Lv13, Munchlax Lv13, pick in the Gym Lv?
 
-**Battle:** Pkmn Trainer 1 Delia (double): Mimey Lv14, Oddish Lv13, Grimer Lv13, Miltank Lv13, Butterfree Lv13, Munchlax Lv13, pick in the Gym Lv?
+**Battle:** Pkmn Trainer 1 Delia (single): Mimey Lv14, Oddish Lv13, Grimer Lv13, Miltank Lv13, Butterfree Lv13, Munchlax Lv13, pick in the Gym Lv?
 
 > Delia: Oh, well done, sweetie!
 
-**Battle:** Pkmn Trainer 1 Delia (double): Mimey Lv14, Oddish Lv13, Grimer Lv13, Miltank Lv13, Butterfree Lv13, Munchlax Lv13, pick in the Gym Lv?
+**Battle:** Pkmn Trainer 1 Delia (single): Mimey Lv14, Oddish Lv13, Grimer Lv13, Miltank Lv13, Butterfree Lv13, Munchlax Lv13, pick in the Gym Lv?
 
 > Delia: You've gotten so strong.
 > I'm so proud of you.

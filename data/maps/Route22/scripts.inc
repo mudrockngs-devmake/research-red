@@ -11,6 +11,7 @@ Route22_EventScript_EarlyRivalTriggerMid::
 	lockall
 	setvar VAR_TEMP_1, 1
 	setobjectxyperm LOCALID_ROUTE22_RIVAL, 25, 5
+	setobjectxyperm LOCALID_ROUTE22_JENNY, 24, 5 @ Research Red (#116): Jenny starts behind Elm, on his row
 	goto Route22_EventScript_EarlyRival
 	end
 
@@ -18,6 +19,7 @@ Route22_EventScript_EarlyRivalTriggerBottom::
 	lockall
 	setvar VAR_TEMP_1, 2
 	setobjectxyperm LOCALID_ROUTE22_RIVAL, 25, 5
+	setobjectxyperm LOCALID_ROUTE22_JENNY, 24, 5 @ Research Red (#116): Jenny starts behind Elm, on his row
 	goto Route22_EventScript_EarlyRival
 	end
 

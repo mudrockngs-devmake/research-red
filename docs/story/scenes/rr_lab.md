@@ -259,27 +259,27 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 ### RR_Lab_EventScript_BattleAfterBulbasaur
 
-*[trainerbattle_two_trainers Rival Early Elm (Cyndaquil) + RR Officer Jenny (Totodile)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Cyndaquil, Totodile)]*
 
 ### RR_Lab_EventScript_BattleAfterCharmander
 
-*[trainerbattle_two_trainers Rival Early Elm (Totodile) + RR Officer Jenny (Chikorita)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Totodile, Chikorita)]*
 
 ### RR_Lab_EventScript_BattleAfterSquirtle
 
-*[trainerbattle_two_trainers Rival Early Elm (Chikorita) + RR Officer Jenny (Cyndaquil)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Chikorita, Cyndaquil)]*
 
 ### RR_Lab_EventScript_BattleAfterChikorita
 
-*[trainerbattle_two_trainers Rival Early Elm (Charmander) + RR Officer Jenny (Squirtle)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Charmander, Squirtle)]*
 
 ### RR_Lab_EventScript_BattleAfterCyndaquil
 
-*[trainerbattle_two_trainers Rival Early Elm (Squirtle) + RR Officer Jenny (Bulbasaur)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Squirtle, Bulbasaur)]*
 
 ### RR_Lab_EventScript_BattleAfterTotodile
 
-*[trainerbattle_two_trainers Rival Early Elm (Bulbasaur) + RR Officer Jenny (Charmander)]*
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Bulbasaur, Charmander)]*
 
 ### RR_Lab_EventScript_BattleResult
 
@@ -823,7 +823,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 ### RR_Lab_EventScript_OakBattle5
 
-*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle, starter Elm/Jenny can have from the lab chain; Elm names his catches after, desserts)]*
+*[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle, starter Elm/Jenny can have from the lab chain; Elm names his catches after, desserts, her Growlithe Cruller, Macaron sits this one out)]*
 
 ### RR_Lab_EventScript_StartWatch
 

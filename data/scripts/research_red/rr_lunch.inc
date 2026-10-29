@@ -1,6 +1,8 @@
 @ Research Red: lunch in Viridian City (animatic 07)
-@ After the Route 22 battle (story progress 6), Elm and Jenny sit to the right
-@ of the Pokemon Center (29-30, 26); talking to either starts it (#43).
+@ Straight after the Route 22 battle (story progress 6, #148): the Route 22
+@ scene warps you below Elm, who sits right of the Pokemon Center (29-30, 26),
+@ and Viridian's ON_FRAME starts the lunch (RR_Lunch_EventScript_Arrive).
+@ Talking to Elm or Jenny still starts it too (#43).
 @ Jenny runs into her cousin, the Viridian Officer Jenny, then a picnic.
 @ (Elm's Research Rules moved to Daisy's house, #44.) Afterwards the old man
 @ finishes his nap and the road north (Route 2, Viridian Forest) is open.
@@ -18,9 +20,22 @@ RR_Lunch_EventScript_HideElmJenny::
 	setflag FLAG_TEMP_14
 	return
 
+@ Arriving in Viridian with the lunch pending (from Route 22, or by Fly or a
+@ debug skip): walk up below Elm and start (the walk goes down first, then
+@ across, so it never crosses Elm and Jenny's spots)
+RR_Lunch_EventScript_Arrive::
+	lockall
+	rr_walk_to LOCALID_PLAYER, 29, 27, TRUE
+	waitmovement LOCALID_PLAYER
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	applymovement LOCALID_VIRIDIAN_ELM, Common_Movement_FaceDown
+	waitmovement 0
+	goto RR_Lunch_EventScript_Main
+
 RR_Lunch_EventScript_Start::
 	lockall
 	faceplayer
+RR_Lunch_EventScript_Main::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lunch_Text_Elm_ThereYouAre, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Jenny_Packed, MSGBOX_DEFAULT
@@ -131,8 +146,8 @@ RR_Lunch_Movement_OfficerLeaves::
 @ Research Red: lunch text (placeholder, from the animatic)
 @ ===================================================================
 RR_Lunch_Text_Elm_ThereYouAre::
-    .string "Elm: There you are! Lunch!\n"
-    .string "Jenny made enough for a Snorlax.$"
+    .string "Elm: Lunch! Lunch! Jenny made\n"
+    .string "enough for a Snorlax.$"
 
 RR_Lunch_Text_Jenny_Packed::
     .string "Jenny: I packed for six.\n"

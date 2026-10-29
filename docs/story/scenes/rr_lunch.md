@@ -6,10 +6,14 @@ Research Red: lunch in Viridian City (animatic 07)
 
 ### RR_Lunch_EventScript_HideElmJenny
 
+### RR_Lunch_EventScript_Arrive
+
 ### RR_Lunch_EventScript_Start
 
-> Elm: There you are! Lunch!
-> Jenny made enough for a Snorlax.
+### RR_Lunch_EventScript_Main
+
+> Elm: Lunch! Lunch! Jenny made
+> enough for a Snorlax.
 
 > Jenny: I packed for six.
 > Elm counts as three.

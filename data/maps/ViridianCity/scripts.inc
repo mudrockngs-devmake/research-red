@@ -1,6 +1,12 @@
 ViridianCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, ViridianCity_OnFrame @ Research Red (#148)
 	.byte 0
+
+@ Research Red (#148): the lunch starts as soon as you arrive after Route 22
+ViridianCity_OnFrame::
+	map_script_2 VAR_0x40FE, 6, RR_Lunch_EventScript_Arrive
+	.2byte 0
 
 ViridianCity_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_CITY
