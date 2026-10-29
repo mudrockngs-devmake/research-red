@@ -9,7 +9,6 @@ _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
 
 ## Now
 - **v0.0.20 playtest done and archived** (`test-archive/2026-10-29_v0.0.20_playtest/`, new issues #133-#148, #106 closed).
-  Waiting on the owner: #148 (the Viridian old man and the lunch scene: how not to force it).
 - Two lanes: game-lane sessions use the art already in the game; Art Kit sessions improve the tools and drafts
   (#104: Pallet Town first). No Art Kit piece is approved yet (`art_gate.py status`). Exception (owner 2026-10-28,
   #125): v0.0.20 tries the cast's overworld drafts as they are, for testing only (not approved).
