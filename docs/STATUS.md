@@ -5,7 +5,7 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-29 (v0.0.21 spot check archived)_
+_Last updated: 2026-10-29 (v0.0.22 built: the lab and its scripted fights)_
 
 ## Now
 - **v0.0.21 spot check done and archived** (`test-archive/2026-10-29_v0.0.21_spotcheck/`): new issues #149-#156; #116, #139, #140, #148 closed; follow-ups on #105 (Elm and Jenny's perspective, instant gag, auto-advance), #110, #142, #143.
@@ -33,13 +33,14 @@ _Last updated: 2026-10-29 (v0.0.21 spot check archived)_
       history, .claude/skills, .githooks + core.hooksPath, GitHub checks, issue forms), 9 handbook, 10 global owner-notes skill
 
 ## Current build
-- **v0.0.21 Elm & Jenny on the road** (2026-10-29, spot-check round): installed as `ResearchRed_local.gba`, tagged,
-  pre-release on GitHub. #105 scripted lab fights (Elm & Jenny vs Oak, `src/rr_scripted_fight.c`), lab order, #139/#140
-  Route 22 all Lv 10 with Cruller, #148 lunch straight after Route 22 (the old man gets up during it), #116, #143,
-  debug 15 (Pewter rebattle). Smoke all pass (daynight fails until #108), settings matrix 21/21, playthrough doubles
-  14/14; **singles 12/14: the bot loses to Brock's 6-vs-6 in singles** (same as v0.0.20; a balance question for
-  v0.0.25). What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.21\report.html` (debug jump per change).
-  **Save: old saves work.**
+- **v0.0.22 The lab and its scripted fights** (2026-10-29, spot-check round): installed as `ResearchRed_local.gba`,
+  tagged, pre-release on GitHub, and in the handheld folder `F:\ROM-DATABASE\ROMs\gba\RomhackDev` with
+  `what to check.txt` and `Claude's answers.txt` (owner 2026-10-29: every build from now on). #105 fights seen from
+  Elm & Jenny's side, instant gag, text plays itself, watch offered after a win, quiet heals; #150 #151 #152 #153 #154;
+  #143 spot (left of the Center, facing down); debug 15 fixed (played the first rematch since v0.0.21).
+  Smoke 69/70 (daynight until #108), settings matrix 21/21, playthrough doubles 14/14, singles 12/14 (bot loses to
+  Brock, #156). What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.22\report.html`.
+  **Save: old saves work.** Issues #150-#154 stay open until the owner's spot check.
 - Last playtest archived: `test-archive/2026-10-29_v0.0.21_spotcheck/`.
 
 ## Waiting on the owner
@@ -58,11 +59,12 @@ _Last updated: 2026-10-29 (v0.0.21 spot check archived)_
   with a test that fails before and passes after. **Spot-check rounds** for most builds (a debug jump per change,
   the owner plays only those); a **full playthrough** about every third build (owner 2026-10-29, docs/PLAYTESTING.md).
   Milestones on GitHub (plan agreed 2026-10-29):
-  - v0.0.21 Elm & Jenny on the road: built and spot-checked 2026-10-29. Its follow-ups (#105 perspective/gag/auto-advance, #150, #151, #152, #153, #154, #155, #143 placement) need a slot in the plan.
-  - v0.0.22 day and night (#108; spot check); v0.0.23 Pallet and Daisy's house (#119, #117, #136, #137, #138; then a
-    full playthrough); v0.0.24 text and menus (#135, #146, #120, #115, #109, #124); v0.0.25 levels and balance
-    (#111, #141, #110, #123, #112); v0.0.26 moves and evolution (#145, #144, #147); v0.0.27 battle pictures (#133,
-    #134); v0.0.28 the lab's look (#118, #122, #125).
+  - v0.0.21 Elm & Jenny on the road: built and spot-checked 2026-10-29.
+  - **v0.0.22 the lab and scripted fights: built 2026-10-29, waiting for the owner's spot check.**
+  - Next: v0.0.23 day and night (#108) on its own; v0.0.24 Pallet and Daisy's house (full playthrough);
+    the lunch rework (#155, new travelling talk: draft lines for the owner first) gets its own build.
+  - Later milestones (shifted one on 2026-10-29): v0.0.25 text and menus, v0.0.26 levels and balance, v0.0.27 moves
+    and evolution, v0.0.28 battle pictures, v0.0.29 the lab's look (GitHub milestones).
   - Then the features: scripted battle scenes (#142 vs Brock, on #105's system), #121's video
     call, #113, #114 and the rest of ROADMAP.md.
 - Tasks for the owner: #129 credits/permissions list, #130 Oak's aides list.
