@@ -58,6 +58,13 @@ How to use it:
 - Saying No to Oak's fight: it waits until Route 22 (talk to Oak in the lab); one fight only (FLAG_RR_OAK_FIRST_FIGHT). After Route 22 Oak and Daisy are the rematch.
 - **The watched fights are scripted** (owner 2026-10-29, #105; `src/rr_scripted_fight.c`): a real battle screen that plays out the same way every time, with lines between turns. Elm and Jenny are on the far side with their pair picture; Oak's Pokémon are on the near side with no trainer picture. Each turn's moves come from a table; nothing misses or lands a critical hit and nobody switches (like FireRed's Poké Dude battles). It opens with "Elm and Jenny challenge Prof. Oak!" and gives no prize money. Fight 1 lasts about four turns (Oak's side only uses plain hits); the gag is over in two.
 
+**Planned** (owner 2026-10-29, v0.0.21 spot check, #105)
+- **Seen from Elm and Jenny's side** (replaces the far-side layout above): their Pokémon on the near side, Oak as the opponent with his picture sliding in when he talks; Ivy and the player can still chime in.
+- **The gag is instant:** Pidgeot and Tauros attack straight away and wipe them out (no Agility, no Rest).
+- **Scripted fights advance on their own**, no pressing A, in every scripted fight.
+- After a win and Oak's fight, watching Elm and Jenny vs Oak (and the gag) is still offered, optional.
+- Healing before the lab fights stays, announced shorter or not at all.
+
 **Planned** (owner 2026-10-28, #105)
 - **Watched fights become scripted cutscenes** with fun dialogue, not AI battles: Elm and Jenny vs the gym leaders next (#142), on the same scripted-fight system as the lab.
 - After Route 22, Oak and Daisy become the optional scaling EXP fights (section 5). The first one is **Lv 10**; the scaling per badge is decided after Brock, probably between Brock's and Misty's caps (owner 2026-10-28, #105).
@@ -76,6 +83,7 @@ How to use it:
 - **Giovanni**: his gym fight, a way to refight him (depends on the story), and a post-game team.
 - **Only gym leaders get a tier menu.** Elm and Jenny, Delia, Oak and Daisy grow with badges with no tier choice (owner 2026-10-28).
 - Elm and Jenny wait by the Pewter Pokémon Center whenever you're in Pewter after their first fight there, for a rebattle any time (owner 2026-10-29, #143); when the story moves to the next town, they move with it.
+- After Brock, Elm asks if you want to watch them fight Brock (#142). Saying no: next time you're in Pewter they're at the Center, say once that it was a great fight and they learned a lot, then just offer rebattles. Their rebattle team after Brock: all Lv 15 for now (owner 2026-10-29, #143). They stand left of the Center, facing down.
 - **Elm and Jenny's rematches** are replayable and give **normal EXP and normal prize money**, like any trainer (owner 2026-10-28, #127; this replaces the earlier "no EXP, no money"). They shouldn't be the place to earn money: that comes from gym leader rebattles and the rest of the game. Still open: an item each time.
 - **The rematch menu**: pick any tier from the leader's original team up to your current badge count (like Crystal Clear).
 - Open: the Pewter rematch with Elm and Jenny wins 6% for a team at the cap (Lv 14) (BALANCE.md "Simulated fights"): tune it, or keep it a hard optional fight?

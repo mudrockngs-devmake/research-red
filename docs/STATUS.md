@@ -5,10 +5,10 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-29 (v0.0.21 built: Elm & Jenny on the road)_
+_Last updated: 2026-10-29 (v0.0.21 spot check archived)_
 
 ## Now
-- **v0.0.20 playtest done and archived** (`test-archive/2026-10-29_v0.0.20_playtest/`, new issues #133-#148, #106 closed).
+- **v0.0.21 spot check done and archived** (`test-archive/2026-10-29_v0.0.21_spotcheck/`): new issues #149-#156; #116, #139, #140, #148 closed; follow-ups on #105 (Elm and Jenny's perspective, instant gag, auto-advance), #110, #142, #143.
 - Two lanes: game-lane sessions use the art already in the game; Art Kit sessions improve the tools and drafts
   (#104: Pallet Town first). No Art Kit piece is approved yet (`art_gate.py status`). Exception (owner 2026-10-28,
   #125): v0.0.20 tries the cast's overworld drafts as they are, for testing only (not approved).
@@ -40,7 +40,7 @@ _Last updated: 2026-10-29 (v0.0.21 built: Elm & Jenny on the road)_
   14/14; **singles 12/14: the bot loses to Brock's 6-vs-6 in singles** (same as v0.0.20; a balance question for
   v0.0.25). What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.21\report.html` (debug jump per change).
   **Save: old saves work.**
-- Last playtest archived: `test-archive/2026-10-29_v0.0.20_playtest/`.
+- Last playtest archived: `test-archive/2026-10-29_v0.0.21_spotcheck/`.
 
 ## Waiting on the owner
 - [ ] Balance: the Pewter rematch with Elm and Jenny wins 6% for a
@@ -58,7 +58,7 @@ _Last updated: 2026-10-29 (v0.0.21 built: Elm & Jenny on the road)_
   with a test that fails before and passes after. **Spot-check rounds** for most builds (a debug jump per change,
   the owner plays only those); a **full playthrough** about every third build (owner 2026-10-29, docs/PLAYTESTING.md).
   Milestones on GitHub (plan agreed 2026-10-29):
-  - v0.0.21 Elm & Jenny on the road: built 2026-10-29, waiting for the owner's spot check.
+  - v0.0.21 Elm & Jenny on the road: built and spot-checked 2026-10-29. Its follow-ups (#105 perspective/gag/auto-advance, #150, #151, #152, #153, #154, #155, #143 placement) need a slot in the plan.
   - v0.0.22 day and night (#108; spot check); v0.0.23 Pallet and Daisy's house (#119, #117, #136, #137, #138; then a
     full playthrough); v0.0.24 text and menus (#135, #146, #120, #115, #109, #124); v0.0.25 levels and balance
     (#111, #141, #110, #123, #112); v0.0.26 moves and evolution (#145, #144, #147); v0.0.27 battle pictures (#133,
@@ -84,7 +84,7 @@ _Last updated: 2026-10-29 (v0.0.21 built: Elm & Jenny on the road)_
 - 13 rows of `docs/reference/kanto_anime.csv` are marked "memory" (to verify).
 
 ## Session costs not yet logged (log them in the next playtest round's NOTES.md)
-- Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. The session started 2026-10-27 21:29 ($76.27 at the v0.0.20 intake) is noted in the v0.0.20 NOTES.md; add its final figure at wrap-up.
+- Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. The session started 2026-10-27 21:29 ($100.14 at the v0.0.21 intake) is noted in the v0.0.20 and v0.0.21 NOTES.md; add its final figure at wrap-up.
 
 ## Capacity (measured 2026-10-21)
 | Space | Used | Notes |
