@@ -393,7 +393,8 @@ def battle_lines(look):
             + look + step("LEFT")
             + ["autoshot 120 s", f"until speaker_up 40000 A {up}", "autoshot 0", "wait 2", "shot b001", "wait 8",
                "shot b002", "wait 40", "shot b003"]
-            + play_until("route22", scene_end(6), 60000))
+            + play_until("route22", scene_end(6), 60000)
+            + play_until("lunch", scene_end(7), 10000, key="B", every=50))   # the lunch follows (#148)
 
 
 def sc_battle_lines():
@@ -942,9 +943,11 @@ def sc_extras():
     potion = T.G.const("ITEM_POTION")
     flag_off = T.G.const("offsetof(struct SaveBlock3, itemFlags)") + potion // 8
     seen = f"*{T.G.sym('gSaveBlock3Ptr'):#x}+{flag_off:#x}:1 & {1 << (potion % 8)}"
+    # the lunch plays on arrival (#148) and leaves us at (32,26); walk to (16,5),
+    # left of the Potion (17,5), face it and pick it up
     return (["load @bedroom"] + debug_script(SCRIPT_LUNCH)
-            + step("LEFT", 12) + step("UP", 3) + step("LEFT", 3) + step("UP", 2) + step("LEFT", 3) + step("UP")
-            + step("LEFT", 3) + step("UP", 17) + step("RIGHT", 8)
+            + play_until("lunch", scene_end(7), 10000, key="B", every=50)
+            + nav.go(T.G, ("MAP_VIRIDIAN_CITY", 32, 26), "MAP_VIRIDIAN_CITY", (16, 5))
             + ["press RIGHT 6", "wait 20", "press A", "wait 120", "shot x001", "press A", "wait 90", "shot x002"]
             + play_until("potion", T.G.field_free(), 1500, key="B", every=40)
             + check("potion_seen", seen)
@@ -1005,13 +1008,14 @@ def sc_ivy():
             + expect("MAP_ROUTE1"))
 
 def sc_dexnav():
-    # Route 22: after the 6v6 Jenny gives you the DexNav (win or lose). Then
-    # Start (DEBUG, POKEDEX, GUIDE, DEXNAV, ...) > DEXNAV on Route 22 itself.
+    # Route 22: after the 6v6 Jenny gives you the DexNav (win or lose); the
+    # lunch follows in Viridian (#148). Then Start (DEBUG, POKEDEX, GUIDE,
+    # DEXNAV, ...) > DEXNAV there.
     return (sc_route22() + ["mash B 200", "wait 60"] + check("dexnav_flag", T.G.flag_set("FLAG_RR_DEXNAV_GET"))
             + start_menu_item(3) + ["wait 120", "shot d001", "press RIGHT", "wait 20", "shot d002",
                                     "press DOWN", "wait 20", "shot d003", "press B", "wait 120", "shot d004"]
             + play_until("dexnav_closed", T.G.field_free(), 1500, key="B", every=30)
-            + expect("MAP_ROUTE22"))
+            + expect("MAP_VIRIDIAN_CITY"))
 
 def sc_rename():
     # #71: Start > POKEMON > first Pokémon > SUMMARY, A on the info page renames.

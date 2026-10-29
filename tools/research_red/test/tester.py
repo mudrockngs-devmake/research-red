@@ -241,7 +241,9 @@ def run(suite, rom, name, lines, workdir, timeout):
     crashes = [f for f, s in states if s == "crash"]
     if crashes:
         fails.insert(0, f"error screen from {crashes[0]}")
-    if states[-1][1] == "black":
+    # the scene's last picture is the newest file (names sort autoshots "s..." after named shots)
+    last = max(shots, key=lambda f: os.path.getmtime(os.path.join(sdir, f)))
+    if dict(states)[last] == "black":
         warns.append("ends on a black screen")
     status = "FAIL" if fails else "WARN" if warns else "PASS"
     notes = fails + warns + [f"{len(shots)} screenshots"]
