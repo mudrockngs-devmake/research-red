@@ -25,28 +25,28 @@
 - Chikorita Lv5
 
 ## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_SQUIRTLE_CHIKORITA`, double)
-- Squirtle Lv6
-- Chikorita Lv6
+- Squirtle Lv5
+- Chikorita Lv5
 
 ## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_BULBASAUR_CYNDAQUIL`, double)
-- Bulbasaur Lv6
-- Cyndaquil Lv6
+- Bulbasaur Lv5
+- Cyndaquil Lv5
 
 ## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_CHARMANDER_TOTODILE`, double)
-- Charmander Lv6
-- Totodile Lv6
+- Charmander Lv5
+- Totodile Lv5
 
 ## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_TOTODILE_BULBASAUR`, double)
-- Totodile Lv6
-- Bulbasaur Lv6
+- Totodile Lv5
+- Bulbasaur Lv5
 
 ## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_CHIKORITA_CHARMANDER`, double)
-- Chikorita Lv6
-- Charmander Lv6
+- Chikorita Lv5
+- Charmander Lv5
 
 ## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE`, double)
-- Cyndaquil Lv6
-- Squirtle Lv6
+- Cyndaquil Lv5
+- Squirtle Lv5
 - starter Elm/Jenny can have from the lab chain; Elm names his catches after Lv?
 - desserts Lv?
 - her Growlithe Cruller, Macaron sits this one out Lv?

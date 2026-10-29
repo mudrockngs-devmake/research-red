@@ -88,6 +88,64 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 
 > Oak: Ho ho! Come back anytime.
 
+> Oak: Off you go! Viridian won't
+> research itself.
+
+> Oak: Ah, {PLAYER}! {STR_VAR_1} and
+> {STR_VAR_2} are still raring to
+> go. Fancy that round now?
+
+> Battle Prof. Oak?
+
+> Ivy: Oh, I like this.
+
+> Oak healed your Pokémon.
+
+**Battle:** Pkmn Prof Oak (double): Squirtle Lv5, Chikorita Lv5
+
+> Oak: I may have over-prepared
+> the speech and under-prepared
+> the Pokémon.
+
+**Battle:** Pkmn Prof Oak (double): Bulbasaur Lv5, Cyndaquil Lv5
+
+> Oak: I may have over-prepared
+> the speech and under-prepared
+> the Pokémon.
+
+**Battle:** Pkmn Prof Oak (double): Charmander Lv5, Totodile Lv5
+
+> Oak: I may have over-prepared
+> the speech and under-prepared
+> the Pokémon.
+
+**Battle:** Pkmn Prof Oak (double): Totodile Lv5, Bulbasaur Lv5
+
+> Oak: I may have over-prepared
+> the speech and under-prepared
+> the Pokémon.
+
+**Battle:** Pkmn Prof Oak (double): Chikorita Lv5, Charmander Lv5
+
+> Oak: I may have over-prepared
+> the speech and under-prepared
+> the Pokémon.
+
+**Battle:** Pkmn Prof Oak (double): Cyndaquil Lv5, Squirtle Lv5, starter Elm/Jenny can have from the lab chain; Elm names his catches after Lv?, desserts Lv?, her Growlithe Cruller, Macaron sits this one out Lv?
+
+> Oak: I may have over-prepared
+> the speech and under-prepared
+> the Pokémon.
+
+> Oak: Well, well. Perhaps you
+> have more in you than my notes
+> say.
+
+> Oak: A student falls down…
+> Old man forgot to hold back…
+>
+> The grant still goes through.
+
 > Thank you, {PLAYER}!
 > Sincerely, thank you!
 > You've made my dream a reality!

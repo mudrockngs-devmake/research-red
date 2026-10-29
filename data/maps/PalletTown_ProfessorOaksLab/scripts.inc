@@ -572,6 +572,7 @@ PalletTown_ProfessorOaksLab_EventScript_ProfOak::
 	lock
 	faceplayer
 	goto_if_ge VAR_0x40FE, 6, RR_Lab_EventScript_OakRematch @ Research Red (#53): Oak's role is the rematch now
+	goto_if_ge VAR_0x40FE, 3, RR_Lab_EventScript_OakTalkBeforeRoute22 @ Research Red (#105): his one fight until Route 22
 	goto_if_set SHOWED_OAK_COMPLETE_DEX, PalletTown_ProfessorOaksLab_EventScript_OakJustShownCompleteDex
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 9, PalletTown_ProfessorOaksLab_EventScript_RatePokedex
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 8, PalletTown_ProfessorOaksLab_EventScript_MonsAroundWorldWait

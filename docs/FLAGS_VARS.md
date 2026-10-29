@@ -48,6 +48,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `FLAG_RR_EXP_SHARE` (0x021, was `FLAG_0x021`) | `I_EXP_SHARE_FLAG`: Exp. Share key item on/off. Set by the research grant |
 | `FLAG_RR_LEVEL_CAPS_OFF` (0x027, was `FLAG_0x027`) | Research Rules: level caps off (on by default; caps in `src/caps.c`) |
 | `FLAG_0x077` (was `FLAG_RR_HARD_LEVEL_CAPS`) | Free again (the soft/hard cap choice was removed in v0.0.16). Old saves may have it set: clear it before reusing |
+| `FLAG_RR_OAK_FIRST_FIGHT` (0x0C6, was `FLAG_0x0C6`) | You had your one fight with Oak's leftover starters, in the lab or by talking to him later; the offer stays until Route 22 (#105, owner 2026-10-28) |
 | `FLAG_RR_BACK_PIC_FACING` (0x0C5, was `FLAG_0x0C5`) | Your battle picture: you and Ivy turned to each other (the #7 picture) instead of side by side like Elm and Jenny (owner 2026-10-28). Off by default; Debug > Scripts > 14 switches it |
 | `FLAG_RR_BANTER_FULL_BODY` (0x0C4, was `FLAG_0x0C4`) | Banter look (#5, #95): full-body pictures (`cast/*/battle.png`) instead of portraits in the dex banter and battle lines. Off by default; Debug > Scripts > 13 switches it (playtest comparison) |
 | `FLAG_RR_NO_ENCOUNTERS` (0x0C3, was `FLAG_0x0C3`) | `OW_FLAG_NO_ENCOUNTER`: no wild encounters while set. Only the smoke tests set it (memory poke); never set in normal play |

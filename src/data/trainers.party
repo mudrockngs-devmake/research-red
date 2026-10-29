@@ -14561,11 +14561,11 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Squirtle
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 Chikorita
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 === TRAINER_RR_OAK_LAB_BULBASAUR_CYNDAQUIL ===
@@ -14578,11 +14578,11 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Bulbasaur
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 Cyndaquil
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 === TRAINER_RR_OAK_LAB_CHARMANDER_TOTODILE ===
@@ -14595,11 +14595,11 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Charmander
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 Totodile
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 === TRAINER_RR_OAK_LAB_TOTODILE_BULBASAUR ===
@@ -14612,11 +14612,11 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Totodile
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 Bulbasaur
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 === TRAINER_RR_OAK_LAB_CHIKORITA_CHARMANDER ===
@@ -14629,11 +14629,11 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Chikorita
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 Charmander
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 === TRAINER_RR_OAK_LAB_CYNDAQUIL_SQUIRTLE ===
@@ -14646,11 +14646,11 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Cyndaquil
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 Squirtle
-Level: 6
+Level: 5
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 /* Research Red: Route 22 (Elm & Jenny, 6v6 double). One version per

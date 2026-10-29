@@ -51,19 +51,19 @@ How to use it:
 - **No overworld scaling**: wild Pokémon and route trainers keep their levels (no Crystal Clear-style respec). Only gym leaders adapt (section 5).
 
 ## 4. The lab, Oak, and Elm and Jenny's early fights
-**In the game** (v0.0.19, #86)
-- You and Ivy fight Elm and Jenny (double, Lv 5). Win or lose, Elm and Jenny then fight Oak's leftover starters (watched, a real AI battle), Oak's Lv 50 Pidgeot and Tauros flatten them (optional to watch), then Oak offers you a fight.
+**In the game** (v0.0.21, #105)
+- You and Ivy fight Elm and Jenny (double, Lv 5).
+- **You win:** Oak asks right away if you want to battle his two leftover starters (Lv 5).
+- **You lose:** Elm and Jenny gloat; you can watch them take on Oak (Elm and Jenny Lv 6 vs his starters Lv 5), then the gag where Oak's Lv 50 Pidgeot and Tauros flatten them (Lv 7), each optional. Then Oak offers you his fight.
+- Saying No to Oak's fight: it waits until Route 22 (talk to Oak in the lab); one fight only (FLAG_RR_OAK_FIRST_FIGHT). After Route 22 Oak and Daisy are the rematch.
+- The watched fights are still real AI battles; next they become scripted battles on FireRed's Poké Dude system (#105).
 
 **Planned** (owner 2026-10-28, #105)
 - **Watched fights become scripted cutscenes** with fun dialogue, not AI battles: Elm and Jenny vs Oak, the gag rematch, and Elm and Jenny vs the gym leaders.
-- **You win against Elm and Jenny**: Oak asks right away if you want to battle him (a proper fight).
-- **You lose**: no Oak fight then. Optionally watch Elm and Jenny vs Oak (cutscene), then the gag where Oak flattens them (cutscene, optional).
-- After the cutscenes, win or lose, Oak offers **one optional fight** for some EXP, available **any time until Route 22** ("if you'd like to fight me with these, any time is fine"). His team: two Lv 5 Pokémon.
-- Levels on screen add up: Elm and Jenny fight you at Lv 5, Oak's leftover starters at Lv 6 vs Oak's Lv 5s, the gag at Lv 7 vs Oak's Lv 50s.
 - After Route 22, Oak and Daisy become the optional scaling EXP fights (section 5). The first one is **Lv 10**; the scaling per badge is decided after Brock, probably between Brock's and Misty's caps (owner 2026-10-28, #105).
 - Watched fights show both Elm and Jenny (#105). The lab's Slowpoke is Oak's newest addition (introduced in the video call), never battles and stays a Slowpoke (#121): Nidoran♂ takes its place on Oak's rematch team, a Nidoking from 4 badges (owner 2026-10-28); later it sleeps in a little bed on the table (#122).
 - Idea (#126): Ivy asks if you'd recommend her starter; then Elm and Jenny pick so nobody has the same Pokémon.
-- All six starters are 50% female (#123). The Viridian old man makes sure the Route 22 point is always reached first.
+- All six starters are 50% female (#123). The lunch follows straight after Route 22 (#148), so the Viridian old man's block is gone by the time you can walk north.
 
 ## 5. Rematches
 **In the game** (v0.0.16-19)

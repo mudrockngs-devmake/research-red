@@ -601,6 +601,12 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Elm: We're on a roll, Jenny! Who's
 > next? Professor Oak!
 
+> Watch Elm and Jenny take on
+> Prof. Oak?
+
+> Ivy: Let them have their moment,
+> sweetie. We'll hear all about it.
+
 ### RR_Lab_EventScript_AfterBattle
 
 > Elm: Again! Best of three!
@@ -608,9 +614,6 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Jenny: Best of zero.
 > We're in a lab, dear.
-
-> Elm: Fine! Then we battle someone
-> else. Professor Oak!
 
 ### RR_Lab_EventScript_ElmChallengesOak
 
@@ -704,6 +707,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Ivy: Look at him, sweetie. He's
 > glowing.
 
+### RR_Lab_EventScript_OakOffer
+
 > Oak: Now then! {PLAYER}. Ivy.
 > {STR_VAR_1} and {STR_VAR_2} are
 > still raring to go.
@@ -712,10 +717,6 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > heal your team first.
 
 > Battle Prof. Oak?
-
-> Ivy: Oh, I like this.
-
-> Oak healed your Pokémon.
 
 > Oak: Well. I suppose we can't
 > really fund it now. Not after a
@@ -744,10 +745,11 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > {PLAYER}: After the paperwork,
 > Professor. Maybe.
 
-> Oak: A battle declined…
-> The chance drifts off like a leaf…
+> Oak: If you'd like to fight me
+> with these, any time is fine.
 >
-> We carry on still.
+> Oak: Before you head out past
+> Viridian, that is!
 
 > Elm: But… we still get funding
 > for all this, right? Right?
@@ -1127,6 +1129,36 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 ### RR_Lab_EventScript_OakBattle5
 
 *[trainerbattle_no_intro Pkmn Prof Oak (Cyndaquil, Squirtle, starter Elm/Jenny can have from the lab chain; Elm names his catches after, desserts, her Growlithe Cruller, Macaron sits this one out)]*
+
+### RR_Lab_EventScript_OakFirstFight
+
+> Ivy: Oh, I like this.
+
+> Oak healed your Pokémon.
+
+### RR_Lab_EventScript_OakTalkBeforeRoute22
+
+> Oak: Ah, {PLAYER}! {STR_VAR_1} and
+> {STR_VAR_2} are still raring to
+> go. Fancy that round now?
+
+> Battle Prof. Oak?
+
+> Oak: A student falls down…
+> Old man forgot to hold back…
+>
+> The grant still goes through.
+
+### RR_Lab_EventScript_OakLaterWon
+
+> Oak: Well, well. Perhaps you
+> have more in you than my notes
+> say.
+
+### RR_Lab_EventScript_OakOffToViridian
+
+> Oak: Off you go! Viridian won't
+> research itself.
 
 ### RR_Lab_EventScript_StartWatch
 

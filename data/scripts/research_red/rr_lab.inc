@@ -393,30 +393,29 @@ RR_Lab_EventScript_BattleResult::
 	fadedefaultbgm
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_AfterBattle
-	@ Lost: Elm and Jenny gloat, then challenge Oak (#86 rework)
+	@ Lost: Elm and Jenny gloat, then take on Oak if you want to watch (#105)
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Victory, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Diagram, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_Morale, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_PureScience, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_OnARoll, MSGBOX_DEFAULT
-	goto RR_Lab_EventScript_ElmChallengesOak
+	msgbox RR_Lab_Text_WatchOakAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_ElmChallengesOak
+	msgbox RR_Lab_Text_Ivy_LetThemHaveIt, MSGBOX_DEFAULT
+	goto RR_Lab_EventScript_OakOffer
 
+@ Won (#105, owner 2026-10-28): Oak asks you right away
 RR_Lab_EventScript_AfterBattle::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_BestOfFive, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_BestOfZero, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Elm_SomeoneElse, MSGBOX_DEFAULT
-@ #86 rework, on both paths: Elm and Jenny take on Oak's two leftover
-@ starters (healed first, watched, they win); Elm asks for another round and
-@ Oak's Lv 50 ranch Pokémon flatten them (optional to watch); then you and
-@ Ivy may battle the leftover starters too (optional, healed first). Oak
-@ keeps the two starters and the lab's Slowpoke naps on the empty table.
+	goto RR_Lab_EventScript_OakOffer
+
+@ #105, after a loss and only if you want to watch: Elm and Jenny (Lv 6) take
+@ on Oak's two leftover starters (Lv 5) and win; Elm asks for another round
+@ and Oak's Lv 50 ranch Pokemon flatten them (Lv 7, optional to watch).
+@ To become scripted battles (Poke Dude system, #105).
 RR_Lab_EventScript_ElmChallengesOak::
 	closemessage
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
@@ -425,39 +424,27 @@ RR_Lab_EventScript_ElmChallengesOak::
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Protocol, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Accepts, MSGBOX_DEFAULT
 	call RR_Lab_EventScript_HealElmJenny
 	call RR_Lab_EventScript_SetupPair
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_StartersGo, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_Popcorn, MSGBOX_DEFAULT
 	closemessage
-	@ round one: watched, Elm and Jenny (Lv 9) beat the leftover starters (Lv 6)
-	setvar VAR_0x8006, 9
+	setvar VAR_0x8006, 6
 	call RR_Lab_EventScript_StartWatch
 	call RR_Lab_EventScript_OakStarterBattle
 	call RR_Lab_EventScript_EndWatch
-	@ (the story says they win; at these levels they do)
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_WeBeatOak, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Noted, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Invigorated, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_AnotherRound, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_LookAtHim, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_RanchTeam, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Pidgeot, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_Incident, MSGBOX_DEFAULT
-	@ round two is optional to watch (#46): Oak's ranch Pokémon at Lv 50
-	textcolor NPC_TEXT_COLOR_NEUTRAL
+	@ round two is optional to watch (#46): Oak's ranch Pokemon at Lv 50
 	msgbox RR_Lab_Text_WatchAsk, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_RanchSkip
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -465,7 +452,7 @@ RR_Lab_EventScript_ElmChallengesOak::
 	call RR_Lab_EventScript_HealElmJenny
 	closemessage
 	call RR_Lab_EventScript_SetupPair
-	setvar VAR_0x8006, 9
+	setvar VAR_0x8006, 7
 	call RR_Lab_EventScript_StartWatch
 	trainerbattle_no_intro TRAINER_RR_OAK_LAB_RANCH, RR_Lab_Text_Oak_RanchDefeat
 	call RR_Lab_EventScript_EndWatch
@@ -477,44 +464,27 @@ RR_Lab_EventScript_RanchSkip::
 RR_Lab_EventScript_RanchAftermath::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_RanchAftermath, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Thesis, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_CalmsDown, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Jenny_OakFast, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_TaurosHaiku, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Allergies, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Ivy_OakGlow, MSGBOX_DEFAULT
-	@ --- your turn, if you like: never forced, healed first ---
+@ --- your turn, if you like: never forced, healed first. One fight with
+@ Oak's two leftover starters (Lv 5); if you say No it waits until Route 22:
+@ talk to Oak in the lab (#105, owner 2026-10-28) ---
+RR_Lab_EventScript_OakOffer::
 	call RR_Lab_EventScript_SetupPair
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_Challenge, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_OakBattleAsk, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_OakDeclined
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Ivy_LikeThis, MSGBOX_DEFAULT
-	playfanfare MUS_HEAL
-	special HealPlayerParty
-	message RR_Lab_Text_HealedYours
-	waitmessage
-	waitfanfare
-	closemessage
-	setflag FLAG_RR_NO_WHITEOUT
-	call RR_Lab_EventScript_OakStarterBattle
-	clearflag FLAG_RR_NO_WHITEOUT
-	special HealPlayerParty
-	specialvar VAR_RESULT, GetBattleOutcome
+	call RR_Lab_EventScript_OakFirstFight
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_OakBeaten
 	@ Loss: Oak's haiku, then Elm offers his own funding
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_CantFund, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_Funding, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_SweetThought, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_Haiku, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_TableNap
@@ -527,12 +497,10 @@ RR_Lab_EventScript_OakBeaten::
 RR_Lab_EventScript_OakDeclined::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_P_AfterPaperwork, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Oak_MissedHaiku, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_AnyTime, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_StillFunding, MSGBOX_DEFAULT
-	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_HaveItCovered, MSGBOX_DEFAULT
+
 @ Oak keeps the two leftover starters (they're in his rematch team); the
 @ table is empty, and the lab's Slowpoke claims it for naps from now on
 RR_Lab_EventScript_TableNap::
@@ -1292,6 +1260,53 @@ RR_Lab_EventScript_OakBattle5::
 
 @ A watched battle (AI vs AI, #86): Elm and Jenny's picks (VAR_0x8004/5, at
 @ level VAR_0x8006) stand in for the player's party; Elm shows on your side
+@ #105: your one-time fight with Oak's leftover starters (heal first);
+@ VAR_RESULT is the outcome. From the lab scene or by talking to Oak later
+@ (before Route 22). No whiteout.
+RR_Lab_EventScript_OakFirstFight::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Ivy_LikeThis, MSGBOX_DEFAULT
+	playfanfare MUS_HEAL
+	special HealPlayerParty
+	message RR_Lab_Text_HealedYours
+	waitmessage
+	waitfanfare
+	closemessage
+	setflag FLAG_RR_OAK_FIRST_FIGHT
+	setflag FLAG_RR_NO_WHITEOUT
+	call RR_Lab_EventScript_OakStarterBattle
+	clearflag FLAG_RR_NO_WHITEOUT
+	special HealPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	return
+
+@ #105: talking to Oak after the lab scene and before Route 22: his one
+@ fight if you haven't had it yet
+RR_Lab_EventScript_OakTalkBeforeRoute22::
+	goto_if_set FLAG_RR_OAK_FIRST_FIGHT, RR_Lab_EventScript_OakOffToViridian
+	call RR_Lab_EventScript_SetupPair
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_StillOffer, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_OakBattleAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Lab_EventScript_OakOffToViridian
+	call RR_Lab_EventScript_OakFirstFight
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Lab_EventScript_OakLaterWon
+	msgbox RR_Lab_Text_Oak_Haiku, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Lab_EventScript_OakLaterWon::
+	msgbox RR_Lab_Text_Oak_MoreInYou, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Lab_EventScript_OakOffToViridian::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_Oak_OffYouGo, MSGBOX_DEFAULT
+	release
+	end
+
 RR_Lab_EventScript_StartWatch::
 	callnative RR_ScriptBorrowRivalTeam
 	setflag FLAG_RR_AI_VS_AI
@@ -1519,3 +1534,27 @@ RR_Lab_Text_Oak_Invigorated::
 RR_Lab_Text_Ivy_OakGlow::
     .string "Ivy: Look at him, sweetie. He's\n"
     .string "glowing.$"
+
+@ --- #105 lab order (drafts for the owner to rework) ---
+RR_Lab_Text_WatchOakAsk::
+    .string "Watch Elm and Jenny take on\n"
+    .string "Prof. Oak?$"
+
+RR_Lab_Text_Ivy_LetThemHaveIt::
+    .string "Ivy: Let them have their moment,\n"
+    .string "sweetie. We'll hear all about it.$"
+
+RR_Lab_Text_Oak_AnyTime::
+    .string "Oak: If you'd like to fight me\n"
+    .string "with these, any time is fine.\p"
+    .string "Oak: Before you head out past\n"
+    .string "Viridian, that is!$"
+
+RR_Lab_Text_Oak_StillOffer::
+    .string "Oak: Ah, {PLAYER}! {STR_VAR_1} and\n"
+    .string "{STR_VAR_2} are still raring to\l"
+    .string "go. Fancy that round now?$"
+
+RR_Lab_Text_Oak_OffYouGo::
+    .string "Oak: Off you go! Viridian won't\n"
+    .string "research itself.$"

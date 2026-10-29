@@ -213,7 +213,7 @@
 #define FLAG_RR_NO_ENCOUNTERS    0x0C3 // Research Red: was FLAG_0x0C3. OW_FLAG_NO_ENCOUNTER: no wild encounters (tests, debug)
 #define FLAG_RR_BANTER_FULL_BODY 0x0C4 // Research Red: was FLAG_0x0C4. Banter look: full-body pictures instead of portraits (#5, #95); off by default
 #define FLAG_RR_BACK_PIC_FACING  0x0C5 // Research Red: was FLAG_0x0C5. Your battle picture: you and Ivy turned to each other (#7) instead of side by side; off by default
-#define FLAG_0x0C6               0x0C6
+#define FLAG_RR_OAK_FIRST_FIGHT  0x0C6 // Research Red: was FLAG_0x0C6. You had your one fight with Oak's leftover starters (lab, or talking to him before Route 22; #105)
 #define FLAG_0x0C7               0x0C7
 #define FLAG_0x0C8               0x0C8
 #define FLAG_0x0C9               0x0C9
