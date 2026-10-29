@@ -136,23 +136,25 @@ Script `PewterCity_EventScript_RunningShoesAide`
 *hidden by `FLAG_TEMP_13`*
 Script `RR_Pewter_EventScript_Rematch`
 
-> Elm: {PLAYER}! We saw the whole
-> thing! Onix went DOWN!
+> Elm: Back for more? Six on six,
+> same as always?
 
-> Elm: {PLAYER}! Ivy! Badge or no
-> badge, the race isn't over!
->
-> Six on six! Right here!
+> Elm: We'll be right here. Pewter
+> has the best rocks to sit on.
 
-> Jenny: Out here, please. Nurse Joy
-> gave us a look last time.
->
-> By protocol, we battle before
-> Brock. To warm up.
+> Jenny: Warming up again. Noted.
 
-> {PLAYER}: Your warm-up is us?
+**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
 
-> Jenny: You are very warm people.
+**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+
+**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+
+**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+
+**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+
+**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
 
 **Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
 
@@ -161,6 +163,11 @@ Script `RR_Pewter_EventScript_Rematch`
 >
 > Jenny: He means
 > “congratulations.”
+
+> Elm: Again?! You're getting scary.
+> I love it.
+
+> Jenny: Logged. Come back anytime.
 
 > Elm: …You're really good at this,
 > {PLAYER}. I'm proud of you.
@@ -243,28 +250,48 @@ Script `RR_Pewter_EventScript_Rematch`
 >
 > Jenny: He means
 > “congratulations.”
+
+> Elm: {PLAYER}! We saw the whole
+> thing! Onix went DOWN!
+
+> Elm: {PLAYER}! Ivy! Badge or no
+> badge, the race isn't over!
+>
+> Six on six! Right here!
+
+> Jenny: Out here, please. Nurse Joy
+> gave us a look last time.
+>
+> By protocol, we battle before
+> Brock. To warm up.
+
+> {PLAYER}: Your warm-up is us?
+
+> Jenny: You are very warm people.
 
 ### Pewter Jenny (Rr Jenny) at 16,28
 *hidden by `FLAG_TEMP_14`*
 Script `RR_Pewter_EventScript_Rematch`
 
-> Elm: {PLAYER}! We saw the whole
-> thing! Onix went DOWN!
+> Elm: Back for more? Six on six,
+> same as always?
 
-> Elm: {PLAYER}! Ivy! Badge or no
-> badge, the race isn't over!
->
-> Six on six! Right here!
+> Elm: We'll be right here. Pewter
+> has the best rocks to sit on.
 
-> Jenny: Out here, please. Nurse Joy
-> gave us a look last time.
->
-> By protocol, we battle before
-> Brock. To warm up.
+> Jenny: Warming up again. Noted.
 
-> {PLAYER}: Your warm-up is us?
+**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
 
-> Jenny: You are very warm people.
+**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+
+**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+
+**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+
+**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+
+**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
 
 **Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
 
@@ -273,6 +300,11 @@ Script `RR_Pewter_EventScript_Rematch`
 >
 > Jenny: He means
 > “congratulations.”
+
+> Elm: Again?! You're getting scary.
+> I love it.
+
+> Jenny: Logged. Come back anytime.
 
 > Elm: …You're really good at this,
 > {PLAYER}. I'm proud of you.
@@ -355,6 +387,24 @@ Script `RR_Pewter_EventScript_Rematch`
 >
 > Jenny: He means
 > “congratulations.”
+
+> Elm: {PLAYER}! We saw the whole
+> thing! Onix went DOWN!
+
+> Elm: {PLAYER}! Ivy! Badge or no
+> badge, the race isn't over!
+>
+> Six on six! Right here!
+
+> Jenny: Out here, please. Nurse Joy
+> gave us a look last time.
+>
+> By protocol, we battle before
+> Brock. To warm up.
+
+> {PLAYER}: Your warm-up is us?
+
+> Jenny: You are very warm people.
 
 ## Signs
 

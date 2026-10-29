@@ -105,3 +105,24 @@ Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
 *[setvar VAR_0x40FE ]*
 
 *[warp MAP_PEWTER_CITY_GYM]*
+
+### RR_Pewter_EventScript_Rebattle
+
+> Elm: Back for more? Six on six,
+> same as always?
+
+> Jenny: Warming up again. Noted.
+
+### RR_Pewter_EventScript_RebattleAfter
+
+> Jenny: Logged. Come back anytime.
+
+### RR_Pewter_EventScript_RebattleWon
+
+> Elm: Again?! You're getting scary.
+> I love it.
+
+### RR_Pewter_EventScript_RebattleDeclined
+
+> Elm: We'll be right here. Pewter
+> has the best rocks to sit on.

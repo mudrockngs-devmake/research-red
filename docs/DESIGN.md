@@ -75,6 +75,7 @@ How to use it:
 - **Erika, Koga and Sabrina**: their tier follows how many badges you have, so their order doesn't matter.
 - **Giovanni**: his gym fight, a way to refight him (depends on the story), and a post-game team.
 - **Only gym leaders get a tier menu.** Elm and Jenny, Delia, Oak and Daisy grow with badges with no tier choice (owner 2026-10-28).
+- Elm and Jenny wait by the Pewter Pokémon Center whenever you're in Pewter after their first fight there, for a rebattle any time (owner 2026-10-29, #143); when the story moves to the next town, they move with it.
 - **Elm and Jenny's rematches** are replayable and give **normal EXP and normal prize money**, like any trainer (owner 2026-10-28, #127; this replaces the earlier "no EXP, no money"). They shouldn't be the place to earn money: that comes from gym leader rebattles and the rest of the game. Still open: an item each time.
 - **The rematch menu**: pick any tier from the leader's original team up to your current badge count (like Crystal Clear).
 - Open: the Pewter rematch with Elm and Jenny wins 6% for a team at the cap (Lv 14) (BALANCE.md "Simulated fights"): tune it, or keep it a hard optional fight?

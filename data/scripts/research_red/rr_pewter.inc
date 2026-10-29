@@ -6,12 +6,17 @@
 @ Pokemon Center door (15-16, 27). Talking to them: they spot the badge, 6v6 double, then
 @ they head off to challenge Brock themselves. Sets VAR_0x40FE to 8.
 @ They're friends travelling the same road: they'll turn up again.
+@ After that first fight they wait by the Center whenever you're in Pewter,
+@ for a rebattle any time (owner 2026-10-29, #143, #127), except while their
+@ Brock fight waits for you in the Gym (VAR_RR_BROCK_WATCH 1). When the story
+@ moves on to the next town, they move with it.
 @ ===================================================================
 
-@ PewterCity OnTransition: Elm and Jenny only while it's pending
+@ PewterCity OnTransition: Elm and Jenny from story step 7 with the badge on
 RR_Pewter_OnTransitionCity::
-	call_if_ne VAR_0x40FE, 7, RR_Pewter_EventScript_HideElmJenny
+	call_if_lt VAR_0x40FE, 7, RR_Pewter_EventScript_HideElmJenny
 	call_if_lt VAR_MAP_SCENE_PEWTER_CITY, 1, RR_Pewter_EventScript_HideElmJenny
+	call_if_eq VAR_RR_BROCK_WATCH, 1, RR_Pewter_EventScript_HideElmJenny
 	return
 
 RR_Pewter_EventScript_HideElmJenny::
@@ -22,6 +27,8 @@ RR_Pewter_EventScript_HideElmJenny::
 RR_Pewter_EventScript_Rematch::
 	lockall
 	faceplayer
+	goto_if_ge VAR_0x40FE, 8, RR_Pewter_EventScript_Rebattle
+	setvar VAR_TEMP_2, 0
 	playse SE_PIN
 	applymovement LOCALID_PEWTER_ELM, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -72,6 +79,7 @@ RR_Pewter_EventScript_AfterBattle::
 	special HealPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	textcolor NPC_TEXT_COLOR_NEUTRAL
+	goto_if_eq VAR_TEMP_2, 1, RR_Pewter_EventScript_RebattleAfter
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Pewter_EventScript_Won
 	msgbox RR_Pewter_Text_Elm_WeWon, MSGBOX_DEFAULT
 	msgbox RR_Pewter_Text_Jenny_HealHere, MSGBOX_DEFAULT
@@ -204,3 +212,63 @@ RR_Pewter_Text_Ivy_BigDinner::
 
 RR_Pewter_Text_P_BigDinner::
     .string "{PLAYER}: And one very big dinner.$"
+
+@ #143: a rebattle any time after the first one, the same teams (#127: normal
+@ EXP and prize money). VAR_TEMP_2 tells AfterBattle it's a rebattle.
+@ Placeholder lines for the owner to rework.
+RR_Pewter_EventScript_Rebattle::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Pewter_Text_Elm_Again, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RR_Pewter_EventScript_RebattleDeclined
+	msgbox RR_Pewter_Text_Jenny_Again, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_TEMP_2, 1
+	cleartrainerflag TRAINER_RR_ELM_PEWTER_BULBASAUR
+	cleartrainerflag TRAINER_RR_ELM_PEWTER_CHARMANDER
+	cleartrainerflag TRAINER_RR_ELM_PEWTER_SQUIRTLE
+	cleartrainerflag TRAINER_RR_ELM_PEWTER_CHIKORITA
+	cleartrainerflag TRAINER_RR_ELM_PEWTER_CYNDAQUIL
+	cleartrainerflag TRAINER_RR_ELM_PEWTER_TOTODILE
+	setflag FLAG_RR_NO_WHITEOUT
+	switch VAR_RR_STARTER
+	case 0, RR_Pewter_EventScript_BattleAfterBulbasaur
+	case 1, RR_Pewter_EventScript_BattleAfterCharmander
+	case 2, RR_Pewter_EventScript_BattleAfterSquirtle
+	case 3, RR_Pewter_EventScript_BattleAfterChikorita
+	case 4, RR_Pewter_EventScript_BattleAfterCyndaquil
+	case 5, RR_Pewter_EventScript_BattleAfterTotodile
+
+RR_Pewter_EventScript_RebattleAfter::
+	setvar VAR_TEMP_2, 0
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, RR_Pewter_EventScript_RebattleWon
+	msgbox RR_Pewter_Text_Jenny_Logged, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RR_Pewter_EventScript_RebattleWon::
+	msgbox RR_Pewter_Text_Elm_Scary, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RR_Pewter_EventScript_RebattleDeclined::
+	msgbox RR_Pewter_Text_Elm_Anytime, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RR_Pewter_Text_Elm_Again:
+	.string "Elm: Back for more? Six on six,\n"
+	.string "same as always?$"
+
+RR_Pewter_Text_Jenny_Again:
+	.string "Jenny: Warming up again. Noted.$"
+
+RR_Pewter_Text_Jenny_Logged:
+	.string "Jenny: Logged. Come back anytime.$"
+
+RR_Pewter_Text_Elm_Scary:
+	.string "Elm: Again?! You're getting scary.\n"
+	.string "I love it.$"
+
+RR_Pewter_Text_Elm_Anytime:
+	.string "Elm: We'll be right here. Pewter\n"
+	.string "has the best rocks to sit on.$"

@@ -486,6 +486,22 @@ def sc_pewter():
             + expect("MAP_PEWTER_CITY_GYM", story=8, party=1))
 
 
+def sc_pewter_again():
+    # #143: after their first Pewter fight (story 8, the Brock watch seen), Elm
+    # and Jenny wait by the Center whenever you're in Pewter: leave for Route 2,
+    # come back, talk to Elm (16,27) and rebattle (Yes)
+    g = T.G
+    return (["load @bedroom"] + after_brock_test_mode() + poke_var("VAR_0x40FE", 8)
+            + poke_var("VAR_RR_BROCK_WATCH", 2) + ["shot s000"]
+            + nav.go(g, ("MAP_PEWTER_CITY", 17, 26), "MAP_ROUTE2", (8, 3)) + expect("MAP_ROUTE2")
+            + nav.go(g, ("MAP_ROUTE2", 8, 3), "MAP_PEWTER_CITY", (17, 26)) + ["wait 30", "shot back"]
+            + check("they_wait", g.flag_set("FLAG_TEMP_13").replace(" & ", " !& "))   # not hidden
+            + step("LEFT") + ["wait 20", "press DOWN 6", "wait 20", "press A", "wait 30", "shot ask"]
+            + play_until("in_battle", g.in_battle(), 3000, key="A", every=40)
+            + play_until("rebattled", g.field_free(), 45000, key="B", every=60)   # (on the map again)
+            + expect("MAP_PEWTER_CITY", story=8))
+
+
 def sc_demo_end():
     # After Brock, walking east out of Pewter: the guide turns us back (#35).
     # Debug 10 leaves us at (17,26); the exit tiles are at x 42.
@@ -1074,6 +1090,7 @@ SCENARIOS = {
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
     "dex_area": (sc_dex_area, "Pokédex Area page: Magikarp in Pallet's sea by day and evening (#20)"),
     "dex_numbers": (sc_dex_numbers, "Pokédex list: the 151 in order, then Johto by national number (#77)"),
+    "pewter_again": (sc_pewter_again, "After the Pewter fight: leave and come back, Elm and Jenny wait by the Center; rebattle them (#143)"),
     "pewter": (sc_pewter, "After Brock: Elm and Jenny's rematch outside the Pokémon Center (test mode), then watching them take on Brock (#69)"),
     "digletts": (sc_digletts, "After Brock: Diglett's Cave is closed by the Diglett crew (demo)"),
     "demo_end": (sc_demo_end, "After Brock: the way east out of Pewter is closed (demo)"),
