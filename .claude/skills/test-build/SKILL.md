@@ -22,6 +22,7 @@ the install and the tag if the owner hasn't already OK'd them for this build.
    right before its scene with a fitting team and story state; the what's-new checklist's "try" lines name them.
    Also run `python3 tools/research_red/test/playthrough.py` and `matrix.py` (the bot's full run replaces the owner's).
 7. **Install**: `tools/research_red/rr_install_rom.sh`. **What's new**: `python3 tools/research_red/rr_whats_new.py v0.0.x`.
+   **Handheld copy** (owner 2026-10-29, for now): copy the ROM to `/mnt/f/ROM-DATABASE/ROMs/gba/RomhackDev/ResearchRed_v0.0.x.gba` with `ResearchRed_v0.0.x - what to check.txt` (plain text: how to start, a debug jump per change with [ ] boxes, known issues). Never overwrite other files there.
 8. **Commit, push, tag**: `git tag v0.0.x && git push origin v0.0.x` (GitHub makes the patch, the pre-release,
    and runs every smoke scene). Check the GitHub run passes (`gh run list --limit 3`).
 9. **STATUS**: the new current build, what to test, the save note.
