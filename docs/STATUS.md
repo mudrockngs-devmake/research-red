@@ -52,13 +52,18 @@ _Last updated: 2026-10-28 (v0.0.20 built: battles fight as designed)_
 
 ## Next up
 - **Small themed builds** (owner 2026-10-28): 3-5 related issues per test build, risky systems on their own, each fix
-  with a test that fails before and passes after, smoke + full playthrough before the owner plays, a short checklist
-  for the playtest. Milestones on GitHub:
-  - **v0.0.20 battles fight as designed: built and played** (#106 closed; #107, #128 work, follow-ups #133, #134, #139).
-    Still to do from #121: Oak introduces the Slowpoke in the video call (male, stays a Slowpoke).
-  - v0.0.21 story flow (#119, #117, #116, #113, #114); v0.0.22 text and menus (#120, #115, #109, #124);
-    v0.0.23 balance (#110, #111, #123, #112); v0.0.24 day and night (#108); v0.0.25 the lab's look (#118, #122, #125).
-  - Then the features (#105 lab cutscenes and the rest of ROADMAP.md).
+  with a test that fails before and passes after. **Spot-check rounds** for most builds (a debug jump per change,
+  the owner plays only those); a **full playthrough** about every third build (owner 2026-10-29, docs/PLAYTESTING.md).
+  Milestones on GitHub (plan agreed 2026-10-29):
+  - **v0.0.21 Elm & Jenny on the road** (spot check): #139 first (Route 22 shows six balls but four fought; Cruller
+    isn't in the merged Route 22 team, check every merged team), #140 Route 22 all Lv 10, #148 lunch straight after
+    the Route 22 fight (old man's block goes), #116 Jenny behind Elm, #143 they wait in Pewter.
+  - v0.0.22 day and night (#108; spot check); v0.0.23 Pallet and Daisy's house (#119, #117, #136, #137, #138; then a
+    full playthrough); v0.0.24 text and menus (#135, #146, #120, #115, #109, #124); v0.0.25 levels and balance
+    (#111, #141, #110, #123, #112); v0.0.26 moves and evolution (#145, #144, #147); v0.0.27 battle pictures (#133,
+    #134); v0.0.28 the lab's look (#118, #122, #125).
+  - Then the features: scripted battle scenes (#105 the lab with Elm & Jenny vs Oak, #142 vs Brock), #121's video
+    call, #113, #114 and the rest of ROADMAP.md.
 - Tasks for the owner: #129 credits/permissions list, #130 Oak's aides list.
 - Tooling: a smaller patch (#17).
 

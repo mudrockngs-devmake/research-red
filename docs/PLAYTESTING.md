@@ -2,6 +2,11 @@
 
 How a test round works, from a new build to an archived round.
 
+## Two kinds of round (owner 2026-10-29)
+- **Spot check** (most builds, 10-20 minutes): each change has a debug jump (Start > Debug, right before that scene, with a fitting team and story state) and the what's-new checklist lists those jumps. Things to only look at (sizes, positions) come as pictures in the viewer. No replay from the start.
+- **Full playthrough** (about every three builds, or after a big story-flow change): a new game to the end of the demo, covering everything since the last full run. Next: after v0.0.23.
+- Every build, either way: the bot's full playthrough (`playthrough.py`), the settings matrix and all smoke scenes pass before the owner gets it. The hand-off says which kind of round it is.
+
 ## The round, step by step
 1. **Build and check** (Claude): `make firered -j6`, `python3 tools/research_red/rr_check.py`, then the smoke tests (`python3 tools/research_red/test/smoke.py`, see [TESTING.md](TESTING.md)). Only a build that passes goes to the owner.
 2. **Install** (Claude): `tools/research_red/rr_install_rom.sh` puts it at `E:\Workspace\romhacks\research-red\ResearchRed_local.gba` (a numbered copy stays in `builds/`).
@@ -14,8 +19,8 @@ How a test round works, from a new build to an archived round.
    - fill in that round's `NOTES.md`: what was tested, what was found (with issue numbers), follow-ups, and the session cost (`session-cost --all-days` lists every session since the last round)
 7. **Update [STATUS.md](STATUS.md)** (Claude).
 
-## Every-round checklist (5 minutes)
-Things that have broken before or would be embarrassing. Do these every round, on top of the new stuff:
+## Full-run checklist (5 minutes)
+Things that have broken before or would be embarrassing. Do these on every full playthrough, on top of the new stuff:
 - [ ] New game: the intro call plays to the end (Slowpoke stays), you wake up in the bedroom
 - [ ] Your player sprite walks, runs, bikes and surfs correctly (male and, now and then, female)
 - [ ] Breakfast: portraits and name plates switch with each speaker; Ivy follows you after

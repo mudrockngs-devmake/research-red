@@ -70,7 +70,7 @@ ${LOG:-(none)}
 
 ## What was tested
 
-## Every-round checklist (docs/PLAYTESTING.md)
+## Full-run checklist (docs/PLAYTESTING.md; full playthrough rounds only)
 - [ ] Intro call to the end, bedroom
 - [ ] Player sprite: walk, run, bike, surf
 - [ ] Breakfast portraits/name plates; Ivy follows
