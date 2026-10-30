@@ -1,22 +1,6 @@
-PewterCity_Gym_Text_BrockIntro::
-    .string "So, you're here. I'm Brock.\n"
-    .string "I'm Pewter's Gym Leader.\p"
-    .string "My rock-hard willpower is evident\n"
-    .string "even in my Pokémon.\p"
-    .string "My Pokémon are all rock hard, and\n"
-    .string "have true-grit determination.\p"
-    .string "That's right - my Pokémon are all\n"
-    .string "the Rock type!\p"
-    .string "Fuhaha! You're going to challenge\n"
-    .string "me knowing that you'll lose?\p"
-    .string "That's the Trainer's honor that\n"
-    .string "compels you to challenge me.\p"
-    .string "Fine, then!\n"
-    .string "Show me your best!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}$"
-
 PewterCity_Gym_Text_BrockDefeat::
-    .string "I took you for granted, and so\n"
-    .string "I lost.\p"
+    .string "Brock: I took you for granite.\n"
+    .string "That was my mistake.\p"
     .string "As proof of your victory, I confer\n"
     .string "on you this…the official Pokémon\l"
     .string "League Boulderbadge.\p"
@@ -30,7 +14,7 @@ PewterCity_Gym_Text_BrockDefeat::
     .string "move Flash to use it.$"
 
 PewterCity_Gym_Text_TakeThisWithYou::
-    .string "Wait!\n"
+    .string "Brock: Wait!\n"
     .string "Take this with you.$"
 
 PewterCity_Gym_Text_ReceivedTM39FromBrock::
@@ -38,8 +22,8 @@ PewterCity_Gym_Text_ReceivedTM39FromBrock::
     .string "from Brock.$"
 
 PewterCity_Gym_Text_ExplainTM39::
-    .string "A TM, Technical Machine, contains a\n"
-    .string "technique for Pokémon.\p"
+    .string "Brock: A TM, Technical Machine,\n"
+    .string "holds a technique for Pokémon.\p"
     .string "Using a TM teaches the move it\n"
     .string "contains to a Pokémon.\p"
     .string "A TM is good for only one use.\p"
@@ -51,8 +35,8 @@ PewterCity_Gym_Text_ExplainTM39::
     .string "lowers its Speed.$"
 
 PewterCity_Gym_Text_BrockPostBattle::
-    .string "There are all kinds of Trainers in\n"
-    .string "this huge world of ours.\p"
+    .string "Brock: There are all kinds of\n"
+    .string "Trainers in this huge world.\p"
     .string "You appear to be very gifted as a\n"
     .string "Pokémon Trainer.\p"
     .string "So let me make a suggestion.\p"
@@ -63,18 +47,20 @@ PewterCity_Gym_Text_DontHaveRoomForThis::
     .string "You don't have room for this.$"
 
 PewterCity_Gym_Text_LiamIntro::
-    .string "Stop right there, kid!\p"
-    .string "You're ten thousand light-years \n"
-    .string "from facing Brock!$"
+    .string "Liam: Stop right there, kid!\p"
+    .string "You're ten thousand light-years\n"
+    .string "from facing Brock!\p"
+    .string "He's got nine brothers and sisters\n"
+    .string "to feed, and it's nearly lunch!$"
 
 PewterCity_Gym_Text_LiamDefeat::
-    .string "Darn!\p"
+    .string "Liam: Darn!\p"
     .string "Light-years isn't time…\n"
     .string "It measures distance!$"
 
 PewterCity_Gym_Text_LiamPostBattle::
-    .string "You're pretty hot.\n"
-    .string "…But not as hot as Brock!$"
+    .string "Liam: Go on up. He always makes\n"
+    .string "extra for challengers.$"
 
 PewterCity_Gym_Text_LetMeTakeYouToTheTop::
     .string "Hiya!\n"

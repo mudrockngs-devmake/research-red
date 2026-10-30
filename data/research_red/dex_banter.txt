@@ -370,6 +370,12 @@ P: Gerald's dad?
 P: Geodude lives in mountain trails. Mind your step.
 Ivy: The Alolan ones are magnetic. Their hair is full of iron sand.
 
+[Geodude Alola]
+P: Step on one asleep and you get a shock. I'm told it's memorable.
+Ivy: They headbutt each other, and the iron sand sticks to the stronger magnet.
+P: So the winner takes the other one's hair.
+Ivy: Then don't challenge one, sweetie.
+
 [Graveler]
 Ivy: Graveler rolls down mountains to get around.
 P: That's how I got down the stairs this morning.
@@ -680,15 +686,21 @@ P: That's a perfect Sunday.
 Ivy: Articuno is said to appear to travelers lost in the snowy mountains.
 P: A rescue service with wings. Is this in the helicopter story too?
 Ivy: It's in the helicopter story too.
+P: Galar's Articuno is a Psychic type. It freezes you with a stare.
+Ivy: I've met department heads like that.
 
 [Zapdos]
 P: Zapdos is said to appear when thunderclouds gather.
 Ivy: Like Elm before a battle.
+P: Galarian Zapdos doesn't fly. It runs, very fast.
+Ivy: Still like Elm before a battle.
 
 [Moltres]
 Ivy: Each flap of Moltres's wings sets off a bright flame.
 P: They say it means spring is coming.
 Ivy: Good. Delia's garden can't wait.
+P: Galarian Moltres burns with a dark flame. It feeds on your energy.
+Ivy: Spring is cancelled, then.
 
 [Dratini]
 P: Dratini was thought to be a myth for years.
@@ -965,6 +977,8 @@ P: The night version. Same love, different shift.
 P: A Shellder bit its head and made it a genius.
 Ivy: It's always thinking. It never says what.
 P: Relatable. Mostly.
+Ivy: Galarian Slowking chant strange spells. Their Shellder is the one in charge.
+P: Still not saying what.
 
 [Unown]
 Ivy: Unown come in twenty-eight shapes. Some say they're letters.
@@ -1033,6 +1047,8 @@ P: It needs a haircut. Daisy would love to groom it.
 [Corsola]
 Ivy: Corsola live in warm, clean seas. If the water turns dirty, they leave.
 P: Healthy reef, happy Corsola. Sometimes ecology is simple.
+Ivy: Galarian Corsola died out when the seas changed. Now they're ghosts.
+P: That one wasn't simple.
 
 [Octillery]
 P: Remoraid, a fish, evolves into Octillery, an octopus.

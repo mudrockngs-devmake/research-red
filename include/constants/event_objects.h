@@ -209,6 +209,8 @@ enum ObjectEventGfx
 #define RR_ART_HAS_OBJ_EVENT_GFX_RR_IVY
     OBJ_EVENT_GFX_RR_JENNY,
 #define RR_ART_HAS_OBJ_EVENT_GFX_RR_JENNY
+    OBJ_EVENT_GFX_RR_OFFICER_JENNY,
+#define RR_ART_HAS_OBJ_EVENT_GFX_RR_OFFICER_JENNY
     // Research Red: Art Kit overworld sprites (ids) END
     NUM_OBJ_EVENT_GFX,
 };

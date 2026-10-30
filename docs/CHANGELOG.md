@@ -15,6 +15,9 @@ One big build, just this once: day and night, new battle pictures and overworld 
 - Changed: Elm and Jenny's picture slides in sideways (#157).
 - Fixed: the starter table's old border (#118). New: Slowpoke's bed (#122).
 - Changed: Oak's pager Pokémon are spread out instead of lined up.
+- New: the Pewter Gym has a crowd. Elm and Jenny watch from beside the door, and Brock's nine brothers and sisters stand behind him. Camper Liam explains the lunch rush, Brock has his portrait and the stew talk.
+- Changed: Brock gives you an Alolan Geodude he bred, instead of TM39 (you already have that TM), with its own Pokédex banter.
+- Fixed: Ivy sits in her chair at Daisy's house.
 - **Save:** old saves work (use the debug jumps this round; a new game shows the changes best).
 
 ## v0.0.22

@@ -55,31 +55,48 @@ Script `PewterCity_Gym_EventScript_Brock`
 > Brock: Solid as a rock! Train up
 > and try again.
 
+> Brock: Welcome to Pewter Gym!
+> I am Brock. You must be the
+> professors.
+>
+> Professor Oak called. He said to
+> go easy on you.
+>
+> Then he said not to.
+
+> {PLAYER}: That sounds like him.
+
+> Brock: I hear you two are a team.
+> I respect that.
+>
+> My Pokémon and I are a team too.
+
+> Ivy: And your audience?
+
+> Brock: My brothers and sisters.
+> All nine of them.
+>
+> They're here for the battle, and
+> for lunch. I made stew.
+>
+> After the battle. Win or lose.
+
+> Ivy: This is the nicest Gym in
+> Kanto.
+
+> Elm: Go on, {PLAYER}! You've got
+> this! Just not by too much!
+
+> Jenny: We're cheering for you,
+> dear. Both of us. Aren't we, dear?
+
+> Brock: Then let's begin.
+> Show me your best!
+
 **Battle:** Leader Brock (single): Geodude Lv12, Sandshrew Lv12, Kabuto Lv13, Omanyte Lv13, Rhyhorn Lv13, Onix Lv14
 
-> So, you're here. I'm Brock.
-> I'm Pewter's Gym Leader.
->
-> My rock-hard willpower is evident
-> even in my Pokémon.
->
-> My Pokémon are all rock hard, and
-> have true-grit determination.
->
-> That's right - my Pokémon are all
-> the Rock type!
->
-> Fuhaha! You're going to challenge
-> me knowing that you'll lose?
->
-> That's the Trainer's honor that
-> compels you to challenge me.
->
-> Fine, then!
-> Show me your best!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}
-
-> I took you for granted, and so
-> I lost.
+> Brock: I took you for granite.
+> That was my mistake.
 >
 > As proof of your victory, I confer
 > on you this…the official Pokémon
@@ -97,33 +114,57 @@ Script `PewterCity_Gym_EventScript_Brock`
 > Of course, a Pokémon must know the
 > move Flash to use it.
 
-> Wait!
+> {PLAYER}: …Did you plan that pun?
+
+> Brock: I plan all my puns.
+> They keep me grounded.
+
+> Brock: Wait!
 > Take this with you.
 
-> You don't have room for this.
+> Brock: Professor Ivy, your notes
+> on regional forms got me breeding
+> these.
+>
+> An Alolan Geodude. Hatched right
+> here in Pewter. It's yours.
 
-> {PLAYER} received TM39
-> from Brock.
+> Ivy: Sweetie, look at its hair!
 
-> A TM, Technical Machine, contains a
-> technique for Pokémon.
->
-> Using a TM teaches the move it
-> contains to a Pokémon.
->
-> A TM is good for only one use.
->
-> So, when you use one, pick the
-> Pokémon carefully.
->
-> Anyways…
-> TM39 contains Rock Tomb.
->
-> It hurls boulders at the foe and
-> lowers its Speed.
+> {PLAYER}: It has better hair than
+> me.
 
-> There are all kinds of Trainers in
-> this huge world of ours.
+> Ivy: That's iron sand. It sticks
+> because the Geodude is magnetic.
+
+> {PLAYER}: So it's scientifically
+> attractive.
+
+> Ivy: Take the Geodude, sweetie.
+
+> {PLAYER} received an Alolan Geodude
+> from Brock!
+
+> Brock: The Boulder Badge. A
+> Geodude. And a bowl of stew.
+>
+> Mostly the stew.
+
+> Ivy: Your siblings are lucky to
+> have a big brother like you.
+
+> Brock: Nine siblings. I cook a
+> lot. Battling is the relaxing
+> part.
+
+> {PLAYER}: We know someone like
+> that. His name is Mimey.
+
+> Your team is full, so it went to
+> the PC.
+
+> Brock: There are all kinds of
+> Trainers in this huge world.
 >
 > You appear to be very gifted as a
 > Pokémon Trainer.
@@ -139,18 +180,29 @@ Script `PewterCity_Gym_EventScript_Liam`
 
 **Battle:** Camper Liam (single): Geodude Lv10, Sandshrew Lv11, Diglett Lv10
 
-> Stop right there, kid!
+> Liam: Stop right there, kid!
 >
-> You're ten thousand light-years 
+> You're ten thousand light-years
 > from facing Brock!
+>
+> He's got nine brothers and sisters
+> to feed, and it's nearly lunch!
 
-> Darn!
+> Liam: Darn!
 >
 > Light-years isn't time…
 > It measures distance!
 
-> You're pretty hot.
-> …But not as hot as Brock!
+> Liam: Go on up. He always makes
+> extra for challengers.
+
+> Ivy: Brock makes lunch for
+> challengers?
+
+> {PLAYER}: I like him already.
+
+> Liam: Go on up. He always makes
+> extra for challengers.
 
 ### Gym Guy (Gym Guy) at 7,12
 Script `PewterCity_Gym_EventScript_GymGuy`
@@ -186,15 +238,81 @@ Script `PewterCity_Gym_EventScript_GymGuy`
 
 ### Pewter Gym Elm (Rr Elm) at 5,10
 *hidden by `FLAG_TEMP_11`*
-(no talk script; used in cutscenes)
+Script `RR_Gym_EventScript_ElmCheer`
+
+> Elm: One badge doesn't win a
+> race! See you outside!
+
+> Elm: We came to watch! And to
+> take notes on his weak points!
 
 ### Pewter Gym Jenny (Rr Jenny) at 7,10
 *hidden by `FLAG_TEMP_12`*
-(no talk script; used in cutscenes)
+Script `RR_Gym_EventScript_JennyCheer`
+
+> Jenny: Well fought, dear.
+> Now go and try the stew.
+
+> Jenny: Go on, dear. We'll cheer
+> from here. Good seats, too.
 
 ### Pewter Gym Ivy (Rr Ivy) at 2,10
 *hidden by `FLAG_TEMP_13`*
 (no talk script; used in cutscenes)
+
+### Little Boy (Little Boy) at 4,3
+Script `RR_Gym_EventScript_Kid0`
+
+> Big brother's stew is the best!
+> He says you can have some too!
+
+### Lass (Lass) at 6,3
+Script `RR_Gym_EventScript_Kid1`
+
+> Shh! We're watching Brock work!
+> And waiting for lunch!
+
+### Youngster (Youngster) at 8,3
+Script `RR_Gym_EventScript_Kid2`
+
+> There's nine of us. I'm his
+> favorite. Don't tell the others!
+
+### Little Girl (Little Girl) at 3,4
+Script `RR_Gym_EventScript_Kid1`
+
+> Shh! We're watching Brock work!
+> And waiting for lunch!
+
+### Boy (Boy) at 4,4
+Script `RR_Gym_EventScript_Kid0`
+
+> Big brother's stew is the best!
+> He says you can have some too!
+
+### Little Girl (Little Girl) at 5,4
+Script `RR_Gym_EventScript_Kid2`
+
+> There's nine of us. I'm his
+> favorite. Don't tell the others!
+
+### Little Boy (Little Boy) at 7,4
+Script `RR_Gym_EventScript_Kid1`
+
+> Shh! We're watching Brock work!
+> And waiting for lunch!
+
+### Lass (Lass) at 8,4
+Script `RR_Gym_EventScript_Kid0`
+
+> Big brother's stew is the best!
+> He says you can have some too!
+
+### Boy (Boy) at 9,4
+Script `RR_Gym_EventScript_Kid2`
+
+> There's nine of us. I'm his
+> favorite. Don't tell the others!
 
 ## Signs
 

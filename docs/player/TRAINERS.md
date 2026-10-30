@@ -117,17 +117,6 @@ Their starters depend on yours:
 | Churro (Sandshrew) | 14 | level-up moves |
 | Cruller (Growlithe) | 15 | level-up moves |
 
-### Leader Brock
-
-| Pokémon | Level | Moves |
-|---|---|---|
-| Geodude | 12 | Tackle, Defense Curl, Rock Throw |
-| Sandshrew | 12 | Scratch, Sand Attack, Rollout |
-| Kabuto | 13 | Scratch, Harden, Absorb |
-| Omanyte | 13 | Constrict, Withdraw, Water Gun |
-| Rhyhorn | 13 | Horn Attack, Tail Whip, Rock Throw |
-| Onix | 14 | Tackle, Bind, Rock Tomb, Harden |
-
 ### Camper Liam
 
 | Pokémon | Level | Moves |

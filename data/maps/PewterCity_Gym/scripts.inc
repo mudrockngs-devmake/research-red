@@ -6,7 +6,7 @@ PewterCity_Gym_MapScripts::
 PewterCity_Gym_EventScript_Brock::
 	famechecker FAMECHECKER_BROCK, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	goto_if_set FLAG_DEFEATED_BROCK, RR_Gym_EventScript_BrockRematch @ Research Red (#52)
-	trainerbattle_single TRAINER_LEADER_BROCK, PewterCity_Gym_Text_BrockIntro, PewterCity_Gym_Text_BrockDefeat, PewterCity_Gym_EventScript_DefeatedBrock, NO_MUSIC
+	goto RR_Gym_EventScript_BrockIntro @ Research Red: spoken lines, so portraits show
 	goto_if_unset FLAG_GOT_TM39_FROM_BROCK, PewterCity_Gym_EventScript_GiveTM39
 	msgbox PewterCity_Gym_Text_BrockPostBattle
 	release
@@ -20,17 +20,16 @@ PewterCity_Gym_EventScript_DefeatedBrock::
 	setflag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
 	clearflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
 	set_gym_trainers 1
+	textcolor NPC_TEXT_COLOR_NEUTRAL @ Research Red: the animatic's pun
+	msgbox RR_Gym_Text_P_Pun, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Brock_Puns, MSGBOX_DEFAULT
 	goto PewterCity_Gym_EventScript_GiveTM39
 	end
 
 PewterCity_Gym_EventScript_GiveTM39::
+	textcolor NPC_TEXT_COLOR_NEUTRAL @ Research Red
 	msgbox PewterCity_Gym_Text_TakeThisWithYou
-	checkitemspace ITEM_TM39
-	goto_if_eq VAR_RESULT, FALSE, PewterCity_Gym_EventScript_NoRoomForTM39
-	giveitem_msg PewterCity_Gym_Text_ReceivedTM39FromBrock, ITEM_TM39
-	setflag FLAG_GOT_TM39_FROM_BROCK
-	msgbox PewterCity_Gym_Text_ExplainTM39
-	release
+	goto RR_Gym_EventScript_BrockGeodude @ Research Red: an Alolan Geodude instead of TM39 (the TM Case has it)
 	end
 
 PewterCity_Gym_EventScript_NoRoomForTM39::
@@ -39,7 +38,7 @@ PewterCity_Gym_EventScript_NoRoomForTM39::
 	end
 
 PewterCity_Gym_EventScript_Liam::
-	trainerbattle_single TRAINER_CAMPER_LIAM, PewterCity_Gym_Text_LiamIntro, PewterCity_Gym_Text_LiamDefeat
+	trainerbattle_single TRAINER_CAMPER_LIAM, PewterCity_Gym_Text_LiamIntro, PewterCity_Gym_Text_LiamDefeat, RR_Gym_EventScript_LiamBeaten @ Research Red
 	msgbox PewterCity_Gym_Text_LiamPostBattle, MSGBOX_AUTOCLOSE
 	end
 

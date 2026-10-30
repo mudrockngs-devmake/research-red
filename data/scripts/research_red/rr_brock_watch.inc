@@ -10,6 +10,13 @@ RR_BrockWatch_OnTransition::
 	setflag FLAG_TEMP_11
 	setflag FLAG_TEMP_12
 	setflag FLAG_TEMP_13
+	goto_if_set FLAG_DEFEATED_BROCK, RR_BrockWatch_OnTransition_End
+	@ before you've beaten Brock, Elm and Jenny watch from the side, by the door
+	clearflag FLAG_TEMP_11
+	clearflag FLAG_TEMP_12
+	setobjectxyperm LOCALID_PEWTER_GYM_ELM, 2, 13
+	setobjectxyperm LOCALID_PEWTER_GYM_JENNY, 3, 13
+RR_BrockWatch_OnTransition_End:
 	return
 
 RR_BrockWatch_OnFrame::
@@ -143,3 +150,244 @@ RR_BrockWatch_Text_P_Menu:
 
 RR_BrockWatch_Text_Ivy_Sweetie:
 	.string "Ivy: Sweetie.$"
+
+@ --- Your first Brock battle: spoken lines, so everyone's portrait shows ---
+RR_Gym_EventScript_BrockIntro::
+	lock
+	faceplayer
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Gym_Text_Brock_Welcome, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_P_SoundsLikeHim, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Brock_Team, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Ivy_Audience, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Brock_Nine, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Ivy_Nicest, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Elm_Cheer, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Jenny_Cheer, MSGBOX_DEFAULT
+	playbgm MUS_ENCOUNTER_GYM_LEADER, FALSE
+	msgbox RR_Gym_Text_Brock_Begin, MSGBOX_DEFAULT
+	closemessage
+	trainerbattle_no_intro TRAINER_LEADER_BROCK, PewterCity_Gym_Text_BrockDefeat
+	goto PewterCity_Gym_EventScript_DefeatedBrock
+
+@ Brock's gift: one of the Alolan Geodude he bred from Ivy's notes
+RR_Gym_EventScript_BrockGeodude::
+	msgbox RR_Gym_Text_Brock_Geodude, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Ivy_Hair, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_P_Hair, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Ivy_IronSand, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_P_Attractive, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Ivy_TakeIt, MSGBOX_DEFAULT
+	givemon SPECIES_GEODUDE_ALOLA, 12
+	copyvar VAR_0x8000, VAR_RESULT
+	setflag FLAG_GOT_TM39_FROM_BROCK
+	playfanfare MUS_LEVEL_UP
+	message RR_Gym_Text_ReceivedGeodude
+	waitmessage
+	waitfanfare
+	waitbuttonpress
+	goto_if_ne VAR_0x8000, MON_GIVEN_TO_PC, RR_Gym_EventScript_BrockStew
+	msgbox RR_Gym_Text_GeodudeToPC, MSGBOX_DEFAULT
+RR_Gym_EventScript_BrockStew::
+	msgbox RR_Gym_Text_Brock_Stew, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Ivy_Lucky, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Brock_Relaxing, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_P_Mimey, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_0x8004, SPECIES_GEODUDE_ALOLA
+	callnative RR_ScriptDebugQueueDexBanter @ its own lines, back on the map
+	release
+	end
+
+RR_Gym_EventScript_LiamBeaten::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox PewterCity_Gym_Text_LiamPostBattle, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Ivy_Lunch, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_P_LikeHim, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_ElmCheer::
+	lock
+	faceplayer
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	goto_if_set FLAG_DEFEATED_BROCK, RR_Gym_EventScript_ElmAfter
+	msgbox RR_Gym_Text_Elm_Talk, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_ElmAfter:
+	msgbox RR_Gym_Text_Elm_After, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_JennyCheer::
+	lock
+	faceplayer
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	goto_if_set FLAG_DEFEATED_BROCK, RR_Gym_EventScript_JennyAfter
+	msgbox RR_Gym_Text_Jenny_Talk, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_JennyAfter:
+	msgbox RR_Gym_Text_Jenny_After, MSGBOX_DEFAULT
+	release
+	end
+
+@ Brock's nine brothers and sisters, behind him
+RR_Gym_EventScript_Kid0::
+	lock
+	faceplayer
+	msgbox RR_Gym_Text_Kid0, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_Kid1::
+	lock
+	faceplayer
+	msgbox RR_Gym_Text_Kid1, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_EventScript_Kid2::
+	lock
+	faceplayer
+	msgbox RR_Gym_Text_Kid2, MSGBOX_DEFAULT
+	release
+	end
+
+RR_Gym_Text_Brock_Welcome:
+	.string "Brock: Welcome to Pewter Gym!\n"
+	.string "I am Brock. You must be the\l"
+	.string "professors.\p"
+	.string "Professor Oak called. He said to\n"
+	.string "go easy on you.\p"
+	.string "Then he said not to.$"
+
+RR_Gym_Text_P_SoundsLikeHim:
+	.string "{PLAYER}: That sounds like him.$"
+
+RR_Gym_Text_Brock_Team:
+	.string "Brock: I hear you two are a team.\n"
+	.string "I respect that.\p"
+	.string "My Pokémon and I are a team too.$"
+
+RR_Gym_Text_Ivy_Audience:
+	.string "Ivy: And your audience?$"
+
+RR_Gym_Text_Brock_Nine:
+	.string "Brock: My brothers and sisters.\n"
+	.string "All nine of them.\p"
+	.string "They're here for the battle, and\n"
+	.string "for lunch. I made stew.\p"
+	.string "After the battle. Win or lose.$"
+
+RR_Gym_Text_Ivy_Nicest:
+	.string "Ivy: This is the nicest Gym in\n"
+	.string "Kanto.$"
+
+RR_Gym_Text_Elm_Cheer:
+	.string "Elm: Go on, {PLAYER}! You've got\n"
+	.string "this! Just not by too much!$"
+
+RR_Gym_Text_Jenny_Cheer:
+	.string "Jenny: We're cheering for you,\n"
+	.string "dear. Both of us. Aren't we, dear?$"
+
+RR_Gym_Text_Brock_Begin:
+	.string "Brock: Then let's begin.\n"
+	.string "Show me your best!$"
+
+RR_Gym_Text_P_Pun:
+	.string "{PLAYER}: …Did you plan that pun?$"
+
+RR_Gym_Text_Brock_Puns:
+	.string "Brock: I plan all my puns.\n"
+	.string "They keep me grounded.$"
+
+RR_Gym_Text_Brock_Stew:
+	.string "Brock: The Boulder Badge. A\n"
+	.string "Geodude. And a bowl of stew.\p"
+	.string "Mostly the stew.$"
+
+RR_Gym_Text_Brock_Geodude:
+	.string "Brock: Professor Ivy, your notes\n"
+	.string "on regional forms got me breeding\l"
+	.string "these.\p"
+	.string "An Alolan Geodude. Hatched right\n"
+	.string "here in Pewter. It's yours.$"
+
+RR_Gym_Text_Ivy_Hair:
+	.string "Ivy: Sweetie, look at its hair!$"
+
+RR_Gym_Text_P_Hair:
+	.string "{PLAYER}: It has better hair than\n"
+	.string "me.$"
+
+RR_Gym_Text_Ivy_IronSand:
+	.string "Ivy: That's iron sand. It sticks\n"
+	.string "because the Geodude is magnetic.$"
+
+RR_Gym_Text_P_Attractive:
+	.string "{PLAYER}: So it's scientifically\n"
+	.string "attractive.$"
+
+RR_Gym_Text_Ivy_TakeIt:
+	.string "Ivy: Take the Geodude, sweetie.$"
+
+RR_Gym_Text_ReceivedGeodude:
+	.string "{PLAYER} received an Alolan Geodude\n"
+	.string "from Brock!$"
+
+RR_Gym_Text_GeodudeToPC:
+	.string "Your team is full, so it went to\n"
+	.string "the PC.$"
+
+RR_Gym_Text_Ivy_Lucky:
+	.string "Ivy: Your siblings are lucky to\n"
+	.string "have a big brother like you.$"
+
+RR_Gym_Text_Brock_Relaxing:
+	.string "Brock: Nine siblings. I cook a\n"
+	.string "lot. Battling is the relaxing\l"
+	.string "part.$"
+
+RR_Gym_Text_P_Mimey:
+	.string "{PLAYER}: We know someone like\n"
+	.string "that. His name is Mimey.$"
+
+RR_Gym_Text_Ivy_Lunch:
+	.string "Ivy: Brock makes lunch for\n"
+	.string "challengers?$"
+
+RR_Gym_Text_P_LikeHim:
+	.string "{PLAYER}: I like him already.$"
+
+RR_Gym_Text_Elm_Talk:
+	.string "Elm: We came to watch! And to\n"
+	.string "take notes on his weak points!$"
+
+RR_Gym_Text_Elm_After:
+	.string "Elm: One badge doesn't win a\n"
+	.string "race! See you outside!$"
+
+RR_Gym_Text_Jenny_Talk:
+	.string "Jenny: Go on, dear. We'll cheer\n"
+	.string "from here. Good seats, too.$"
+
+RR_Gym_Text_Jenny_After:
+	.string "Jenny: Well fought, dear.\n"
+	.string "Now go and try the stew.$"
+
+RR_Gym_Text_Kid0:
+	.string "Big brother's stew is the best!\n"
+	.string "He says you can have some too!$"
+
+RR_Gym_Text_Kid1:
+	.string "Shh! We're watching Brock work!\n"
+	.string "And waiting for lunch!$"
+
+RR_Gym_Text_Kid2:
+	.string "There's nine of us. I'm his\n"
+	.string "favorite. Don't tell the others!$"

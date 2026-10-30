@@ -68,6 +68,16 @@ def check_registry(problems):
             problems.append(f"docs/FLAGS_VARS.md: {name} is defined but not registered")
 
 
+def check_banter_spoilers(problems):
+    """Owner 2026-10-30: banter never mentions Hisui (spoils the starters' secret
+    forms) or Mega Evolution (learned about later). Meganium is only a name."""
+    path = "data/research_red/dex_banter.txt"
+    bad = re.compile(r"hisui|\bmega\b|mega[ -]?evol", re.I)
+    for n, line in enumerate(open(os.path.join(REPO, path), encoding="utf-8"), 1):
+        if not line.startswith("#") and bad.search(line):
+            problems.append(f"{path}:{n}: spoiler, no Hisui or Mega in banter: {line.strip()}")
+
+
 def check_generated(problems):
     """Data files whose game version is generated: the generated copy must be current."""
     import subprocess
@@ -95,6 +105,7 @@ def main():
     for path in sorted(glob.glob(os.path.join(REPO, "data/scripts/research_red/*.inc"))):
         check_text(os.path.relpath(path, REPO), problems)
     check_registry(problems)
+    check_banter_spoilers(problems)
     check_generated(problems)
     for p in problems:
         print(p)

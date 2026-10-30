@@ -14,7 +14,7 @@ Totals: 10 placeholder, 49 draft, 0 hand-finished, 0 approved
 | `ow:elm` | Professor Elm walking | Pallet Town, Rival's house, Route 1, Viridian, Route 22, Pewter, Pewter Gym | FireRed's Scientist (stand-in) | draft, **in the game for testing** | P |
 | `ow:ivy` | Ivy walking | Pallet Town, your house, Rival's house, Oak's lab, Route 1, Pewter Gym (and following you) | FireRed's Cooltrainer (stand-in) | draft, **in the game for testing** | P |
 | `ow:jenny` | Jenny (casual) walking | Pallet Town, Rival's house, Oak's lab, Route 1, Viridian, Route 22, Pewter, Pewter Gym | FireRed's Hex Maniac (stand-in) | draft, **in the game for testing** | P |
-| `ow:officer_jenny` | Officer Jenny walking | Viridian City | FireRed's Policeman (stand-in) | draft |  |
+| `ow:officer_jenny` | Officer Jenny walking | Viridian City | FireRed's Policeman (stand-in) | draft, **in the game for testing** |  |
 | `ow:delia` | Delia walking | Your house (1F) | FireRed's Mom | draft, **in the game for testing** | P |
 | `ow:brock` | Brock walking | Pewter Gym | FireRed's own Brock sprite (stands still) | draft |  |
 | `ow:misty` | Misty walking | Cerulean Gym (after the demo) | FireRed's own Misty sprite (stands still) | draft |  |

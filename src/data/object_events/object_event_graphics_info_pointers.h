@@ -2,6 +2,7 @@
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RR_Elm;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RR_Ivy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RR_Jenny;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RR_OfficerJenny;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RR_Delia;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RR_ProfOak;
 // Research Red: Art Kit overworld sprites (externs) END
@@ -209,6 +210,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RR_ELM] = &gObjectEventGraphicsInfo_RR_Elm,
     [OBJ_EVENT_GFX_RR_IVY] = &gObjectEventGraphicsInfo_RR_Ivy,
     [OBJ_EVENT_GFX_RR_JENNY] = &gObjectEventGraphicsInfo_RR_Jenny,
+    [OBJ_EVENT_GFX_RR_OFFICER_JENNY] = &gObjectEventGraphicsInfo_RR_OfficerJenny,
     // Research Red: Art Kit overworld sprites (table) END
     [OBJ_EVENT_GFX_RED_NORMAL]               = &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE]                 = &gObjectEventGraphicsInfo_RedBike,

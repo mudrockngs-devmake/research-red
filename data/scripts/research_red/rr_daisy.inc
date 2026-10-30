@@ -12,6 +12,8 @@ RR_Daisy_EventScript_Scene::
 	@ #84: everyone sits down for tea. You take the lower left chair, Ivy the
 	@ upper one; Daisy at the head of the table, Elm and Jenny on the right.
 	applymovement LOCALID_PLAYER, RR_Daisy_Movement_PlayerToSeat
+	rr_walk_to LOCALID_RIVALS_HOUSE_IVY, 5, 4, TRUE, 0 @ from wherever she came in behind you
+	waitmovement LOCALID_RIVALS_HOUSE_IVY
 	applymovement LOCALID_RIVALS_HOUSE_IVY, RR_Daisy_Movement_IvyToSeat
 	waitmovement LOCALID_RIVALS_HOUSE_IVY
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -173,12 +175,8 @@ RR_Daisy_Movement_PlayerToSeat:
 	walk_right
 	step_end
 
-@ From (5,8) to the upper left chair (5,4), facing the table
+@ In the upper left chair (5,4), facing the table
 RR_Daisy_Movement_IvyToSeat:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
 	face_right
 	step_end
 

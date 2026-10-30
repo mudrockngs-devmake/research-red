@@ -36,6 +36,18 @@ static const struct SpriteFrameImage sPicTable_RR_Jenny[] = {
     overworld_frame(gObjectEventPic_RR_Jenny, 2, 4, 8),
 };
 
+static const struct SpriteFrameImage sPicTable_RR_OfficerJenny[] = {
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 0),
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 1),
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 2),
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 3),
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 4),
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 5),
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 6),
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 7),
+    overworld_frame(gObjectEventPic_RR_OfficerJenny, 2, 4, 8),
+};
+
 static const struct SpriteFrameImage sPicTable_RR_Delia[] = {
     overworld_frame(gObjectEventPic_RR_Delia, 2, 4, 0),
     overworld_frame(gObjectEventPic_RR_Delia, 2, 4, 1),

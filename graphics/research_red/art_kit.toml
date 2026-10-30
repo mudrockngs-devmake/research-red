@@ -55,6 +55,7 @@ what = "Officer Jenny walking"
 where = "Viridian City"
 game_now = "FireRed's Policeman (stand-in)"
 stage = "draft"
+testing = true
 
 [pieces."ow:delia"]
 what = "Delia walking"

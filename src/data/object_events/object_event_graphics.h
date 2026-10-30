@@ -20,6 +20,7 @@ const u16 gObjectEventPaletteNull14[16] = {};
 const u16 gObjectEventPic_RR_Elm[] = INCBIN_U16("graphics/research_red/overworld/elm.4bpp");
 const u16 gObjectEventPic_RR_Ivy[] = INCBIN_U16("graphics/research_red/overworld/ivy.4bpp");
 const u16 gObjectEventPic_RR_Jenny[] = INCBIN_U16("graphics/research_red/overworld/jenny.4bpp");
+const u16 gObjectEventPic_RR_OfficerJenny[] = INCBIN_U16("graphics/research_red/overworld/officer_jenny.4bpp");
 const u16 gObjectEventPic_RR_Delia[] = INCBIN_U16("graphics/research_red/overworld/delia.4bpp");
 const u16 gObjectEventPic_RR_ProfOak[] = INCBIN_U16("graphics/research_red/overworld/prof_oak.4bpp");
 const u16 gObjectEventPal_RR_Elm[] = INCBIN_U16("graphics/research_red/overworld/elm.gbapal");
