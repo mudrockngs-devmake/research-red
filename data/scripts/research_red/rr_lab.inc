@@ -1153,7 +1153,7 @@ RR_Lab_Text_Oak_SeeMyAide::
     .string "Oak: Oh, one more thing, everyone!\p"
     .string "Questions about the project, the\n"
     .string "grant or any of the gadgets?\l"
-    .string "My aide over there knows it all.\p"
+    .string "Tracy over there knows it all.\p"
     .string "Better than I do, frankly.$"
 
 RR_Lab_Text_Elm_OurTurn::

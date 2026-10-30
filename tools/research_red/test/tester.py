@@ -90,8 +90,9 @@ def advance(cycles, key="A", every=60, prefix="s"):
 
 
 def start_menu_item(downs):
-    """Open the Start menu and pick the entry `downs` below the top."""
-    return ["press START", "wait 20"] + ["press DOWN", "wait 6"] * downs + ["press A", "wait 40"]
+    """Open the Start menu and pick the entry `downs` below the top (the cursor is
+    reset first, the game remembers it)."""
+    return [f"poke {G.sym('sStartMenuCursorPos'):#x}:1 0", "press START", "wait 20"] + ["press DOWN", "wait 6"] * downs + ["press A", "wait 40"]
 
 
 def play_until(label, cond, max_frames, key="A", every=60):

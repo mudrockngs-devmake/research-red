@@ -9,6 +9,7 @@ owner-notes skill). Add a row whenever a new mix-up turns up.
 | Name | Who | Heard as |
 |---|---|---|
 | Player | An adult professor: Maple, Cedar or Sequoia (male or female). Ivy's spouse | |
+| Tracy | Oak's systems aide in the lab, a quiet nod to Tracey Sketchit, named only "Tracy" (#158); teaches the research tools | Tracey |
 | Ivy | The player's wife, regional-forms researcher; follows you (FNPC) and fights beside you | Ivey |
 | Elm | Johto professor, the player's best-friend rival | Elmo, Helm, Hellman / almond ("Elm and"), Elm's |
 | Jenny | Elm's wife, New Bark Town's Officer Jenny (off duty); Growlithe Cruller | Jenny's, Genie |

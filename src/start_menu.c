@@ -81,6 +81,7 @@ enum SaveCBReturn
 static EWRAM_DATA bool8 (*gMenuCallback)(void) = NULL;
 static EWRAM_DATA u8 sStartMenuCursorPos = 0;
 static EWRAM_DATA u8 sNumStartMenuItems = 0;
+static EWRAM_DATA u8 sStartMenuScroll = 0; // Research Red (#124): the first row on screen
 static EWRAM_DATA u8 sCurrentStartMenuActions[MAX_STARTMENU_ITEMS] = {};
 static EWRAM_DATA s8 sInitStartMenuData[2] = {};
 static EWRAM_DATA u8 sSafariZoneStatsWindowId = 0;
@@ -184,9 +185,9 @@ static const struct MenuAction sStartMenuActionTable[] = {
     [MENU_ACTION_RETIRE_FRONTIER]   = {gText_Retire,               {.u8_void = StartMenuBattlePyramidRetireCallback}},
     [MENU_ACTION_PYRAMID_BAG]       = {gText_Bag,                  {.u8_void = StartMenuBattlePyramidBagCallback}},
     [MENU_ACTION_DEBUG]             = {COMPOUND_STRING("Debug"),   {.u8_void = StartMenuDebugCallback}},
-    [MENU_ACTION_DEXNAV]            = {COMPOUND_STRING("Dexnav"),  {.u8_void = StartMenuDexNavCallback}},
+    [MENU_ACTION_DEXNAV]            = {COMPOUND_STRING("DexNav"),  {.u8_void = StartMenuDexNavCallback}},
     [MENU_ACTION_RR_PC]             = {COMPOUND_STRING("PC"),      {.u8_void = StartMenuPCCallback}}, // Research Red
-    [MENU_ACTION_RR_FIELD_GUIDE]    = {COMPOUND_STRING("Guide"),   {.u8_void = StartMenuFieldGuideCallback}}, // Research Red (#91)
+    [MENU_ACTION_RR_FIELD_GUIDE]    = {COMPOUND_STRING("Field Guide"), {.u8_void = StartMenuFieldGuideCallback}}, // Research Red (#91)
 };
 
 static const struct WindowTemplate sTimeWindowTemplate = {
@@ -331,38 +332,37 @@ static void AddStartMenuAction(u8 newEntry)
 
 static void BuildDebugStartMenu(void)
 {
-    AddStartMenuAction(MENU_ACTION_DEBUG);
+    // Research Red (#124): the owner's order
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
-    {
         AddStartMenuAction(MENU_ACTION_POKEDEX);
-        AddStartMenuAction(MENU_ACTION_RR_FIELD_GUIDE); // Research Red (#91)
-    }
-    if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET)) // Research Red: test builds too
-        AddStartMenuAction(MENU_ACTION_DEXNAV);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
-    if (FlagGet(FLAG_SYS_POKEMON_GET)) // Research Red: the PC from anywhere (#34)
+    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_RR_FIELD_GUIDE); // #91
+    if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET)) // test builds too
+        AddStartMenuAction(MENU_ACTION_DEXNAV);
+    if (FlagGet(FLAG_SYS_POKEMON_GET)) // the PC from anywhere (#34)
         AddStartMenuAction(MENU_ACTION_RR_PC);
     AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    // Research Red (#91): no EXIT in test builds (B closes the menu): with
-    // DEBUG and GUIDE an 11th row would run off the screen
+    AddStartMenuAction(MENU_ACTION_DEBUG);
+    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildNormalStartMenu(void)
 {
+    // Research Red (#124): the owner's order
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
-    {
         AddStartMenuAction(MENU_ACTION_POKEDEX);
-        AddStartMenuAction(MENU_ACTION_RR_FIELD_GUIDE); // Research Red (#91)
-    }
-    if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET))
-        AddStartMenuAction(MENU_ACTION_DEXNAV);
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEMON);
-    if (FlagGet(FLAG_SYS_POKEMON_GET)) // Research Red: the PC from anywhere (#34)
+    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_RR_FIELD_GUIDE); // #91
+    if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET)) // test builds too
+        AddStartMenuAction(MENU_ACTION_DEXNAV);
+    if (FlagGet(FLAG_SYS_POKEMON_GET)) // the PC from anywhere (#34)
         AddStartMenuAction(MENU_ACTION_RR_PC);
     AddStartMenuAction(MENU_ACTION_BAG);
     AddStartMenuAction(MENU_ACTION_PLAYER);
@@ -537,22 +537,55 @@ static void DestroyTimeWindow(void)
     sTimeWindowId = WINDOW_NONE;
 }
 
+// Research Red (#124): more entries than fit on screen scroll, the cursor drags the list along
+#define RR_START_MENU_ROWS 9
+
+static u32 RR_StartMenuVisibleRows(void)
+{
+    return sNumStartMenuItems < RR_START_MENU_ROWS ? sNumStartMenuItems : RR_START_MENU_ROWS;
+}
+
+static void RR_StartMenuClampScroll(void)
+{
+    if (sStartMenuCursorPos >= sNumStartMenuItems)
+        sStartMenuCursorPos = 0;
+    if (sStartMenuScroll + RR_StartMenuVisibleRows() > sNumStartMenuItems)
+        sStartMenuScroll = sNumStartMenuItems - RR_StartMenuVisibleRows();
+    if (sStartMenuCursorPos < sStartMenuScroll)
+        sStartMenuScroll = sStartMenuCursorPos;
+    else if (sStartMenuCursorPos >= sStartMenuScroll + RR_StartMenuVisibleRows())
+        sStartMenuScroll = sStartMenuCursorPos - RR_StartMenuVisibleRows() + 1;
+}
+
+static void RR_StartMenuPrintArrows(void)
+{
+    static const u8 sUp[] = _("{UP_ARROW}");
+    static const u8 sDown[] = _("{DOWN_ARROW}");
+
+    if (sStartMenuScroll > 0)
+        AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, sUp, 70, 0, 0xFF, NULL);
+    if (sStartMenuScroll + RR_StartMenuVisibleRows() < sNumStartMenuItems)
+        AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, sDown, 70, (RR_StartMenuVisibleRows() - 1) * 15, 0xFF, NULL);
+}
+
 static s8 PrintStartMenuActions(s8 *cursor_p, u8 nitems)
 {
     s16 i = *cursor_p;
+    if (i < sStartMenuScroll) // Research Red (#124)
+        i = sStartMenuScroll;
     do
     {
         if (sCurrentStartMenuActions[i] == MENU_ACTION_PLAYER || sCurrentStartMenuActions[i] == MENU_ACTION_PLAYER_LINK)
         {
-            PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuActionTable[sCurrentStartMenuActions[i]].text, 8, i * 15);
+            PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuActionTable[sCurrentStartMenuActions[i]].text, 8, (i - sStartMenuScroll) * 15);
         }
         else
         {
             StringExpandPlaceholders(gStringVar4, sStartMenuActionTable[sCurrentStartMenuActions[i]].text);
-            AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, i * 15, 0xFF, NULL);
+            AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (i - sStartMenuScroll) * 15, 0xFF, NULL);
         }
         i++;
-        if (i >= sNumStartMenuItems)
+        if (i >= sStartMenuScroll + RR_StartMenuVisibleRows())
         {
             *cursor_p = i;
             return TRUE;
@@ -572,11 +605,12 @@ static s8 InitStartMenuStep(void)
         break;
     case 1:
         BuildStartMenuActions();
+        RR_StartMenuClampScroll(); // Research Red (#124)
         sInitStartMenuData[0]++;
         break;
     case 2:
         LoadMessageBoxAndBorderGfx();
-        DrawStdWindowFrame(AddStartMenuWindow(sNumStartMenuItems), FALSE);
+        DrawStdWindowFrame(AddStartMenuWindow(RR_StartMenuVisibleRows()), FALSE);
         sInitStartMenuData[0]++;
         break;
     case 3:
@@ -593,7 +627,8 @@ static s8 InitStartMenuStep(void)
             sInitStartMenuData[0]++;
         break;
     case 5:
-        sStartMenuCursorPos = InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 0, 15, sNumStartMenuItems, sStartMenuCursorPos);
+        RR_StartMenuPrintArrows(); // Research Red (#124)
+        InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 0, 15, RR_StartMenuVisibleRows(), sStartMenuCursorPos - sStartMenuScroll);
         if (DEBUG_OVERWORLD_MENU != TRUE && !MenuHelpers_IsLinkActive() && InUnionRoom() != TRUE && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_HELP)
             DrawHelpMessageWindowWithText(sStartMenuDescPointers[sCurrentStartMenuActions[sStartMenuCursorPos]]);
         CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_MAP);
@@ -672,12 +707,27 @@ void ShowStartMenu(void)
     LockPlayerFieldControls();
 }
 
+// Research Red (#124): move the cursor, wrapping at the ends, and redraw the visible rows
+static void RR_StartMenuMoveCursor(s32 delta)
+{
+    s8 row;
+
+    sStartMenuCursorPos = (sStartMenuCursorPos + delta + sNumStartMenuItems) % sNumStartMenuItems;
+    RR_StartMenuClampScroll();
+    FillWindowPixelBuffer(GetStartMenuWindowId(), PIXEL_FILL(1));
+    row = sStartMenuScroll;
+    PrintStartMenuActions(&row, RR_StartMenuVisibleRows());
+    RR_StartMenuPrintArrows();
+    InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 0, 15, RR_StartMenuVisibleRows(), sStartMenuCursorPos - sStartMenuScroll);
+    CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_GFX);
+}
+
 static bool8 HandleStartMenuInput(void)
 {
     if (JOY_NEW(DPAD_UP))
     {
         PlaySE(SE_SELECT);
-        sStartMenuCursorPos = Menu_MoveCursor(-1);
+        RR_StartMenuMoveCursor(-1);
         if (DEBUG_OVERWORLD_MENU != TRUE && !MenuHelpers_IsLinkActive() && InUnionRoom() != TRUE && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_HELP)
             PrintTextOnHelpMessageWindow(sStartMenuDescPointers[sCurrentStartMenuActions[sStartMenuCursorPos]], COPYWIN_GFX);
     }
@@ -685,7 +735,7 @@ static bool8 HandleStartMenuInput(void)
     if (JOY_NEW(DPAD_DOWN))
     {
         PlaySE(SE_SELECT);
-        sStartMenuCursorPos = Menu_MoveCursor(+1);
+        RR_StartMenuMoveCursor(+1);
         if (DEBUG_OVERWORLD_MENU != TRUE && !MenuHelpers_IsLinkActive() && InUnionRoom() != TRUE && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_HELP)
             PrintTextOnHelpMessageWindow(sStartMenuDescPointers[sCurrentStartMenuActions[sStartMenuCursorPos]], COPYWIN_GFX);
     }

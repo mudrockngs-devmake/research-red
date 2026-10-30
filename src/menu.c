@@ -399,8 +399,8 @@ u8 AddStartMenuWindow(u8 height)
     if (sStartMenuWindowId == WINDOW_NONE)
     {
         // Research Red (#27): was 0x13D; with 9+ entries it ran into the message
-        // box (0x198) and the clock box. 0x258 + 7 x 21 rows (11 entries) ends at 0x2EB.
-        struct WindowTemplate template = CreateWindowTemplate(0, 0x16, 1, 7, height * 2 - 1, DLG_WINDOW_PALETTE_NUM, 0x258);
+        // box (0x198) and the clock box. #124: wider, longer lists scroll: 0x250 + 10 x 17 rows (9 entries) ends at 0x2FA (tilemaps start at 0x300).
+        struct WindowTemplate template = CreateWindowTemplate(0, 0x13, 1, 10, height * 2 - 1, DLG_WINDOW_PALETTE_NUM, 0x250);
         sStartMenuWindowId = AddWindow(&template);
         PutWindowTilemap(sStartMenuWindowId);
     }
