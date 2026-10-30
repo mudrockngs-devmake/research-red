@@ -79,6 +79,7 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 - The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
 
 ## Asked for, not done yet
+- [ ] Interface polish, waiting for the owner's pick (picture: `E:\Workspace\romhacks\research-red\art\ui-options\ui_suggestions.png`): font colour (Claude recommends keeping dark brown; rust and navy shown), Options values blue instead of red with a brown edge instead of black, DexNav red/black to tan and brown. Then decide whether the theme goes in v0.0.23 (needs a full smoke, matrix and playthrough; only 13 scenes run so far).
 - [x] Viewer (owner 2026-10-30): zoom in/out below 100%, fit to any window, pictures shrink dynamically, usual viewer features.
 - [x] Viewer (owner 2026-10-30): every picture Claude takes, tests or generates shows up in the live stream, efficiently.
 - [x] (in master, goes into v0.0.23; drafts stay unapproved) v0.0.23 (owner 2026-10-30): use the updated overworld sprite placeholders for the player, Ivy, Jenny, Elm and Delia (#125), without a big break from the roadmap.
