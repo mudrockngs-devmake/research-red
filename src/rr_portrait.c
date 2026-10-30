@@ -281,6 +281,11 @@ static bool32 LoadNamePlate(const u8 *name, u32 color)
     {
         font = FONT_SMALL;
         width = GetStringWidth(font, name, 0);
+        if (width > 58) // "Officer Jenny": still touches the plate's border
+        {
+            font = FONT_SMALL_NARROW;
+            width = GetStringWidth(font, name, 0);
+        }
     }
     AddTextPrinterParameterized3(windowId, font, (64 - width) / 2, 1, sTextColors, TEXT_SKIP_DRAW, name);
     memcpy(tiles, gWindows[windowId].tileData, 64 * 16 / 2);

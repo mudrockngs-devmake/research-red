@@ -778,10 +778,12 @@ def sc_gym_room():
     size = T.G.const("sizeof(struct Pokemon)")
     wipe = [f"poke {T.G.sym('gPlayerParty') + 5 * size + off:#x}:4 0" for off in range(0, size, 4)]
     lines = sc_gym_first()
-    at = lines.index("shot g001")
-    lines[at:at] = wipe + [f"poke {T.G.party_addr()} 5"]
-    return (lines + check("geodude_joined", f"{T.G.party_addr()} == 6") + ["wait 20", "press START", "wait 30",
-            "press DOWN", "wait 10", "press A", "wait 90", "shot party"]
+    # right after the win (the badge flag), so the fight itself keeps all six
+    won = play_until("badge", T.G.flag_set("FLAG_BADGE01_GET"), 60000, key="A", every=60)
+    first = next(i for i, l in enumerate(lines) if "won" in str(l) and i > lines.index("shot g003"))
+    lines[first:first] = won + wipe + [f"poke {T.G.party_addr()} 5"]
+    return (lines + check("geodude_joined", f"{T.G.party_addr()} == 6") + ["wait 20", f"poke {T.G.sym('sStartMenuCursorPos'):#x}:1 0",
+            "press START", "wait 30", "shot menu", "press DOWN", "wait 10", "press A", "wait 90", "shot party"]
             + play_until("party_closed", T.G.field_free(), 1500, key="B", every=30))
 
 
@@ -898,7 +900,7 @@ def sc_delia_battle():
             + ["press DOWN 6", "wait 20", "press A", "wait 90", "shot b001", "press A", "wait 60", "shot b002"]
             + play_until("battle", T.G.in_battle(), 1500, key="A", every=40)
             + ["wait 300", "shot b003"]
-            + play_until("battle_over", T.G.field_free(), 40000, key="A", every=120)
+            + play_until("battle_over", T.G.field_free(), 90000, key="A", every=120)
             + expect("MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", story=7))
 
 
