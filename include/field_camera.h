@@ -33,6 +33,7 @@ void InstallCameraPanAheadCallback(void);
 void DrawDoorMetatileAt(int x, int y, const u16 *data);
 void ResetFieldCamera(void);
 void CameraUpdate(void);
+void RR_MoveCameraToPlayer(void); // Research Red
 void FieldUpdateBgTilemapScroll(void);
 void ResetCameraUpdateInfo(void);
 u32 InitCameraUpdateCallback(u8 trackedSpriteId);

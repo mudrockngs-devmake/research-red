@@ -418,6 +418,21 @@ void CameraUpdateNoObjectRefresh(void)
     AddCameraPixelOffset(&sFieldCameraOffset, movementSpeedX, movementSpeedY);
 }
 
+// Research Red: jump the camera onto the player in one go, for scenes that place the player with
+// setobjectxy while the screen is black (same steps as CameraUpdate, all at once).
+void RR_MoveCameraToPlayer(void)
+{
+    struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    s32 deltaX = player->currentCoords.x - MAP_OFFSET - gSaveBlock1Ptr->pos.x;
+    s32 deltaY = player->currentCoords.y - MAP_OFFSET - gSaveBlock1Ptr->pos.y;
+
+    CameraMove(deltaX, deltaY);
+    UpdateObjectEventsForCameraUpdate(deltaX, deltaY);
+    AddCameraTileOffset(&sFieldCameraOffset, deltaX * 2, deltaY * 2);
+    AddCameraPixelOffset(&sFieldCameraOffset, deltaX * 16, deltaY * 16);
+    DrawWholeMapView();
+}
+
 void CameraUpdate(void)
 {
     int deltaX;

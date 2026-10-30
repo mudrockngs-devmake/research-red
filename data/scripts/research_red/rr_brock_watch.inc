@@ -57,8 +57,9 @@ RR_BrockWatch_EventScript_Scene::
 	msgbox RR_BrockWatch_Text_Brock_Ivy, MSGBOX_DEFAULT
 	msgbox RR_BrockWatch_Text_Ivy_Thanks, MSGBOX_DEFAULT
 	closemessage
-	@ --- the four of you by the Gym door ---
-	fadescreen FADE_TO_BLACK
+	@ --- lunch, the reward for watching (docs/scenes/pewter_lunch.md) ---
+	call RR_BrockWatch_EventScript_Lunch
+	@ --- the four of you by the Gym door (the lunch left the screen black) ---
 	setobjectxy LOCALID_PEWTER_GYM_ELM, 5, 12
 	setobjectxy LOCALID_PEWTER_GYM_JENNY, 7, 12
 	turnobject LOCALID_PEWTER_GYM_ELM, DIR_SOUTH
@@ -67,7 +68,7 @@ RR_BrockWatch_EventScript_Scene::
 	setobjectxy LOCALID_PEWTER_GYM_IVY, 7, 13
 	turnobject LOCALID_PLAYER, DIR_NORTH
 	turnobject LOCALID_PEWTER_GYM_IVY, DIR_NORTH
-	special DrawWholeMapView
+	callnative RR_ScriptCameraOnPlayer
 	fadescreen FADE_FROM_BLACK
 	msgbox RR_BrockWatch_Text_Elm_RaceOn, MSGBOX_DEFAULT
 	msgbox RR_BrockWatch_Text_Jenny_Dinner, MSGBOX_DEFAULT
@@ -87,6 +88,56 @@ RR_BrockWatch_EventScript_Scene::
 	setvar VAR_RR_BROCK_WATCH, 2
 	releaseall
 	end
+
+@ Everyone around the table: the kids in one long row, Brock serving, the guests on the rocks
+RR_BrockWatch_EventScript_Lunch::
+	fadescreen FADE_TO_BLACK
+	setobjectxy 7, 2, 5
+	setobjectxy 8, 3, 5
+	setobjectxy 9, 4, 5
+	setobjectxy 10, 5, 5
+	setobjectxy 11, 6, 5
+	setobjectxy 12, 7, 5
+	setobjectxy 13, 8, 5
+	setobjectxy 14, 9, 5
+	setobjectxy 15, 10, 5
+	setobjectxy LOCALID_PEWTER_GYM_BROCK, 6, 6
+	turnobject LOCALID_PEWTER_GYM_BROCK, DIR_SOUTH
+	setobjectxy 2, 6, 7
+	turnobject 2, DIR_NORTH
+	setobjectxy LOCALID_PEWTER_GYM_ELM, 3, 7
+	setobjectxy LOCALID_PLAYER, 5, 7
+	setobjectxy LOCALID_PEWTER_GYM_IVY, 7, 7
+	setobjectxy LOCALID_PEWTER_GYM_JENNY, 9, 7
+	turnobject LOCALID_PEWTER_GYM_ELM, DIR_NORTH
+	turnobject LOCALID_PLAYER, DIR_NORTH
+	turnobject LOCALID_PEWTER_GYM_IVY, DIR_NORTH
+	turnobject LOCALID_PEWTER_GYM_JENNY, DIR_NORTH
+	callnative RR_ScriptCameraOnPlayer
+	fadescreen FADE_FROM_BLACK
+	msgbox RR_Lunch_Text_Brock_Sit, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_P_Pewter, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Sister_Professors, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_P_OnPaper, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Brother_Favorite, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Sister_Favorite, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Brock_Favorite, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Elm_Fossils, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Jenny_Spoon, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Ivy_Every, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Brock_Rocky, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_Ivy_Third, MSGBOX_DEFAULT
+	msgbox RR_Lunch_Text_P_Research, MSGBOX_DEFAULT
+	closemessage
+	@ the Pokémon get their own table
+	fadescreen FADE_TO_BLACK
+	callnative RR_ScriptLunchPokemonShow
+	fadescreen FADE_FROM_BLACK
+	msgbox RR_Lunch_Text_Pokemon, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	callnative RR_ScriptLunchPokemonHide
+	return
 
 RR_BrockWatch_Movement_FaceRight:
 	face_right
@@ -113,6 +164,61 @@ RR_BrockWatch_Movement_ElmOut:
 	walk_down
 	set_invisible
 	step_end
+
+@ Lunch lines: drafts for the owner
+RR_Lunch_Text_Brock_Sit:
+	.string "Brock: Lunch! Sit on any rock you\n"
+	.string "like. We have plenty.$"
+
+RR_Lunch_Text_P_Pewter:
+	.string "{PLAYER}: That's the most Pewter\n"
+	.string "sentence I've ever heard.$"
+
+RR_Lunch_Text_Sister_Professors:
+	.string "Sister: Are you two really\n"
+	.string "professors?$"
+
+RR_Lunch_Text_P_OnPaper:
+	.string "{PLAYER}: On paper. She does the\n"
+	.string "paper.$"
+
+RR_Lunch_Text_Brother_Favorite:
+	.string "Brother: Brock says I'm his\n"
+	.string "favorite!$"
+
+RR_Lunch_Text_Sister_Favorite:
+	.string "Sister: He told ME that!$"
+
+RR_Lunch_Text_Brock_Favorite:
+	.string "Brock: You're all my favorite.\n"
+	.string "Eat. Don't take it for granite.$"
+
+RR_Lunch_Text_Elm_Fossils:
+	.string "Elm: Brock, about those living\n"
+	.string "fossils. Did you know that...$"
+
+RR_Lunch_Text_Jenny_Spoon:
+	.string "Jenny: Dear. Spoon.$"
+
+RR_Lunch_Text_Ivy_Every:
+	.string "Ivy: You cook for all of them\n"
+	.string "every single day?$"
+
+RR_Lunch_Text_Brock_Rocky:
+	.string "Brock: Three times a day. It was\n"
+	.string "a rocky start.$"
+
+RR_Lunch_Text_Ivy_Third:
+	.string "Ivy: Sweetie, that's your third\n"
+	.string "bowl.$"
+
+RR_Lunch_Text_P_Research:
+	.string "{PLAYER}: It's research.$"
+
+RR_Lunch_Text_Pokemon:
+	.string "Everyone's Pokémon got a bowl too.\p"
+	.string "For a moment, nobody battled\n"
+	.string "anybody.$"
 
 RR_BrockWatch_Text_Brock_Defeat:
 	.string "Brock: I have never lost to a\n"

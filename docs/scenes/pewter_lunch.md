@@ -1,4 +1,4 @@
-# Pewter Gym lunch (DRAFT, waiting for the owner's OK)
+# Pewter Gym lunch (owner's OK 2026-10-30; lines are drafts)
 
 Owner, 2026-10-30. Everyone eats Brock's stew at the Gym, a bit like the anime. It is a reward
 for watching Elm and Jenny's fight, and players who skip it lose nothing and see nothing clunky.
@@ -14,9 +14,8 @@ for watching Elm and Jenny's fight, and players who skip it lose nothing and see
 ## Lunch beats
 1. Fade from the badge to everyone sitting on the Gym floor around the pot.
 2. The nine kids' banter, Brock serving, his rock puns.
-3. The Pokémon eating. All 18 won't fit in one picture with correct colours (16 people and
-   Pokémon on the map at once, 12 sprite colour sets). Plan: yours plus Elm and Jenny's first,
-   tested in the game; three short shots of six if that doesn't fit; never wrong colours.
+3. The Pokémon eating: Elm and Jenny's team on top, yours in front (12 at most), with the people out of
+   the picture for that shot so every Pokémon has its own colours. Brock's team isn't in it: 18 won't fit.
 4. Back to the door scene.
 
 ## Rule for the lines
