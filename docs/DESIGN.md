@@ -97,9 +97,9 @@ How to use it:
 **In the game** (#29): Oak's Pokémon do the field moves (Fly with Pidgeot, Dig with Diglett, Flash, Teleport with Abra...), called with the Ranch Pager.
 
 ## 9. Time and rest
-**Bug** (#108): the light doesn't follow the clock; there should be only two light levels, day and night (owner 2026-10-28).
-
 **In the game** (#56, #27): Rest (at home with Delia, or with Nurse Joy) moves the clock to night or morning; wild tables change at night.
+
+**Light** (#108, owner 2026-10-28 and 2026-10-30): only two light levels. Day is fully bright (6 AM to 8 PM); night (8 PM to 6 AM) is a lighter blue tint than upstream, option B of the samples, so you can still find your way. The change is instant, no fade.
 
 ## 10. Pokédex and banter
 **In the game** (#5, #4, #20, #77): a banter cutscene over the new Pokédex entry after a catch (portraits by default, full-body behind debug 13), SELECT replays it; the Area tab; the 151 in order, then Johto by national number.

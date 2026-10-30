@@ -153,7 +153,7 @@ Every push to master runs a quick set of 10 scenes (breakfast, grass, lab, route
 | delia_battle | After Brock: Fly to Pallet, home, Delia asks for a battle (Yes): Mimey and Gloom lead (1 badge, Lv 21) |
 | oak_rematch | After Brock: Ranch Pager > Fly to Pallet, into the lab, Oak + Daisy double (1 badge: middle-stage starters, Lv 21) |
 | trainer_card | Start > your name: the Trainer Card shows your own picture (#24) |
-| daynight | Outside at 10:00 (day), then Rest at home to night, morning, night, morning; same spot each time. Days must match days, nights nights (#108). **Fails until #108 is fixed** |
+| daynight | Outside at 10:00 (day), then Rest at home to night, morning, night, morning; same spot each time. Days must match days, nights nights, and night stays at the level the owner chose (#108) |
 | oak_rematch_wild | Oak + Daisy's rematch, then a wild battle on Route 1: must be a Route 1 wild Pokémon (#106). **Fails until #106 is fixed** |
 | delia_wild | Delia's battle, then a wild battle (#106). **Fails until #106 is fixed** |
 | sprites_m / sprites_f | Sprite tour for each player: in and out of a door, surf (with reflection), walk four ways, run, bike (#125: the before/after check for new overworld sprites) |

@@ -5,13 +5,14 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-30 (v0.0.22 built: the lab and its scripted fights; waiting on the owner's spot check)_
+_Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108 fixed in master, not in a build yet)_
 
 ## Now
 - **v0.0.21 spot check done and archived** (`test-archive/2026-10-29_v0.0.21_spotcheck/`): new issues #149-#156; #116, #139, #140, #148 closed; follow-ups on #105 (Elm and Jenny's perspective, instant gag, auto-advance), #110, #142, #143.
 - Two lanes: game-lane sessions use the art already in the game; Art Kit sessions improve the tools and drafts
   (#104: Pallet Town first). No Art Kit piece is approved yet (`art_gate.py status`). Exception (owner 2026-10-28,
   #125): v0.0.20 tries the cast's overworld drafts as they are, for testing only (not approved).
+- **#108 day and night fixed in master, not in a build yet** (2026-10-30): two light levels, day fully bright, night option B (owner's pick). Smoke 70/70; only the daynight scene looks different from the last full run. Next: the v0.0.23 build (test-build skill), after the owner's OK.
 - Since v0.0.19 (in master, not in a build yet): tester upgrades (#18, docs/TESTING.md); debug 10's team is Lv 14.
 - New test tools (2026-10-28, docs/TESTING.md): checks on every scene (dialogue/portraits and boxes closing early,
   leftovers, battles #128/#107, brightness, wild, script coverage), settings matrix (`matrix.py`), type chart engine
@@ -78,6 +79,7 @@ _Last updated: 2026-10-30 (v0.0.22 built: the lab and its scripted fights; waiti
 - The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
 
 ## Half-finished / open threads
+- Tool bug: `compare.py`'s automatic "vs v0.0.x" uses much older runs as the "before" for many scenes (26 of 34 flagged on 2026-10-30 were from v0.0.19), so it over-reports. Until fixed, use `compare.py RUN --against LAST_FULL_RUN`.
 - Nothing half-done. All Art Kit art is drafts (tracker: docs/ART_TRACKER.md).
 - In AI-vs-AI test battles the player's side plays almost at random (no partner = no AI settings); harmless so far.
   The lab's watched fights are now scripted (#105); #142 (Elm & Jenny vs Brock) should reuse that system.

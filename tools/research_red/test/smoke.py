@@ -767,10 +767,10 @@ def sc_daynight():
     lines += rest("b", 7) + out_and_back("day1")
     lines += rest("c", 20) + out_and_back("night2")
     lines += rest("d", 7) + out_and_back("day2")
-    # the bright day level vs the darker night level (0-255; measured on the
-    # v0.0.18-era lighting: day about 170 here, night clearly darker)
+    # the bright day level vs the darker night level (0-255; measured with the
+    # owner's night, option B, 2026-10-30: day about 178, night about 109)
     return (lines + rr_checks.same_bright(["day0", "day1", "day2"]) + rr_checks.same_bright(["night1", "night2"])
-            + rr_checks.bright("day0", 150, 255) + rr_checks.bright("night1", 60, 145))
+            + rr_checks.bright("day0", 150, 255) + rr_checks.bright("night1", 95, 125))
 
 
 def sc_rest_center():

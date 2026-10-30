@@ -1533,7 +1533,8 @@ void CB1_Overworld(void)
     }
 }
 
-#define TINT_NIGHT Q_8_8(0.456) | Q_8_8(0.456) << 8 | Q_8_8(0.615) << 16
+// Research Red (#108): lighter night, easy to find your way (owner chose option B, 2026-10-30). Was 0.456, 0.456, 0.615.
+#define TINT_NIGHT Q_8_8(0.60) | Q_8_8(0.60) << 8 | Q_8_8(0.75) << 16
 
 const struct BlendSettings gTimeOfDayBlend[] =
 {
