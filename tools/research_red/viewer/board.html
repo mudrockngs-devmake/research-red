@@ -88,6 +88,8 @@ document.getElementById('zin').onclick = () => { zfit = false; setZoom(ZS.find(v
 document.getElementById('zout').onclick = () => { zfit = false; setZoom([...ZS].reverse().find(v => v < Z - .001) || .25); };
 document.getElementById('zfit').onclick = () => { zfit = true; fitNow(); };
 document.getElementById('bg').addEventListener('load', fitNow);
+// the browser's own picture-drag would grab the map mid-drag and cancel moving someone
+document.getElementById('map').addEventListener('dragstart', e => e.preventDefault());
 window.addEventListener('resize', fitNow);
 document.getElementById('wrap').addEventListener('wheel', e => { if (e.ctrlKey) { e.preventDefault(); document.getElementById(e.deltaY < 0 ? 'zin' : 'zout').click(); } }, { passive: false });
 setZoom(Z);
