@@ -389,4 +389,4 @@ and commit as usual.
 
 `art_gate.py test ow:elm on` puts one piece in the game without approving it; its stage stays as it is.
 `art_gate.py test ow:elm off` puts the original back (the game files return to exactly what they were).
-Then `make firered -j6`, `rr_check.py`. In for testing now: `ow:players`, `ow:ivy`, `ow:elm`, `ow:jenny`, `ow:delia`.
+Then `make firered -j6`, `rr_check.py`. In for testing now: `ow:players`, `ow:ivy`, `ow:elm`, `ow:jenny`, `ow:delia`, `ow:prof_oak`.

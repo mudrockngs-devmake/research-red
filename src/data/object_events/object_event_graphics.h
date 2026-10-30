@@ -21,10 +21,12 @@ const u16 gObjectEventPic_RR_Elm[] = INCBIN_U16("graphics/research_red/overworld
 const u16 gObjectEventPic_RR_Ivy[] = INCBIN_U16("graphics/research_red/overworld/ivy.4bpp");
 const u16 gObjectEventPic_RR_Jenny[] = INCBIN_U16("graphics/research_red/overworld/jenny.4bpp");
 const u16 gObjectEventPic_RR_Delia[] = INCBIN_U16("graphics/research_red/overworld/delia.4bpp");
+const u16 gObjectEventPic_RR_ProfOak[] = INCBIN_U16("graphics/research_red/overworld/prof_oak.4bpp");
 const u16 gObjectEventPal_RR_Elm[] = INCBIN_U16("graphics/research_red/overworld/elm.gbapal");
 const u16 gObjectEventPal_RR_Ivy[] = INCBIN_U16("graphics/research_red/overworld/ivy.gbapal");
 const u16 gObjectEventPal_RR_Jenny[] = INCBIN_U16("graphics/research_red/overworld/jenny.gbapal");
 const u16 gObjectEventPal_RR_Delia[] = INCBIN_U16("graphics/research_red/overworld/delia.gbapal");
+const u16 gObjectEventPal_RR_ProfOak[] = INCBIN_U16("graphics/research_red/overworld/prof_oak.gbapal");
 // Research Red: Art Kit overworld sprites (pictures) END
 const u16 gObjectEventPic_RedNormal[] = INCBIN_U16("graphics/research_red/player_ow/male_normal.4bpp");
 const u16 gObjectEventPic_RedSurfRun[] = INCBIN_U16("graphics/object_events/pics/people/red_surf_run.4bpp");

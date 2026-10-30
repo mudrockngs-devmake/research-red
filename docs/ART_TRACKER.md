@@ -28,7 +28,7 @@ Totals: 9 placeholder, 49 draft, 0 hand-finished, 0 approved
 | `ow:bruno` | Bruno walking | Their FireRed spots (after the demo) | FireRed's own Bruno sprite (stands still) | draft |  |
 | `ow:agatha` | Agatha walking | Their FireRed spots (after the demo) | FireRed's own Agatha sprite (stands still) | draft |  |
 | `ow:lance` | Lance walking | Their FireRed spots (after the demo) | FireRed's own Lance sprite (stands still) | draft |  |
-| `ow:prof_oak` | Professor Oak walking | Pallet Town, Oak's lab, Indigo Plateau, Hall of Fame | FireRed's own Professor Oak sprite (stands still) | draft | P |
+| `ow:prof_oak` | Professor Oak walking | Pallet Town, Oak's lab, Indigo Plateau, Hall of Fame | FireRed's own Professor Oak sprite (stands still) | draft, **in the game for testing** | P |
 | `ow:bill` | Bill walking | Sea Cottage, Cinnabar, One Island (after the demo) | FireRed's own Bill sprite (stands still) | draft |  |
 | `ow:dj_mary` | DJ Mary walking | Not on a map yet | Not in the game yet (new character) | draft |  |
 | `ow:prof_westwood` | Prof. Westwood walking | Not on a map yet | Not in the game yet (new character) | draft |  |

@@ -365,6 +365,7 @@ enum ObjectEventGfx
 #define OBJ_EVENT_PAL_TAG_RR_IVY                 0x1181
 #define OBJ_EVENT_PAL_TAG_RR_JENNY               0x1182
 #define OBJ_EVENT_PAL_TAG_RR_DELIA               0x1183
+#define OBJ_EVENT_PAL_TAG_RR_PROF_OAK            0x1184
 // Research Red: Art Kit palette tags END
 
 #if OW_FOLLOWERS_POKEBALLS

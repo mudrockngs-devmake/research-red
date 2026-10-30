@@ -142,6 +142,7 @@ where = "Pallet Town, Oak's lab, Indigo Plateau, Hall of Fame"
 game_now = "FireRed's own Professor Oak sprite (stands still)"
 stage = "draft"
 slice = "pallet"
+testing = true
 
 [pieces."ow:bill"]
 what = "Bill walking"

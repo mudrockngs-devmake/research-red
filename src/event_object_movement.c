@@ -546,6 +546,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_RR_Ivy, OBJ_EVENT_PAL_TAG_RR_IVY},
     {gObjectEventPal_RR_Jenny, OBJ_EVENT_PAL_TAG_RR_JENNY},
     {gObjectEventPal_RR_Delia, OBJ_EVENT_PAL_TAG_RR_DELIA},
+    {gObjectEventPal_RR_ProfOak, OBJ_EVENT_PAL_TAG_RR_PROF_OAK},
     // Research Red: Art Kit overworld sprites (palettes) END
     {gObjectEventPal_Substitute,            OBJ_EVENT_PAL_TAG_SUBSTITUTE},
     {gObjectEventPaletteEmotes,             OBJ_EVENT_PAL_TAG_EMOTES},
