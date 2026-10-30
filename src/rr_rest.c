@@ -3,8 +3,8 @@
 // Nurse Joy and Delia offer Heal, or Rest: Rest heals the team too and moves
 // the clock forward, during the day to 8 PM (night) and at night to 7 AM
 // (morning). The clock only ever moves forward, so berries and other timed
-// things just see time passing. Night is 8 PM to 4 AM all year
-// (OW_TIMES_OF_DAY GEN_4 in include/config/overworld.h).
+// things just see time passing. Night is 8 PM to 6 AM all year
+// (OW_TIMES_OF_DAY in include/config/overworld.h).
 // Scripts: data/scripts/research_red/rr_rest.inc.
 #include "global.h"
 #include "event_data.h"

@@ -1544,65 +1544,37 @@ const struct BlendSettings gTimeOfDayBlend[] =
 };
 
 #define DEFAULT_WEIGHT 256
-#define TIME_BLEND_WEIGHT(begin, end) (DEFAULT_WEIGHT - (DEFAULT_WEIGHT * ((hours - begin) * MINUTES_PER_HOUR + minutes) / ((end - begin) * MINUTES_PER_HOUR)))
-
-#define MORNING_HOUR_MIDDLE (MORNING_HOUR_BEGIN + ((MORNING_HOUR_END - MORNING_HOUR_BEGIN) / 2))
-
+// Research Red (#108): only two light levels, day and night (owner 2026-10-28).
+// The upstream code faded through morning and evening, so a Rest to 7 AM woke
+// you halfway through the night-to-morning fade. gTimeOfDay keeps all four
+// periods for whatever else reads the clock; only the light is two-level.
 void UpdateTimeOfDay(void)
 {
-    s32 hours, minutes;
+    s32 hours;
     RtcCalcLocalTime();
     hours = sHoursOverride ? sHoursOverride : gLocalTime.hours;
-    minutes = sHoursOverride ? 0 : gLocalTime.minutes;
 
-    if (IsBetweenHours(hours, MORNING_HOUR_BEGIN, MORNING_HOUR_MIDDLE)) // night->morning
-    {
-        gTimeBlend.startBlend = gTimeOfDayBlend[TIME_NIGHT];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_MORNING];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(MORNING_HOUR_BEGIN, MORNING_HOUR_MIDDLE);
-        gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2;
-        gTimeOfDay = TIME_MORNING;
-    }
-    else if (IsBetweenHours(hours, MORNING_HOUR_MIDDLE, MORNING_HOUR_END)) // morning->day
-    {
-        gTimeBlend.startBlend = gTimeOfDayBlend[TIME_MORNING];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_DAY];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(MORNING_HOUR_MIDDLE, MORNING_HOUR_END);
-        gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
-        gTimeOfDay = TIME_MORNING;
-    }
-    else if (IsBetweenHours(hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END)) // evening
-    {
-        gTimeBlend.startBlend = gTimeOfDayBlend[TIME_DAY];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_EVENING];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(EVENING_HOUR_BEGIN, EVENING_HOUR_END);
-        gTimeBlend.altWeight = gTimeBlend.weight / 2 + (DEFAULT_WEIGHT / 2);
-        gTimeOfDay = TIME_EVENING;
-    }
-    else if (IsBetweenHours(hours, NIGHT_HOUR_BEGIN, NIGHT_HOUR_BEGIN + 1)) // evening->night
-    {
-        gTimeBlend.startBlend = gTimeOfDayBlend[TIME_EVENING];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(NIGHT_HOUR_BEGIN, NIGHT_HOUR_BEGIN + 1);
-        gTimeBlend.altWeight = gTimeBlend.weight / 2;
+    if (IsBetweenHours(hours, NIGHT_HOUR_BEGIN, NIGHT_HOUR_END))
         gTimeOfDay = TIME_NIGHT;
-    }
-    else if (IsBetweenHours(hours, NIGHT_HOUR_BEGIN, NIGHT_HOUR_END)) // night
+    else if (IsBetweenHours(hours, MORNING_HOUR_BEGIN, MORNING_HOUR_END))
+        gTimeOfDay = TIME_MORNING;
+    else if (IsBetweenHours(hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END))
+        gTimeOfDay = TIME_EVENING;
+    else
+        gTimeOfDay = TIME_DAY;
+
+    if (gTimeOfDay == TIME_NIGHT)
     {
         gTimeBlend.weight = DEFAULT_WEIGHT;
         gTimeBlend.altWeight = 0;
         gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
-        gTimeOfDay = TIME_NIGHT;
     }
-    else // day
+    else
     {
         gTimeBlend.weight = gTimeBlend.altWeight = DEFAULT_WEIGHT;
         gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_DAY];
-        gTimeOfDay = TIME_DAY;
     }
 }
-
-#undef TIME_BLEND_WEIGHT
 
 // Whether a map type is naturally lit/outside
 bool32 MapHasNaturalLight(u8 mapType)
