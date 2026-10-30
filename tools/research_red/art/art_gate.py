@@ -8,7 +8,8 @@ list, and the checks make sure nothing slips in by accident.
 
   python3 tools/research_red/art/art_gate.py status            # every piece: stage, in the game?
   python3 tools/research_red/art/art_gate.py set ow:elm hand-finished ["note"]
-  python3 tools/research_red/art/art_gate.py apply             # game files = the approved list
+  python3 tools/research_red/art/art_gate.py test ow:elm on     # in the game for testing, NOT approved (off = the original back)
+  python3 tools/research_red/art/art_gate.py apply             # game files = the approved + testing list
   python3 tools/research_red/art/art_gate.py tracker           # docs/ART_TRACKER.md (+ copy on E:)
   python3 tools/research_red/art/art_gate.py verdicts          # take the owner's viewer verdicts into the tracker
   python3 tools/research_red/art/art_gate.py check             # rr_check: game matches, tracker complete and current
@@ -67,7 +68,7 @@ BACK = [("graphics/trainers/back_pics/%s_back_pic.png", "%s_back_pic.png"),
 def battle_paths(cast):
     """(picture, palette) the game should use for battle:<cast>, without extensions."""
     name, old = BATTLE[cast]
-    if artlib.approved("battle:" + cast):
+    if artlib.in_game("battle:" + cast):
         base = "graphics/research_red/cast/%s/battle_fr" % cast
         return base, base
     if "{}" in old:  # FireRed's own: front_pics/x_front_pic + palettes/x
@@ -89,7 +90,7 @@ def apply_battle():
     text = open(TRAINERS_H).read()
     for cast, (name, _) in BATTLE.items():
         pic, pal = battle_paths(cast)
-        note = " // Research Red: Art Kit (battle:%s)" % cast if artlib.approved("battle:" + cast) else ""
+        note = " // Research Red: Art Kit (battle:%s)" % cast if artlib.in_game("battle:" + cast) else ""
         text = re.sub(r'(gTrainerFrontPic_%s\[\] = INCBIN_U32\(")[^"]+(\.4bpp\.smol"\);)[^\n]*' % name,
                       lambda m: m.group(1) + pic + m.group(2) + (note or _keep_comment(cast, "pic")), text)
         text = re.sub(r'(gTrainerPalette_%s\[\] = INCBIN_U16\(")[^"]+(\.gbapal"\);)[^\n]*' % name,
@@ -105,12 +106,12 @@ def _keep_comment(cast, which):
 def apply_swaps():
     """The players (sheets + player.pal) and the back pics: approved file or the placeholder."""
     for game, new, keep in PLAYERS:
-        src = os.path.join(REPO, new) if artlib.approved("ow:players") else os.path.join(artlib.PLACEHOLDER_DIR, keep)
+        src = os.path.join(REPO, new) if artlib.in_game("ow:players") else os.path.join(artlib.PLACEHOLDER_DIR, keep)
         if os.path.abspath(src) != os.path.join(REPO, game):
             shutil.copyfile(src, os.path.join(REPO, game))
     for slot in ("red", "leaf"):
         for game, keep in BACK:
-            src = os.path.join(artlib.DRAFTS_DIR if artlib.approved("back_pics") else artlib.PLACEHOLDER_DIR, keep % slot)
+            src = os.path.join(artlib.DRAFTS_DIR if artlib.in_game("back_pics") else artlib.PLACEHOLDER_DIR, keep % slot)
             shutil.copyfile(src, os.path.join(REPO, game % slot))
     for gen in glob.glob(os.path.join(REPO, "graphics/trainers/back_pics/*_back_pic.4bpp")) + \
             glob.glob(os.path.join(REPO, "graphics/trainers/palettes/*_back_pic.gbapal")) + \
@@ -123,11 +124,11 @@ def cmd_apply():
     import ow_maker
     recipes, results = ow_maker.build_all()
     ow_maker.write_outputs(recipes, results)
-    ow_maker.install(recipes, results, {n for n in recipes if artlib.approved(ow_maker.piece_of(n))})
+    ow_maker.install(recipes, results, {n for n in recipes if artlib.in_game(ow_maker.piece_of(n))})
     apply_battle()
     # back pics: build_back_pics.py makes the drafts; the swap picks drafts or placeholders
     apply_swaps()
-    on = [p for p, v in artlib.load_pieces().items() if v.get("stage") == "approved"]
+    on = [p for p in artlib.load_pieces() if artlib.in_game(p)]
     print("in the game: %s" % (", ".join(on) if on else "nothing from the Art Kit (all placeholders)"))
     print("now: make firered -j6, rr_check.py, smoke tests")
     return 0
@@ -162,19 +163,19 @@ def problems():
             inside = "// Research Red: Art Kit (%s)," % n in text
         else:
             inside = "#define RR_ART_HAS_%s\n" % c["gfx"] in ids
-        want = artlib.approved("ow:" + n)
+        want = artlib.in_game("ow:" + n)
         if inside != want:
             out.append("ow:%s is %s the game but %s (run art_gate.py apply)" % (n, "in" if inside else "not in", "not approved" if inside else "approved"))
     for cast, (pic, pal) in battle_lines(open(TRAINERS_H).read()).items():
         if (pic, pal) != battle_paths(cast):
             out.append("battle:%s: trainers.h uses %s, the tracker says %s (run art_gate.py apply)" % (cast, pic, battle_paths(cast)[0]))
     for game, new, keep in PLAYERS:
-        want = os.path.join(REPO, new) if artlib.approved("ow:players") else os.path.join(artlib.PLACEHOLDER_DIR, keep)
+        want = os.path.join(REPO, new) if artlib.in_game("ow:players") else os.path.join(artlib.PLACEHOLDER_DIR, keep)
         if not filecmp.cmp(os.path.join(REPO, game), want, shallow=False):
             out.append("ow:players: %s doesn't match the tracker (run art_gate.py apply)" % game)
     for slot in ("red", "leaf"):
         for game, keep in BACK:
-            want = os.path.join(artlib.DRAFTS_DIR if artlib.approved("back_pics") else artlib.PLACEHOLDER_DIR, keep % slot)
+            want = os.path.join(artlib.DRAFTS_DIR if artlib.in_game("back_pics") else artlib.PLACEHOLDER_DIR, keep % slot)
             if not filecmp.cmp(os.path.join(REPO, game % slot), want, shallow=False):
                 out.append("back_pics: %s doesn't match the tracker (run art_gate.py apply)" % (game % slot))
     # the tracker page is current
@@ -220,6 +221,8 @@ def tracker_text():
                   "|---|---|---|---|---|---|"]
         for k, v in rows:
             stage = BADGE.get(v.get("stage"), v.get("stage"))
+            if v.get("testing") is True and v.get("stage") != "approved":
+                stage += ", **in the game for testing**"
             if v.get("verdict"):
                 stage += " (owner: %s)" % v["verdict"]
             what = v.get("what", "") + (" _(%s)_" % v["notes"] if v.get("notes") else "")
@@ -273,6 +276,14 @@ def cmd_set(pid, stage, note=None):
     return 0
 
 
+def cmd_test(pid, state):
+    """Switch a piece on or off for testing. The stage doesn't change: this is not an approval."""
+    if pid not in artlib.load_pieces() or state not in ("on", "off"):
+        raise SystemExit("usage: art_gate.py test ID on|off (ID from art_gate.py status)")
+    set_field(pid, "testing", state == "on")
+    return cmd_apply() or cmd_tracker()
+
+
 def cmd_verdicts():
     """The viewer's Approve / Needs work answers about a piece -> the tracker's verdict
     (and its note). The stage itself only changes with art_gate.py set."""
@@ -301,7 +312,7 @@ def cmd_verdicts():
 
 def cmd_status():
     for pid, v in artlib.load_pieces().items():
-        print("  %-24s %-14s %s%s" % (pid, v.get("stage"), "IN GAME  " if v.get("stage") == "approved" else "",
+        print("  %-24s %-14s %s%s" % (pid, v.get("stage"), "IN GAME  " if v.get("stage") == "approved" else "TESTING  " if v.get("testing") is True else "",
                                       v.get("what", "")))
     return 0
 
@@ -315,6 +326,8 @@ def main(argv):
         return cmd_status()
     if cmd == "set" and len(rest) >= 2:
         return cmd_set(*rest[:3])
+    if cmd == "test" and len(rest) == 2:
+        return cmd_test(*rest)
     if cmd == "apply":
         return cmd_apply()
     if cmd == "tracker":

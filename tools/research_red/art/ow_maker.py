@@ -252,7 +252,7 @@ def piece_of(name):
 
 def output_png(name, r):
     # an "output" in the game's own folders (the players) only while the art is in the game
-    if r.get("output") and artlib.approved(piece_of(name)):
+    if r.get("output") and artlib.in_game(piece_of(name)):
         return os.path.join(artlib.REPO, r["output"])
     return os.path.join(artlib.OW_DIR, name + ".png")
 
@@ -595,7 +595,7 @@ def main(argv):
         save_lock(LOCKED)
         # only approved pieces go into the game; the players' palette and
         # sheets are art_gate.py's job (it runs this, then swaps those files)
-        install(recipes, results, {n for n in recipes if artlib.approved(piece_of(n))})
+        install(recipes, results, {n for n in recipes if artlib.in_game(piece_of(n))})
     elif cmd in ("check", "--check"):
         return cmd_check()
     elif cmd == "colours":

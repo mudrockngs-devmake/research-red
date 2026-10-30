@@ -6,6 +6,8 @@
 #   hand-finished  the owner (or an artist) finished it in Aseprite
 #   approved       the owner's OK: it goes INTO THE GAME (art_gate.py apply)
 # Only "approved" pieces are in the game; everything else stays drafts and previews.
+# Exception: testing = true also puts a piece in for testing, without approving it
+# (art_gate.py test ID on|off; off puts the original back. Owner 2026-10-30, #125).
 # Owner, 2026-10-24: nothing is approved until the Art Kit is polished; the first
 # pieces to go in are the Pallet Town ones (slice = "pallet", the vertical slice).
 #
@@ -22,6 +24,7 @@ where = "Everywhere"
 game_now = "The players' walking sheets from v0.0.19 (recoloured Birch / Lorelei, no new running frames)"
 stage = "draft"
 slice = "pallet"
+testing = true
 
 [pieces."ow:elm"]
 what = "Professor Elm walking"
@@ -29,6 +32,7 @@ where = "Pallet Town, Rival's house, Route 1, Viridian, Route 22, Pewter, Pewter
 game_now = "FireRed's Scientist (stand-in)"
 stage = "draft"
 slice = "pallet"
+testing = true
 
 [pieces."ow:ivy"]
 what = "Ivy walking"
@@ -36,6 +40,7 @@ where = "Pallet Town, your house, Rival's house, Oak's lab, Route 1, Pewter Gym 
 game_now = "FireRed's Cooltrainer (stand-in)"
 stage = "draft"
 slice = "pallet"
+testing = true
 
 [pieces."ow:jenny"]
 what = "Jenny (casual) walking"
@@ -43,6 +48,7 @@ where = "Pallet Town, Rival's house, Oak's lab, Route 1, Viridian, Route 22, Pew
 game_now = "FireRed's Hex Maniac (stand-in)"
 stage = "draft"
 slice = "pallet"
+testing = true
 
 [pieces."ow:officer_jenny"]
 what = "Officer Jenny walking"
@@ -56,6 +62,7 @@ where = "Your house (1F)"
 game_now = "FireRed's Mom"
 stage = "draft"
 slice = "pallet"
+testing = true
 
 [pieces."ow:brock"]
 what = "Brock walking"

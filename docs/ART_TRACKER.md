@@ -10,12 +10,12 @@ Totals: 9 placeholder, 49 draft, 0 hand-finished, 0 approved
 
 | Piece | What | Where in the game | The game uses now | Stage | P |
 |---|---|---|---|---|---|
-| `ow:players` | The player walking, running, on the bike and surfing (both players; also warms player.pal) | Everywhere | The players' walking sheets from v0.0.19 (recoloured Birch / Lorelei, no new running frames) | draft | P |
-| `ow:elm` | Professor Elm walking | Pallet Town, Rival's house, Route 1, Viridian, Route 22, Pewter, Pewter Gym | FireRed's Scientist (stand-in) | draft | P |
-| `ow:ivy` | Ivy walking | Pallet Town, your house, Rival's house, Oak's lab, Route 1, Pewter Gym (and following you) | FireRed's Cooltrainer (stand-in) | draft | P |
-| `ow:jenny` | Jenny (casual) walking | Pallet Town, Rival's house, Oak's lab, Route 1, Viridian, Route 22, Pewter, Pewter Gym | FireRed's Hex Maniac (stand-in) | draft | P |
+| `ow:players` | The player walking, running, on the bike and surfing (both players; also warms player.pal) | Everywhere | The players' walking sheets from v0.0.19 (recoloured Birch / Lorelei, no new running frames) | draft, **in the game for testing** | P |
+| `ow:elm` | Professor Elm walking | Pallet Town, Rival's house, Route 1, Viridian, Route 22, Pewter, Pewter Gym | FireRed's Scientist (stand-in) | draft, **in the game for testing** | P |
+| `ow:ivy` | Ivy walking | Pallet Town, your house, Rival's house, Oak's lab, Route 1, Pewter Gym (and following you) | FireRed's Cooltrainer (stand-in) | draft, **in the game for testing** | P |
+| `ow:jenny` | Jenny (casual) walking | Pallet Town, Rival's house, Oak's lab, Route 1, Viridian, Route 22, Pewter, Pewter Gym | FireRed's Hex Maniac (stand-in) | draft, **in the game for testing** | P |
 | `ow:officer_jenny` | Officer Jenny walking | Viridian City | FireRed's Policeman (stand-in) | draft |  |
-| `ow:delia` | Delia walking | Your house (1F) | FireRed's Mom | draft | P |
+| `ow:delia` | Delia walking | Your house (1F) | FireRed's Mom | draft, **in the game for testing** | P |
 | `ow:brock` | Brock walking | Pewter Gym | FireRed's own Brock sprite (stands still) | draft |  |
 | `ow:misty` | Misty walking | Cerulean Gym (after the demo) | FireRed's own Misty sprite (stands still) | draft |  |
 | `ow:lt_surge` | Lt. Surge walking | Their FireRed spots (after the demo) | FireRed's own Lt. Surge sprite (stands still) | draft |  |

@@ -384,3 +384,9 @@ and commit as usual.
   on the run's page for 30 days.
 - Overworld sprites still need a look in the game: the smoke tests' contact
   sheets (`docs/TESTING.md`) show them in their scenes.
+
+## Trying a piece in the game for testing (owner 2026-10-30, #125)
+
+`art_gate.py test ow:elm on` puts one piece in the game without approving it; its stage stays as it is.
+`art_gate.py test ow:elm off` puts the original back (the game files return to exactly what they were).
+Then `make firered -j6`, `rr_check.py`. In for testing now: `ow:players`, `ow:ivy`, `ow:elm`, `ow:jenny`, `ow:delia`.

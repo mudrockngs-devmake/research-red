@@ -45,6 +45,13 @@ def approved(piece):
     """True when the owner has let this piece into the game."""
     return load_pieces().get(piece, {}).get("stage") == "approved"
 
+
+def in_game(piece):
+    """True when the game uses this piece: approved, or switched on for testing
+    (testing = true; not an approval, art_gate.py test ID off puts the original back)."""
+    v = load_pieces().get(piece, {})
+    return v.get("stage") == "approved" or v.get("testing") is True
+
 # FireRed overworld frame order (16x32 people). Right-facing frames are the
 # left ones mirrored by the game, so they are never drawn.
 FRAME_NAMES = ["down", "up", "left",

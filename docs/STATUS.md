@@ -81,8 +81,8 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 ## Asked for, not done yet
 - [x] Viewer (owner 2026-10-30): zoom in/out below 100%, fit to any window, pictures shrink dynamically, usual viewer features.
 - [x] Viewer (owner 2026-10-30): every picture Claude takes, tests or generates shows up in the live stream, efficiently.
-- [ ] v0.0.23 (owner 2026-10-30; planned, not built): use the updated overworld sprite placeholders for the player, Ivy, Jenny, Elm and Delia (#125), without a big break from the roadmap.
-  - Swap-back (owner 2026-10-30): must be easy to go back to the original sprites if anything breaks. Plan: one on/off setting per character in the art gate's testing route, originals untouched, then rebuild; test both ways before the build.
+- [x] (in master, goes into v0.0.23; drafts stay unapproved) v0.0.23 (owner 2026-10-30): use the updated overworld sprite placeholders for the player, Ivy, Jenny, Elm and Delia (#125), without a big break from the roadmap.
+  - Swap-back (owner 2026-10-30), done and tested both ways: `art_gate.py test ow:elm off`, then rebuild (`docs/ART_TOOLS.md`).
   - These sprites are FireRed/Emerald sprites recoloured by recipe (`recipes.toml`), with colours picked from the large art; they aren't shrunk from it, so the large-art-first rule for combined battle pictures doesn't change them.
 - [x] (in master, owner to check in the viewer) Battle pictures (owner 2026-10-30, #133): player and Ivy closer together, like Elm and Jenny; in the front-view lab cutscenes Elm and Jenny's picture faces the same way as the player and Ivy's (not mirrored). Male player a little bigger.
 - [x] (in master, owner to check in the viewer) Oak's pager Pokémon (owner 2026-10-30): spread them out on the Pallet map and in the lab so they aren't lined up vertically, until a ranch tile area exists.
