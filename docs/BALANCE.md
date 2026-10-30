@@ -44,6 +44,6 @@ The game plays each fight many times with the AI on both sides (yours plays like
 | Lab: you and Ivy vs Elm and Jenny (double) | your starter + Ivy's, Lv 5 (the scene's own) | 40 of 50 (80%) | 5.7 | 0.7 | 1.8 | 2026-10-27, v0.0.19 (b8977e7ae-dirty) |
 | Route 22: the 6v6 double with Ivy vs Elm and Jenny | debug 4 team: starter, Bulbasaur, Spearow, Rattata, Mankey, Nidoran M, all Lv 12 | 50 of 50 (100%) | 19.5 | 2.1 | 6.0 | 2026-10-27, v0.0.19 (b8977e7ae-dirty) |
 | Pewter: Elm and Jenny's rematch outside the Pokémon Center | debug 10 team, all Lv 14 (the cap before Brock; 1 badge) | 3 of 50 (6%) | 21.9 | 5.9 | 3.8 | 2026-10-27, v0.0.19 (40d068277-dirty) |
-| Pewter Gym: Brock | debug 10 team, all Lv 14 (no badge, at the cap) | 47 of 50 (94%) | 8.9 | 0.8 | 5.8 | 2026-10-27, v0.0.19 (40d068277-dirty) |
+| Pewter Gym: Brock | debug 10 team, all Lv 14 (no badge, at the cap) | 20 of 20 (100%) | 11.8 | 0.7 | 6.0 | 2026-10-30, v0.0.23 (252490f9d-dirty) |
 
 Reading it: won under about 60% is hard for a typical team at that point, over 95% with few of yours fainting is easy. Numbers per seed: data/research_red/battle_sims.json.

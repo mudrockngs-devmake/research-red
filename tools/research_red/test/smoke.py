@@ -502,6 +502,24 @@ def sc_dex_numbers():
             + play_until("dex_closed", T.G.field_free(), 1500, key="B", every=30))
 
 
+def sc_dex_forms():
+    # Owner 2026-10-30: Mega and Hisuian forms stay hidden, Alolan and Galarian
+    # show. Each entry: the pages in turn, then START for Forms. Charizard (no
+    # Megas), Geodude (Alolan), Quilava (no Hisuian evolution), Typhlosion (no
+    # Hisuian form), Stantler (its only evolution is hidden: "no evolutions").
+    def entry(tag, row):
+        return ([f"poke {T.G.sym('sLastSelectedPokemon'):#x}:2 {row}"] + start_menu_item(0) + ["wait 90"]
+                + ["press A", "wait 120", f"shot {tag}_info",
+                   "press RIGHT", "wait 120", "press RIGHT", "wait 120", f"shot {tag}_stats",
+                   "press RIGHT", "wait 120", f"shot {tag}_evo", "press START", "wait 120", f"shot {tag}_forms"]
+                + play_until(f"{tag}_closed", T.G.field_free(), 2000, key="B", every=30)
+                + ["wait 30", f"poke {T.G.sym('sStartMenuCursorPos'):#x}:1 0"])
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + own(6) + own(74) + own(156) + own(157) + own(234)
+            + entry("charizard", 5) + entry("geodude", 73) + entry("quilava", 155)
+            + entry("typhlosion", 156) + entry("stantler", 233))
+
+
 def sc_dex_area():
     # #20: Magikarp's Area page by day and evening shows Pallet's sea (the
     # daytime table the game borrows), not "AREA UNKNOWN"; at night it isn't there.
@@ -751,6 +769,19 @@ def sc_cl_brock16(pick=None):
             + play_until("fight_over", T.G.overworld(), 15000, key="SELECT", every=40)
             + play_until("watched", T.G.var_is("VAR_RR_BROCK_WATCH", 2) + " && " + T.G.field_free(), 3000, key="A", every=40)
             + expect("MAP_PEWTER_CITY_GYM", story=8))
+
+
+def sc_gym_room():
+    # Room in the party: Brock's Geodude joins you (gym_first has six: it goes to the PC).
+    # Slot six is wiped by memory poke; afterwards the party is six again, and the banter plays.
+    size = T.G.const("sizeof(struct Pokemon)")
+    wipe = [f"poke {T.G.sym('gPlayerParty') + 5 * size + off:#x}:4 0" for off in range(0, size, 4)]
+    lines = sc_gym_first()
+    at = lines.index("shot g001")
+    lines[at:at] = wipe + [f"poke {T.G.party_addr()} 5"]
+    return (lines + check("geodude_joined", f"{T.G.party_addr()} == 6") + ["wait 20", "press START", "wait 30",
+            "press DOWN", "wait 10", "press A", "wait 90", "shot party"]
+            + play_until("party_closed", T.G.field_free(), 1500, key="B", every=30))
 
 
 def sc_gym_first():
@@ -1219,6 +1250,7 @@ SCENARIOS = {
     "battle_lines": (sc_battle_lines, "Route 22: you or Ivy speak in battle, your portrait over the message box (#95)"),
     "battle_lines_full": (sc_battle_lines_full, "Route 22 battle lines in the full-body look (#95)"),
     "pokedex": (sc_pokedex, "Pokédex: every page of an entry, both ways"),
+    "dex_forms": (sc_dex_forms, "Pokédex Forms and Evolution pages: no Mega or Hisuian, Alolan shows"),
     "dex_area": (sc_dex_area, "Pokédex Area page: Magikarp in Pallet's sea by day and evening (#20)"),
     "dex_numbers": (sc_dex_numbers, "Pokédex list: the 151 in order, then Johto by national number (#77)"),
     "pewter_again": (sc_pewter_again, "After the Pewter fight: leave and come back, Elm and Jenny wait by the Center; rebattle them (#143)"),
@@ -1244,6 +1276,7 @@ SCENARIOS = {
     "pager_dig": (sc_pager_dig, "Ranch Pager > Dig in Diglett's Cave: Oak's Diglett digs us out (#29)"),
     "cl_brock16": (sc_cl_brock16, "Checklist v0.0.23: debug 16, Elm and Jenny fight Brock on the battle screen (#142)"),
     **{f"cl_brock16_p{n}": (lambda n=n: sc_cl_brock16(n), f"Brock fight with lab pick {n}: every pair of Elm and Jenny's starters wins (#142)") for n in (0, 1, 3, 4, 5)},
+    "gym_room": (sc_gym_room, "Pewter Gym with room in the party: Brock's Geodude joins your team"),
     "gym_first": (sc_gym_first, "Pewter Gym, first visit: Elm and Jenny by the door, nine kids behind Brock, portraits and stew talk"),
     "start_menu": (sc_start_menu, "Start menu: new order, 9 rows, scrolls and wraps, arrows (#124)"),
     "rest": (sc_rest, "Delia: Rest till night, then till morning; the Start menu clock (#56, #27)"),

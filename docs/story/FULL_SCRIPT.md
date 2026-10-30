@@ -338,6 +338,9 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 >
 > Observe it. Compare notes.
 > All of it goes in the paper.
+>
+> Because I suspect these six have
+> regional forms of their own.
 
 > Ivy: Regional forms?
 > In starters?
@@ -360,17 +363,21 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > three looked very different…
 > in other lands.
 >
-> Other eras, even. Old scrolls.
-> Snow where no snow should be.
+> Other eras, even. Old sketches.
+> Ancient field notes from a
+> Professor… Lavender? Lavington?
+>
+> Laven-something.
 
-> Elm: Other eras?
-> Like… old-timey?
+> Elm: Never heard of him.
+> Other eras? Like… old-timey?
 
 > Jenny: In my professional opinion,
-> a scroll is not evidence.
+> a sketch is not evidence.
 
-> Oak: There are even whispers of
-> Pokémon that change for a moment.
+> Oak: Stranger still, there are
+> whispers of Pokémon that change
+> for a moment.
 >
 > Brilliantly. Mid-battle.
 >
@@ -657,6 +664,9 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Ivy: Sweetie, we get front row
 > seats. Somebody find popcorn.
+
+> Elm and Jenny's Pokémon grew
+> to Lv 13!
 
 > Elm: We won! We beat Professor
 > Oak! In his own lab!
@@ -2927,7 +2937,7 @@ P: Turn it down, Quilava. I'm already sweating.
 
 ### Typhlosion
 P: Typhlosion's heat can cause explosions.
-Ivy: Oak's old scrolls draw one with strange, dark flames. A mystery!
+Ivy: Oak's old sketches draw one with strange, dark flames. A mystery!
 
 ### Totodile
 Ivy: Totodile bites everything. Lovingly.
@@ -3337,5 +3347,5 @@ P: Ash swears he saw one on his very first day. Nobody believed him.
 
 ### Celebi
 Ivy: Celebi is said to travel through time.
-P: If it visits, I have questions about Oak's old scrolls.
+P: If it visits, I have questions about Oak's old sketches.
 Ivy: Get in line. Oak's first.

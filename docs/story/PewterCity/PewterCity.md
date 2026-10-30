@@ -144,19 +144,19 @@ Script `RR_Pewter_EventScript_Rematch`
 
 > Jenny: Warming up again. Noted.
 
-**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
+**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
 
-**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -211,7 +211,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 > {PLAYER}: And one very big dinner.
 
-**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
+**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -219,7 +219,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -227,7 +227,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -235,7 +235,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -243,7 +243,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -281,19 +281,19 @@ Script `RR_Pewter_EventScript_Rematch`
 
 > Jenny: Warming up again. Noted.
 
-**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
-**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
+**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
 
-**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Cinnamon Lv15, Biscotti Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -348,7 +348,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 > {PLAYER}: And one very big dinner.
 
-**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
+**Battle:** Rival Early Elm&Jenny (single): Biscotti Lv15, Matcha Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15, take turns Lv?, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?, badges and lab pick when the battle starts Lv?, No money, 1.5x EXP. */ Lv?
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -356,7 +356,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Matcha Lv15, Cinnamon Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -364,7 +364,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Toffee Lv15, Cream Puff Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -372,7 +372,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Cream Puff Lv15, Pistachio Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.
@@ -380,7 +380,7 @@ Script `RR_Pewter_EventScript_Rematch`
 > Jenny: He means
 > “congratulations.”
 
-**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv14, Licorice Lv14, Churro Lv14, Cruller Lv15
+**Battle:** Rival Early Elm&Jenny (single): Pistachio Lv15, Toffee Lv15, Pudding Lv15, Licorice Lv15, Churro Lv15, Cruller Lv15
 
 > Elm: One to nothing. Fine. FINE.
 > It's a long road.

@@ -59,7 +59,7 @@ RR_Lab_EventScript_Scene::
 	msgbox RR_Lab_Text_Oak_OtherLands, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_OldTimey, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Lab_Text_Jenny_Scroll, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Jenny_Sketch, MSGBOX_DEFAULT
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Oak_MidBattle, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_ChooseFirst, MSGBOX_DEFAULT
@@ -448,6 +448,7 @@ RR_Lab_EventScript_ElmChallengesOak::
 	setvar VAR_0x8006, RR_FIGHT_LAB_STARTERS
 	call RR_Lab_EventScript_ScriptedFight
 	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Lab_Text_LevelUp, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_WeBeatOak, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Jenny_Noted, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Oak_Invigorated, MSGBOX_DEFAULT
@@ -821,7 +822,9 @@ RR_Lab_Text_Oak_StudyForms::
     .string "Oak: While you stay in Pallet, I\n"
     .string "want each of you to study one.\p"
     .string "Observe it. Compare notes.\n"
-    .string "All of it goes in the paper.$"
+    .string "All of it goes in the paper.\p"
+    .string "Because I suspect these six have\n"
+    .string "regional forms of their own.$"
 
 RR_Lab_Text_Ivy_InStarters::
     .string "Ivy: Regional forms?\n"
@@ -848,20 +851,23 @@ RR_Lab_Text_Oak_OtherLands::
     .string "Oak: Old stories say the Johto\n"
     .string "three looked very different…\l"
     .string "in other lands.\p"
-    .string "Other eras, even. Old scrolls.\n"
-    .string "Snow where no snow should be.$"
+    .string "Other eras, even. Old sketches.\n"
+    .string "Ancient field notes from a\l"
+    .string "Professor… Lavender? Lavington?\p"
+    .string "Laven-something.$"
 
 RR_Lab_Text_Elm_OldTimey::
-    .string "Elm: Other eras?\n"
-    .string "Like… old-timey?$"
+    .string "Elm: Never heard of him.\n"
+    .string "Other eras? Like… old-timey?$"
 
-RR_Lab_Text_Jenny_Scroll::
+RR_Lab_Text_Jenny_Sketch::
     .string "Jenny: In my professional opinion,\n"
-    .string "a scroll is not evidence.$"
+    .string "a sketch is not evidence.$"
 
 RR_Lab_Text_Oak_MidBattle::
-    .string "Oak: There are even whispers of\n"
-    .string "Pokémon that change for a moment.\p"
+    .string "Oak: Stranger still, there are\n"
+    .string "whispers of Pokémon that change\l"
+    .string "for a moment.\p"
     .string "Brilliantly. Mid-battle.\p"
     .string "…But that is a story for\n"
     .string "another lab.$"
@@ -1389,6 +1395,10 @@ RR_Lab_Text_Oak_Accepts::
 RR_Lab_Text_Oak_StartersGo::
     .string "Oak: {STR_VAR_1}! {STR_VAR_2}!\n"
     .string "Show them how it's done!$"
+
+RR_Lab_Text_LevelUp::
+    .string "Elm and Jenny's Pokémon grew\n"
+    .string "to Lv 13!$"
 
 RR_Lab_Text_Elm_WeBeatOak::
     .string "Elm: We won! We beat Professor\n"

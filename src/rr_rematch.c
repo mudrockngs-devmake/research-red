@@ -7,6 +7,10 @@
 //             (src/caps.c: 14, 21, 24, 29, 43, 43, 47, 50, 63)
 //   tier 9    after the Elite Four (no cap then): a clear step up, Lv 75
 // The team's aces are at the tier level, the others one below (two post-game).
+// Owner's levels, 2026-10-30, before the Elite Four: Oak + Daisy's whole team
+// sits halfway between the last cap and this one (sOakLevels: a place to train),
+// Delia's whole team at the cap. Elm + Jenny's Pewter fight (trainers.party) is
+// the cap just passed plus one: Lv 15 after Brock.
 // Rematches give 1.5x EXP (a place to train instead of grinding); only Gym
 // leaders pay prize money. After the Elite Four the teams bring regional forms,
 // and the family Pokemon (Mimey, Muffin) stay home while an exchange-program
@@ -41,6 +45,7 @@
 #define RR_NUM_TIERS     10
 
 static const u8 sTierLevels[RR_NUM_TIERS] = {14, 21, 24, 29, 43, 43, 47, 50, 63, 75};
+static const u8 sOakLevels[RR_NUM_TIERS] = {10, 17, 22, 26, 36, 43, 45, 48, 56, 75};
 
 // Tier picked from a Gym leader's menu, plus 1 (0: none, use your badges)
 static EWRAM_DATA u8 sChosenTierPlusOne = 0;
@@ -151,6 +156,10 @@ void RR_AdjustRematchParty(struct Pokemon *party, u16 trainerId, u32 count)
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || !RR_IsRematchTrainer(trainerId) || count < 6)
         return;
     postgame = tier == RR_POSTGAME_TIER;
+    if (trainerId == TRAINER_RR_OAK_REMATCH && !postgame)
+        level = below = sOakLevels[tier];
+    else if (trainerId == TRAINER_RR_DELIA_REMATCH && !postgame)
+        below = level;
     if (trainerId == TRAINER_RR_OAK_REMATCH)
     {
         // Oak (0, 2, 4): the leftover starters are the aces; Nidoran M

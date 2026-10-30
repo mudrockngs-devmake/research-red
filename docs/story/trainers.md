@@ -102,49 +102,49 @@
 ## Rival Early Elm&Jenny (`TRAINER_RR_ELM_PEWTER_BULBASAUR`, single)
 - Pistachio Lv15
 - Toffee Lv15
-- Pudding Lv14
-- Licorice Lv14
-- Churro Lv14
+- Pudding Lv15
+- Licorice Lv15
+- Churro Lv15
 - Cruller Lv15
 
 ## Rival Early Elm&Jenny (`TRAINER_RR_ELM_PEWTER_CHARMANDER`, single)
 - Toffee Lv15
 - Cream Puff Lv15
-- Pudding Lv14
-- Licorice Lv14
-- Churro Lv14
+- Pudding Lv15
+- Licorice Lv15
+- Churro Lv15
 - Cruller Lv15
 
 ## Rival Early Elm&Jenny (`TRAINER_RR_ELM_PEWTER_SQUIRTLE`, single)
 - Cream Puff Lv15
 - Pistachio Lv15
-- Pudding Lv14
-- Licorice Lv14
-- Churro Lv14
+- Pudding Lv15
+- Licorice Lv15
+- Churro Lv15
 - Cruller Lv15
 
 ## Rival Early Elm&Jenny (`TRAINER_RR_ELM_PEWTER_CHIKORITA`, single)
 - Matcha Lv15
 - Cinnamon Lv15
-- Pudding Lv14
-- Licorice Lv14
-- Churro Lv14
+- Pudding Lv15
+- Licorice Lv15
+- Churro Lv15
 - Cruller Lv15
 
 ## Rival Early Elm&Jenny (`TRAINER_RR_ELM_PEWTER_CYNDAQUIL`, single)
 - Cinnamon Lv15
 - Biscotti Lv15
-- Pudding Lv14
-- Licorice Lv14
-- Churro Lv14
+- Pudding Lv15
+- Licorice Lv15
+- Churro Lv15
 - Cruller Lv15
 
 ## Rival Early Elm&Jenny (`TRAINER_RR_ELM_PEWTER_TOTODILE`, single)
 - Biscotti Lv15
 - Matcha Lv15
-- Pudding Lv14
-- Licorice Lv14
-- Churro Lv14
+- Pudding Lv15
+- Licorice Lv15
+- Churro Lv15
 - Cruller Lv15
 - take turns Lv?
 - Oak's third is Nidoran M, not the lab's Slowpoke, who never battles Lv?

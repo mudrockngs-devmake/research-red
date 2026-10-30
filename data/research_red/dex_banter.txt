@@ -747,7 +747,7 @@ P: Turn it down, Quilava. I'm already sweating.
 
 [Typhlosion]
 P: Typhlosion's heat can cause explosions.
-Ivy: Oak's old scrolls draw one with strange, dark flames. A mystery!
+Ivy: Oak's old sketches draw one with strange, dark flames. A mystery!
 
 [Totodile]
 Ivy: Totodile bites everything. Lovingly.
@@ -1159,5 +1159,5 @@ P: Ash swears he saw one on his very first day. Nobody believed him.
 
 [Celebi]
 Ivy: Celebi is said to travel through time.
-P: If it visits, I have questions about Oak's old scrolls.
+P: If it visits, I have questions about Oak's old sketches.
 Ivy: Get in line. Oak's first.

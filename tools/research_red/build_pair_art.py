@@ -44,8 +44,9 @@ THROW_LEAN = [(0, 0), (-4, 2), (-4, 1), (-4, 0), (-5, 2)]  # as build_back_pics.
 CROP = 0.60      # head to thighs: this much of the figure from the head down
 HEIGHT = 63      # that part fills the picture's height
 BEHIND = 2       # the partner stands this many pixels higher (further back)
+DOWN = 3         # both sit this much lower, so no head touches the top edge (owner 2026-10-30)
 FIT = 60         # overlap them until the pair is this wide
-DUO_FIT = 52     # your side stands closer, like Elm and Jenny (owner, #133)
+DUO_FIT = 59     # your side: wide enough to see Ivy's torso past you (owner picked 2026-10-30, was 52, #133)
 BIGGER = {"03_player_m": 0.56, "04_player_f": 0.63}  # crop per figure: smaller shows them bigger, larger smaller (owner, #133)
 
 
@@ -73,8 +74,8 @@ def build_pair(ref_dir, front, behind, lean=(0, 0), fit=FIT):
             for x, c in enumerate(row):
                 if c is not None and 0 <= oy + y < 64 and 0 <= ox + x < 64:
                     canvas[oy + y][ox + x] = c
-    paste(b, x0 + fw - overlap, 64 - HEIGHT - BEHIND)   # the partner first, so the front one covers them
-    paste(f, x0 + lean[0], 64 - HEIGHT + lean[1])
+    paste(b, x0 + fw - overlap, 64 - HEIGHT - BEHIND + DOWN)   # the partner first, so the front one covers them
+    paste(f, max(0, x0 + lean[0]), 64 - HEIGHT + DOWN + lean[1])
     return canvas
 
 

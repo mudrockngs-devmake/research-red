@@ -112,9 +112,9 @@ Their starters depend on yours:
 |---|---|---|
 | Cinnamon (Cyndaquil) | 15 | level-up moves |
 | Biscotti (Totodile) | 15 | level-up moves |
-| Pudding (Pidgeotto) | 14 | level-up moves |
-| Licorice (Ekans) | 14 | level-up moves |
-| Churro (Sandshrew) | 14 | level-up moves |
+| Pudding (Pidgeotto) | 15 | level-up moves |
+| Licorice (Ekans) | 15 | level-up moves |
+| Churro (Sandshrew) | 15 | level-up moves |
 | Cruller (Growlithe) | 15 | level-up moves |
 
 ### Camper Liam

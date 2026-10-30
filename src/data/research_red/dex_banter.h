@@ -559,7 +559,7 @@ static const u8 sDexBanter_Quilava_0[] = _("Ivy: Quilava's fire is hot enough\nt
 static const u8 sDexBanter_Quilava_1[] = _("{PLAYER}: Turn it down, Quilava.\nI'm already sweating.");
 static const u8 *const sDexBanter_Quilava[] = { sDexBanter_Quilava_0, sDexBanter_Quilava_1, NULL };
 static const u8 sDexBanter_Typhlosion_0[] = _("{PLAYER}: Typhlosion's heat can\ncause explosions.");
-static const u8 sDexBanter_Typhlosion_1[] = _("Ivy: Oak's old scrolls draw one\nwith strange, dark flames. A\lmystery!");
+static const u8 sDexBanter_Typhlosion_1[] = _("Ivy: Oak's old sketches draw one\nwith strange, dark flames. A\lmystery!");
 static const u8 *const sDexBanter_Typhlosion[] = { sDexBanter_Typhlosion_0, sDexBanter_Typhlosion_1, NULL };
 static const u8 sDexBanter_Totodile_0[] = _("Ivy: Totodile bites everything.\nLovingly.");
 static const u8 sDexBanter_Totodile_1[] = _("{PLAYER}: Lovingly? It's biting my\nsleeve.");
@@ -875,7 +875,7 @@ static const u8 sDexBanter_HoOh_0[] = _("Ivy: Legend says Ho-Oh leaves a\nrainbo
 static const u8 sDexBanter_HoOh_1[] = _("{PLAYER}: Ash swears he saw one on\nhis very first day. Nobody\lbelieved him.");
 static const u8 *const sDexBanter_HoOh[] = { sDexBanter_HoOh_0, sDexBanter_HoOh_1, NULL };
 static const u8 sDexBanter_Celebi_0[] = _("Ivy: Celebi is said to travel\nthrough time.");
-static const u8 sDexBanter_Celebi_1[] = _("{PLAYER}: If it visits, I have\nquestions about Oak's old scrolls.");
+static const u8 sDexBanter_Celebi_1[] = _("{PLAYER}: If it visits, I have\nquestions about Oak's old\lsketches.");
 static const u8 sDexBanter_Celebi_2[] = _("Ivy: Get in line. Oak's first.");
 static const u8 *const sDexBanter_Celebi[] = { sDexBanter_Celebi_0, sDexBanter_Celebi_1, sDexBanter_Celebi_2, NULL };
 

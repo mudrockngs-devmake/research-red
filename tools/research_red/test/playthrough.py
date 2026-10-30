@@ -486,6 +486,7 @@ def p11_candies():
     return lines + every_leg() + leg_end("p11_candies")
 
 
+BROCK_SEED = 20261030
 @leg("p11_brock", "Heal in Pewter, then the Gym: the Camper, then Brock")
 def p11():
     g = G()
@@ -494,6 +495,9 @@ def p11():
             + nav.go(g, (center, 7, 4), "MAP_PEWTER_CITY_GYM", (6, 6))
             + ["press UP 6", "wait 20", "press A", "wait 60"]
             + play_until("brock_battle", g.in_battle(), 3000, key="A", every=40)
+            # The bot's team here (no Rock counters) wins some and loses some: a fixed
+            # dice seed makes the run repeatable (owner 2026-10-30: team choice matters).
+            + [f"poke {g.sym('gRngValue'):#x}:4 {BROCK_SEED}"]
             + play_until("brock_over", g.field_free(), 60000, key="A", every=120)
             + check("badge", g.flag_set("FLAG_BADGE01_GET")) + leg_end("p11_brock"))
 

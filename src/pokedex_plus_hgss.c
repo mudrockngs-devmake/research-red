@@ -590,6 +590,7 @@ static void Task_LoadEvolutionScreen(u8 taskId);
 static void Task_HandleEvolutionScreenInput(u8 taskId);
 static void Task_SwitchScreensFromEvolutionScreen(u8 taskId);
 static void Task_ExitEvolutionScreen(u8 taskId);
+static bool32 RR_IsDexSpoilerSpecies(enum Species species);
 static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species, u8 depth, u32 *depth_i, u32 alreadyPrintedIcons[], u32 *icon_depth_i, u32 numLines);
 static u8 PrintPreEvolutions(u8 taskId, enum Species species);
 //Stat bars on scrolling screens
@@ -6784,6 +6785,7 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
     u32 times = 0;
     u32 arg; // shorthand for some of the more mathy evolutions
     const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+    struct Evolution visibleEvolutions[11]; // Research Red: see RR_IsDexSpoilerSpecies
 
     if (sPokedexView->sEvoScreenData.isMega)
         return;
@@ -6804,8 +6806,20 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
     }
 
     //Calculate number of possible direct evolutions (e.g. Eevee has 5 but torchic has 1)
+    // Research Red: only the ones that may show (RR_IsDexSpoilerSpecies)
     for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
-        times += 1;
+    {
+        if (!RR_IsDexSpoilerSpecies(evolutions[i].targetSpecies) && times < ARRAY_COUNT(visibleEvolutions))
+            visibleEvolutions[times++] = evolutions[i];
+    }
+    evolutions = visibleEvolutions;
+
+    if (times == 0 && depth == 0) // Research Red: all it had were hidden ones
+    {
+        StringExpandPlaceholders(gStringVar4, sText_EVO_NONE);
+        PrintInfoScreenTextSmall(gStringVar4, FONT_SMALL, base_x-7-7, base_y + base_y_offset*(*depth_i) + numLines);
+        return;
+    }
 
     if (times > 9 && species == SPECIES_MILCERY)
         times = 9;
@@ -7432,6 +7446,21 @@ static void Task_HandleFormsScreenInput(u8 taskId)
 
 #define FORM_SPECIES_END (0xffff)
 
+// Research Red: Hisuian and Mega forms stay a surprise (they spoil the story's
+// later turns, owner 2026-10-30): the Forms and Evolution pages leave them out,
+// along with the new species that only exist through Hisui. Alolan, Galarian
+// and the rest still show.
+static bool32 RR_IsDexSpoilerSpecies(enum Species species)
+{
+    return gSpeciesInfo[species].isMegaEvolution
+        || gSpeciesInfo[species].isHisuianForm
+        || species == SPECIES_KLEAVOR
+        || species == SPECIES_URSALUNA
+        || species == SPECIES_WYRDEER
+        || species == SPECIES_SNEASLER
+        || species == SPECIES_OVERQWIL;
+}
+
 static void PrintForms(u8 taskId, enum Species species)
 {
     u8 i;
@@ -7457,7 +7486,7 @@ static void PrintForms(u8 taskId, enum Species species)
         speciesForm = GetFormSpeciesId(species, i);
         if (speciesForm == FORM_SPECIES_END)
             break;
-        else if (speciesForm == species)
+        else if (speciesForm == species || RR_IsDexSpoilerSpecies(speciesForm)) // Research Red
             continue;
         else
         {
