@@ -88,6 +88,7 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 - [x] (in master, owner to check in the viewer) Oak's pager Pokémon (owner 2026-10-30): spread them out on the Pallet map and in the lab so they aren't lined up vertically, until a ranch tile area exists.
 - [x] (in master) Owner's reply 2026-10-30: female player a tiny bit smaller; lab Farfetch'd (11,6) and Machop (9,11) clear of the bookcases. Sharper faces tried and dropped: the stronger settings came out muddier and lost Ivy's hair colour (owner: not if splotchy). Jenny stays diagonal from Elm in Pallet: Elm steps onto her column in the grass scene, then she steps in behind him.
 - [ ] Gerald (#113, owner 2026-10-30): between the two fence posts, more Tentacool blocking the gap, text adjusted. Set to milestone v0.0.24 (Pallet and Daisy's house).
+- [ ] Owner's v0.0.22 spot-check notes (2026-10-30), read back before filing: `_emu/notes/v0.0.22_spotcheck_notes.txt` (12 items: swipe-in bug, first Oak fight half as long, Brock fight in battle, Oak and Ivy lines, skip-all safety, Tracy replaces the systems aide, start menu rework if it fits v0.0.23).
 
 ## Half-finished / open threads
 - Tool bug: `compare.py`'s automatic "vs v0.0.x" uses much older runs as the "before" for many scenes (26 of 34 flagged on 2026-10-30 were from v0.0.19), so it over-reports. Until fixed, use `compare.py RUN --against LAST_FULL_RUN`.
