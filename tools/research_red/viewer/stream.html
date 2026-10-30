@@ -97,17 +97,17 @@ main.nopins { grid-template-columns:minmax(0,1fr); } main.nopins aside { display
 #viewMenu label input { width:110px; }
 #latest { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px 10px 10px; margin-bottom:14px; }
 #latest .lbar { display:flex; flex-wrap:wrap; gap:4px 8px; align-items:center; margin-bottom:6px; }
-#latest h2 { margin:0; flex:none; }
+#latest b { flex:none; }
 #latestName { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:0 1 auto; font-size:12px; }
 #latestImg { display:block; width:100%; height:clamp(220px, 62vh, 1200px); object-fit:contain; image-rendering:pixelated; cursor:zoom-in; }
-/* Half a screen (or less): one column, in reading order. The question, then the
-   latest picture, then pins (if any), then the stream; nothing sticks but the header. */
+/* Half a screen (or less): one column, in reading order. The question, then pins
+   (if any), then the live stream with its latest picture; only the header sticks. */
 @media (max-width: 1100px) {
   main { display:flex; flex-direction:column; padding:10px 10px 30px; gap:10px; }
   section { display:contents; }
-  .ask, #latest { margin-bottom:0; }
-  .ask { order:1; } #latest { order:2; } aside { order:3; } #live, #history { order:4; }
-  .ask, #latest, aside, #live, #history { min-width:0; }
+  .ask { margin-bottom:0; }
+  .ask { order:1; } aside { order:2; } #live, #history { order:3; }
+  .ask, aside, #live, #history { min-width:0; }
   aside { position:static; max-height:none; overflow:visible; }
   aside:has(#pins > .empty) { display:none; }
   #pins { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:8px; }
@@ -157,13 +157,13 @@ img.soft { image-rendering:auto !important; }
       <textarea id="reply" placeholder="Type an answer here (optional), then Send. Or just answer in the terminal."></textarea>
       <div class="answer"><button class="on" id="sendReply">Send to Claude</button><span id="replyDone" class="status"></span></div>
     </div>
+    <div id="live">
+      <h2>Live stream</h2>
     <div id="latest">
-      <div class="lbar"><h2>Latest picture</h2><span id="latestName" class="status"></span><span class="grow"></span>
+      <div class="lbar"><b>Latest picture</b><span id="latestName" class="status"></span><span class="grow"></span>
         <button id="latestPin">Pin</button><button id="latestBig">Full window</button></div>
       <img id="latestImg" alt="" hidden><div class="empty" id="latestEmpty">The newest picture shows here, large.</div>
     </div>
-    <div id="live">
-      <h2>Live stream</h2>
       <div class="grid" id="grid"><div class="empty" id="emptyMsg">New pictures appear here as the tools and the tester make them.</div></div>
     </div>
     <div id="history" hidden>

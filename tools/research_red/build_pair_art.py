@@ -41,6 +41,8 @@ CROP = 0.60      # head to thighs: this much of the figure from the head down
 HEIGHT = 63      # that part fills the picture's height
 BEHIND = 2       # the partner stands this many pixels higher (further back)
 FIT = 60         # overlap them until the pair is this wide
+DUO_FIT = 52     # your side stands closer, like Elm and Jenny (owner, #133)
+BIGGER = {"03_player_m": 0.56}  # a smaller crop shows this figure a little bigger (owner, #133)
 
 
 def figure(ref_dir, ref):
@@ -48,17 +50,17 @@ def figure(ref_dir, ref):
     rows of RGB (or None for clear), cropped to what's drawn."""
     w, h, rows = B.load_ref(os.path.join(ref_dir, ref + ".png"))
     x0, y0, x1, y1, _, _ = B.figure_box(w, h, rows)
-    ch = int((y1 - y0) * CROP)
+    ch = int((y1 - y0) * BIGGER.get(ref, CROP))
     ow = max(1, round((x1 - x0) * HEIGHT / ch))
     img = B.outline(B.downscale(rows, w, h, x0, y0, x1 - x0, ch, ow, HEIGHT, keep_dark=B.KEEP_DARK), False)
     cols = [x for x in range(ow) if any(img[y][x] is not None for y in range(HEIGHT))]
     return [row[cols[0]:cols[-1] + 1] for row in img]
 
 
-def build_pair(ref_dir, front, behind, lean=(0, 0)):
+def build_pair(ref_dir, front, behind, lean=(0, 0), fit=FIT):
     f, b = figure(ref_dir, front), figure(ref_dir, behind)
     fw, bw = len(f[0]), len(b[0])
-    overlap = max(0, fw + bw - FIT)
+    overlap = max(0, fw + bw - fit)
     x0 = (64 - (fw + bw - overlap)) // 2
     canvas = [[None] * 64 for _ in range(64)]
 
@@ -83,7 +85,7 @@ def main():
         out = os.path.join(OUT_DIR, duo)
         os.makedirs(out, exist_ok=True)
         # one palette for all 5 frames: stack them, then save as one sheet
-        sheet = [row for lean in THROW_LEAN for row in build_pair(ref_dir, front, behind, lean)]
+        sheet = [row for lean in THROW_LEAN for row in build_pair(ref_dir, front, behind, lean, DUO_FIT)]
         B.save_indexed(os.path.join(out, "back.png"), sheet, 64, 64 * len(THROW_LEAN), 0, 0)
         print("built", duo)
 

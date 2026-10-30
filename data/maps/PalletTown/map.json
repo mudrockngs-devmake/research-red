@@ -135,8 +135,8 @@
       "local_id": "LOCALID_PALLET_OAK_TAUROS",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAUROS)",
-      "x": 21,
-      "y": 10,
+      "x": 19,
+      "y": 8,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -214,8 +214,8 @@
       "trainer_sight_or_berry_tree_id": "0",
       "flag": "0",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DIGLETT)",
-      "x": 21,
-      "y": 14,
+      "x": 19,
+      "y": 15,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "script": "RR_Ambient_EventScript_Diglett"
     }

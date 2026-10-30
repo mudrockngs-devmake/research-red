@@ -950,14 +950,14 @@ def sc_route2_wild():
 
 def sc_oak_mons():
     # #29: Oak's Ranch Pager Pokemon. Debug 2 leaves us at (15,8) in Pallet:
-    # east to the lab yard (Tauros 21,10 and Pidgeot 21,12), talk to Tauros,
+    # east to Tauros (19,8), past Pidgeot (21,12) and Diglett (19,15), talk to Tauros,
     # west along the shore (Lapras 7,17, Gyarados 10,17), into the lab
     # (Pikachu, Farfetch'd, Abra, Machop; hidden until the lab scene is over).
     # (waypoints, so the wandering Pallet woman can't throw the walk off)
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + walk_via("to_tauros", (15, 8), (20, 8), (20, 10))
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + walk_via("to_tauros", (15, 8), (18, 8))
             + ["wait 30", "shot o001", "press RIGHT", "wait 10", "press A", "wait 60", "shot o002", "press A", "wait 60",
                "shot o003", "mash B 120", "wait 30"]
-            + walk_via("to_shore", (20, 10), (20, 15), (9, 15)) + ["wait 30", "shot o004"]
+            + walk_via("to_shore", (18, 8), (18, 9), (20, 9), (20, 14), (9, 14), (9, 15)) + ["wait 30", "shot o004"]
             + walk_via("to_lab", (9, 15), (16, 15)) + step("UP", 2) + ready("lab") + ["shot o005"]
             + step("UP", 4) + ["wait 30", "shot o006"]
             + expect("MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB", story=3))

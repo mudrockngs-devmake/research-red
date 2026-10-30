@@ -266,6 +266,10 @@ static void PlayerPartnerHandleDrawTrainerPic(enum BattlerId battler)
         isFrontPic = TRUE;
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
+    // Research Red (#133): front pictures on your side get mirrored; Elm and Jenny's
+    // pair stays as drawn, the same way round as you and Ivy (the partner in front on the left)
+    if (trainerPicId == TRAINER_PIC_RR_ELM_JENNY)
+        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].hFlip = 0;
 }
 
 static void PlayerPartnerHandleTrainerSlide(enum BattlerId battler)

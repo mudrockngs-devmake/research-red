@@ -62,7 +62,7 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
   Milestones on GitHub (plan agreed 2026-10-29):
   - v0.0.21 Elm & Jenny on the road: built and spot-checked 2026-10-29.
   - **v0.0.22 the lab and scripted fights: built 2026-10-29, waiting for the owner's spot check.**
-  - Next: v0.0.23 day and night (#108) on its own; v0.0.24 Pallet and Daisy's house (full playthrough);
+  - Next: v0.0.23 day and night (#108), plus the battle pictures (#133) and the overworld sprite placeholders for testing (#125; needs a "testing" route in the art gate, drafts stay unapproved); v0.0.24 Pallet and Daisy's house (full playthrough);
     the lunch rework (#155, new travelling talk: draft lines for the owner first) gets its own build.
   - Later milestones (shifted one on 2026-10-29): v0.0.25 text and menus, v0.0.26 levels and balance, v0.0.27 moves
     and evolution, v0.0.28 battle pictures, v0.0.29 the lab's look (GitHub milestones).
@@ -77,6 +77,13 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 - The dex banter after a catch and with SELECT: B to skip, mashing A or B, Elm/Jenny family species, switching the look (debug 13).
 - Battles where you or Ivy speak (Route 22): pictures appearing and leaving.
 - The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
+
+## Asked for, not done yet
+- [x] Viewer (owner 2026-10-30): zoom in/out below 100%, fit to any window, pictures shrink dynamically, usual viewer features.
+- [x] Viewer (owner 2026-10-30): every picture Claude takes, tests or generates shows up in the live stream, efficiently.
+- [ ] v0.0.23 (owner 2026-10-30; planned, not built): use the updated overworld sprite placeholders for the player, Ivy, Jenny, Elm and Delia (#125), without a big break from the roadmap.
+- [x] (in master, owner to check in the viewer) Battle pictures (owner 2026-10-30, #133): player and Ivy closer together, like Elm and Jenny; in the front-view lab cutscenes Elm and Jenny's picture faces the same way as the player and Ivy's (not mirrored). Male player a little bigger.
+- [x] (in master, owner to check in the viewer) Oak's pager Pokémon (owner 2026-10-30): spread them out on the Pallet map and in the lab so they aren't lined up vertically, until a ranch tile area exists.
 
 ## Half-finished / open threads
 - Tool bug: `compare.py`'s automatic "vs v0.0.x" uses much older runs as the "before" for many scenes (26 of 34 flagged on 2026-10-30 were from v0.0.19), so it over-reports. Until fixed, use `compare.py RUN --against LAST_FULL_RUN`.
