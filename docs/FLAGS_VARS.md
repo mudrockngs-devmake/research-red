@@ -65,7 +65,7 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `FLAG_TEMP_3` | Oak's Lab | Oak's Ranch Pager Pokémon (Pikachu, Farfetch'd, Abra, Machop), hidden until the lab scene is over (story < 3) (`rr_ranch_pager.inc`) |
 | `FLAG_TEMP_4` | Oak's Lab | Daisy by Oak for the rematch, hidden until the Route 22 6v6 is done (story < 6) (`rr_rematch.inc`) |
 | `FLAG_TEMP_11`, `FLAG_TEMP_12` | Route 1 | Elm and Jenny at the north end (hidden unless the scene is pending) |
-| `FLAG_TEMP_13`-`FLAG_TEMP_15` | Viridian City | Lunch scene Elm, Jenny and Officer Jenny (shown by `addobject` during the scene) |
+| `FLAG_TEMP_13`-`FLAG_TEMP_16` | Viridian City | Lunch scene Elm, Jenny, Officer Jenny and Ivy (shown by `addobject` during the scene) |
 
 ## Custom trainers
 

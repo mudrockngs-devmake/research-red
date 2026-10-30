@@ -6,13 +6,15 @@
 @ Jenny runs into her cousin, the Viridian Officer Jenny, then a picnic.
 @ (Elm's Research Rules moved to Daisy's house, #44.) Afterwards the old man
 @ finishes his nap and the road north (Route 2, Viridian Forest) is open.
-@ Ivy stays a follower for the whole scene.
+@ Ivy is the scene's own object for the whole scene: she arrives on your tile,
+@ so she steps out beside you, and sits by you at the picnic.
 
 @ Viridian ON_TRANSITION: Elm and Jenny wait by the Pokemon Center while the
 @ lunch is pending; the cousin only appears during the scene
 RR_Lunch_OnTransition::
 	call_if_ne VAR_0x40FE, 6, RR_Lunch_EventScript_HideElmJenny
 	setflag FLAG_TEMP_15
+	setflag FLAG_TEMP_16 @ the scene's Ivy
 	return
 
 RR_Lunch_EventScript_HideElmJenny::
@@ -32,11 +34,22 @@ RR_Lunch_EventScript_Arrive::
 	waitmovement 0
 	goto RR_Lunch_EventScript_Main
 
+RR_Lunch_EventScript_PlaceIvy::
+	addobject LOCALID_VIRIDIAN_IVY
+	return
+
 RR_Lunch_EventScript_Start::
 	lockall
 	faceplayer
 RR_Lunch_EventScript_Main::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
+	@ Ivy is already following; she steps out from behind you to your left
+	rr_ivy_to_scene LOCALID_VIRIDIAN_IVY
+	call_if_eq VAR_RESULT, FALSE, RR_Lunch_EventScript_PlaceIvy
+	rr_walk_to LOCALID_VIRIDIAN_IVY, 28, 27
+	waitmovement LOCALID_VIRIDIAN_IVY
+	applymovement LOCALID_VIRIDIAN_IVY, Common_Movement_FaceUp
+	waitmovement LOCALID_VIRIDIAN_IVY
 	msgbox RR_Lunch_Text_Elm_ThereYouAre, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Jenny_Packed, MSGBOX_DEFAULT
 	closemessage
@@ -80,8 +93,11 @@ RR_Lunch_EventScript_Main::
 	applymovement LOCALID_VIRIDIAN_ELM, RR_Lunch_Movement_FaceRight
 	applymovement LOCALID_VIRIDIAN_JENNY, RR_Lunch_Movement_FaceRight
 	rr_walk_to LOCALID_PLAYER, 32, 26, FALSE, 0
+	rr_walk_to LOCALID_VIRIDIAN_IVY, 32, 25, FALSE, 0
+	waitmovement LOCALID_VIRIDIAN_IVY
 	waitmovement LOCALID_PLAYER
 	applymovement LOCALID_PLAYER, RR_Lunch_Movement_FaceLeft
+	applymovement LOCALID_VIRIDIAN_IVY, RR_Lunch_Movement_FaceLeft
 	waitmovement 0
 	msgbox RR_Lunch_Text_Picnic, MSGBOX_DEFAULT
 	closemessage
@@ -117,6 +133,8 @@ RR_Lunch_EventScript_Main::
 	msgbox RR_Lunch_Text_OldManAwake, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_Ivy_Forest, MSGBOX_DEFAULT
 	msgbox RR_Lunch_Text_P_Patience, MSGBOX_DEFAULT
+	closemessage
+	rr_ivy_follow LOCALID_VIRIDIAN_IVY
 	releaseall
 	end
 

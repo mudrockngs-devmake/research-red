@@ -192,6 +192,10 @@ Script `RR_Lunch_EventScript_Start`
 *hidden by `FLAG_TEMP_15`*
 (no talk script; used in cutscenes)
 
+### Viridian Ivy (Rr Ivy) at 28,27
+*hidden by `FLAG_TEMP_16`*
+(no talk script; used in cutscenes)
+
 ## Signs
 
 - at 23,1: Trainer Tips  Catch Pokémon and expand your collection.  The more you have, the easier it is to battle.

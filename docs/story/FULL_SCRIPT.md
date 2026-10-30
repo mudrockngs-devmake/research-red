@@ -1952,9 +1952,13 @@ Research Red: lunch in Viridian City (animatic 07)
 
 ### RR_Lunch_EventScript_Arrive
 
+### RR_Lunch_EventScript_PlaceIvy
+
 ### RR_Lunch_EventScript_Start
 
 ### RR_Lunch_EventScript_Main
+
+*[rr_ivy_to_scene LOCALID_VIRIDIAN_IVY]*
 
 > Elm: Lunch! Lunch! Jenny made
 > enough for a Snorlax.
@@ -2035,6 +2039,8 @@ Research Red: lunch in Viridian City (animatic 07)
 > Bring bug spray. And patience.
 
 > {PLAYER}: I am the patience.
+
+*[rr_ivy_follow LOCALID_VIRIDIAN_IVY]*
 
 
 ## 08 · rr_ivy
