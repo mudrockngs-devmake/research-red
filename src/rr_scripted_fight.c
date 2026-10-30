@@ -71,9 +71,9 @@ struct RRScriptedFight
     u8 lineCount;
 };
 
-// Fight 1: Elm and Jenny (Lv 6) beat Oak's leftover starters (Lv 5). Oak's
+// Fight 1: Elm and Jenny (Lv 12) beat Oak's leftover starters (Lv 5). Oak's
 // side only uses plain hits (no Growl: it made the fight drag), so Elm and
-// Jenny always win, in about four turns.
+// Jenny always win, in about two turns (owner 2026-10-30: half as long).
 static const struct RRFightTurn sTurns_LabStarters[] =
 {
     {{ [0] = RR_BEST, [2] = RR_BEST, [1] = RR_HIT, [3] = RR_HIT }},
@@ -81,13 +81,13 @@ static const struct RRFightTurn sTurns_LabStarters[] =
 
 static const struct RRFightLine sLines_LabStarters[] =
 {
-    { 0, FALSE, COMPOUND_STRING("Elm: Team Science, go! Jenny, the protocol!\pJenny: Step one: don't fall over, dear.") },
+    { 0, FALSE, COMPOUND_STRING("Elm: Team Evolution, go! Jenny, the protocol!\pJenny: Step one: don't fall over, dear.") },
+    { 0, FALSE, COMPOUND_STRING("Ivy: Look at Oak, sweetie. Beaming with energy, and it hasn't even started.") },
+    { 1, FALSE, COMPOUND_STRING("Elm: Jenny! We're winning! Against Oak!\pJenny: Don't jinx it, dear.") },
     { 1, TRUE,  COMPOUND_STRING("Oak: Ho ho! Good form! But can you keep it up?") },
-    { 2, FALSE, COMPOUND_STRING("Elm: Jenny! We're winning! Against Oak!\pJenny: Don't jinx it, dear.") },
-    { 3, FALSE, COMPOUND_STRING("Ivy: Oak looks happier losing than most people look winning.") },
 };
 
-// Fight 2, the gag: Elm and Jenny (Lv 7) against Oak's ranch Pidgeot and
+// Fight 2, the gag: Elm and Jenny (Lv 12) against Oak's ranch Pidgeot and
 // Tauros (Lv 50), who hit straight away and flatten them in one turn.
 static const struct RRFightTurn sTurns_LabRanch[] =
 {
@@ -97,7 +97,7 @@ static const struct RRFightTurn sTurns_LabRanch[] =
 static const struct RRFightLine sLines_LabRanch[] =
 {
     { 0, FALSE, COMPOUND_STRING("Elm: Level 50 is just a number, Jenny!\pJenny: It's a very large number, dear.") },
-    { 0, TRUE,  COMPOUND_STRING("Oak: Pidgeot! Tauros! Gently now, they're colleagues!") },
+    { 0, TRUE,  COMPOUND_STRING("Oak: Pidgeot! Tauros! Just like the old days! Hold nothing back!") },
 };
 
 static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
@@ -105,7 +105,7 @@ static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
     [RR_FIGHT_LAB_STARTERS] =
     {
         .intro = COMPOUND_STRING("Elm and Jenny challenge Prof. Oak!\p"),
-        .oakLevel = 5, .elmJennyLevel = 6, .oakIvs = 0, .elmJennyIvs = 31,
+        .oakLevel = 5, .elmJennyLevel = 12, .oakIvs = 0, .elmJennyIvs = 31,
         .oakSpecies = { SPECIES_NONE, SPECIES_NONE },
         .turns = sTurns_LabStarters, .turnCount = ARRAY_COUNT(sTurns_LabStarters),
         .lines = sLines_LabStarters, .lineCount = ARRAY_COUNT(sLines_LabStarters),
@@ -113,7 +113,7 @@ static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
     [RR_FIGHT_LAB_RANCH] =
     {
         .intro = COMPOUND_STRING("Elm and Jenny challenge Prof. Oak!\nAgain!\p"),
-        .oakLevel = 50, .elmJennyLevel = 7, .oakIvs = 20, .elmJennyIvs = 31,
+        .oakLevel = 50, .elmJennyLevel = 12, .oakIvs = 20, .elmJennyIvs = 31,
         .oakSpecies = { SPECIES_PIDGEOT, SPECIES_TAUROS },
         .turns = sTurns_LabRanch, .turnCount = ARRAY_COUNT(sTurns_LabRanch),
         .lines = sLines_LabRanch, .lineCount = ARRAY_COUNT(sLines_LabRanch),

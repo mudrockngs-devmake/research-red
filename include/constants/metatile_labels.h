@@ -404,4 +404,17 @@
 #define METATILE_General_RR_GrassEdge            0x16D
 #define METATILE_General_RR_PathEdge             0x16E
 
+// gTileset_Lab
+// Research Red: RR_LabTableMid (Art Kit tile_kit.py)
+#define METATILE_Lab_RR_LabTableMid_0 0x332
+#define METATILE_Lab_RR_LabTableMid_1 0x333
+#define METATILE_Lab_RR_LabTableMid_2 0x334
+// Research Red: RR_LabTableBed (Art Kit tile_kit.py)
+#define METATILE_Lab_RR_LabTableBed_0 0x335
+#define METATILE_Lab_RR_LabTableBed_1 0x336
+#define METATILE_Lab_RR_LabTableBed_2 0x337
+#define METATILE_Lab_RR_LabTableBed_3 0x338
+#define METATILE_Lab_RR_LabTableBed_4 0x339
+#define METATILE_Lab_RR_LabTableBed_5 0x33A
+
 #endif // GUARD_METATILE_LABELS_H

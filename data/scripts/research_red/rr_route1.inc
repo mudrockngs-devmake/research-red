@@ -756,7 +756,7 @@ RR_Route1_Text_ReactSandshrewB::
 
 RR_Route1_Text_ReactDiglettA::
     .string "Elm: A Diglett! What's under it?\n"
-    .string "Nobody knows! Science!$"
+    .string "Does it evolve? Nobody knows!$"
 
 RR_Route1_Text_ReactDiglettB::
     .string "Ivy: In Alola it has three\n"
@@ -795,7 +795,7 @@ RR_Route1_Text_Jealous2::
 
 RR_Route1_Text_Jealous3::
     .string "Elm: Three! Jenny, we have to\n"
-    .string "catch up! For science!$"
+    .string "catch up! Survival of the fittest!$"
 
 RR_Route1_Text_Jealous4::
     .string "Elm: Four?! A whole research\n"

@@ -399,6 +399,7 @@ RR_Lab_EventScript_BattleResult::
 	msgbox RR_Lab_Text_Jenny_Diagram, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Ivy_Morale, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_PureScience, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_TakesMeBack, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Elm_OnARoll, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_WatchOakAsk, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, RR_Lab_EventScript_ElmChallengesOak
@@ -413,6 +414,7 @@ RR_Lab_EventScript_AfterBattle::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_Elm_BestOfFive, MSGBOX_DEFAULT
 	msgbox RR_Lab_Text_Jenny_BestOfZero, MSGBOX_DEFAULT
+	msgbox RR_Lab_Text_Oak_TakesMeBack, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_OakOffer
 
 @ After a win and Oak's offer: Elm wants his turn against Oak (optional to watch)
@@ -424,9 +426,9 @@ RR_Lab_EventScript_WatchAfterWin::
 	msgbox RR_Lab_Text_Ivy_LetThemHaveIt, MSGBOX_DEFAULT
 	goto RR_Lab_EventScript_TableNap
 
-@ #105, after a loss and only if you want to watch: Elm and Jenny (Lv 6) take
+@ #105, after a loss and only if you want to watch: Elm and Jenny (Lv 12) take
 @ on Oak's two leftover starters (Lv 5) and win; Elm asks for another round
-@ and Oak's Lv 50 ranch Pokemon flatten them (Lv 7, optional to watch).
+@ and Oak's Lv 50 ranch Pokemon flatten them (optional to watch).
 @ Both are scripted fights (src/rr_scripted_fight.c): the same every time.
 RR_Lab_EventScript_ElmChallengesOak::
 	closemessage
@@ -529,6 +531,8 @@ RR_Lab_EventScript_TableNap::
 	call RR_Lab_EventScript_SlowpokeOnTable
 	setobjectxy LOCALID_LAB_SLOWPOKE, RR_LAB_NAP_X, RR_LAB_NAP_Y
 	turnobject LOCALID_LAB_SLOWPOKE, DIR_SOUTH
+	call RR_Lab_EventScript_PlaceBed
+	special DrawWholeMapView
 	fadescreen FADE_FROM_BLACK
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Lab_Text_SlowpokeTable, MSGBOX_DEFAULT
@@ -1003,7 +1007,7 @@ RR_Lab_Text_Jenny_Absolutely::
 
 RR_Lab_Text_Elm_TestNow::
     .string "Elm: A test, then! Right here!\n"
-    .string "Right now! For science!$"
+    .string "Right now! For evolution!$"
 
 RR_Lab_Text_Elm_Defeat::
     .string "Elm: That was the warm-up!\n"
@@ -1026,7 +1030,7 @@ RR_Lab_Text_Ivy_Morale::
 
 RR_Lab_Text_Elm_PureScience::
     .string "Elm: Nobody let anybody win!\n"
-    .string "That was pure science!$"
+    .string "That was natural selection!$"
 
 RR_Lab_Text_Elm_BestOfFive::
     .string "Elm: Again! Best of three!\n"
@@ -1154,7 +1158,7 @@ RR_Lab_Text_Oak_SeeMyAide::
 
 RR_Lab_Text_Elm_OurTurn::
     .string "Elm: Our turn! Professor, you're\n"
-    .string "all warmed up. Team Science next!$"
+    .string "warmed up. Team Evolution next!$"
 
 RR_Lab_Text_Oak_GoSeeDaisy::
     .string "Oak: Go and see Daisy. She has\n"
@@ -1342,6 +1346,20 @@ RR_Lab_EventScript_ScriptedFight::
 
 @ After the lab scene the lab's Slowpoke naps on the empty starter table
 @ (called from the lab's map script when the story is past the lab, too)
+@ #122: once Slowpoke has claimed the table, its little bed stands on it
+RR_Lab_OnLoad::
+	call_if_ge VAR_0x40FE, 3, RR_Lab_EventScript_PlaceBed
+	end
+
+RR_Lab_EventScript_PlaceBed::
+	setmetatile 8, 4, METATILE_Lab_RR_LabTableBed_0, TRUE
+	setmetatile 9, 4, METATILE_Lab_RR_LabTableBed_1, TRUE
+	setmetatile 10, 4, METATILE_Lab_RR_LabTableBed_2, TRUE
+	setmetatile 8, 5, METATILE_Lab_RR_LabTableBed_3, TRUE
+	setmetatile 9, 5, METATILE_Lab_RR_LabTableBed_4, TRUE
+	setmetatile 10, 5, METATILE_Lab_RR_LabTableBed_5, TRUE
+	return
+
 RR_Lab_EventScript_SlowpokeOnTable::
 	setobjectxyperm LOCALID_LAB_SLOWPOKE, RR_LAB_NAP_X, RR_LAB_NAP_Y
 	setobjectmovementtype LOCALID_LAB_SLOWPOKE, MOVEMENT_TYPE_FACE_DOWN
@@ -1430,7 +1448,8 @@ RR_Lab_Text_Oak_KeepStarters::
 RR_Lab_Text_SlowpokeTable::
     .string "The lab's Slowpoke shuffles over\n"
     .string "to the empty table… very slowly.\p"
-    .string "It climbs up and falls asleep.$"
+    .string "It climbs into its new bed and\n"
+    .string "falls asleep.$"
 
 RR_Lab_Text_Oak_GoodTable::
     .string "Oak: Ho ho! Well, it is a very\n"
@@ -1485,8 +1504,8 @@ RR_Lab_Text_Slowpoke::
 
 RR_Lab_Text_SlowpokeNap::
     .string "Slowpoke: …Zzz… …Slow?\p"
-    .string "It's fast asleep on the starter\n"
-    .string "table. Prof. Oak doesn't mind.$"
+    .string "It's fast asleep in the little bed\n"
+    .string "Prof. Oak and Daisy made for it.$"
 
 RR_Lab_Text_Muffin::
     .string "Muffin: Rat! Tat tat!\p"
@@ -1546,6 +1565,13 @@ RR_Lab_Text_Ivy_OakGlow::
     .string "glowing.$"
 
 @ --- #105 lab order (drafts for the owner to rework) ---
+@ Win or lose against Elm and Jenny: this is what sets off all the options
+RR_Lab_Text_Oak_TakesMeBack::
+    .string "Oak: Ho ho! Watching you all\n"
+    .string "battle takes me back.\p"
+    .string "I feel a youthful energy I haven't\n"
+    .string "felt in years!$"
+
 RR_Lab_Text_WatchOakAsk::
     .string "Watch Elm and Jenny take on\n"
     .string "Prof. Oak?$"

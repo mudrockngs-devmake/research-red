@@ -230,7 +230,7 @@ static const struct CallStep sRulesCallScript[] =
     DO(STEP_WAIT, 20),
     {STEP_LINE, 0, (const u8[])_("Elm: Hello? Oh! {PLAYER}! Ivy!\nHi, hi!\p")},
     {STEP_LINE, 0, (const u8[])_("Ivy: Hi, Elm. We changed one of\nthe Research Rules.\p")},
-    {STEP_LINE, 0, (const u8[])_("Elm: A rule change! Bold! Daring!\nFor science!\p")},
+    {STEP_LINE, 0, (const u8[])_("Elm: A rule change! Bold! Daring!\nIt's practically evolution!\p")},
     {STEP_LINE, 0, (const u8[])_("Jenny: Noted, dated and initialed.\nIn my professional opinion, legal.\p")},
     {STEP_LINE, 0, (const u8[])_("Jenny: The bet still stands, dear.\nLosers cook dinner at Delia's.\p")},
     {STEP_LINE, 0, (const u8[])_("Elm: Dessert included!\nBye-bye!\p")},

@@ -266,6 +266,25 @@ def sc_lab_loss():
             + expect(story=3, party=2) + table_nap())
 
 
+def sc_lab_skip_all():
+    # #105: lose the lab battle, then B says No to every optional fight (watching
+    # Elm and Jenny, battling Oak): nothing is owed, the story goes on as normal,
+    # and Oak's offer still waits for you afterwards
+    g = T.G
+    party, size = g.sym("gPlayerParty"), g.const("sizeof(struct Pokemon)")
+    hp = g.const("offsetof(struct Pokemon, hp)")
+    low_hp = [f"poke {party + i * size + hp:#x}:2 1" for i in range(2)]
+    off = g.in_battle().replace(" == ", " != ")
+    return (["load @bedroom"] + debug_script(SCRIPT_LAB) + step("UP")
+            + play_until("two_mons", g.party_count(2), 40000, key="A", every=200) + low_hp
+            + play_until("lab_battle", g.in_battle(), 20000, key="A", every=120)
+            + play_until("lab_lost", off, 20000, key="A", every=120)
+            + play_until("all_skipped", scene_end(3), 30000, key="B", every=60)
+            + expect(story=3, party=2) + table_nap()
+            + check("no_battle_after", off)
+            + check("offer_waits", g.flag_set("FLAG_RR_OAK_FIRST_FIGHT").replace(" & ", " !& ")))
+
+
 def sc_daisy():
     # Debug 2 leaves us below Daisy's door (story 3): step in, the scene plays
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + ["shot s000"] + step("UP")
@@ -1141,6 +1160,7 @@ SCENARIOS = {
     "starter_menu": (sc_starter_menu, "Lab: the starter list on the left, no portrait over it (#76)"),
     "lab": (sc_lab, "Lab scene won (test mode): Oak asks right away, Yes, you battle him; Slowpoke naps on the table (#105, #86)"),
     "lab_loss": (sc_lab_loss, "Lab scene lost on purpose: Elm and Jenny gloat; Yes to watching them vs Oak, the gag and your Oak fight; Slowpoke naps on the table (#105)"),
+    "lab_skip_all": (sc_lab_skip_all, "Lab scene lost, No to every optional fight: nothing owed, the story goes on, Oak's offer waits (#105)"),
     "lab_skip": (sc_lab_skip, "Lab scene won, No to Oak's fight; then talk to Oak: the offer waits until Route 22, Yes (#105)"),
     "daisy": (sc_daisy, "Daisy's house: Muffin, the Town Map, the bet"),
     "route1": (sc_route1, "Route 1: Elm and Jenny, the Mewtwo fly-by"),

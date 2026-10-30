@@ -267,9 +267,14 @@ static void PlayerPartnerHandleDrawTrainerPic(enum BattlerId battler)
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, isFrontPic, xPos, yPos, -1);
     // Research Red (#133): front pictures on your side get mirrored; Elm and Jenny's
-    // pair stays as drawn, the same way round as you and Ivy (the partner in front on the left)
+    // pair stays as drawn, the same way round as you and Ivy (the partner in front on the left).
+    // Research Red (#157): no y2 either, or the picture slides in low and then rises from
+    // the bottom of the screen; it slides in sideways at its final height like other battles
     if (trainerPicId == TRAINER_PIC_RR_ELM_JENNY)
+    {
         gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].hFlip = 0;
+        gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].y2 = 0;
+    }
 }
 
 static void PlayerPartnerHandleTrainerSlide(enum BattlerId battler)

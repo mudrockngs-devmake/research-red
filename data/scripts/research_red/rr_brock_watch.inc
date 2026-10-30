@@ -224,7 +224,7 @@ RR_BrockWatch_Text_Brock_Welcome:
 	.string "Gym accepts your challenge.$"
 
 RR_BrockWatch_Text_Elm_Ready:
-	.string "Elm: For science! And for a badge!\n"
+	.string "Elm: For evolution! For a badge!\n"
 	.string "Mostly the badge!$"
 
 RR_BrockWatch_Text_Elm_Lecture:
@@ -301,7 +301,7 @@ RR_BrockWatch_Text_Jenny_Command3:
 	.string "Jenny: Dear. Command.$"
 
 RR_BrockWatch_Text_Elm_ForScience:
-	.string "Elm: Right! For science!$"
+	.string "Elm: Right! For evolution!$"
 
 RR_BrockWatch_Text_Bind:
 	.string "Onix wraps around Cruller.\n"
