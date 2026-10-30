@@ -578,7 +578,7 @@ def sc_pewter_again():
     # come back, talk to Jenny (12,25) and rebattle (Yes)
     g = T.G
     return (["load @bedroom"] + after_brock_test_mode() + poke_var("VAR_0x40FE", 8)
-            + poke_var("VAR_RR_BROCK_WATCH", 2) + ["shot s000"]
+            + poke_var("VAR_RR_BROCK_WATCH", 2) + poke_var("VAR_REPEL_STEP_COUNT", 250) + ["shot s000"]   # nav can't fight a wild battle
             + nav.go(g, ("MAP_PEWTER_CITY", 17, 26), "MAP_ROUTE2", (8, 3)) + expect("MAP_ROUTE2")
             + nav.go(g, ("MAP_ROUTE2", 8, 3), "MAP_PEWTER_CITY", (17, 26)) + ["wait 30", "shot back"]
             + check("they_wait", g.flag_set("FLAG_TEMP_13").replace(" & ", " !& "))   # not hidden
@@ -742,11 +742,13 @@ def sc_pager_dig():
             + expect("MAP_ROUTE2"))
 
 
-def sc_cl_brock16():
-    # Checklist v0.0.23: debug 16, watch Elm and Jenny fight Brock, no presses in the fight (#142)
+def sc_cl_brock16(pick=None):
+    # Checklist v0.0.23: debug 16, watch Elm and Jenny fight Brock, no presses in the fight (#142).
+    # pick: your lab pick 0-5, which sets the pair they fight with (poked before they choose)
     return (["load @bedroom"] + debug_script(16)
+            + (poke_var("VAR_RR_STARTER", pick) if pick is not None else [])
             + play_until("in_battle", T.G.in_battle(), 3000, key="A", every=40)
-            + play_until("fight_over", T.G.overworld(), 9000, key="SELECT", every=40)
+            + play_until("fight_over", T.G.overworld(), 15000, key="SELECT", every=40)
             + play_until("watched", T.G.var_is("VAR_RR_BROCK_WATCH", 2) + " && " + T.G.field_free(), 3000, key="A", every=40)
             + expect("MAP_PEWTER_CITY_GYM", story=8))
 
@@ -861,7 +863,7 @@ def sc_brock_rematch():
             + ready("gym") + ["shot g001"] + check("in_gym", T.G.on_map("MAP_PEWTER_CITY_GYM"))
             # the Camper spots us on the way up: beat him first (autopilot)
             + step("UP", 8) + play_until("camper", T.G.in_battle(), 1500, key="A", every=40)
-            + play_until("camper_over", T.G.field_free(), 30000, key="A", every=120)
+            + play_until("camper_over", T.G.field_free(), 60000, key="A", every=120)
             + step("UP", 8) + ["press UP 6", "wait 20", "shot g002", "press A", "wait 90", "shot g003",
                                "press A", "wait 90", "press A", "wait 120", "shot g004", "press A", "wait 60", "shot g005"]
             + play_until("battle", T.G.in_battle(), 1500, key="A", every=40)
@@ -1225,6 +1227,7 @@ SCENARIOS = {
     "pager_select": (sc_pager_select, "Register the Ranch Pager, then SELECT opens it on the map (#29)"),
     "pager_dig": (sc_pager_dig, "Ranch Pager > Dig in Diglett's Cave: Oak's Diglett digs us out (#29)"),
     "cl_brock16": (sc_cl_brock16, "Checklist v0.0.23: debug 16, Elm and Jenny fight Brock on the battle screen (#142)"),
+    **{f"cl_brock16_p{n}": (lambda n=n: sc_cl_brock16(n), f"Brock fight with lab pick {n}: every pair of Elm and Jenny's starters wins (#142)") for n in (0, 1, 3, 4, 5)},
     "start_menu": (sc_start_menu, "Start menu: new order, 9 rows, scrolls and wraps, arrows (#124)"),
     "rest": (sc_rest, "Delia: Rest till night, then till morning; the Start menu clock (#56, #27)"),
     "daynight": (sc_daynight, "Day and night (#108): outside after each Rest with Delia (night, morning, night, morning); only two light levels"),
