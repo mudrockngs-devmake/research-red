@@ -262,8 +262,12 @@ A small local page (only this computer can reach it).
 - **Live:** every new picture streams in: art tools, the newest test run,
   samples, mockups, what's-new reports, cast art and Claude's scratch folders
   (smoke tests start the server quietly, with no pop-up). Pause, filter, click a
-  picture to view it, Pin it there to keep it beside the stream. The sliders set
-  picture size and the pinned column; Hide pinned gives the pictures the room.
+  picture to view it, Pin it there to keep it beside the stream. The View menu holds
+  the sizes, Hide pinned, Hide latest, colours and sound.
+- **Latest picture:** one large window under the question, always the newest picture in
+  the stream (follows the filter, holds still on Pause, skips ahead during fast runs).
+- **Half a screen:** at 1100 pixels wide or less the page is one column: question, latest
+  picture, pins (only if there are any), stream. Side by side stacks so each picture gets the width.
 - **Claude asks:** `show` puts pictures in a panel at the top.
   - Zoom: − + go from 10% to 1600% (whole sizes above 100%, so pixels stay even), Fit
     fills the room at any window size, 100% is real size, Ctrl + wheel works too.

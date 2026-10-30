@@ -33,7 +33,6 @@ button:focus-visible, select:focus-visible { outline:2px solid var(--accent); ou
 .status { color:var(--muted); font-size:13px; }
 .grow { flex:1; }
 main { display:grid; grid-template-columns:minmax(0,1fr) var(--side,380px); gap:14px; padding:14px 16px 40px; }
-@media (max-width: 900px) { main { grid-template-columns:1fr; } }
 section h2, aside h2 { font-size:14px; margin:0 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
 .ask { background:var(--card); border:2px solid var(--accent); border-radius:10px; padding:12px; margin-bottom:14px; display:none; }
 .ask.show { display:block; }
@@ -90,24 +89,54 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
 #big img[data-bg="black"] { background:#000; } #big img[data-bg="grey"] { background:#808080; } #big img[data-bg="white"] { background:#fff; }
 #big .hint { color:#99a; font-size:12px; text-align:center; padding:4px 8px; }
 main.nopins { grid-template-columns:minmax(0,1fr); } main.nopins aside { display:none; }
+#viewMenu { position:relative; }
+#viewMenu summary { list-style:none; cursor:pointer; padding:5px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); }
+#viewMenu summary::after { content:" ▾"; } #viewMenu summary::-webkit-details-marker { display:none; }
+#viewMenu .menu { position:absolute; top:calc(100% + 6px); left:0; z-index:6; width:260px; max-width:calc(100vw - 32px); display:flex; flex-direction:column; gap:8px; padding:10px; background:var(--card); border:1px solid var(--line); border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,.25); }
+#viewMenu label { display:flex; justify-content:space-between; align-items:center; gap:8px; color:var(--muted); font-size:13px; }
+#viewMenu label input { width:110px; }
+#latest { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px 10px 10px; margin-bottom:14px; }
+#latest .lbar { display:flex; flex-wrap:wrap; gap:4px 8px; align-items:center; margin-bottom:6px; }
+#latest h2 { margin:0; flex:none; }
+#latestName { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:0 1 auto; font-size:12px; }
+#latestImg { display:block; width:100%; height:clamp(220px, 62vh, 1200px); object-fit:contain; image-rendering:pixelated; cursor:zoom-in; }
+/* Half a screen (or less): one column, in reading order. The question, then the
+   latest picture, then pins (if any), then the stream; nothing sticks but the header. */
+@media (max-width: 1100px) {
+  main { display:flex; flex-direction:column; padding:10px 10px 30px; gap:10px; }
+  section { display:contents; }
+  .ask, #latest { margin-bottom:0; }
+  .ask { order:1; } #latest { order:2; } aside { order:3; } #live, #history { order:4; }
+  .ask, #latest, aside, #live, #history { min-width:0; }
+  aside { position:static; max-height:none; overflow:visible; }
+  aside:has(#pins > .empty) { display:none; }
+  #pins { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:8px; }
+  .pin { margin-bottom:0; }
+  .imgbox { flex-direction:column; } /* side by side stacks, so each picture gets the width */
+  header { padding:8px 10px; }
+  #latestImg { height:clamp(200px, 55vh, 1000px); }
+}
+@media (max-width: 620px) { .wide { display:none; } #status { display:none; } }
 /* Shrunk pictures blend pixels (pixelated would drop some); 100% and up stay crisp */
 img.soft { image-rendering:auto !important; }
 </style>
 </head>
 <body>
 <header>
-  <h1><span class="ball"></span>Research Red Viewer</h1>
+  <h1><span class="ball"></span><span class="wide">Research Red Viewer</span></h1>
   <span><button id="tabLive" class="on">Live</button> <button id="tabHistory">History</button></span>
   <button id="pause">Pause</button>
   <select id="filter" title="Which pictures the stream shows"><option value="">Everything</option><option value="art">Art tools</option><option value="test-runs">Tests</option><option value="samples|mockups|whats-new|scratch">Claude's other pictures</option></select>
   <button id="clear">Clear</button>
-  <span class="sizes" title="How big the pictures in the stream and the pinned column are">Picture size
-    <input type="range" id="tileSize" min="60" max="640" step="20" value="180">
-    Pinned <input type="range" id="sideSize" min="200" max="900" step="20" value="380"></span>
-  <button id="pinsBtn" title="Give the whole window to the pictures">Hide pinned</button>
+  <details id="viewMenu"><summary>View</summary><div class="menu">
+    <button id="latestBtn">Hide latest picture</button>
+    <button id="pinsBtn" title="Give the whole window to the pictures">Hide pinned</button>
+    <label>Stream pictures <input type="range" id="tileSize" min="60" max="640" step="20" value="180"></label>
+    <label>Pinned column <input type="range" id="sideSize" min="200" max="900" step="20" value="380"></label>
+    <label>Colours <select id="theme"><option value="dive">Dive Ball</option><option value="quick">Quick Ball</option><option value="poke">Poké Ball</option></select></label>
+    <button id="sound" title="A soft sound when Claude asks something">Sound: off</button>
+  </div></details>
   <span class="grow"></span>
-  <select id="theme" title="Colours"><option value="dive">Dive Ball</option><option value="quick">Quick Ball</option><option value="poke">Poké Ball</option></select>
-  <button id="sound" title="A soft sound when Claude asks something">Sound: off</button>
   <span class="status" id="status">connecting...</span>
 </header>
 <main>
@@ -127,6 +156,11 @@ img.soft { image-rendering:auto !important; }
       <div class="answer" id="answerBtns"></div>
       <textarea id="reply" placeholder="Type an answer here (optional), then Send. Or just answer in the terminal."></textarea>
       <div class="answer"><button class="on" id="sendReply">Send to Claude</button><span id="replyDone" class="status"></span></div>
+    </div>
+    <div id="latest">
+      <div class="lbar"><h2>Latest picture</h2><span id="latestName" class="status"></span><span class="grow"></span>
+        <button id="latestPin">Pin</button><button id="latestBig">Full window</button></div>
+      <img id="latestImg" alt="" hidden><div class="empty" id="latestEmpty">The newest picture shows here, large.</div>
     </div>
     <div id="live">
       <h2>Live stream</h2>
@@ -187,6 +221,10 @@ function chime() {  // two soft, quiet notes
 });
 
 let pinsHidden = store.get('pinsHidden') === '1';
+let latestOff = store.get('latestOff') === '1';
+const showLatestPanel = () => { $('latest').hidden = latestOff || !$('history').hidden; $('latestBtn').textContent = latestOff ? 'Show latest picture' : 'Hide latest picture'; };
+$('latestBtn').onclick = () => { latestOff = !latestOff; store.set('latestOff', latestOff ? '1' : '0'); showLatestPanel(); if (!latestOff) pickLatest(); };
+document.addEventListener('click', e => { const m = $('viewMenu'); if (m.open && !m.contains(e.target)) m.open = false; });
 const showPins = () => { document.querySelector('main').classList.toggle('nopins', pinsHidden); $('pinsBtn').textContent = pinsHidden ? 'Show pinned' : 'Hide pinned'; };
 $('pinsBtn').onclick = () => { pinsHidden = !pinsHidden; store.set('pinsHidden', pinsHidden ? '1' : '0'); showPins(); };
 showPins();
@@ -195,6 +233,7 @@ showPins();
 function tab(name) {
   $('live').hidden = name !== 'live'; $('history').hidden = name !== 'history';
   $('tabLive').classList.toggle('on', name === 'live'); $('tabHistory').classList.toggle('on', name === 'history');
+  showLatestPanel();
   if (name === 'history') loadHistory();
 }
 $('tabLive').onclick = () => tab('live');
@@ -233,6 +272,7 @@ function applyZoom() {
   let w = 0, h = 0, room = box.clientWidth - 8;
   if (mode === 'frames' && ask.frames) { w = ask.frames.w; h = ask.frames.h; }
   else if (mode === 'ingame') { w = 240; h = 160; room -= 252; }
+  else if (mode === 'side' && window.innerWidth <= 1100) { w = Math.max(0, ...imgs.map(i => i.naturalWidth)); h = Math.max(0, ...imgs.map(i => i.naturalHeight)); }
   else if (mode === 'side') { w = imgs.reduce((a, i) => a + i.naturalWidth, 0); h = Math.max(0, ...imgs.map(i => i.naturalHeight)); room -= 12 * (imgs.length - 1); }
   else if (imgs.length) { w = Math.max(...imgs.map(i => i.naturalWidth)); h = Math.max(...imgs.map(i => i.naturalHeight)); }
   if (!w) return;
@@ -481,7 +521,7 @@ stage.onpointerup = () => { drag = null; };
 let since = Date.now() / 1000 - 600, paused = false, seen = new Set(), lastTime = null;
 const grid = $('grid'), pins = $('pins');
 $('pause').onclick = e => { paused = !paused; e.target.classList.toggle('on', paused); e.target.textContent = paused ? 'Paused' : 'Pause'; };
-$('clear').onclick = () => { grid.innerHTML = ''; seen.clear(); };
+$('clear').onclick = () => { grid.innerHTML = ''; seen.clear(); pickLatest(); };
 function pin(src, name) {
   if (pins.querySelector('.empty')) pins.innerHTML = '';
   if ([...pins.children].some(p => p.dataset.src === src)) return;
@@ -494,7 +534,41 @@ function pin(src, name) {
 }
 // The filter hides and shows pictures already in the stream, not just new ones
 const filterMatch = n => { const f = $('filter').value; return !f || f.split('|').some(w => n.startsWith(w) || (w === 'art' && n.startsWith('art/'))); };
-$('filter').onchange = () => grid.querySelectorAll('.tile').forEach(t => { t.hidden = !filterMatch(t.dataset.name); });
+$('filter').onchange = () => { grid.querySelectorAll('.tile').forEach(t => { t.hidden = !filterMatch(t.dataset.name); }); pickLatest(); };
+// ---- the latest picture, large. It loads off to the side and swaps when ready, so
+// no flicker; during a fast test run it skips ahead instead of queueing every shot.
+let wantLatest = null, loadingLatest = false, latestNow = null;
+function showLatest(src, name) {
+  wantLatest = { src, name };
+  if (latestOff || loadingLatest) return;
+  loadingLatest = true;
+  const n = wantLatest, pre = new Image(); wantLatest = null;
+  const done = ok => {
+    if (ok) {
+      const i = $('latestImg');
+      i.src = n.src; i.hidden = false; $('latestEmpty').hidden = true; softCheck(i);
+      $('latestName').textContent = n.name; $('latestName').title = n.name; latestNow = n;
+    }
+    loadingLatest = false;
+    if (wantLatest) showLatest(wantLatest.src, wantLatest.name);
+  };
+  pre.onload = () => done(true); pre.onerror = () => done(false); pre.src = n.src;
+}
+softImg($('latestImg'));
+// The newest picture still showing in the stream (after a filter, Clear, or switching back on)
+function pickLatest() {
+  const t = grid.querySelector('.tile:not([hidden])');
+  if (t) showLatest(t.dataset.src, t.dataset.name);
+  else { latestNow = null; wantLatest = null; $('latestImg').hidden = true; $('latestEmpty').hidden = false; $('latestName').textContent = ''; }
+}
+function openFromStream(src, name) {
+  const all = [...grid.querySelectorAll('.tile:not([hidden])')].map(x => ({ src: x.dataset.src, name: x.dataset.name }));
+  const at = all.findIndex(a => a.src === src);
+  if (at < 0) openBig(src, name); else openBig(src, name, all, at);
+}
+$('latestImg').onclick = $('latestBig').onclick = () => { if (latestNow) openFromStream(latestNow.src, latestNow.name); };
+$('latestPin').onclick = () => { if (latestNow) { pin(latestNow.src, latestNow.name); if (pinsHidden) $('pinsBtn').click(); } };
+showLatestPanel();
 function addTile(im) {
   if (seen.has(im.path + im.mtime)) return;
   seen.add(im.path + im.mtime);
@@ -503,8 +577,9 @@ function addTile(im) {
   i.loading = 'lazy'; i.alt = ''; i.src = url(im.path) + '&t=' + im.mtime; softImg(i);
   t.dataset.src = i.src; t.dataset.name = im.name; t.hidden = !filterMatch(im.name);
   t.append(i, el('div', 'n', im.name)); t.title = im.name;
-  t.onclick = () => { const all = [...grid.querySelectorAll('.tile:not([hidden])')]; openBig(t.dataset.src, im.name, all.map(x => ({ src: x.dataset.src, name: x.dataset.name })), all.indexOf(t)); };
+  t.onclick = () => openFromStream(t.dataset.src, im.name);
   grid.prepend(t);
+  if (!t.hidden) showLatest(t.dataset.src, im.name);
   setTimeout(() => t.classList.remove('new'), 1500);
   while (grid.children.length > 150) grid.lastChild.remove();
 }
