@@ -24,6 +24,7 @@ One big build, just this once: day and night, new battle pictures and overworld 
 - Changed: the Pokédex's Forms and Evolution pages keep Mega and Hisuian forms a surprise for now.
 - Fixed: heads no longer get cut off in the pair battle pictures, and you can see more of Ivy beside you.
 - New test: Officer Jenny's police sprite at lunch.
+- New (test builds): debug jump 17, your first visit to the Pewter Gym with Brock not beaten yet.
 - **Save:** old saves work (use the debug jumps this round; a new game shows the changes best).
 
 ## v0.0.22

@@ -787,6 +787,14 @@ def sc_gym_room():
             + play_until("party_closed", T.G.field_free(), 1500, key="B", every=30))
 
 
+def sc_gym_jump():
+    # Debug 17: the door of the Gym on a first visit, the team at Lv 14, no badge
+    return (["load @bedroom"] + debug_script(17) + ["mash B 40", "wait 30", "shot g001"]
+            + check("in_gym", T.G.on_map("MAP_PEWTER_CITY_GYM"))
+            + check("no_badge", T.G.flag_clear("FLAG_BADGE01_GET"))
+            + step("UP", 4) + ["wait 30", "shot g002"])
+
+
 def sc_gym_first():
     # Your first time in the Gym: Elm and Jenny by the door, the nine kids, Liam's
     # lines, then every speaker's portrait in Brock's talk and after the win
@@ -1280,6 +1288,7 @@ SCENARIOS = {
     "cl_brock16": (sc_cl_brock16, "Checklist v0.0.23: debug 16, Elm and Jenny fight Brock on the battle screen (#142)"),
     **{f"cl_brock16_p{n}": (lambda n=n: sc_cl_brock16(n), f"Brock fight with lab pick {n}: every pair of Elm and Jenny's starters wins (#142)") for n in (0, 1, 3, 4, 5)},
     "gym_room": (sc_gym_room, "Pewter Gym with room in the party: Brock's Geodude joins your team"),
+    "gym_jump": (sc_gym_jump, "Debug jump 17: the Pewter Gym door on a first visit, Brock not beaten yet"),
     "gym_first": (sc_gym_first, "Pewter Gym, first visit: Elm and Jenny by the door, nine kids behind Brock, portraits and stew talk"),
     "start_menu": (sc_start_menu, "Start menu: new order, 9 rows, scrolls and wraps, arrows (#124)"),
     "rest": (sc_rest, "Delia: Rest till night, then till morning; the Start menu clock (#56, #27)"),

@@ -66,5 +66,7 @@ Start > DEBUG > Scripts:
 | 13 | Banter look | Switches the banter between portraits and full-body pictures |
 | 14 | Your battle pic | Switches your battle picture between side by side and turned to each other |
 | 15 | Pewter rebattle | Like 10, with Elm and Jenny's Pewter rematch done: leave Pewter and come back, they wait by the Center (#143) |
+| 16 | Watch Brock | Elm and Jenny fight Brock on the battle screen, from the Gym door (#142) |
+| 17 | Gym first visit | At the Gym door, Brock not beaten yet, Lv 14 team: the crowd, his fight, the Alolan Geodude (#142) |
 
 Skips 4 and 6 give a Lv 12 team.

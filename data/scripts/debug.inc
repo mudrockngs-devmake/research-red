@@ -354,6 +354,19 @@ Debug_EventScript_Script_16::
 	release
 	end
 
+@ Debug 17 (#142): your first visit to the Gym, from the door: Brock not
+@ beaten yet, the crowd is there, and he gives you the Alolan Geodude
+Debug_EventScript_Script_17::
+	call RR_Debug_StateAfterBrock
+	setvar VAR_0x40FE, 7
+	clearflag FLAG_BADGE01_GET
+	clearflag FLAG_DEFEATED_BROCK
+	rr_ivy_create_follower
+	warp MAP_PEWTER_CITY_GYM, 6, 13
+	waitstate
+	release
+	end
+
 @ Debug 10 and 15: Brock beaten, a Lv 14 team, in Pewter
 RR_Debug_StateAfterBrock::
 	call RR_Debug_StateGrassDone
