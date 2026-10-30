@@ -503,15 +503,16 @@ def sc_dex_numbers():
 
 
 def sc_dex_forms():
-    # Owner 2026-10-30: Mega and Hisuian forms stay hidden, Alolan and Galarian
-    # show. Each entry: the pages in turn, then START for Forms. Charizard (no
-    # Megas), Geodude (Alolan), Quilava (no Hisuian evolution), Typhlosion (no
-    # Hisuian form), Stantler (its only evolution is hidden: "no evolutions").
+    # Owner 2026-10-30: Forms leaves out Mega and Hisuian, Alolan and Galarian show;
+    # Evolution blots out Hisuian rows. Each entry: the pages in turn, then START for
+    # Forms. Charizard (no Megas), Geodude (Alolan), Quilava (Hisuian row blotted),
+    # Typhlosion (no Hisuian form), Stantler (its only evolution blotted). On Stantler
+    # A must not open the blotted one.
     def entry(tag, row):
         return ([f"poke {T.G.sym('sLastSelectedPokemon'):#x}:2 {row}"] + start_menu_item(0) + ["wait 90"]
                 + ["press A", "wait 120", f"shot {tag}_info",
                    "press RIGHT", "wait 120", "press RIGHT", "wait 120", f"shot {tag}_stats",
-                   "press RIGHT", "wait 120", f"shot {tag}_evo", "press START", "wait 120", f"shot {tag}_forms"]
+                   "press RIGHT", "wait 120", f"shot {tag}_evo", "press A", "wait 60", f"shot {tag}_a", "press START", "wait 120", f"shot {tag}_forms"]
                 + play_until(f"{tag}_closed", T.G.field_free(), 2000, key="B", every=30)
                 + ["wait 30", f"poke {T.G.sym('sStartMenuCursorPos'):#x}:1 0"])
     return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)

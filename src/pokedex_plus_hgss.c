@@ -6292,7 +6292,8 @@ static void GetSeenFlagTargetSpecies(void)
     for (i = 0; i < sPokedexView->sEvoScreenData.numAllEvolutions; i++)
     {
         species = sPokedexView->sEvoScreenData.targetSpecies[i];
-        if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
+        // Research Red: blotted-out evolutions can't be opened (RR_IsDexSpoilerSpecies)
+        if (!RR_IsDexSpoilerSpecies(species) && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
         {
             sPokedexView->sEvoScreenData.seen[i] = TRUE;
             sPokedexView->sEvoScreenData.numSeen += 1;
@@ -6527,7 +6528,7 @@ static void HandleTargetSpeciesPrintText(u32 targetSpecies, u32 base_x, u32 base
     bool32 seen = GetSetPokedexFlag(SpeciesToNationalPokedexNum(targetSpecies), FLAG_GET_SEEN);
     u32 fontId = GetSpeciesNameFontId(GetSpeciesNameWidthInChars(GetSpeciesName(targetSpecies)));
 
-    if (seen || !HGSS_HIDE_UNSEEN_EVOLUTION_NAMES)
+    if (!RR_IsDexSpoilerSpecies(targetSpecies) && (seen || !HGSS_HIDE_UNSEEN_EVOLUTION_NAMES)) // Research Red
         StringCopy(gStringVar3, GetSpeciesName(targetSpecies)); //evolution mon name
     else
         StringCopy(gStringVar3, gText_ThreeQuestionMarks); //show questionmarks instead of name
@@ -6537,7 +6538,10 @@ static void HandleTargetSpeciesPrintText(u32 targetSpecies, u32 base_x, u32 base
 
 static void HandleTargetSpeciesPrintIcon(u8 taskId, u16 targetSpecies, u8 base_i, u8 iterations)
 {
-    u32 personality = GetPokedexMonPersonality(targetSpecies);
+    u32 personality;
+    if (RR_IsDexSpoilerSpecies(targetSpecies)) // Research Red: the ? icon
+        targetSpecies = SPECIES_NONE;
+    personality = GetPokedexMonPersonality(targetSpecies);
     LoadMonIconPalettePersonality(targetSpecies, personality); //Loads pallete for current mon
     if (iterations > 6) // Print icons closer to each other if there are many evolutions
         gTasks[taskId].data[4+base_i] = CreateMonIcon(targetSpecies, SpriteCB_MonIcon, 45 + 26*base_i, 31, 4, personality);
@@ -6548,7 +6552,8 @@ static void HandleTargetSpeciesPrintIcon(u8 taskId, u16 targetSpecies, u8 base_i
 
 static void CreateCaughtBallEvolutionScreen(u16 targetSpecies, u8 x, u8 y, u16 unused)
 {
-    bool8 owned = GetSetPokedexFlag(SpeciesToNationalPokedexNum(targetSpecies), FLAG_GET_CAUGHT);
+    bool8 owned = !RR_IsDexSpoilerSpecies(targetSpecies) // Research Red
+               && GetSetPokedexFlag(SpeciesToNationalPokedexNum(targetSpecies), FLAG_GET_CAUGHT);
     if (owned)
         BlitBitmapToWindow(0, sCaughtBall_Gfx, x, y-1, 8, 16);
     else
@@ -6785,7 +6790,6 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
     u32 times = 0;
     u32 arg; // shorthand for some of the more mathy evolutions
     const struct Evolution *evolutions = GetSpeciesEvolutions(species);
-    struct Evolution visibleEvolutions[11]; // Research Red: see RR_IsDexSpoilerSpecies
 
     if (sPokedexView->sEvoScreenData.isMega)
         return;
@@ -6806,20 +6810,8 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
     }
 
     //Calculate number of possible direct evolutions (e.g. Eevee has 5 but torchic has 1)
-    // Research Red: only the ones that may show (RR_IsDexSpoilerSpecies)
     for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
-    {
-        if (!RR_IsDexSpoilerSpecies(evolutions[i].targetSpecies) && times < ARRAY_COUNT(visibleEvolutions))
-            visibleEvolutions[times++] = evolutions[i];
-    }
-    evolutions = visibleEvolutions;
-
-    if (times == 0 && depth == 0) // Research Red: all it had were hidden ones
-    {
-        StringExpandPlaceholders(gStringVar4, sText_EVO_NONE);
-        PrintInfoScreenTextSmall(gStringVar4, FONT_SMALL, base_x-7-7, base_y + base_y_offset*(*depth_i) + numLines);
-        return;
-    }
+        times += 1;
 
     if (times > 9 && species == SPECIES_MILCERY)
         times = 9;
@@ -6863,7 +6855,11 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
         }
 
         bool32 caught = GetSetPokedexFlag(SpeciesToNationalPokedexNum(targetSpecies), FLAG_GET_CAUGHT);
-        if (HGSS_HIDE_UNOWNED_EVOLUTION_METHODS == TRUE && !caught)
+        if (RR_IsDexSpoilerSpecies(targetSpecies)) // Research Red
+        {
+            StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Unlocks later"));
+        }
+        else if (HGSS_HIDE_UNOWNED_EVOLUTION_METHODS == TRUE && !caught)
         {
             StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Unknown"));
         }
@@ -6930,6 +6926,11 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
             // Check for additional conditions. Skips if there's no additional conditions.
             for (j = 0; evolutions[i].params != NULL && evolutions[i].params[j].condition != CONDITIONS_END; j++)
             {
+                // Research Red: no "in Hisui" / "out of Hisui" (see RR_IsDexSpoilerSpecies)
+                if ((evolutions[i].params[j].condition == IF_REGION || evolutions[i].params[j].condition == IF_NOT_REGION)
+                 && evolutions[i].params[j].arg1 == REGION_HISUI)
+                    continue;
+
                 if (j == 0)
                 {
                     StringAppend(gStringVar4, COMPOUND_STRING(", "));
@@ -7185,7 +7186,8 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
 
         sPokedexView->sEvoScreenData.arrowSpriteDist[depth + 1] = numLines;
 
-        PrintEvolutionTargetSpeciesAndMethod(taskId, targetSpecies, depth+1, depth_i, alreadyPrintedIcons, icon_depth_i, numLines);
+        if (!RR_IsDexSpoilerSpecies(targetSpecies)) // Research Red
+            PrintEvolutionTargetSpeciesAndMethod(taskId, targetSpecies, depth+1, depth_i, alreadyPrintedIcons, icon_depth_i, numLines);
     }//For loop end
 }
 
@@ -7447,9 +7449,10 @@ static void Task_HandleFormsScreenInput(u8 taskId)
 #define FORM_SPECIES_END (0xffff)
 
 // Research Red: Hisuian and Mega forms stay a surprise (they spoil the story's
-// later turns, owner 2026-10-30): the Forms and Evolution pages leave them out,
-// along with the new species that only exist through Hisui. Alolan, Galarian
-// and the rest still show.
+// later turns, owner 2026-10-30). The Forms page leaves them out; the Evolution
+// page keeps the row but blots it out (?????, a ? icon, "Unlocks later"), and
+// the same goes for the new species that only exist through Hisui. Alolan,
+// Galarian and the rest still show.
 static bool32 RR_IsDexSpoilerSpecies(enum Species species)
 {
     return gSpeciesInfo[species].isMegaEvolution
