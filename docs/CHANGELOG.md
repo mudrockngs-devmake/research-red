@@ -2,6 +2,21 @@
 
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
+## v0.0.23
+One big build, just this once: day and night, new battle pictures and overworld stand-ins, and the v0.0.22 notes (issues #105, #108, #118, #122, #124, #125, #133, #142, #157, #158, #159).
+- New: day and night (#108): two light levels, day fully bright, night lighter than before.
+- New: combined battle pictures for you and Ivy, and Elm and Jenny (#133).
+- New: stand-in overworld sprites for the players, Ivy, Elm, Jenny, Delia and Oak (#125). Placeholders for testing, not final art.
+- Changed: Elm and Jenny fighting Brock is a real scene on the battle screen now (#142): his six, two at a time, the jokes between rounds. Debug jump 16 goes straight to it.
+- Changed: the Start menu (#124): Pokédex, Pokémon, Field Guide, DexNav, PC, Bag, your name, Save, Option, Debug, Exit. It's wider, shows Field Guide in full, and scrolls with arrows when the list is long.
+- New: Tracy, Oak's systems aide (#158). The Poké Ball change is the first entry in the menu; the original scientist is back with his own lines.
+- Changed: first Elm and Jenny vs Oak fight is about half as long (#105), Oak is fired up, Ivy points it out, and he has a takes-me-back line after the lab battle.
+- Changed: Elm's lines lean into his evolution studies (#159).
+- Changed: Elm and Jenny's picture slides in sideways (#157).
+- Fixed: the starter table's old border (#118). New: Slowpoke's bed (#122).
+- Changed: Oak's pager Pokémon are spread out instead of lined up.
+- **Save:** old saves work (use the debug jumps this round; a new game shows the changes best).
+
 ## v0.0.22
 The lab and its scripted fights (issues #105, #110, #143, #150-#154). A spot-check round: Start > Debug > Scripts jumps straight to each change.
 - Changed: Elm and Jenny's fights against Oak are seen from their side now (#105): their Pokémon on the near side with their picture, Oak as the opponent. When Oak talks his picture slides in; Elm's, Jenny's and Ivy's lines show their portraits.

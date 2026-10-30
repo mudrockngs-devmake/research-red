@@ -742,6 +742,15 @@ def sc_pager_dig():
             + expect("MAP_ROUTE2"))
 
 
+def sc_cl_brock16():
+    # Checklist v0.0.23: debug 16, watch Elm and Jenny fight Brock, no presses in the fight (#142)
+    return (["load @bedroom"] + debug_script(16)
+            + play_until("in_battle", T.G.in_battle(), 3000, key="A", every=40)
+            + play_until("fight_over", T.G.overworld(), 9000, key="SELECT", every=40)
+            + play_until("watched", T.G.var_is("VAR_RR_BROCK_WATCH", 2) + " && " + T.G.field_free(), 3000, key="A", every=40)
+            + expect("MAP_PEWTER_CITY_GYM", story=8))
+
+
 def sc_start_menu():
     # #124: the full list (after Brock, 11 entries) in the owner's order, 9 rows on
     # screen: DOWN all the way scrolls it, one more wraps to the top, UP wraps back down.
@@ -1215,6 +1224,7 @@ SCENARIOS = {
     "pager_other": (sc_pager_other, "Ranch Pager > Flash (not dark), then Teleport with Oak's Abra (#29)"),
     "pager_select": (sc_pager_select, "Register the Ranch Pager, then SELECT opens it on the map (#29)"),
     "pager_dig": (sc_pager_dig, "Ranch Pager > Dig in Diglett's Cave: Oak's Diglett digs us out (#29)"),
+    "cl_brock16": (sc_cl_brock16, "Checklist v0.0.23: debug 16, Elm and Jenny fight Brock on the battle screen (#142)"),
     "start_menu": (sc_start_menu, "Start menu: new order, 9 rows, scrolls and wraps, arrows (#124)"),
     "rest": (sc_rest, "Delia: Rest till night, then till morning; the Start menu clock (#56, #27)"),
     "daynight": (sc_daynight, "Day and night (#108): outside after each Rest with Delia (night, morning, night, morning); only two light levels"),

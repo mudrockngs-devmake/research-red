@@ -343,6 +343,17 @@ Debug_Script10_Warp:
 	release
 	end
 
+@ Debug 16 (#142): watch Elm and Jenny fight Brock, from the Gym door
+Debug_EventScript_Script_16::
+	call RR_Debug_StateAfterBrock
+	setvar VAR_0x40FE, 8
+	setvar VAR_RR_BROCK_WATCH, 1
+	rr_ivy_create_follower
+	warp MAP_PEWTER_CITY_GYM, 6, 13
+	waitstate
+	release
+	end
+
 @ Debug 10 and 15: Brock beaten, a Lv 14 team, in Pewter
 RR_Debug_StateAfterBrock::
 	call RR_Debug_StateGrassDone
