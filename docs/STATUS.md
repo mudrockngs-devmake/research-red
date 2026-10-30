@@ -79,7 +79,9 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 - The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
 
 ## Asked for, not done yet
-- [ ] Pewter lunch (owner 2026-10-30, not decided): everyone has lunch after the Gym fight (after the player's Brock fight or after Elm and Jenny's, undecided), Brock's brothers and sisters get banter too, a bit like the anime; maybe a small cutscene at the Gym with all 18 Pokemon sitting and eating together, only if not too much for the game. Unify every stew/lunch mention so the story is coherent. Keep Brock's rock puns.
+- [ ] Pewter lunch (owner 2026-10-30, wants it in v0.0.23 if it fits): everyone has lunch after the Gym fight (after the player's Brock fight or after Elm and Jenny's, undecided), Brock's brothers and sisters get banter too, a bit like the anime; maybe a small cutscene at the Gym with all 18 Pokemon sitting and eating together, only if not too much for the game. Unify every stew/lunch mention so the story is coherent. Keep Brock's rock puns. Also put the kids in a more natural formation; owner asks whether the other Pokemon fit too.
+- [ ] Owner 2026-10-30: intro video call says Oak's Slowpoke showed up at the lab recently one day; Slowpoke sits centred on the lab table when it hops up.
+- [ ] Owner 2026-10-30: review the whole order of Pewter scenes (including the later ones) and say what makes coherent sense without causing problems; lunch Pokemon could be at least yours and Brock's, or yours and Elm and Jenny's.
 - [ ] Later (owner 2026-10-30): decide when coloured text should be blue versus other colours; blue is preferred over the original red on the tan boxes, but no rule yet.
 - [ ] Decide whether the theme goes in v0.0.23 (needs a full smoke, matrix and playthrough first).
 - [x] Viewer (owner 2026-10-30): zoom in/out below 100%, fit to any window, pictures shrink dynamically, usual viewer features.

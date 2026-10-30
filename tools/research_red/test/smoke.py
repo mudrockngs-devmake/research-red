@@ -805,7 +805,7 @@ def sc_gym_first():
             + step("UP", 8) + play_until("camper", T.G.in_battle(), 1500, key="A", every=60)
             + play_until("camper_over", T.G.field_free(), 60000, key="A", every=60)
             + ["wait 30", "shot g002"] + step("UP", 8) + ["press UP 6", "wait 20", "shot g003"]
-            + play_until("battle", T.G.in_battle(), 3000, key="A", every=60)
+            + weak_foes(6) # the mashed first move can lose even at Lv 30: this tests the lines after a win
             + play_until("won", T.G.field_free(), 60000, key="A", every=60)
             + ["wait 30", "shot g004"] + play_until("banter_done", T.G.field_free(), 1500, key="A", every=60)
             + ["wait 60", "shot g005"] + expect("MAP_PEWTER_CITY_GYM"))

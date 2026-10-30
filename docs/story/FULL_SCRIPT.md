@@ -2191,7 +2191,7 @@ Elm and Jenny have one version per starter; their lines are the same in each, so
 - **last pokémon out**: Elm: Last one! This is where legends are made! / Jenny: Still legends. Still dinner.
 
 ### Leader Brock
-- **before first turn**: Brock: My rock-hard willpower is evident even in my Pokémon! Let's go!
+- **before first turn**: Brock: Enough talk. Let's get down to bedrock!
 - **two down**: Brock: Solid teamwork. You cover each other. / Ivy: We have practice. He covers me in conversations.
 - **four down**: Brock: Four down? You two are the real deal. / {PLAYER}: She's the real deal. I'm the snacks.
 - **last pokémon out**: Brock: Onix! This is our moment. Steady, like we trained.

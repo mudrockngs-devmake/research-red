@@ -105,7 +105,7 @@
 
         [TRAINER_LEADER_BROCK] =
         {
-            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Brock: My rock-hard willpower is evident even in my Pokémon! Let's go!{PAUSE_UNTIL_PRESS}"),
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Brock: Enough talk. Let's get down to bedrock!{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_TWO_DOWN] = COMPOUND_STRING("Brock: Solid teamwork. You cover each other.\pIvy: We have practice. He covers me in conversations.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_RR_FOUR_DOWN] = COMPOUND_STRING("Brock: Four down? You two are the real deal.\p{B_PLAYER_NAME}: She's the real deal. I'm the snacks.{PAUSE_UNTIL_PRESS}"),
             [TRAINER_SLIDE_LAST_SWITCHIN] = COMPOUND_STRING("Brock: Onix! This is our moment. Steady, like we trained.{PAUSE_UNTIL_PRESS}"),

@@ -297,7 +297,7 @@ RR_Gym_Text_Brock_Nine:
 	.string "All nine of them.\p"
 	.string "They're here for the battle, and\n"
 	.string "for lunch. I made stew.\p"
-	.string "After the battle. Win or lose.$"
+	.string "After the battles. Win or lose.$"
 
 RR_Gym_Text_Ivy_Nicest:
 	.string "Ivy: This is the nicest Gym in\n"
@@ -312,8 +312,17 @@ RR_Gym_Text_Jenny_Cheer:
 	.string "dear. Both of us. Aren't we, dear?$"
 
 RR_Gym_Text_Brock_Begin:
-	.string "Brock: Then let's begin.\n"
-	.string "Show me your best!$"
+	.string "Brock: My rock-hard willpower is\n"
+	.string "evident even in my Pokémon.\p"
+	.string "My Pokémon are all rock hard, and\n"
+	.string "have true-grit determination.\p"
+	.string "That's right! My Pokémon are all\n"
+	.string "the Rock type! Fuhaha!\p"
+	.string "You'd challenge me knowing that\n"
+	.string "you'll lose? Two professors?\p"
+	.string "That's a Trainer's honor. Or poor\n"
+	.string "peer review.\p"
+	.string "Fine, then! Show me your best!$"
 
 RR_Gym_Text_P_Pun:
 	.string "{PLAYER}: …Did you plan that pun?$"
@@ -324,8 +333,10 @@ RR_Gym_Text_Brock_Puns:
 
 RR_Gym_Text_Brock_Stew:
 	.string "Brock: The Boulder Badge. A\n"
-	.string "Geodude. And a bowl of stew.\p"
-	.string "Mostly the stew.$"
+	.string "Geodude. And soon, a bowl of stew.\p"
+	.string "Mostly the stew.\p"
+	.string "It needs a while yet. Lunch is\n"
+	.string "after my next challenge.$"
 
 RR_Gym_Text_Brock_Geodude:
 	.string "Brock: Professor Ivy, your notes\n"
@@ -394,7 +405,7 @@ RR_Gym_Text_Jenny_Talk:
 
 RR_Gym_Text_Jenny_After:
 	.string "Jenny: Well fought, dear.\n"
-	.string "Now go and try the stew.$"
+	.string "Save us some stew.$"
 
 RR_Gym_Text_Kid0:
 	.string "Big brother's stew is the best!\n"

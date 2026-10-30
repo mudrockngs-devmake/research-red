@@ -94,7 +94,7 @@ Script `PewterCity_Gym_EventScript_Brock`
 > They're here for the battle, and
 > for lunch. I made stew.
 >
-> After the battle. Win or lose.
+> After the battles. Win or lose.
 
 > Ivy: This is the nicest Gym in
 > Kanto.
@@ -105,8 +105,22 @@ Script `PewterCity_Gym_EventScript_Brock`
 > Jenny: We're cheering for you,
 > dear. Both of us. Aren't we, dear?
 
-> Brock: Then let's begin.
-> Show me your best!
+> Brock: My rock-hard willpower is
+> evident even in my Pokémon.
+>
+> My Pokémon are all rock hard, and
+> have true-grit determination.
+>
+> That's right! My Pokémon are all
+> the Rock type! Fuhaha!
+>
+> You'd challenge me knowing that
+> you'll lose? Two professors?
+>
+> That's a Trainer's honor. Or poor
+> peer review.
+>
+> Fine, then! Show me your best!
 
 **Battle:** Leader Brock (single): Geodude Lv12, Sandshrew Lv12, Kabuto Lv13, Omanyte Lv13, Rhyhorn Lv13, Onix Lv14
 
@@ -161,9 +175,12 @@ Script `PewterCity_Gym_EventScript_Brock`
 > from Brock!
 
 > Brock: The Boulder Badge. A
-> Geodude. And a bowl of stew.
+> Geodude. And soon, a bowl of stew.
 >
 > Mostly the stew.
+>
+> It needs a while yet. Lunch is
+> after my next challenge.
 
 > Ivy: Your siblings are lucky to
 > have a big brother like you.
@@ -266,7 +283,7 @@ Script `RR_Gym_EventScript_ElmCheer`
 Script `RR_Gym_EventScript_JennyCheer`
 
 > Jenny: Well fought, dear.
-> Now go and try the stew.
+> Save us some stew.
 
 > Jenny: Go on, dear. We'll cheer
 > from here. Good seats, too.
@@ -275,55 +292,55 @@ Script `RR_Gym_EventScript_JennyCheer`
 *hidden by `FLAG_TEMP_13`*
 (no talk script; used in cutscenes)
 
-### Little Boy (Little Boy) at 4,3
+### Little Boy (Little Boy) at 2,2
 Script `RR_Gym_EventScript_Kid0`
 
 > Big brother's stew is the best!
 > He says you can have some too!
 
-### Lass (Lass) at 6,3
+### Lass (Lass) at 3,2
 Script `RR_Gym_EventScript_Kid1`
 
 > Shh! We're watching Brock work!
 > And waiting for lunch!
 
-### Youngster (Youngster) at 8,3
+### Youngster (Youngster) at 4,2
 Script `RR_Gym_EventScript_Kid2`
 
 > There's nine of us. I'm his
 > favorite. Don't tell the others!
 
-### Little Girl (Little Girl) at 3,4
+### Little Girl (Little Girl) at 5,2
 Script `RR_Gym_EventScript_Kid1`
 
 > Shh! We're watching Brock work!
 > And waiting for lunch!
 
-### Boy (Boy) at 4,4
+### Boy (Boy) at 6,2
 Script `RR_Gym_EventScript_Kid0`
 
 > Big brother's stew is the best!
 > He says you can have some too!
 
-### Little Girl (Little Girl) at 5,4
+### Little Girl (Little Girl) at 7,2
 Script `RR_Gym_EventScript_Kid2`
 
 > There's nine of us. I'm his
 > favorite. Don't tell the others!
 
-### Little Boy (Little Boy) at 7,4
+### Little Boy (Little Boy) at 8,2
 Script `RR_Gym_EventScript_Kid1`
 
 > Shh! We're watching Brock work!
 > And waiting for lunch!
 
-### Lass (Lass) at 8,4
+### Lass (Lass) at 9,2
 Script `RR_Gym_EventScript_Kid0`
 
 > Big brother's stew is the best!
 > He says you can have some too!
 
-### Boy (Boy) at 9,4
+### Boy (Boy) at 10,2
 Script `RR_Gym_EventScript_Kid2`
 
 > There's nine of us. I'm his

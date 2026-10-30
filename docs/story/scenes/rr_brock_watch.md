@@ -80,7 +80,7 @@
 > They're here for the battle, and
 > for lunch. I made stew.
 >
-> After the battle. Win or lose.
+> After the battles. Win or lose.
 
 > Ivy: This is the nicest Gym in
 > Kanto.
@@ -91,8 +91,22 @@
 > Jenny: We're cheering for you,
 > dear. Both of us. Aren't we, dear?
 
-> Brock: Then let's begin.
-> Show me your best!
+> Brock: My rock-hard willpower is
+> evident even in my Pokémon.
+>
+> My Pokémon are all rock hard, and
+> have true-grit determination.
+>
+> That's right! My Pokémon are all
+> the Rock type! Fuhaha!
+>
+> You'd challenge me knowing that
+> you'll lose? Two professors?
+>
+> That's a Trainer's honor. Or poor
+> peer review.
+>
+> Fine, then! Show me your best!
 
 *[trainerbattle_no_intro Leader Brock (Geodude, Sandshrew, Kabuto, Omanyte, Rhyhorn, Onix)]*
 
@@ -129,9 +143,12 @@
 ### RR_Gym_EventScript_BrockStew
 
 > Brock: The Boulder Badge. A
-> Geodude. And a bowl of stew.
+> Geodude. And soon, a bowl of stew.
 >
 > Mostly the stew.
+>
+> It needs a while yet. Lunch is
+> after my next challenge.
 
 > Ivy: Your siblings are lucky to
 > have a big brother like you.
@@ -167,7 +184,7 @@
 > from here. Good seats, too.
 
 > Jenny: Well fought, dear.
-> Now go and try the stew.
+> Save us some stew.
 
 ### RR_Gym_EventScript_Kid0
 
