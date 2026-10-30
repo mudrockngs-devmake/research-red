@@ -73,7 +73,7 @@ struct RRScriptedFight
     bool8 sweep;       // Elm and Jenny can't be hurt and flatten what they hit: one round per turn
 };
 
-// Fight 1: Elm and Jenny (Lv 12) beat Oak's leftover starters (Lv 5). Oak's
+// Fight 1: Elm and Jenny (Lv 7, where you'd be after beating them) beat Oak's leftover starters (Lv 5). Oak's
 // side only uses plain hits (no Growl: it made the fight drag), so Elm and
 // Jenny always win, in about two turns (owner 2026-10-30: half as long).
 static const struct RRFightTurn sTurns_LabStarters[] =
@@ -89,7 +89,7 @@ static const struct RRFightLine sLines_LabStarters[] =
     { 1, TRUE,  COMPOUND_STRING("Oak: Ho ho! Good form! But can you keep it up?") },
 };
 
-// Fight 2, the gag: Elm and Jenny (Lv 13, after beating Oak) against Oak's ranch Pidgeot and
+// Fight 2, the gag: Elm and Jenny (Lv 9, after beating Oak) against Oak's ranch Pidgeot and
 // Tauros (Lv 50), who hit straight away and flatten them in one turn.
 static const struct RRFightTurn sTurns_LabRanch[] =
 {
@@ -134,7 +134,7 @@ static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
     [RR_FIGHT_LAB_STARTERS] =
     {
         .intro = COMPOUND_STRING("Elm and Jenny challenge Prof. Oak!\p"),
-        .oakLevel = 5, .elmJennyLevel = 12, .oakIvs = 0, .elmJennyIvs = 31,
+        .oakLevel = 5, .elmJennyLevel = 7, .oakIvs = 0, .elmJennyIvs = 31,
         .oakSpecies = { SPECIES_NONE, SPECIES_NONE },
         .turns = sTurns_LabStarters, .turnCount = ARRAY_COUNT(sTurns_LabStarters),
         .lines = sLines_LabStarters, .lineCount = ARRAY_COUNT(sLines_LabStarters),
@@ -142,7 +142,7 @@ static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
     [RR_FIGHT_LAB_RANCH] =
     {
         .intro = COMPOUND_STRING("Elm and Jenny challenge Prof. Oak!\nAgain!\p"),
-        .oakLevel = 50, .elmJennyLevel = 13, .oakIvs = 20, .elmJennyIvs = 31,
+        .oakLevel = 50, .elmJennyLevel = 9, .oakIvs = 20, .elmJennyIvs = 31,
         .oakSpecies = { SPECIES_PIDGEOT, SPECIES_TAUROS },
         .turns = sTurns_LabRanch, .turnCount = ARRAY_COUNT(sTurns_LabRanch),
         .lines = sLines_LabRanch, .lineCount = ARRAY_COUNT(sLines_LabRanch),

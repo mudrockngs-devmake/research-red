@@ -363,7 +363,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > seats. Somebody find popcorn.
 
 > Elm and Jenny's Pokémon grew
-> to Lv 13!
+> to Lv 9!
 
 > Elm: We won! We beat Professor
 > Oak! In his own lab!

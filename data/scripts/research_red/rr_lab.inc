@@ -1398,7 +1398,7 @@ RR_Lab_Text_Oak_StartersGo::
 
 RR_Lab_Text_LevelUp::
     .string "Elm and Jenny's Pokémon grew\n"
-    .string "to Lv 13!$"
+    .string "to Lv 9!$"
 
 RR_Lab_Text_Elm_WeBeatOak::
     .string "Elm: We won! We beat Professor\n"

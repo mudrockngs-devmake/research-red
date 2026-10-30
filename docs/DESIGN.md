@@ -54,7 +54,7 @@ How to use it:
 **In the game** (v0.0.23, #105)
 - You and Ivy fight Elm and Jenny (double, Lv 5).
 - **You win:** Oak asks right away if you want to battle his two leftover starters (Lv 5). After that (Yes or No) Elm wants his turn: watching Elm and Jenny vs Oak, and the gag after it, is optional (owner 2026-10-29).
-- **You lose:** Elm and Jenny gloat; you can watch them take on Oak (Elm and Jenny Lv 12 vs his starters Lv 5, about half the turns, owner 2026-10-30), then the gag where Oak's Lv 50 Pidgeot and Tauros flatten them (Lv 12), each optional. Then Oak offers you his fight.
+- **You lose:** Elm and Jenny gloat; you can watch them take on Oak (Elm and Jenny Lv 7 vs his starters Lv 5, then Lv 9 for the gag: the levels a player reaches in the same fights, owner 2026-10-30), then the gag where Oak's Lv 50 Pidgeot and Tauros flatten them (Lv 12), each optional. Then Oak offers you his fight.
 - Oak says his takes-me-back line after you win or lose, which leads into the options (owner 2026-10-30, draft wording). Oak is fired up in the fights, no "go easy"; Ivy points it out at the start.
 - Tracy (#158, owner 2026-10-30): the systems aide, a quiet nod to Tracey Sketchit, named only "Tracy", using an existing sprite. The Poké Ball change is the first entry in Tracy's menu. The original scientist stays with his own sprite and conversations.
 - Starter table (#118) and Slowpoke's bed (#122, once the story reaches the lab): made with the existing map tools.
