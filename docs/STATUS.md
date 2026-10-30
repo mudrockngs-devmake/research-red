@@ -100,6 +100,7 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 - [x] (in master, being tested) Brock gives an Alolan Geodude instead of TM39 Rock Tomb (owner 2026-10-30), with Ivy and player dialogue and a Dex banter entry; check whether regional forms for Kanto/Johto have banter yet
 - [x] Daisy's house: fix Ivy's position so she's sitting in the chair (owner 2026-10-30)
 - [ ] (coded, tested 2026-10-30, waiting for the owner's OK to install and tag) v0.0.23 is one big build, just this once (owner 2026-10-30; later builds go back to small): #108, #133, #125 (six sprites only: players, Ivy, Elm, Jenny, Delia, Oak; done), the 12 spot-check notes (#105, #142 Brock in battle, Tracy, start menu #124, swipe-in bug), Elm's lines towards evolution. Owner may want to rework Oak's new line.
+- [ ] Trainer AI and difficulty, not decided (owner 2026-10-30): must suit a casual adult picking the game up and stay cozy in look and play, with challenge for those who want it. Claude's suggestion: keep the basic AI as the default and make smarter AI an opt-in Research Rule. After v0.0.23.
 
 ## Half-finished / open threads
 - Tool bug: `compare.py`'s automatic "vs v0.0.x" uses much older runs as the "before" for many scenes (26 of 34 flagged on 2026-10-30 were from v0.0.19), so it over-reports. Until fixed, use `compare.py RUN --against LAST_FULL_RUN`.
