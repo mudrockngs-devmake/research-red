@@ -338,6 +338,7 @@ void TurnVirtualObject(u8 virtualObjId, enum Direction direction);
 void UnfreezeObjectEvent(struct ObjectEvent *);
 void UnfreezeObjectEvents(void);
 void UpdateFollowingPokemon(void);
+s16 RR_StagedSpriteOffset(struct ObjectEvent *objectEvent); // Research Red
 void UpdateObjectEventCurrentMovement(struct ObjectEvent *, struct Sprite *, bool8(struct ObjectEvent *, struct Sprite *));
 void UpdateObjectEventsForCameraUpdate(s16 x, s16 y);
 void UpdateObjectEventSpriteInvisibility(struct Sprite *sprite, bool8 invisible);

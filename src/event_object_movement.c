@@ -6862,6 +6862,22 @@ u8 ObjectEventGetHeldMovementActionId(struct ObjectEvent *objectEvent)
     return MOVEMENT_ACTION_NONE;
 }
 
+// Research Red: a few pixels' shift for people staged between two map squares: Brock's
+// brothers and sisters back against the Gym wall, Slowpoke in the middle of its bed
+s16 RR_StagedSpriteOffset(struct ObjectEvent *objectEvent)
+{
+    s16 x = objectEvent->currentCoords.x - MAP_OFFSET;
+    s16 y = objectEvent->currentCoords.y - MAP_OFFSET;
+
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_PEWTER_CITY_GYM)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_PEWTER_CITY_GYM) && y == 2)
+        return -4;
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB) && x == 9 && y == 5)
+        return -6;
+    return 0;
+}
+
 void UpdateObjectEventCurrentMovement(struct ObjectEvent *objectEvent, struct Sprite *sprite, bool8 (*callback)(struct ObjectEvent *, struct Sprite *))
 {
     DoGroundEffects_OnSpawn(objectEvent, sprite);
@@ -6877,6 +6893,8 @@ void UpdateObjectEventCurrentMovement(struct ObjectEvent *objectEvent, struct Sp
     UpdateObjectEventSpriteAnimPause(objectEvent, sprite);
     UpdateObjectEventVisibility(objectEvent, sprite);
     ObjectEventUpdateSubpriority(objectEvent, sprite);
+    if (RR_StagedSpriteOffset(objectEvent) != 0) // Research Red
+        sprite->y2 = RR_StagedSpriteOffset(objectEvent);
 }
 
 void QL_UpdateObjectEventCurrentMovement(struct ObjectEvent *objectEvent, struct Sprite *sprite)

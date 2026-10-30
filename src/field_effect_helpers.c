@@ -381,6 +381,7 @@ void UpdateShadowFieldEffect(struct Sprite *sprite)
         #else
         sprite->y = linkedSprite->y + sprite->sYOffset;
         #endif
+        sprite->y2 = RR_StagedSpriteOffset(objectEvent); // Research Red: the shadow stays under a shifted sprite
         sprite->invisible = linkedSprite->invisible;
         if (objectEvent->jumpDone)
         {
