@@ -79,6 +79,7 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 - The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
 
 ## Asked for, not done yet
+- [ ] Later (owner 2026-10-30): decide when coloured text should be blue versus other colours; blue is preferred over the original red on the tan boxes, but no rule yet.
 - [ ] Decide whether the theme goes in v0.0.23 (needs a full smoke, matrix and playthrough first).
 - [x] Viewer (owner 2026-10-30): zoom in/out below 100%, fit to any window, pictures shrink dynamically, usual viewer features.
 - [x] Viewer (owner 2026-10-30): every picture Claude takes, tests or generates shows up in the live stream, efficiently.
