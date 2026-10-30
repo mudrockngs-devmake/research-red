@@ -694,6 +694,10 @@ static u8 GetNumLevelsGainedFromSteps(struct DaycareMon *daycareMon)
     levelAfter = GetLevelAfterDaycareSteps(&daycareMon->mon, daycareMon->steps);
     if (levelAfter > GetCurrentLevelCap())
         levelAfter = GetCurrentLevelCap();
+    // Research Red: a Pokemon already over the cap (caps turned off, then back on)
+    // gained nothing; without this the sum wraps to 253 levels and a huge fee
+    if (levelAfter <= levelBefore)
+        return 0;
     return levelAfter - levelBefore;
 }
 

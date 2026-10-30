@@ -1040,6 +1040,26 @@ def sc_samurai():
             + T.clear_flag("FLAG_RR_NO_ENCOUNTERS"))
 
 
+def sc_cap_above():
+    # Level caps off, levels gained, caps back on: a Pokemon above the cap (Lv 30,
+    # no badges: cap 14) keeps its level and gains nothing, in a real wild battle
+    # (not AI against AI, which gives no EXP); caps off again and it gains EXP
+    party = T.G.sym("gPlayerParty")
+    lvl = f"{party + T.G.const('offsetof(struct Pokemon, level)'):#x}:1"
+    wander = []
+    for _ in range(40):
+        wander += ["hold DOWN 16", "wait 4", "hold UP 16", "wait 4"]
+    wild = lambda name: (wander + check(f"{name}_battle", T.G.in_battle())
+                         + ["wait 200", f"shot {name}_a"]
+                         + play_until(f"{name}_done", T.G.field_free(), 9000, key="A", every=30))
+    return (["load @bedroom"] + after_brock_test_mode()
+            + T.clear_flag("FLAG_RR_AI_VS_AI") + T.clear_flag("FLAG_BADGE01_GET")
+            + step("RIGHT", 2) + step("DOWN", 5) + step("RIGHT") + step("DOWN", 11) + step("LEFT", 2) + step("DOWN")
+            + wild("capped") + check("capped_keeps_level", f"{lvl} == 30")
+            + T.set_flag("FLAG_RR_LEVEL_CAPS_OFF")
+            + wild("uncapped") + check("still_alive", f"{lvl} >= 30"))
+
+
 def sc_route2_wild():
     # Diagnosis: a wild battle on Route 2 after Brock WITHOUT test mode
     wander = []
@@ -1278,6 +1298,7 @@ SCENARIOS = {
     "wild": (sc_wild, "A wild single battle on Route 1: types while choosing a move (engine default, #78), then run away"),
     "relearn": (sc_relearn, "Move relearner: TM list with numbers, teach one, the list stays open (#89)"),
     "evolve": (sc_evolve, "Evolve on demand: EVOLVE in the party menu (#50); pre-evolution moves to relearn (#51)"),
+    "cap_above": (sc_cap_above, "Above the level cap with caps back on: keeps its level, gains no EXP; caps off: EXP again"),
     "lab_supplies": (sc_lab_supplies, "Lab Supplies: the grant's free shop on the PC; a free Poké Ball (#96, #98-#100)"),
     "trainer_card": (sc_trainer_card, "The Trainer Card shows your own picture (#24)"),
     "tms": (sc_tms, "The TM Case after the lab: TM01-TM100 and the HMs (#57)"),
