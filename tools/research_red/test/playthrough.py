@@ -150,8 +150,12 @@ def blocked_move_guards():
     menu = (f"{funcs:#x}:4 == {action | 1:#x} && "
             f"{g.sym('gBattleTypeFlags'):#x}:4 !& {g.const('BATTLE_TYPE_TRAINER')}")
     # no brackets in the runner's conditions (&& binds tighter): one && group per blocked byte
-    return [f"guard {key} " + " || ".join(f"{menu} && {cursor:#x}:1 == {at} && {b}" for b in blocked)
-            for at, key in ((0, "DOWN"), (1, "DOWN"), (2, "RIGHT"), (3, "A"))]
+    # A can beat these to the action menu and land in the move menu: B goes back
+    moves = f"{funcs:#x}:4 == {g.sym('HandleInputChooseMove') | 1:#x}"
+    return ([f"guard {key} " + " || ".join(f"{menu} && {cursor:#x}:1 == {at} && {b}" for b in blocked)
+             for at, key in ((0, "DOWN"), (1, "DOWN"), (2, "RIGHT"), (3, "A"))]
+            + ["guard B " + " || ".join(f"{moves} && {g.sym('gBattleTypeFlags'):#x}:4 !& "
+                                        f"{g.const('BATTLE_TYPE_TRAINER')} && {b}" for b in blocked)])
 
 
 NO_ATTACK = ("SPECIES_ABRA", "SPECIES_METAPOD", "SPECIES_KAKUNA", "SPECIES_MAGIKARP")   # not worth catching
