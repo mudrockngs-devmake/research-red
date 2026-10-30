@@ -3,7 +3,8 @@
 Test builds are v0.0.x. Each entry lists what changed for players and testers, and ends with a **Save:** line (see SAVES.md).
 
 ## v0.0.23
-- New interface colours: light tan paper and dark brown ink on every box and menu, with the blue kept for contrast; long names like Officer Jenny now fit on their name plate.
+- New interface colours: light tan paper and dark brown ink on every box and menu, with the blue kept for contrast; long names like Officer Jenny now fit on their name plate. Options values are blue, and DexNav is brown and tan.
+- Brock explains why two of you can fight him: Professor Oak told every Gym Leader you battle as one team.
 One big build, just this once: day and night, new battle pictures and overworld stand-ins, and the v0.0.22 notes (issues #105, #108, #118, #122, #124, #125, #133, #142, #157, #158, #159).
 - New: day and night (#108): two light levels, day fully bright, night lighter than before.
 - New: combined battle pictures for you and Ivy, and Elm and Jenny (#133).

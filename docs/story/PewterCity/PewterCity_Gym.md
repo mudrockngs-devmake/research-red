@@ -59,17 +59,27 @@ Script `PewterCity_Gym_EventScript_Brock`
 > I am Brock. You must be the
 > professors.
 >
-> Professor Oak called. He said to
-> go easy on you.
+> Professor Oak called to explain
+> what you two are up to.
+>
+> He said to go easy on you.
 >
 > Then he said not to.
 
 > {PLAYER}: That sounds like him.
 
-> Brock: I hear you two are a team.
-> I respect that.
+> Brock: He told every Gym Leader
+> the same. You two do your research
+> as a team, so you battle as one.
 >
-> My Pokémon and I are a team too.
+> Two of you, one of me. All above
+> board.
+
+> {PLAYER}: Oh, so that's why we can
+> do shenanigans like this.
+
+> Brock: I respect it. My Pokémon
+> and I are a team too.
 
 > Ivy: And your audience?
 

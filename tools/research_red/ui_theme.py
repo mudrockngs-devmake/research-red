@@ -101,7 +101,7 @@ SCREENS = {
                                       {2: DEEP, 3: DARK, 4: "#a58455", 5: MID, 10: P, 11: S2, 12: DEEP}.items()},
     "graphics/summary_screen/bg.gbapal": _summary(),
     "graphics/summary_screen/text_header.gbapal": {(0, 0): P, (0, 1): P, (0, 2): INK, (0, 3): S2, (0, 10): S3, (0, 11): S1},
-    "graphics/misc/option_menu.gbapal": WHITE_WINDOW,
+    "graphics/misc/option_menu.gbapal": {**WHITE_WINDOW, (0, 8): "#104c9c", (0, 9): "#b4c0cc"},  # the values: blue, not red
     "graphics/shop_menu/shop_menu.gbapal": {(0, 0): P, (0, 1): DEEP, (0, 2): S3, (0, 3): S1, (0, 4): P, (0, 5): P, (0, 6): INK},
     "graphics/item_menu/bg.gbapal": BAG,
     "graphics/item_menu/bg_female.gbapal": BAG,
@@ -111,7 +111,7 @@ SCREENS = {
     "graphics/naming_screen/keyboard.gbapal": WHITE_WINDOW,
     "graphics/naming_screen/menu.gbapal": {(0, 1): P, (0, 4): S3, (0, 5): S2, (0, 6): S1},
     "graphics/interface/learn_move.gbapal": {(0, 1): S1, (0, 2): P, (0, 3): S1, (0, 4): DEEP, (0, 5): P, (0, 14): P},
-    "graphics/dexnav/gui.gbapal": {(0, 1): P},
+    "graphics/dexnav/gui.gbapal": {(0, 0): DARK, (0, 1): P, (0, 2): DEEP, (0, 9): MID, (0, 15): DARK},  # black bar, red headings: brown; blue and green stay
 }
 
 # Window palettes: (path, frame slots used?)

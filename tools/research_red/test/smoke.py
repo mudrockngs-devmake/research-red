@@ -898,6 +898,21 @@ def sc_daynight():
             + rr_checks.bright("day0", 150, 255) + rr_checks.bright("night1", 95, 125))
 
 
+def sc_night_ui():
+    # Owner 2026-10-30: night tints the world, never the menus. Outside at night:
+    # the Start menu, then a spoken line with its portrait and name plate.
+    G = T.G
+    by_delia = ("MAP_PALLET_TOWN_PLAYERS_HOUSE_1F", 8, 3)
+    outside = ("MAP_PALLET_TOWN", 6, 8)
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + nav.go(G, ("MAP_PALLET_TOWN", 15, 8), by_delia[0], by_delia[1:])
+            + ["press DOWN 6", "wait 20", "press A", "wait 150", "press DOWN", "wait 10", "press A", "wait 60"]
+            + play_until("rested", G.field_free(), 3000, key="A", every=600)
+            + nav.go(G, by_delia, outside[0], outside[1:]) + ["wait 200", "shot n0", "press START", "wait 40", "shot n1", "press B", "wait 40"]
+            + step("DOWN") + ["wait 60", "press UP 4", "wait 20", "press A", "wait 90", "shot n2", "wait 60", "shot n3",
+                              "press A", "wait 90", "shot n4", "press A", "wait 90", "press A", "wait 90"])
+
+
 def sc_rest_center():
     # #56: Nurse Joy in Pewter's Pokemon Center offers Heal / Rest / No thanks.
     # Debug 10 leaves us below the door at (17,26); the counter is straight up.
@@ -1335,6 +1350,7 @@ SCENARIOS = {
     "start_menu": (sc_start_menu, "Start menu: new order, 9 rows, scrolls and wraps, arrows (#124)"),
     "rest": (sc_rest, "Delia: Rest till night, then till morning; the Start menu clock (#56, #27)"),
     "daynight": (sc_daynight, "Day and night (#108): outside after each Rest with Delia (night, morning, night, morning); only two light levels"),
+    "night_ui": (sc_night_ui, "Night tints the world, not the menus: Start menu and a spoken line outside at night"),
     "rest_center": (sc_rest_center, "Nurse Joy in Pewter: Rest till night (#56)"),
     "oak_rematch": (sc_oak_rematch, "Oak + Daisy rematch in the lab after Brock (#53)"),
     "oak_rematch_wild": (sc_oak_rematch_wild, "#106: after the Oak + Daisy rematch, a wild double on Route 1 is wild Pokémon from its table"),

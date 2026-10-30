@@ -177,7 +177,8 @@ static const u8 *const sButtonTypeOptions[] =
 };
 
 static const u8 sOptionMenuPickSwitchCancelTextColor[] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
-static const u8 sOptionMenuTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_RED};
+static const u8 sOptionMenuTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_BLUE}; // Research Red: blue values, not red
+static const u16 sRR_OptionMenuBackdrop = RGB(13, 9, 6); // Research Red: brown edge, not black
 
 // Functions
 static void MainCB2(void)
@@ -343,6 +344,7 @@ static bool8 LoadOptionMenuPalette(void)
         break;
     case 2:
         LoadPalette(sOptionMenuPalette, BG_PLTT_ID(1), sizeof(sOptionMenuPalette));
+        LoadPalette(&sRR_OptionMenuBackdrop, BG_PLTT_ID(0), PLTT_SIZEOF(1)); // Research Red
         LoadPalette(GetTextWindowPalette(2), BG_PLTT_ID(15), PLTT_SIZE_4BPP);
         break;
     case 3:

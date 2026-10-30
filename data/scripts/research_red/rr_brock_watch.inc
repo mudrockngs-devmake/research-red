@@ -159,6 +159,8 @@ RR_Gym_EventScript_BrockIntro::
 	msgbox RR_Gym_Text_Brock_Welcome, MSGBOX_DEFAULT
 	msgbox RR_Gym_Text_P_SoundsLikeHim, MSGBOX_DEFAULT
 	msgbox RR_Gym_Text_Brock_Team, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_P_Shenanigans, MSGBOX_DEFAULT
+	msgbox RR_Gym_Text_Brock_Respect, MSGBOX_DEFAULT
 	msgbox RR_Gym_Text_Ivy_Audience, MSGBOX_DEFAULT
 	msgbox RR_Gym_Text_Brock_Nine, MSGBOX_DEFAULT
 	msgbox RR_Gym_Text_Ivy_Nicest, MSGBOX_DEFAULT
@@ -261,17 +263,28 @@ RR_Gym_Text_Brock_Welcome:
 	.string "Brock: Welcome to Pewter Gym!\n"
 	.string "I am Brock. You must be the\l"
 	.string "professors.\p"
-	.string "Professor Oak called. He said to\n"
-	.string "go easy on you.\p"
+	.string "Professor Oak called to explain\n"
+	.string "what you two are up to.\p"
+	.string "He said to go easy on you.\p"
 	.string "Then he said not to.$"
 
 RR_Gym_Text_P_SoundsLikeHim:
 	.string "{PLAYER}: That sounds like him.$"
 
 RR_Gym_Text_Brock_Team:
-	.string "Brock: I hear you two are a team.\n"
-	.string "I respect that.\p"
-	.string "My Pokémon and I are a team too.$"
+	.string "Brock: He told every Gym Leader\n"
+	.string "the same. You two do your research\l"
+	.string "as a team, so you battle as one.\p"
+	.string "Two of you, one of me. All above\n"
+	.string "board.$"
+
+RR_Gym_Text_P_Shenanigans:
+	.string "{PLAYER}: Oh, so that's why we can\n"
+	.string "do shenanigans like this.$"
+
+RR_Gym_Text_Brock_Respect:
+	.string "Brock: I respect it. My Pokémon\n"
+	.string "and I are a team too.$"
 
 RR_Gym_Text_Ivy_Audience:
 	.string "Ivy: And your audience?$"
