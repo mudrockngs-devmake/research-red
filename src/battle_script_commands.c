@@ -4351,7 +4351,11 @@ static void Cmd_getexp(void)
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleStruct->battlerExpReward);
 
-                    if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
+                    if (gBattleStruct->battlerExpReward == 0)
+                    {
+                        // Research Red: at the level cap, no "gained 0 Exp." message
+                    }
+                    else if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
                     {
                         PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
                     }
