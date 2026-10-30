@@ -197,6 +197,9 @@ for the game once the art goes in: full body in FireRed's proportions, a bigger 
 `portrait.png`, `call.png`. Files in `cast_handmade/<name>/` replace the
 generated ones.
 
+Combined battle pictures (`build_pair_art.py`; owner 2026-10-30, #133): always start from the large
+reference art and shrink once, never from an already small picture. No added face sharpening.
+
 `battle_fr.png` is made by `pixelize.py`, a shrinker for turning big art into
 pixel art that doesn't look shrunk: it flattens the colours first, shrinks by
 vote (each pixel takes its area's commonest colour, no blur; line art wins

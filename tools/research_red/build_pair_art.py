@@ -17,6 +17,10 @@ pairs/player_{m,f}_ivy/back.png, 5 frames (64x320) for the Poke Ball throw,
 with the lean from tools/research_red/build_back_pics.py. The game shows it
 unless FLAG_RR_BACK_PIC_FACING is set (Debug > Scripts > 14: the #7 picture).
 
+Owner's rule 2026-10-30 (#133): every change starts from the large reference art
+and is shrunk once, never from an already small picture. No added face sharpening:
+sharper faces are a hand touch-up (cast_handmade), since 16 shared colours muddy them.
+
 Usage: build_pair_art.py [REF_DIR]
 """
 import os
