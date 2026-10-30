@@ -104,6 +104,13 @@ static const struct OamData sOam_NamePlate =
     .priority = 0,
 };
 
+static const struct OamData sOam_NamePlateEnd =
+{
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0,
+};
+
 static void SpriteCB_Portrait(struct Sprite *sprite);
 
 static const struct SpriteTemplate sSpriteTemplate_Portrait =
@@ -128,9 +135,21 @@ static const struct SpriteTemplate sSpriteTemplate_NamePlate =
     .callback = SpriteCallbackDummy,
 };
 
+static const struct SpriteTemplate sSpriteTemplate_NamePlateEnd =
+{
+    .tileTag = TAG_RR_NAMEPLATE,
+    .paletteTag = TAG_RR_NAMEPLATE,
+    .oam = &sOam_NamePlateEnd,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
 // Sprite ids + 1 (EWRAM must start zeroed, so 0 means "none")
 static EWRAM_DATA u8 sPortraitIdPlus1 = 0;
 static EWRAM_DATA u8 sPlateIdPlus1 = 0;
+static EWRAM_DATA u8 sPlateEndIdPlus1 = 0; // long names ("Officer Jenny"): 32 more pixels of plate
 static EWRAM_DATA u8 sShownSpeaker = 0;   // speaker index + 1
 static EWRAM_DATA bool8 sShownAlt = FALSE;
 // The text box is on screen: set when a message starts, cleared when the
@@ -179,12 +198,15 @@ void RR_PortraitHide(void)
         DestroySprite(&gSprites[sPortraitIdPlus1 - 1]);
     if (IsSpriteOurs(sPlateIdPlus1, TAG_RR_NAMEPLATE))
         DestroySprite(&gSprites[sPlateIdPlus1 - 1]);
+    if (IsSpriteOurs(sPlateEndIdPlus1, TAG_RR_NAMEPLATE))
+        DestroySprite(&gSprites[sPlateEndIdPlus1 - 1]);
     FreeSpriteTilesByTag(TAG_RR_PORTRAIT);
     FreeSpritePaletteByTag(TAG_RR_PORTRAIT);
     FreeSpriteTilesByTag(TAG_RR_NAMEPLATE);
     FreeSpritePaletteByTag(TAG_RR_NAMEPLATE);
     sPortraitIdPlus1 = 0;
     sPlateIdPlus1 = 0;
+    sPlateEndIdPlus1 = 0;
     sShownSpeaker = 0;
 }
 
@@ -215,6 +237,8 @@ static void SpriteCB_Portrait(struct Sprite *sprite)
             sprite->invisible = FALSE;
             if (IsSpriteOurs(sPlateIdPlus1, TAG_RR_NAMEPLATE))
                 gSprites[sPlateIdPlus1 - 1].invisible = FALSE;
+            if (IsSpriteOurs(sPlateEndIdPlus1, TAG_RR_NAMEPLATE))
+                gSprites[sPlateEndIdPlus1 - 1].invisible = FALSE;
         }
     }
     sprite->data[0] = (sprite->data[0] + 1) % BOB_PERIOD;
@@ -239,7 +263,9 @@ static u32 GetSpeaker(const u8 *text)
 
 static void SetPlatePixel(u8 *tiles, u32 x, u32 y, u32 color)
 {
-    u8 *byte = &tiles[((y / 8) * 8 + x / 8) * TILE_SIZE_4BPP + (y % 8) * 4 + (x % 8) / 2];
+    // past x 64 is the end piece: its 4x4 tiles follow the main plate's 8x4
+    u32 tile = (x < 64) ? (y / 8) * 8 + x / 8 : 32 + (y / 8) * 4 + (x - 64) / 8;
+    u8 *byte = &tiles[tile * TILE_SIZE_4BPP + (y % 8) * 4 + (x % 8) / 2];
 
     if (x & 1)
         *byte = (*byte & 0x0F) | (color << 4);
@@ -247,7 +273,8 @@ static void SetPlatePixel(u8 *tiles, u32 x, u32 y, u32 color)
         *byte = (*byte & 0xF0) | color;
 }
 
-// Draws the name into a hidden 8x2-tile window (never shown on screen), adds a
+// Draws the name into a hidden 8x2-tile window (12x2 for a long name, whose plate gets
+// an end piece, so every name uses the normal font) (never shown on screen), adds a
 // rounded border, and copies it into the plate sprite's tiles.
 static bool32 LoadNamePlate(const u8 *name, u32 color)
 {
@@ -257,57 +284,68 @@ static bool32 LoadNamePlate(const u8 *name, u32 color)
     struct SpritePalette palette;
     u16 pal[16] = {0};
     u8 *tiles;
-    u32 windowId, font, width, x, y;
+    u32 windowId, width, plateWidth, row, col, x, y;
     u16 fg = sNameColors[color];
 
-    pal[1] = RGB(31, 31, 30);
+    pal[1] = RGB(29, 27, 23); // the notebook's paper
     pal[2] = fg;
     pal[3] = RGB((GET_R(fg) + 62) / 3, (GET_G(fg) + 62) / 3, (GET_B(fg) + 62) / 3); // light shadow
-    pal[4] = RGB(7, 7, 11);
+    pal[4] = RGB(13, 9, 6); // the frames' brown
 
+    width = GetStringWidth(FONT_NORMAL, name, 0);
+    plateWidth = (width > 58) ? 96 : 64;
+    template.width = plateWidth / 8;
     windowId = AddWindow(&template);
     if (windowId == WINDOW_NONE)
         return FALSE;
-    tiles = AllocZeroed(64 * 32 / 2);
+    tiles = AllocZeroed(48 * TILE_SIZE_4BPP);
     if (tiles == NULL)
     {
         RemoveWindow(windowId);
         return FALSE;
     }
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    font = FONT_NORMAL;
-    width = GetStringWidth(font, name, 0);
-    if (width > 58)
+    AddTextPrinterParameterized3(windowId, FONT_NORMAL, (plateWidth - width) / 2, 1, sTextColors, TEXT_SKIP_DRAW, name);
+    for (row = 0; row < 2; row++)
     {
-        font = FONT_SMALL;
-        width = GetStringWidth(font, name, 0);
-        if (width > 58) // "Officer Jenny": still touches the plate's border
+        for (col = 0; col < plateWidth / 8; col++)
         {
-            font = FONT_SMALL_NARROW;
-            width = GetStringWidth(font, name, 0);
+            u32 tile = (col < 8) ? row * 8 + col : 32 + row * 4 + col - 8;
+
+            memcpy(&tiles[tile * TILE_SIZE_4BPP], &((u8 *)gWindows[windowId].tileData)[(row * plateWidth / 8 + col) * TILE_SIZE_4BPP], TILE_SIZE_4BPP);
         }
     }
-    AddTextPrinterParameterized3(windowId, font, (64 - width) / 2, 1, sTextColors, TEXT_SKIP_DRAW, name);
-    memcpy(tiles, gWindows[windowId].tileData, 64 * 16 / 2);
     RemoveWindow(windowId);
 
-    for (x = 0; x < 64; x++)
+    // One thin outline with curved corners, like the text boxes
+    for (x = 3; x < plateWidth - 3; x++)
     {
         SetPlatePixel(tiles, x, 0, 4);
         SetPlatePixel(tiles, x, 15, 4);
     }
-    for (y = 0; y < 16; y++)
+    for (y = 3; y < 13; y++)
     {
         SetPlatePixel(tiles, 0, y, 4);
-        SetPlatePixel(tiles, 63, y, 4);
+        SetPlatePixel(tiles, plateWidth - 1, y, 4);
     }
-    SetPlatePixel(tiles, 0, 0, 0);
-    SetPlatePixel(tiles, 63, 0, 0);
-    SetPlatePixel(tiles, 0, 15, 0);
-    SetPlatePixel(tiles, 63, 15, 0);
+    for (x = 0; x < 2; x++) // left then right
+    {
+        u32 edge = (x == 0) ? 0 : plateWidth - 4;
+        static const u8 sCorner[3][4] = {{0, 0, 0, 4}, {0, 4, 4, 1}, {0, 4, 1, 1}};
+
+        for (y = 0; y < 3; y++)
+        {
+            for (col = 0; col < 4; col++)
+            {
+                u32 px = (x == 0) ? edge + col : edge + 3 - col;
+                SetPlatePixel(tiles, px, y, sCorner[y][col]);
+                SetPlatePixel(tiles, px, 15 - y, sCorner[y][col]);
+            }
+        }
+    }
 
     sheet.data = tiles;
-    sheet.size = 64 * 32 / 2;
+    sheet.size = 48 * TILE_SIZE_4BPP;
     sheet.tag = TAG_RR_NAMEPLATE;
     LoadSpriteSheet(&sheet); // copies to VRAM straight away
     Free(tiles);
@@ -324,6 +362,17 @@ static bool32 LoadNamePlate(const u8 *name, u32 color)
         return FALSE;
     }
     gSprites[sPlateIdPlus1 - 1].invisible = TRUE; // shown with the portrait
+    if (plateWidth > 64)
+    {
+        u8 spriteId = CreateSprite(&sSpriteTemplate_NamePlateEnd, PLATE_X + 48, PLATE_Y, 0);
+
+        if (spriteId != MAX_SPRITES)
+        {
+            gSprites[spriteId].oam.tileNum += 32;
+            gSprites[spriteId].invisible = TRUE;
+            sPlateEndIdPlus1 = spriteId + 1;
+        }
+    }
     return TRUE;
 }
 

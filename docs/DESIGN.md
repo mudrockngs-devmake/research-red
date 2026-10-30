@@ -11,6 +11,9 @@ How to use it:
   link the issue. When it's built, move it from Planned to In the game.
 - If the code and this page disagree, one of them is a bug: ask the owner which.
 
+## Interface look (owner, 2026-10-30)
+One light tan paper colour and dark brown ink replace the whites on every box and menu: dialogue, battle, Start menu, party, summary, Pokédex tabs, naming, shops, Bag, TMs, Options, Save. The Pokédex entry page is one step lighter (cream). Blues stay as the contrast colour. Left alone on purpose: type badges, HP bars, Pokémon, the map, PC wallpapers, the Trainer Card (its colour is its rank). Name plates are tan with curved corners, and long names get a longer plate. Source: `tools/research_red/ui_theme.py`.
+
 ## 1. Level caps and EXP
 **In the game** (#41, owner 2026-10-19/20; src/caps.c)
 - Hard caps by **how many** badges you have (not which ones): 0 badges Lv 14, 1: 21, 2: 24, 3: 29, 4: 43, 5: 43, 6: 47, 7: 50, 8 badges before the Elite Four: 63, after: none.

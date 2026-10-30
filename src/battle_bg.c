@@ -996,10 +996,11 @@ void LoadBattleMenuWindowGfx(void)
     LoadUserWindowBorderGfx(2, 0x12, BG_PLTT_ID(1));
     LoadUserWindowBorderGfx(2, 0x22, BG_PLTT_ID(1));
 
-    gPlttBufferUnfaded[BG_PLTT_ID(5) + 12] = RGB( 9,  9,  9);
-    gPlttBufferUnfaded[BG_PLTT_ID(5) + 13] = RGB( 9,  9,  9);
-    gPlttBufferUnfaded[BG_PLTT_ID(5) + 14] = RGB(31, 31, 31);
-    gPlttBufferUnfaded[BG_PLTT_ID(5) + 15] = RGB( 26,  26,  25);
+    // Research Red: the FIGHT menu and move list on the notebook's paper and ink (was white)
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 12] = RGB( 6,  4,  3);
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 13] = RGB( 6,  4,  3);
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 14] = RGB(29, 27, 23);
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 15] = RGB(25, 23, 17);
     CpuCopy16(&gPlttBufferUnfaded[BG_PLTT_ID(5) + 12], &gPlttBufferFaded[BG_PLTT_ID(5) + 12], PLTT_SIZEOF(4));
     // Research Red: move-name colours by effectiveness (battle_controller_player.c),
     // text + shadow pairs in slots 1-6, unused by every other battle window

@@ -18,7 +18,7 @@ the tools are in [ART_TOOLS.md](ART_TOOLS.md); what's left to make is in
 - **Warm and cozy.** Research Red is a found-family road trip with scientists.
   Colours lean warm (tan skin, auburn and brown hair, soft whites); cool colours
   are for accents (Elm's teal, Ivy's navy). The interface is the field notebook
-  (cream paper, ink).
+  (light tan paper, dark brown ink; blue kept as the contrast colour).
 - **Readable at a glance.** On a 240x160 screen, a character is recognised by
   their silhouette and 2-3 signature colours (Ivy: purple hair + white coat +
   coral; Elm: brown hair + open coat + teal). Those come first; details second.

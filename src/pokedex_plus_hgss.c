@@ -2352,6 +2352,18 @@ static void Task_ClosePokedex(u8 taskId)
     }
 }
 
+// Research Red: the entry page is one step lighter than the other tabs (cream, not tan)
+static void RR_LoadInfoPagePaper(void)
+{
+    static const u16 sPaper = RGB(31, 30, 27);
+
+    LoadPalette(&sPaper, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(1));
+    LoadPalette(&sPaper, BG_PLTT_ID(1) + 1, PLTT_SIZEOF(1));
+    LoadPalette(&sPaper, BG_PLTT_ID(1) + 9, PLTT_SIZEOF(1));
+    LoadPalette(&sPaper, BG_PLTT_ID(2) + 1, PLTT_SIZEOF(1));
+    LoadPalette(&sPaper, BG_PLTT_ID(2) + 9, PLTT_SIZEOF(1));
+}
+
 static void LoadPokedexBgPalette(bool8 isSearchResults)
 {
     if (!HGSS_DARK_MODE)
@@ -3816,6 +3828,7 @@ static void Task_LoadInfoScreen(u8 taskId)
     case 2:
         LoadScreenSelectBarMain(0xD);
         LoadPokedexBgPalette(sPokedexView->isSearchResults);
+        RR_LoadInfoPagePaper();
         gMain.state++;
         break;
     case 3:

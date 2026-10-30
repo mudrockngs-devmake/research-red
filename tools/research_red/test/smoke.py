@@ -811,6 +811,26 @@ def sc_gym_first():
             + ["wait 60", "shot g005"] + expect("MAP_PEWTER_CITY_GYM"))
 
 
+def sc_ui_tour():
+    # The notebook theme (owner, 2026-10-30): every Start menu screen after Brock, for the
+    # eye: Pokemon with all summary pages and the party's sub-menu, Field Guide, DexNav,
+    # PC, Bag pockets, Trainer Card, Save, Options. Each must close back to the map.
+    lines = ["load @bedroom"] + debug_script(SCRIPT_AFTER_BROCK) + ["mash B 40", "wait 30"]
+    def visit(index, name, keys):
+        return (start_menu_item(index) + ["wait 90", f"shot {name}0"] + keys
+                + play_until(f"{name}_closed", T.G.field_free(), 2000, key="B", every=30))
+    lines += visit(1, "party", ["press A", "wait 30", "shot party1", "press A", "wait 120", "shot sum0",
+                                "press RIGHT", "wait 40", "shot sum1", "press RIGHT", "wait 40", "shot sum2",
+                                "press RIGHT", "wait 40", "shot sum3"])
+    lines += visit(2, "guide", ["press A", "wait 40", "shot guide1"])
+    lines += visit(3, "dexnav", ["wait 30", "shot dexnav1"])
+    lines += visit(5, "bag", ["press RIGHT", "wait 40", "shot bag1", "press RIGHT", "wait 40", "shot bag2", "press A", "wait 30", "shot bag3"])
+    lines += visit(6, "card", ["press A", "wait 60", "shot card1"])
+    lines += visit(7, "save", [])
+    lines += visit(8, "option", [])
+    return lines
+
+
 def sc_start_menu():
     # #124: the full list (after Brock, 11 entries) in the owner's order, 9 rows on
     # screen: DOWN all the way scrolls it, one more wraps to the top, UP wraps back down.
@@ -1292,6 +1312,7 @@ SCENARIOS = {
     "sprites_m": (lambda: sprite_tour(False), "#125: the male player in every situation (walk, run, door, bike, surf, reflection)"),
     "sprites_f": (lambda: sprite_tour(True), "#125: the female player in every situation (walk, run, door, bike, surf, reflection)"),
     "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
+    "ui_tour": (sc_ui_tour, "Every Start menu screen in the notebook theme: party, summary pages, Guide, DexNav, Bag, card, Save, Options"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),
     "rename": (sc_rename, "Rename from the summary; an empty name restores the species name (#71)"),
