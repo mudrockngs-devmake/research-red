@@ -259,11 +259,17 @@ in the recipe; battle/back/portrait: `cast_handmade/<name>/`) and rebuilds.
 
 A small local page (only this computer can reach it).
 
-- **Live:** new pictures from the art tools and the newest test run stream
-  in. You can pause, click a picture to pin it, and use the sliders for
-  picture size and the pinned column.
+- **Live:** every new picture streams in: art tools, the newest test run,
+  samples, mockups, what's-new reports, cast art and Claude's scratch folders
+  (smoke tests start the server quietly, with no pop-up). Pause, filter, click a
+  picture to view it, Pin it there to keep it beside the stream. The sliders set
+  picture size and the pinned column; Hide pinned gives the pictures the room.
 - **Claude asks:** `show` puts pictures in a panel at the top.
-  - Zoom always goes in whole steps (− + Fit; Full window has wheel zoom, drag and Esc).
+  - Zoom: − + go from 10% to 1600% (whole sizes above 100%, so pixels stay even), Fit
+    fills the room at any window size, 100% is real size, Ctrl + wheel works too.
+    Shrunk pictures blend so no pixels vanish.
+  - **Full window:** wheel zooms where you point, drag moves, double-click swaps Fit / 100%,
+    arrows go to the next picture, background choice, Whole screen (F), Pin (P), Esc closes.
   - **Side by side** and a **Before / after** slider appear for two or more files.
   - **Animation** (`--frames`) plays a sheet at game speed (133 ms a step), half or quarter speed, or frame by frame.
   - **In game** (`--map --at`) puts frame 0 on the real map among its people,
@@ -280,7 +286,7 @@ A small local page (only this computer can reach it).
   light and a dark version following Windows. The scene board follows the
   same choice.
 - **Scene board** (`board`): a map with its people. Drag them, click to turn
-  them, add someone from the list, zoom with − +, then **Send to Claude** (the
+  them, add someone from the list, zoom with − +, Fit or Ctrl + wheel, then **Send to Claude** (the
   positions land in `viewer\answers\`).
 
 ## Map pieces

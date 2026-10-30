@@ -78,12 +78,20 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
 .hcard .a { margin:4px 0; padding:4px 8px; border-left:3px solid var(--accent); background:var(--bg); border-radius:0 6px 6px 0; font-size:13px; }
 #big { position:fixed; inset:0; z-index:20; background:rgba(10,14,20,.94); display:none; flex-direction:column; }
 #big.show { display:flex; }
-#big .bar { display:flex; gap:8px; align-items:center; padding:8px 16px; color:#eee; }
-#big .bar span { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-#big .bar #bigZoom { flex:0; }
-#big .bar button { background:#2a3340; color:#eee; border-color:#4a5566; }
-#big .stage { flex:1; overflow:auto; display:flex; }
-#big img { margin:auto; image-rendering:pixelated; background:repeating-conic-gradient(#999 0 25%, #bbb 0 50%) 0 0/16px 16px; cursor:grab; }
+#big .bar { display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center; padding:8px 16px; color:#eee; }
+#bigName { flex:1; min-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+#bigInfo, #bigCount { color:#aab; font-size:12px; white-space:nowrap; }
+#bigZoom { min-width:44px; text-align:center; white-space:nowrap; }
+#big .bar button, #big .bar select { background:#2a3340; color:#eee; border-color:#4a5566; }
+#big .stage { flex:1; min-height:0; overflow:auto; display:flex; cursor:grab; }
+#big .stage:active { cursor:grabbing; }
+#big img { flex:none; margin:auto; image-rendering:pixelated; user-select:none; -webkit-user-drag:none; }
+#big img[data-bg="check"] { background:repeating-conic-gradient(#999 0 25%, #bbb 0 50%) 0 0/16px 16px; }
+#big img[data-bg="black"] { background:#000; } #big img[data-bg="grey"] { background:#808080; } #big img[data-bg="white"] { background:#fff; }
+#big .hint { color:#99a; font-size:12px; text-align:center; padding:4px 8px; }
+main.nopins { grid-template-columns:minmax(0,1fr); } main.nopins aside { display:none; }
+/* Shrunk pictures blend pixels (pixelated would drop some); 100% and up stay crisp */
+img.soft { image-rendering:auto !important; }
 </style>
 </head>
 <body>
@@ -91,11 +99,12 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
   <h1><span class="ball"></span>Research Red Viewer</h1>
   <span><button id="tabLive" class="on">Live</button> <button id="tabHistory">History</button></span>
   <button id="pause">Pause</button>
-  <select id="filter" title="Which pictures the stream shows"><option value="">Everything</option><option value="art">Art tools</option><option value="test-runs">Tests</option></select>
+  <select id="filter" title="Which pictures the stream shows"><option value="">Everything</option><option value="art">Art tools</option><option value="test-runs">Tests</option><option value="samples|mockups|whats-new|scratch">Claude's other pictures</option></select>
   <button id="clear">Clear</button>
   <span class="sizes" title="How big the pictures in the stream and the pinned column are">Picture size
-    <input type="range" id="tileSize" min="120" max="480" step="20" value="180">
-    Pinned <input type="range" id="sideSize" min="300" max="900" step="20" value="380"></span>
+    <input type="range" id="tileSize" min="60" max="640" step="20" value="180">
+    Pinned <input type="range" id="sideSize" min="200" max="900" step="20" value="380"></span>
+  <button id="pinsBtn" title="Give the whole window to the pictures">Hide pinned</button>
   <span class="grow"></span>
   <select id="theme" title="Colours"><option value="dive">Dive Ball</option><option value="quick">Quick Ball</option><option value="poke">Poké Ball</option></select>
   <button id="sound" title="A soft sound when Claude asks something">Sound: off</button>
@@ -107,7 +116,7 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
       <h3><span id="askTitle">Claude asks</span><span id="askPiece" class="piece" hidden></span></h3>
       <div id="askNote" class="status"></div>
       <div class="zoombar">
-        <button id="zOut" title="Smaller">−</button><button id="zIn" title="Bigger">+</button><button id="zFit">Fit</button>
+        <button id="zOut" title="Smaller">−</button><button id="zIn" title="Bigger">+</button><button id="zFit">Fit</button><button id="z100" title="Real size">100%</button>
         <button id="zBig">Full window</button><span id="zLabel"></span>
         <span class="grow"></span>
         <span id="modeBtns"></span>
@@ -131,11 +140,17 @@ aside { position:sticky; top:62px; align-self:start; max-height:calc(100vh - 80p
   </section>
   <aside>
     <h2>Pinned</h2>
-    <div id="pins"><div class="empty">Click any picture to pin it here. It stays while the stream keeps going.</div></div>
+    <div id="pins"><div class="empty">Open a picture and press Pin to keep it here while the stream keeps going.</div></div>
   </aside>
 </main>
-<div id="big"><div class="bar"><span id="bigName"></span><button id="bigOut">−</button><span id="bigZoom"></span><button id="bigIn">+</button><button id="bigFit">Fit</button><button id="bigClose">Close (Esc)</button></div>
-  <div class="stage" id="bigStage"><img id="bigImg" alt=""></div></div>
+<div id="big"><div class="bar"><span id="bigName"></span><span id="bigInfo"></span>
+    <button id="bigPrev" title="Previous (left arrow)">◀</button><span id="bigCount"></span><button id="bigNext" title="Next (right arrow)">▶</button>
+    <button id="bigOut" title="Smaller (-)">−</button><span id="bigZoom"></span><button id="bigIn" title="Bigger (+)">+</button>
+    <button id="bigFit" title="Fit the window (0)">Fit</button><button id="big100" title="Real size (1)">100%</button>
+    <select id="bigBg" title="Behind see-through parts"><option value="check">Checks</option><option value="black">Black</option><option value="grey">Grey</option><option value="white">White</option></select>
+    <button id="bigPin" title="Keep it beside the stream (P)">Pin</button><button id="bigFull" title="Whole screen (F)">Whole screen</button><button id="bigClose">Close (Esc)</button></div>
+  <div class="stage" id="bigStage"><img id="bigImg" alt=""></div>
+  <div class="hint">Wheel: zoom where you point · Drag: move · Double-click: Fit / 100% · Arrows: next picture · + − 0 1 F P</div></div>
 <script>
 const $ = id => document.getElementById(id);
 const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -171,6 +186,11 @@ function chime() {  // two soft, quiet notes
   apply(); r.oninput = () => { apply(); store.set(id, r.value); };
 });
 
+let pinsHidden = store.get('pinsHidden') === '1';
+const showPins = () => { document.querySelector('main').classList.toggle('nopins', pinsHidden); $('pinsBtn').textContent = pinsHidden ? 'Show pinned' : 'Hide pinned'; };
+$('pinsBtn').onclick = () => { pinsHidden = !pinsHidden; store.set('pinsHidden', pinsHidden ? '1' : '0'); showPins(); };
+showPins();
+
 // ---- tabs
 function tab(name) {
   $('live').hidden = name !== 'live'; $('history').hidden = name !== 'history';
@@ -192,9 +212,17 @@ function alertAsk() {
 function stopBlink() { if (blink) { clearInterval(blink); blink = null; document.title = baseTitle; } }
 document.addEventListener('visibilitychange', () => { if (!document.hidden) stopBlink(); });
 
-// ---- whole-number zoom: GBA art stays sharp at 2x, 3x, ...
-function fitScale(w, h, natW, natH) { return Math.max(1, Math.min(16, Math.floor(Math.min(w / natW, h / natH)))); }
-function sizeImg(img, z) { img.style.width = img.naturalWidth * z + 'px'; img.style.height = img.naturalHeight * z + 'px'; }
+// ---- zoom. Fit fills the room exactly (any size, up or down). The - / + steps
+// land on whole sizes above 100% (GBA art stays even and sharp at 200%, 300%...).
+const ZSTEPS = [.1, .25, .33, .5, .67, .75, 1, 1.5, 2, 3, 4, 5, 6, 8, 10, 12, 16];
+const zoomStep = (z, d) => d > 0 ? (ZSTEPS.find(v => v > z + .001) || 16) : ([...ZSTEPS].reverse().find(v => v < z - .001) || .1);
+const pct = z => Math.round(z * 100) + '%';
+function fitScale(w, h, natW, natH) { return Math.max(.05, Math.min(16, w / natW, h / natH)); }
+function sizeImg(img, z) { img.style.width = Math.round(img.naturalWidth * z) + 'px'; img.style.height = Math.round(img.naturalHeight * z) + 'px'; img.classList.toggle('soft', z < 1); }
+// Pictures sized by the page (stream, pinned): blend when they end up shrunk
+const softWatch = new ResizeObserver(es => es.forEach(e => softCheck(e.target)));
+function softCheck(i) { if (i.naturalWidth) i.classList.toggle('soft', Math.min(i.clientWidth / i.naturalWidth, i.clientHeight / i.naturalHeight) < 1); }
+function softImg(i) { i.addEventListener('load', () => softCheck(i)); softWatch.observe(i); }
 
 // ---- the ask panel: one picture, side by side, before/after, animation, in game
 let ask = null, mode = 'single', k = 1, fit = true, marking = false, spots = [], verdict = null, choice = null, player = null;
@@ -214,12 +242,20 @@ function applyZoom() {
   if (mode === 'slider') layoutSlider();
   if (player) player.draw();
   drawSpots();
-  $('zLabel').textContent = k + 'x';
+  $('zLabel').textContent = pct(k);
 }
-$('zIn').onclick = () => { fit = false; k = Math.min(16, k + 1); applyZoom(); };
-$('zOut').onclick = () => { fit = false; k = Math.max(1, k - 1); applyZoom(); };
+const askStep = d => { fit = false; k = zoomStep(k, d); applyZoom(); };
+$('zIn').onclick = () => askStep(1);
+$('zOut').onclick = () => askStep(-1);
 $('zFit').onclick = () => { fit = true; applyZoom(); };
-$('zBig').onclick = () => { const i = askImgs()[0]; if (i) openBig(i.src, ask.title); };
+$('z100').onclick = () => { fit = false; k = 1; applyZoom(); };
+$('zBig').onclick = () => { const i = askImgs()[0]; if (i) openBig(i.src, ask.title, askList()); };
+const askList = () => (ask.images || [{ src: ask.image, name: '' }]).map(im => ({ src: im.src, name: ask.title + (im.name ? ' · ' + im.name : '') }));
+// Ctrl + wheel over the picture zooms it (the plain wheel keeps scrolling the page)
+$('askBox').addEventListener('wheel', e => { if (e.ctrlKey) { e.preventDefault(); askStep(e.deltaY < 0 ? 1 : -1); } }, { passive: false });
+// Follow the room, not just the window: the pinned slider and Hide pinned change it too
+let askW = 0;
+new ResizeObserver(() => { const w = $('ask').clientWidth; if (w !== askW) { askW = w; if (fit && ask) applyZoom(); } }).observe($('ask'));
 window.addEventListener('resize', () => { if (fit && ask) applyZoom(); if (bigFit && big.classList.contains('show')) bigFitNow(); });
 
 function pixImg(src) { const i = el('img', 'pix'); i.alt = ''; i.onload = applyZoom; i.src = src; return i; }
@@ -233,7 +269,7 @@ function render() {
       wrap.dataset.n = n; wrap.appendChild(i); f.appendChild(wrap);
       if (imgs.length > 1) f.appendChild(el('figcaption', '', String.fromCharCode(65 + n) + ': ' + im.name));
       wrap.onclick = e => {
-        if (!marking) return openBig(i.src, ask.title);
+        if (!marking) return openBig(i.src, ask.title, askList(), n);
         const r = i.getBoundingClientRect();
         spots.push({ image: n, x: Math.floor((e.clientX - r.left) / k), y: Math.floor((e.clientY - r.top) / k), text: '' });
         drawSpots(); listSpots();
@@ -277,10 +313,10 @@ function makePlayer(src, fr) {
     node,
     draw() {
       if (!img.naturalWidth || !order.length) return;
-      c.width = fr.w * k; c.height = fr.h * k; ctx.imageSmoothingEnabled = false;
+      c.width = Math.round(fr.w * k); c.height = Math.round(fr.h * k); ctx.imageSmoothingEnabled = k < 1;
       const f = order[i % order.length], cols = Math.max(1, Math.floor(img.naturalWidth / fr.w));
       ctx.clearRect(0, 0, c.width, c.height);
-      ctx.drawImage(img, (f % cols) * fr.w, Math.floor(f / cols) * fr.h, fr.w, fr.h, 0, 0, fr.w * k, fr.h * k);
+      ctx.drawImage(img, (f % cols) * fr.w, Math.floor(f / cols) * fr.h, fr.w, fr.h, 0, 0, c.width, c.height);
       info.textContent = 'frame ' + f + ' (' + (i % order.length + 1) + ' of ' + order.length + ')';
     },
     start() { p.stop(); timer = setInterval(() => { i++; p.draw(); }, fr.ms / +speed.value); play.textContent = 'Pause'; play.classList.add('on'); },
@@ -375,29 +411,69 @@ $('sendReply').onclick = async () => {
   if (r.ok) $('reply').value = '';
 };
 
-// ---- the big view: Fit, - / +, mouse wheel, drag to move around, Esc closes
+// ---- the big view: a normal picture viewer. Fit, 100%, - / +, wheel, drag,
+// previous / next through the pictures it was opened from, whole screen, Esc closes
 const big = $('big'), bigImg = $('bigImg'), stage = $('bigStage');
-let bigFit = true, bk = 1;
-const showBk = () => { sizeImg(bigImg, bk); $('bigZoom').textContent = bk + 'x'; };
-const bigFitNow = () => { bk = fitScale(stage.clientWidth - 8, stage.clientHeight - 8, bigImg.naturalWidth, bigImg.naturalHeight); showBk(); };
-function openBig(src, name) {
-  $('bigName').textContent = name; big.classList.add('show'); bigFit = true;
-  bigImg.onload = bigFitNow; bigImg.src = src; if (bigImg.complete && bigImg.naturalWidth) bigFitNow();
+let bigFit = true, bk = 1, bigList = [], bigAt = 0;
+const showBk = () => { sizeImg(bigImg, bk); $('bigZoom').textContent = pct(bk); };
+const bigFitNow = () => { if (!bigImg.naturalWidth) return; bk = fitScale(stage.clientWidth, stage.clientHeight, bigImg.naturalWidth, bigImg.naturalHeight); showBk(); };
+function bigShow() {
+  const it = bigList[bigAt];
+  $('bigName').textContent = it.name; $('bigName').title = it.name; $('bigInfo').textContent = '';
+  $('bigCount').textContent = bigList.length > 1 ? (bigAt + 1) + ' of ' + bigList.length : '';
+  ['bigPrev', 'bigNext', 'bigCount'].forEach(id => { $(id).hidden = bigList.length < 2; });
+  $('bigPin').textContent = 'Pin';
+  bigImg.src = it.src;
 }
-const bigStep = d => { bigFit = false; bk = Math.max(1, Math.min(bk + d, 16)); showBk(); };
+bigImg.onload = () => { $('bigInfo').textContent = bigImg.naturalWidth + ' × ' + bigImg.naturalHeight; if (bigFit) bigFitNow(); else showBk(); };
+function openBig(src, name, list, at) {
+  bigList = list && list.length ? list : [{ src, name }]; bigAt = at || 0; bigFit = true;
+  big.classList.add('show'); bigShow();
+}
+const bigGo = d => { if (bigList.length > 1) { bigAt = (bigAt + d + bigList.length) % bigList.length; bigShow(); } };
+function closeBig() { if (document.fullscreenElement) document.exitFullscreen(); big.classList.remove('show'); }
+// Change size, keeping the point under the mouse (or the middle) where it is
+function bigZoomTo(z, cx, cy) {
+  const s = stage.getBoundingClientRect(), r = bigImg.getBoundingClientRect();
+  cx = cx === undefined ? s.left + s.width / 2 : cx; cy = cy === undefined ? s.top + s.height / 2 : cy;
+  const fx = (cx - r.left) / r.width, fy = (cy - r.top) / r.height;
+  bigFit = false; bk = z; showBk();
+  const n = bigImg.getBoundingClientRect();
+  stage.scrollLeft += n.left + fx * n.width - cx; stage.scrollTop += n.top + fy * n.height - cy;
+}
+const bigStep = (d, cx, cy) => bigZoomTo(zoomStep(bk, d), cx, cy);
+const fitAgain = () => { bigFit = true; bigFitNow(); };
+const toggleFull = () => document.fullscreenElement ? document.exitFullscreen() : big.requestFullscreen();
+function pinNow() { const it = bigList[bigAt]; pin(it.src, it.name); $('bigPin').textContent = 'Pinned'; if (pinsHidden) $('pinsBtn').click(); }
 $('bigIn').onclick = () => bigStep(1);
 $('bigOut').onclick = () => bigStep(-1);
-$('bigFit').onclick = () => { bigFit = true; bigFitNow(); };
-$('bigClose').onclick = () => big.classList.remove('show');
-stage.addEventListener('wheel', e => { e.preventDefault(); bigStep(e.deltaY < 0 ? 1 : -1); }, { passive: false });
+$('bigFit').onclick = fitAgain;
+$('big100').onclick = () => bigZoomTo(1);
+$('bigPrev').onclick = () => bigGo(-1);
+$('bigNext').onclick = () => bigGo(1);
+$('bigPin').onclick = pinNow;
+$('bigFull').onclick = toggleFull;
+$('bigClose').onclick = closeBig;
+const bgChoice = $('bigBg');
+bgChoice.value = store.get('bigBg') || 'check'; bigImg.dataset.bg = bgChoice.value;
+bgChoice.onchange = () => { bigImg.dataset.bg = bgChoice.value; store.set('bigBg', bgChoice.value); };
+stage.addEventListener('wheel', e => { e.preventDefault(); bigStep(e.deltaY < 0 ? 1 : -1, e.clientX, e.clientY); }, { passive: false });
+stage.addEventListener('dblclick', e => { if (bigFit) bigZoomTo(1, e.clientX, e.clientY); else fitAgain(); });
 document.addEventListener('keydown', e => {
-  if (!big.classList.contains('show')) return;
-  if (e.key === 'Escape') big.classList.remove('show');
-  if (e.key === '+' || e.key === '=') bigStep(1);
-  if (e.key === '-') bigStep(-1);
+  if (!big.classList.contains('show') || e.ctrlKey || e.altKey || e.metaKey) return;
+  if (e.target.tagName === 'SELECT') return;
+  if (e.key === 'Escape') closeBig();
+  else if (e.key === '+' || e.key === '=') bigStep(1);
+  else if (e.key === '-') bigStep(-1);
+  else if (e.key === '0') fitAgain();
+  else if (e.key === '1') bigZoomTo(1);
+  else if (e.key === 'ArrowLeft') bigGo(-1);
+  else if (e.key === 'ArrowRight') bigGo(1);
+  else if (e.key === 'f' || e.key === 'F') toggleFull();
+  else if (e.key === 'p' || e.key === 'P') pinNow();
 });
 let drag = null;
-stage.onpointerdown = e => { drag = { x: e.clientX, y: e.clientY, l: stage.scrollLeft, t: stage.scrollTop }; stage.setPointerCapture(e.pointerId); };
+stage.onpointerdown = e => { if (e.button === 0) { drag = { x: e.clientX, y: e.clientY, l: stage.scrollLeft, t: stage.scrollTop }; stage.setPointerCapture(e.pointerId); } };
 stage.onpointermove = e => { if (drag) { stage.scrollLeft = drag.l - (e.clientX - drag.x); stage.scrollTop = drag.t - (e.clientY - drag.y); } };
 stage.onpointerup = () => { drag = null; };
 
@@ -408,22 +484,26 @@ $('pause').onclick = e => { paused = !paused; e.target.classList.toggle('on', pa
 $('clear').onclick = () => { grid.innerHTML = ''; seen.clear(); };
 function pin(src, name) {
   if (pins.querySelector('.empty')) pins.innerHTML = '';
+  if ([...pins.children].some(p => p.dataset.src === src)) return;
   const d = el('div', 'pin'), bar = el('div', 'bar'), zoom = el('button', '', 'Full window'), close = el('button', '', 'Close'), i = el('img');
+  d.dataset.src = src; d.dataset.name = name; softImg(i);
   bar.append(el('span', '', name), zoom, close); i.src = src; i.alt = ''; d.append(bar, i);
-  zoom.onclick = i.onclick = () => openBig(src, name);
+  zoom.onclick = i.onclick = () => { const all = [...pins.children].map(p => ({ src: p.dataset.src, name: p.dataset.name })); openBig(src, name, all, all.findIndex(a => a.src === src)); };
   close.onclick = () => d.remove();
   pins.prepend(d);
 }
+// The filter hides and shows pictures already in the stream, not just new ones
+const filterMatch = n => { const f = $('filter').value; return !f || f.split('|').some(w => n.startsWith(w) || (w === 'art' && n.startsWith('art/'))); };
+$('filter').onchange = () => grid.querySelectorAll('.tile').forEach(t => { t.hidden = !filterMatch(t.dataset.name); });
 function addTile(im) {
   if (seen.has(im.path + im.mtime)) return;
-  const f = $('filter').value;
-  if (f && !im.name.includes(f)) return;
   seen.add(im.path + im.mtime);
   $('emptyMsg')?.remove();
   const t = el('div', 'tile new'), i = el('img');
-  i.loading = 'lazy'; i.alt = ''; i.src = url(im.path) + '&t=' + im.mtime;
+  i.loading = 'lazy'; i.alt = ''; i.src = url(im.path) + '&t=' + im.mtime; softImg(i);
+  t.dataset.src = i.src; t.dataset.name = im.name; t.hidden = !filterMatch(im.name);
   t.append(i, el('div', 'n', im.name)); t.title = im.name;
-  t.onclick = () => pin(url(im.path) + '&t=' + im.mtime, im.name);
+  t.onclick = () => { const all = [...grid.querySelectorAll('.tile:not([hidden])')]; openBig(t.dataset.src, im.name, all.map(x => ({ src: x.dataset.src, name: x.dataset.name })), all.indexOf(t)); };
   grid.prepend(t);
   setTimeout(() => t.classList.remove('new'), 1500);
   while (grid.children.length > 150) grid.lastChild.remove();
@@ -450,7 +530,7 @@ function drawHistory() {
   if (!rows.length) { L.appendChild(el('div', 'empty', q ? 'Nothing matches.' : 'No questions yet.')); return; }
   rows.forEach(h => {
     const c = el('div', 'hcard'), i = el('img'), body = el('div');
-    i.src = h.image; i.alt = ''; i.onclick = () => openBig(h.image, h.title);
+    i.src = h.image; i.alt = ''; i.onclick = () => openBig(h.image, h.title, rows.map(x => ({ src: x.image, name: x.title })), rows.indexOf(h));
     const t = (h.time || '').replace(/^(\d{4})(\d\d)(\d\d)_(\d\d)(\d\d).*/, '$1-$2-$3 $4:$5');
     body.append(el('h4', '', h.title), el('div', 'status', t + (h.piece ? ' · ' + h.piece : '') + (h.note ? ' · ' + h.note : '')));
     (h.answers || []).forEach(a => body.appendChild(el('div', 'a', answerText(a))));

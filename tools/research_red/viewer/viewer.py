@@ -20,11 +20,12 @@
         add people from the list, then "Send to Claude"
   python3 tools/research_red/viewer/viewer.py answers         # what came back (board sends, notes)
   python3 tools/research_red/viewer/viewer.py answer STAMP    # the reply to one question (exit 2 if none yet)
+  python3 tools/research_red/viewer/viewer.py start           # start without opening a page
   python3 tools/research_red/viewer/viewer.py stop
 
-The stream shows every new picture from the art tools (art\\toolkit\\) and
-the newest test run (test-runs\\) as they are written: pause it, click a
-picture to pin it beside the stream. Only this computer can reach the page
+The stream shows every new picture as it is written: the art tools (art\\toolkit\\),
+the newest test run (test-runs\\), samples, mockups, what's-new reports, cast art and
+Claude's scratch folders. Pause it, filter it, click a picture to view it full window. Only this computer can reach the page
 (it listens on 127.0.0.1). It's light: the page asks for news once a second.
 Replies (board sends, notes typed in the page) land in
 E:\\Workspace\\romhacks\\research-red\\viewer\\answers\\ and `answers` prints them.
@@ -54,6 +55,11 @@ SHOW = os.path.join(HOME, "show")                    # pictures Claude asks abou
 ANSWERS = os.path.join(HOME, "answers")              # what the owner sends back
 BOARDS = os.path.join(HOME, "boards")                # scene board data + map pictures
 WATCH = [os.path.join(WORKSPACE, "art", "toolkit"), os.path.join(WORKSPACE, "test-runs")]
+# Everywhere else pictures get made (samples, mockups, what's-new reports, cast art,
+# Claude's scratch folders), so the owner sees them too (2026-10-30). The E: folders
+# are only re-listed when they change; scratch is on Ubuntu's own disk, so cheap.
+EXTRA = [os.path.join(WORKSPACE, d) for d in ("samples", "mockups", "whats-new", os.path.join("art", "generated"))]
+SCRATCH = "/tmp/claude-%d" % os.getuid()
 PIDFILE = os.path.join(os.path.expanduser("~/.local/state"), "rr-viewer.pid")
 IMG = (".png", ".gif", ".jpg")
 
@@ -67,6 +73,12 @@ def newest_run():
     root = WATCH[1]
     runs = [os.path.join(root, d) for d in os.listdir(root) if os.path.isdir(os.path.join(root, d))] if os.path.isdir(root) else []
     return max(runs, key=os.path.getmtime) if runs else None
+
+
+def picture_name(path):
+    if path.startswith(SCRATCH + os.sep):
+        return "scratch/" + os.path.basename(path)
+    return os.path.relpath(path, WORKSPACE)
 
 
 class Index:
@@ -119,11 +131,14 @@ class Index:
             run = newest_run()
             if run:
                 self._visit(run, False)
+            for d in EXTRA:
+                self._visit(d, False)
+            self._visit(SCRATCH, True)
 
     def recent(self, since, limit=60):
         with self.lock:
             found = sorted(((m, p) for p, m in self.files.items() if m > since), reverse=True)[:limit]
-        return [{"path": p, "mtime": m, "name": os.path.relpath(p, WORKSPACE)} for m, p in found]
+        return [{"path": p, "mtime": m, "name": picture_name(p)} for m, p in found]
 
 
 INDEX = Index()
@@ -339,7 +354,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(200, png, "image/png") if png else self.send(404, {"error": "no sprite"})
         if u.path == "/file":
             path = os.path.realpath(q["path"][0])
-            allowed = [os.path.realpath(p) for p in WATCH + [HOME]]
+            allowed = [os.path.realpath(p) for p in WATCH + EXTRA + [SCRATCH, HOME]]
             if not any(path.startswith(a + os.sep) for a in allowed) or not os.path.isfile(path):
                 return self.send(403, {"error": "not allowed"})
             ctype = {"png": "image/png", "gif": "image/gif", "jpg": "image/jpeg"}.get(path.rsplit(".", 1)[-1].lower(), "application/octet-stream")
@@ -446,6 +461,8 @@ def main(argv):
     elif cmd == "open":
         start()
         open_page()
+    elif cmd == "start":   # quietly, no browser: pictures stream to the page if it's open
+        start()
     elif cmd == "show":
         start()
         stamp = time.strftime("%Y%m%d_%H%M%S")

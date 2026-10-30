@@ -22,9 +22,10 @@ button, input { font:inherit; padding:5px 12px; border-radius:6px; border:1px so
 button { cursor:pointer; } button.on { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
 main { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:14px; padding:14px 16px 40px; }
 @media (max-width: 900px) { main { grid-template-columns:1fr; } }
-#wrap { overflow:auto; max-height:calc(100vh - 90px); background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px; }
-#map { position:relative; display:inline-block; }
+#wrap { overflow:auto; height:calc(100vh - 90px); background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px; }
+#map { position:relative; display:inline-block; vertical-align:top; }
 #map > img.bg { display:block; image-rendering:pixelated; }
+#map .p img { pointer-events:none; } /* the browser's own picture-drag would cancel ours */
 .grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(0,0,0,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.12) 1px, transparent 1px); background-size:32px 32px; }
 .p { position:absolute; cursor:grab; touch-action:none; }
 .p img { display:block; image-rendering:pixelated; pointer-events:none; }
@@ -46,7 +47,7 @@ textarea { width:100%; min-height:70px; font:inherit; padding:6px; border-radius
 <header>
   <h1>Scene Board</h1><span id="mapname"></span><span id="title"></span>
   <span style="flex:1"></span>
-  <span class="help">Zoom</span><button id="zout">−</button><span id="zlabel" class="help">1x</span><button id="zin">+</button>
+  <span class="help">Zoom</span><button id="zout">−</button><span id="zlabel" class="help">1x</span><button id="zin">+</button><button id="zfit" title="Fit the whole map in the window">Fit</button>
   <button id="gridbtn" class="on">Grid</button>
   <button id="reset">Reset</button>
   <button id="send" class="on">Send to Claude</button>
@@ -69,16 +70,26 @@ document.getElementById('mapname').textContent = MAP || '';
 document.getElementById('title').textContent = q.get('title') || '';
 const FACES = ['down', 'left', 'up', 'right'], T = 32;
 let people = [], start = [], sel = null, cast = [], others = [];
-// zoom: the map is drawn at 2x already; Z enlarges it (and its people) further, remembered in this browser
-let Z = 1;
-try { Z = Math.max(1, Math.min(4, +localStorage.getItem('boardZoom') || 1)); } catch (e) {}
+// zoom: the map is drawn at 2x already; Z shrinks or enlarges it (and its people), remembered in this browser
+const ZS = [.25, .33, .5, .75, 1, 1.5, 2, 3, 4];
+let Z = 1, zfit = false;
+try { Z = Math.max(.25, Math.min(4, +localStorage.getItem('boardZoom') || 1)); zfit = localStorage.getItem('boardFit') !== '0'; } catch (e) {}
 function setZoom(z) {
-  Z = Math.max(1, Math.min(4, z)); document.getElementById('map').style.zoom = Z;
-  document.getElementById('zlabel').textContent = Z + 'x';
-  try { localStorage.setItem('boardZoom', Z); } catch (e) {}
+  Z = Math.max(.1, Math.min(4, z)); document.getElementById('map').style.zoom = Z;
+  document.getElementById('zlabel').textContent = Math.round(Z * 100) + '%';
+  document.getElementById('zfit').classList.toggle('on', zfit);
+  try { localStorage.setItem('boardZoom', Z); localStorage.setItem('boardFit', zfit ? '1' : '0'); } catch (e) {}
 }
-document.getElementById('zin').onclick = () => setZoom(Z + 1);
-document.getElementById('zout').onclick = () => setZoom(Z - 1);
+function fitNow() {
+  const bg = document.getElementById('bg'), w = document.getElementById('wrap');
+  if (zfit && bg.naturalWidth) setZoom(Math.min((w.clientWidth - 16) / bg.naturalWidth, (w.clientHeight - 16) / bg.naturalHeight));
+}
+document.getElementById('zin').onclick = () => { zfit = false; setZoom(ZS.find(v => v > Z + .001) || 4); };
+document.getElementById('zout').onclick = () => { zfit = false; setZoom([...ZS].reverse().find(v => v < Z - .001) || .25); };
+document.getElementById('zfit').onclick = () => { zfit = true; fitNow(); };
+document.getElementById('bg').addEventListener('load', fitNow);
+window.addEventListener('resize', fitNow);
+document.getElementById('wrap').addEventListener('wheel', e => { if (e.ctrlKey) { e.preventDefault(); document.getElementById(e.deltaY < 0 ? 'zin' : 'zout').click(); } }, { passive: false });
 setZoom(Z);
 const mapEl = document.getElementById('map');
 const sprite = (g, f) => '/api/sprite?gfx=' + encodeURIComponent(g) + '&facing=' + f;

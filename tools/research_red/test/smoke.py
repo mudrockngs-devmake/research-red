@@ -1222,6 +1222,9 @@ def main(scenarios=None, kind=None, argv=None, title="Smoke test", after_run=Non
         # open the live viewer in the Windows browser: screenshots stream in as they're taken
         argv.remove("--watch")
         subprocess.run([sys.executable, os.path.join(REPO, "tools/research_red/viewer/viewer.py"), "open"])
+    else:
+        # no pop-up: screenshots just stream to the viewer page if it's open
+        subprocess.run([sys.executable, os.path.join(REPO, "tools/research_red/viewer/viewer.py"), "start"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     compare = None
     if "--no-compare" in argv:
         argv.remove("--no-compare")
