@@ -71,7 +71,7 @@ One light tan paper colour and dark brown ink replace the whites on every box an
 **Planned** (owner 2026-10-28, #105)
 - **Watched fights become scripted cutscenes** with fun dialogue, not AI battles: Elm and Jenny vs the gym leaders next (#142), on the same scripted-fight system as the lab.
 - After Route 22, Oak and Daisy become the optional scaling EXP fights (section 5). The first one is **Lv 10**; the scaling per badge is decided after Brock, probably between Brock's and Misty's caps (owner 2026-10-28, #105).
-- The lab's Slowpoke is Oak's newest addition (introduced in the video call), never battles and stays a Slowpoke (#121): Nidoran♂ takes its place on Oak's rematch team, a Nidoking from 4 badges (owner 2026-10-28); later it sleeps in a little bed on the table (#122).
+- The lab's Slowpoke is Oak's newest addition (introduced in the video call: it turned up at the lab recently and hasn't left, owner 2026-10-30; it naps in the middle of its bed), never battles and stays a Slowpoke (#121): Nidoran♂ takes its place on Oak's rematch team, a Nidoking from 4 badges (owner 2026-10-28); later it sleeps in a little bed on the table (#122).
 - Idea (#126): Ivy asks if you'd recommend her starter; then Elm and Jenny pick so nobody has the same Pokémon.
 - All six starters are 50% female (#123). The lunch follows straight after Route 22 (#148), so the Viridian old man's block is gone by the time you can walk north.
 

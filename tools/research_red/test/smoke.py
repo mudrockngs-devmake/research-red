@@ -166,11 +166,11 @@ def sc_grass():
 
 def table_nap():
     """#86 rework: after the lab the starter table is empty and the lab's
-    Slowpoke naps on it at (9,4) (its saved position, object 16 of the map)."""
+    Slowpoke naps on it at (9,5), the middle of its bed (its saved position, object 16 of the map)."""
     slowpoke = T.G.const("offsetof(struct SaveBlock1, objectEventTemplates[15].x)")
     return (check("table_empty", " && ".join(T.G.flag_set(f) for f in (
                 "FLAG_HIDE_BULBASAUR_BALL", "FLAG_HIDE_SQUIRTLE_BALL", "FLAG_HIDE_CHARMANDER_BALL")))
-            + check("slowpoke_on_table", f"{T.G._sb1(slowpoke, 2)} == 9 && {T.G._sb1(slowpoke + 2, 2)} == 4"))
+            + check("slowpoke_on_table", f"{T.G._sb1(slowpoke, 2)} == 9 && {T.G._sb1(slowpoke + 2, 2)} == 5"))
 
 
 def weak_foes(count=2):
@@ -192,7 +192,9 @@ def sc_lab():
     # A says Yes and you battle his two leftover starters
     return (["load @bedroom"] + debug_script(SCRIPT_TEST_MODE) + ["mash B 40"] + debug_script(SCRIPT_LAB)
             + ["shot s000"] + step("UP") + weak_foes() + play_until("lab", scene_end(3), 60000)
-            + expect(story=3, party=1) + check("oak_fought", T.G.flag_set("FLAG_RR_OAK_FIRST_FIGHT")) + table_nap())
+            + expect(story=3, party=1) + check("oak_fought", T.G.flag_set("FLAG_RR_OAK_FIRST_FIGHT")) + table_nap()
+            + ["mash B 40", "wait 20", "shot nap0"] + step("DOWN", 3) + step("RIGHT", 3) + ["press UP", "wait 20", "press A", "wait 60", "shot nap1"]
+            + play_until("nap_closed", T.G.field_free(), 800, key="B", every=30))
 
 
 def sc_debug1_party():

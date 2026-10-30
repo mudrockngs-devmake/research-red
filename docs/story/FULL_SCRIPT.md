@@ -17,7 +17,9 @@ Oak: My name is Oak! People call me the Pokémon Prof-
 
 Oak: Ho ho! Forty years of opening lectures. It slips out.
 
-Oak: And this is Slowpoke! Say hello!
+Oak: And this is Slowpoke! It turned up here just recently.
+
+Oak: Hasn't left since. Say hello!
 
 Slowpoke: …
 
@@ -1213,6 +1215,10 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 >
 > It's still holding the phone from
 > this morning's call.
+
+### RR_Lab_EventScript_TableSlowpoke
+
+### RR_Lab_EventScript_TableEnd
 
 ### RR_Lab_EventScript_SlowpokeNap
 

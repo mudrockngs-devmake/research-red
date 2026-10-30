@@ -911,6 +911,10 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > It's still holding the phone from
 > this morning's call.
 
+### RR_Lab_EventScript_TableSlowpoke
+
+### RR_Lab_EventScript_TableEnd
+
 ### RR_Lab_EventScript_SlowpokeNap
 
 > Slowpoke: …Zzz… …Slow?

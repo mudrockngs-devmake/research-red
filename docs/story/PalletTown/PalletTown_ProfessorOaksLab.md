@@ -705,6 +705,8 @@ Script `PalletTown_ProfessorOaksLab_EventScript_Aide1`
 - at 3,1: There's an e-mail message here.  …  Finally! The ultimate Trainers of the Pokémon League are ready to take on all comers!  Bring your best Pokémon and see how you rate as a Trainer!  Pokémon League Hq Indigo Plateau  Prof. Oak, please visit us! …
 - at 6,1: Press Start to open the Menu!
 - at 7,1: All Pokémon types have strong and weak points against others. / The Save option is on the Menu. Use it regularly.
+- at 9,4: Slowpoke: …Zzz… …Slow?  It's fast asleep in the little bed Prof. Oak and Daisy made for it.
+- at 9,6: Slowpoke: …Zzz… …Slow?  It's fast asleep in the little bed Prof. Oak and Daisy made for it.
 
 ## Exits
 

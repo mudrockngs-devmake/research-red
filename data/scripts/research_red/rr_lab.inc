@@ -3,7 +3,7 @@
 
 @ The empty starter table, where the lab's Slowpoke naps after the scene
 .set RR_LAB_NAP_X, 9
-.set RR_LAB_NAP_Y, 4
+.set RR_LAB_NAP_Y, 5
 
 @ ===================================================================
 @ Research Red: Oak's lab scene
@@ -1488,6 +1488,16 @@ RR_Lab_EventScript_Slowpoke::
 
 @ #86: after the lab scene it naps on the empty starter table (it doesn't
 @ turn to face you; it's asleep)
+@ Slowpoke sits in the middle of the bed, a tile away from either side of the table:
+@ talking to the table reaches it (from the lab scene on)
+RR_Lab_EventScript_TableSlowpoke::
+	goto_if_lt VAR_0x40FE, 3, RR_Lab_EventScript_TableEnd
+	lock
+	goto RR_Lab_EventScript_SlowpokeNap
+
+RR_Lab_EventScript_TableEnd::
+	end
+
 RR_Lab_EventScript_SlowpokeNap::
 	playmoncry SPECIES_SLOWPOKE, CRY_MODE_WEAK
 	textcolor NPC_TEXT_COLOR_NEUTRAL
