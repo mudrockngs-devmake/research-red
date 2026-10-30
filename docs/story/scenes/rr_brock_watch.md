@@ -42,24 +42,29 @@
 ### RR_Gym_EventScript_BrockIntro
 
 > Brock: Welcome to Pewter Gym!
-> I am Brock. You must be the
-> professors.
+> I am Brock.
+>
+> Professor Ivy. I've read all your
+> papers. It's an honor.
+>
+> You too, Professor {PLAYER}.
 >
 > Professor Oak called to explain
 > what you two are up to.
 >
-> He said to go easy on you.
->
-> Then he said not to.
+> He said not to go easy on you.
 
 > {PLAYER}: That sounds like him.
 
-> Brock: He told every Gym Leader
-> the same. You two do your research
-> as a team, so you battle as one.
+> Brock: He did say the League is
+> interested in what you're working
+> on.
 >
-> Two of you, one of me. All above
-> board.
+> So he told every Gym Leader to
+> keep things reasonably fair.
+>
+> Two of you, one of me. Reasonably
+> fair, apparently.
 
 > {PLAYER}: Oh, so that's why we can
 > do shenanigans like this.

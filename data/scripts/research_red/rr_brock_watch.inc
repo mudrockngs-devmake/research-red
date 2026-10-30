@@ -261,22 +261,25 @@ RR_Gym_EventScript_Kid2::
 
 RR_Gym_Text_Brock_Welcome:
 	.string "Brock: Welcome to Pewter Gym!\n"
-	.string "I am Brock. You must be the\l"
-	.string "professors.\p"
+	.string "I am Brock.\p"
+	.string "Professor Ivy. I've read all your\n"
+	.string "papers. It's an honor.\p"
+	.string "You too, Professor {PLAYER}.\p"
 	.string "Professor Oak called to explain\n"
 	.string "what you two are up to.\p"
-	.string "He said to go easy on you.\p"
-	.string "Then he said not to.$"
+	.string "He said not to go easy on you.$"
 
 RR_Gym_Text_P_SoundsLikeHim:
 	.string "{PLAYER}: That sounds like him.$"
 
 RR_Gym_Text_Brock_Team:
-	.string "Brock: He told every Gym Leader\n"
-	.string "the same. You two do your research\l"
-	.string "as a team, so you battle as one.\p"
-	.string "Two of you, one of me. All above\n"
-	.string "board.$"
+	.string "Brock: He did say the League is\n"
+	.string "interested in what you're working\l"
+	.string "on.\p"
+	.string "So he told every Gym Leader to\n"
+	.string "keep things reasonably fair.\p"
+	.string "Two of you, one of me. Reasonably\n"
+	.string "fair, apparently.$"
 
 RR_Gym_Text_P_Shenanigans:
 	.string "{PLAYER}: Oh, so that's why we can\n"
