@@ -67,7 +67,7 @@
 > Brock: Rock-hard defense.
 > Let's see you crack it!
 
-*[trainerbattle_no_intro Leader Brock (Geodude, Sandshrew, Kabuto, Omanyte, Rhyhorn, Onix, his leftover starters, and Oak brings out his ranch and ride Pokémon at, Lv 50)]*
+*[trainerbattle_no_intro Leader Brock (Geodude, Sandshrew, Kabuto, Omanyte, Rhyhorn, Onix, his leftover starters, and Oak brings out his ranch and ride Pokémon at, Lv 50, , and level. */)]*
 
 > Brock: Solid as a rock! Train up
 > and try again.

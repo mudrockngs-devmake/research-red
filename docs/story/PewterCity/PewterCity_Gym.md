@@ -40,14 +40,14 @@ Script `PewterCity_Gym_EventScript_Brock`
 > Brock: Rock-hard defense.
 > Let's see you crack it!
 
-**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?,  Lv?, and level. */ Lv?
 
-**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?,  Lv?, and level. */ Lv?
 
 > Brock: Cracked again!
 > You really have grown.
 
-**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?
+**Battle:** Leader Brock (single): Geodude Lv20, Sandshrew Lv20, Kabuto Lv20, Omanyte Lv20, Rhyhorn Lv20, Onix Lv21, his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?, Lv 50 Lv?,  Lv?, and level. */ Lv?
 
 > Brock: Come back anytime. My
 > team keeps training too.
@@ -194,22 +194,6 @@ Script `PewterCity_Gym_EventScript_GymGuy`
 
 ### Pewter Gym Ivy (Rr Ivy) at 2,10
 *hidden by `FLAG_TEMP_13`*
-(no talk script; used in cutscenes)
-
-### Pewter Gym Mon 0 (Var 0) at 5,6
-*hidden by `FLAG_TEMP_14`*
-(no talk script; used in cutscenes)
-
-### Pewter Gym Mon 1 (Var 1) at 7,6
-*hidden by `FLAG_TEMP_15`*
-(no talk script; used in cutscenes)
-
-### Pewter Gym Mon 2 (Var 2) at 5,8
-*hidden by `FLAG_TEMP_16`*
-(no talk script; used in cutscenes)
-
-### Pewter Gym Mon 3 (Var 3) at 7,8
-*hidden by `FLAG_TEMP_17`*
 (no talk script; used in cutscenes)
 
 ## Signs

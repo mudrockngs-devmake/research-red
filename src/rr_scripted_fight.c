@@ -34,6 +34,7 @@
 #include "rr_scripted_fight.h"
 #include "constants/rr_fights.h"
 #include "script.h"
+#include "constants/abilities.h"
 #include "constants/battle.h"
 #include "constants/opponents.h"
 #include "constants/species.h"
@@ -69,6 +70,7 @@ struct RRScriptedFight
     u8 turnCount;
     const struct RRFightLine *lines;
     u8 lineCount;
+    bool8 sweep;       // Elm and Jenny can't be hurt and flatten what they hit: one round per turn
 };
 
 // Fight 1: Elm and Jenny (Lv 12) beat Oak's leftover starters (Lv 5). Oak's
@@ -100,6 +102,33 @@ static const struct RRFightLine sLines_LabRanch[] =
     { 0, TRUE,  COMPOUND_STRING("Oak: Pidgeot! Tauros! Just like the old days! Hold nothing back!") },
 };
 
+// Fight 3 (#142): Elm and Jenny against Brock's six, two at a time. They sweep
+// a pair each turn, so the lines are tied to who is on the field:
+// after turn 1 the fossils are out, after turn 2 Rhyhorn and Onix.
+static const struct RRFightTurn sTurns_BrockWatch[] =
+{
+    {{ [0] = RR_BEST, [2] = RR_BEST, [1] = RR_HIT, [3] = RR_HIT }},
+};
+
+static const struct RRFightLine sLines_BrockWatch[] =
+{
+    { 0, TRUE,  COMPOUND_STRING("Brock: Elm and Jenny. The Pewter Gym accepts your challenge.") },
+    { 0, FALSE, COMPOUND_STRING("Elm: For evolution! For a badge! Mostly the badge!") },
+    { 0, FALSE, COMPOUND_STRING("Elm: Did you know Onix used to evolve only by trading? Now you just-") },
+    { 0, TRUE,  COMPOUND_STRING("Brock: …Are you lecturing me in my own Gym?") },
+    { 0, FALSE, COMPOUND_STRING("Jenny: He lectures everyone, dear. It's how he says hello.") },
+    { 0, FALSE, COMPOUND_STRING("Ivy: How long till he mentions Eggs? Ten seconds.\p{B_PLAYER_NAME}: Five.") },
+    { 0, TRUE,  COMPOUND_STRING("Brock: Funny, breeding Geodude taught me… the Eggs are so-") },
+    { 0, FALSE, COMPOUND_STRING("{B_PLAYER_NAME}: Four. I win, sweetie.") },
+    { 1, FALSE, COMPOUND_STRING("Jenny: The evidence suggests Rock types don't care for that.\pElm: That was MY observation!\pJenny: Case closed, dear.") },
+    { 1, FALSE, COMPOUND_STRING("Elm: LIVING FOSSILS! In a GYM! Jenny, I think I'm crying!\pJenny: Dear. Command.") },
+    { 1, FALSE, COMPOUND_STRING("Ivy: Bet he asks Brock where he got them. Mid-battle.\p{B_PLAYER_NAME}: That's not a bet. That's a certainty.") },
+    { 1, FALSE, COMPOUND_STRING("Elm: Brock! Where did you get them? Which museum? Which dig?") },
+    { 1, TRUE,  COMPOUND_STRING("Brock: The Museum. After the battle. Please.") },
+    { 2, FALSE, COMPOUND_STRING("Elm: It's so much… bigger in person.\pJenny: Dear. Command.\pElm: Right! For evolution!") },
+    { 2, FALSE, COMPOUND_STRING("{B_PLAYER_NAME}: (Jenny's Pokémon has the composure of someone who's done a lot of paperwork.)") },
+};
+
 static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
 {
     [RR_FIGHT_LAB_STARTERS] =
@@ -118,6 +147,14 @@ static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
         .turns = sTurns_LabRanch, .turnCount = ARRAY_COUNT(sTurns_LabRanch),
         .lines = sLines_LabRanch, .lineCount = ARRAY_COUNT(sLines_LabRanch),
     },
+    [RR_FIGHT_BROCK_WATCH] =
+    {
+        .intro = COMPOUND_STRING("Elm and Jenny challenge Brock!\p"),
+        .elmJennyLevel = 14, .elmJennyIvs = 31, // Brock's six: TRAINER_RR_BROCK_WATCH
+        .turns = sTurns_BrockWatch, .turnCount = ARRAY_COUNT(sTurns_BrockWatch),
+        .lines = sLines_BrockWatch, .lineCount = ARRAY_COUNT(sLines_BrockWatch),
+        .sweep = TRUE,
+    },
 };
 
 // The two starters Oak has left, by VAR_RR_STARTER (the same as
@@ -133,7 +170,7 @@ static const u16 sOakLeftovers[6][2] =
 };
 
 static EWRAM_DATA u8 sFightPlus1 = 0;          // the fight running + 1 (0 = none)
-static EWRAM_DATA u8 sLinesPlayed = 0;         // one bit per line
+static EWRAM_DATA u16 sLinesPlayed = 0;        // one bit per line
 
 static const struct RRScriptedFight *GetFight(void)
 {
@@ -259,6 +296,19 @@ void RR_ScriptedFightChooseMove(enum BattlerId battler)
     if (!RR_IsScriptedFight() || battler >= MAX_BATTLERS_COUNT)
         return;
     fight = GetFight();
+    if (fight->sweep)
+    {
+        if (GetBattlerSide(battler) == B_SIDE_PLAYER)
+        {
+            gBattleMons[battler].attack = gBattleMons[battler].spAttack = 500;
+            gBattleMons[battler].defense = gBattleMons[battler].spDefense = 500;
+        }
+        else
+        {
+            gBattleMons[battler].defense = gBattleMons[battler].spDefense = 1;
+            gBattleMons[battler].ability = ABILITY_NONE; // no Sturdy: the pair goes down this turn
+        }
+    }
     turn = gBattleTurnCounter < fight->turnCount ? gBattleTurnCounter : fight->turnCount - 1;
 
     // the Pokemon facing it, or its partner once that one has fainted

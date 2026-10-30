@@ -8,11 +8,12 @@ Map `MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB` · music `MUS_OAK_LAB` · weather `WEAT
 
 ## People and objects
 
-### Scientist (Scientist) at 3,11
+### Boy (Boy) at 3,11
 Script `RR_Lab_EventScript_FeatureAide`
 
-> Aide: Hello, Professor! I keep the
-> lab's research tools in order.
+> Tracy: Hello, Professor! When I'm
+> not sketching the Pokémon, I keep
+> the lab's research tools in order.
 >
 > Ask me about any of them, as often
 > as you like.
@@ -98,8 +99,6 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > Battle Prof. Oak?
 
 > Ivy: Oh, I like this.
-
-> Oak healed your Pokémon.
 
 **Battle:** Pkmn Prof Oak (double): Squirtle Lv5, Chikorita Lv5
 
@@ -582,8 +581,8 @@ Script `RR_Lab_EventScript_Slowpoke`
 
 > Slowpoke: …Zzz… …Slow?
 >
-> It's fast asleep on the starter
-> table. Prof. Oak doesn't mind.
+> It's fast asleep in the little bed
+> Prof. Oak and Daisy made for it.
 
 > Slowpoke: …Slooow?
 >
@@ -602,7 +601,7 @@ Script `RR_RanchPager_EventScript_OakPikachu`
 > It dims its cheeks so it won't
 > wake the Slowpoke on the table.
 
-### Lab Oak Farfetchd (Species(Farfetchd)) at 12,6
+### Lab Oak Farfetchd (Species(Farfetchd)) at 11,6
 *hidden by `FLAG_TEMP_3`*
 Script `RR_RanchPager_EventScript_OakFarfetchd`
 
@@ -626,7 +625,7 @@ Script `RR_RanchPager_EventScript_OakAbra`
 > It and the Slowpoke are having a
 > napping contest. Nobody's winning.
 
-### Lab Oak Machop (Species(Machop)) at 12,9
+### Lab Oak Machop (Species(Machop)) at 9,11
 *hidden by `FLAG_TEMP_3`*
 Script `RR_RanchPager_EventScript_OakMachop`
 
@@ -687,6 +686,18 @@ Script `RR_Lab_EventScript_Muffin`
 >
 > Daisy's Rattata eyes the napping
 > Slowpoke. It wants the table too.
+
+### Scientist (Scientist) at 12,4
+Script `PalletTown_ProfessorOaksLab_EventScript_Aide1`
+
+> Prof. Oak is going to have his own
+> radio show soon.
+>
+> The program will be called Prof.
+> Oak's Pokémon Seminar.
+
+> I study Pokémon as Prof. Oak's
+> Aide.
 
 ## Signs
 

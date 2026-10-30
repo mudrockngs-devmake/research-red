@@ -4015,6 +4015,18 @@ static void HandleEndTurn_ContinueBattle(void)
     }
 }
 
+// Research Red (#142): between turns, once the fainted are replaced: the lines
+// the end of the turn couldn't play because a whole pair was down
+static void RR_ScriptedFightBetweenTurns(void)
+{
+    const u8 *script = RR_ScriptedFightLineScript();
+
+    if (script != NULL)
+        BattleScriptExecute(script); // comes back here for the next one
+    else
+        gBattleMainFunc = HandleTurnActionSelectionState;
+}
+
 void BattleTurnPassed(void)
 {
     s32 i;
@@ -4079,7 +4091,7 @@ void BattleTurnPassed(void)
     AssignUsableGimmicks();
     SetShellSideArmCategory();
     SetAiLogicDataForTurn(gAiLogicData); // get assumed abilities, hold effects, etc of all battlers
-    gBattleMainFunc = HandleTurnActionSelectionState;
+    gBattleMainFunc = RR_IsScriptedFight() ? RR_ScriptedFightBetweenTurns : HandleTurnActionSelectionState; // Research Red (#142)
 
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         BattleScriptExecute(BattleScript_PalacePrintFlavorText);

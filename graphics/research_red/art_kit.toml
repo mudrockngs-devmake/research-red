@@ -384,6 +384,12 @@ where = "Menus everywhere"
 game_now = "ui_theme.py recolour of FireRed's interface"
 stage = "placeholder"
 
+[pieces."game:lab_table_bed"]
+what = "Starter table's clean edge (#118) and Slowpoke's bed (#122)"
+where = "Oak's lab"
+game_now = "Made with the existing tiles"
+stage = "placeholder"
+
 [pieces."game:picnic_blanket"]
 what = "Picnic blanket (#8)"
 where = "Route 22 lunch"

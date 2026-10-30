@@ -1,7 +1,9 @@
 # Pewter: watching Elm and Jenny take on Brock (#69)
 
 Status: first draft approved by the owner (2026-10-20); finalise in the v0.0.16
-dialogue pass. Scripted scene, not a real battle.
+dialogue pass. A scripted fight on the battle screen since v0.0.23 (#142, owner 2026-10-30:
+proper in-battle cutscene instead of overworld sprites, not too long, funny; the lines stay,
+Elm and Jenny keep their starters out and sweep two per turn).
 
 ## Flow
 1. You beat Brock (Elm and Jenny saw the end from the Gym doorway).

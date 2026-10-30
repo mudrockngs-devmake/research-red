@@ -178,10 +178,20 @@
 - Onix Lv21
 - his leftover starters, and Oak brings out his ranch and ride Pokémon at Lv?
 - Lv 50 Lv?
+-  Lv?
+- and level. */ Lv?
 
-## Pkmn Prof Oak (`TRAINER_RR_OAK_LAB_RANCH`, double)
-- Pidgeot Lv50
-- Tauros Lv50
+## Leader Brock (`TRAINER_RR_BROCK_WATCH`, double)
+- Geodude Lv12
+- Sandshrew Lv12
+- Kabuto Lv12
+- Omanyte Lv12
+- Rhyhorn Lv12
+- Onix Lv12
+
+## Pkmn Prof Oak (`TRAINER_RR_OAK_WATCH`, double)
+- Squirtle Lv5
+- Chikorita Lv5
 - only hardens. He asks everyone if they're from Pallet Town. */ Lv?
 
 ## Pkmn Trainer 1 Samurai (`TRAINER_RR_SAMURAI`, single)

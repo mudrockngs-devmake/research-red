@@ -272,6 +272,7 @@ def battles_judge(out, sdir, script):
 # lines, in that order; its trainer number says which fight ran.
 SCRIPTED_FIGHT_LINES = {
     "TRAINER_RR_OAK_WATCH": ["Elm and Jenny challenge Prof. Oak!", "Elm: ", "Oak: "],
+    "TRAINER_RR_BROCK_WATCH": ["Elm and Jenny challenge Brock!", "Brock: ", "Elm: "],
 }
 
 

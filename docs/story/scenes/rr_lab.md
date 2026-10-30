@@ -255,7 +255,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > battle.
 
 > Elm: A test, then! Right here!
-> Right now! For science!
+> Right now! For evolution!
 
 ### RR_Lab_EventScript_BattleAfterBulbasaur
 
@@ -293,7 +293,13 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > For morale.
 
 > Elm: Nobody let anybody win!
-> That was pure science!
+> That was natural selection!
+
+> Oak: Ho ho! Watching you all
+> battle takes me back.
+>
+> I feel a youthful energy I haven't
+> felt in years!
 
 > Elm: We're on a roll, Jenny! Who's
 > next? Professor Oak!
@@ -311,6 +317,23 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Jenny: Best of zero.
 > We're in a lab, dear.
+
+> Oak: Ho ho! Watching you all
+> battle takes me back.
+>
+> I feel a youthful energy I haven't
+> felt in years!
+
+### RR_Lab_EventScript_WatchAfterWin
+
+> Elm: Our turn! Professor, you're
+> warmed up. Team Evolution next!
+
+> Watch Elm and Jenny take on
+> Prof. Oak?
+
+> Ivy: Let them have their moment,
+> sweetie. We'll hear all about it.
 
 ### RR_Lab_EventScript_ElmChallengesOak
 
@@ -368,8 +391,6 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Oak: Fair's fair. A quick heal
 > first. Again!
-
-*[trainerbattle_no_intro Pkmn Prof Oak (Pidgeot, Tauros, only hardens. He asks everyone if they're from Pallet Town. */)]*
 
 ### RR_Lab_EventScript_RanchSkip
 
@@ -454,6 +475,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Don't worry, Elm.
 > I have it covered.
 
+### RR_Lab_EventScript_AfterOakOffer
+
 ### RR_Lab_EventScript_TableNap
 
 > Oak: {STR_VAR_1} and {STR_VAR_2}
@@ -463,7 +486,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > The lab's Slowpoke shuffles over
 > to the empty table… very slowly.
 >
-> It climbs up and falls asleep.
+> It climbs into its new bed and
+> falls asleep.
 
 > Oak: Ho ho! Well, it is a very
 > good table.
@@ -530,6 +554,14 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Oak: You got one, Elm.
 > It's the same grant.
+
+> Oak: Oh, one more thing, everyone!
+>
+> Questions about the project, the
+> grant or any of the gadgets?
+> Tracy over there knows it all.
+>
+> Better than I do, frankly.
 
 > Oak: Go and see Daisy. She has
 > Town Maps. And patience.
@@ -782,10 +814,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 *[additem ITEM_TM100]*
 
-### RR_Lab_EventScript_HealElmJenny
-
-> Oak healed Elm and Jenny's
-> Pokémon.
+### RR_Lab_EventScript_OakTakesBalls
 
 ### RR_Lab_EventScript_SetupPair
 
@@ -831,8 +860,6 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Ivy: Oh, I like this.
 
-> Oak healed your Pokémon.
-
 ### RR_Lab_EventScript_OakTalkBeforeRoute22
 
 > Oak: Ah, {PLAYER}! {STR_VAR_1} and
@@ -857,9 +884,13 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: Off you go! Viridian won't
 > research itself.
 
-### RR_Lab_EventScript_StartWatch
+### RR_Lab_EventScript_ScriptedFight
 
-### RR_Lab_EventScript_EndWatch
+*[trainerbattle_no_intro Pkmn Prof Oak (Squirtle, Chikorita, only hardens. He asks everyone if they're from Pallet Town. */)]*
+
+### RR_Lab_OnLoad
+
+### RR_Lab_EventScript_PlaceBed
 
 ### RR_Lab_EventScript_SlowpokeOnTable
 
@@ -874,8 +905,8 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 
 > Slowpoke: …Zzz… …Slow?
 >
-> It's fast asleep on the starter
-> table. Prof. Oak doesn't mind.
+> It's fast asleep in the little bed
+> Prof. Oak and Daisy made for it.
 
 ### RR_Lab_EventScript_Muffin
 

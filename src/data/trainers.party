@@ -15182,6 +15182,33 @@ IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
    and Jenny's side. Placeholder team: src/rr_scripted_fight.c sets species
    and level. */
 
+=== TRAINER_RR_BROCK_WATCH ===
+Name: Brock
+Class: Leader
+Pic: Leader Brock
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Geodude
+Level: 12
+
+Sandshrew
+Level: 12
+
+Kabuto
+Level: 12
+
+Omanyte
+Level: 12
+
+Rhyhorn
+Level: 12
+
+Onix
+Level: 12
+
 === TRAINER_RR_OAK_WATCH ===
 Name: Oak
 Class: Pkmn Prof

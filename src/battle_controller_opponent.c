@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rr_scripted_fight.h" // Research Red (#142)
 #include "battle.h"
 #include "battle_ai_main.h"
 #include "battle_ai_switch.h"
@@ -556,7 +557,8 @@ static void OpponentHandleChoosePokemon(enum BattlerId battler)
         if (IsDoubleBattle())
             SetBattlerAiData(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT), gAiLogicData);
 
-        chosenMonId = GetMostSuitableMonToSwitchInto(battler, switchType);
+        // Research Red (#142): a scripted fight sends its team out in order
+        chosenMonId = RR_IsScriptedFight() ? PARTY_SIZE : GetMostSuitableMonToSwitchInto(battler, switchType);
         if (chosenMonId == PARTY_SIZE) // Advanced logic failed so we pick the next available battler
         {
             enum BattlerId battler1, battler2;
@@ -577,7 +579,8 @@ static void OpponentHandleChoosePokemon(enum BattlerId battler)
             {
                 if (IsValidForBattle(&gEnemyParty[chosenMonId])
                  && chosenMonId != gBattlerPartyIndexes[battler1]
-                 && chosenMonId != gBattlerPartyIndexes[battler2])
+                 && chosenMonId != gBattlerPartyIndexes[battler2]
+                 && chosenMonId != gBattleStruct->monToSwitchIntoId[BATTLE_PARTNER(battler)]) // Research Red (#142): both fainted, not the same one twice
                     break;
             }
         }

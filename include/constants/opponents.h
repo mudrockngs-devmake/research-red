@@ -723,6 +723,7 @@ enum TrainerID
     TRAINER_RR_BROCK_REMATCH, // Research Red (#52)
     TRAINER_RR_OAK_WATCH, // Research Red (#105): Oak in the scripted lab fights against Elm and Jenny (team set by src/rr_scripted_fight.c; was Oak's ranch team, #86)
     TRAINER_RR_SAMURAI, // Research Red (#9): Viridian Forest
+    TRAINER_RR_BROCK_WATCH, // Research Red (#142): Brock in the scripted fight you watch
     TRAINERS_COUNT,
 
     // Special Trainer Ids.

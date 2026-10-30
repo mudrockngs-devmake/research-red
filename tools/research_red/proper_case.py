@@ -78,7 +78,7 @@ def files():
     for p in pats:
         out.update(glob.glob(os.path.join(REPO, p)))
     # our own scenes are written in proper case already; the debug menu is ours too
-    return sorted(f for f in out if "/research_red/" not in f)
+    return sorted(f for f in out if "/research_red/" not in f and not os.path.basename(f).startswith("rr_"))
 
 
 def sweep(check):

@@ -4,7 +4,7 @@ _Made by `tools/research_red/art/art_gate.py tracker` from `graphics/research_re
 
 Every piece of art that will be replaced, where it shows up, what the game uses now, and how far its new version is. Stages: placeholder -> draft -> hand-finished -> **approved** (only approved pieces are in the game; the owner's call). The first pieces to go in are the Pallet Town ones (the vertical slice, marked P).
 
-Totals: 9 placeholder, 49 draft, 0 hand-finished, 0 approved
+Totals: 10 placeholder, 49 draft, 0 hand-finished, 0 approved
 
 ## Overworld sprites (walking around)
 
@@ -81,5 +81,6 @@ Totals: 9 placeholder, 49 draft, 0 hand-finished, 0 approved
 | `game:intro_call` | Intro video call frame and avatars | New game | build_call_ui.py from the animatic layout | placeholder | P |
 | `game:battle_backgrounds` | Battle backgrounds per place | Battles | FireRed's backgrounds in cozier colours (battle_bg_theme.py); scenery ones are #74 | placeholder |  |
 | `game:notebook_ui` | The Field notebook look (menus, text boxes, battle boxes) | Menus everywhere | ui_theme.py recolour of FireRed's interface | placeholder |  |
+| `game:lab_table_bed` | Starter table's clean edge (#118) and Slowpoke's bed (#122) | Oak's lab | Made with the existing tiles | placeholder |  |
 | `game:picnic_blanket` | Picnic blanket (#8) | Route 22 lunch | Made with the existing tiles | placeholder |  |
 | `game:ambient_pokemon` | Ambient Pokemon on maps (#64) | Pallet, lab, Pokemon Centers, Viridian Forest | The games' overworld Pokemon | placeholder |  |

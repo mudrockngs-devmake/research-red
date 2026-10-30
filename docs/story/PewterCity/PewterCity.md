@@ -132,7 +132,7 @@ Script `PewterCity_EventScript_RunningShoesAide`
 >
 > From Mom
 
-### Pewter Elm (Rr Elm) at 16,27
+### Pewter Elm (Rr Elm) at 11,25
 *hidden by `FLAG_TEMP_13`*
 Script `RR_Pewter_EventScript_Rematch`
 
@@ -269,7 +269,7 @@ Script `RR_Pewter_EventScript_Rematch`
 
 > Jenny: You are very warm people.
 
-### Pewter Jenny (Rr Jenny) at 16,28
+### Pewter Jenny (Rr Jenny) at 12,25
 *hidden by `FLAG_TEMP_14`*
 Script `RR_Pewter_EventScript_Rematch`
 

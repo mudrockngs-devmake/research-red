@@ -255,7 +255,7 @@ Research Red: First walk up Route 1 (Route1)
 ### RR_Route1_EventScript_ReactDiglett
 
 > Elm: A Diglett! What's under it?
-> Nobody knows! Science!
+> Does it evolve? Nobody knows!
 
 > Ivy: In Alola it has three
 > golden hairs. Lovely ones.
@@ -376,7 +376,7 @@ Research Red: First walk up Route 1 (Route1)
 ### RR_Route1_EventScript_Jealous3
 
 > Elm: Three! Jenny, we have to
-> catch up! For science!
+> catch up! Survival of the fittest!
 
 ### RR_Route1_EventScript_Jealous4
 

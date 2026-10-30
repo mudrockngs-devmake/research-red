@@ -4,24 +4,25 @@
 
 ### RR_Lab_EventScript_FeatureAide
 
-> Aide: Hello, Professor! I keep the
-> lab's research tools in order.
+> Tracy: Hello, Professor! When I'm
+> not sketching the Pokémon, I keep
+> the lab's research tools in order.
 >
 > Ask me about any of them, as often
 > as you like.
 
 ### RR_Lab_EventScript_FeatureAideMenu
 
-> Aide: Which one?
+> Tracy: Which one?
 
 *[dynmultichoice 16]*
 
-> Aide: Good luck with the research,
-> Professor!
+> Tracy: Good luck with the
+> research, Professor!
 
 ### RR_Lab_EventScript_AidePager
 
-> Aide: The Ranch Pager calls the
+> Tracy: The Ranch Pager calls the
 > Professor's ranch Pokémon.
 >
 > Use it from the Bag, or register
@@ -35,7 +36,7 @@
 
 ### RR_Lab_EventScript_AidePC
 
-> Aide: The PC is on the Start menu
+> Tracy: The PC is on the Start menu
 > wherever you go: Pokémon storage,
 > your item box and Lab Supplies.
 >
@@ -45,7 +46,7 @@
 
 ### RR_Lab_EventScript_AideDexNav
 
-> Aide: Officer Jenny gives you the
+> Tracy: Officer Jenny gives you the
 > DexNav after Route 22.
 >
 > Start > DexNav shows what lives
@@ -54,7 +55,7 @@
 
 ### RR_Lab_EventScript_AideGuide
 
-> Aide: The Field Guide is on the
+> Tracy: The Field Guide is on the
 > Start menu, under the Pokédex.
 >
 > It lists what lives in the area,
@@ -62,7 +63,7 @@
 
 ### RR_Lab_EventScript_AideRules
 
-> Aide: Elm's Research Rules are in
+> Tracy: Elm's Research Rules are in
 > Options: level caps, doubles or
 > singles, healing after battles.
 >
@@ -71,7 +72,7 @@
 
 ### RR_Lab_EventScript_AideEvolve
 
-> Aide: Pokémon evolve when you say
+> Tracy: Pokémon evolve when you say
 > so: look for EVOLVE in the party
 > menu once they're ready.
 >
@@ -82,7 +83,7 @@
 
 ### RR_Lab_EventScript_AideTMs
 
-> Aide: The grant came with all 100
+> Tracy: The grant came with all 100
 > TMs, and they never run out.
 >
 > Moves LEARN MOVES teaches for free
@@ -91,7 +92,7 @@
 
 ### RR_Lab_EventScript_AideRest
 
-> Aide: Nurse Joy and Delia let you
+> Tracy: Nurse Joy and Delia let you
 > rest: until night if it's day,
 > until morning if it's night.
 >
@@ -100,7 +101,7 @@
 
 ### RR_Lab_EventScript_AideRematch
 
-> Aide: After Route 22, Prof. Oak
+> Tracy: After Route 22, Prof. Oak
 > and Daisy battle you here, and
 > Delia at home.
 >
@@ -110,12 +111,12 @@
 
 ### RR_Lab_EventScript_AideBall
 
-> Aide: A new Poké Ball? Sure! It's
+> Tracy: A new Poké Ball? Sure! It's
 > quick and painless. Which Pokémon?
 
-> Aide: And which Poké Ball?
+> Tracy: And which Poké Ball?
 
 *[dynmultichoice 16]*
 
-> Aide: All done! {STR_VAR_1} is in
+> Tracy: All done! {STR_VAR_1} is in
 > its new {STR_VAR_2}.

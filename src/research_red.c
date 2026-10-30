@@ -491,24 +491,9 @@ static u16 RR_RivalStarterSpecies(bool32 forElm)
     return sRRStarters[(1 - region) * 3 + (type + (forElm ? 1 : 2)) % 3];
 }
 
-void RR_ScriptBrockWatchRound(struct ScriptContext *ctx)
+// #142: Elm and Jenny's starters for the Brock fight, in VAR_0x8004/5
+void RR_ScriptBrockWatchPair(struct ScriptContext *ctx)
 {
-    static const u16 sBrock[3][2] = {
-        {SPECIES_GEODUDE, SPECIES_SANDSHREW}, {SPECIES_KABUTO, SPECIES_OMANYTE}, {SPECIES_RHYHORN, SPECIES_ONIX},
-    };
-    u32 round = (gSpecialVar_0x8004 - 1) % 3;
-    u16 elm, jenny;
-
-    switch (round)
-    {
-    case 0:  elm = RR_RivalStarterSpecies(TRUE); jenny = RR_RivalStarterSpecies(FALSE); break;
-    case 1:  elm = SPECIES_PIDGEOTTO; jenny = SPECIES_NIDORINA; break;   // Pudding, Macaron
-    default: elm = SPECIES_SANDSHREW; jenny = SPECIES_GROWLITHE; break;  // Churro, Cruller
-    }
-    VarSet(VAR_OBJ_GFX_ID_0, OBJ_EVENT_MON + sBrock[round][0]);
-    VarSet(VAR_OBJ_GFX_ID_1, OBJ_EVENT_MON + sBrock[round][1]);
-    VarSet(VAR_OBJ_GFX_ID_2, OBJ_EVENT_MON + elm);
-    VarSet(VAR_OBJ_GFX_ID_3, OBJ_EVENT_MON + jenny);
-    StringCopy(gStringVar1, GetSpeciesName(elm));
-    StringCopy(gStringVar2, GetSpeciesName(jenny));
+    gSpecialVar_0x8004 = RR_RivalStarterSpecies(TRUE);
+    gSpecialVar_0x8005 = RR_RivalStarterSpecies(FALSE);
 }

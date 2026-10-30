@@ -75,7 +75,7 @@ Script `RR_Pallet_EventScript_Gerald`
 > Cinnabar and beyond come later.
 > Thanks for playing!”
 
-### Pallet Oak Tauros (Species(Tauros)) at 21,10
+### Pallet Oak Tauros (Species(Tauros)) at 19,8
 Script `RR_RanchPager_EventScript_OakTauros`
 
 > Tauros: Mooo!
@@ -115,7 +115,7 @@ Script `RR_Ambient_EventScript_Dodrio`
 > Three heads, three opinions. It
 > crows at the morning anyway.
 
-### Species(Diglett) (Species(Diglett)) at 21,14
+### Species(Diglett) (Species(Diglett)) at 19,15
 Script `RR_Ambient_EventScript_Diglett`
 
 > Diglett: Dig dig!
