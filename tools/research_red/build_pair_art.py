@@ -42,7 +42,7 @@ HEIGHT = 63      # that part fills the picture's height
 BEHIND = 2       # the partner stands this many pixels higher (further back)
 FIT = 60         # overlap them until the pair is this wide
 DUO_FIT = 52     # your side stands closer, like Elm and Jenny (owner, #133)
-BIGGER = {"03_player_m": 0.56}  # a smaller crop shows this figure a little bigger (owner, #133)
+BIGGER = {"03_player_m": 0.56, "04_player_f": 0.63}  # crop per figure: smaller shows them bigger, larger smaller (owner, #133)
 
 
 def figure(ref_dir, ref):
