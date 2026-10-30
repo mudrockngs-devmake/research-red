@@ -87,7 +87,7 @@ _Last updated: 2026-10-29 (v0.0.22 built: the lab and its scripted fights)_
 
 ## Session costs not yet logged (log them in the next playtest round's NOTES.md)
 - Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. The session started 2026-10-27 21:29 ran three days
-  (v0.0.20 intake, v0.0.21 and v0.0.22 builds, v0.0.21 intake): **$112.61** at the 2026-10-29 wrap-up (3h38m API).
+  (v0.0.20 intake, v0.0.21 and v0.0.22 builds, v0.0.21 intake): **$113.28** at the 2026-10-30 wrap-up (3h40m API).
   It's in the v0.0.21 NOTES.md; one long session shows as one line in `session-cost`, not one per day (that's why
   the daily log looked empty). Starting a new conversation each day gives one line per day.
 
