@@ -150,7 +150,7 @@ static const struct RRScriptedFight sFights[RR_FIGHT_COUNT] =
     [RR_FIGHT_BROCK_WATCH] =
     {
         .intro = COMPOUND_STRING("Elm and Jenny challenge Brock!\p"),
-        .elmJennyLevel = 15, .elmJennyIvs = 31, // Brock's six: TRAINER_RR_BROCK_WATCH
+        .elmJennyLevel = 14, .elmJennyIvs = 31, // Brock's six: TRAINER_RR_BROCK_WATCH
         .turns = sTurns_BrockWatch, .turnCount = ARRAY_COUNT(sTurns_BrockWatch),
         .lines = sLines_BrockWatch, .lineCount = ARRAY_COUNT(sLines_BrockWatch),
         .sweep = TRUE,

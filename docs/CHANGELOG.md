@@ -19,7 +19,7 @@ One big build, just this once: day and night, new battle pictures and overworld 
 - Changed: Brock gives you an Alolan Geodude he bred, instead of TM39 (you already have that TM), with its own Pokédex banter.
 - Fixed: Ivy sits in her chair at Daisy's house.
 - Changed: Oak's talk in the lab flows better: he brings up regional forms before Ivy asks about them.
-- Changed: rebattle levels. Oak and Daisy's whole team sits halfway between level caps (Lv 10 before Brock), Delia's at the cap (Lv 14), Elm and Jenny's at the last cap plus one (Lv 15 after Brock, in their fight and in the Brock watch).
+- Changed: rebattle levels. Oak and Daisy's whole team sits halfway between level caps (Lv 10 before Brock), Delia's at the cap (Lv 14), Elm and Jenny's at Lv 14 in Pewter, the same as you at the cap (their fight, their rebattles and the Brock watch).
 - Changed: Elm and Jenny fight Oak at Lv 7, the level you'd reach by beating them, and grow to Lv 9 after beating him, before his ranch Pokémon arrive.
 - Changed: the Pokédex's Forms and Evolution pages keep Mega and Hisuian forms a surprise for now.
 - Fixed: heads no longer get cut off in the pair battle pictures, and you can see more of Ivy beside you.

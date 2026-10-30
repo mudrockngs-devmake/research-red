@@ -12,7 +12,7 @@ Levels you'll meet in each area, in story order, next to the level cap. Use it t
 | Route 22 | 3-7 | 10-10 | 10 |
 | Route 2 | 3-5 | - | - |
 | Viridian Forest | 3-10 | 6-9 | 9 |
-| Pewter City | - | 10-15 | 15 |
+| Pewter City | - | 10-14 | 14 |
 
 ## Level caps (src/caps.c)
 
@@ -43,7 +43,7 @@ The game plays each fight many times with the AI on both sides (yours plays like
 |---|---|---|---|---|---|---|
 | Lab: you and Ivy vs Elm and Jenny (double) | your starter + Ivy's, Lv 5 (the scene's own) | 40 of 50 (80%) | 5.7 | 0.7 | 1.8 | 2026-10-27, v0.0.19 (b8977e7ae-dirty) |
 | Route 22: the 6v6 double with Ivy vs Elm and Jenny | debug 4 team: starter, Bulbasaur, Spearow, Rattata, Mankey, Nidoran M, all Lv 12 | 18 of 20 (90%) | 17.4 | 4.0 | 5.8 | 2026-10-30, v0.0.23 (24928413d) |
-| Pewter: Elm and Jenny's rematch outside the Pokémon Center | debug 10 team, all Lv 14 (the cap before Brock; 1 badge; the real cap here is 21, and all Lv 18 won 17 of 20) | 0 of 20 (0%) | 16.9 | 6.0 | 3.0 | 2026-10-30, v0.0.23 (24928413d) |
+| Pewter: Elm and Jenny's rematch outside the Pokémon Center | debug 10 team, all Lv 14 (the cap before Brock, the same level as Elm and Jenny; 1 badge) | 3 of 20 (15%) | 19.1 | 5.7 | 4.0 | 2026-10-30, v0.0.23 (7f064260d-dirty) |
 | Pewter Gym: Brock | debug 10 team, all Lv 14 (no badge, at the cap) | 20 of 20 (100%) | 11.8 | 0.7 | 6.0 | 2026-10-30, v0.0.23 (24928413d) |
 
 Reading it: won under about 60% is hard for a typical team at that point, over 95% with few of yours fainting is easy. Numbers per seed: data/research_red/battle_sims.json.

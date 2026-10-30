@@ -10,7 +10,7 @@
 // Owner's levels, 2026-10-30, before the Elite Four: Oak + Daisy's whole team
 // sits halfway between the last cap and this one (sOakLevels: a place to train),
 // Delia's whole team at the cap. Elm + Jenny's Pewter fight (trainers.party) is
-// the cap just passed plus one: Lv 15 after Brock.
+// at the cap you fought Brock under, the same level as you: Lv 14.
 // Rematches give 1.5x EXP (a place to train instead of grinding); only Gym
 // leaders pay prize money. After the Elite Four the teams bring regional forms,
 // and the family Pokemon (Mimey, Muffin) stay home while an exchange-program
