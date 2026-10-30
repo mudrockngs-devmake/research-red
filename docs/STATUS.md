@@ -5,7 +5,7 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-29 (v0.0.22 built: the lab and its scripted fights)_
+_Last updated: 2026-10-30 (v0.0.22 built: the lab and its scripted fights; waiting on the owner's spot check)_
 
 ## Now
 - **v0.0.21 spot check done and archived** (`test-archive/2026-10-29_v0.0.21_spotcheck/`): new issues #149-#156; #116, #139, #140, #148 closed; follow-ups on #105 (Elm and Jenny's perspective, instant gag, auto-advance), #110, #142, #143.
@@ -87,7 +87,7 @@ _Last updated: 2026-10-29 (v0.0.22 built: the lab and its scripted fights)_
 
 ## Session costs not yet logged (log them in the next playtest round's NOTES.md)
 - Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. The session started 2026-10-27 21:29 ran three days
-  (v0.0.20 intake, v0.0.21 and v0.0.22 builds, v0.0.21 intake): **$113.28** at the 2026-10-30 wrap-up (3h40m API).
+  (v0.0.20 intake, v0.0.21 and v0.0.22 builds, v0.0.21 intake): **$113.81** at the 2026-10-30 wrap-up (3h41m API).
   It's in the v0.0.21 NOTES.md; one long session shows as one line in `session-cost`, not one per day (that's why
   the daily log looked empty). Starting a new conversation each day gives one line per day.
 
