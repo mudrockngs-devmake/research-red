@@ -11,6 +11,22 @@ added or closed.
 - medium: changes a scene's flow, a menu, or shared code (followers, portraits)
 - high: new game mechanics touching battles, evolution, items or the save file
 
+## Road to the demo (updated 2026-10-30; this section is the current plan)
+The demo runs from the intro call through Brock and ends at Pewter. Each build is tested before the next starts; GitHub milestones hold the same lists. Older sections below are history, and the risk tables may list closed issues.
+
+| Build | Theme | Issues | Testing |
+|---|---|---|---|
+| v0.0.23 | One big build: out | #105 #108 #115 #118 #121 #122 #124 #125 #133 #135 #136 #142 #149 #157 #158 #159 | Spot check |
+| v0.0.24 | Pallet and Daisy's house | #113 #117 #119 #137 #138 #160, lunch rows | Full playthrough |
+| v0.0.25 | Text and menus | #109 #114 #120 #146 #161 | Spot check |
+| v0.0.26 | Levels, balance, difficulty | #41 #111 #112 #123 #127 #141 #156 #162 #163 #164 #165 | Spot check + balance tests |
+| v0.0.27 | Moves, evolution, Pokedex | #20 #144 #145 #147 | Full playthrough |
+| v0.0.28 | Lunch, Pewter order, battle lines | #134 #155 #166 | Spot check |
+| v0.0.29 | Demo candidate | #2 #14 #16 #37 #129 #167 | Full playthrough, phone and handheld, friends |
+| v1.0 | Public demo | Debug menu off, patch only (docs/RELEASING.md) | Final checks |
+
+Left out of the demo unless the owner says otherwise: #126 #130 #132 and the feature ideas (#1 #15 #17 #29 #33 #49 #52 #55 #59 #60 #66 #67 #68 #74 #101 #102 #103 #131), the Art Kit lane (#104), and tooling #168.
+
 ## 0. Fix first (before anything new)
 | # | What | Work | Risk |
 |---|---|---|---|
@@ -169,10 +185,3 @@ A: keep committing straight to master (no branches / pull requests yet; revisit 
 
 ## Small themed builds (planned with the owner 2026-10-28)
 Each test build is one theme of 3-5 related issues, bugs first, risky systems (battle engine, day/night, saves) on their own; small low-risk pieces can join a build when that makes the playtest easier. Every fix gets a test that fails before and passes after; the smoke tests and the full playthrough run before the owner plays; the owner gets a short checklist. New ideas go to issues for a later build. Order: v0.0.20 battles (#106, #107, #128, #121), v0.0.21 story flow (#119, #117, #116, #113, #114), v0.0.22 text and menus (#120, #115, #109, #124), v0.0.23 balance (#110, #111, #123, #112), v0.0.24 day and night (#108), v0.0.25 the lab's look (#118, #122, #125). #129 (credits) any time.
-
-## After v0.0.23 (updated 2026-10-30)
-v0.0.23 grew into one big build, just this once: day and night (#108), the tan and brown colours, battle pictures (#133), stand-in overworld sprites (#125), the Gym crowd, Elm and Jenny's scripted fight with Brock (#142), the Pewter lunch and a dialogue polish. Later builds go back to small themes.
-- **v0.0.24:** Pallet and Daisy's house: Gerald (#113) and the lunch rows already in master. A full playthrough round is due.
-- **Later, shifted as listed in STATUS.md:** lunch rework (#155), text and menus, levels and balance, moves and evolution, the lab's look.
-- **To decide:** Pewter scene order, coloured-text rule, Day Care and level caps, trainer AI and difficulty, how hard the Pewter rematch and Route 22 should be.
-

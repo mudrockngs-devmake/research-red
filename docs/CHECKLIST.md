@@ -1,5 +1,7 @@
 # Research Red — Demo Checklist (through Brock)
 
+**Current plan: `docs/ROADMAP.md`, "Road to the demo". Some unticked items below are out of date.**
+
 Tick items as they ship. Each milestone ends with an owner playtest.
 
 ## v0.1 — Pallet Town complete

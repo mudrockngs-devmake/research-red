@@ -8,6 +8,7 @@ Keep it short (about 80 lines): when a run is finished, move its checklist to
 _Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch rows in master for the next build)_
 
 ## Now
+- **Plan to the demo:** `docs/ROADMAP.md`, "Road to the demo": v0.0.24 to v0.0.29, then v1.0. Decide the demo's art: #167.
 - **v0.0.23 is out** (tag and pre-release on GitHub, tests passed): waiting on the owner's spot check. v0.0.22 round archived (`test-archive/2026-10-30_v0.0.22_v0.0.22-spotcheck/`).
 - **In master, not in a build yet:** the lunch Pokémon in two rows of six plus Brock's six on the sides (18 in all, tested with `cl_brock16` and `cl_brock16_p3`).
 - Roadmap changed today: v0.0.23 became one big build (day and night, colours, battle pictures, stand-in sprites, Gym crowd, Brock watch, Pewter lunch, dialogue polish). Later builds go back to small; see ROADMAP.md "After v0.0.23".
@@ -92,9 +93,9 @@ _Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch
 - [x] Owner 2026-10-30: lunch in v0.0.23 (OK given), then full tests (doubles, singles, day/night, UI, story, battles, balance); also suggest and do polish across the whole demo.
 - [x] Owner 2026-10-30: dialogue polish end to end: clean clunky lines, fit the anime style and style guides; keep everything, don't replace, just more coherent and polished.
 - [x] Owner 2026-10-30: kids a smidge further back on the wall; Slowpoke up a little in its bed.
-- [ ] Seen in test: Slowpoke can still turn around while asleep until you leave the lab once (FACE_DOWN only applies on reload).
-- [ ] Owner 2026-10-30: review the whole order of Pewter scenes (including the later ones) and say what makes coherent sense without causing problems; lunch Pokemon could be at least yours and Brock's, or yours and Elm and Jenny's.
-- [ ] Later (owner 2026-10-30): decide when coloured text should be blue versus other colours; blue is preferred over the original red on the tan boxes, but no rule yet.
+- [ ] (#160, v0.0.24) Seen in test: Slowpoke can still turn around while asleep until you leave the lab once (FACE_DOWN only applies on reload).
+- [ ] (#166, v0.0.28) Owner 2026-10-30: review the whole order of Pewter scenes (including the later ones) and say what makes coherent sense without causing problems; lunch Pokemon could be at least yours and Brock's, or yours and Elm and Jenny's.
+- [ ] (#161, v0.0.25) Later (owner 2026-10-30): decide when coloured text should be blue versus other colours; blue is preferred over the original red on the tan boxes, but no rule yet.
 - [x] (in v0.0.23) Decide whether the theme goes in v0.0.23 (needs a full smoke, matrix and playthrough first).
 - [x] Viewer (owner 2026-10-30): zoom in/out below 100%, fit to any window, pictures shrink dynamically, usual viewer features.
 - [x] Viewer (owner 2026-10-30): every picture Claude takes, tests or generates shows up in the live stream, efficiently.
@@ -105,7 +106,7 @@ _Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch
 - [x] (in master, owner to check in the viewer) Oak's pager Pokémon (owner 2026-10-30): spread them out on the Pallet map and in the lab so they aren't lined up vertically, until a ranch tile area exists.
 - [x] (in master) Owner's reply 2026-10-30: female player a tiny bit smaller; lab Farfetch'd (11,6) and Machop (9,11) clear of the bookcases. Sharper faces tried and dropped: the stronger settings came out muddier and lost Ivy's hair colour (owner: not if splotchy). Jenny stays diagonal from Elm in Pallet: Elm steps onto her column in the grass scene, then she steps in behind him.
 - [ ] Gerald (#113, owner 2026-10-30): between the two fence posts, more Tentacool blocking the gap, text adjusted. Set to milestone v0.0.24 (Pallet and Daisy's house).
-- [ ] Owner's v0.0.22 spot-check notes (2026-10-30), read back before filing: `test-archive/2026-10-30_v0.0.22_v0.0.22-spotcheck/notes/v0.0.22_spotcheck_notes.txt` (12 items: swipe-in bug, first Oak fight half as long, Brock fight in battle, Oak and Ivy lines, skip-all safety, Tracy replaces the systems aide, start menu rework if it fits v0.0.23).
+- [x] Owner's v0.0.22 spot-check notes (2026-10-30): all 12 filed (#105 #124 #142 #157 #158) and built in v0.0.23; stay open until the owner's spot check.
 - [x] (in master, tested) Pewter Gym tidy-up for v0.0.23 (owner 2026-10-30): clean up Camper Liam's dialogue (keep the light-years joke; explain why Brock is making lunch); Elm and Jenny stand off to the side when you first enter, watching and cheering; Brock's nine brothers and sisters behind him, with dialogue about them and the stew so it all makes sense; Brock's portrait over the text box before the battle
 - [x] Oak's opening talk (owner 2026-10-30): rework the Mega Evolution and Hisuian starter hints so they flow; Ivy says "regional forms" but Oak hasn't said anything first; "snow" reads oddly when there's no snow.
 - [x] Pokedex forms page (owner 2026-10-30, retool only, nothing new): the expansion's page already shows regional forms. Its code shows every form with no check, so Mega and Hisuian forms likely appear: confirm in the game, hide them with a small edit, also check the evolutions page (Quilava to Hisuian Typhlosion), test well.
@@ -117,10 +118,10 @@ _Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch
 - [x] (in master, being tested) Brock gives an Alolan Geodude instead of TM39 Rock Tomb (owner 2026-10-30), with Ivy and player dialogue and a Dex banter entry; check whether regional forms for Kanto/Johto have banter yet
 - [x] Daisy's house: fix Ivy's position so she's sitting in the chair (owner 2026-10-30)
 - [x] (installed and tagged 2026-10-30) v0.0.23 is one big build, just this once (owner 2026-10-30; later builds go back to small): #108, #133, #125 (six sprites only: players, Ivy, Elm, Jenny, Delia, Oak; done), the 12 spot-check notes (#105, #142 Brock in battle, Tracy, start menu #124, swipe-in bug), Elm's lines towards evolution. Owner may want to rework Oak's new line.
-- [ ] Day Care and level caps: how it should work, for later (owner 2026-10-30). What it does now is in DESIGN section 1.
+- [ ] (#164, v0.0.26) Day Care and level caps: how it should work, for later (owner 2026-10-30). What it does now is in DESIGN section 1.
 - [ ] Visual theming overhaul (owner, 2026-10-30): one darker, warmer base colour replaces all the whites, across the Start menu, attack menu, dialogue, Pokédex, party and summary, without breaking anything. Going a little darker is fine if text stays readable. Owner picked B (light tan) across the board including dialogue boxes, with the Pokédex entry page one step lighter at A (cream). Owner wants examples of every box and screen that changes, including others that benefit (mart, PC, naming screen and so on). Also: cover every Pokédex tab and DexNav, leave alone what shouldn't change; keep blues as the contrast colour; dialogue portrait name tags keep their colours but need room for long names like Officer Jenny (owner corrected: not blue), and the plate should match the boxes: tan paper, curved corners. Include the scrolling Pokédex list. Owner also asked for suggestions on overall theming, including font colour. Theme tool: `tools/research_red/ui_theme.py`.
-- [ ] Trainer AI and difficulty, not decided (owner 2026-10-30): keep the original game's difficulty; not Radical Red; cozy in look and play, challenge only if wanted, and not for every route trainer. How it fits the story is open. Claude's suggestion: a rule in Research Rules that gives smarter AI to the curated fights only (Gyms, Elm and Jenny, Oak and Daisy, Delia). After v0.0.23.
-- [ ] Measure Oak and Daisy's first fight (Lv 10) and Delia's (Lv 14) in balance.py, to compare with FireRed's rival (two Pokémon at Lv 9 on Route 22). Not simulated yet (owner asked 2026-10-30). After v0.0.23.
+- [ ] (#165, v0.0.26) Trainer AI and difficulty, not decided (owner 2026-10-30): keep the original game's difficulty; not Radical Red; cozy in look and play, challenge only if wanted, and not for every route trainer. How it fits the story is open. Claude's suggestion: a rule in Research Rules that gives smarter AI to the curated fights only (Gyms, Elm and Jenny, Oak and Daisy, Delia). After v0.0.23.
+- [ ] (#163, v0.0.26) Measure Oak and Daisy's first fight (Lv 10) and Delia's (Lv 14) in balance.py, to compare with FireRed's rival (two Pokémon at Lv 9 on Route 22). Not simulated yet (owner asked 2026-10-30). After v0.0.23.
 
 ## Half-finished / open threads
 - Cost log: 2026-10-30 session $43.27 so far (2h01m API, Opus 5.5); project total $157.15.
