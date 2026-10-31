@@ -230,13 +230,13 @@ PalletTown_PlayersHouse_1F_Text_Delia_OakCalled::
     .string "are finally back in Pallet.$"
 
 PalletTown_PlayersHouse_1F_Text_Ivy_CertainSomeone::
-    .string "Ivy: And one of them is staying\n"
-    .string "next door. Loudly?$"
+    .string "Ivy: And the other one is next\n"
+    .string "door. Loudly, I assume.$"
 
 PalletTown_PlayersHouse_1F_Text_P_LoudPassion::
     .string "{PLAYER}: I've always respected\n"
     .string "Elm's passion.\p"
-    .string "A very loud passion, nonetheless.$"
+    .string "From a distance, ideally.$"
 
 PalletTown_PlayersHouse_1F_Text_Delia_SixAM::
     .string "Delia: Oh, I heard him at 6 AM.\p"

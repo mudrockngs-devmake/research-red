@@ -1383,7 +1383,7 @@ RR_Lab_Text_Elm_SomeoneElse::
 RR_Lab_Text_Jenny_Protocol::
     .string "Jenny: By protocol, dear, you ask\n"
     .string "before you challenge a legend.\p"
-    .string "Jenny: Professor, would you battle\n"
+    .string "Professor, would you battle\n"
     .string "us? Your two starters, our two.$"
 
 RR_Lab_Text_Oak_Accepts::
@@ -1577,7 +1577,7 @@ RR_Lab_Text_Jenny_OakFast::
     .string "that was very fast, sir.$"
 
 RR_Lab_Text_Oak_Invigorated::
-    .string "Oak: Ho ho ho! Marvellous!\n"
+    .string "Oak: Ho ho ho! Marvelous!\n"
     .string "I feel thirty years younger!$"
 
 RR_Lab_Text_Ivy_OakGlow::
@@ -1603,7 +1603,7 @@ RR_Lab_Text_Ivy_LetThemHaveIt::
 RR_Lab_Text_Oak_AnyTime::
     .string "Oak: If you'd like to fight me\n"
     .string "with these, any time is fine.\p"
-    .string "Oak: Before you head out past\n"
+    .string "Any time before you head out past\n"
     .string "Viridian, that is!$"
 
 RR_Lab_Text_Oak_StillOffer::

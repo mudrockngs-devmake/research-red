@@ -250,7 +250,7 @@ RR_Daisy_Text_Elm_Passion::
 RR_Daisy_Text_Elm_CallMe::
     .string "Elm: Want to change them later?\n"
     .string "Options, “Research Rules.”\p"
-    .string "Day or night!$"
+    .string "Or call me! Day or night!$"
 
 RR_Daisy_Text_Jenny_NotNight::
     .string "Jenny: Please not night.$"
@@ -307,8 +307,8 @@ RR_Daisy_Text_P_Maps::
     .string "you have Town Maps for us.$"
 
 RR_Daisy_Text_Daisy_TwoMaps::
-    .string "Daisy: I have two. Gary took one.\n"
-    .string "Ash borrowed the other one.\p"
+    .string "Daisy: I had four. Gary took one.\n"
+    .string "Ash borrowed another.\p"
     .string "I'm still waiting.\n"
     .string "So: one per couple.$"
 
@@ -378,7 +378,7 @@ RR_Daisy_Text_Ivy_Dinner::
 
 RR_Daisy_Text_P_MimeyKitchen::
     .string "{PLAYER}: Mimey won't like anyone\n"
-    .string "else in its kitchen.$"
+    .string "else in his kitchen.$"
 
 RR_Daisy_Text_Ivy_NightOff::
     .string "Ivy: Then Mimey supervises. And\n"

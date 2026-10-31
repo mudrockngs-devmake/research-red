@@ -55,7 +55,7 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > Oak: {PLAYER}! Daisy dropped by
 > with Muffin. Fancy a battle?
 >
-> Oak: No prize money, mind. You've
+> No prize money, mind. You've
 > had the grant! But plenty of EXP.
 
 > Oak: Shall we?
@@ -73,7 +73,7 @@ Script `PalletTown_ProfessorOaksLab_EventScript_ProfOak`
 > Oak: Ho ho! Splendid! A haiku:
 >
 > “Bright young researcher,
-> my Slowpoke still hasn't noticed
+> Slowpoke still hasn't noticed
 > the battle is done.”
 >
 > Daisy: Oh, Muffin. You were still
@@ -644,7 +644,7 @@ Script `RR_Lab_EventScript_DaisyRematch`
 > Oak: {PLAYER}! Daisy dropped by
 > with Muffin. Fancy a battle?
 >
-> Oak: No prize money, mind. You've
+> No prize money, mind. You've
 > had the grant! But plenty of EXP.
 
 > Oak: Shall we?
@@ -662,7 +662,7 @@ Script `RR_Lab_EventScript_DaisyRematch`
 > Oak: Ho ho! Splendid! A haiku:
 >
 > “Bright young researcher,
-> my Slowpoke still hasn't noticed
+> Slowpoke still hasn't noticed
 > the battle is done.”
 >
 > Daisy: Oh, Muffin. You were still

@@ -65,7 +65,7 @@ RR_Ambient_Text_Diglett:
 RR_Ambient_Text_Chansey:
 	.string "Chansey: Chaaan-sey!\p"
 	.string "Nurse Joy's helper. It's checking\n"
-	.string "your Poké Balls are polished.$"
+	.string "that your Poké Balls shine.$"
 
 RR_Ambient_Text_ForestPidgeot:
 	.string "Pidgeot: Pijooo!\p"

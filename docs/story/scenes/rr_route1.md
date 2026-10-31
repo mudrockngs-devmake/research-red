@@ -10,7 +10,7 @@ Research Red: First walk up Route 1 (Route1)
 
 *[rr_ivy_to_scene LOCALID_ROUTE1_IVY]*
 
-> Elm: Route One! We meet again!
+> Elm: Route 1! We meet again!
 > This time I brought a partner!
 
 > Jenny: And a wife.
@@ -223,7 +223,7 @@ Research Red: First walk up Route 1 (Route1)
 ### RR_Route1_EventScript_ReactEevee
 
 > Elm: An Eevee?! Eight evolutions!
-> On Route One!
+> On Route 1!
 
 > Jenny: Breathe, dear. In through
 > the nose.

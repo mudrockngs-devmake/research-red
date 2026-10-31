@@ -79,10 +79,10 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 - The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
 
 ## Asked for, not done yet
-- [ ] Pewter lunch (owner 2026-10-30, wants it in v0.0.23 if it fits): everyone has lunch after the Gym fight (after the player's Brock fight or after Elm and Jenny's, undecided), Brock's brothers and sisters get banter too, a bit like the anime; maybe a small cutscene at the Gym with all 18 Pokemon sitting and eating together, only if not too much for the game. Unify every stew/lunch mention so the story is coherent. Keep Brock's rock puns. Also put the kids in a more natural formation; owner asks whether the other Pokemon fit too.
+- [x] Pewter lunch (owner 2026-10-30, wants it in v0.0.23 if it fits): everyone has lunch after the Gym fight (after the player's Brock fight or after Elm and Jenny's, undecided), Brock's brothers and sisters get banter too, a bit like the anime; maybe a small cutscene at the Gym with all 18 Pokemon sitting and eating together, only if not too much for the game. Unify every stew/lunch mention so the story is coherent. Keep Brock's rock puns. Also put the kids in a more natural formation; owner asks whether the other Pokemon fit too.
 - [x] Owner 2026-10-30: intro video call says Oak's Slowpoke turned up at the lab recently; Slowpoke sits in the middle of its bed.
 - [ ] Owner 2026-10-30: lunch in v0.0.23 (OK given), then full tests (doubles, singles, day/night, UI, story, battles, balance); also suggest and do polish across the whole demo.
-- [ ] Owner 2026-10-30: dialogue polish end to end: clean clunky lines, fit the anime style and style guides; keep everything, don't replace, just more coherent and polished.
+- [x] Owner 2026-10-30: dialogue polish end to end: clean clunky lines, fit the anime style and style guides; keep everything, don't replace, just more coherent and polished.
 - [x] Owner 2026-10-30: kids a smidge further back on the wall; Slowpoke up a little in its bed.
 - [ ] Seen in test: Slowpoke can still turn around while asleep until you leave the lab once (FACE_DOWN only applies on reload).
 - [ ] Owner 2026-10-30: review the whole order of Pewter scenes (including the later ones) and say what makes coherent sense without causing problems; lunch Pokemon could be at least yours and Brock's, or yours and Elm and Jenny's.

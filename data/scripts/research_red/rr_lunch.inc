@@ -242,11 +242,10 @@ RR_Lunch_Text_Elm_Dessert::
     .string "here.$"
 
 RR_Lunch_Text_Ivy_ForYourself::
-    .string "Ivy: So you bought dessert for\n"
-    .string "yourself.$"
+    .string "Ivy: So there's no dessert.$"
 
 RR_Lunch_Text_Elm_InSpirit::
-    .string "Elm: I bought it in spirit.$"
+    .string "Elm: There's dessert in spirit.$"
 
 RR_Lunch_Text_P_Apology::
     .string "{PLAYER}: In spirit, I accept your\n"

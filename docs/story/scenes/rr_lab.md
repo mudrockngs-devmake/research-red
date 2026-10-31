@@ -347,7 +347,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Jenny: By protocol, dear, you ask
 > before you challenge a legend.
 >
-> Jenny: Professor, would you battle
+> Professor, would you battle
 > us? Your two starters, our two.
 
 > Oak: Ho ho! A challenge in my own
@@ -377,7 +377,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Jenny: Noted, dear. The floor goes
 > in the report.
 
-> Oak: Ho ho ho! Marvellous!
+> Oak: Ho ho ho! Marvelous!
 > I feel thirty years younger!
 
 > Elm: Then let's go again! Same
@@ -476,7 +476,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: If you'd like to fight me
 > with these, any time is fine.
 >
-> Oak: Before you head out past
+> Any time before you head out past
 > Viridian, that is!
 
 > Elm: But… we still get funding

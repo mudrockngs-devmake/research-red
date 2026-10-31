@@ -257,7 +257,7 @@ RR_Route1_Movement_RunNorthLate:
 	step_end
 
 RR_Route1_Text_Elm_WeMeetAgain::
-    .string "Elm: Route One! We meet again!\n"
+    .string "Elm: Route 1! We meet again!\n"
     .string "This time I brought a partner!$"
 
 RR_Route1_Text_Jenny_RightHere::
@@ -724,7 +724,7 @@ RR_Route1_Text_ReactMeowthB::
 
 RR_Route1_Text_ReactEeveeA::
     .string "Elm: An Eevee?! Eight evolutions!\n"
-    .string "On Route One!$"
+    .string "On Route 1!$"
 
 RR_Route1_Text_ReactEeveeB::
     .string "Jenny: Breathe, dear. In through\n"

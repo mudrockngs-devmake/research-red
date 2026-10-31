@@ -89,19 +89,29 @@ RR_BrockWatch_EventScript_Scene::
 	releaseall
 	end
 
-@ Everyone around the table: the kids in one long row, Brock serving, the guests on the rocks
+@ Everyone around the table, a U facing the middle: Brock at the head, his family down the
+@ sides, the guests along the near side (on the rocks, where there are rocks)
 RR_BrockWatch_EventScript_Lunch::
 	fadescreen FADE_TO_BLACK
-	setobjectxy 7, 2, 5
-	setobjectxy 8, 3, 5
-	setobjectxy 9, 4, 5
-	setobjectxy 10, 5, 5
-	setobjectxy 11, 6, 5
-	setobjectxy 12, 7, 5
-	setobjectxy 13, 8, 5
-	setobjectxy 14, 9, 5
-	setobjectxy 15, 10, 5
-	setobjectxy LOCALID_PEWTER_GYM_BROCK, 6, 6
+	setobjectxy 7, 4, 5
+	turnobject 7, DIR_SOUTH
+	setobjectxy 8, 5, 5
+	turnobject 8, DIR_SOUTH
+	setobjectxy 9, 7, 5
+	turnobject 9, DIR_SOUTH
+	setobjectxy 10, 8, 5
+	turnobject 10, DIR_SOUTH
+	setobjectxy 11, 3, 5
+	turnobject 11, DIR_EAST
+	setobjectxy 12, 3, 6
+	turnobject 12, DIR_EAST
+	setobjectxy 13, 9, 5
+	turnobject 13, DIR_WEST
+	setobjectxy 14, 9, 6
+	turnobject 14, DIR_WEST
+	setobjectxy 15, 4, 7
+	turnobject 15, DIR_NORTH
+	setobjectxy LOCALID_PEWTER_GYM_BROCK, 6, 5
 	turnobject LOCALID_PEWTER_GYM_BROCK, DIR_SOUTH
 	setobjectxy 2, 6, 7
 	turnobject 2, DIR_NORTH
@@ -195,7 +205,7 @@ RR_Lunch_Text_Brock_Favorite:
 
 RR_Lunch_Text_Elm_Fossils:
 	.string "Elm: Brock, about those living\n"
-	.string "fossils. Did you know that...$"
+	.string "fossils. Did you know that…$"
 
 RR_Lunch_Text_Jenny_Spoon:
 	.string "Jenny: Dear. Spoon.$"
@@ -235,8 +245,8 @@ RR_BrockWatch_Text_Elm_Allergies:
 
 RR_BrockWatch_Text_Brock_Ivy:
 	.string "Brock: Professor Ivy, your notes\n"
-	.string "on regional forms helped my\l"
-	.string "breeding more than I can say.$"
+	.string "on regional forms have helped me\l"
+	.string "more than I can say.$"
 
 RR_BrockWatch_Text_Ivy_Thanks:
 	.string "Ivy: Then they did their job.\n"
@@ -388,8 +398,8 @@ RR_Gym_Text_Brock_Team:
 	.string "fair, apparently.$"
 
 RR_Gym_Text_P_Shenanigans:
-	.string "{PLAYER}: Oh, so that's why we can\n"
-	.string "do shenanigans like this.$"
+	.string "{PLAYER}: So that's how we get\n"
+	.string "away with this.$"
 
 RR_Gym_Text_Brock_Respect:
 	.string "Brock: I respect it. My Pokémon\n"
@@ -414,8 +424,8 @@ RR_Gym_Text_Elm_Cheer:
 	.string "this! Just not by too much!$"
 
 RR_Gym_Text_Jenny_Cheer:
-	.string "Jenny: We're cheering for you,\n"
-	.string "dear. Both of us. Aren't we, dear?$"
+	.string "Jenny: We're cheering for you.\n"
+	.string "Both of us. Aren't we, dear?$"
 
 RR_Gym_Text_Brock_Begin:
 	.string "Brock: My rock-hard willpower is\n"
@@ -506,11 +516,11 @@ RR_Gym_Text_Elm_After:
 	.string "race! See you outside!$"
 
 RR_Gym_Text_Jenny_Talk:
-	.string "Jenny: Go on, dear. We'll cheer\n"
-	.string "from here. Good seats, too.$"
+	.string "Jenny: Go on. We'll cheer from\n"
+	.string "here. Good seats, too.$"
 
 RR_Gym_Text_Jenny_After:
-	.string "Jenny: Well fought, dear.\n"
+	.string "Jenny: Well fought, {PLAYER}.\n"
 	.string "Save us some stew.$"
 
 RR_Gym_Text_Kid0:

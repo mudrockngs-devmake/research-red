@@ -23,7 +23,7 @@
 > Chansey: Chaaan-sey!
 >
 > Nurse Joy's helper. It's checking
-> your Poké Balls are polished.
+> that your Poké Balls shine.
 
 ### RR_Ambient_EventScript_ForestPidgeot
 

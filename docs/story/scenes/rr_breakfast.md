@@ -40,13 +40,13 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > He says his two best students
 > are finally back in Pallet.
 
-> Ivy: And one of them is staying
-> next door. Loudly?
+> Ivy: And the other one is next
+> door. Loudly, I assume.
 
 > {PLAYER}: I've always respected
 > Elm's passion.
 >
-> A very loud passion, nonetheless.
+> From a distance, ideally.
 
 > Delia: Oh, I heard him at 6 AM.
 >

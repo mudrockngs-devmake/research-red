@@ -11,7 +11,7 @@ Research Red: Grass hook outside the house (PalletTown)
 > Ivy: Want to stop by Daisy's?
 > Say hi to Elm and Jenny?
 
-> Elm: Route One!
+> Elm: Route 1!
 > Today, you are mine!
 
 > {PLAYER}: …Or we follow the
@@ -49,7 +49,8 @@ Research Red: Grass hook outside the house (PalletTown)
 > {PLAYER}: So the plan is to fight
 > the grass. Personally.
 
-> Jenny: Eight out of ten.
+> Jenny: Eight out of ten,
+> the grass wins.
 
 > Oak: Hey! Wait!
 > Don't go out!

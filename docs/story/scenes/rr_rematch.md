@@ -7,7 +7,7 @@
 > Oak: {PLAYER}! Daisy dropped by
 > with Muffin. Fancy a battle?
 >
-> Oak: No prize money, mind. You've
+> No prize money, mind. You've
 > had the grant! But plenty of EXP.
 
 > Oak: Shall we?
@@ -59,7 +59,7 @@
 > Brock: You already have my Boulder
 > Badge. Here for a rematch?
 >
-> Brock: My Pokémon have been
+> My Pokémon have been
 > training. Pick how hard I go.
 
 > Brock: Which challenge?

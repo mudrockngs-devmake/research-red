@@ -42,8 +42,8 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > {PLAYER}: Daisy? Your grandpa says
 > you have Town Maps for us.
 
-> Daisy: I have two. Gary took one.
-> Ash borrowed the other one.
+> Daisy: I had four. Gary took one.
+> Ash borrowed another.
 >
 > I'm still waiting.
 > So: one per couple.
@@ -104,7 +104,7 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > Delia's. Dessert included.
 
 > {PLAYER}: Mimey won't like anyone
-> else in its kitchen.
+> else in his kitchen.
 
 > Ivy: Then Mimey supervises. And
 > Delia gets the night off.
@@ -154,7 +154,7 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > Elm: Want to change them later?
 > Options, “Research Rules.”
 >
-> Day or night!
+> Or call me! Day or night!
 
 > Jenny: Please not night.
 

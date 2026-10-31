@@ -442,7 +442,7 @@ PalletTown_Text_RR_Ivy_StopByDaisys::
     .string "Say hi to Elm and Jenny?$"
 
 PalletTown_Text_RR_Elm_RouteOne::
-    .string "Elm: Route One!\n"
+    .string "Elm: Route 1!\n"
     .string "Today, you are mine!$"
 
 PalletTown_Text_RR_P_FollowTheYelling::
@@ -489,7 +489,8 @@ PalletTown_Text_RR_P_FightTheGrass::
     .string "the grass. Personally.$"
 
 PalletTown_Text_RR_Jenny_EightOutOfTen::
-    .string "Jenny: Eight out of ten.$"
+    .string "Jenny: Eight out of ten,\n"
+    .string "the grass wins.$"
 
 PalletTown_Text_RR_Oak_WildMons::
     .string "Oak: Wild Pokémon live in tall\n"

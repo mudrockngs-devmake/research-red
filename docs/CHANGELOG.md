@@ -6,6 +6,7 @@ Test builds are v0.0.x. Each entry lists what changed for players and testers, a
 - New interface colours: light tan paper and dark brown ink on every box and menu, with the blue kept for contrast; long names like Officer Jenny now fit on their name plate. Options values are blue, and DexNav is brown and tan.
 - Brock explains why two of you can fight him: the League is interested in your work, so Professor Oak told every Gym Leader to keep things reasonably fair. His classic speech is back before the fight, and his brothers and sisters now watch from the back wall like bleachers.
 - Watch Elm and Jenny's fight with Brock and you're invited to lunch: stew with the whole family, and all your Pokémon eat together with Elm and Jenny's.
+- Dialogue polish from start to finish: small fixes to clunky lines, with nothing replaced. Daisy's Town Map count now adds up, and Oak's rematch haiku scans properly.
 - Oak's call explains where Slowpoke came from, and it now sleeps in the middle of its bed.
 One big build, just this once: day and night, new battle pictures and overworld stand-ins, and the v0.0.22 notes (issues #105, #108, #118, #122, #124, #125, #133, #142, #157, #158, #159).
 - New: day and night (#108): two light levels, day fully bright, night lighter than before.

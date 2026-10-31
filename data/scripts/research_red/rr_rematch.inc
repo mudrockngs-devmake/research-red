@@ -47,7 +47,7 @@ RR_Lab_EventScript_HideDaisy::
 RR_Rematch_Text_OakAsk:
 	.string "Oak: {PLAYER}! Daisy dropped by\n"
 	.string "with Muffin. Fancy a battle?\p"
-	.string "Oak: No prize money, mind. You've\n"
+	.string "No prize money, mind. You've\n"
 	.string "had the grant! But plenty of EXP.$"
 
 RR_Rematch_Text_OakShallWe:
@@ -60,7 +60,7 @@ RR_Rematch_Text_DaisyMuffin:
 RR_Rematch_Text_OakDefeat:
 	.string "Oak: Ho ho! Splendid! A haiku:\p"
 	.string "“Bright young researcher,\n"
-	.string "my Slowpoke still hasn't noticed\l"
+	.string "Slowpoke still hasn't noticed\l"
 	.string "the battle is done.”\p"
 	.string "Daisy: Oh, Muffin. You were still\n"
 	.string "the cutest one out there.$"
@@ -243,7 +243,7 @@ RR_Rematch_Text_TierCancel:
 RR_Rematch_Text_BrockAsk:
 	.string "Brock: You already have my Boulder\n"
 	.string "Badge. Here for a rematch?\p"
-	.string "Brock: My Pokémon have been\n"
+	.string "My Pokémon have been\n"
 	.string "training. Pick how hard I go.$"
 
 RR_Rematch_Text_BrockWhich:

@@ -11,7 +11,7 @@
 #
 # Special blocks:
 #   [ELM FAMILY]    added when the species shares a family with Elm's lab
-#   [JENNY FAMILY]  ...or Jenny's lab starter. {STARTER} = that starter's name
+#   [JENNY FAMILY]  …or Jenny's lab starter. {STARTER} = that starter's name
 #   [DEFAULT]       species with no block of their own; pairs of lines, one
 #                   pair picked at random. {SPECIES} = the species' name
 #
@@ -20,11 +20,11 @@
 # Style (owner, 2026-10-20): mostly the two scientists having fun: science
 # jokes and puns, ecology, how the Pokemon looks, lab life, the player's field
 # notes, cute or funny couple moments. Anime, movie or other-media nods only now
-# and then (told in-world, never "the anime"), and not mostly about Ash. Facts
+# and then (told in-world, never “the anime”), and not mostly about Ash. Facts
 # must be true; anime nods come from docs/reference/ (checked rows only).
 # No spoilers: the starters' other-era forms (Hisuian) and Mega Evolution are
 # the research mystery, so nobody knows them yet. Ivy teases with love, never
-# meanly, and adores the player's jokes. "sweetie" now and then, not every line.
+# meanly, and adores the player's jokes. “sweetie” now and then, not every line.
 
 [DEFAULT]
 Ivy: A {SPECIES}! First one for the notebook, sweetie.
@@ -187,7 +187,7 @@ P: Remember when the ferry staff tried to take your snacks?
 
 [Nidoran M]
 P: Nidoran's big ears can hear the faintest sounds.
-Ivy: So it heard you call it "a small purple problem."
+Ivy: So it heard you call it “a small purple problem.”
 P: Nidoran come in pairs. Like us.
 Ivy: Less poisonous.
 P: Speak for yourself.
@@ -239,7 +239,7 @@ Ivy: Oddish plants itself in the ground and walks around at night.
 P: A plant that goes for night walks. I love it.
 
 [Gloom]
-P: Gloom's smell is... strong.
+P: Gloom's smell is… strong.
 Ivy: One in a thousand people love it. Breathe through your mouth, sweetie.
 
 [Vileplume]
@@ -330,7 +330,7 @@ Ivy: Do not let it near the cutlery drawer.
 
 [Alakazam]
 Ivy: Alakazam's brain never stops growing.
-P: My brain stopped at "Alakazam."
+P: My brain stopped at “Alakazam.”
 
 [Machop]
 P: Machop trains all day, every day.
@@ -408,7 +408,7 @@ Ivy: Galarian Slowbro fire Shellder from their arms like a cannon.
 Ivy: Magnemite floats using magnetism.
 P: Keep it away from the Pokédex.
 Ivy: I find it very attractive.
-P: ...Was that a magnet pun?
+P: …Was that a magnet pun?
 Ivy: Positively.
 
 [Magneton]
@@ -432,8 +432,8 @@ P: Three heads, three opinions. Like a lab meeting.
 P: Seel loves the cold. It swims under ice.
 Ivy: Its nose horn breaks the ice so it can breathe.
 Ivy: Does it sing?
-P: Only "Kiss from a Rose."
-Ivy: ...Baby.
+P: Only “Kiss from a Rose.”
+Ivy: …Baby.
 P: (I am blushing. In the field. Professionally.)
 
 [Dewgong]
@@ -911,14 +911,14 @@ P: It's staring at me. I think I'm cooking dinner at Delia's.
 [Mareep]
 Ivy: Mareep's wool builds up static. Hugs are a gamble.
 P: I'll risk it.
-P: ...Worth it.
+P: …Worth it.
 
 [Flaaffy]
 P: Flaaffy's bare skin doesn't conduct electricity. Built-in rubber.
 Ivy: Unlike your hair after that Mareep hug.
 
 [Ampharos]
-Ivy: Long ago, Ampharos' tail light was used as a lighthouse.
+Ivy: Long ago, Ampharos's tail light was used as a lighthouse.
 P: Ampharos and Lanturn should start a lighting company.
 
 [Bellossom]
@@ -936,7 +936,7 @@ Ivy: It runs from watering cans.
 
 [Politoed]
 P: When Politoed croaks, every Poliwag nearby comes running.
-Ivy: Like Delia calling "Pancakes!"
+Ivy: Like Delia calling “Pancakes!”
 
 [Skiploom]
 Ivy: Skiploom's flower opens when it's warm and closes when it's cold.
@@ -1074,7 +1074,7 @@ P: Mostly it just wants dinner.
 [Kingdra]
 Ivy: When Kingdra yawns, it makes a whirlpool.
 P: When I yawn, I make you yawn.
-Ivy: ...You did it again.
+Ivy: …You did it again.
 
 [Donphan]
 P: Donphan curls up and rolls like a tire.
@@ -1103,7 +1103,7 @@ P: I tried that once. In college. Never again.
 [Smoochum]
 Ivy: Smoochum tests everything with its lips.
 P: Like Elm with a new dessert.
-Ivy: ...Want to test something?
+Ivy: …Want to test something?
 P: (Blushing again. Ivy is winning today.)
 
 [Elekid]

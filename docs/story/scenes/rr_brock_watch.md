@@ -20,8 +20,8 @@
 > rocky!
 
 > Brock: Professor Ivy, your notes
-> on regional forms helped my
-> breeding more than I can say.
+> on regional forms have helped me
+> more than I can say.
 
 > Ivy: Then they did their job.
 > Thank you, Brock.
@@ -38,6 +38,49 @@
 > Ivy: Sweetie.
 
 *[rr_ivy_follow LOCALID_PEWTER_GYM_IVY]*
+
+### RR_BrockWatch_EventScript_Lunch
+
+> Brock: Lunch! Sit on any rock you
+> like. We have plenty.
+
+> {PLAYER}: That's the most Pewter
+> sentence I've ever heard.
+
+> Sister: Are you two really
+> professors?
+
+> {PLAYER}: On paper. She does the
+> paper.
+
+> Brother: Brock says I'm his
+> favorite!
+
+> Sister: He told ME that!
+
+> Brock: You're all my favorite.
+> Eat. Don't take it for granite.
+
+> Elm: Brock, about those living
+> fossils. Did you know that…
+
+> Jenny: Dear. Spoon.
+
+> Ivy: You cook for all of them
+> every single day?
+
+> Brock: Three times a day. It was
+> a rocky start.
+
+> Ivy: Sweetie, that's your third
+> bowl.
+
+> {PLAYER}: It's research.
+
+> Everyone's Pokémon got a bowl too.
+>
+> For a moment, nobody battled
+> anybody.
 
 ### RR_Gym_EventScript_BrockIntro
 
@@ -66,8 +109,8 @@
 > Two of you, one of me. Reasonably
 > fair, apparently.
 
-> {PLAYER}: Oh, so that's why we can
-> do shenanigans like this.
+> {PLAYER}: So that's how we get
+> away with this.
 
 > Brock: I respect it. My Pokémon
 > and I are a team too.
@@ -88,8 +131,8 @@
 > Elm: Go on, {PLAYER}! You've got
 > this! Just not by too much!
 
-> Jenny: We're cheering for you,
-> dear. Both of us. Aren't we, dear?
+> Jenny: We're cheering for you.
+> Both of us. Aren't we, dear?
 
 > Brock: My rock-hard willpower is
 > evident even in my Pokémon.
@@ -180,10 +223,10 @@
 
 ### RR_Gym_EventScript_JennyCheer
 
-> Jenny: Go on, dear. We'll cheer
-> from here. Good seats, too.
+> Jenny: Go on. We'll cheer from
+> here. Good seats, too.
 
-> Jenny: Well fought, dear.
+> Jenny: Well fought, {PLAYER}.
 > Save us some stew.
 
 ### RR_Gym_EventScript_Kid0

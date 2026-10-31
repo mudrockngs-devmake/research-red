@@ -771,7 +771,10 @@ def sc_cl_brock16(pick=None):
             + play_until("in_battle", T.G.in_battle(), 3000, key="A", every=40)
             + play_until("fight_over", T.G.overworld(), 15000, key="SELECT", every=40)
             + play_until("watched", T.G.var_is("VAR_RR_BROCK_WATCH", 2) + " && " + T.G.field_free(), 3000, key="A", every=40)
-            + expect("MAP_PEWTER_CITY_GYM", story=8))
+            + expect("MAP_PEWTER_CITY_GYM", story=8)
+            # the camera moved for the door talk: walking afterwards must scroll it as normal
+            + ["shot after0", "hold UP 32", "wait 20", "shot after1", "hold LEFT 16", "wait 20", "shot after2",
+               "hold RIGHT 16", "wait 10", "hold DOWN 48", "wait 20", "shot after3"])
 
 
 def sc_gym_room():

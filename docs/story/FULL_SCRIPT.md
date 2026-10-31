@@ -155,13 +155,13 @@ Research Red: Breakfast at Delia's (PalletTown_PlayersHouse_1F)
 > He says his two best students
 > are finally back in Pallet.
 
-> Ivy: And one of them is staying
-> next door. Loudly?
+> Ivy: And the other one is next
+> door. Loudly, I assume.
 
 > {PLAYER}: I've always respected
 > Elm's passion.
 >
-> A very loud passion, nonetheless.
+> From a distance, ideally.
 
 > Delia: Oh, I heard him at 6 AM.
 >
@@ -225,7 +225,7 @@ Research Red: Grass hook outside the house (PalletTown)
 > Ivy: Want to stop by Daisy's?
 > Say hi to Elm and Jenny?
 
-> Elm: Route One!
+> Elm: Route 1!
 > Today, you are mine!
 
 > {PLAYER}: …Or we follow the
@@ -263,7 +263,8 @@ Research Red: Grass hook outside the house (PalletTown)
 > {PLAYER}: So the plan is to fight
 > the grass. Personally.
 
-> Jenny: Eight out of ten.
+> Jenny: Eight out of ten,
+> the grass wins.
 
 > Oak: Hey! Wait!
 > Don't go out!
@@ -652,7 +653,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Jenny: By protocol, dear, you ask
 > before you challenge a legend.
 >
-> Jenny: Professor, would you battle
+> Professor, would you battle
 > us? Your two starters, our two.
 
 > Oak: Ho ho! A challenge in my own
@@ -682,7 +683,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Jenny: Noted, dear. The floor goes
 > in the report.
 
-> Oak: Ho ho ho! Marvellous!
+> Oak: Ho ho ho! Marvelous!
 > I feel thirty years younger!
 
 > Elm: Then let's go again! Same
@@ -781,7 +782,7 @@ Research Red: Oak's lab: starter picker, chain, battles, grant (PalletTown_Profe
 > Oak: If you'd like to fight me
 > with these, any time is fine.
 >
-> Oak: Before you head out past
+> Any time before you head out past
 > Viridian, that is!
 
 > Elm: But… we still get funding
@@ -1279,8 +1280,8 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > {PLAYER}: Daisy? Your grandpa says
 > you have Town Maps for us.
 
-> Daisy: I have two. Gary took one.
-> Ash borrowed the other one.
+> Daisy: I had four. Gary took one.
+> Ash borrowed another.
 >
 > I'm still waiting.
 > So: one per couple.
@@ -1341,7 +1342,7 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > Delia's. Dessert included.
 
 > {PLAYER}: Mimey won't like anyone
-> else in its kitchen.
+> else in his kitchen.
 
 > Ivy: Then Mimey supervises. And
 > Delia gets the night off.
@@ -1391,7 +1392,7 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 > Elm: Want to change them later?
 > Options, “Research Rules.”
 >
-> Day or night!
+> Or call me! Day or night!
 
 > Jenny: Please not night.
 
@@ -1454,7 +1455,7 @@ Research Red: First walk up Route 1 (Route1)
 
 *[rr_ivy_to_scene LOCALID_ROUTE1_IVY]*
 
-> Elm: Route One! We meet again!
+> Elm: Route 1! We meet again!
 > This time I brought a partner!
 
 > Jenny: And a wife.
@@ -1667,7 +1668,7 @@ Research Red: First walk up Route 1 (Route1)
 ### RR_Route1_EventScript_ReactEevee
 
 > Elm: An Eevee?! Eight evolutions!
-> On Route One!
+> On Route 1!
 
 > Jenny: Breathe, dear. In through
 > the nose.
@@ -2021,10 +2022,9 @@ Research Red: lunch in Viridian City (animatic 07)
 > Then I ate dessert. On the walk
 > here.
 
-> Ivy: So you bought dessert for
-> yourself.
+> Ivy: So there's no dessert.
 
-> Elm: I bought it in spirit.
+> Elm: There's dessert in spirit.
 
 > {PLAYER}: In spirit, I accept your
 > apology.
@@ -2049,7 +2049,454 @@ Research Red: lunch in Viridian City (animatic 07)
 *[rr_ivy_follow LOCALID_VIRIDIAN_IVY]*
 
 
-## 08 · rr_ivy
+## 08 · rr_forest
+
+
+
+### RR_Forest_EventScript_AfterRick
+
+> Ivy: Bug Catchers always have the
+> best snacks. Learned that in the
+> field.
+
+> {PLAYER}: I learned it in the field
+> too. From a Bug Catcher.
+> Who wouldn't share.
+
+### RR_Forest_EventScript_AfterDoug
+
+> Ivy: Patience is a research
+> skill, sweetie.
+
+> {PLAYER}: I'm very patient. I've
+> waited years for you to admit
+> I'm funny.
+
+> Ivy: Keep waiting.
+
+### RR_Forest_EventScript_AfterAnthony
+
+> Ivy: We should name ours like
+> that. Cater and Pie.
+
+> {PLAYER}: Squirtle and… Le.
+
+> Ivy: I regret everything.
+
+### RR_Forest_EventScript_AfterCharlie
+
+> {PLAYER}: Two Metapod using Harden.
+> Most relaxing battle of my life.
+
+> Ivy: Like watching very
+> determined rocks.
+
+### RR_Forest_EventScript_AfterSammy
+
+> Ivy: A forest Pikachu. The ones
+> by the Power Plant are bigger,
+> did you know?
+
+> {PLAYER}: I didn't. Tell me more
+> on the way.
+
+### RR_Forest_EventScript_Samurai
+
+*[trainerbattle_single Pkmn Trainer 1 Samurai (Metapod, Pinsir)]*
+
+> I ask everyone who passes if
+> they're from Pallet Town.
+>
+> Some day, a trainer from Pallet
+> will give me a real duel!
+
+### RR_Forest_EventScript_AfterSamurai
+
+> Ivy: Technically we're from
+> Pallet this week, sweetie.
+
+> {PLAYER}: Technically we're from a
+> lab. Spiritually, a picnic.
+
+
+## 09 · rr_pewter
+
+Research Red: Pewter, after Brock (animatic 12 "finale", moved to the
+
+### RR_Pewter_OnTransitionCity
+
+### RR_Pewter_EventScript_HideElmJenny
+
+### RR_Pewter_EventScript_Rematch
+
+> Elm: {PLAYER}! We saw the whole
+> thing! Onix went DOWN!
+
+> Elm: {PLAYER}! Ivy! Badge or no
+> badge, the race isn't over!
+>
+> Six on six! Right here!
+
+> Jenny: Out here, please. Nurse Joy
+> gave us a look last time.
+>
+> By protocol, we battle before
+> Brock. To warm up.
+
+> {PLAYER}: Your warm-up is us?
+
+> Jenny: You are very warm people.
+
+### RR_Pewter_EventScript_BattleAfterBulbasaur
+
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Cinnamon, Biscotti, Pudding, Licorice, Churro, Cruller)]*
+
+### RR_Pewter_EventScript_BattleAfterCharmander
+
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Biscotti, Matcha, Pudding, Licorice, Churro, Cruller, take turns, Oak's third is Nidoran M, not the lab's Slowpoke, who never battles, badges and lab pick when the battle starts, No money, 1.5x EXP. */)]*
+
+### RR_Pewter_EventScript_BattleAfterSquirtle
+
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Matcha, Cinnamon, Pudding, Licorice, Churro, Cruller)]*
+
+### RR_Pewter_EventScript_BattleAfterChikorita
+
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Toffee, Cream Puff, Pudding, Licorice, Churro, Cruller)]*
+
+### RR_Pewter_EventScript_BattleAfterCyndaquil
+
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Cream Puff, Pistachio, Pudding, Licorice, Churro, Cruller)]*
+
+### RR_Pewter_EventScript_BattleAfterTotodile
+
+*[trainerbattle_no_intro Rival Early Elm&Jenny (Pistachio, Toffee, Pudding, Licorice, Churro, Cruller)]*
+
+### RR_Pewter_EventScript_AfterBattle
+
+> Elm: We won! On a sidewalk!
+> It still counts!
+
+> Jenny: Conveniently, the healing
+> is right through that door.
+
+### RR_Pewter_EventScript_Won
+
+> Elm: …You're really good at this,
+> {PLAYER}. I'm proud of you.
+
+> {PLAYER}: I know you are.
+> You always are.
+
+### RR_Pewter_EventScript_ToTheGym
+
+> Jenny: We're going to challenge
+> Brock now. Wish us luck.
+
+> Ivy: Good luck, Jenny.
+> He made stew.
+
+> Jenny: …I am suddenly very
+> motivated.
+
+> Elm: See you down the road, you
+> two! We always catch up!
+
+> Elm: We're challenging Brock next.
+> Want to come watch?
+
+> Elm and Jenny head for the Gym,
+> arguing happily about strategy.
+
+> Ivy: One badge down, sweetie.
+
+> {PLAYER}: Seven to go.
+> And one bet.
+
+> Ivy: And one very big dinner.
+
+> {PLAYER}: And one very big dinner.
+
+*[setvar VAR_0x40FE ]*
+
+### RR_Pewter_EventScript_GoWatch
+
+> {PLAYER}: Front row. Ivy brought
+> snacks.
+
+*[setvar VAR_0x40FE ]*
+
+*[warp MAP_PEWTER_CITY_GYM]*
+
+### RR_Pewter_EventScript_Rebattle
+
+> Elm: Back for more? Six on six,
+> same as always?
+
+> Jenny: Warming up again. Noted.
+
+### RR_Pewter_EventScript_RebattleAfter
+
+> Jenny: Logged. Come back anytime.
+
+### RR_Pewter_EventScript_RebattleWon
+
+> Elm: Again?! You're getting scary.
+> I love it.
+
+### RR_Pewter_EventScript_RebattleDeclined
+
+> Elm: We'll be right here. Pewter
+> has the best rocks to sit on.
+
+
+## 10 · rr_brock_watch
+
+
+
+### RR_BrockWatch_OnTransition
+
+### RR_BrockWatch_OnFrame
+
+### RR_BrockWatch_EventScript_Scene
+
+*[rr_ivy_to_scene LOCALID_PEWTER_GYM_IVY]*
+
+*[trainerbattle_no_intro Leader Brock (Geodude, Sandshrew, Kabuto, Omanyte, Rhyhorn, Onix)]*
+
+> Brock: Fair and square. The
+> Boulder Badge is yours.
+
+> Elm: I'm not crying! It's
+> allergies! This Gym is very…
+> rocky!
+
+> Brock: Professor Ivy, your notes
+> on regional forms have helped me
+> more than I can say.
+
+> Ivy: Then they did their job.
+> Thank you, Brock.
+
+> Elm: One badge each! The race
+> is ON!
+
+> Jenny: And dinner at Delia's is
+> still on the line, dear.
+
+> {PLAYER}: I've already planned
+> the menu. For you to cook.
+
+> Ivy: Sweetie.
+
+*[rr_ivy_follow LOCALID_PEWTER_GYM_IVY]*
+
+### RR_BrockWatch_EventScript_Lunch
+
+> Brock: Lunch! Sit on any rock you
+> like. We have plenty.
+
+> {PLAYER}: That's the most Pewter
+> sentence I've ever heard.
+
+> Sister: Are you two really
+> professors?
+
+> {PLAYER}: On paper. She does the
+> paper.
+
+> Brother: Brock says I'm his
+> favorite!
+
+> Sister: He told ME that!
+
+> Brock: You're all my favorite.
+> Eat. Don't take it for granite.
+
+> Elm: Brock, about those living
+> fossils. Did you know that…
+
+> Jenny: Dear. Spoon.
+
+> Ivy: You cook for all of them
+> every single day?
+
+> Brock: Three times a day. It was
+> a rocky start.
+
+> Ivy: Sweetie, that's your third
+> bowl.
+
+> {PLAYER}: It's research.
+
+> Everyone's Pokémon got a bowl too.
+>
+> For a moment, nobody battled
+> anybody.
+
+### RR_Gym_EventScript_BrockIntro
+
+> Brock: Welcome to Pewter Gym!
+> I am Brock.
+>
+> Professor Ivy. I've read all your
+> papers. It's an honor.
+>
+> You too, Professor {PLAYER}.
+>
+> Professor Oak called to explain
+> what you two are up to.
+>
+> He said not to go easy on you.
+
+> {PLAYER}: That sounds like him.
+
+> Brock: He did say the League is
+> interested in what you're working
+> on.
+>
+> So he told every Gym Leader to
+> keep things reasonably fair.
+>
+> Two of you, one of me. Reasonably
+> fair, apparently.
+
+> {PLAYER}: So that's how we get
+> away with this.
+
+> Brock: I respect it. My Pokémon
+> and I are a team too.
+
+> Ivy: And your audience?
+
+> Brock: My brothers and sisters.
+> All nine of them.
+>
+> They're here for the battle, and
+> for lunch. I made stew.
+>
+> After the battles. Win or lose.
+
+> Ivy: This is the nicest Gym in
+> Kanto.
+
+> Elm: Go on, {PLAYER}! You've got
+> this! Just not by too much!
+
+> Jenny: We're cheering for you.
+> Both of us. Aren't we, dear?
+
+> Brock: My rock-hard willpower is
+> evident even in my Pokémon.
+>
+> My Pokémon are all rock hard, and
+> have true-grit determination.
+>
+> That's right! My Pokémon are all
+> the Rock type! Fuhaha!
+>
+> You'd challenge me knowing that
+> you'll lose? Two professors?
+>
+> That's a Trainer's honor. Or poor
+> peer review.
+>
+> Fine, then! Show me your best!
+
+*[trainerbattle_no_intro Leader Brock (Geodude, Sandshrew, Kabuto, Omanyte, Rhyhorn, Onix)]*
+
+### RR_Gym_EventScript_BrockGeodude
+
+> Brock: Professor Ivy, your notes
+> on regional forms got me breeding
+> these.
+>
+> An Alolan Geodude. Hatched right
+> here in Pewter. It's yours.
+
+> Ivy: Sweetie, look at its hair!
+
+> {PLAYER}: It has better hair than
+> me.
+
+> Ivy: That's iron sand. It sticks
+> because the Geodude is magnetic.
+
+> {PLAYER}: So it's scientifically
+> attractive.
+
+> Ivy: Take the Geodude, sweetie.
+
+*[givemon SPECIES_GEODUDE_ALOLA]*
+
+> {PLAYER} received an Alolan Geodude
+> from Brock!
+
+> Your team is full, so it went to
+> the PC.
+
+### RR_Gym_EventScript_BrockStew
+
+> Brock: The Boulder Badge. A
+> Geodude. And soon, a bowl of stew.
+>
+> Mostly the stew.
+>
+> It needs a while yet. Lunch is
+> after my next challenge.
+
+> Ivy: Your siblings are lucky to
+> have a big brother like you.
+
+> Brock: Nine siblings. I cook a
+> lot. Battling is the relaxing
+> part.
+
+> {PLAYER}: We know someone like
+> that. His name is Mimey.
+
+### RR_Gym_EventScript_LiamBeaten
+
+> Liam: Go on up. He always makes
+> extra for challengers.
+
+> Ivy: Brock makes lunch for
+> challengers?
+
+> {PLAYER}: I like him already.
+
+### RR_Gym_EventScript_ElmCheer
+
+> Elm: We came to watch! And to
+> take notes on his weak points!
+
+> Elm: One badge doesn't win a
+> race! See you outside!
+
+### RR_Gym_EventScript_JennyCheer
+
+> Jenny: Go on. We'll cheer from
+> here. Good seats, too.
+
+> Jenny: Well fought, {PLAYER}.
+> Save us some stew.
+
+### RR_Gym_EventScript_Kid0
+
+> Big brother's stew is the best!
+> He says you can have some too!
+
+### RR_Gym_EventScript_Kid1
+
+> Shh! We're watching Brock work!
+> And waiting for lunch!
+
+### RR_Gym_EventScript_Kid2
+
+> There's nine of us. I'm his
+> favorite. Don't tell the others!
+
+
+## 11 · rr_ivy
 
 Research Red: Ivy, the player's wife, follows the player from the end
 
@@ -2390,7 +2837,7 @@ P: Remember when the ferry staff tried to take your snacks?
 
 ### Nidoran M
 P: Nidoran's big ears can hear the faintest sounds.
-Ivy: So it heard you call it "a small purple problem."
+Ivy: So it heard you call it “a small purple problem.”
 P: Nidoran come in pairs. Like us.
 Ivy: Less poisonous.
 P: Speak for yourself.
@@ -2442,7 +2889,7 @@ Ivy: Oddish plants itself in the ground and walks around at night.
 P: A plant that goes for night walks. I love it.
 
 ### Gloom
-P: Gloom's smell is... strong.
+P: Gloom's smell is… strong.
 Ivy: One in a thousand people love it. Breathe through your mouth, sweetie.
 
 ### Vileplume
@@ -2533,7 +2980,7 @@ Ivy: Do not let it near the cutlery drawer.
 
 ### Alakazam
 Ivy: Alakazam's brain never stops growing.
-P: My brain stopped at "Alakazam."
+P: My brain stopped at “Alakazam.”
 
 ### Machop
 P: Machop trains all day, every day.
@@ -2611,7 +3058,7 @@ Ivy: Galarian Slowbro fire Shellder from their arms like a cannon.
 Ivy: Magnemite floats using magnetism.
 P: Keep it away from the Pokédex.
 Ivy: I find it very attractive.
-P: ...Was that a magnet pun?
+P: …Was that a magnet pun?
 Ivy: Positively.
 
 ### Magneton
@@ -2635,8 +3082,8 @@ P: Three heads, three opinions. Like a lab meeting.
 P: Seel loves the cold. It swims under ice.
 Ivy: Its nose horn breaks the ice so it can breathe.
 Ivy: Does it sing?
-P: Only "Kiss from a Rose."
-Ivy: ...Baby.
+P: Only “Kiss from a Rose.”
+Ivy: …Baby.
 P: (I am blushing. In the field. Professionally.)
 
 ### Dewgong
@@ -3111,14 +3558,14 @@ P: It's staring at me. I think I'm cooking dinner at Delia's.
 ### Mareep
 Ivy: Mareep's wool builds up static. Hugs are a gamble.
 P: I'll risk it.
-P: ...Worth it.
+P: …Worth it.
 
 ### Flaaffy
 P: Flaaffy's bare skin doesn't conduct electricity. Built-in rubber.
 Ivy: Unlike your hair after that Mareep hug.
 
 ### Ampharos
-Ivy: Long ago, Ampharos' tail light was used as a lighthouse.
+Ivy: Long ago, Ampharos's tail light was used as a lighthouse.
 P: Ampharos and Lanturn should start a lighting company.
 
 ### Bellossom
@@ -3136,7 +3583,7 @@ Ivy: It runs from watering cans.
 
 ### Politoed
 P: When Politoed croaks, every Poliwag nearby comes running.
-Ivy: Like Delia calling "Pancakes!"
+Ivy: Like Delia calling “Pancakes!”
 
 ### Skiploom
 Ivy: Skiploom's flower opens when it's warm and closes when it's cold.
@@ -3274,7 +3721,7 @@ P: Mostly it just wants dinner.
 ### Kingdra
 Ivy: When Kingdra yawns, it makes a whirlpool.
 P: When I yawn, I make you yawn.
-Ivy: ...You did it again.
+Ivy: …You did it again.
 
 ### Donphan
 P: Donphan curls up and rolls like a tire.
@@ -3303,7 +3750,7 @@ P: I tried that once. In college. Never again.
 ### Smoochum
 Ivy: Smoochum tests everything with its lips.
 P: Like Elm with a new dessert.
-Ivy: ...Want to test something?
+Ivy: …Want to test something?
 P: (Blushing again. Ivy is winning today.)
 
 ### Elekid

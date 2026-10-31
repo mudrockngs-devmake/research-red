@@ -10,7 +10,7 @@ Script `PewterCity_Gym_EventScript_Brock`
 > Brock: You already have my Boulder
 > Badge. Here for a rematch?
 >
-> Brock: My Pokémon have been
+> My Pokémon have been
 > training. Pick how hard I go.
 
 > Brock: Which challenge?
@@ -80,8 +80,8 @@ Script `PewterCity_Gym_EventScript_Brock`
 > Two of you, one of me. Reasonably
 > fair, apparently.
 
-> {PLAYER}: Oh, so that's why we can
-> do shenanigans like this.
+> {PLAYER}: So that's how we get
+> away with this.
 
 > Brock: I respect it. My Pokémon
 > and I are a team too.
@@ -102,8 +102,8 @@ Script `PewterCity_Gym_EventScript_Brock`
 > Elm: Go on, {PLAYER}! You've got
 > this! Just not by too much!
 
-> Jenny: We're cheering for you,
-> dear. Both of us. Aren't we, dear?
+> Jenny: We're cheering for you.
+> Both of us. Aren't we, dear?
 
 > Brock: My rock-hard willpower is
 > evident even in my Pokémon.
@@ -282,11 +282,11 @@ Script `RR_Gym_EventScript_ElmCheer`
 *hidden by `FLAG_TEMP_12`*
 Script `RR_Gym_EventScript_JennyCheer`
 
-> Jenny: Well fought, dear.
+> Jenny: Well fought, {PLAYER}.
 > Save us some stew.
 
-> Jenny: Go on, dear. We'll cheer
-> from here. Good seats, too.
+> Jenny: Go on. We'll cheer from
+> here. Good seats, too.
 
 ### Pewter Gym Ivy (Rr Ivy) at 2,10
 *hidden by `FLAG_TEMP_13`*

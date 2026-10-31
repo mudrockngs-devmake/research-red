@@ -71,10 +71,9 @@ Research Red: lunch in Viridian City (animatic 07)
 > Then I ate dessert. On the walk
 > here.
 
-> Ivy: So you bought dessert for
-> yourself.
+> Ivy: So there's no dessert.
 
-> Elm: I bought it in spirit.
+> Elm: There's dessert in spirit.
 
 > {PLAYER}: In spirit, I accept your
 > apology.

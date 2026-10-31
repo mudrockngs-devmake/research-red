@@ -247,7 +247,7 @@ def scene_doc(path, texts, trainers):
     return "\n".join(out)
 
 
-STORY_ORDER = ["rr_breakfast", "rr_grass_hook", "rr_lab", "rr_daisy", "rr_route1", "rr_route22", "rr_lunch", "rr_ivy"]
+STORY_ORDER = ["rr_breakfast", "rr_grass_hook", "rr_lab", "rr_daisy", "rr_route1", "rr_route22", "rr_lunch", "rr_forest", "rr_pewter", "rr_brock_watch", "rr_ivy"]
 
 
 def full_script(texts, trainers):
