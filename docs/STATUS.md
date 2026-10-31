@@ -5,7 +5,7 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-31 (v0.0.23 still waiting on the owner's spot check; v0.0.24's small fixes in master)_
+_Last updated: 2026-10-31 (v0.0.23 still waiting on the owner's spot check; v0.0.24's small fixes and the moment board tool in master; owner's 2026-10-31 notes waiting for an OK)_
 
 ## Now
 - **Plan to the demo:** `docs/ROADMAP.md`, "Road to the demo": v0.0.24 to v0.0.29, then v1.0. Waiting on the owner: which art the public demo uses (#167; Claude suggested the stand-ins once approved).
@@ -87,6 +87,7 @@ _Last updated: 2026-10-31 (v0.0.23 still waiting on the owner's spot check; v0.0
 - The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
 
 ## Asked for, not done yet
+- [ ] Owner notes 2026-10-31, NOT filed yet (read back in chat, waiting for the owner's OK, then `owner-notes`): (1) Ivy's overworld sprite: the back hair swoop is on one side, wants it on both; (2) evolving cuts to the Pokédex entry so the banter shows there and not over the overworld, nice to have, skip if it causes game-breaking glitches (add to #144?); (3) male player overworld sprite: black outlines on the arms, they look like they float when walking up and down; (4) male player's green shirt square bounces oddly, may be fine since it matches how May walks; female sprite not tried yet; (5) Jenny's overworld sprite walking up: flare the hair to show the swoop as when walking down, owner thinks it may be fixed, check first; (6) Master Balls: a variable set when an area's Field Guide is complete, Oak calls, a Master Ball goes in the bag; after beating the Elite Four, Master Balls in the store (the League's mystery is solved). Sprite notes belong to the owner's sprite work and the rule for two lanes applies.
 - [x] Owner 2026-10-31: moment boards (`scene_moment.py`, `viewer.py board MAP --moment NAME`) built as a proof of concept for staging scenes in future. The grass hook board was only a test: nothing from it goes in the game, and no positions change until the owner says a board is for real. The other six moments (Daisy's house, lab, Route 1 start, Route 1 before Mewtwo, lunch, picnic) are not captured; do them when the owner wants to stage them.
 - [x] (in master, NOT in v0.0.23: goes in the next build) Owner 2026-10-30: lunch Pokémon in two matching rows of six, above and below the people, with Brock's six on the sides. The v0.0.23 tag and handheld copy still show the ring.
 - [x] Pewter lunch (owner 2026-10-30, wants it in v0.0.23 if it fits): everyone has lunch after the Gym fight (after the player's Brock fight or after Elm and Jenny's, undecided), Brock's brothers and sisters get banter too, a bit like the anime; maybe a small cutscene at the Gym with all 18 Pokemon sitting and eating together, only if not too much for the game. Unify every stew/lunch mention so the story is coherent. Keep Brock's rock puns. Also put the kids in a more natural formation; owner asks whether the other Pokemon fit too.
@@ -125,6 +126,7 @@ _Last updated: 2026-10-31 (v0.0.23 still waiting on the owner's spot check; v0.0
 - [ ] (#163, v0.0.26) Measure Oak and Daisy's first fight (Lv 10) and Delia's (Lv 14) in balance.py, to compare with FireRed's rival (two Pokémon at Lv 9 on Route 22). Not simulated yet (owner asked 2026-10-30). After v0.0.23.
 
 ## Half-finished / open threads
+- Moment boards are a proof of concept to improve over time (owner 2026-10-31): dragging and Send on the moment version not tested by Claude; the grass hook send is not to be applied. Ivy seemed to stand on water while surfing: still to check with the spot-check notes.
 - Cost log: 2026-10-30 session $44.74 (as of wrap-up); project total $158.63.
 - Not played since the seating change: reaching lunch by saying yes outside the Center (only the debug jump was run).
 - Tool bug: `compare.py`'s automatic "vs v0.0.x" uses much older runs as the "before" for many scenes (26 of 34 flagged on 2026-10-30 were from v0.0.19), so it over-reports. Until fixed, use `compare.py RUN --against LAST_FULL_RUN`.
@@ -136,6 +138,7 @@ _Last updated: 2026-10-31 (v0.0.23 still waiting on the owner's spot check; v0.0
 - 13 rows of `docs/reference/kanto_anime.csv` are marked "memory" (to verify).
 
 ## Session costs not yet logged (log them in the next playtest round's NOTES.md)
+- 2026-10-31 v0.0.24 small fixes + moment boards: $4.51 (as of last message).
 - Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. The session started 2026-10-27 21:29 ran three days
   (v0.0.20 intake, v0.0.21 and v0.0.22 builds, v0.0.21 intake): **$113.81** at the 2026-10-30 wrap-up (3h41m API).
   It's in the v0.0.21 NOTES.md; one long session shows as one line in `session-cost`, not one per day (that's why
