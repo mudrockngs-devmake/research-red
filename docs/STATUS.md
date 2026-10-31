@@ -8,7 +8,7 @@ Keep it short (about 80 lines): when a run is finished, move its checklist to
 _Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch rows in master for the next build)_
 
 ## Now
-- **Plan to the demo:** `docs/ROADMAP.md`, "Road to the demo": v0.0.24 to v0.0.29, then v1.0. Decide the demo's art: #167.
+- **Plan to the demo:** `docs/ROADMAP.md`, "Road to the demo": v0.0.24 to v0.0.29, then v1.0. Waiting on the owner: which art the public demo uses (#167; Claude suggested the stand-ins once approved).
 - **v0.0.23 is out** (tag and pre-release on GitHub, tests passed): waiting on the owner's spot check. v0.0.22 round archived (`test-archive/2026-10-30_v0.0.22_v0.0.22-spotcheck/`).
 - **In master, not in a build yet:** the lunch Pokémon in two rows of six plus Brock's six on the sides (18 in all, tested with `cl_brock16` and `cl_brock16_p3`).
 - Roadmap changed today: v0.0.23 became one big build (day and night, colours, battle pictures, stand-in sprites, Gym crowd, Brock watch, Pewter lunch, dialogue polish). Later builds go back to small; see ROADMAP.md "After v0.0.23".
@@ -124,7 +124,7 @@ _Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch
 - [ ] (#163, v0.0.26) Measure Oak and Daisy's first fight (Lv 10) and Delia's (Lv 14) in balance.py, to compare with FireRed's rival (two Pokémon at Lv 9 on Route 22). Not simulated yet (owner asked 2026-10-30). After v0.0.23.
 
 ## Half-finished / open threads
-- Cost log: 2026-10-30 session $43.27 so far (2h01m API, Opus 5.5); project total $157.15.
+- Cost log: 2026-10-30 session $44.74 (as of wrap-up); project total $158.63.
 - Not played since the seating change: reaching lunch by saying yes outside the Center (only the debug jump was run).
 - Tool bug: `compare.py`'s automatic "vs v0.0.x" uses much older runs as the "before" for many scenes (26 of 34 flagged on 2026-10-30 were from v0.0.19), so it over-reports. Until fixed, use `compare.py RUN --against LAST_FULL_RUN`.
 - Nothing half-done. All Art Kit art is drafts (tracker: docs/ART_TRACKER.md).
