@@ -169,3 +169,10 @@ A: keep committing straight to master (no branches / pull requests yet; revisit 
 
 ## Small themed builds (planned with the owner 2026-10-28)
 Each test build is one theme of 3-5 related issues, bugs first, risky systems (battle engine, day/night, saves) on their own; small low-risk pieces can join a build when that makes the playtest easier. Every fix gets a test that fails before and passes after; the smoke tests and the full playthrough run before the owner plays; the owner gets a short checklist. New ideas go to issues for a later build. Order: v0.0.20 battles (#106, #107, #128, #121), v0.0.21 story flow (#119, #117, #116, #113, #114), v0.0.22 text and menus (#120, #115, #109, #124), v0.0.23 balance (#110, #111, #123, #112), v0.0.24 day and night (#108), v0.0.25 the lab's look (#118, #122, #125). #129 (credits) any time.
+
+## After v0.0.23 (updated 2026-10-30)
+v0.0.23 grew into one big build, just this once: day and night (#108), the tan and brown colours, battle pictures (#133), stand-in overworld sprites (#125), the Gym crowd, Elm and Jenny's scripted fight with Brock (#142), the Pewter lunch and a dialogue polish. Later builds go back to small themes.
+- **v0.0.24:** Pallet and Daisy's house: Gerald (#113) and the lunch rows already in master. A full playthrough round is due.
+- **Later, shifted as listed in STATUS.md:** lunch rework (#155), text and menus, levels and balance, moves and evolution, the lab's look.
+- **To decide:** Pewter scene order, coloured-text rule, Day Care and level caps, trainer AI and difficulty, how hard the Pewter rematch and Route 22 should be.
+
