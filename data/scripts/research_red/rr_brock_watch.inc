@@ -118,7 +118,7 @@ RR_BrockWatch_EventScript_Lunch::
 	setobjectxy LOCALID_PEWTER_GYM_ELM, 3, 7
 	setobjectxy LOCALID_PLAYER, 5, 7
 	setobjectxy LOCALID_PEWTER_GYM_IVY, 7, 7
-	setobjectxy LOCALID_PEWTER_GYM_JENNY, 9, 7
+	setobjectxy LOCALID_PEWTER_GYM_JENNY, 8, 7
 	turnobject LOCALID_PEWTER_GYM_ELM, DIR_NORTH
 	turnobject LOCALID_PLAYER, DIR_NORTH
 	turnobject LOCALID_PEWTER_GYM_IVY, DIR_NORTH

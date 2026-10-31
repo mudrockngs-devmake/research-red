@@ -21,4 +21,4 @@ for watching Elm and Jenny's fight, and players who skip it lose nothing and see
 ## Rule for the lines
 Always stew, always after the day's battles, win or lose.
 
-**Seating (owner 2026-10-30):** a U around the middle of the room, everyone turned inward: Brock at the head, the kids down both sides, one kid and the guests along the near side. The camera snaps back to the player for the door talk and scrolls normally afterwards (tested by walking on).
+**Seating (owner 2026-10-30):** a U around the middle of the room, everyone turned inward: Brock at the head, the kids down both sides, one kid and the guests along the near side. The camera snaps back to the player for the door talk and scrolls normally afterwards (tested by walking on). The Pokémon gather in a ring around the people, who stay at the table: Elm and Jenny's along the far side, yours down the sides and in front.

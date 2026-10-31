@@ -1247,7 +1247,8 @@ def sc_rename():
 def sc_wild():
     # A wild single battle on Route 1 (#25: the opponent's types stay on screen
     # all battle): pace in the grass until something appears, look, run away.
-    pace = []
+    # The extra wait picks a different encounter: Diglett's Arena Trap stops running away for good.
+    pace = ["wait 7"]
     for _ in range(60):
         pace += ["hold LEFT 16", "wait 4", "hold RIGHT 16", "wait 4"]
     return (["load @bedroom"] + debug_script(SCRIPT_ROUTE1) + step("UP", 6) + pace

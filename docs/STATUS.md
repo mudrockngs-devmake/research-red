@@ -5,7 +5,7 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108 fixed in master, not in a build yet)_
+_Last updated: 2026-10-30 (v0.0.23 built and tagged; waiting on the owner's spot check. v0.0.22 round archived.)_
 
 ## Now
 - **v0.0.21 spot check done and archived** (`test-archive/2026-10-29_v0.0.21_spotcheck/`): new issues #149-#156; #116, #139, #140, #148 closed; follow-ups on #105 (Elm and Jenny's perspective, instant gag, auto-advance), #110, #142, #143.
@@ -34,6 +34,7 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
       history, .claude/skills, .githooks + core.hooksPath, GitHub checks, issue forms), 9 handbook, 10 global owner-notes skill
 
 ## Current build
+- **v0.0.23** (2026-10-30): the one big build; old saves work. Spot check by debug jumps; list: `F:\ROM-DATABASE\ROMs\gba\RomhackDev\ResearchRed_v0.0.23 - what to check.txt`. Tests: smoke 85/85, matrix 21/21, playthrough 14/14, balance 20/20, monkey 6/6. Bot wins the Pewter rematch 4 of 50 at Lv 14 and Route 22 32 of 50 (was 18 of 20 from a smaller run): owner to judge if they feel fair. Next full run: after this build.
 - **v0.0.22 The lab and its scripted fights** (2026-10-29, spot-check round): installed as `ResearchRed_local.gba`,
   tagged, pre-release on GitHub, and in the handheld folder `F:\ROM-DATABASE\ROMs\gba\RomhackDev` with
   `what to check.txt` and `Claude's answers.txt` (owner 2026-10-29: every build from now on). #105 fights seen from
@@ -81,7 +82,7 @@ _Last updated: 2026-10-30 (v0.0.22 still waiting on the owner's spot check; #108
 ## Asked for, not done yet
 - [x] Pewter lunch (owner 2026-10-30, wants it in v0.0.23 if it fits): everyone has lunch after the Gym fight (after the player's Brock fight or after Elm and Jenny's, undecided), Brock's brothers and sisters get banter too, a bit like the anime; maybe a small cutscene at the Gym with all 18 Pokemon sitting and eating together, only if not too much for the game. Unify every stew/lunch mention so the story is coherent. Keep Brock's rock puns. Also put the kids in a more natural formation; owner asks whether the other Pokemon fit too.
 - [x] Owner 2026-10-30: intro video call says Oak's Slowpoke turned up at the lab recently; Slowpoke sits in the middle of its bed.
-- [ ] Owner 2026-10-30: lunch in v0.0.23 (OK given), then full tests (doubles, singles, day/night, UI, story, battles, balance); also suggest and do polish across the whole demo.
+- [x] Owner 2026-10-30: lunch in v0.0.23 (OK given), then full tests (doubles, singles, day/night, UI, story, battles, balance); also suggest and do polish across the whole demo.
 - [x] Owner 2026-10-30: dialogue polish end to end: clean clunky lines, fit the anime style and style guides; keep everything, don't replace, just more coherent and polished.
 - [x] Owner 2026-10-30: kids a smidge further back on the wall; Slowpoke up a little in its bed.
 - [ ] Seen in test: Slowpoke can still turn around while asleep until you leave the lab once (FACE_DOWN only applies on reload).

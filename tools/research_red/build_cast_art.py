@@ -21,6 +21,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rrpng  # noqa: E402
+from png_indexed import load_indexed  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 REF_DIR = "/mnt/e/Workspace/romhacks/research-red/art/ref/ResearchRed_ref_art"
@@ -193,6 +194,28 @@ def save_indexed(path, img, size_w, size_h, ox0, oy0):
     return [[palette[i] for i in r] for r in idx]
 
 
+def add_cutout_outline(path, size):
+    """White "cut-out" edge around a saved picture, the same as the Pokémon portraits
+    (build_portraits.py): white on every clear pixel touching the figure."""
+    _, _, idx, pal = load_indexed(path)
+    pal = list(pal)
+    white = max(range(1, len(pal)), key=lambda i: sum(pal[i]))
+    if min(pal[white]) < 216:
+        # no real white in this picture: merge its two closest colours, which frees a slot for white
+        a, b = min(((i, j) for i in range(1, len(pal)) for j in range(i + 1, len(pal))),
+                   key=lambda p: sum((pal[p[0]][k] - pal[p[1]][k]) ** 2 for k in range(3)))
+        idx = [[a if i == b else i for i in r] for r in idx]
+        pal[b], white = (248, 248, 248), b
+    solid = [[i != 0 for i in r] for r in idx]
+    for y in range(size):
+        for x in range(size):
+            if not solid[y][x] and any(0 <= y + dy < size and 0 <= x + dx < size and solid[y + dy][x + dx]
+                                       for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1))):
+                idx[y][x] = white
+    rrpng.write_png_indexed4(path, size, size, idx, pal)
+    return [[pal[i] for i in r] for r in idx]
+
+
 def build(ref_path, out_dir, name=""):
     w, h, rows = load_ref(ref_path)
     x0, y0, x1, y1, head_x, head_top = figure_box(w, h, rows)
@@ -239,12 +262,14 @@ def build(ref_path, out_dir, name=""):
     img = outline(downscale(rows, w, h, cx0, cy0, cw, int(64 / k2), 64, 64, keep_dark=KEEP_DARK), False)
     res["battle_frlg"] = save_indexed(os.path.join(out_dir, "battle_frlg.png"), img, 64, 64, 0, 0)
 
-    # portrait: square crop from just above the head down ~40% of the figure
-    side = int(fh * 0.40)
+    # portrait: square crop from just above the head down ~50% of the figure (wider, so hair and
+    # elbows aren't cut off at the sides)
+    side = int(fh * 0.50)
     cy0 = head_top - side // 20
     cx0 = head_x - side // 2
     img = outline(downscale(rows, w, h, cx0, cy0, side, side, 64, 64), False)
-    res["portrait"] = save_indexed(os.path.join(out_dir, "portrait.png"), img, 64, 64, 0, 0)
+    save_indexed(os.path.join(out_dir, "portrait.png"), img, 64, 64, 0, 0)
+    res["portrait"] = add_cutout_outline(os.path.join(out_dir, "portrait.png"), 64)
 
     # call: face close-up, square crop of the head (~20% of the figure)
     side = int(fh * 0.20)

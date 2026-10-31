@@ -41,9 +41,9 @@ The game plays each fight many times with the AI on both sides (yours plays like
 
 | Fight | Your team (guess) | Won | Turns (average) | Your Pokémon fainted (average) | Theirs fainted | Simulated |
 |---|---|---|---|---|---|---|
-| Lab: you and Ivy vs Elm and Jenny (double) | your starter + Ivy's, Lv 5 (the scene's own) | 40 of 50 (80%) | 5.7 | 0.7 | 1.8 | 2026-10-27, v0.0.19 (b8977e7ae-dirty) |
-| Route 22: the 6v6 double with Ivy vs Elm and Jenny | debug 4 team: starter, Bulbasaur, Spearow, Rattata, Mankey, Nidoran M, all Lv 12 | 18 of 20 (90%) | 17.4 | 4.0 | 5.8 | 2026-10-30, v0.0.23 (24928413d) |
-| Pewter: Elm and Jenny's rematch outside the Pokémon Center | debug 10 team, all Lv 14 (the cap before Brock, the same level as Elm and Jenny; 1 badge) | 3 of 20 (15%) | 19.1 | 5.7 | 4.0 | 2026-10-30, v0.0.23 (7f064260d-dirty) |
-| Pewter Gym: Brock | debug 10 team, all Lv 14 (no badge, at the cap) | 20 of 20 (100%) | 11.8 | 0.7 | 6.0 | 2026-10-30, v0.0.23 (24928413d) |
+| Lab: you and Ivy vs Elm and Jenny (double) | your starter + Ivy's, Lv 5 (the scene's own) | 44 of 50 (88%) | 5.4 | 0.5 | 1.8 | 2026-10-30, v0.0.23 (d31b7afd1-dirty) |
+| Route 22: the 6v6 double with Ivy vs Elm and Jenny | debug 4 team: starter, Bulbasaur, Spearow, Rattata, Mankey, Nidoran M, all Lv 12 | 32 of 50 (64%) | 17.4 | 4.6 | 5.3 | 2026-10-30, v0.0.23 (d31b7afd1-dirty) |
+| Pewter: Elm and Jenny's rematch outside the Pokémon Center | debug 10 team, all Lv 14 (the cap before Brock, the same level as Elm and Jenny; 1 badge) | 4 of 50 (8%) | 16.2 | 5.8 | 3.5 | 2026-10-30, v0.0.23 (d31b7afd1-dirty) |
+| Pewter Gym: Brock | debug 10 team, all Lv 14 (no badge, at the cap) | 50 of 50 (100%) | 8.6 | 0.3 | 6.0 | 2026-10-30, v0.0.23 (d31b7afd1-dirty) |
 
 Reading it: won under about 60% is hard for a typical team at that point, over 95% with few of yours fainting is easy. Numbers per seed: data/research_red/battle_sims.json.

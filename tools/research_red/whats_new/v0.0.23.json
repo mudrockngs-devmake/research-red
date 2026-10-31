@@ -1,0 +1,392 @@
+{
+ "version": "v0.0.23",
+ "intro": "v0.0.23 is the one big build: day and night, new colours, new battle pictures, the Gym crowd and a lunch with Brock's family. A spot-check round: use Start > Debug > Scripts as each section says.",
+ "save": "Save: old saves work (use the debug jumps this round; a new game shows the changes best).",
+ "sections": [
+  {
+   "title": "Start menu, anywhere",
+   "items": [
+    {
+     "id": "c1_0",
+     "title": "Order: Pokedex, Pokemon, Field Guide, (DexNav), PC, Bag, your name, Sa",
+     "what": "Order: Pokedex, Pokemon, Field Guide, (DexNav), PC, Bag, your name, Save, Option, Debug, Exit.",
+     "try": "Start menu, anywhere",
+     "shots": []
+    },
+    {
+     "id": "c1_1",
+     "title": "\"Field Guide\" fits in full.",
+     "what": "\"Field Guide\" fits in full.",
+     "try": "Start menu, anywhere",
+     "shots": []
+    },
+    {
+     "id": "c1_2",
+     "title": "A long list scrolls, with arrows; it wraps top to bottom.",
+     "what": "A long list scrolls, with arrows; it wraps top to bottom.",
+     "try": "Start menu, anywhere",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Debug jump 1 - the lab",
+   "items": [
+    {
+     "id": "c2_0",
+     "title": "Oak's talk flows: he brings up regional forms before Ivy asks.",
+     "what": "Oak's talk flows: he brings up regional forms before Ivy asks.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_1",
+     "title": "The table has no odd border; it reads as one table.",
+     "what": "The table has no odd border; it reads as one table.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_2",
+     "title": "LOSE: say Yes to watching Elm & Jenny take on Oak. The fight is shorte",
+     "what": "LOSE: say Yes to watching Elm & Jenny take on Oak. The fight is shorter than before. Oak looks fired up; Ivy says so.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_3",
+     "title": "After they beat Oak: \"grew to Lv 9\", before the ranch Pokemon.",
+     "what": "After they beat Oak: \"grew to Lv 9\", before the ranch Pokemon.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_4",
+     "title": "WIN (run it again): Oak's takes-me-back line after the battle.",
+     "what": "WIN (run it again): Oak's takes-me-back line after the battle.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_5",
+     "title": "Later, Slowpoke sleeps on its bed on the table.",
+     "what": "Later, Slowpoke sleeps on its bed on the table.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_6",
+     "title": "Tracy (lab aide) offers the Poke Ball change first in the menu.",
+     "what": "Tracy (lab aide) offers the Poke Ball change first in the menu.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_7",
+     "title": "The original scientist is still there with his own lines.",
+     "what": "The original scientist is still there with his own lines.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_8",
+     "title": "Elm's lines mention his evolution studies.",
+     "what": "Elm's lines mention his evolution studies.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    },
+    {
+     "id": "c2_9",
+     "title": "Elm and Jenny's picture slides in from the side.",
+     "what": "Elm and Jenny's picture slides in from the side.",
+     "try": "Debug jump 1 - the lab",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Battle pictures - jump 4 (Route 22)",
+   "items": [
+    {
+     "id": "c3_0",
+     "title": "No heads cut off, for you and Ivy, or for Elm and Jenny.",
+     "what": "No heads cut off, for you and Ivy, or for Elm and Jenny.",
+     "try": "Battle pictures - jump 4 (Route 22)",
+     "shots": []
+    },
+    {
+     "id": "c3_1",
+     "title": "You can see Ivy's torso beside you, arm in arm.",
+     "what": "You can see Ivy's torso beside you, arm in arm.",
+     "try": "Battle pictures - jump 4 (Route 22)",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Jump 6 - lunch in Viridian",
+   "items": [
+    {
+     "id": "c4_0",
+     "title": "Ivy stands on your left when Officer Jenny walks up.",
+     "what": "Ivy stands on your left when Officer Jenny walks up.",
+     "try": "Jump 6 - lunch in Viridian",
+     "shots": []
+    },
+    {
+     "id": "c4_1",
+     "title": "Officer Jenny has a police sprite (a test, not approved art).",
+     "what": "Officer Jenny has a police sprite (a test, not approved art).",
+     "try": "Jump 6 - lunch in Viridian",
+     "shots": []
+    },
+    {
+     "id": "c4_2",
+     "title": "Her name tag fits.",
+     "what": "Her name tag fits.",
+     "try": "Jump 6 - lunch in Viridian",
+     "shots": []
+    },
+    {
+     "id": "c4_3",
+     "title": "Ivy sits by you at the picnic, then follows you again.",
+     "what": "Ivy sits by you at the picnic, then follows you again.",
+     "try": "Jump 6 - lunch in Viridian",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Jump 2 - walk to Daisy's house",
+   "items": [
+    {
+     "id": "c5_0",
+     "title": "Ivy sits in her chair.",
+     "what": "Ivy sits in her chair.",
+     "try": "Jump 2 - walk to Daisy's house",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Jump 17 - first visit to the Pewter Gym (Lv 14 team)",
+   "items": [
+    {
+     "id": "c6_0",
+     "title": "Elm and Jenny stand by the door; talk to them.",
+     "what": "Elm and Jenny stand by the door; talk to them.",
+     "try": "Jump 17 - first visit to the Pewter Gym (Lv 14 team)",
+     "shots": []
+    },
+    {
+     "id": "c6_1",
+     "title": "Nine kids behind Brock; talk to a few.",
+     "what": "Nine kids behind Brock; talk to a few.",
+     "try": "Jump 17 - first visit to the Pewter Gym (Lv 14 team)",
+     "shots": []
+    },
+    {
+     "id": "c6_2",
+     "title": "Liam explains the lunch; the light-years joke is still there.",
+     "what": "Liam explains the lunch; the light-years joke is still there.",
+     "try": "Jump 17 - first visit to the Pewter Gym (Lv 14 team)",
+     "shots": []
+    },
+    {
+     "id": "c6_3",
+     "title": "Brock's portrait shows; Ivy, Elm and Jenny join in.",
+     "what": "Brock's portrait shows; Ivy, Elm and Jenny join in.",
+     "try": "Jump 17 - first visit to the Pewter Gym (Lv 14 team)",
+     "shots": []
+    },
+    {
+     "id": "c6_4",
+     "title": "After the win: the pun, an Alolan Geodude (not TM39), the stew.",
+     "what": "After the win: the pun, an Alolan Geodude (not TM39), the stew.",
+     "try": "Jump 17 - first visit to the Pewter Gym (Lv 14 team)",
+     "shots": []
+    },
+    {
+     "id": "c6_5",
+     "title": "Team has room: Geodude joins. Team full: it goes to the PC.",
+     "what": "Team has room: Geodude joins. Team full: it goes to the PC.",
+     "try": "Jump 17 - first visit to the Pewter Gym (Lv 14 team)",
+     "shots": []
+    },
+    {
+     "id": "c6_6",
+     "title": "Geodude's own banter plays afterwards.",
+     "what": "Geodude's own banter plays afterwards.",
+     "try": "Jump 17 - first visit to the Pewter Gym (Lv 14 team)",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Debug jump 16 - Elm and Jenny fight Brock",
+   "items": [
+    {
+     "id": "c7_0",
+     "title": "It happens on the battle screen. Press nothing; about 3 minutes.",
+     "what": "It happens on the battle screen. Press nothing; about 3 minutes.",
+     "try": "Debug jump 16 - Elm and Jenny fight Brock",
+     "shots": []
+    },
+    {
+     "id": "c7_1",
+     "title": "Brock sends his six, two at a time; the jokes come between rounds.",
+     "what": "Brock sends his six, two at a time; the jokes come between rounds.",
+     "try": "Debug jump 16 - Elm and Jenny fight Brock",
+     "shots": []
+    },
+    {
+     "id": "c7_2",
+     "title": "Elm and Jenny are Lv 14; they win, then the badge.",
+     "what": "Elm and Jenny are Lv 14; they win, then the badge.",
+     "try": "Debug jump 16 - Elm and Jenny fight Brock",
+     "shots": []
+    },
+    {
+     "id": "c7_3",
+     "title": "Walk in after the fight, or say yes outside the Center: the lunch play",
+     "what": "Walk in after the fight, or say yes outside the Center: the lunch plays. People sit around the table; all the Pokemon ring them.",
+     "try": "Debug jump 16 - Elm and Jenny fight Brock",
+     "shots": []
+    },
+    {
+     "id": "c7_4",
+     "title": "Jenny sits right next to Ivy.",
+     "what": "Jenny sits right next to Ivy.",
+     "try": "Debug jump 16 - Elm and Jenny fight Brock",
+     "shots": []
+    },
+    {
+     "id": "c7_5",
+     "title": "After the lunch, the talk by the door isn't behind the text box, and t",
+     "what": "After the lunch, the talk by the door isn't behind the text box, and the camera follows you normally when you walk away.",
+     "try": "Debug jump 16 - Elm and Jenny fight Brock",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Jump 10 - Elm and Jenny's Pewter rematch, by the Pokemon Center",
+   "items": [
+    {
+     "id": "c8_0",
+     "title": "At Lv 14 you and they are level. Still tough? Does it feel fair?",
+     "what": "At Lv 14 you and they are level. Still tough? Does it feel fair?",
+     "try": "Jump 10 - Elm and Jenny's Pewter rematch, by the Pokemon Center",
+     "shots": []
+    },
+    {
+     "id": "c8_1",
+     "title": "Losing carries on with the scene, no blackout.",
+     "what": "Losing carries on with the scene, no blackout.",
+     "try": "Jump 10 - Elm and Jenny's Pewter rematch, by the Pokemon Center",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Pokedex - any Pokemon you've seen",
+   "items": [
+    {
+     "id": "c9_0",
+     "title": "Forms page: Geodude shows Alolan; no Mega forms anywhere.",
+     "what": "Forms page: Geodude shows Alolan; no Mega forms anywhere.",
+     "try": "Pokedex - any Pokemon you've seen",
+     "shots": []
+    },
+    {
+     "id": "c9_1",
+     "title": "Evolution page: Hisuian rows show ??? and \"Unlocks later\".",
+     "what": "Evolution page: Hisuian rows show ??? and \"Unlocks later\".",
+     "try": "Pokedex - any Pokemon you've seen",
+     "shots": []
+    },
+    {
+     "id": "c9_2",
+     "title": "A does nothing on those rows.",
+     "what": "A does nothing on those rows.",
+     "try": "Pokedex - any Pokemon you've seen",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Rebattles",
+   "items": [
+    {
+     "id": "c10_0",
+     "title": "Oak and Daisy: Lv 10 before Brock. Delia: Lv 14.",
+     "what": "Oak and Daisy: Lv 10 before Brock. Delia: Lv 14.",
+     "try": "Rebattles",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Overworld stand-ins - walk around",
+   "items": [
+    {
+     "id": "c11_0",
+     "title": "New sprites: you, Ivy, Elm, Jenny, Delia, Oak. Not final art.",
+     "what": "New sprites: you, Ivy, Elm, Jenny, Delia, Oak. Not final art.",
+     "try": "Overworld stand-ins - walk around",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Day and night - rest with Delia (jump 10, then go home)",
+   "items": [
+    {
+     "id": "c12_0",
+     "title": "Day is fully bright. Night is darker, but easy to see.",
+     "what": "Day is fully bright. Night is darker, but easy to see.",
+     "try": "Day and night - rest with Delia (jump 10, then go home)",
+     "shots": []
+    },
+    {
+     "id": "c12_1",
+     "title": "Only two light levels; no in-between.",
+     "what": "Only two light levels; no in-between.",
+     "try": "Day and night - rest with Delia (jump 10, then go home)",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Dialogue - anywhere",
+   "items": [
+    {
+     "id": "c13_0",
+     "title": "Every person's portrait above the text box has a white edge.",
+     "what": "Every person's portrait above the text box has a white edge.",
+     "try": "Dialogue - anywhere",
+     "shots": []
+    },
+    {
+     "id": "c13_1",
+     "title": "Lines read smoothly; tell us any that still feel clunky.",
+     "what": "Lines read smoothly; tell us any that still feel clunky.",
+     "try": "Dialogue - anywhere",
+     "shots": []
+    }
+   ]
+  },
+  {
+   "title": "Oak's pager Pokemon - jump 1, lab yard and lab",
+   "items": [
+    {
+     "id": "c14_0",
+     "title": "Spread out, not lined up; none stuck in a bookcase.",
+     "what": "Spread out, not lined up; none stuck in a bookcase.",
+     "try": "Oak's pager Pokemon - jump 1, lab yard and lab",
+     "shots": []
+    }
+   ]
+  }
+ ]
+}
