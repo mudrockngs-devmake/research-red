@@ -76,3 +76,7 @@ Installed on the dev machine (outside the repo; nothing in the build needs them 
 - Porytiles 2.0.0 in `~/romhacks/_tools/porytiles/`: whole tilesets from drawn PNG layers ([ART_TOOLS.md](ART_TOOLS.md#whole-new-tilesets)).
 - pret pokeemerald, sparse copy in `~/romhacks/_tools/pokeemerald-ref/`: Emerald people and trainer pictures for the sprite library (bases used in recipes are copied into the repo).
 - Windows, `E:\Workspace\_tools\`: Porymap 6.3.1 (map editor) and LibreSprite 1.3 (pixel editor).
+
+## Scene moment boards
+
+To stage where people stand at a moment of a scene: add the moment to `MOMENTS` in `tools/research_red/test/scene_moment.py` (how to get there, and the line of dialogue it stops on), run it with the moment's name, then open `viewer.py board MAP_X --moment NAME --title "..."`. The board starts from the positions read out of the running game, with the game's screenshot beside it; only people the game has loaded near the screen are read. Replies come back through `viewer.py answers`.

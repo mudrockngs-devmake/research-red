@@ -56,6 +56,7 @@ textarea { width:100%; min-height:70px; font:inherit; padding:6px; border-radius
 <main>
   <div id="wrap"><div id="map"><img class="bg" id="bg" alt=""><div class="grid" id="gridov"></div></div></div>
   <aside>
+    <div class="card" id="shotcard" style="display:none"><h2>In the game right now</h2><img id="shot" alt="This moment in the game" style="width:100%;image-rendering:pixelated"><p class="help" id="about"></p></div>
     <div class="card"><h2>How</h2><p class="help">Drag people to move them (they snap to squares). Click one to select, click again to turn them. Delete removes the selected person. Add someone from the list below. Then Send to Claude.</p></div>
     <div class="card"><h2>Selected</h2><div id="selinfo" class="help">nobody</div><button id="turn">Turn</button> <button id="del">Delete</button></div>
     <div class="card"><h2>Add someone</h2><input id="search" placeholder="search (elm, nurse, ...)" style="width:100%;margin-bottom:6px"><div id="list"></div></div>
@@ -147,15 +148,16 @@ function list() {
 }
 document.getElementById('search').oninput = list;
 document.getElementById('send').onclick = async () => {
-  const body = { map: MAP, title: q.get('title') || '', note: document.getElementById('note').value,
+  const body = { map: MAP, moment: q.get('moment') || '', title: q.get('title') || '', note: document.getElementById('note').value,
                  people: people.map((p, i) => Object.assign({}, p, { moved: !p.new && (p.x !== start[i].x || p.y !== start[i].y), turned: !p.new && p.facing !== start[i].facing })) };
   const r = await fetch('/api/board', { method: 'POST', body: JSON.stringify(body) });
   document.getElementById('sent').textContent = r.ok ? 'Sent. Tell Claude in the terminal (or it checks).' : 'Could not send.';
 };
-fetch('/api/board?map=' + encodeURIComponent(MAP)).then(r => r.json()).then(d => {
+fetch('/api/board?map=' + encodeURIComponent(MAP) + (q.get('moment') ? '&moment=' + encodeURIComponent(q.get('moment')) : '')).then(r => r.json()).then(d => {
   if (d.error) { document.getElementById('title').textContent = d.error; return; }
   document.getElementById('bg').src = d.image; people = d.people; start = JSON.parse(JSON.stringify(people));
   cast = d.cast; others = d.others; draw(); list();
+  if (d.shot) { document.getElementById('shot').src = d.shot; document.getElementById('about').textContent = d.about; document.getElementById('shotcard').style.display = ''; }
 });
 </script>
 </body>

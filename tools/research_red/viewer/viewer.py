@@ -18,6 +18,8 @@
   python3 tools/research_red/viewer/viewer.py board MAP_X [--title "Where should Ivy stand?"]
         open the scene board for a map: drag people, click to turn them,
         add people from the list, then "Send to Claude"
+        --moment NAME: start from where everyone stands at that moment of a scene
+        (make it first with tools/research_red/test/scene_moment.py NAME)
   python3 tools/research_red/viewer/viewer.py answers         # what came back (board sends, notes)
   python3 tools/research_red/viewer/viewer.py answer STAMP    # the reply to one question (exit 2 if none yet)
   python3 tools/research_red/viewer/viewer.py start           # start without opening a page
@@ -235,7 +237,10 @@ def ingame_png(map_id, x, y, img_path, fw, fh):
 
 # ---------------------------------------------------------------- scene board data
 
-def board_data(map_id):
+PLAYER_GFX = "OBJ_EVENT_GFX_RED_NORMAL"
+
+
+def board_data(map_id, moment=None):
     import render_map
     m = render_map.find_map(map_id)
     out_png = os.path.join(BOARDS, map_id + ".png")
@@ -249,8 +254,13 @@ def board_data(map_id):
     cast = [k for k in table if k.startswith("OBJ_EVENT_GFX_RR_")] + \
         ["OBJ_EVENT_GFX_MOM", "OBJ_EVENT_GFX_PROF_OAK", "OBJ_EVENT_GFX_DAISY", "OBJ_EVENT_GFX_BROCK", "OBJ_EVENT_GFX_MISTY"]
     others = sorted(k for k in table if k not in cast and table[k][1] == 16 and table[k][2] == 32)
-    return {"map": map_id, "image": "/file?path=" + urllib.parse.quote(out_png), "people": people,
-            "cast": cast, "others": others}
+    out = {"map": map_id, "image": "/file?path=" + urllib.parse.quote(out_png), "people": people,
+           "cast": cast, "others": others}
+    if moment:
+        # a moment of a scene: where everyone really stood (test/scene_moment.py)
+        saved = json.load(open(os.path.join(BOARDS, "moments", moment + ".json")))
+        out.update(people=saved["people"], about=saved["about"], shot="/file?path=" + urllib.parse.quote(saved["shot"]))
+    return out
 
 
 def movement_facing(mt):
@@ -346,8 +356,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(404, {"error": "no in-game preview: %s" % e})
         if u.path == "/api/board":
             try:
-                return self.send(200, board_data(q["map"][0]))
-            except (SystemExit, KeyError, StopIteration) as e:
+                return self.send(200, board_data(q["map"][0], q.get("moment", [None])[0]))
+            except (SystemExit, KeyError, StopIteration, OSError) as e:
                 return self.send(404, {"error": "no map %s" % q.get("map", ["?"])[0]})
         if u.path == "/api/sprite":
             png = sprite_png(q["gfx"][0], q.get("facing", ["down"])[0])
@@ -507,7 +517,8 @@ def main(argv):
     elif cmd == "board":
         start()
         title = urllib.parse.quote(opts.get("title", ""))
-        open_page("/board?map=%s&title=%s" % (rest[0], title))
+        moment = opts.get("moment", "")
+        open_page("/board?map=%s&title=%s&moment=%s" % (rest[0], title, moment))
     elif cmd == "answers":
         files = sorted(f for f in os.listdir(ANSWERS) if f.endswith(".json"))
         for f in files[-int(opts.get("last", "5")):]:
