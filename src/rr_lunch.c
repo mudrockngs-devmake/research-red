@@ -38,16 +38,10 @@ static const u16 sRR_LunchRivalTeams[6] =
 static EWRAM_DATA u8 sRR_LunchIcons[RR_LUNCH_MAX_MONS] = {0};
 static EWRAM_DATA u8 sRR_LunchCount = 0;
 
-// Seats in a ring around the people's table (screen pixels), filled from the middle out so a
-// small team still looks even. Elm and Jenny's team along the far side; yours the sides and front.
-static const u8 sRR_LunchSeatX[2][RR_LUNCH_PER_ROW] = {
-    {121, 149, 93, 177, 65, 205},
-    {65, 205, 65, 205, 121, 149},
-};
-static const u8 sRR_LunchSeatY[2][RR_LUNCH_PER_ROW] = {
-    {18, 18, 18, 18, 18, 18},
-    {50, 50, 78, 78, 102, 102},
-};
+// Two matching rows, one above the table and one below, filled from the middle out so a small
+// team still looks even. Elm and Jenny's team on top, yours below.
+static const u8 sRR_LunchSeatX[RR_LUNCH_PER_ROW] = {121, 149, 93, 177, 65, 205};
+static const u8 sRR_LunchSeatY[2] = {18, 102};
 
 static void RR_LunchAddMon(u32 species, u32 personality, u32 row, u32 column)
 {
@@ -59,17 +53,17 @@ static void RR_LunchAddMon(u32 species, u32 personality, u32 row, u32 column)
      && IndexOfSpritePaletteTag(POKE_ICON_BASE_PAL_TAG + gSpeciesInfo[species].iconPalIndex) == 0xFF)
         return;
     LoadMonIconPalette(species);
-    spriteId = CreateMonIcon(species, SpriteCB_MonIcon, sRR_LunchSeatX[row][column], sRR_LunchSeatY[row][column], 2, personality);
+    spriteId = CreateMonIcon(species, SpriteCB_MonIcon, sRR_LunchSeatX[column], sRR_LunchSeatY[row], 2, personality);
     if (spriteId != MAX_SPRITES)
     {
         // Icons all look left: mirror the right-hand ones so everyone faces the table
-        if (sRR_LunchSeatX[row][column] > RR_LUNCH_TABLE_X)
+        if (sRR_LunchSeatX[column] > RR_LUNCH_TABLE_X)
             gSprites[spriteId].hFlip = TRUE;
         sRR_LunchIcons[sRR_LunchCount++] = spriteId;
     }
 }
 
-// With the screen black. The people stay at the table; the Pokémon gather around them.
+// With the screen black. The people stay at the table; the Pokémon sit above and below them.
 void RR_ScriptLunchPokemonShow(struct ScriptContext *ctx)
 {
     const struct TrainerMon *rivals = GetTrainerPartyFromId(sRR_LunchRivalTeams[VarGet(VAR_RR_STARTER) % 6]);

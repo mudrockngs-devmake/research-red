@@ -80,6 +80,7 @@ _Last updated: 2026-10-30 (v0.0.23 built and tagged; waiting on the owner's spot
 - The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
 
 ## Asked for, not done yet
+- [x] (in master, NOT in v0.0.23: goes in the next build) Owner 2026-10-30: lunch Pokémon in two matching rows of six, above and below the people. The v0.0.23 tag and handheld copy still show the ring.
 - [x] Pewter lunch (owner 2026-10-30, wants it in v0.0.23 if it fits): everyone has lunch after the Gym fight (after the player's Brock fight or after Elm and Jenny's, undecided), Brock's brothers and sisters get banter too, a bit like the anime; maybe a small cutscene at the Gym with all 18 Pokemon sitting and eating together, only if not too much for the game. Unify every stew/lunch mention so the story is coherent. Keep Brock's rock puns. Also put the kids in a more natural formation; owner asks whether the other Pokemon fit too.
 - [x] Owner 2026-10-30: intro video call says Oak's Slowpoke turned up at the lab recently; Slowpoke sits in the middle of its bed.
 - [x] Owner 2026-10-30: lunch in v0.0.23 (OK given), then full tests (doubles, singles, day/night, UI, story, battles, balance); also suggest and do polish across the whole demo.
