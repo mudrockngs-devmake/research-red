@@ -52,7 +52,7 @@ One light tan paper colour and dark brown ink replace the whites on every box an
 - Pallet: you can't leave for Route 1 before Daisy's house (the bet). Stepping onto Route 1 early: Elm shouts from Daisy's window, you step back, Ivy nudges you to be good sports (owner 2026-10-28, #119).
 - Diglett's Cave route stays as it is in the demo (owner 2026-10-28, #130).
 - Viridian lunch (owner 2026-10-29, #148): straight after the Route 22 fight, as part of the same scene (a fade to the picnic), so there is no gap and nothing to block; the old man's lunch gate goes. The lunch stays one standalone scene, so an invite you can play any time before Viridian Forest stays an easy switch.
-- The gyms stay in FireRed's order. The demo's blocks (Diglett's Cave, Pewter's east exit, Gerald at sea, the League gate) become real story gates in the full game, written into the story instead of developer notes. The middle stretch (Erika, Koga, Sabrina) can keep some freedom: check FireRed's real gating there.
+- The gyms stay in FireRed's order. The demo's blocks (Diglett's Cave, Pewter's east exit, Gerald and his Tentacool friends between the fence posts at the bottom of Pallet's sea (#113; the rest of the water is free for surfing and fishing), the League gate) become real story gates in the full game, written into the story instead of developer notes. The middle stretch (Erika, Koga, Sabrina) can keep some freedom: check FireRed's real gating there.
 - **No overworld scaling**: wild Pokémon and route trainers keep their levels (no Crystal Clear-style respec). Only gym leaders adapt (section 5).
 
 ## 4. The lab, Oak, and Elm and Jenny's early fights

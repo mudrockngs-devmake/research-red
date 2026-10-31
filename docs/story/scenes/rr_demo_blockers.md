@@ -26,15 +26,17 @@ Research Red: demo boundaries (#35, #36, #62)
 > We'll open the way in a future
 > update. Please understand!
 
-### RR_Pallet_EventScript_GeraldBlock
+### RR_Pallet_EventScript_Gerald
 
 > Gerald: Tenta! Cool!
 >
-> Gerald the Tentacool is floating
-> right in the way.
+> Gerald the Tentacool and friends
+> are floating right across the gap.
 
 > Ivy: Gerald! You followed us
 > all the way from the ferry?
+>
+> And you brought friends!
 
 > Gerald holds up a tiny sign:
 >
@@ -49,21 +51,6 @@ Research Red: demo boundaries (#35, #36, #62)
 
 > Ivy: Don't worry, Gerald.
 > We'll come back for you.
-
-### RR_Pallet_EventScript_Gerald
-
-> Gerald: Tenta! Cool!
->
-> Gerald the Tentacool is floating
-> right in the way.
-
-> Gerald holds up a tiny sign:
->
-> “Sea route under construction.
-> This is a demo of Research Red.
->
-> Cinnabar and beyond come later.
-> Thanks for playing!”
 
 ### RR_DiglettsCave_EventScript_Diglett
 

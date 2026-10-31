@@ -5,7 +5,7 @@
 @  - Pewter's east exit: the Gym guide (the boy who walks you to Brock)
 @    stays after Brock, gives a developer note and walks you back.
 @    The Running Shoes aide never appears (you can run from the start).
-@  - Pallet's shore: Gerald the Tentacool blocks the sea route to Cinnabar.
+@  - Pallet's shore: Gerald the Tentacool and friends block the sea route to Cinnabar.
 @  - Diglett's Cave (Route 2): a Dugtrio sits on the ladder with four
 @    Diglett around it (the anime's "Dig Those Diglett!" crew).
 @  - Route 22's League gate: the officer turns everyone back, badge or not
@@ -55,48 +55,31 @@ RR_Pewter_Text_DemoEnd::
     .string "We'll open the way in a future\n"
     .string "update. Please understand!$"
 
-@ Pallet's shore: surfing onto the row in front of Gerald
-RR_Pallet_EventScript_GeraldBlock::
-	lockall
-	playmoncry SPECIES_TENTACOOL, CRY_MODE_NORMAL
-	applymovement LOCALID_PALLET_GERALD, Common_Movement_ExclamationMark
-	waitmovement 0
-	waitmoncry
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox RR_Pallet_Text_GeraldBlocks, MSGBOX_DEFAULT
-	msgbox RR_Pallet_Text_Ivy_Gerald, MSGBOX_DEFAULT
-	msgbox RR_Pallet_Text_GeraldSign, MSGBOX_DEFAULT
-	msgbox RR_Pallet_Text_P_Respect, MSGBOX_DEFAULT
-	msgbox RR_Pallet_Text_Ivy_ComeBack, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_PLAYER, RR_Demo_Movement_BackNorth
-	waitmovement 0
-	releaseall
-	end
-
-@ Talking to Gerald from the water
+@ Pallet's shore: Gerald and three friends fill the gap between the two fence
+@ posts at the very bottom of the sea (y 20, the first row of Route 21), so the
+@ rest of Pallet's water is free for surfing and fishing (#113).
 RR_Pallet_EventScript_Gerald::
 	lock
 	playmoncry SPECIES_TENTACOOL, CRY_MODE_NORMAL
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Pallet_Text_GeraldBlocks, MSGBOX_DEFAULT
-	msgbox RR_Pallet_Text_GeraldSign, MSGBOX_DEFAULT
 	waitmoncry
+	msgbox RR_Pallet_Text_Ivy_Gerald, MSGBOX_DEFAULT
+	msgbox RR_Pallet_Text_GeraldSign, MSGBOX_DEFAULT
+	msgbox RR_Pallet_Text_P_Respect, MSGBOX_DEFAULT
+	msgbox RR_Pallet_Text_Ivy_ComeBack, MSGBOX_DEFAULT
 	release
 	end
 
-RR_Demo_Movement_BackNorth:
-	walk_up
-	step_end
-
 RR_Pallet_Text_GeraldBlocks::
     .string "Gerald: Tenta! Cool!\p"
-    .string "Gerald the Tentacool is floating\n"
-    .string "right in the way.$"
+    .string "Gerald the Tentacool and friends\n"
+    .string "are floating right across the gap.$"
 
 RR_Pallet_Text_Ivy_Gerald::
     .string "Ivy: Gerald! You followed us\n"
-    .string "all the way from the ferry?$"
+    .string "all the way from the ferry?\p"
+    .string "And you brought friends!$"
 
 RR_Pallet_Text_GeraldSign::
     .string "Gerald holds up a tiny sign:\p"

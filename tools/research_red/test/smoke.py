@@ -166,11 +166,22 @@ def sc_grass():
 
 def table_nap():
     """#86 rework: after the lab the starter table is empty and the lab's
-    Slowpoke naps on it at (9,5), the middle of its bed (its saved position, object 16 of the map)."""
+    Slowpoke naps on it at (9,5), the middle of its bed (its saved position, object 16 of the map).
+    #160: and it faces down right away, not only after leaving the lab once."""
     slowpoke = T.G.const("offsetof(struct SaveBlock1, objectEventTemplates[15].x)")
     return (check("table_empty", " && ".join(T.G.flag_set(f) for f in (
                 "FLAG_HIDE_BULBASAUR_BALL", "FLAG_HIDE_SQUIRTLE_BALL", "FLAG_HIDE_CHARMANDER_BALL")))
-            + check("slowpoke_on_table", f"{T.G._sb1(slowpoke, 2)} == 9 && {T.G._sb1(slowpoke + 2, 2)} == 5"))
+            + check("slowpoke_on_table", f"{T.G._sb1(slowpoke, 2)} == 9 && {T.G._sb1(slowpoke + 2, 2)} == 5")
+            + check("slowpoke_stays_put", live_object_is(16, "movementType", 0x8)))  # MOVEMENT_TYPE_FACE_DOWN
+
+
+def live_object_is(local_id, field, value):
+    """Condition: the object on screen with this local id has field == value
+    (objects sit in whichever of the 16 slots was free, so try them all)."""
+    g, size = T.G, T.G.const("sizeof(struct ObjectEvent)")
+    base = g.sym("gObjectEvents")
+    lid, off = g.const("offsetof(struct ObjectEvent, localId)"), g.const(f"offsetof(struct ObjectEvent, {field})")
+    return " || ".join(f"{base + i * size + lid:#x}:1 == {local_id} && {base + i * size + off:#x}:1 == {value}" for i in range(16))
 
 
 def weak_foes(count=2):
@@ -638,15 +649,47 @@ def sc_digletts():
 
 
 def sc_gerald():
-    # Surf south from Pallet's shore: Gerald blocks the sea route (#36).
-    # Debug 2 leaves us at (15,8); round the lab to the shore at (8,16),
-    # face the water (8,17), surf, then one step south onto the trigger row.
-    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB) + step("LEFT", 3) + step("DOWN", 8)
-            + step("LEFT", 4) + ["press DOWN 2", "wait 10", "shot s000", "press A", "wait 30",
-                                 "mash A 200", "wait 60", "shot s001"]
-            + step("DOWN", 1)
+    # Surf south from Pallet's shore (#113, #36): the water is free now. Debug 2
+    # leaves us at (15,8); round the lab to the shore at (8,16), face the water
+    # (8,17), surf, down to the last row (8,19) with no scene on the way, then
+    # Gerald (8,20) blocks the way south and talks when spoken to.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + walk_via("to_shore", (15, 8), (12, 8), (12, 16), (8, 16))
+            + ["press DOWN 2", "wait 10", "shot s000", "press A", "wait 30",
+               "mash A 200", "wait 60", "shot s001"]
+            + walk_via("to_gap", (8, 17), (8, 19)) + ["wait 30"] + check("sea_free", f"{T.G.player_at(8, 19)} && {T.G.field_free()}") + ["shot s002"]
+            + step("DOWN", 2) + check("gerald_blocks", T.G.player_at(8, 19))
+            + ["press DOWN 2", "wait 10", "press A", "wait 40", "shot t000", "press A", "wait 40", "shot t001"]
             + play_until("gerald_done", T.G.field_free(), 3000, key="B", every=20)
-            + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")) + ["shot t001"])
+            + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")) + ["shot t002"])
+
+
+def sc_gerald_side():
+    # #113: the leak was surfing in from the side on the last row. Along the
+    # shore to (6,19), surf right to (7,19), then try every gap column going south.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + walk_via("to_shore", (15, 8), (12, 8), (12, 15), (6, 15), (6, 19)) + ["press RIGHT 2", "wait 10", "shot s000", "press A", "wait 30",
+                                                   "mash A 200", "wait 60", "shot s001"]
+            + check("surfing_last_row", f"{T.G.player_at(7, 19)} && {T.G.field_free()}")
+            + step("DOWN", 2) + check("friend_7", T.G.player_at(7, 19))
+            + ["press A", "wait 40", "shot t000"] + play_until("friend_done", T.G.field_free(), 3000, key="B", every=20)
+            + walk_via("to_9", (7, 19), (9, 19)) + step("DOWN", 2) + check("friend_9", T.G.player_at(9, 19))
+            + walk_via("to_10", (9, 19), (10, 19)) + step("DOWN", 2) + check("friend_10", T.G.player_at(10, 19)) + ["shot s002"]
+            + check("still_in_pallet", T.G.on_map("MAP_PALLET_TOWN")))
+
+
+def sc_route1_too_soon():
+    # #119: Debug 2 (story 3, before Daisy) at (15,8): up to the exit. Stepping
+    # on Pallet's top row, Elm shouts, you step back; Daisy's scene is still ahead.
+    return (["load @bedroom"] + debug_script(SCRIPT_AFTER_LAB)
+            + walk_via("to_exit", (15, 8), (12, 8), (12, 1)) + ["wait 20", "shot s000"]
+            + walk_via("shout", (12, 1), (12, 0)) + ["wait 60", "shot t000"]
+            + play_until("sent_back", T.G.field_free(), 3000, key="B", every=20) + ["wait 40", "shot s001"]
+            + check("back_in_pallet", f"{T.G.on_map('MAP_PALLET_TOWN')} && {T.G.player_at(12, 1)}")
+            + expect(story=3)
+            # Ivy still follows: walk to Daisy's door and the scene plays
+            + walk_via("to_daisy", (12, 1), (12, 8), (15, 8)) + step("UP") + ["wait 60", "shot s002"]
+            + play_until("daisy", scene_end(4), 12000, key="B", every=30) + expect("MAP_PALLET_TOWN_RIVALS_HOUSE", story=4))
 
 
 def sc_pc():
@@ -1332,7 +1375,9 @@ SCENARIOS = {
     "bike": (sc_bike, "On the bike: your own sprite, Ivy out of view; off again, she's back (#80, #28)"),
     "sprites_m": (lambda: sprite_tour(False), "#125: the male player in every situation (walk, run, door, bike, surf, reflection)"),
     "sprites_f": (lambda: sprite_tour(True), "#125: the female player in every situation (walk, run, door, bike, surf, reflection)"),
-    "gerald": (sc_gerald, "Gerald blocks surfing from Pallet to Cinnabar (demo)"),
+    "gerald": (sc_gerald, "Pallet's sea is free to surf; Gerald blocks the gap to Cinnabar (demo, #113)"),
+    "gerald_side": (sc_gerald_side, "Gerald's friends block the gap even surfing in from the side (#113)"),
+    "route1_too_soon": (sc_route1_too_soon, "Leaving Pallet before Daisy's house: Elm shouts, you step back (#119)"),
     "ui_tour": (sc_ui_tour, "Every Start menu screen in the notebook theme: party, summary pages, Guide, DexNav, Bag, card, Save, Options"),
     "pc": (sc_pc, "Start > PC: Pokémon storage from anywhere"),
     "dexnav": (sc_dexnav, "Route 22: Jenny gives the DexNav, then Start > DEXNAV there"),

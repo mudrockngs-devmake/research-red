@@ -45,7 +45,7 @@ RR_Daisy_EventScript_Scene::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_Jenny_Citations, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_DAISY, Common_Movement_FacePlayer
+	applymovement LOCALID_DAISY, RR_Daisy_Movement_LookDown @ #117: she stays facing the table
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox RR_Daisy_Text_P_Maps, MSGBOX_DEFAULT
@@ -60,7 +60,7 @@ RR_Daisy_EventScript_Scene::
 	waitmovement 0
 	removeobject LOCALID_TOWN_MAP
 	delay 15
-	applymovement LOCALID_DAISY, Common_Movement_FacePlayer
+	applymovement LOCALID_DAISY, RR_Daisy_Movement_LookDown @ #117: she stays facing the table
 	waitmovement 0
 	additem ITEM_TOWN_MAP, 1
 	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2
@@ -166,6 +166,43 @@ RR_Daisy_EventScript_Scene::
 	setvar VAR_0x40FE, 4
 	releaseall
 	end
+
+@ #119: heading for Route 1 before Daisy's scene (story 3, the top tiles of
+@ Pallet): Elm shouts from her window, you step back, Ivy nudges you. Draft lines.
+RR_Daisy_EventScript_NotYet::
+	lockall
+	rr_ivy_to_scene LOCALID_PALLET_IVY @ she steps back too, or you'd land on her tile
+	playse SE_PIN
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox RR_Daisy_Text_WindowShout, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Elm_WhereGoing, MSGBOX_DEFAULT
+	msgbox RR_Daisy_Text_Ivy_GoodSports, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_PALLET_IVY, RR_Daisy_Movement_StepBack
+	applymovement LOCALID_PLAYER, RR_Daisy_Movement_StepBack
+	waitmovement LOCALID_PALLET_IVY
+	waitmovement LOCALID_PLAYER
+	rr_ivy_follow LOCALID_PALLET_IVY
+	releaseall
+	end
+
+RR_Daisy_Movement_StepBack:
+	walk_down
+	step_end
+
+RR_Daisy_Text_WindowShout::
+    .string "Someone's shouting from Daisy's\n"
+    .string "window.$"
+
+RR_Daisy_Text_Elm_WhereGoing::
+    .string "Elm: Hey! Where are you going?!\n"
+    .string "Daisy's house is the other way!$"
+
+RR_Daisy_Text_Ivy_GoodSports::
+    .string "Ivy: It matters to Elm, sweetie.\n"
+    .string "Let's be good sports.$"
 
 @ From the doormat (4,8) to the lower left chair (5,5)
 RR_Daisy_Movement_PlayerToSeat:

@@ -4,7 +4,7 @@ Map `MAP_PALLET_TOWN` · music `MUS_PALLET` · weather `WEATHER_SUNNY`
 
 ## Story scene triggers
 
-- `RR_Pallet_EventScript_GeraldBlock` when `VAR_TEMP_3` = 0 (see scenes/)
+- `RR_Daisy_EventScript_NotYet` when `VAR_0x40FE` = 3 (see scenes/)
 
 ## People and objects
 
@@ -59,13 +59,18 @@ Script `PalletTown_EventScript_FatMan`
 *hidden by `FLAG_TEMP_3`*
 (no talk script; used in cutscenes)
 
-### Pallet Gerald (Species(Tentacool)) at 8,19
+### Pallet Gerald (Species(Tentacool)) at 8,20
 Script `RR_Pallet_EventScript_Gerald`
 
 > Gerald: Tenta! Cool!
 >
-> Gerald the Tentacool is floating
-> right in the way.
+> Gerald the Tentacool and friends
+> are floating right across the gap.
+
+> Ivy: Gerald! You followed us
+> all the way from the ferry?
+>
+> And you brought friends!
 
 > Gerald holds up a tiny sign:
 >
@@ -74,6 +79,12 @@ Script `RR_Pallet_EventScript_Gerald`
 >
 > Cinnabar and beyond come later.
 > Thanks for playing!”
+
+> {PLAYER}: Still blocking boats.
+> Honestly? Respect.
+
+> Ivy: Don't worry, Gerald.
+> We'll come back for you.
 
 ### Pallet Oak Tauros (Species(Tauros)) at 19,8
 Script `RR_RanchPager_EventScript_OakTauros`
@@ -122,6 +133,87 @@ Script `RR_Ambient_EventScript_Diglett`
 >
 > It's Prof. Oak's Diglett. It's on
 > call for Dig.
+
+### Species(Tentacool) (Species(Tentacool)) at 7,20
+Script `RR_Pallet_EventScript_Gerald`
+
+> Gerald: Tenta! Cool!
+>
+> Gerald the Tentacool and friends
+> are floating right across the gap.
+
+> Ivy: Gerald! You followed us
+> all the way from the ferry?
+>
+> And you brought friends!
+
+> Gerald holds up a tiny sign:
+>
+> “Sea route under construction.
+> This is a demo of Research Red.
+>
+> Cinnabar and beyond come later.
+> Thanks for playing!”
+
+> {PLAYER}: Still blocking boats.
+> Honestly? Respect.
+
+> Ivy: Don't worry, Gerald.
+> We'll come back for you.
+
+### Species(Tentacool) (Species(Tentacool)) at 9,20
+Script `RR_Pallet_EventScript_Gerald`
+
+> Gerald: Tenta! Cool!
+>
+> Gerald the Tentacool and friends
+> are floating right across the gap.
+
+> Ivy: Gerald! You followed us
+> all the way from the ferry?
+>
+> And you brought friends!
+
+> Gerald holds up a tiny sign:
+>
+> “Sea route under construction.
+> This is a demo of Research Red.
+>
+> Cinnabar and beyond come later.
+> Thanks for playing!”
+
+> {PLAYER}: Still blocking boats.
+> Honestly? Respect.
+
+> Ivy: Don't worry, Gerald.
+> We'll come back for you.
+
+### Species(Tentacool) (Species(Tentacool)) at 10,20
+Script `RR_Pallet_EventScript_Gerald`
+
+> Gerald: Tenta! Cool!
+>
+> Gerald the Tentacool and friends
+> are floating right across the gap.
+
+> Ivy: Gerald! You followed us
+> all the way from the ferry?
+>
+> And you brought friends!
+
+> Gerald holds up a tiny sign:
+>
+> “Sea route under construction.
+> This is a demo of Research Red.
+>
+> Cinnabar and beyond come later.
+> Thanks for playing!”
+
+> {PLAYER}: Still blocking boats.
+> Honestly? Respect.
+
+> Ivy: Don't worry, Gerald.
+> We'll come back for you.
 
 ## Signs
 

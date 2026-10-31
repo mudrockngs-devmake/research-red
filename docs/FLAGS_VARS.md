@@ -33,7 +33,6 @@ Log every flag and var that Research Red adds or repurposes here. Before you cla
 | `VAR_TEMP_F` (debug 11 only) | Smoke tests poke a species here before debug 11 (catch test) to meet it instead of the Pidgey (`RR_ScriptDebugWildSpecies`); 0 in normal play |
 | `FLAG_TEMP_4` (Oak's Lab) | Hides Daisy and Muffin until the rematch is open (story 6+) |
 | `FLAG_TEMP_13`, `FLAG_TEMP_14` (Pewter City) | Hide Elm and Jenny before their Pewter rematch (story 7 + Brock's badge) and while their Brock fight waits in the Gym; otherwise they wait left of the Center (#143, `rr_pewter.inc`) |
-| `VAR_TEMP_3` (Pallet Town) | Always 0 there: keeps Gerald's water triggers (7-10, 18) active (#36) |
 | `VAR_TEMP_7` (Oak's lab, the lab scene) | 1 = you won against Elm and Jenny, so after Oak's offer the watch of Elm and Jenny vs Oak is offered (#105) |
 
 ## Custom flags

@@ -1420,6 +1420,21 @@ Research Red: Daisy's house: maps, Muffin, the bet (PalletTown_RivalsHouse)
 
 *[setvar VAR_0x40FE ]*
 
+### RR_Daisy_EventScript_NotYet
+
+*[rr_ivy_to_scene LOCALID_PALLET_IVY @ she steps back too]*
+
+> Someone's shouting from Daisy's
+> window.
+
+> Elm: Hey! Where are you going?!
+> Daisy's house is the other way!
+
+> Ivy: It matters to Elm, sweetie.
+> Let's be good sports.
+
+*[rr_ivy_follow LOCALID_PALLET_IVY]*
+
 ### RR_Daisy_EventScript_SetupScene
 
 ### RR_Daisy_EventScript_Talk

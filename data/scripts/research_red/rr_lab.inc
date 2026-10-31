@@ -530,8 +530,10 @@ RR_Lab_EventScript_TableNap::
 	removeobject LOCALID_LAB_CYNDAQUIL_BALL
 	removeobject LOCALID_LAB_TOTODILE_BALL
 	call RR_Lab_EventScript_SlowpokeOnTable
-	setobjectxy LOCALID_LAB_SLOWPOKE, RR_LAB_NAP_X, RR_LAB_NAP_Y
-	turnobject LOCALID_LAB_SLOWPOKE, DIR_SOUTH
+	@ #160: the movement type above only takes effect when an object is created,
+	@ so make Slowpoke afresh here (behind the fade) or it keeps looking around
+	removeobject LOCALID_LAB_SLOWPOKE
+	addobject LOCALID_LAB_SLOWPOKE
 	call RR_Lab_EventScript_PlaceBed
 	special DrawWholeMapView
 	fadescreen FADE_FROM_BLACK

@@ -121,7 +121,7 @@
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(TENTACOOL)",
       "x": 8,
-      "y": 19,
+      "y": 20,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -218,6 +218,48 @@
       "y": 15,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "script": "RR_Ambient_EventScript_Diglett"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TENTACOOL)",
+      "x": 7,
+      "y": 20,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RR_Pallet_EventScript_Gerald",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TENTACOOL)",
+      "x": 9,
+      "y": 20,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RR_Pallet_EventScript_Gerald",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TENTACOOL)",
+      "x": 10,
+      "y": 20,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RR_Pallet_EventScript_Gerald",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -273,39 +315,21 @@
     },
     {
       "type": "trigger",
-      "x": 7,
-      "y": 18,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "RR_Pallet_EventScript_GeraldBlock"
+      "x": 12,
+      "y": 0,
+      "elevation": 3,
+      "var": "VAR_0x40FE",
+      "var_value": "3",
+      "script": "RR_Daisy_EventScript_NotYet"
     },
     {
       "type": "trigger",
-      "x": 8,
-      "y": 18,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "RR_Pallet_EventScript_GeraldBlock"
-    },
-    {
-      "type": "trigger",
-      "x": 9,
-      "y": 18,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "RR_Pallet_EventScript_GeraldBlock"
-    },
-    {
-      "type": "trigger",
-      "x": 10,
-      "y": 18,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "RR_Pallet_EventScript_GeraldBlock"
+      "x": 13,
+      "y": 0,
+      "elevation": 3,
+      "var": "VAR_0x40FE",
+      "var_value": "3",
+      "script": "RR_Daisy_EventScript_NotYet"
     }
   ],
   "bg_events": [

@@ -5,12 +5,12 @@ update it at the end of every session** (and whenever a build goes out).
 Keep it short (about 80 lines): when a run is finished, move its checklist to
 [history/](history/) (one file per month) and leave a one-line result here.
 
-_Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch rows in master for the next build)_
+_Last updated: 2026-10-31 (v0.0.23 still waiting on the owner's spot check; v0.0.24's small fixes in master)_
 
 ## Now
 - **Plan to the demo:** `docs/ROADMAP.md`, "Road to the demo": v0.0.24 to v0.0.29, then v1.0. Waiting on the owner: which art the public demo uses (#167; Claude suggested the stand-ins once approved).
 - **v0.0.23 is out** (tag and pre-release on GitHub, tests passed): waiting on the owner's spot check. v0.0.22 round archived (`test-archive/2026-10-30_v0.0.22_v0.0.22-spotcheck/`).
-- **In master, not in a build yet:** the lunch Pokémon in two rows of six plus Brock's six on the sides (18 in all, tested with `cl_brock16` and `cl_brock16_p3`).
+- **In master, not in a build yet:** the lunch Pokémon in two rows of six plus Brock's six on the sides (18 in all, tested with `cl_brock16` and `cl_brock16_p3`); v0.0.24's small fixes (owner 2026-10-31: start them before the spot check): #113 Gerald and three friends between the fence posts (y 20), rest of the sea free; #117 Daisy faces down all scene; #119 Elm shouts if you leave Pallet before Daisy's (draft lines; the trigger is Pallet's top row, not Route 1, so no map change mid-scene); #160 Slowpoke. Smoke 87/87. Still to do for v0.0.24: #137, #138 (held until the owner's spot check notes).
 - Roadmap changed today: v0.0.23 became one big build (day and night, colours, battle pictures, stand-in sprites, Gym crowd, Brock watch, Pewter lunch, dialogue polish). Later builds go back to small; see ROADMAP.md "After v0.0.23".
 - **v0.0.21 spot check done and archived** (`test-archive/2026-10-29_v0.0.21_spotcheck/`): new issues #149-#156; #116, #139, #140, #148 closed; follow-ups on #105 (Elm and Jenny's perspective, instant gag, auto-advance), #110, #142, #143.
 - Two lanes: game-lane sessions use the art already in the game; Art Kit sessions improve the tools and drafts
@@ -93,7 +93,7 @@ _Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch
 - [x] Owner 2026-10-30: lunch in v0.0.23 (OK given), then full tests (doubles, singles, day/night, UI, story, battles, balance); also suggest and do polish across the whole demo.
 - [x] Owner 2026-10-30: dialogue polish end to end: clean clunky lines, fit the anime style and style guides; keep everything, don't replace, just more coherent and polished.
 - [x] Owner 2026-10-30: kids a smidge further back on the wall; Slowpoke up a little in its bed.
-- [ ] (#160, v0.0.24) Seen in test: Slowpoke can still turn around while asleep until you leave the lab once (FACE_DOWN only applies on reload).
+- [x] (#160, in master) Seen in test: Slowpoke can still turn around while asleep until you leave the lab once.
 - [ ] (#166, v0.0.28) Owner 2026-10-30: review the whole order of Pewter scenes (including the later ones) and say what makes coherent sense without causing problems; lunch Pokemon could be at least yours and Brock's, or yours and Elm and Jenny's.
 - [ ] (#161, v0.0.25) Later (owner 2026-10-30): decide when coloured text should be blue versus other colours; blue is preferred over the original red on the tan boxes, but no rule yet.
 - [x] (in v0.0.23) Decide whether the theme goes in v0.0.23 (needs a full smoke, matrix and playthrough first).
@@ -105,7 +105,7 @@ _Last updated: 2026-10-30 (v0.0.23 out, waiting on the owner's spot check; lunch
 - [x] (in master, owner to check in the viewer) Battle pictures (owner 2026-10-30, #133): player and Ivy closer together, like Elm and Jenny; in the front-view lab cutscenes Elm and Jenny's picture faces the same way as the player and Ivy's (not mirrored). Male player a little bigger.
 - [x] (in master, owner to check in the viewer) Oak's pager Pokémon (owner 2026-10-30): spread them out on the Pallet map and in the lab so they aren't lined up vertically, until a ranch tile area exists.
 - [x] (in master) Owner's reply 2026-10-30: female player a tiny bit smaller; lab Farfetch'd (11,6) and Machop (9,11) clear of the bookcases. Sharper faces tried and dropped: the stronger settings came out muddier and lost Ivy's hair colour (owner: not if splotchy). Jenny stays diagonal from Elm in Pallet: Elm steps onto her column in the grass scene, then she steps in behind him.
-- [ ] Gerald (#113, owner 2026-10-30): between the two fence posts, more Tentacool blocking the gap, text adjusted. Set to milestone v0.0.24 (Pallet and Daisy's house).
+- [x] (in master) Gerald (#113, owner 2026-10-30): between the two fence posts, more Tentacool blocking the gap, text adjusted. Set to milestone v0.0.24 (Pallet and Daisy's house).
 - [x] Owner's v0.0.22 spot-check notes (2026-10-30): all 12 filed (#105 #124 #142 #157 #158) and built in v0.0.23; stay open until the owner's spot check.
 - [x] (in master, tested) Pewter Gym tidy-up for v0.0.23 (owner 2026-10-30): clean up Camper Liam's dialogue (keep the light-years joke; explain why Brock is making lunch); Elm and Jenny stand off to the side when you first enter, watching and cheering; Brock's nine brothers and sisters behind him, with dialogue about them and the stew so it all makes sense; Brock's portrait over the text box before the battle
 - [x] Oak's opening talk (owner 2026-10-30): rework the Mega Evolution and Hisuian starter hints so they flow; Ivy says "regional forms" but Oak hasn't said anything first; "snow" reads oddly when there's no snow.
