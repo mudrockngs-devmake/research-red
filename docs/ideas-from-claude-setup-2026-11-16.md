@@ -39,3 +39,19 @@ GitHub settings or deletes a file waits for the owner.
     rules: patches only, never ROM files, which our safety check already blocks).
 12. **Hub "What needs me" screen** (planned) would list this project's open issues next to
     STATUS items, so player reports don't get missed.
+
+## Later the same day: from the Pokémon decomp community research (`research/pokemon-decomp-community.md`)
+Ideas only, to weigh with the owner. The research file has the reasons and sources.
+13. **Try pokeemerald-expansion's FireRed mode in a small trial copy** (it builds FireRed since
+    1.15.0, 2026-02-28): a modern battle engine, a test system and monthly fixes, but a big merge
+    and some FRLG features are reported missing (Teachy TV, Help System). Decide only after the trial. Heavy.
+14. **Automatic battle/script checks on every build** (expansion's `make check` idea, run headless
+    in mGBA), so a playtest isn't the first place a bug shows up, even without switching bases. Medium-Heavy.
+15. **Porytiles** for new tilesets drawn as PNG layers; **Poryscript** for new event scripts and
+    dialogue (wraps text automatically). Medium each.
+16. **Port single expansion features** if staying on pokefirered: debug menu, followers, DexNav-style
+    search, modern move/ability data. Medium each.
+17. **Pull pokefirered's upstream fixes now and then** (still updated, last 2026-10-20) and add a
+    `modern` compiler build to the build check to catch warnings. Light.
+18. **Say plainly when AI helped** in README/credits: the decomp scene turned against undisclosed AI
+    work this year. Light.
