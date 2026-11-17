@@ -10,68 +10,25 @@ _Last updated: 2026-10-31 (v0.0.23 still waiting on the owner's spot check; v0.0
 ## Now
 - **Plan to the demo:** `docs/ROADMAP.md`, "Road to the demo": v0.0.24 to v0.0.29, then v1.0. Waiting on the owner: which art the public demo uses (#167; Claude suggested the stand-ins once approved).
 - **v0.0.23 is out** (tag and pre-release on GitHub, tests passed): waiting on the owner's spot check. v0.0.22 round archived (`test-archive/2026-10-30_v0.0.22_v0.0.22-spotcheck/`).
-- **In master, not in a build yet:** the lunch Pokémon in two rows of six plus Brock's six on the sides (18 in all, tested with `cl_brock16` and `cl_brock16_p3`); v0.0.24's small fixes (owner 2026-10-31: start them before the spot check): #113 Gerald and three friends between the fence posts (y 20), rest of the sea free; #117 Daisy faces down all scene; #119 Elm shouts if you leave Pallet before Daisy's (draft lines; the trigger is Pallet's top row, not Route 1, so no map change mid-scene); #160 Slowpoke. Smoke 87/87. Still to do for v0.0.24: #137, #138 (held until the owner's spot check notes).
-- Roadmap changed today: v0.0.23 became one big build (day and night, colours, battle pictures, stand-in sprites, Gym crowd, Brock watch, Pewter lunch, dialogue polish). Later builds go back to small; see ROADMAP.md "After v0.0.23".
-- **v0.0.21 spot check done and archived** (`test-archive/2026-10-29_v0.0.21_spotcheck/`): new issues #149-#156; #116, #139, #140, #148 closed; follow-ups on #105 (Elm and Jenny's perspective, instant gag, auto-advance), #110, #142, #143.
-- Two lanes: game-lane sessions use the art already in the game; Art Kit sessions improve the tools and drafts
-  (#104: Pallet Town first). No Art Kit piece is approved yet (`art_gate.py status`). Exception (owner 2026-10-28,
-  #125): v0.0.20 tries the cast's overworld drafts as they are, for testing only (not approved).
-- **#108 day and night fixed in master, not in a build yet** (2026-10-30): two light levels, day fully bright, night option B (owner's pick). Smoke 70/70; only the daynight scene looks different from the last full run. Next: the v0.0.23 build (test-build skill), after the owner's OK.
-- Since v0.0.19 (in master, not in a build yet): tester upgrades (#18, docs/TESTING.md); debug 10's team is Lv 14.
-- New test tools (2026-10-28, docs/TESTING.md): checks on every scene (dialogue/portraits and boxes closing early,
-  leftovers, battles #128/#107, brightness, wild, script coverage), settings matrix (`matrix.py`), type chart engine
-  test (#112), sprite tours (#125), day/night (#108, fails until fixed), wild probes (#106, fail until fixed), and the
-  **full playthrough** (`playthrough.py`, power-on to the Pewter rematch, no debug skips): Quick Balls from Lab
-  Supplies, one training round with catching, Rare Candies to Lv 14, beats Brock (2026-10-28). The full run from
-  power-on can still black out on Route 2 to #106's leftover Squirtle (wild Pokémon reuse Oak's team) when the team
-  is weak; after #106 is fixed it should go through. Not yet in it: Brock rematch tiers, Delia, Elm/Jenny rebattles
-  (#127, open question on EXP/money).
-
-## Working setup run (2026-10-28, items 1-6 done; owner answers in ROADMAP.md "Working setup")
-- [x] 5 short STATUS, history in docs/history/
-- [x] 1 glossary docs/GLOSSARY.md
-- [x] 2 game design document docs/DESIGN.md
-- [x] 3 notes intake skill (.claude/skills/owner-notes)
-- [x] 4 project skills: test build, playtest intake, new scene
-- [x] 6 rr_check before every commit (git hook)
-- [ ] later, in a claude-setup session: 7 session-start hook, 8 project template (glossary, DESIGN, short STATUS +
-      history, .claude/skills, .githooks + core.hooksPath, GitHub checks, issue forms), 9 handbook, 10 global owner-notes skill
+- **In master, not in a build yet:** the lunch Pokémon in two rows of six plus Brock's six on the sides (18 in all); v0.0.24's small fixes #113 #117 #119 #160. Still to do for v0.0.24: #137, #138 (held until the owner's spot check notes). (full wording: docs/history/2026-11.md, trim 2026-11-17)
+- Older "Now" notes (v0.0.21 spot check, two lanes, #108, new test tools, full playthrough): history/2026-11.md (trim 2026-11-17).
 
 ## Current build
-- **v0.0.23** (2026-10-30): the one big build; old saves work. Spot check by debug jumps; list: `F:\ROM-DATABASE\ROMs\gba\RomhackDev\ResearchRed_v0.0.23 - what to check.txt`. Tests: smoke 85/85, matrix 21/21, playthrough 14/14, balance 20/20, monkey 6/6. Bot wins the Pewter rematch 4 of 50 at Lv 14 and Route 22 32 of 50 (was 18 of 20 from a smaller run): owner to judge if they feel fair. Next full run: after this build.
-- **v0.0.22 The lab and its scripted fights** (2026-10-29, spot-check round): installed as `ResearchRed_local.gba`,
-  tagged, pre-release on GitHub, and in the handheld folder `F:\ROM-DATABASE\ROMs\gba\RomhackDev` with
-  `what to check.txt` and `Claude's answers.txt` (owner 2026-10-29: every build from now on). #105 fights seen from
-  Elm & Jenny's side, instant gag, text plays itself, watch offered after a win, quiet heals; #150 #151 #152 #153 #154;
-  #143 spot (left of the Center, facing down); debug 15 fixed (played the first rematch since v0.0.21).
-  Smoke 69/70 (daynight until #108), settings matrix 21/21, playthrough doubles 14/14, singles 12/14 (bot loses to
-  Brock, #156). What's-new report: `E:\Workspace\romhacks\research-red\whats-new\v0.0.22\report.html`.
-  **Save: old saves work.** Issues #150-#154 stay open until the owner's spot check.
-- Last playtest archived: `test-archive/2026-10-29_v0.0.21_spotcheck/`.
+- **v0.0.23** (2026-10-30): the one big build; old saves work. (full wording: docs/history/2026-11.md, trim 2026-11-17)
+- v0.0.22 details and the last archived playtest: history/2026-11.md (trim 2026-11-17).
 
 ## Waiting on the owner
-- [ ] Spot check v0.0.23: `F:\ROM-DATABASE\ROMs\gba\RomhackDev\ResearchRed_v0.0.23 - what to check.txt`; report `E:\Workspace\romhacks\research-red\whats-new\v0.0.23\report.pdf`. Also judge the fights: Pewter rematch 4 of 50 for the bot at Lv 14, Route 22 32 of 50.
-- [ ] Balance: the Pewter rematch with Elm and Jenny wins 8% for a
-      team at the cap (Lv 14), Brock 100% (docs/BALANCE.md "Simulated fights"). Tune it, or keep it a hard optional fight?
-- [ ] Try the viewer (F5: Approve / Needs work, Mark a spot, Animation, In game, History, themes) and the hub's look,
-      Today screen, Settings and desktop shortcut; say what feels off.
+- [ ] Spot check v0.0.23: `F:\ROM-DATABASE\ROMs\gba\RomhackDev\ResearchRed_v0.0.23 - what to check.txt` (full: history/2026-11.md, trim)
+- [ ] Balance: the Pewter rematch with Elm and Jenny wins 8% for a team at the cap (Lv 14), Brock 100% (docs/BALANCE.md "Simulated fights"). (full: history/2026-11.md, trim)
+- [ ] Try the viewer (F5: Approve / Needs work, Mark a spot, Animation, In game, History, themes) and the hub's look, Today screen, Settings and desktop shortcut (full: history/2026-11.md, trim)
 - [ ] Hub "I'm done for today" (backups were 5 days old on 2026-10-24).
 - [ ] The 3 questions at the end of docs/ART_BIBLE.md (outline colour, battle picture proportions, signature colours).
-- [ ] Rework draft lines: Oak's grant / Lab Supplies, the lab's Oak rounds (#86, now #105), the aide's PC topic,
-      Slowking's pages; and the v0.0.16 placeholders (Ranch Pager tutorial, Oak's Pokémon, Rest, the Rules call, rematches, the aide).
+- [ ] Rework draft lines: Oak's grant / Lab Supplies, the lab's Oak rounds (#86, now #105), the aide's PC topic, Slowking's pages (full: history/2026-11.md, trim)
 - [ ] Optional: phone emulator / real hardware (#16); workshop the report's playtest form.
 
 ## Next up
-- **Small themed builds** (owner 2026-10-28): 3-5 related issues per test build, risky systems on their own, each fix
-  with a test that fails before and passes after. **Spot-check rounds** for most builds (a debug jump per change,
-  the owner plays only those); a **full playthrough** about every third build (owner 2026-10-29, docs/PLAYTESTING.md).
-  Milestones on GitHub (plan agreed 2026-10-29):
-  - v0.0.21 Elm & Jenny on the road: built and spot-checked 2026-10-29.
-  - v0.0.22 the lab and scripted fights: built 2026-10-29, spot-checked, archived.
-  - v0.0.23 the one big build: built 2026-10-30, waiting for the owner's spot check.
+- Builds: small themed builds, spot-check rounds, a full playthrough about every third build (full rule and finished milestones: history/2026-11.md (trim 2026-11-17)). Milestones on GitHub:
   - **Next: v0.0.24 Pallet and Daisy's house (Gerald #113, the lunch rows from master). A full playthrough round is due after v0.0.23.**
-  - Done in v0.0.23: day and night (#108), plus the battle pictures (#133) and the overworld sprite placeholders for testing (#125; needs a "testing" route in the art gate, drafts stay unapproved); v0.0.24 Pallet and Daisy's house (full playthrough);
-    the lunch rework (#155, new travelling talk: draft lines for the owner first) gets its own build.
   - Later milestones (shifted one on 2026-10-29): v0.0.25 text and menus, v0.0.26 levels and balance, v0.0.27 moves
     and evolution, v0.0.28 battle pictures, v0.0.29 the lab's look (GitHub milestones).
   - Then the features: scripted battle scenes (#142 vs Brock, on #105's system), #121's video
@@ -79,89 +36,37 @@ _Last updated: 2026-10-31 (v0.0.23 still waiting on the owner's spot check; v0.0
 - Tasks for the owner: #129 credits/permissions list, #130 Oak's aides list.
 - Tooling: a smaller patch (#17).
 
-## Watch closely in the v0.0.19 playtest (new or reworked code, most likely to break)
-- Lab Supplies: buying, a full Items pocket ("no more room"), leaving back to the PC menu, from Start > PC and a real PC.
-- The lab scene after the Elm and Jenny battle, win and loss, Yes and No to both questions; Slowpoke on the table later; Muffin when Daisy visits.
-- The dex banter after a catch and with SELECT: B to skip, mashing A or B, Elm/Jenny family species, switching the look (debug 13).
-- Battles where you or Ivy speak (Route 22): pictures appearing and leaving.
-- The move relearner, the PC item box and the Berry Pouch (pocket sizes changed), saving and loading on a new game.
-
 ## Asked for, not done yet
-- [ ] Ideas from claude-setup's away run 2026-11-16 (owner asked to send them here): `docs/ideas-from-claude-setup-2026-11-16.md`. Weigh with the owner; GitHub changes and the stray-file delete need their OK.
-- [ ] **Trim STATUS into a card first** (owner, 2026-11-11; it's 3930 words, aim ~500): at the start of the next chat here, before other work, move finished items and old detail to `docs/HISTORY.md` word for word (newest first), keep every open item. Light, ~10 min.
-- [ ] **Trim STATUS into a card** (asked 2026-11-09, from the ideas chat): it's 3863 words and is read at the start of every chat; aim under ~500. Move finished items and old detail word for word to `docs/HISTORY.md` (newest first); keep current state, waiting on the owner, asked for, next up, open threads. See "Keep chats cheap" in ~/.claude/CLAUDE.md. Do it in its own chat.
-- [ ] **Watch mode** (owner 2026-11-02, from claude-setup; Medium): let the tester's runner (`tools/research_red/test/rr_run.c`) optionally open a visible window so the owner can watch Claude play in real time, like mecha64's emulator window. Same scripts, normal game speed; hidden test runs stay as they are (off by default, no slowdown). Follow `~/scripts/claude-setup/docs/TEST-TOOLS.md` (names: watch / capture / report). For quick pictures of the normal mGBA window there's now `snap window mGBA` (saves to `E:\Workspace\romhacks\research-red\screenshots\`).
-- [ ] Lessons from mecha64 (owner asked 2026-11-02, noted from a mecha64 chat): (1) a `check-repo.sh`-style check before uploads (secrets, files that must never be shared); (2) Claude checks its own screenshots before handing over (mecha64's screenshot loop found a wrong picture the owner never had to report); (3) a stray file in the project folder named `as the Reporter) | game |#` (2.8 KB, 2026-10-21), probably a slip in an old command: check what it is before deleting.
-- [ ] Owner notes 2026-10-31, NOT filed yet (read back in chat, waiting for the owner's OK, then `owner-notes`): (1) Ivy's overworld sprite: the back hair swoop is on one side, wants it on both; (2) evolving cuts to the Pokédex entry so the banter shows there and not over the overworld, nice to have, skip if it causes game-breaking glitches (add to #144?); (3) male player overworld sprite: black outlines on the arms, they look like they float when walking up and down; (4) male player's green shirt square bounces oddly, may be fine since it matches how May walks; female sprite not tried yet; (5) Jenny's overworld sprite walking up: flare the hair to show the swoop as when walking down, owner thinks it may be fixed, check first; (6) Master Balls: a variable set when an area's Field Guide is complete, Oak calls, a Master Ball goes in the bag; after beating the Elite Four, Master Balls in the store (the League's mystery is solved). Sprite notes belong to the owner's sprite work and the rule for two lanes applies.
-- [x] Owner 2026-10-31: moment boards (`scene_moment.py`, `viewer.py board MAP --moment NAME`) built as a proof of concept for staging scenes in future. The grass hook board was only a test: nothing from it goes in the game, and no positions change until the owner says a board is for real. The other six moments (Daisy's house, lab, Route 1 start, Route 1 before Mewtwo, lunch, picnic) are not captured; do them when the owner wants to stage them.
-- [x] (in master, NOT in v0.0.23: goes in the next build) Owner 2026-10-30: lunch Pokémon in two matching rows of six, above and below the people, with Brock's six on the sides. The v0.0.23 tag and handheld copy still show the ring.
-- [x] Pewter lunch (owner 2026-10-30, wants it in v0.0.23 if it fits): everyone has lunch after the Gym fight (after the player's Brock fight or after Elm and Jenny's, undecided), Brock's brothers and sisters get banter too, a bit like the anime; maybe a small cutscene at the Gym with all 18 Pokemon sitting and eating together, only if not too much for the game. Unify every stew/lunch mention so the story is coherent. Keep Brock's rock puns. Also put the kids in a more natural formation; owner asks whether the other Pokemon fit too.
-- [x] Owner 2026-10-30: intro video call says Oak's Slowpoke turned up at the lab recently; Slowpoke sits in the middle of its bed.
-- [x] Owner 2026-10-30: lunch in v0.0.23 (OK given), then full tests (doubles, singles, day/night, UI, story, battles, balance); also suggest and do polish across the whole demo.
-- [x] Owner 2026-10-30: dialogue polish end to end: clean clunky lines, fit the anime style and style guides; keep everything, don't replace, just more coherent and polished.
-- [x] Owner 2026-10-30: kids a smidge further back on the wall; Slowpoke up a little in its bed.
-- [x] (#160, in master) Seen in test: Slowpoke can still turn around while asleep until you leave the lab once.
-- [ ] (#166, v0.0.28) Owner 2026-10-30: review the whole order of Pewter scenes (including the later ones) and say what makes coherent sense without causing problems; lunch Pokemon could be at least yours and Brock's, or yours and Elm and Jenny's.
-- [ ] (#161, v0.0.25) Later (owner 2026-10-30): decide when coloured text should be blue versus other colours; blue is preferred over the original red on the tan boxes, but no rule yet.
-- [x] (in v0.0.23) Decide whether the theme goes in v0.0.23 (needs a full smoke, matrix and playthrough first).
-- [x] Viewer (owner 2026-10-30): zoom in/out below 100%, fit to any window, pictures shrink dynamically, usual viewer features.
-- [x] Viewer (owner 2026-10-30): every picture Claude takes, tests or generates shows up in the live stream, efficiently.
-- [x] (in master, goes into v0.0.23; drafts stay unapproved) v0.0.23 (owner 2026-10-30): use the updated overworld sprite placeholders for the player, Ivy, Jenny, Elm and Delia (#125), without a big break from the roadmap.
-  - Swap-back (owner 2026-10-30), done and tested both ways: `art_gate.py test ow:elm off`, then rebuild (`docs/ART_TOOLS.md`).
-  - These sprites are FireRed/Emerald sprites recoloured by recipe (`recipes.toml`), with colours picked from the large art; they aren't shrunk from it, so the large-art-first rule for combined battle pictures doesn't change them.
-- [x] (in master, owner to check in the viewer) Battle pictures (owner 2026-10-30, #133): player and Ivy closer together, like Elm and Jenny; in the front-view lab cutscenes Elm and Jenny's picture faces the same way as the player and Ivy's (not mirrored). Male player a little bigger.
-- [x] (in master, owner to check in the viewer) Oak's pager Pokémon (owner 2026-10-30): spread them out on the Pallet map and in the lab so they aren't lined up vertically, until a ranch tile area exists.
-- [x] (in master) Owner's reply 2026-10-30: female player a tiny bit smaller; lab Farfetch'd (11,6) and Machop (9,11) clear of the bookcases. Sharper faces tried and dropped: the stronger settings came out muddier and lost Ivy's hair colour (owner: not if splotchy). Jenny stays diagonal from Elm in Pallet: Elm steps onto her column in the grass scene, then she steps in behind him.
-- [x] (in master) Gerald (#113, owner 2026-10-30): between the two fence posts, more Tentacool blocking the gap, text adjusted. Set to milestone v0.0.24 (Pallet and Daisy's house).
-- [x] Owner's v0.0.22 spot-check notes (2026-10-30): all 12 filed (#105 #124 #142 #157 #158) and built in v0.0.23; stay open until the owner's spot check.
-- [x] (in master, tested) Pewter Gym tidy-up for v0.0.23 (owner 2026-10-30): clean up Camper Liam's dialogue (keep the light-years joke; explain why Brock is making lunch); Elm and Jenny stand off to the side when you first enter, watching and cheering; Brock's nine brothers and sisters behind him, with dialogue about them and the stew so it all makes sense; Brock's portrait over the text box before the battle
-- [x] Oak's opening talk (owner 2026-10-30): rework the Mega Evolution and Hisuian starter hints so they flow; Ivy says "regional forms" but Oak hasn't said anything first; "snow" reads oddly when there's no snow.
-- [x] Pokedex forms page (owner 2026-10-30, retool only, nothing new): the expansion's page already shows regional forms. Its code shows every form with no check, so Mega and Hisuian forms likely appear: confirm in the game, hide them with a small edit, also check the evolutions page (Quilava to Hisuian Typhlosion), test well.
-- [x] Rebattle levels (owner 2026-10-30): Oak + Daisy always halfway between the previous and current level cap (first fight after Route 22, before Brock: Lv 10, like Elm and Jenny); Elm and Jenny's rematch after each Gym Leader: cap + 1; Delia: at the cap. Teams evolve at their stages with proper movesets, planned later; for now only one badge matters.
-- [x] Battle pictures (owner 2026-10-30): the pair pictures (player + Ivy, Elm + Jenny, Oak + Daisy) chop the top of one head; shift down a little, front and back, wherever shown.
-- [x] Scripted fights (owner 2026-10-30): Elm and Jenny at the rebattle levels in the Brock watch scene (Lv 15 after Brock); if they win, show them gaining levels if need be; check whether the first Oak fight does the same, for consistency with the second fight.
-- [x] Battle pictures (owner 2026-10-30): show a bit more of Ivy beside the player, spaced right like Jenny behind Elm and Daisy behind Oak.
-- [x] Owner 2026-10-30, v0.0.23 extras (approved to roll all in, test, and show before the install decision): banter for the regional forms not yet mentioned (Kanto: Articuno, Zapdos, Moltres, Growlithe, Arcanine, Voltorb, Electrode; Johto: Slowking, Corsola; owner 2026-10-30: never mention Mega Evolution or Hisuian forms in any banter (Mega is learned about later; Hisuian would spoil Typhlosion), so Growlithe, Arcanine, Voltorb, Electrode, Qwilfish, Sneasel get none); try the police sprite for Officer Jenny in the picnic scene; Alolan Geodude goes to party, or box if full, without tripping flags or the Pokedex; find out why the bot lost to Brock; anything else that helps this update; verify with proper playthroughs.
-- [x] (in master, being tested) Brock gives an Alolan Geodude instead of TM39 Rock Tomb (owner 2026-10-30), with Ivy and player dialogue and a Dex banter entry; check whether regional forms for Kanto/Johto have banter yet
-- [x] Daisy's house: fix Ivy's position so she's sitting in the chair (owner 2026-10-30)
-- [x] (installed and tagged 2026-10-30) v0.0.23 is one big build, just this once (owner 2026-10-30; later builds go back to small): #108, #133, #125 (six sprites only: players, Ivy, Elm, Jenny, Delia, Oak; done), the 12 spot-check notes (#105, #142 Brock in battle, Tracy, start menu #124, swipe-in bug), Elm's lines towards evolution. Owner may want to rework Oak's new line.
+- [ ] Ideas from claude-setup's away run 2026-11-16 (owner asked to send them here): `docs/ideas-from-claude-setup-2026-11-16.md`. (full: history/2026-11.md, trim)
+- [ ] **Watch mode** (owner 2026-11-02, from claude-setup; Medium): let the tester's runner (`tools/research_red/test/rr_run.c`) optionally open a visible window so the owner can watch Claude play in real time, like mecha64's emulator window. (full: history/2026-11.md, trim)
+- [ ] Lessons from mecha64 (owner asked 2026-11-02, noted from a mecha64 chat): three items, including a stray file to check before deleting. (full: history/2026-11.md, trim)
+- [ ] Owner notes 2026-10-31, NOT filed yet (read back in chat, waiting for the owner's OK, then `owner-notes`): six notes (sprites, evolving, Master Balls). (full: history/2026-11.md, trim)
+- [ ] (#166, v0.0.28) Owner 2026-10-30: review the whole order of Pewter scenes (including the later ones) and say what makes coherent sense without causing problems (full: history/2026-11.md, trim)
+- [ ] (#161, v0.0.25) Later (owner 2026-10-30): decide when coloured text should be blue versus other colours (full: history/2026-11.md, trim)
 - [ ] (#164, v0.0.26) Day Care and level caps: how it should work, for later (owner 2026-10-30). What it does now is in DESIGN section 1.
-- [ ] Visual theming overhaul (owner, 2026-10-30): one darker, warmer base colour replaces all the whites, across the Start menu, attack menu, dialogue, Pokédex, party and summary, without breaking anything. Going a little darker is fine if text stays readable. Owner picked B (light tan) across the board including dialogue boxes, with the Pokédex entry page one step lighter at A (cream). Owner wants examples of every box and screen that changes, including others that benefit (mart, PC, naming screen and so on). Also: cover every Pokédex tab and DexNav, leave alone what shouldn't change; keep blues as the contrast colour; dialogue portrait name tags keep their colours but need room for long names like Officer Jenny (owner corrected: not blue), and the plate should match the boxes: tan paper, curved corners. Include the scrolling Pokédex list. Owner also asked for suggestions on overall theming, including font colour. Theme tool: `tools/research_red/ui_theme.py`.
-- [ ] (#165, v0.0.26) Trainer AI and difficulty, not decided (owner 2026-10-30): keep the original game's difficulty; not Radical Red; cozy in look and play, challenge only if wanted, and not for every route trainer. How it fits the story is open. Claude's suggestion: a rule in Research Rules that gives smarter AI to the curated fights only (Gyms, Elm and Jenny, Oak and Daisy, Delia). After v0.0.23.
-- [ ] (#163, v0.0.26) Measure Oak and Daisy's first fight (Lv 10) and Delia's (Lv 14) in balance.py, to compare with FireRed's rival (two Pokémon at Lv 9 on Route 22). Not simulated yet (owner asked 2026-10-30). After v0.0.23.
+- [ ] Visual theming overhaul (owner, 2026-10-30): one darker, warmer base colour replaces all the whites, across the Start menu, attack menu, dialogue, Pokédex, party and summary, without breaking anything. (full: history/2026-11.md, trim)
+- [ ] (#165, v0.0.26) Trainer AI and difficulty, not decided (owner 2026-10-30): keep the original game's difficulty; not Radical Red; cozy in look and play, challenge only if wanted, and not for every route trainer. (full: history/2026-11.md, trim)
+- [ ] (#163, v0.0.26) Measure Oak and Daisy's first fight (Lv 10) and Delia's (Lv 14) in balance.py, to compare with FireRed's rival (two Pokémon at Lv 9 on Route 22). (full: history/2026-11.md, trim)
+- Ticked items: history/2026-11.md (trim 2026-11-17).
 
 ## Half-finished / open threads
-- Moment boards are a proof of concept to improve over time (owner 2026-10-31): dragging and Send on the moment version not tested by Claude; the grass hook send is not to be applied. Ivy seemed to stand on water while surfing: still to check with the spot-check notes.
-- Cost log: 2026-10-30 session $44.74 (as of wrap-up); project total $158.63.
+- Moment boards are a proof of concept to improve over time (owner 2026-10-31) (full: history/2026-11.md, trim)
 - Not played since the seating change: reaching lunch by saying yes outside the Center (only the debug jump was run).
-- Tool bug: `compare.py`'s automatic "vs v0.0.x" uses much older runs as the "before" for many scenes (26 of 34 flagged on 2026-10-30 were from v0.0.19), so it over-reports. Until fixed, use `compare.py RUN --against LAST_FULL_RUN`.
-- Nothing half-done. All Art Kit art is drafts (tracker: docs/ART_TRACKER.md).
-- In AI-vs-AI test battles the player's side plays almost at random (no partner = no AI settings); harmless so far.
-  The lab's watched fights are now scripted (#105); #142 (Elm & Jenny vs Brock) should reuse that system.
+- Tool bug: `compare.py`'s automatic "vs v0.0.x" uses much older runs as the "before" for many scenes (26 of 34 flagged on 2026-10-30 were from v0.0.19), so it over-reports. (full: history/2026-11.md, trim)
 - Still needs the owner's eyes: #20 (Pokédex tab glitches), #14 (Route 22 tiles), #37 (Ivy and ledges), #41 (Totodile under the cap; Cyndaquil evolving at 14 is expected).
 - The League gate block (Route 22) has no automatic test; check by hand (#2).
 - 13 rows of `docs/reference/kanto_anime.csv` are marked "memory" (to verify).
+- Cost log, AI-vs-AI note and other older thread notes: history/2026-11.md (trim 2026-11-17).
 
-## Session costs not yet logged (log them in the next playtest round's NOTES.md)
-- 2026-10-31 v0.0.24 small fixes + moment boards: $4.51 (as of last message).
-- Logged up to 2026-10-27 in the v0.0.19 playtest NOTES.md. The session started 2026-10-27 21:29 ran three days
-  (v0.0.20 intake, v0.0.21 and v0.0.22 builds, v0.0.21 intake): **$113.81** at the 2026-10-30 wrap-up (3h41m API).
-  It's in the v0.0.21 NOTES.md; one long session shows as one line in `session-cost`, not one per day (that's why
-  the daily log looked empty). Starting a new conversation each day gives one line per day.
-
-## Capacity (measured 2026-10-21)
-| Space | Used | Notes |
-| --- | --- | --- |
-| Cartridge (ROM) | ~24.6 of 32 MB | ~7 MB free |
-| Save: SaveBlock1 | 13732 of 15872 bytes | 2140 free |
-| Save: SaveBlock2 | 2732 of 3968 | 1236 free |
-| Save: SaveBlock3 | 1536 of 1624 | Research Red's own room: 674 bytes of padding + 88 |
-| Save: PC boxes | 34144 of 35712 | 1.5 KB spare |
-| Flags / vars | 2304 / 256 | ~570 flags and ~90 vars unused; keep FLAGS_VARS.md current |
-| RAM (EWRAM, permanent) | 250156 of 262144 bytes | ~11.7 KB free; new screens should allocate while open |
+## Moved out (pointers)
+- Working setup run (one open item for a claude-setup session): history/2026-11.md (trim 2026-11-17).
+- Watch closely in the v0.0.19 playtest: history/2026-11.md (trim 2026-11-17).
+- Session costs not yet logged: history/2026-11.md (trim 2026-11-17).
+- Capacity table: history/2026-11.md (trim 2026-11-17).
 
 ## History
 Finished runs, older builds and their checklists: [history/2026-10.md](history/2026-10.md).
+STATUS trim 2026-11-17 (old sections and full wording of shortened items): [history/2026-11.md](history/2026-11.md).
 
 ## How to resume in a new session
 1. Open Ubuntu (or double-click `E:\Workspace\Claude Hub.bat`): Work on a project > research-red > Start a fresh conversation.
