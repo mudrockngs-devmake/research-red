@@ -71,4 +71,4 @@ STATUS trim 2026-11-17 (old sections and full wording of shortened items): [hist
 ## How to resume in a new session
 1. Open Ubuntu (or double-click `E:\Workspace\Claude Hub.bat`): Work on a project > research-red > Start a fresh conversation.
 2. Claude reads `CLAUDE.md` (rules) and this file (state), then `git log -5` and `gh issue list`.
-3. If the test runner is missing (`~/romhacks/_tools/rr_run`), run `tools/research_red/test/setup_mgba.sh`.
+3. If the test runner is missing (`~/studio/romhack-tools/rr_run`), run `tools/research_red/test/setup_mgba.sh`.

@@ -1,6 +1,6 @@
 # Assets: formats, sizes, locations
 
-Owner-made art lives in `graphics/research_red/`. Large reference art (full-body images) stays OUTSIDE the repo at `E:\Workspace\romhacks\research-red\art\`.
+Owner-made art lives in `graphics/research_red/`. Large reference art (full-body images) stays OUTSIDE the repo at `E:\Workspace\productions\romhacks\research-red\art\`.
 
 | Asset | GBA format | Repo location | Status |
 | --- | --- | --- | --- |

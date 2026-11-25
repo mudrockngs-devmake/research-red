@@ -43,12 +43,12 @@ jobs:
       - name: Reuse the test runner (mGBA) from earlier runs
         uses: actions/cache@v4
         with:
-          path: ~/romhacks/_tools
+          path: ~/studio/romhack-tools
           key: rr-run-${{ hashFiles('tools/research_red/test/setup_mgba.sh', 'tools/research_red/test/rr_run.c') }}
 
       - name: Build the test runner
         run: |
-          test -x ~/romhacks/_tools/rr_run || tools/research_red/test/setup_mgba.sh
+          test -x ~/studio/romhack-tools/rr_run || tools/research_red/test/setup_mgba.sh
 
       - name: Run the smoke tests
         run: |

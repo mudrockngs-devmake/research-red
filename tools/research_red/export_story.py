@@ -11,7 +11,7 @@ Writes docs/story/:
                                   scenes, battle lines, Pokédex banter) for proofreading
 
 Usage: python3 tools/research_red/export_story.py [--sync]
-  --sync  also copy docs/story to E:\\Workspace\\romhacks\\research-red\\story\\
+  --sync  also copy docs/story to E:\\Workspace\\productions\\romhacks\\research-red\\story\\
 Regenerate after any story change; the files are generated, edit copies and
 send them back rather than editing these in place.
 """
@@ -24,7 +24,7 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(REPO, "docs/story")
-SYNC = "/mnt/e/Workspace/romhacks/research-red/story"
+SYNC = "/mnt/e/Workspace/productions/romhacks/research-red/story"
 
 # Demo region (through Brock), in story order
 AREAS = [

@@ -17,7 +17,7 @@ How to use it for Research Red: [docs/TESTING.md](../../../docs/TESTING.md).
 ## Reusing it for another hack
 1. Copy the reusable files above (and `rrpng.py`) into the new project, keeping
    `rrpng.py` one folder above the others.
-2. Run `setup_mgba.sh` once (skip it if `~/romhacks/_tools/rr_run` already exists:
+2. Run `setup_mgba.sh` once (skip it if `~/studio/romhack-tools/rr_run` already exists:
    one runner serves every project).
 3. Write a small scenes file like `smoke.py`: scenario functions that return
    script lines, then `tester.main(tester.Suite(...), sys.argv[1:])`. Set

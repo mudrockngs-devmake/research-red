@@ -1,6 +1,6 @@
 # Research Red overworld sprites, one recipe each.
 # Build: python3 tools/research_red/art/ow_maker.py install   (help: ow_maker.py --help, docs/ART_TOOLS.md)
-# Colours below were picked from the owner's reference art (E:\Workspace\romhacks\research-red\art\ref\).
+# Colours below were picked from the owner's reference art (E:\Workspace\productions\romhacks\research-red\art\ref\).
 # Base names: FireRed's graphics/object_events/pics/people/<name>.png, "em:" = Emerald (pret pokeemerald).
 # People stand in rows 11-30 of their frame: hair ~11-16, face ~16-22, body ~23-27, legs ~28-30.
 

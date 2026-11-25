@@ -9,7 +9,7 @@
   python3 tools/research_red/art/aseprite.py import ow:elm        # bring the edit back into the game
   python3 tools/research_red/art/aseprite.py list                 # what's out for editing
 
-`open` copies the picture to E:\\Workspace\\romhacks\\research-red\\art\\edit\\
+`open` copies the picture to E:\\Workspace\\productions\\romhacks\\research-red\\art\\edit\\
 and opens it in Aseprite (Windows) zoomed, with the frame grid showing. Draw,
 then File > Save (keep it a PNG, or save an .aseprite with layers: both work).
 
@@ -33,7 +33,7 @@ sys.path.insert(0, HERE)
 import artlib  # noqa: E402
 
 ASEPRITE = os.environ.get("RR_ASEPRITE", "/mnt/e/SteamLibrary/steamapps/common/Aseprite/Aseprite.exe")
-EDIT = "/mnt/e/Workspace/romhacks/research-red/art/edit"
+EDIT = "/mnt/e/Workspace/productions/romhacks/research-red/art/edit"
 CAST = os.path.join(artlib.REPO, "graphics/research_red/cast")
 HANDMADE = os.path.join(artlib.REPO, "graphics/research_red/cast_handmade")
 

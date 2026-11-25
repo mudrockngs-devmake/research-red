@@ -30,7 +30,7 @@ the newest test run (test-runs\\), samples, mockups, what's-new reports, cast ar
 Claude's scratch folders. Pause it, filter it, click a picture to view it full window. Only this computer can reach the page
 (it listens on 127.0.0.1). It's light: the page asks for news once a second.
 Replies (board sends, notes typed in the page) land in
-E:\\Workspace\\romhacks\\research-red\\viewer\\answers\\ and `answers` prints them.
+E:\\Workspace\\productions\\romhacks\\research-red\\viewer\\answers\\ and `answers` prints them.
 """
 import json
 import os
@@ -51,7 +51,7 @@ sys.path.insert(0, os.path.join(REPO, "tools/research_red/art"))
 sys.path.insert(0, os.path.join(REPO, "tools/research_red"))
 
 PORT = int(os.environ.get("RR_VIEWER_PORT", "8765"))
-WORKSPACE = "/mnt/e/Workspace/romhacks/research-red"
+WORKSPACE = "/mnt/e/Workspace/productions/romhacks/research-red"
 HOME = os.path.join(WORKSPACE, "viewer")            # the viewer's own folder on E:
 SHOW = os.path.join(HOME, "show")                    # pictures Claude asks about
 ANSWERS = os.path.join(HOME, "answers")              # what the owner sends back

@@ -4,7 +4,7 @@ Thanks for helping! There are two ways to contribute art. Either is fine, per ch
 
 ## Option 1: redesign the reference art (easiest)
 - One full-body drawing per character/outfit: **1024x1536 PNG, transparent background**, character standing, whole body in frame.
-- Save it with the existing file name (e.g. `08_elm.png`) in `E:\Workspace\romhacks\research-red\art\ref\ResearchRed_ref_art\`, or send it to the owner.
+- Save it with the existing file name (e.g. `08_elm.png`) in `E:\Workspace\productions\romhacks\research-red\art\ref\ResearchRed_ref_art\`, or send it to the owner.
 - The battle sprite, dialogue portrait and video-call icon are then generated automatically (`tools/research_red/build_cast_art.py`).
 - New character or outfit: new numbered file; it gets added to the `CAST` list in that script.
 
@@ -26,7 +26,7 @@ Character names: see `CAST` in `tools/research_red/build_cast_art.py` (e.g. `elm
 Tools: Aseprite (or LibreSprite, free). On the dev machine `python3 tools/research_red/art/aseprite.py open ow:<name>` / `battle:<name>` / `back:<name>` opens a sprite ready to edit and `import` puts it back. Keep your full-color originals; export the 16-color version. Check a picture with `python3 tools/research_red/art/battle_kit.py check FILE.png`.
 
 ## Sending art
-Shared folder synced to `E:\Workspace\romhacks\research-red\art\incoming\`, or a GitHub pull request to mudrockngs-devmake/research-red.
+Shared folder synced to `E:\Workspace\productions\romhacks\research-red\art\incoming\`, or a GitHub pull request to mudrockngs-devmake/research-red.
 
 ## Credit
 Every contribution gets a line in `CREDITS.md` with your name or handle.

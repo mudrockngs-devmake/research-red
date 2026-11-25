@@ -15,15 +15,15 @@ import os
 from PIL import Image, ImageDraw
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-# Windows-side output folder for previews (E:\Workspace\romhacks\research-red\art\toolkit);
+# Windows-side output folder for previews (E:\Workspace\productions\romhacks\research-red\art\toolkit);
 # RR_TOOLKIT_OUT overrides it (the GitHub Action writes its previews elsewhere)
-TOOLKIT_OUT = os.environ.get("RR_TOOLKIT_OUT", "/mnt/e/Workspace/romhacks/research-red/art/toolkit")
+TOOLKIT_OUT = os.environ.get("RR_TOOLKIT_OUT", "/mnt/e/Workspace/productions/romhacks/research-red/art/toolkit")
 PEOPLE = os.path.join(REPO, "graphics/object_events/pics/people")
 # pret's pokeemerald, sparse copy (people + trainer pics), kept outside the repo
-EMERALD_REF = os.path.expanduser("~/romhacks/_tools/pokeemerald-ref")
+EMERALD_REF = os.path.expanduser("~/studio/romhack-tools/pokeemerald-ref")
 # bases borrowed from outside the repo are copied here so the build never needs EMERALD_REF
 OW_DIR = os.path.join(REPO, "graphics/research_red/overworld")
-REF_ART = "/mnt/e/Workspace/romhacks/research-red/art/ref/ResearchRed_ref_art"
+REF_ART = "/mnt/e/Workspace/productions/romhacks/research-red/art/ref/ResearchRed_ref_art"
 # Which Art Kit pieces are in the game: graphics/research_red/art_kit.toml is the
 # asset tracker (every piece, its stage) and the gate (only "approved" pieces go
 # in; tools/research_red/art/art_gate.py apply). Off = drafts only.

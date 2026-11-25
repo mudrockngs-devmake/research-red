@@ -7,7 +7,7 @@ description: Take in a finished playtest round: archive the emulator folders, tu
 
 Full flow: docs/PLAYTESTING.md. Nothing in `_emu` is ever deleted: archiving moves it.
 
-1. **Look first**: list `/mnt/e/Workspace/romhacks/_emu/` (screenshots, notes, saves, states) and read
+1. **Look first**: list `/mnt/e/Workspace/productions/romhacks/_emu/` (screenshots, notes, saves, states) and read
    the notes files and the owner's message. Look at every screenshot.
 2. **Archive**: `tools/research_red/rr_archive_test.sh <short-name>` (moves all six `_emu` folders into
    `test-archive/<date>_<version>_<name>/` and copies the tested ROM).

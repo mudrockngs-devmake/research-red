@@ -2,7 +2,7 @@
 
 Research Red's own art tools live in `tools/research_red/art/`. They need
 only Python 3 and Pillow (Ubuntu: `sudo apt install python3-pil`). Previews
-(GIFs, contact sheets) go to `E:\Workspace\romhacks\research-red\art\toolkit\`
+(GIFs, contact sheets) go to `E:\Workspace\productions\romhacks\research-red\art\toolkit\`
 on the dev machine; set `RR_TOOLKIT_OUT` to send them somewhere else.
 
 | I want to... | Tool | Section |
@@ -37,7 +37,7 @@ Research Red runs in two lanes (owner, 2026-10-24):
 every piece that will get new art. Each piece has a stage:
 placeholder -> draft -> hand-finished -> **approved**. Only approved pieces
 are in the game. The readable page is [ART_TRACKER.md](ART_TRACKER.md), with a
-copy at `E:\Workspace\romhacks\research-red\ART_TRACKER.md`.
+copy at `E:\Workspace\productions\romhacks\research-red\ART_TRACKER.md`.
 
     python3 tools/research_red/art/art_gate.py status                 # every piece and its stage
     python3 tools/research_red/art/art_gate.py set ow:elm hand-finished "hair redrawn"
@@ -85,12 +85,12 @@ still only"), objects, trainer pictures (fronts and backs) and every Pokémon
 (front frames, back, overworld), plus `catalogue.md`: which `OBJ_EVENT_GFX_`
 name uses which picture and how many frames it really has.
 
-With a sparse copy of pret's pokeemerald in `~/romhacks/_tools/pokeemerald-ref`
+With a sparse copy of pret's pokeemerald in `~/studio/romhack-tools/pokeemerald-ref`
 (people, trainer front and back pictures), `library.py emerald` adds Emerald's
 people as well (about 125 more bodies to build from):
 
-    git clone --depth 1 --filter=blob:none --sparse https://github.com/pret/pokeemerald.git ~/romhacks/_tools/pokeemerald-ref
-    cd ~/romhacks/_tools/pokeemerald-ref
+    git clone --depth 1 --filter=blob:none --sparse https://github.com/pret/pokeemerald.git ~/studio/romhack-tools/pokeemerald-ref
+    cd ~/studio/romhack-tools/pokeemerald-ref
     git sparse-checkout set graphics/object_events/pics/people graphics/trainers/front_pics graphics/trainers/back_pics graphics/object_events/palettes
 
 ## Overworld sprites
@@ -242,7 +242,7 @@ with the throw frames leaning the way FireRed's Red does.
     python3 tools/research_red/art/aseprite.py open back:ivy
     python3 tools/research_red/art/aseprite.py import ow:elm        # back into the game
 
-`open` copies the picture to `E:\Workspace\romhacks\research-red\art\edit\`
+`open` copies the picture to `E:\Workspace\productions\romhacks\research-red\art\edit\`
 and opens it in Aseprite with the grid on. Save (PNG, or .aseprite with
 layers). `import` checks it (size, 16 colours, colour 0 = see-through), stores
 it where hand-made art wins (overworld: `bases/hand_<name>.png` + `hand = ...`
@@ -337,12 +337,12 @@ in Porymap.
 
 For a place with its own look (a greenhouse, a fossil park) use
 [Porytiles](https://github.com/grunt-lucas/porytiles), installed in
-`~/romhacks/_tools/porytiles/`. It builds a tileset from layer PNGs (bottom,
+`~/studio/romhack-tools/porytiles/`. It builds a tileset from layer PNGs (bottom,
 middle, top; 128 pixels wide) and handles palettes and duplicate tiles:
 
-    ~/romhacks/_tools/porytiles/porytiles create-tileset --secondary gTileset_RR_Greenhouse
+    ~/studio/romhack-tools/porytiles/porytiles create-tileset --secondary gTileset_RR_Greenhouse
     # draw the layer PNGs it sets up, then:
-    ~/romhacks/_tools/porytiles/porytiles compile-tileset gTileset_RR_Greenhouse
+    ~/studio/romhack-tools/porytiles/porytiles compile-tileset gTileset_RR_Greenhouse
 
 User guide: https://grunt-lucas.github.io/porytiles-user-docs. Porytiles
 recompiles a whole tileset, so for small additions to an existing one prefer
@@ -355,7 +355,7 @@ recompiles a whole tileset, so for small additions to an existing one prefer
 | [Porymap](https://github.com/huderlem/porymap) 6.3 | The standard map editor: paint blocks, collision, place people, warps, signs | Windows: `E:\Workspace\_tools\Porymap\porymap.exe`, open the project folder through `\\wsl.localhost\<Ubuntu>\home\<you>\...\research-red` |
 | [Aseprite](https://www.aseprite.org) 1.3 | The pixel editor most Pokémon spriters use; `aseprite.py` opens and imports for you | Windows (Steam): `E:\SteamLibrary\steamapps\common\Aseprite\` |
 | [LibreSprite](https://libresprite.github.io) 1.3 (free) | A free alternative | Windows: `E:\Workspace\_tools\LibreSprite\libresprite.exe` |
-| Porytiles 2.0 | Whole tilesets from layer PNGs | Ubuntu: `~/romhacks/_tools/porytiles/` |
+| Porytiles 2.0 | Whole tilesets from layer PNGs | Ubuntu: `~/studio/romhack-tools/porytiles/` |
 | gbagfx | PNG to GBA formats (the build runs it) | `tools/gbagfx/` |
 
 Porymap edits the real project files: save, then build, check (`rr_check.py`)

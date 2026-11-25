@@ -10,10 +10,10 @@ has (3 = stands still, 9+ = walks).
   python3 tools/research_red/art/library.py            # everything
   python3 tools/research_red/art/library.py people     # just one part
   parts: people, emerald, objects, trainers, pokemon, catalogue
-("emerald" needs pret's pokeemerald people sheets in ~/romhacks/_tools/pokeemerald-ref,
+("emerald" needs pret's pokeemerald people sheets in ~/studio/romhack-tools/pokeemerald-ref,
 see docs/ART_TOOLS.md; recipes can use them as bases with the "em:" prefix.)
 
-Output: E:\\Workspace\\romhacks\\research-red\\art\\toolkit\\library\\
+Output: E:\\Workspace\\productions\\romhacks\\research-red\\art\\toolkit\\library\\
 """
 import glob
 import os

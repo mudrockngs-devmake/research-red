@@ -22,7 +22,7 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(REPO, "docs/player")
 BALANCE = os.path.join(REPO, "docs/BALANCE.md")
-WORKSPACE_COPY = "/mnt/e/Workspace/romhacks/research-red/player-docs"
+WORKSPACE_COPY = "/mnt/e/Workspace/productions/romhacks/research-red/player-docs"
 
 # The demo's areas, in story order: (title, map constant, map folder prefixes)
 AREAS = [

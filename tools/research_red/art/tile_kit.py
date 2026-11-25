@@ -32,7 +32,7 @@ Nothing that already exists moves, so no existing map can break.
   python3 tools/research_red/art/tile_kit.py behaviors [WORD]
       List the behaviour names (optionally only those containing WORD).
 
-Previews go to E:\\Workspace\\romhacks\\research-red\\art\\toolkit\\tiles\\.
+Previews go to E:\\Workspace\\productions\\romhacks\\research-red\\art\\toolkit\\tiles\\.
 For a whole NEW tileset (a greenhouse, a fossil park), use Porytiles, which
 builds a tileset from layer PNGs: see docs/ART_TOOLS.md.
 """

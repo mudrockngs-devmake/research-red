@@ -18,7 +18,7 @@ import shutil
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CSV = os.path.join(REPO, "docs/reference/kanto_anime.csv")
 MD = os.path.join(REPO, "docs/reference/KANTO_ANIME.md")
-WORKSPACE = "/mnt/e/Workspace/romhacks/research-red/reference"
+WORKSPACE = "/mnt/e/Workspace/productions/romhacks/research-red/reference"
 
 
 def main():

@@ -19,7 +19,7 @@ Writes graphics/research_red/cast/<name>/back.png (64x64, 16 colours). A
 hand-drawn graphics/research_red/cast_handmade/<name>/back.png always wins;
 a back-view drawing in the reference folder (<number>_<name>_back.png) is used
 instead of guessing when there is one. Preview:
-E:\\Workspace\\romhacks\\research-red\\art\\toolkit\\battle\\backs.png
+E:\\Workspace\\productions\\romhacks\\research-red\\art\\toolkit\\battle\\backs.png
 """
 import glob
 import os

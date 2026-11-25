@@ -12,8 +12,8 @@
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/../.." && pwd)"
-WS="/mnt/e/Workspace/romhacks/research-red"
-EMU="/mnt/e/Workspace/romhacks/_emu"
+WS="/mnt/e/Workspace/productions/romhacks/research-red"
+EMU="/mnt/e/Workspace/productions/romhacks/_emu"
 ARCHIVE="$WS/test-archive"
 NAME="${1:?usage: rr_archive_test.sh <short-test-name>}"
 NAME="$(echo "$NAME" | tr ' ' '-' | tr -cd 'A-Za-z0-9._-')"

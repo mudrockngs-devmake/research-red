@@ -73,8 +73,8 @@ Edit the source, run the tool, commit both. `rr_check.py` fails if a generated f
 
 Installed on the dev machine (outside the repo; nothing in the build needs them yet):
 - Pillow (`python3-pil`) and ImageMagick (`convert`), from Ubuntu's packages: image editing for sprite and portrait work.
-- Porytiles 2.0.0 in `~/romhacks/_tools/porytiles/`: whole tilesets from drawn PNG layers ([ART_TOOLS.md](ART_TOOLS.md#whole-new-tilesets)).
-- pret pokeemerald, sparse copy in `~/romhacks/_tools/pokeemerald-ref/`: Emerald people and trainer pictures for the sprite library (bases used in recipes are copied into the repo).
+- Porytiles 2.0.0 in `~/studio/romhack-tools/porytiles/`: whole tilesets from drawn PNG layers ([ART_TOOLS.md](ART_TOOLS.md#whole-new-tilesets)).
+- pret pokeemerald, sparse copy in `~/studio/romhack-tools/pokeemerald-ref/`: Emerald people and trainer pictures for the sprite library (bases used in recipes are copied into the repo).
 - Windows, `E:\Workspace\_tools\`: Porymap 6.3.1 (map editor) and LibreSprite 1.3 (pixel editor).
 
 ## Scene moment boards

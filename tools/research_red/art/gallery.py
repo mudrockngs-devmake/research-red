@@ -3,7 +3,7 @@
 
   python3 tools/research_red/art/gallery.py
 
-Writes gallery.html into the toolkit folder (E:\\Workspace\\romhacks\\
+Writes gallery.html into the toolkit folder (E:\\Workspace\\productions\\romhacks\\
 research-red\\art\\toolkit\\), linking the previews the other tools made:
 overworld walks and runs, the overview beside the ref art, battle picture
 comparisons, map-tool test shots, the sprite library. Open it in a browser.

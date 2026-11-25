@@ -2,7 +2,7 @@
 # Research Red: build the headless test runner (rr_run) once per machine.
 #
 # Downloads CMake and the mGBA 0.10.5 source into $RR_TOOLS (default
-# ~/romhacks/_tools, outside the repo), builds mGBA as a library with no
+# ~/studio/romhack-tools, outside the repo), builds mGBA as a library with no
 # window/sound/Qt, and compiles tools/research_red/test/rr_run.c against it.
 # Needs gcc, make, curl, libpng and zlib headers (already used by the ROM build).
 #
@@ -11,7 +11,7 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
-TOOLS="${RR_TOOLS:-$HOME/romhacks/_tools}"
+TOOLS="${RR_TOOLS:-$HOME/studio/romhack-tools}"
 CMAKE_VER=3.30.5
 MGBA_VER=0.10.5
 mkdir -p "$TOOLS"

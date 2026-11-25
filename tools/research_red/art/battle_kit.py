@@ -30,7 +30,7 @@
   python3 tools/research_red/art/battle_kit.py gif FILE.png [--frame 64x64] [--ms 200]
       Any sheet of frames as an animated GIF (previews folder).
 
-Previews go to E:\\Workspace\\romhacks\\research-red\\art\\toolkit\\battle\\.
+Previews go to E:\\Workspace\\productions\\romhacks\\research-red\\art\\toolkit\\battle\\.
 """
 import argparse
 import os

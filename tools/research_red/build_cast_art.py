@@ -12,7 +12,7 @@ All are 4-bit indexed PNGs, max 16 colors, index 0 = transparent (pure green).
 Also writes a contact sheet (cast/contact_sheet.png) for review.
 
 Usage: build_cast_art.py [REF_DIR]
-Default REF_DIR: /mnt/e/Workspace/romhacks/research-red/art/ref/ResearchRed_ref_art
+Default REF_DIR: /mnt/e/Workspace/productions/romhacks/research-red/art/ref/ResearchRed_ref_art
 The reference art itself stays outside the repo.
 """
 import os
@@ -24,7 +24,7 @@ import rrpng  # noqa: E402
 from png_indexed import load_indexed  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-REF_DIR = "/mnt/e/Workspace/romhacks/research-red/art/ref/ResearchRed_ref_art"
+REF_DIR = "/mnt/e/Workspace/productions/romhacks/research-red/art/ref/ResearchRed_ref_art"
 OUT_DIR = os.path.join(REPO, "graphics/research_red/cast")
 # Hand-drawn art always wins: cast_handmade/<name>/<kind>.png is copied over
 # the generated file of the same kind (see docs/ARTIST_GUIDE.md).

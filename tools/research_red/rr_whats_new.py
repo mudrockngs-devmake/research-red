@@ -32,7 +32,7 @@ import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-WORKSPACE = "/mnt/e/Workspace/romhacks/research-red"
+WORKSPACE = "/mnt/e/Workspace/productions/romhacks/research-red"
 
 
 def newest_run():
@@ -243,7 +243,7 @@ def general_section():
     return (f'<h2 id="playtest">Your playtest</h2><div class="panel general">'
             '<p class="what" style="margin-left:0">Everything that isn\'t about one change above. Fill in what you '
             'like and skip the rest; it is kept in this browser as you type. When you\'re done, press '
-            '<b>Save my notes</b> and put the file in <code>E:\\Workspace\\romhacks\\_emu\\notes\\</code>.</p>'
+            '<b>Save my notes</b> and put the file in <code>E:\\Workspace\\productions\\romhacks\\_emu\\notes\\</code>.</p>'
             f'<div class="grid">{setup}</div>'
             '<label>Bugs<span class="hint">One card per problem, crashes and freezes too. '
             'Press F12 in mGBA for a screenshot.</span></label><div id="bugs"></div>'

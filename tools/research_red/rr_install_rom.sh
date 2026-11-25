@@ -7,7 +7,7 @@
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/../.." && pwd)"
-WS="/mnt/e/Workspace/romhacks/research-red"
+WS="/mnt/e/Workspace/productions/romhacks/research-red"
 ROM="$REPO/pokefirered.gba"
 
 [ -f "$ROM" ] || { echo "No $ROM; run make firered -j6 first" >&2; exit 1; }

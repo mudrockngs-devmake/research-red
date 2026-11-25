@@ -34,8 +34,8 @@ import rr_checks  # noqa: E402
 import tester as T  # noqa: E402
 from tester import advance, check, expect, play_until, ready, scene_end, start_menu_item, step  # noqa: E402
 
-TOOLS = os.environ.get("RR_TOOLS", os.path.expanduser("~/romhacks/_tools"))
-WORKSPACE = "/mnt/e/Workspace/romhacks/research-red"
+TOOLS = os.environ.get("RR_TOOLS", os.path.expanduser("~/studio/romhack-tools"))
+WORKSPACE = "/mnt/e/Workspace/productions/romhacks/research-red"
 STORY = "VAR_0x40FE"  # story progress, see CLAUDE.md
 
 # Debug menu (Start > DEBUG > Scripts): see data/scripts/debug.inc

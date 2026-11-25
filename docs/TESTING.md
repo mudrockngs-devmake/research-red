@@ -11,7 +11,7 @@ python3 tools/research_red/test/smoke.py lunch guide # just these
 python3 tools/research_red/test/smoke.py --list      # what's covered
 RR_SHOW_PEEKS=1 python3 tools/research_red/test/smoke.py ivy   # also print every memory peek (debugging)
 ```
-Results go to `E:\Workspace\romhacks\research-red\test-runs\<date>_<version>_<commit>\`:
+Results go to `E:\Workspace\productions\romhacks\research-red\test-runs\<date>_<version>_<commit>\`:
 - `REPORT.md`: PASS / WARN / FAIL per scenario, with where each one ended (story step, map, team size)
 - `<scenario>.png`: a contact sheet (a grid of up to 30 screenshots) to skim the scene in seconds
 - `<scenario>\`: every screenshot, plus `timeout_*.png` / `stuck_*.png` when something went wrong
@@ -82,7 +82,7 @@ python3 tools/research_red/test/monkey.py                          # every start
 python3 tools/research_red/test/monkey.py --seeds 5 --minutes 30   # a bigger hunt (about 6 minutes)
 python3 tools/research_red/test/monkey.py --seed 1234 pewter       # replay one
 ```
-Results: `E:\Workspace\romhacks\research-red\test-runs\monkey\<date>_<version>_<commit>_seed<N>\` (a screenshot every 10 seconds).
+Results: `E:\Workspace\productions\romhacks\research-red\test-runs\monkey\<date>_<version>_<commit>_seed<N>\` (a screenshot every 10 seconds).
 First hunt (2026-10-27, v0.0.19 build): 30 runs x 30 game minutes, nothing broke.
 
 ## Battle simulations (`balance.py`)
@@ -175,7 +175,7 @@ Research Red's adjustments to the engine tests (each marked `Research Red`):
 ```
 tools/research_red/test/setup_mgba.sh
 ```
-Downloads CMake and mGBA 0.10.5 into `~/romhacks/_tools/` (outside the repo) and builds `rr_run`. Takes a few minutes. Run it again if `~/romhacks/_tools` is ever deleted.
+Downloads CMake and mGBA 0.10.5 into `~/studio/romhack-tools/` (outside the repo) and builds `rr_run`. Takes a few minutes. Run it again if `~/studio/romhack-tools` is ever deleted.
 
 ## Adding a scenario
 Paths: `python3 tools/research_red/test/route_plan.py MAP_FROM x y MAP_TO [x y]` prints the steps (doors included). To walk without wild battles, wrap the walk in `T.set_flag("FLAG_RR_NO_ENCOUNTERS")` ... `T.clear_flag(...)` (the runner's `poke` command).

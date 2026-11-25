@@ -30,8 +30,8 @@ import artlib  # noqa: E402
 REPO = artlib.REPO
 TRAINERS_H = os.path.join(REPO, "src/data/graphics/trainers.h")
 TRACKER_MD = os.path.join(REPO, "docs/ART_TRACKER.md")
-TRACKER_COPY = "/mnt/e/Workspace/romhacks/research-red/ART_TRACKER.md"
-ANSWERS = "/mnt/e/Workspace/romhacks/research-red/viewer/answers"
+TRACKER_COPY = "/mnt/e/Workspace/productions/romhacks/research-red/ART_TRACKER.md"
+ANSWERS = "/mnt/e/Workspace/productions/romhacks/research-red/viewer/answers"
 
 # battle:<cast> -> (the trainers.h picture name, what the game used before)
 BATTLE = {
@@ -238,7 +238,7 @@ def cmd_tracker():
     try:
         os.makedirs(os.path.dirname(TRACKER_COPY), exist_ok=True)
         open(TRACKER_COPY, "w", newline="\r\n").write(text)
-        print("tracker -> docs/ART_TRACKER.md and E:\\Workspace\\romhacks\\research-red\\ART_TRACKER.md")
+        print("tracker -> docs/ART_TRACKER.md and E:\\Workspace\\productions\\romhacks\\research-red\\ART_TRACKER.md")
     except OSError:
         print("tracker -> docs/ART_TRACKER.md")
     return 0
